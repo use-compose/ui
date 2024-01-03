@@ -1,0 +1,68 @@
+{
+  // "root": true,
+  "env": {
+    "node": true,
+    "browser": true
+  },
+  "extends": [
+    "eslint:recommended",
+    // "plugin:@typescript-eslint/recommended",
+    // "plugin:vue/vue3-essential",
+    // "plugin:vue/vue3-strongly-recommended",
+    "plugin:prettier/recommended",
+    "plugin:vue/vue3-recommended",
+    // "@vue/typescript/recommended",
+    "prettier",
+    "eslint-config-prettier"
+  ],
+  // "parser": "@typescript-eslint/parser",
+  "parser": "vue-eslint-parser",
+  "parserOptions": {
+    // "ecmaVersion": "latest",
+    "parser": "@typescript-eslint/parser",
+    // "project": "./tsconfig.json",
+    "sourceType": "module"
+    // "extraFileExtensions": [".vue"]
+  },
+  "plugins": ["prettier"]
+  // "editor.defaultFormatter": "esbenp.prettier-vscode",
+  // "eslint.format.enable": true,
+  // "[vue]": {
+  //   "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  // },
+  // "[typescript]": {
+  //   "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  // },
+  // "[json]": {
+  //   "editor.defaultFormatter": "vscode.json-language-features"
+  // }
+  // "rules": {
+  //   "indent": ["error", 2],
+  //   "linebreak-style": ["error", "unix"],
+  //   "quotes": ["error", "single"],
+  //   "semi": ["error", "always"],
+  //   "@typescript-eslint/no-unused-vars": "error",
+  //   // "@typescript-eslint/unbound-method": "off",
+  //   // "@typescript-eslint/explicit-module-boundary-types": "off",
+  //   // "@typescript-eslint/no-unsafe-assignment": "off",
+  //   // "@typescript-eslint/no-unsafe-member-access": "off",
+  //   // "@typescript-eslint/no-unsafe-argument": "off",
+  //   // "@typescript-eslint/no-unsafe-return": "off",
+  //   // "@typescript-eslint/no-unsafe-call": "off",
+  //   // "@typescript-eslint/no-unsafe-enum-comparison": "off",
+  //   // "@typescript-eslint/require-await": "off",
+  //   // "@typescript-eslint/await-thenable": "off",
+  //   "vue/block-spacing": "error",
+  //   "vue/arrow-spacing": "error",
+  //   "vue/array-bracket-spacing": "error",
+  //   "vue/keyword-spacing": "error",
+  //   "vue/component-name-in-template-casing": [
+  //     "warn",
+  //     "PascalCase",
+  //     {
+  //       "registeredComponentsOnly": false,
+  //       "ignores": ["integration-center"]
+  //     }
+  //   ]
+  // }
+}
