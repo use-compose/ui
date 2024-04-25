@@ -1,44 +1,50 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import { resolve } from 'path'
-import dts from 'vite-plugin-dts'
+// Other imports as needed
 
-import EsLint from 'vite-plugin-linter'
-const { EsLinter, linterPlugin, TypeScriptLinter } = EsLint
+const pathSrc = resolve(__dirname, './src')
 
-// https://vitejs.dev/config/
-export default defineConfig((configEnv) => ({
-  plugins: [
-    vue(),
-    linterPlugin({
-      include: ['./src/**/*.ts', './src/**/*.tsx'],
-      linters: [new EsLinter({ configEnv: configEnv }), new TypeScriptLinter()],
-    }),
-
-    dts({
-      include: ['lib'],
-    }),
-  ],
-  build: {
-    copyPublicDir: false,
-    lib: {
-      // Could also be a dictionary or array of multiple entry points
-      entry: resolve(__dirname, 'lib/main.ts'),
-      name: 'GammaCompose',
-      // the proper extensions will be added
-      fileName: 'gamma-compose',
-    },
-    rollupOptions: {
-      // make sure to externalize deps that shouldn't be bundled
-      // into your library
-      external: ['vue'],
-      output: {
-        // Provide global variables to use in the UMD build
-        // for externalized deps
-        globals: {
-          vue: 'Vue',
+const config = defineConfig((configEnv) => {
+  const viteConfig = {
+    plugins: [
+      vue(),
+      // Other plugins
+    ],
+    css: {
+      preprocessorOptions: {
+        scss: {
+          additionalData: `@import '${pathSrc}/assets/scss/variables.scss';`,
         },
       },
     },
-  },
-}))
+    build: {
+      copyPublicDir: false,
+      lib: {
+        entry: resolve(__dirname, 'src/index.ts'),
+        name: 'gamma-compose',
+        fileName: 'gamma-compose',
+        formats: ['es', 'cjs', 'umd'],
+      },
+      rollupOptions: {
+        external: ['vue'],
+        output: {
+          globals: {
+            vue: 'Vue',
+          },
+        },
+      },
+    },
+    // Other config options
+  }
+
+  // Now you can log the whole config or specific parts of it
+  console.log(viteConfig)
+  // Or, if you want to log a specific part
+  console.log(viteConfig.css.preprocessorOptions.scss)
+
+  // Return the config object
+  return viteConfig
+})
+
+export default config

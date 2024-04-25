@@ -1,0 +1,8 @@
+:root {
+  --color-primary: ;
+  --color-primary-80: color-mix(in srgb, var(--color-primary) 80%, transparent);
+  --color-primary-60: color-mix(in srgb, var(--color-primary) 60%, transparent);
+  --color-primary-40: color-mix(in srgb, var(--color-primary) 40%, transparent);
+  --color-primary-20: color-mix(in srgb, var(--color-primary) 20%, transparent);
+  --color-primary-10: color-mix(in srgb, var(--color-primary) 10%, transparent);
+}
