@@ -28,6 +28,7 @@
     "lint:fix": "eslint --fix 'src/**/*.{jsx,ts,tsx}'",
     "js:lint": "eslint --ext .js,.ts,.vue --ignore-path .gitignore --fix src/",
     "js:lint:check": "eslint --ext .js,.ts,.vue --ignore-path .gitignore src/",
+    "lint:style": "stylelint \"**/*.{vue,scss,css}\"",
     "format": "prettier --write src//**/*.{ts,tsx,css} --config ./.prettierrc",
     "prepare": "husky install"
   },
@@ -68,6 +69,9 @@
     "react-dom": "^18.2.0",
     "sass": "^1.71.1",
     "storybook": "^8.0.9",
+    "stylelint": "^16.5.0",
+    "stylelint-config-recommended-vue": "^1.5.0",
+    "stylelint-config-standard-scss": "^13.1.0",
     "typescript": "^5.3.3",
     "vite": "^5.0.8",
     "vite-plugin-dts": "^3.7.0",
