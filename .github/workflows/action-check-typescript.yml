@@ -1,8 +1,12 @@
 name: 'action-check-typescript'
 on:
   pull_request:
+permissions:
+  contents: write  # Ensures that the workflow token can write to the repository contents
+  pull-requests: write  # Ensures the token can write to pull requests
 jobs:
   ts:
+    # https://stackoverflow.com/a/70448851
     permissions: write-all
     runs-on: ubuntu-latest
     steps:
