@@ -1,0 +1,60 @@
+/*
+ * https://css-tricks.com/building-a-scalable-css-architecture-with-bem-and-utility-classes/#aa-utility-classes-in-30-seconds
+ */
+
+/* Spacing | Global */
+:root {
+  --space-unit: 1em;
+  --space-xs: calc(0.5 * var(--space-unit));
+  --space-sm: calc(0.75 * var(--space-unit));
+  --space-md: calc(1.25 * var(--space-unit));
+  --space-lg: calc(2 * var(--space-unit));
+  --space-xl: calc(3.25 * var(--space-unit));
+  --space-xxl: calc(5.25 * var(--space-unit));
+}
+
+/* responsive rule affecting all spacing variables */
+@media (min-width: 64rem) {
+  :root {
+    --space-unit: 2em; /* 👇 this responsive decision affects all margins and paddings */
+  }
+}
+/* margin and padding util classes - apply spacing variables */
+.margin-xs {
+  margin: var(--space-xs);
+}
+.margin-sm {
+  margin: var(--space-sm);
+}
+.margin-md {
+  margin: var(--space-md);
+}
+.margin-lg {
+  margin: var(--space-lg);
+}
+.margin-xl {
+  margin: var(--space-xl);
+}
+.mb-0 {
+  margin-bottom: 0;
+}
+
+.mt-md {
+  margin-top: var(--space-md);
+}
+
+.padding-xs {
+  padding: var(--space-xs);
+}
+.padding-sm {
+  padding: var(--space-sm);
+}
+.padding-md {
+  padding: var(--space-md);
+}
+.padding-lg {
+  padding: var(--space-lg);
+}
+.padding-xl {
+  padding: var(--space-xl);
+}

@@ -1,18 +1,36 @@
-import type { StorybookConfig } from "@storybook/vue3-vite";
+import type { StorybookConfig } from '@storybook/vue3-vite'
+import { mergeConfig } from 'vite'
+import path from 'path'
 
 const config: StorybookConfig = {
-  stories: ["../src/**/*.mdx", "../src/**/*.stories.@(js|jsx|mjs|ts|tsx)"],
+  stories: ['../src/**/*.mdx', '../src/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
   addons: [
-    "@storybook/addon-links",
-    "@storybook/addon-essentials",
-    "@storybook/addon-interactions",
+    '@storybook/addon-links',
+    '@storybook/addon-essentials',
+    '@storybook/addon-interactions',
+    '@chromatic-com/storybook'
   ],
   framework: {
-    name: "@storybook/vue3-vite",
+    name: '@storybook/vue3-vite',
     options: {},
   },
   docs: {
-    autodocs: "tag",
+    autodocs: 'tag',
   },
-};
-export default config;
+  async viteFinal(config) {
+    return mergeConfig(config, {
+      css: {
+        postcss: null,
+        preprocessorOptions: {
+          scss: {
+            additionalData: `@import "${path.resolve(
+              __dirname,
+              '../src/assets/scss/breakpoints',
+            )}";`,
+          },
+        },
+      },
+    })
+  },
+}
+export default config

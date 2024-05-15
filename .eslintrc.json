@@ -24,7 +24,24 @@
     "sourceType": "module"
     // "extraFileExtensions": [".vue"]
   },
-  "plugins": ["prettier"]
+  "plugins": ["@typescript-eslint", "prettier"],
+
+  "rules": {
+    // "vue/multi-word-component-names": [
+    //   "error",
+    //   {
+    //     "ignores": ["Wrapper"]
+    //   }
+    // ]
+    "vue/component-name-in-template-casing": [
+      "warn",
+      "PascalCase",
+      {
+        "registeredComponentsOnly": false
+      }
+    ]
+  }
+
   // "editor.defaultFormatter": "esbenp.prettier-vscode",
   // "eslint.format.enable": true,
   // "[vue]": {
