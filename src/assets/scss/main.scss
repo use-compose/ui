@@ -1,4 +1,27 @@
-@import 'breakpoints';
-@import 'spacing';
-@import 'colors';
-@import 'variables';
+/* 
+ * Sources:
+ * https://sass-guidelin.es/#architecture
+ * 
+ * Boilerplate:
+ * https://github.com/KittyGiraudel/sass-boilerplate
+ * 
+ * --------- 
+ * https://gist.github.com/AdamMarsden/7b85e8d5bdb5bef969a0
+ * https://gist.github.com/AdamMarsden/7b85e8d5bdb5bef969a0?permalink_comment_id=4239993#gistcomment-4239993
+ *
+ */
+
+// Utils
+@use "utils/breakpoints";
+
+// Base styles
+@use "base/colors.scss";
+@use "base/spacing";
+
+// Layout-related sections
+
+// Components
+
+// Page-specific styles
+
+// Themes

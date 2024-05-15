@@ -11,13 +11,13 @@ const config = defineConfig((configEnv) => {
       vue(),
       // Other plugins
     ],
-    css: {
-      preprocessorOptions: {
-        scss: {
-          additionalData: `@import '${pathSrc}/assets/scss/variables.scss';`,
-        },
-      },
-    },
+    // css: {
+    //   preprocessorOptions: {
+    //     scss: {
+    //       additionalData: `@use '${pathSrc}/assets/scss/variables.scss';`,
+    //     },
+    //   },
+    // },
     build: {
       copyPublicDir: false,
       lib: {
@@ -41,7 +41,7 @@ const config = defineConfig((configEnv) => {
   // Now you can log the whole config or specific parts of it
   console.log(viteConfig)
   // Or, if you want to log a specific part
-  console.log(viteConfig.css.preprocessorOptions.scss)
+  // console.log(viteConfig.css.preprocessorOptions.scss)
 
   // Return the config object
   return viteConfig

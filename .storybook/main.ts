@@ -22,12 +22,12 @@ const config: StorybookConfig = {
       css: {
         postcss: null,
         preprocessorOptions: {
-          scss: {
-            additionalData: `@import "${path.resolve(
-              __dirname,
-              '../src/assets/scss/breakpoints',
-            )}";`,
-          },
+          // scss: {
+          //   additionalData: `@use "${path.resolve(
+          //     __dirname,
+          //     '../src/assets/scss/breakpoints',
+          //   )}";`,
+          // },
         },
       },
     })

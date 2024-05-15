@@ -1,5 +1,13 @@
+
 :root {
   --color-primary: ;
+
+  /*
+   * TODO: search if we keep color-mix
+   * sources:
+   * https://una.im/color-mix-opacity/
+   * https://developer.chrome.com/docs/css-ui/css-color-mix
+   */
   --color-primary-80: color-mix(in srgb, var(--color-primary) 80%, transparent);
   --color-primary-60: color-mix(in srgb, var(--color-primary) 60%, transparent);
   --color-primary-40: color-mix(in srgb, var(--color-primary) 40%, transparent);

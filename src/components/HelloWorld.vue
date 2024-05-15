@@ -9,7 +9,7 @@ const count = ref(0)
 
 <template>
   <div style="background-color: black">
-    <Wrapper>
+    <Wrapper  class="hello">
       <h1>{{ msg }}</h1>
 
       <div class="card">
@@ -38,5 +38,8 @@ const count = ref(0)
 <style scoped>
 .read-the-docs {
   color: #888;
+}
+.hello {
+  background-color:   var(--color-primary-60);
 }
 </style>
