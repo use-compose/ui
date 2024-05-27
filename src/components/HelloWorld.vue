@@ -1,15 +1,23 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { Wrapper } from '.'
+import { YButton } from '.'
+import { YInput } from '.'
 
 defineProps<{ msg: string }>()
 
 const count = ref(0)
+const input = ref('')
+const showMsg = ref(false)
+
+const toggleDisplayMsg = () => {
+  showMsg.value = !showMsg.value
+}
 </script>
 
 <template>
-  <div style="background-color: black">
-    <Wrapper  class="hello">
+  <div>
+    <Wrapper class="hello">
       <h1>{{ msg }}</h1>
 
       <div class="card">
@@ -19,6 +27,18 @@ const count = ref(0)
           <code>components/HelloWorld.vue</code> to test HMR
         </p>
       </div>
+
+      <YButton @click="toggleDisplayMsg">Button</YButton>
+
+      <YInput v-model="input" label="Message" placeholder="Message" />
+      <YInput v-model="input" label="Message" placeholder="Message" />
+      <YInput v-model="input" label="Message" placeholder="Message" />
+      <YInput v-model="input" label="Message" raw placeholder="Message" />
+      <YInput v-model="input" label="Message" placeholder="Message" />
+      <YInput v-model="input" label="Message" placeholder="Message" />
+      <YInput v-model="input" label="Message" placeholder="Message" />
+
+      <h5 v-show="showMsg">{{ input }}</h5>
 
       <p>
         Check out
@@ -40,6 +60,6 @@ const count = ref(0)
   color: #888;
 }
 .hello {
-  background-color:   var(--color-primary-60);
+  /* background-color: var(--primary-60); */
 }
 </style>

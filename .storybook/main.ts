@@ -8,7 +8,7 @@ const config: StorybookConfig = {
     '@storybook/addon-links',
     '@storybook/addon-essentials',
     '@storybook/addon-interactions',
-    '@chromatic-com/storybook'
+    '@chromatic-com/storybook',
   ],
   framework: {
     name: '@storybook/vue3-vite',
@@ -22,12 +22,13 @@ const config: StorybookConfig = {
       css: {
         postcss: null,
         preprocessorOptions: {
-          // scss: {
-          //   additionalData: `@use "${path.resolve(
-          //     __dirname,
-          //     '../src/assets/scss/breakpoints',
-          //   )}";`,
-          // },
+          scss: {
+            additionalData: `
+              @use "${path.resolve(__dirname, '../src/assets/scss/base/base')}";
+              @use "${path.resolve(__dirname, '../src/assets/scss/utils/breakpoints')}"; 
+              @use "${path.resolve(__dirname, '../src/assets/scss/base/colors')}"; 
+            `,
+          },
         },
       },
     })

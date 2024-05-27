@@ -11,13 +11,17 @@ const config = defineConfig((configEnv) => {
       vue(),
       // Other plugins
     ],
-    // css: {
-    //   preprocessorOptions: {
-    //     scss: {
-    //       additionalData: `@use '${pathSrc}/assets/scss/variables.scss';`,
-    //     },
-    //   },
-    // },
+    css: {
+      preprocessorOptions: {
+        scss: {
+          additionalData: `
+            @use "${pathSrc}/assets/scss/base/base" as *;
+            @use "${pathSrc}/assets/scss/base/colors" as colors;
+            @use "${pathSrc}/assets/scss/utils/breakpoints" as breakpoints;
+          `,
+        },
+      },
+    },
     build: {
       copyPublicDir: false,
       lib: {
