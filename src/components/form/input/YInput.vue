@@ -2,16 +2,15 @@
   <div>
     <label v-if="label" :for="name" class="y_label">{{ label }} :</label>
     <input
-      ref="input"
+      ref="yInput"
       :value="modelValue"
       :type="type"
       :name="name"
       :placeholder="placeholder"
       :class="yInputClasses"
       autocomplete="off"
-      @input="$emit('update:modelValue', $event.target.value)"
-      @change="handleChange"
-      @blur="$emit('blur', $event)"
+      @input="handleInput"
+      @blur="handleBlur"
     />
     <label v-if="error" class="error-label" :for="name">
       {{ errorMsg }}
@@ -20,9 +19,11 @@
 </template>
 
 <script setup lang="ts">
-import { computed, nextTick, ref } from 'vue'
+import { useBaseComponent } from '@/composables/use-base-component'
+import { BaseProps } from '@/utils/base-props'
+import { computed, onMounted, ref } from 'vue'
 
-interface InputProps {
+interface InputProps extends BaseProps {
   modelValue: string | null
   label?: string
   name?: string
@@ -31,54 +32,57 @@ interface InputProps {
   small?: boolean
   big?: boolean
   hero?: boolean
-  raw?: boolean
   noBorder?: boolean
   noMargin?: boolean
   error?: boolean
   errorMsg?: string
+  focus?: boolean
 }
 
-const inputRef = ref<HTMLInputElement | null>(null)
-const emit = defineEmits(['update:modelValue'])
 const props = defineProps<InputProps>()
+
+const { baseClasses } = useBaseComponent(props)
 
 const yInputClasses = computed(() => {
   return [
+    ...baseClasses.value,
     'y-input',
-    props.small ? 'small-input' : '',
-    props.big ? 'big-input' : '',
-    props.raw ? 'raw' : '',
-    props.noBorder ? 'no-border' : '',
-    props.noMargin ? 'no-margin' : '',
+    props.small ? 'y-input--small' : '',
+    props.big ? 'y-input--big' : '',
+    // props.noBorder ? 'no-border' : '',
+    // props.noMargin ? 'no-margin' : '',
   ]
 })
 
-const yInpustClasses = computed(() => {
-  return {
-    'y-input-classes': true,
-    // 'small-input': props.small,
-    'no-border': props.noBorder,
-    'no-margin': props.noMargin,
-  }
-})
+// listen to input event
+const emit = defineEmits(['update:modelValue', 'blur'])
 
-const handleChange = (event: Event) => {
+const handleInput = (event: Event) => {
   console.log('handleChange')
   emit('update:modelValue', (event.target as HTMLInputElement).value)
 }
 
-const focus = () => {
-  nextTick(() => inputRef.value?.focus())
+// listen to blur event
+const handleBlur = () => {
+  emit('blur')
 }
+
+// focus prop
+const yInput = ref<HTMLInputElement | null>(null)
+const handleFocus = () => yInput.value?.focus()
+
+onMounted(() => {
+  if (props.focus) {
+    console.log(yInput)
+    handleFocus()
+  }
+})
 </script>
 
 <style lang="scss" scoped>
 // TODO: https://www.notion.so/guido-web-training/Storybook-and-Vite-Global-SCSS-Variables-are-not-found-31629867a8bd4323b28dee411e3f7c0f?pvs=4
 @import '../../../assets/scss/base/base';
 // @import '../../../assets/scss/utils/breakpoints';
-
-// .y-input-wrapper {
-// margin: 20px 0;
 
 .y_label {
   color: var(--primary);
@@ -92,12 +96,9 @@ const focus = () => {
   @include theme-component;
   --component-bg: var(--main-dark);
   --component-color: var(--primary);
+  --component-padding-y: var(--space-sm);
 
-  padding: var(--space-sm) var(--space-xs);
-  padding: var(--space-xs) var(--space-sm);
-  display: block;
   width: 100%;
-  outline: none;
   border-color: var(--primary);
 
   &::placeholder {
@@ -106,27 +107,30 @@ const focus = () => {
   }
 
   &.y-input--hero {
+    --component-bg: var(--primary);
+  }
+
+  &.y-input--small {
+    padding: var(--space-xs);
+    --component-padding-y: var(--space-xs);
+    --component-padding-x: var(--space-xs);
+  }
+
+  &.y-input--big {
+    --component-padding-y: var(--space-unit);
   }
 }
 
+// TODO: check if to keep these 3 classes
 .error-label {
   font-size: 80%;
 }
 
-.small-input {
-  input {
-    border-width: 2px;
-  }
-}
-
 .no-border {
-  input {
-    border: none;
-  }
+  border: none;
 }
 
 .no-margin {
   margin-bottom: 0;
 }
-// }
 </style>

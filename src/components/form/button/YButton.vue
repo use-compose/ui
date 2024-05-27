@@ -1,32 +1,39 @@
 <template>
-  <button class="y-button" :class="getClasses" :disabled="disabled" @click="handleClick">
+  <button :class="getClasses" :disabled="disabled" type="button" @click="handleClick">
     <slot></slot>
   </button>
 </template>
 
 <script setup lang="ts">
+import { useBaseComponent } from '@/composables/use-base-component'
+import { BaseProps } from '@/utils/base-props'
 import { computed } from 'vue'
 
 const props = withDefaults(
-  defineProps<{
-    color?: string
-    disabled?: boolean
-    size?: 'small' | 'medium' | 'large'
-  }>(),
+  defineProps<
+    BaseProps & {
+      color?: string
+      size?: 'small' | 'medium' | 'large'
+    }
+  >(),
   {
     color: 'primary',
     size: 'medium',
   },
 )
 
+const { baseClasses } = useBaseComponent(props)
+
 const getClasses = computed(() => {
   return [
+    ...baseClasses.value,
+    'y-button',
     props.color ? `${props.color}-button` : '',
-    props.size ? props.size : '',
-    props.disabled ? 'disabled' : '',
+    props.size ? `y-button--${props.size}` : '',
   ]
 })
 
+// listen to click event
 const emit = defineEmits(['click'])
 
 const handleClick = (e: Event) => {
@@ -43,23 +50,15 @@ const handleClick = (e: Event) => {
 @import '../../../assets/scss/base/base';
 
 .y-button {
-  position: relative;
-  border: none;
   cursor: pointer;
-  outline: none;
   text-transform: uppercase;
-  padding: var(--space-xxs) var(--space-xs);
+  padding: var(--space-xs) var(--space-unit);
 
   @include theme-component;
+  --component-padding-y: var(--space-xs);
 
-  &.large {
-    padding: 12px 16px;
-    padding: var(--space-xs) var(--space-unit);
-  }
-
-  &.disabled {
-    cursor: not-allowed;
-    opacity: 0.5;
-  }
+  // &.y-button--large {
+  //   --component-padding-y: var(--space-sm);
+  // }
 }
 </style>

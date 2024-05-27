@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import { resolve } from 'path'
+import { fileURLToPath, URL } from 'url'
 // Other imports as needed
 
 const pathSrc = resolve(__dirname, './src')
@@ -11,6 +12,9 @@ const config = defineConfig((configEnv) => {
       vue(),
       // Other plugins
     ],
+    resolve: {
+      alias: [{ find: '@', replacement: fileURLToPath(new URL('./src', import.meta.url)) }],
+    },
     css: {
       preprocessorOptions: {
         scss: {

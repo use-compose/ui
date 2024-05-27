@@ -32,10 +32,10 @@ const toggleDisplayMsg = () => {
 
       <YInput v-model="input" label="Message" placeholder="Message" />
       <YInput v-model="input" label="Message" placeholder="Message" />
-      <YInput v-model="input" label="Message" placeholder="Message" />
+      <YInput v-model="input" big label="Message" placeholder="Message" />
       <YInput v-model="input" label="Message" raw placeholder="Message" />
-      <YInput v-model="input" label="Message" placeholder="Message" />
-      <YInput v-model="input" label="Message" placeholder="Message" />
+      <YInput v-model="input" focus small label="Message" placeholder="Message" />
+      <YInput v-model="input" error error-msg="ERROR" label="Message" placeholder="Message" />
       <YInput v-model="input" label="Message" placeholder="Message" />
 
       <h5 v-show="showMsg">{{ input }}</h5>
