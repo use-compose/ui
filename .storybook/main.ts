@@ -31,6 +31,13 @@ const config: StorybookConfig = {
           },
         },
       },
+      // TODO: doesn't work?
+      resolve: {
+        alias: [
+          { find: '@', replacement: path.resolve(__dirname, './src') },
+          { find: '@/composables', replacement: path.resolve(__dirname, './src/composables') },
+        ],
+      },
     })
   },
 }

@@ -19,8 +19,9 @@
 </template>
 
 <script setup lang="ts">
-import { useBaseComponent } from '@/composables/use-base-component'
-import { BaseProps } from '@/utils/base-props'
+// TODO: resolve alias
+import { useBaseComponent } from '../../../composables/use-base-component'
+import { BaseProps } from '../../../utils/base-props'
 import { computed, onMounted, ref } from 'vue'
 
 interface InputProps extends BaseProps {
@@ -49,6 +50,7 @@ const yInputClasses = computed(() => {
     'y-input',
     props.small ? 'y-input--small' : '',
     props.big ? 'y-input--big' : '',
+    props.hero ? 'y-input--hero' : '',
     // props.noBorder ? 'no-border' : '',
     // props.noMargin ? 'no-margin' : '',
   ]
@@ -108,6 +110,15 @@ onMounted(() => {
 
   &.y-input--hero {
     --component-bg: var(--primary);
+    --component-color: var(--main-dark);
+    --component-box-shadow: unset;
+    --component-padding-y: var(--space-md);
+    --component-padding-x: var(--space-md);
+    --component-font-size: var(--h3);
+
+    &:hover:not(:focus-visible):not(:active) {
+      --component-box-shadow: var(--box-shadow-base);
+    }
   }
 
   &.y-input--small {

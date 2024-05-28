@@ -3,10 +3,9 @@
 // export { Wrapper }
 import './assets/scss/main.scss'
 
-import ButtonCopy from './components/ButtonCopy.vue'
-import { Wrapper } from './components'
+import { Wrapper, YButton, YInput } from './components'
 
-export { ButtonCopy, Wrapper }
+export { Wrapper, YButton, YInput }
 
 export function helloAnqsdqsdqsdqsqsdything(thing: string): string {
   return `Helloo ${thing}!`

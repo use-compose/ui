@@ -60,6 +60,7 @@ export const Primary: Story = {
 }
 
 export const Disabled: Story = {
+  render: (args) => renderTemplate(args),
   args: {
     disabled: true,
   },

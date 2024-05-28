@@ -5,7 +5,9 @@
 </template>
 
 <script setup lang="ts">
-import { useBaseComponent } from '@/composables/use-base-component'
+// TODO: resolve alias
+// import { useBaseComponent } from '@/composables/use-base-component'
+import { useBaseComponent } from '../../../composables/use-base-component'
 import { BaseProps } from '@/utils/base-props'
 import { computed } from 'vue'
 
