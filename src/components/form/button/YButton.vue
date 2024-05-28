@@ -11,18 +11,15 @@ import { useBaseComponent } from '../../../composables/use-base-component'
 import { BaseProps } from '@/utils/base-props'
 import { computed } from 'vue'
 
-const props = withDefaults(
-  defineProps<
-    BaseProps & {
-      color?: string
-      size?: 'small' | 'medium' | 'large'
-    }
-  >(),
-  {
-    color: 'primary',
-    size: 'medium',
-  },
-)
+export interface YButtonProps extends BaseProps {
+  color?: string
+  size?: 'small' | 'medium' | 'large'
+}
+
+const props = withDefaults(defineProps<YButtonProps>(), {
+  color: 'primary',
+  size: 'medium',
+})
 
 const { baseClasses } = useBaseComponent(props)
 

@@ -24,7 +24,7 @@ import { useBaseComponent } from '../../../composables/use-base-component'
 import { BaseProps } from '../../../utils/base-props'
 import { computed, onMounted, ref } from 'vue'
 
-interface InputProps extends BaseProps {
+interface YInputProps extends BaseProps {
   modelValue: string | null
   label?: string
   name?: string
@@ -40,7 +40,7 @@ interface InputProps extends BaseProps {
   focus?: boolean
 }
 
-const props = defineProps<InputProps>()
+const props = defineProps<YInputProps>()
 
 const { baseClasses } = useBaseComponent(props)
 
