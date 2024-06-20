@@ -5,6 +5,66 @@
 /**
  * Set up a decent box model on the root element
  */
+:root {
+  --border-radius: 0;
+  --box-shadow-x: 4px;
+  --box-shadow-y: 4px;
+
+  --box-shadow-base: var(--box-shadow-x) var(--box-shadow-y) 0 0 black;
+  --box-shadow-hover: var(--box-shadow-x) var(--box-shadow-y) 0 0 var(--primary);
+}
+
+@mixin theme-component {
+  --component-bg: var(--primary);
+  --component-color: var(--main-dark);
+  --component-box-shadow: var(--box-shadow-base);
+  --component-padding-x: var(--space-unit);
+  --component-padding-y: 0;
+
+  margin: var(--space-xs);
+  padding: var(--component-padding-y) var(--component-padding-x);
+  border: 2px solid var(--main-dark);
+  border-radius: var(--border-radius);
+  background-color: var(--component-bg);
+  box-shadow: var(--component-box-shadow);
+  color: var(--component-color);
+  font-size: var(--component-font-size, 1rem);
+  font-weight: bold;
+  outline: none;
+
+  &:not(.disabled) {
+    &:hover {
+      --component-box-shadow: var(--box-shadow-hover);
+    }
+
+    &:active,
+    &:focus-visible {
+      transform: translate(4px, 4px);
+      --component-box-shadow: unset;
+    }
+  }
+
+  &.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  &.raw {
+    box-shadow: none;
+
+    &:hover {
+      transform: none;
+      box-shadow: none;
+    }
+
+    &:active,
+    &:focus-visible {
+      transform: none;
+      box-shadow: none;
+    }
+  }
+}
+
 html {
   box-sizing: border-box;
 }

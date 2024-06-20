@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import { resolve } from 'path'
+import { fileURLToPath, URL } from 'url'
 // Other imports as needed
 
 const pathSrc = resolve(__dirname, './src')
@@ -11,13 +12,20 @@ const config = defineConfig((configEnv) => {
       vue(),
       // Other plugins
     ],
-    // css: {
-    //   preprocessorOptions: {
-    //     scss: {
-    //       additionalData: `@use '${pathSrc}/assets/scss/variables.scss';`,
-    //     },
-    //   },
-    // },
+    resolve: {
+      alias: [{ find: '@', replacement: fileURLToPath(new URL('./src', import.meta.url)) }],
+    },
+    css: {
+      preprocessorOptions: {
+        scss: {
+          additionalData: `
+            @use "${pathSrc}/assets/scss/base/base" as *;
+            @use "${pathSrc}/assets/scss/base/colors" as colors;
+            @use "${pathSrc}/assets/scss/utils/breakpoints" as breakpoints;
+          `,
+        },
+      },
+    },
     build: {
       copyPublicDir: false,
       lib: {

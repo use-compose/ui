@@ -1,6 +1,8 @@
-
 :root {
-  --color-primary: ;
+  --color-primary: #fbe134;
+  --primary: hsl(from var(--color-primary) h s l / 100%);
+  --color-main-dark: #0b0c0c;
+  --main-dark: hsl(from var(--color-main-dark) h s l / 100%);
 
   /*
    * TODO: search if we keep color-mix
@@ -8,9 +10,17 @@
    * https://una.im/color-mix-opacity/
    * https://developer.chrome.com/docs/css-ui/css-color-mix
    */
-  --color-primary-80: color-mix(in srgb, var(--color-primary) 80%, transparent);
-  --color-primary-60: color-mix(in srgb, var(--color-primary) 60%, transparent);
-  --color-primary-40: color-mix(in srgb, var(--color-primary) 40%, transparent);
-  --color-primary-20: color-mix(in srgb, var(--color-primary) 20%, transparent);
-  --color-primary-10: color-mix(in srgb, var(--color-primary) 10%, transparent);
+  --primary-80: color-mix(in srgb, var(--primary) 80%, transparent);
+  --primary-60: color-mix(in srgb, var(--primary) 60%, transparent);
+  --primary-40: color-mix(in srgb, var(--primary) 40%, transparent);
+  --primary-20: color-mix(in srgb, var(--primary) 20%, transparent);
+  --primary-10: color-mix(in srgb, var(--primary) 10%, transparent);
+  --color-white: #fff;
+  --text-color: ;
+
+  /* TODO: Dark Mode? */
+  /* Or apply it via media query */
+  /* @media (prefers-color-scheme: dark) {
+    --color-primary: var(--main-dark);
+  } */
 }

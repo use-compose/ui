@@ -12,10 +12,12 @@
  */
 
 // Utils
-@use "utils/breakpoints";
+// @use "utils/breakpoints";
+@use "utils/variables";
 
 // Base styles
-@use "base/colors.scss";
+// @use 'base/base.scss';
+// @use "base/colors.scss";
 @use "base/spacing";
 
 // Layout-related sections

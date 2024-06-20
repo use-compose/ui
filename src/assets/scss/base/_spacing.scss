@@ -2,7 +2,7 @@
  * https://css-tricks.com/building-a-scalable-css-architecture-with-bem-and-utility-classes/#aa-utility-classes-in-30-seconds
  */
 
- /* 
+/* 
   * TODO: V2?
   *  https://utopia.fyi/space/calculator?c=320,18,1.2,1240,20,1.25,5,2,&s=0.75|0.5,1.5|2|3|4|6,s-l&g=s,l,xl,12 
   * "Using the same base values from the fluid type calculator, this tool helps you to create a related fluid space system."
@@ -11,6 +11,7 @@
 /* Spacing | Global */
 :root {
   --space-unit: 1em;
+  --space-xxs: calc(0.25 * var(--space-unit));
   --space-xs: calc(0.5 * var(--space-unit));
   --space-sm: calc(0.75 * var(--space-unit));
   --space-md: calc(1.25 * var(--space-unit));
@@ -19,10 +20,16 @@
   --space-xxl: calc(5.25 * var(--space-unit));
 }
 
+// @include media(desktop) {
+//  :root {
+//     --space-unit: 2em; /* 👇 this responsive decision affects all margins and paddings */
+//   }
+// }
+
 /* responsive rule affecting all spacing variables */
 @media (min-width: 64rem) {
   :root {
-    --space-unit: 2em; /* 👇 this responsive decision affects all margins and paddings */
+    --space-unit: 1em; /* 👇 this responsive decision affects all margins and paddings */
   }
 }
 /* margin and padding util classes - apply spacing variables */

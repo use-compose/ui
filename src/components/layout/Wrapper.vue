@@ -14,7 +14,7 @@ import { computed } from 'vue'
 // const props = defineProps<WrapperProps>()
 
 const wrapperClasses = computed(() => {
-  return ['wrapper', 'test', 'padding-xl', 'margin-xl']
+  return ['wrapper']
 })
 
 // const wrapperMaxWidth = computed(() => {
@@ -30,9 +30,13 @@ const wrapperClasses = computed(() => {
   padding-left: var(--space-md);
 }
 </style> -->
-<style lang="scss">
+<style scoped lang="scss">
+// https://css-tricks.com/use-css-clamp-to-create-a-more-flexible-wrapper-utility/
 .wrapper {
-  background-color: var(--color-primary);
-  min-height: 100vh;
+  width: clamp(16rem, 90vw, 70rem);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
 }
 </style>
