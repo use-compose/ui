@@ -43,13 +43,12 @@ const flexClasses = computed(() => {
 .yFlex {
   width: 100%;
   display: flex;
-  // justify-content: space-between;
+  flex-direction: column;
   gap: var(--space-unit);
   padding: var(--space-unit) 0;
 
-  @include media('desktop') {
-    max-width: 900px;
-    margin: auto;
+  @include media('tablet') {
+    flex-direction: row;
   }
 }
 </style>

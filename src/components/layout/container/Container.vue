@@ -28,25 +28,21 @@ const yContainerClasses = computed(() => {
 
 .y-container {
   max-width: $breakpoint-mobile;
-  padding: 0;
+  padding: var(----space-unit);
 
   @include media('tablet') {
-    padding: 16px;
     max-width: $breakpoint-tablet;
   }
 
   @include media('desktop') {
-    padding: 16px;
     max-width: $breakpoint-desktop;
   }
 
   @include media('desktop-xl') {
-    padding: 16px;
     max-width: $breakpoint-desktop-xl;
   }
 
   @include media('desktop-xxl') {
-    padding: 16px;
     max-width: $breakpoint-desktop-xxl;
   }
 
