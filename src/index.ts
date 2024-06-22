@@ -3,9 +3,9 @@
 // export { Wrapper }
 import './assets/scss/main.scss'
 
-import { Wrapper, YButton, YInput } from './components'
+import { Wrapper, YButton, YInput, Container, Flex } from './components'
 
-export { Wrapper, YButton, YInput }
+export { Wrapper, YButton, YInput, Container, Flex }
 
 export function helloAnqsdqsdqsdqsqsdything(thing: string): string {
   return `Helloo ${thing}!`

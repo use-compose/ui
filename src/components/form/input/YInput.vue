@@ -99,6 +99,7 @@ onMounted(() => {
   --component-bg: var(--main-dark);
   --component-color: var(--primary);
   --component-padding-y: var(--space-sm);
+  margin-bottom: var(--space-unit);
 
   width: 100%;
   border-color: var(--primary);
