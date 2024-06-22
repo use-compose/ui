@@ -55,6 +55,8 @@ const handleClick = (e: Event) => {
   padding: var(--space-xs) var(--space-unit);
 
   @include theme-component;
+  @include interactive-component;
+
   --component-padding-y: var(--space-xs);
 
   // &.y-button--large {

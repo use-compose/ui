@@ -21,17 +21,20 @@ interface FlexProps {
 }
 
 const props = withDefaults(defineProps<FlexProps>(), {
-  direction: 'row',
-  align: 'center',
+  // direction: 'row',
+  // align: 'center',
 })
 
 const flexClasses = computed(() => {
-  return [
-    'yFlex',
-    `flex-${props.direction}`,
-    props.justify ? `justify-${props.justify}` : '',
-    `align-${props.align}`,
-  ]
+  return ['yFlex']
+})
+
+const justifyContent = computed(() => {
+  return props.justify ? `${props.justify}` : ''
+})
+
+const alignItems = computed(() => {
+  return props.align
 })
 </script>
 
@@ -43,7 +46,10 @@ const flexClasses = computed(() => {
 .yFlex {
   width: 100%;
   display: flex;
+  flex-wrap: wrap;
   flex-direction: column;
+  align-items: v-bind(alignItems);
+  justify-content: v-bind(justifyContent);
   gap: var(--space-unit);
   padding: var(--space-unit) 0;
 

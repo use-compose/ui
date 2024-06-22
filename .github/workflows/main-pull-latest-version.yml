@@ -1,0 +1,28 @@
+name: Build & Deploy
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  pull-latest-version:
+    runs-on: ubuntu-latest
+    steps:
+      # - uses: actions/checkout@v4
+      # - uses: actions/setup-node@v3
+      #   with:
+      #     node-version: 18
+      #     # cache: 'pnpm'
+      - name: Pull latest version
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          key: ${{ secrets.SSH_KEY }}
+          username: ${{ secrets.SSH_USERNAME }}
+          script: |
+            cd /home/u-portfolio/sites/libs/gamma-compose
+            if [ -d '.git' ]; then
+              git pull origin main
+            else
+              git clone -b main git@github.com:gamma-ui/compose.git .
+            fi

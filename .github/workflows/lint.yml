@@ -1,0 +1,24 @@
+name: Build & Deploy main
+on:
+  push:
+    branches:
+      - main
+# https://zellwk.com/blog/github-actions-deploy/
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        # https://github.com/actions/checkout#usage in case
+        with:
+          ref: main
+
+      - name: Setup Node.js and pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+
+      - name: lint & format
+        run: pnpm run lint && pnpm run format

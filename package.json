@@ -24,13 +24,15 @@
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
+    "build-storybook-docs": "storybook build --docs",
     "lint": "eslint 'src/**/*.{js,jsx,ts,tsx}'",
     "lint:fix": "eslint --fix 'src/**/*.{jsx,ts,tsx}'",
     "js:lint": "eslint  --ignore-pattern .gitignore --fix src/",
     "js:lint:check": "eslint --ext .js,.ts,.vue --ignore-path .gitignore src/",
     "lint:style": "stylelint \"**/*.{vue,scss,css}\"",
     "format": "prettier --write src//**/*.{ts,tsx,css} --config ./.prettierrc",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "chromatic": "chromatic --exit-zero-on-changes"
   },
   "husky": {
     "hooks": {
@@ -59,11 +61,10 @@
     "@typescript-eslint/eslint-plugin": "^6.17.0",
     "@typescript-eslint/parser": "^6.17.0",
     "@vitejs/plugin-vue": "^4.5.2",
+    "chromatic": "^11.5.4",
     "eslint": "^8.57.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.1.2",
-    "eslint-plugin-simple-import-sort": "^10.0.0",
-    "eslint-plugin-vue": "^9.19.2",
     "husky": "^8.0.3",
     "lint-staged": "^15.2.0",
     "prettier": "^3.1.1",

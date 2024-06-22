@@ -36,7 +36,7 @@ const wrapperClasses = computed(() => {
   width: clamp(16rem, 90vw, 70rem);
   margin-left: auto;
   margin-right: auto;
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
+  padding-left: var(--space-unit);
+  padding-right: var(--space-unit);
 }
 </style>

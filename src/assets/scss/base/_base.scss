@@ -9,17 +9,18 @@
   --border-radius: 0;
   --box-shadow-x: 4px;
   --box-shadow-y: 4px;
-
-  --box-shadow-base: var(--box-shadow-x) var(--box-shadow-y) 0 0 black;
-  --box-shadow-hover: var(--box-shadow-x) var(--box-shadow-y) 0 0 var(--primary);
 }
 
 @mixin theme-component {
-  --component-bg: var(--primary);
+  --box-shadow-base: var(--box-shadow-x) var(--box-shadow-y) 0 0 black;
+  --box-shadow-hover: var(--box-shadow-x) var(--box-shadow-y) 0 0 var(--primary);
+  --component-bg: hsl(from var(--primary) h s l / var(--component-bg-opacity));
+  --component-bg-opacity: 1;
   --component-color: var(--main-dark);
   --component-box-shadow: var(--box-shadow-base);
   --component-padding-x: var(--space-unit);
   --component-padding-y: 0;
+  --component-margin-bottom: var(--space-unit);
 
   padding: var(--component-padding-y) var(--component-padding-x);
   border: 2px solid var(--main-dark);
@@ -28,7 +29,6 @@
   box-shadow: var(--component-box-shadow);
   color: var(--component-color);
   font-size: var(--component-font-size, 1rem);
-  font-weight: bold;
   outline: none;
 
   &:not(.disabled) {
@@ -36,6 +36,32 @@
       --component-box-shadow: var(--box-shadow-hover);
     }
 
+    &.raw {
+      box-shadow: none;
+
+      &:hover {
+        transform: none;
+        box-shadow: none;
+      }
+
+      &:active,
+      &:focus-visible {
+        transform: none;
+        box-shadow: none;
+      }
+    }
+
+    &.outlined {
+      background-color: transparent;
+      color: var(--primary);
+    }
+  }
+}
+
+@mixin interactive-component {
+  font-weight: bold;
+  margin-bottom: var(--component-margin-bottom);
+  &:not(.disabled) {
     &:active,
     &:focus-visible {
       transform: translate(4px, 4px);
@@ -46,21 +72,6 @@
   &.disabled {
     opacity: 0.5;
     cursor: not-allowed;
-  }
-
-  &.raw {
-    box-shadow: none;
-
-    &:hover {
-      transform: none;
-      box-shadow: none;
-    }
-
-    &:active,
-    &:focus-visible {
-      transform: none;
-      box-shadow: none;
-    }
   }
 }
 
