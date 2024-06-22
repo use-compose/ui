@@ -24,13 +24,15 @@
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
+    "build-storybook-docs": "storybook build --docs",
     "lint": "eslint 'src/**/*.{js,jsx,ts,tsx}'",
     "lint:fix": "eslint --fix 'src/**/*.{jsx,ts,tsx}'",
     "js:lint": "eslint  --ignore-pattern .gitignore --fix src/",
     "js:lint:check": "eslint --ext .js,.ts,.vue --ignore-path .gitignore src/",
     "lint:style": "stylelint \"**/*.{vue,scss,css}\"",
     "format": "prettier --write src//**/*.{ts,tsx,css} --config ./.prettierrc",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "chromatic": "chromatic --exit-zero-on-changes"
   },
   "husky": {
     "hooks": {
