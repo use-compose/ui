@@ -3,9 +3,9 @@ import { computed } from 'vue'
 
 export function useBaseComponent(props: BaseProps) {
   const baseClasses = computed(() => {
-    const { disabled, raw } = props
+    const { disabled, raw, outlined } = props
 
-    return [disabled ? `disabled` : '', raw ? 'raw' : '']
+    return [disabled ? `disabled` : '', raw ? 'raw' : '', outlined ? 'outlined' : '']
   })
 
   return {

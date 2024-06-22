@@ -3,6 +3,7 @@ import { ref } from 'vue'
 import { Wrapper } from '.'
 import { YButton } from '.'
 import { YInput } from '.'
+import Card from './data-display/card/Card.vue'
 
 defineProps<{ msg: string }>()
 
@@ -28,13 +29,16 @@ const toggleDisplayMsg = () => {
         </p>
       </div>
 
-      <YButton @click="toggleDisplayMsg">Button</YButton>
+      <Card>
+        <YButton @click="toggleDisplayMsg">Button</YButton>
 
-      <YInput v-model="input" label="Message" placeholder="Message" />
-      <YInput v-model="input" label="Message" placeholder="Message" />
-      <YInput v-model="input" big label="Message" placeholder="Message" />
-      <YInput v-model="input" label="Message" raw placeholder="Message" />
-      <YInput v-model="input" focus small label="Message" placeholder="Message" />
+        <YInput v-model="input" label="Message" placeholder="Message" />
+        <YInput v-model="input" label="Message" placeholder="Message" />
+        <YInput v-model="input" big label="Message" placeholder="Message" />
+        <YInput v-model="input" label="Message" raw placeholder="Message" />
+        <YInput v-model="input" focus small label="Message" placeholder="Message" />
+      </Card>
+
       <YInput v-model="input" error error-msg="ERROR" label="Message" placeholder="Message" />
       <YInput v-model="input" label="Message" placeholder="Message" />
 

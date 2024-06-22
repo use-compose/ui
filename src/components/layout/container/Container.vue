@@ -28,7 +28,7 @@ const yContainerClasses = computed(() => {
 
 .y-container {
   max-width: $breakpoint-mobile;
-  padding: var(----space-unit);
+  padding: var(--space-unit);
 
   @include media('tablet') {
     max-width: $breakpoint-tablet;

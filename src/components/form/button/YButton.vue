@@ -51,10 +51,11 @@ const handleClick = (e: Event) => {
 .y-button {
   cursor: pointer;
   text-transform: uppercase;
-  margin-bottom: var(--space-unit);
   padding: var(--space-xs) var(--space-unit);
 
   @include theme-component;
+  @include interactive-component;
+
   --component-padding-y: var(--space-xs);
 
   // &.y-button--large {

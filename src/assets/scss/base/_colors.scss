@@ -3,6 +3,7 @@
   --primary: hsl(from var(--color-primary) h s l / 100%);
   --color-main-dark: #0b0c0c;
   --main-dark: hsl(from var(--color-main-dark) h s l / 100%);
+  --color-bg: #0b0c0c;
 
   /*
    * TODO: search if we keep color-mix
@@ -17,10 +18,11 @@
   --primary-10: color-mix(in srgb, var(--primary) 10%, transparent);
   --color-white: #fff;
   --text-color: ;
+  --theme-color: var(--color-primary);
 
   /* TODO: Dark Mode? */
   /* Or apply it via media query */
-  /* @media (prefers-color-scheme: dark) {
-    --color-primary: var(--main-dark);
-  } */
+  @media (prefers-color-scheme: dark) {
+    // --color-primary: var(--main-dark);
+  }
 }
