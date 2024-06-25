@@ -1,10 +1,25 @@
+import { isClientSide } from '@/utils/is-client-side'
+
 export interface ColorTheme {
   [key: string]: string
 }
 
+export interface ComposeTheme {
+  primary: '--primary'
+  background: '--color-bg'
+}
+
+export const composeTheme: ComposeTheme = {
+  primary: '--primary',
+  background: '--color-bg',
+}
+
 export function useComposeTheme() {
   function getPrimary() {
-    return window ? getComputedStyle(document.documentElement).getPropertyValue('--primary') : ''
+    // return isClientSide()
+    //   ? getComputedStyle(document.documentElement).getPropertyValue('--primary')
+    //   : ''
+    return getComputedStyle(document.documentElement).getPropertyValue('--primary')
   }
 
   function setPrimary(color: string) {
@@ -12,7 +27,10 @@ export function useComposeTheme() {
   }
 
   function getBackground() {
-    return window ? getComputedStyle(document.documentElement).getPropertyValue('--color-bg') : ''
+    // return isClientSide()
+    //   ? getComputedStyle(document.documentElement).getPropertyValue('--color-bg')
+    //   : ''
+    return getComputedStyle(document.documentElement).getPropertyValue('--color-bg')
   }
 
   function setBackground(color: string) {
