@@ -30,7 +30,7 @@
 /* responsive rule affecting all spacing variables */
 @media (min-width: 64rem) {
   :root {
-    --space-unit: 1.5em; /* 👇 this responsive decision affects all margins and paddings */
+    --space-unit: 1.25em; /* 👇 this responsive decision affects all margins and paddings */
   }
 }
 /* margin and padding util classes - apply spacing variables */

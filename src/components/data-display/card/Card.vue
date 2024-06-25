@@ -29,6 +29,7 @@ const yCardClasses = computed(() => {
   @include theme-component;
 
   --component-bg-opacity: 0.5;
+
   padding: var(--space-sm);
   border-radius: var(--border-radius);
   word-wrap: break-word;
@@ -36,6 +37,7 @@ const yCardClasses = computed(() => {
   &:active,
   &:focus-visible {
     transform: unset;
+    
     --component-box-shadow: var(--box-shadow-hover);
   }
 

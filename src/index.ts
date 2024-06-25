@@ -3,9 +3,12 @@
 // export { Wrapper }
 import './assets/scss/main.scss'
 
-import { Wrapper, YButton, YInput, Container, Flex, Card } from './components'
+// import { Wrapper, YButton, YInput, Container, Flex, Card, Highlighted } from './components'
 
-export { Wrapper, YButton, YInput, Container, Flex, Card }
+// Composables
+export { useComposeTheme } from './composables'
+
+export { Wrapper, YButton, YInput, Container, Flex, Card, Highlighted } from './components'
 
 export function helloAnqsdqsdqsdqsqsdything(thing: string): string {
   return `Helloo ${thing}!`

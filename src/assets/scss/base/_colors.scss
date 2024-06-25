@@ -20,6 +20,8 @@
   --text-color: ;
   --theme-color: var(--color-primary);
 
+  --initial-light: #f5f5f5;
+
   /* TODO: Dark Mode? */
   /* Or apply it via media query */
   @media (prefers-color-scheme: dark) {

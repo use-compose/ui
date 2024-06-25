@@ -28,7 +28,7 @@ const getClasses = computed(() => {
     ...baseClasses.value,
     'y-button',
     props.color ? `${props.color}-button` : '',
-    props.size ? `y-button--${props.size}` : '',
+    props.size ? `-${props.size}` : '',
   ]
 })
 
@@ -58,6 +58,11 @@ const handleClick = (e: Event) => {
   @include interactive-component;
 
   --component-padding-y: var(--space-xs);
+
+  &.-small {
+    --component-padding-y: var(--space-xxs);
+    --component-padding-x: var(--space-xs);
+  }
 
   // &.y-button--large {
   //   --component-padding-y: var(--space-sm);

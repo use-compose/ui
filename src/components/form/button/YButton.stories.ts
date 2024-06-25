@@ -73,6 +73,7 @@ export const Large: Story = {
 }
 
 export const Small: Story = {
+  render: (args) => renderTemplate(args),
   args: {
     size: 'small',
   },
