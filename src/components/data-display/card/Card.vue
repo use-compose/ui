@@ -37,7 +37,7 @@ const yCardClasses = computed(() => {
   &:active,
   &:focus-visible {
     transform: unset;
-    
+
     --component-box-shadow: var(--box-shadow-hover);
   }
 

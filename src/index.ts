@@ -8,7 +8,7 @@ import './assets/scss/main.scss'
 // Composables
 export { useComposeTheme } from './composables'
 
-export { Wrapper, YButton, YInput, Container, Flex, Card, Highlighted } from './components'
+export { Wrapper, YButton, YInput, Container, Flex, Card } from './components'
 
 export function helloAnqsdqsdqsdqsqsdything(thing: string): string {
   return `Helloo ${thing}!`
