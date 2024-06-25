@@ -63,7 +63,6 @@ const flexStyle = computed(() => {
   // --alignItems: v-bind(alignItems);
   // --justifyContent: v-bind(justifyContent);
 
-  width: 100%;
   display: flex;
   flex-wrap: wrap;
   flex-direction: var(--direction);
