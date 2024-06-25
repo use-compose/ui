@@ -4,7 +4,7 @@ export interface ColorTheme {
 
 export function useComposeTheme() {
   function getPrimary() {
-    return getComputedStyle(document.documentElement).getPropertyValue('--primary')
+    return window ? getComputedStyle(document.documentElement).getPropertyValue('--primary') : ''
   }
 
   function setPrimary(color: string) {
@@ -12,7 +12,7 @@ export function useComposeTheme() {
   }
 
   function getBackground() {
-    return getComputedStyle(document.documentElement).getPropertyValue('--color-bg')
+    return window ? getComputedStyle(document.documentElement).getPropertyValue('--color-bg') : ''
   }
 
   function setBackground(color: string) {
