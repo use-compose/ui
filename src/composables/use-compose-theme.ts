@@ -1,5 +1,3 @@
-import { isClientSide } from '@/utils/is-client-side'
-
 export interface ColorTheme {
   [key: string]: string
 }
