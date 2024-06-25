@@ -72,7 +72,7 @@ const flexStyle = computed(() => {
   padding: var(--space-sm) 0;
 
   @include media('tablet') {
-    flex-direction: v-bind(direction);
+    // flex-direction: row;
   }
 }
 </style>
