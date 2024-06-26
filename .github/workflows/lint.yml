@@ -1,11 +1,11 @@
-name: Build & Deploy main
+name: Lint and format
 on:
   push:
     branches:
       - main
 # https://zellwk.com/blog/github-actions-deploy/
 jobs:
-  build-and-deploy:
+  lint-and-format:
     runs-on: ubuntu-latest
 
     steps:
@@ -19,6 +19,10 @@ jobs:
         uses: pnpm/action-setup@v2
         with:
           version: 8
+        
+    - name: Install dependencies
+        run:
+          pnpm install
 
       - name: lint & format
         run: pnpm run lint && pnpm run format

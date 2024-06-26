@@ -1,7 +1,7 @@
 name: Storybook Static Deploy
 
 on:
-  pull_request:
+  pull_repuquest:
     branches:
       - main
 jobs:
