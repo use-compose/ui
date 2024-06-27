@@ -1,3 +1,5 @@
+export { default as AppCompose } from '../../src/components/AppCompose.vue'
+
 //  layout
 export { default as Wrapper } from '../../src/components/layout/Wrapper.vue'
 export { default as Container } from '../../src/components/layout/container/Container.vue'

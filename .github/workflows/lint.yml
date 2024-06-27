@@ -1,12 +1,12 @@
 name: Lint and format
 on:
-  push:
+  pull_request:
     branches:
       - main
 # https://zellwk.com/blog/github-actions-deploy/
 
 jobs:
-  lint-and-format:
+  lint-format-build:
     runs-on: ubuntu-latest
 
     steps:
@@ -20,10 +20,21 @@ jobs:
         uses: pnpm/action-setup@v2
         with:
           version: 8
-        
-      - name: Install dependencies
-        run:
-          pnpm install
 
-      - name: lint & format
-        run: pnpm run lint && pnpm run format
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Format
+        run: npm run format
+
+      - name: Lint Style
+        run: npm run lint:style
+
+      - name: Build
+        run: npm run build

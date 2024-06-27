@@ -4,7 +4,7 @@ import Wrapper from './Wrapper.vue'
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 const meta = {
-  title: 'Compose/Wrapper',
+  title: 'Compose/Layout/Wrapper',
   component: Wrapper,
   // This component will have an automatically generated docsPage entry: https://storybook.js.org/docs/writing-docs/autodocs
   tags: ['autodocs'],

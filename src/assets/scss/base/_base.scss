@@ -1,106 +1,30 @@
-// -----------------------------------------------------------------------------
-// This file contains very basic styles.
-// -----------------------------------------------------------------------------
+// @use "../utils/utils" as *;
+@forward "reset";
+@forward "utilities";
 
-/**
- * Set up a decent box model on the root element
- */
 :root {
-  --border-radius: 0;
-  --box-shadow-x: 4px;
-  --box-shadow-y: 4px;
-}
-
-@mixin theme-component {
-  --box-shadow-base: var(--box-shadow-x) var(--box-shadow-y) 0 0 black;
-  --box-shadow-hover: var(--box-shadow-x) var(--box-shadow-y) 0 0 var(--primary);
-  --component-bg: hsl(from var(--primary) h s l / var(--component-bg-opacity));
-  --component-bg-opacity: 1;
-  --component-color: var(--main-dark);
-  --component-box-shadow: var(--box-shadow-base);
-  --component-padding-x: var(--space-unit);
-  --component-padding-y: 0;
-  --component-margin-bottom: var(--space-unit);
-
-  padding: var(--component-padding-y) var(--component-padding-x);
-  border: 2px solid var(--main-dark);
-  border-radius: var(--border-radius);
-  background-color: var(--component-bg);
-  box-shadow: var(--component-box-shadow);
-  color: var(--component-color);
-  font-size: var(--component-font-size, 1rem);
-  outline: none;
-
-  &:not(.disabled) {
-    &:hover {
-      --component-box-shadow: var(--box-shadow-hover);
-    }
-
-    &.raw {
-      box-shadow: none;
-
-      &:hover {
-        transform: none;
-        box-shadow: none;
-      }
-
-      &:active,
-      &:focus-visible {
-        transform: none;
-        box-shadow: none;
-      }
-    }
-
-    &.outlined {
-      background-color: transparent;
-      color: var(--primary);
-    }
-  }
-}
-
-@mixin interactive-component {
-  font-weight: bold;
-  margin-bottom: var(--component-margin-bottom);
-  &:not(.disabled) {
-    &:active,
-    &:focus-visible {
-      transform: translate(4px, 4px);
-      --component-box-shadow: unset;
-    }
-  }
-
-  &.disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-  }
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color-scheme: light dark;
+  color: rgb(255 255 255 / 87%);
+  background-color: #242424;
+  font-synthesis: none;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 html {
   box-sizing: border-box;
 }
 
-/**
- * Make all elements from the DOM inherit from the parent box-sizing
- * Since `*` has a specificity of 0, it does not override the `html` value
- * making all elements inheriting from the root box-sizing value
- * See: https://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/
- */
+body {
+  margin: 0;
+}
+
 *,
 *::before,
 *::after {
   box-sizing: inherit;
 }
-
-// TODO: check on-event
-// /**
-//  * Basic styles for links
-//  */
-// a {
-//   color: $brand-color;
-//   text-decoration: none;
-
-//   @include on-event {
-//     color: $text-color;
-//     text-decoration: underline;
-//   }
-// }

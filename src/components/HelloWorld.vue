@@ -3,12 +3,15 @@ import { ref } from 'vue'
 import { Wrapper } from '.'
 import { YButton } from '.'
 import { YInput } from '.'
-import Card from './data-display/card/Card.vue'
+import Container from './layout/container/Container.vue'
+import Flex from './layout/flex/Flex.vue'
+import AppCompose from './AppCompose.vue'
 
 defineProps<{ msg: string }>()
 
 const count = ref(0)
 const input = ref('')
+const color = ref('')
 const showMsg = ref(false)
 
 const toggleDisplayMsg = () => {
@@ -17,7 +20,7 @@ const toggleDisplayMsg = () => {
 </script>
 
 <template>
-  <div>
+  <AppCompose>
     <Wrapper class="hello">
       <h1>{{ msg }}</h1>
 
@@ -28,8 +31,31 @@ const toggleDisplayMsg = () => {
           <code>components/HelloWorld.vue</code> to test HMR
         </p>
       </div>
-
-      <Card>
+      <YColorInput v-model="color" label="Message" placeholder="Message" />
+      <Flex style="--flex-gap: 0">
+        <Column style="--column-bg: blue; --width-tablet: 3; --width-mobile: 4">
+          <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. At molestiae atque voluptatum
+            adipisci maxime ipsum quae laudantium quibusdam iure ipsa debitis reprehenderit ratione
+            autem nesciunt repellendus enim, voluptatibus velit. Illum.
+          </p>
+        </Column>
+        <Column style="--column-bg: green; --width-tablet: 4; --width-mobile: 8">
+          <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. At molestiae atque voluptatum
+            adipisci maxime ipsum quae laudantium quibusdam iure ipsa debitis reprehenderit ratione
+            autem nesciunt repellendus enim, voluptatibus velit. Illum.
+          </p>
+        </Column>
+        <Column style="--column-bg: red; --width-tablet: 5">
+          <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. At molestiae atque voluptatum
+            adipisci maxime ipsum quae laudantium quibusdam iure ipsa debitis reprehenderit ratione
+            autem nesciunt repellendus enim, voluptatibus velit. Illum.
+          </p>
+        </Column>
+      </Flex>
+      <Container>
         <YButton @click="toggleDisplayMsg">Button</YButton>
 
         <YInput v-model="input" label="Message" placeholder="Message" />
@@ -37,7 +63,7 @@ const toggleDisplayMsg = () => {
         <YInput v-model="input" big label="Message" placeholder="Message" />
         <YInput v-model="input" label="Message" raw placeholder="Message" />
         <YInput v-model="input" focus small label="Message" placeholder="Message" />
-      </Card>
+      </Container>
 
       <YInput v-model="input" error error-msg="ERROR" label="Message" placeholder="Message" />
       <YInput v-model="input" label="Message" placeholder="Message" />
@@ -56,13 +82,14 @@ const toggleDisplayMsg = () => {
       </p>
       <p class="read-the-docs">Click on the Vite and Vue logos to learn more</p>
     </Wrapper>
-  </div>
+  </AppCompose>
 </template>
 
 <style scoped>
 .read-the-docs {
   color: #888;
 }
+
 .hello {
   /* background-color: var(--primary-60); */
 }

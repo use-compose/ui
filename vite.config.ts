@@ -2,29 +2,17 @@ import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import { resolve } from 'path'
 import { fileURLToPath, URL } from 'url'
-// Other imports as needed
 
 const pathSrc = resolve(__dirname, './src')
 
-const config = defineConfig((configEnv) => {
+export default defineConfig((configEnv) => {
   const viteConfig = {
-    plugins: [
-      vue(),
-      // Other plugins
-    ],
+    plugins: [vue()],
     resolve: {
-      alias: [{ find: '@', replacement: fileURLToPath(new URL('./src', import.meta.url)) }],
-    },
-    css: {
-      preprocessorOptions: {
-        scss: {
-          additionalData: `
-            @use "${pathSrc}/assets/scss/base/base" as *;
-            @use "${pathSrc}/assets/scss/base/colors" as colors;
-            @use "${pathSrc}/assets/scss/utils/breakpoints" as breakpoints;
-          `,
-        },
-      },
+      alias: [
+        { find: '@', replacement: fileURLToPath(new URL('./src/', import.meta.url)) },
+        { find: '../../../', replacement: fileURLToPath(new URL('./src/assets', import.meta.url)) },
+      ],
     },
     build: {
       copyPublicDir: false,
@@ -43,16 +31,18 @@ const config = defineConfig((configEnv) => {
         },
       },
     },
-    // Other config options
+    css: {
+      preprocessorOptions: {
+        scss: {
+          additionalData: `
+             @import "@/assets/scss/theme.scss";
+          `,
+        },
+      },
+    },
   }
 
-  // Now you can log the whole config or specific parts of it
   console.log(viteConfig)
-  // Or, if you want to log a specific part
-  // console.log(viteConfig.css.preprocessorOptions.scss)
 
-  // Return the config object
   return viteConfig
 })
-
-export default config

@@ -23,8 +23,8 @@ const yContainerClasses = computed(() => {
 
 <style lang="scss" scoped>
 // TODO: https://www.notion.so/guido-web-training/Storybook-and-Vite-Global-SCSS-Variables-are-not-found-31629867a8bd4323b28dee411e3f7c0f?pvs=4
-@import '../../../assets/scss/base/base';
-@import '../../../assets/scss/utils/breakpoints';
+// @import '../../../assets/scss/base/base';
+// @import '../../../assets/scss/utils/breakpoints';
 
 .y-container {
   max-width: $breakpoint-mobile;

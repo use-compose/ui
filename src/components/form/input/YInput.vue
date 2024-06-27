@@ -1,27 +1,25 @@
 <template>
-  <div>
-    <label v-if="label" :for="name" class="y_label">{{ label }} :</label>
-    <input
-      ref="yInput"
-      :value="modelValue"
-      :type="type"
-      :name="name"
-      :placeholder="placeholder"
-      :class="yInputClasses"
-      autocomplete="off"
-      @input="handleInput"
-      @blur="handleBlur"
-    />
-    <label v-if="error" class="error-label" :for="name">
-      {{ errorMsg }}
-    </label>
-  </div>
+  <label v-if="label" :for="name" class="y_label">{{ label }} :</label>
+  <input
+    ref="yInput"
+    :value="modelValue"
+    :type="type"
+    :name="name"
+    :placeholder="placeholder"
+    :class="yInputClasses"
+    autocomplete="off"
+    @input="handleInput"
+    @blur="handleBlur"
+  />
+  <label v-if="error" class="error-label" :for="name">
+    {{ errorMsg }}
+  </label>
 </template>
 
 <script setup lang="ts">
 // TODO: resolve alias
-import { useBaseComponent } from '../../../composables/use-base-component'
-import { BaseProps } from '../../../utils/base-props'
+import { useBaseComponent } from '@/composables'
+import { BaseProps } from '@/utils/base-props'
 import { computed, onMounted, ref } from 'vue'
 
 interface YInputProps extends BaseProps {
@@ -81,14 +79,12 @@ onMounted(() => {
 })
 </script>
 
-<style lang="scss" scoped>
-// TODO: https://www.notion.so/guido-web-training/Storybook-and-Vite-Global-SCSS-Variables-are-not-found-31629867a8bd4323b28dee411e3f7c0f?pvs=4
-@import '../../../assets/scss/base/base';
-// @import '../../../assets/scss/utils/breakpoints';
+<style lang="scss">
+@import '@/assets/scss/utils';
 
 .y_label {
-  color: var(--primary);
-  font-size: #{var(--h4)};
+  color: color(primary);
+  font-size: text(lg);
   margin-bottom: 15px;
   display: block;
   height: 22px;
@@ -97,14 +93,13 @@ onMounted(() => {
 .y-input {
   @include theme-component;
   @include interactive-component;
+  @include component(bg, color(main-dark));
+  @include component(color, color(primary));
+  @include component(padding-y, space(sm));
 
-  --component-bg: var(--main-dark);
-  --component-color: var(--primary);
-  --component-padding-y: var(--space-sm);
-  margin-bottom: var(--space-unit);
-
+  margin-bottom: space(unit);
   width: 100%;
-  border-color: var(--primary);
+  border-color: color(primary);
 
   &::placeholder {
     color: inherit;
@@ -112,30 +107,30 @@ onMounted(() => {
   }
 
   &.y-input--hero {
-    --component-bg: var(--primary);
-    --component-color: var(--main-dark);
-    --component-box-shadow: unset;
-    --component-padding-y: var(--space-md);
-    --component-padding-x: var(--space-md);
-    --component-font-size: var(--h3);
+    @include component(bg, color(primary));
+    @include component(color, color(main-dark));
+    @include component(box-shadow, unset);
+    @include component(padding-y, space(md));
+    @include component(padding-x, space(md));
+    @include component(font-size, text(xl));
 
-    &:hover:not(:focus-visible):not(:active) {
-      --component-box-shadow: var(--box-shadow-base);
+    &:hover:not(:focus-visible, :active) {
+      @include component(box-shadow, component(box-shadow-base));
     }
   }
 
   &.y-input--small {
-    padding: var(--space-xs);
-    --component-padding-y: var(--space-xs);
-    --component-padding-x: var(--space-xs);
+    padding: space(xs);
+
+    @include component(padding-y, space(xs));
+    @include component(padding-x, space(xs));
   }
 
   &.y-input--big {
-    --component-padding-y: var(--space-unit);
+    @include component(padding-y, space(unit));
   }
 }
 
-// TODO: check if to keep these 3 classes
 .error-label {
   font-size: 80%;
 }

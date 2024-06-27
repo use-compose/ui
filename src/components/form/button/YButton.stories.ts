@@ -5,7 +5,7 @@ import { action } from '@storybook/addon-actions'
 
 // More on how to set up stories at: https://storybook.js.org/docs/vue/writing-stories/introduction
 const meta = {
-  title: 'Compose/YButton',
+  title: 'Compose/Form/YButton',
   component: YButton,
   // This component will have an automatically generated docsPage entry: https://storybook.js.org/docs/vue/writing-docs/autodocs
   tags: ['autodocs'],

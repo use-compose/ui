@@ -1,0 +1,339 @@
+/* 
+ * Main file for CSS custom properties variables
+ * 1 - Spacing
+  * 2 - Typography
+  * 3 - Colors
+  * 4 - Components
+  * 5 - Theme
+  * 6 - Breakpoints
+*/
+
+@use "base/base";
+@use "utils" as utils;
+// @import "utils/utils";
+// @import "base/base";
+// import all functions and mixins from utils
+
+// @use "utils/mixins" as *;
+
+@include utils.cssvars(
+  "theme",
+  (
+    border-radius: 0,
+    bg-opacity: 1
+  )
+);
+
+// -----------------------------------------------------------------------------
+
+// 1 - Spacing
+
+/* 
+  * TODO: V2?
+  *  https://utopia.fyi/space/calculator?c=320,18,1.2,1240,20,1.25,5,2,&s=0.75|0.5,1.5|2|3|4|6,s-l&g=s,l,xl,12 
+  * "Using the same base values from the fluid type calculator, this tool helps you to create a related fluid space system."
+  */
+
+/* Spacing | Global */
+:root {
+  --space-unit: clamp(1em, 1.5vw, 2em);
+  --space-unit: 1em;
+  --space-xxs: calc(0.25 * var(--space-unit));
+  --space-xs: calc(0.5 * var(--space-unit));
+  --space-sm: calc(0.75 * var(--space-unit));
+  --space-md: calc(1.25 * var(--space-unit));
+  --space-lg: calc(2 * var(--space-unit));
+  --space-xl: calc(3.25 * var(--space-unit));
+  --space-xxl: calc(5.25 * var(--space-unit));
+}
+
+@include utils.cssvars(
+  "space",
+  (
+    unit: 1em,
+    xxs: calc(0.25 * var(--space-unit)),
+    xs: calc(0.5 * var(--space-unit)),
+    sm: calc(0.75 * var(--space-unit)),
+    md: calc(1.25 * var(--space-unit)),
+    lg: calc(2 * var(--space-unit)),
+    xl: calc(3.25 * var(--space-unit)),
+    xxl: calc(5.25 * var(--space-unit))
+  )
+);
+
+/* responsive rule affecting all spacing variables */
+@media (width >= 64rem) {
+  :root {
+    --space-unit: 1.25em; /* 👇 this responsive decision affects all margins and paddings */
+  }
+}
+
+// -----------------------------------------------------------------------------
+
+// 2 - Typography
+
+/**
+ * Basic typography style for copy text
+ */
+// body {
+//   color: $text-color;
+//   font: normal 125% / 1.4 $text-font-stack;
+// }
+
+// :root {
+//   /* Step -2: 10.24px → 7.1111px */
+//   --text-xs: clamp(0.4444rem, 0.6881rem + -0.2407vw, 0.64rem);
+//   /* Step -1: 12.8px → 10.6667px */
+//   --text-sm: clamp(0.6667rem, 0.8328rem + -0.1641vw, 0.8rem);
+//   /* Step 0: 16px → 16px */
+//   --text-md: clamp(1rem, 1rem + 0vw, 1rem);
+//   /* Step 1: 20px → 24px */
+//   --text-lg: clamp(1.25rem, 1.1885rem + 0.3077vw, 1.5rem);
+//   /* Step 2: 25px → 36px */
+//   --text-xl: clamp(1.5625rem, 1.3933rem + 0.8462vw, 2.25rem);
+//   /* Step 3: 31.25px → 54px */
+//   --text-xxl: clamp(1.9531rem, 1.6031rem + 1.75vw, 3.375rem);
+//   /* Step 4: 39.0625px → 81px */
+//   --h1: clamp(2.4414rem, 1.7962rem + 3.226vi, 5.0625rem);
+//   /* Step 5: 48.8281px → 121.5px */
+//   // --h1: clamp(3.0518rem, 1.9337rem + 5.5901vw, 7.5938rem);
+
+//   /* Step 5: 67.34px → 199.60px */
+//   --h1-highlight: clamp(4.2088rem, 2.174rem + 10.1738vw, 12.475rem);
+//   /* --h1: clamp(1.3688rem, 2.174rem + 10.1738vw, 12.475rem); */
+// }
+
+/* https://utopia.fyi/type/calculator/?c=320,16,1.25,1620,16,1.5,5,5,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12 */
+@include utils.cssvars(
+  "text",
+  (
+    xs: clamp(0.4444rem, 0.6881rem + -0.2407vw, 0.64rem),
+    sm: clamp(0.6667rem, 0.8328rem + -0.1641vw, 0.8rem),
+    md: clamp(1rem, 1rem + 0vw, 1rem),
+    lg: clamp(1.25rem, 1.1885rem + 0.3077vw, 1.5rem),
+    xl: clamp(1.5625rem, 1.3933rem + 0.8462vw, 2.25rem),
+    xxl: clamp(1.9531rem, 1.6031rem + 1.75vw, 3.375rem),
+    h1: clamp(2.4414rem, 1.7962rem + 3.226vi, 5.0625rem)
+  )
+);
+
+// -----------------------------------------------------------------------------
+
+// 3 - Colors
+
+// @property --component-bg {
+//   syntax: "<color>";
+//   inherits: false;
+//   initial-value: hsla(from utils.color(primary) h s l / utils.theme(bg-opacity));
+// }
+
+@include utils.cssvars(
+  "color",
+  (
+    primary: utils.color(primary),
+    main-dark: #0b0c0c,
+    bg: var(--color-bg),
+    primary-80: color-mix(in srgb, utils.color(primary) 80%, transparent),
+    primary-60: color-mix(in srgb, utils.color(primary) 60%, transparent),
+    primary-40: color-mix(in srgb, utils.color(primary) 40%, transparent),
+    primary-20: color-mix(in srgb, utils.color(primary) 20%, transparent),
+    primary-10: color-mix(in srgb, utils.color(primary) 10%, transparent),
+    color-white: #fff,
+    theme-color: utils.color(primary),
+    initial-light: #f5f5f5
+  )
+);
+
+// :root {
+//   --color-primary: #fbe134;
+//   --primary: hsl(from var(--color-primary) h s l / 100%);
+//   --color-main-dark: #0b0c0c;
+//   --main-dark: hsl(from var(--color-main-dark) h s l / 100%);
+//   --color-bg: #0b0c0c;
+
+//   /*
+//    * TODO: search if we keep color-mix
+//    * sources:
+//    * https://una.im/color-mix-opacity/
+//    * https://developer.chrome.com/docs/css-ui/css-color-mix
+//    */
+//   --primary-80: color-mix(in srgb, utils.color(primary) 80%, transparent);
+//   --primary-60: color-mix(in srgb, utils.color(primary) 60%, transparent);
+//   --primary-40: color-mix(in srgb, utils.color(primary) 40%, transparent);
+//   --primary-20: color-mix(in srgb, utils.color(primary) 20%, transparent);
+//   --primary-10: color-mix(in srgb, utils.color(primary) 10%, transparent);
+//   --color-white: #fff;
+//   --text-color: ;
+//   --theme-color: var(--color-primary);
+//   --initial-light: #f5f5f5;
+
+//   --color-dark: #0b0c0c;
+
+//   /* TODO: Dark Mode? */
+//   /* Or apply it via media query */
+//   @media (prefers-color-scheme: dark) {
+//     // --color-primary: var(--main-dark);
+//   }
+// }
+
+// -----------------------------------------------------------------------------
+
+// 4 - Components
+
+@include utils.cssvars(
+  "component",
+  (
+    box-shadow-x: 4px,
+    box-shadow-y: 4px,
+    bg-opacity: 1,
+    box-shadow-color: utils.color(primary),
+    box-shadow-base: utils.component(box-shadow-x) utils.component(box-shadow-y) 0 0 black,
+    box-shadow-hover: utils.component(box-shadow-x) utils.component(box-shadow-y) 0 0 utils.component(box-shadow-color),
+    bg: hsla(from utils.color(primary) h s l / utils.theme(bg-opacity)),
+    color: utils.color(main-dark),
+    box-shadow: utils.component(box-shadow-base),
+    padding-x: utils.space(unit),
+    padding-y: 0,
+    margin-bottom: utils.space(unit),
+    border-width: 2px,
+    font-size: 1rem
+  )
+);
+
+@mixin theme-component {
+  padding: utils.component(padding-y) utils.component(padding-x);
+  border: utils.component(border-width) solid utils.color(main-dark);
+  border-radius: utils.theme(border-radius);
+  background-color: utils.component(bg);
+  box-shadow: utils.component(box-shadow);
+  color: utils.component(color);
+  outline: none;
+
+  &:not(.disabled) {
+    &:hover {
+      box-shadow: utils.component(box-shadow-hover);
+    }
+
+    &.raw {
+      box-shadow: none;
+
+      &:hover {
+        transform: none;
+        box-shadow: none;
+      }
+
+      &:active,
+      &:focus-visible {
+        transform: none;
+        box-shadow: none;
+      }
+    }
+
+    &.outlined {
+      background-color: transparent;
+      color: utils.color(primary);
+    }
+  }
+}
+
+@mixin interactive-component {
+  font-weight: bold;
+  margin-bottom: utils.component(margin-bottom);
+
+  &:not(.disabled) {
+    &:active,
+    &:focus-visible {
+      transform: translate(4px, 4px);
+      -box-shadow: none;
+
+      &:hover {
+        box-shadow: none;
+      }
+    }
+  }
+
+  &.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+@mixin raw-component {
+  box-shadow: none;
+
+  &:hover {
+    transform: none;
+    box-shadow: none;
+  }
+
+  &:active,
+  &:focus-visible {
+    transform: none;
+    box-shadow: none;
+  }
+}
+
+h1,
+.text-h1 {
+  font-size: text(h1);
+}
+
+h2,
+.text-xxl {
+  font-size: text(xxl);
+}
+
+h3,
+.text-xl {
+  font-size: text(xl);
+}
+
+h4,
+.text-lg {
+  font-size: text(lg);
+}
+
+p {
+  font-size: text(md);
+  margin: utils.space(xs) 0;
+}
+
+.text-sm {
+  font-size: text(sm);
+}
+
+.text-xs {
+  font-size: text(xs);
+}
+
+// -----------------------------------------------------------------------------
+
+// 6 - Breakpoints
+
+$breakpoint-mobile: 640px;
+$breakpoint-tablet: 768px;
+$breakpoint-desktop: 1024px;
+$breakpoint-desktop-xl: 1280px;
+$breakpoint-desktop-xxl: 1820px;
+$breakpoints: (
+  "mobile": $breakpoint-mobile,
+  "tablet": $breakpoint-tablet,
+  "desktop": $breakpoint-desktop,
+  "desktop-xl": $breakpoint-desktop-xl,
+  "desktop-xxl": $breakpoint-desktop-xxl
+);
+
+// Breakpoints
+@mixin desktop {
+  @media screen and (min-width: #{$breakpoint-desktop}px) {
+    @content;
+  }
+}
+
+@mixin media($size) {
+  $query: map-get($breakpoints, $size);
+
+  @media only screen and (min-width: $query) {
+    @content;
+  }
+}
