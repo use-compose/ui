@@ -53,6 +53,7 @@ const flexStyle = computed(() => {
 </script>
 
 <style lang="scss">
+@import '@/assets/scss/utils';
 // TODO: https://www.notion.so/guido-web-training/Storybook-and-Vite-Global-SCSS-Variables-are-not-found-31629867a8bd4323b28dee411e3f7c0f?pvs=4
 // @use '@/assets/scss/utils/mixins' as *;
 // @use '@/assets/scss/base/base' as *;

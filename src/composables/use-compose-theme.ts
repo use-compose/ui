@@ -16,7 +16,11 @@ export const defaultTheme: YTheme = {
 interface ThemeComposition {
   theme: Ref<YTheme>
   updateThemeProperty: (key: keyof YTheme, value: string) => void
-  renderTheme?: (theme: YTheme) => ColorTheme
+  renderTheme?: (theme: YTheme) => {
+    '--color-primary': string | undefined
+    '--color-bg': string | undefined
+    '--color-main-dark': string | undefined
+  }
 }
 
 const themeCompositionKey: InjectionKey<ThemeComposition> = Symbol('theme')
@@ -68,11 +72,11 @@ export function useComposeTheme(userTheme?: YTheme) {
     }
   }
 
-  function renderTheme() {
+  function renderTheme(theme: YTheme) {
     return {
-      [Theme.primary]: theme.value.primary,
-      [Theme.background]: theme.value.background,
-      [Theme.dark]: theme.value.dark,
+      [Theme.primary]: theme.primary,
+      [Theme.background]: theme.background,
+      [Theme.dark]: theme.dark,
     }
   }
 

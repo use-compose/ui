@@ -6,6 +6,7 @@ import { YInput } from '.'
 import Container from './layout/container/Container.vue'
 import Flex from './layout/flex/Flex.vue'
 import AppCompose from './AppCompose.vue'
+import Card from './data-display/card/Card.vue'
 
 defineProps<{ msg: string }>()
 
@@ -57,7 +58,11 @@ const toggleDisplayMsg = () => {
       </Flex>
       <Container>
         <YButton @click="toggleDisplayMsg">Button</YButton>
-
+        <Card>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque quos esse blanditiis
+          quaerat non sed, pariatur dolores aspernatur alias nesciunt nemo recusandae architecto
+          quia. In, enim ut. Debitis, beatae similique!
+        </Card>
         <YInput v-model="input" label="Message" placeholder="Message" />
         <YInput v-model="input" label="Message" placeholder="Message" />
         <YInput v-model="input" big label="Message" placeholder="Message" />

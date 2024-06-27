@@ -189,7 +189,7 @@
     box-shadow-color: utils.color(primary),
     box-shadow-base: utils.component(box-shadow-x) utils.component(box-shadow-y) 0 0 black,
     box-shadow-hover: utils.component(box-shadow-x) utils.component(box-shadow-y) 0 0 utils.component(box-shadow-color),
-    bg: hsla(from utils.color(primary) h s l / utils.theme(bg-opacity)),
+    bg: hsla(from utils.color(primary) h s l / utils.component(bg-opacity)),
     color: utils.color(main-dark),
     box-shadow: utils.component(box-shadow-base),
     padding-x: utils.space(unit),
@@ -275,35 +275,35 @@
 
 h1,
 .text-h1 {
-  font-size: text(h1);
+  font-size: utils.text(h1);
 }
 
 h2,
 .text-xxl {
-  font-size: text(xxl);
+  font-size: utils.text(xxl);
 }
 
 h3,
 .text-xl {
-  font-size: text(xl);
+  font-size: utils.text(xl);
 }
 
 h4,
 .text-lg {
-  font-size: text(lg);
+  font-size: utils.text(lg);
 }
 
 p {
-  font-size: text(md);
+  font-size: utils.text(md);
   margin: utils.space(xs) 0;
 }
 
 .text-sm {
-  font-size: text(sm);
+  font-size: utils.text(sm);
 }
 
 .text-xs {
-  font-size: text(xs);
+  font-size: utils.text(xs);
 }
 
 // -----------------------------------------------------------------------------

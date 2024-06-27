@@ -25,8 +25,9 @@ const yCardClasses = computed(() => {
 
 .y-card {
   @include theme-component;
+
   @include component(bg-opacity, 0.5);
-  @include theme(bg-opacity, 50%);
+  @include component(bg, hsla(from color(primary) h s l / component(bg-opacity)));
 
   padding: space(sm);
   border-radius: var(--border-radius);
