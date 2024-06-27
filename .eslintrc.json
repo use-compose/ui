@@ -21,8 +21,8 @@
     // "ecmaVersion": "latest",
     "parser": "@typescript-eslint/parser",
     // "project": "./tsconfig.json",
-    "sourceType": "module"
-    // "extraFileExtensions": [".vue"]
+    "sourceType": "module",
+    "extraFileExtensions": [".vue"]
   },
   "plugins": ["@typescript-eslint", "prettier"],
 

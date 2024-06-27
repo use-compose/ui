@@ -1,5 +1,5 @@
 export default {
-  extends: ['stylelint-config-standard-scss', 'stylelint-config-recommended-vue'],
+  extends: ['stylelint-config-standard-scss', 'stylelint-config-recommended-vue/scss'],
 
   // TODO: V2?
   // plugins: ['stylelint-declaration-block-no-ignored-properties'],

@@ -1,5 +1,5 @@
 import type { StorybookConfig } from '@storybook/vue3-vite'
-import { mergeConfig } from 'vite'
+import { loadConfigFromFile, mergeConfig } from 'vite'
 import path from 'path'
 
 const config: StorybookConfig = {
@@ -17,16 +17,19 @@ const config: StorybookConfig = {
   docs: {
     autodocs: 'tag',
   },
-  async viteFinal(config) {
+  async viteFinal(config, { configType }) {
+    const { config: userConfig } = await loadConfigFromFile(
+      path.resolve(__dirname, '../vite.config.ts'),
+    )
+
     return mergeConfig(config, {
+      ...userConfig,
       css: {
         postcss: null,
         preprocessorOptions: {
           scss: {
             additionalData: `
-              @use "${path.resolve(__dirname, '../src/assets/scss/base/base')}";
-              @use "${path.resolve(__dirname, '../src/assets/scss/utils/breakpoints')}"; 
-              @use "${path.resolve(__dirname, '../src/assets/scss/base/colors')}"; 
+              @import "${path.resolve(__dirname, '../src/assets/scss/theme')}";
             `,
           },
         },

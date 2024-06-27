@@ -4,7 +4,7 @@ import YInput from './YInput.vue'
 
 // More on how to set up stories at: https://storybook.js.org/docs/vue/writing-stories/introduction
 const meta = {
-  title: 'Compose/YInput',
+  title: 'Compose/Form/YInput',
   component: YInput,
   // This component will have an automatically generated docsPage entry: https://storybook.js.org/docs/vue/writing-docs/autodocs
   tags: ['autodocs'],

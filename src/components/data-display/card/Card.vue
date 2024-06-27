@@ -20,17 +20,15 @@ const yCardClasses = computed(() => {
 })
 </script>
 
-<style lang="scss" scoped>
-// TODO: https://www.notion.so/guido-web-training/Storybook-and-Vite-Global-SCSS-Variables-are-not-found-31629867a8bd4323b28dee411e3f7c0f?pvs=4
-@import '../../../assets/scss/base/base';
-@import '../../../assets/scss/utils/breakpoints';
+<style lang="scss">
+@import '@/assets/scss/utils';
 
 .y-card {
   @include theme-component;
+  @include component(bg-opacity, 0.5);
+  @include theme(bg-opacity, 50%);
 
-  --component-bg-opacity: 0.5;
-
-  padding: var(--space-sm);
+  padding: space(sm);
   border-radius: var(--border-radius);
   word-wrap: break-word;
 
@@ -38,11 +36,11 @@ const yCardClasses = computed(() => {
   &:focus-visible {
     transform: unset;
 
-    --component-box-shadow: var(--box-shadow-hover);
+    @include component(box-shadow, component(box-shadow-hover));
   }
 
   &.outlined {
-    border: 1px solid var(--primary);
+    border: 1px solid color(primary);
   }
 
   // @include media('tablet') {

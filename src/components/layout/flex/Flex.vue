@@ -54,25 +54,31 @@ const flexStyle = computed(() => {
 
 <style lang="scss">
 // TODO: https://www.notion.so/guido-web-training/Storybook-and-Vite-Global-SCSS-Variables-are-not-found-31629867a8bd4323b28dee411e3f7c0f?pvs=4
-@import '../../../assets/scss/base/base';
-@import '../../../assets/scss/utils/breakpoints';
+// @use '@/assets/scss/utils/mixins' as *;
+// @use '@/assets/scss/base/base' as *;
+// @use '@/assets/scss/utils/breakpoints.scss' as *;
+// @use '@/assets/scss/base/spacing' as *;
 
 .yFlex {
-  --flex-gap: var(--space-xs);
+  // @include cssvars(
+  //   '',
+  //   (
+  //     flex-gap: space(xs),
+  //     direction: row,
+  //     alignItems: flex-start,
+  //     justifyContent: flex-start,
+  //   )
+  // );
+  // --flex-gap: space(xs);
   // --direction: v-bind(direction);
   // --alignItems: v-bind(alignItems);
   // --justifyContent: v-bind(justifyContent);
 
   display: flex;
-  flex-wrap: wrap;
-  flex-direction: var(--direction);
+  flex-flow: var(--direction) wrap;
   align-items: var(--alignItems);
   justify-content: var(--justifyContent);
   gap: var(--flex-gap);
-  padding: var(--space-sm) 0;
-
-  @include media('tablet') {
-    // flex-direction: row;
-  }
+  padding: space(sm) 0;
 }
 </style>

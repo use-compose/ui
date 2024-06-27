@@ -11,21 +11,14 @@
  *
  */
 
-// Utils
-@use "utils/layout";
-@use "utils/variables";
+// @import "theme";
 
 // Base styles
-// @use 'base/base.scss';
-// @use "base/colors.scss";
-@use "base/spacing";
-@use "base/reset";
-@use "base/typography";
+// @use "base/base.scss" as *;
+// @use "base/reset" as *;
+// @use "base/utilities" as *;
 
-// Layout-related sections
-
-// Components
-
-// Page-specific styles
-
-// Themes
+// // Utils
+// @use "utils/mixins" as *;
+// @use "utils/functions" as *;
+// @use "utils/breakpoints" as *;

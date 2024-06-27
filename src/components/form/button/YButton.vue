@@ -44,28 +44,29 @@ const handleClick = (e: Event) => {
 }
 </script>
 
-<style lang="scss" scoped>
-// TODO: https://www.notion.so/guido-web-training/Storybook-and-Vite-Global-SCSS-Variables-are-not-found-31629867a8bd4323b28dee411e3f7c0f?pvs=4
-@import '../../../assets/scss/base/base';
+<style lang="scss">
+@import '@/assets/scss/utils';
 
 .y-button {
   cursor: pointer;
   text-transform: uppercase;
-  margin-bottom: var(--space-unit);
-  padding: var(--space-xs) var(--space-unit);
+  margin-bottom: space(unit);
+  padding: space(xs) space(unit);
 
   @include theme-component;
   @include interactive-component;
 
-  --component-padding-y: var(--space-xs);
+  // @include component(bg, color(primary));
+
+  @include component(padding-y, space(xs));
 
   &.-small {
-    --component-padding-y: var(--space-xxs);
-    --component-padding-x: var(--space-xs);
+    @include component(padding-y, space(xxs));
+    @include component(padding-x, space(xs));
   }
 
   // &.y-button--large {
-  //   --component-padding-y: var(--space-sm);
+  //   --component-padding-y: space(sm);
   // }
 }
 </style>

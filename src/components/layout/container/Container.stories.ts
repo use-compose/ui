@@ -4,7 +4,7 @@ import Container from './Container.vue'
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 const meta = {
-  title: 'Compose/Container',
+  title: 'Compose/Layout/Container',
   component: Container,
   // This component will have an automatically generated docsPage entry: https://storybook.js.org/docs/writing-docs/autodocs
   tags: ['autodocs'],

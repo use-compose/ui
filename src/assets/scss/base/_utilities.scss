@@ -1,0 +1,145 @@
+/* 
+ * Utility classes 
+* 1 - Spacing
+  * 2 - Typography
+  * 3 - Layout
+*/
+
+// -----------------------------------------------------------------------------
+
+// 1 - Spacing
+
+/* margin and padding util classes - apply spacing variables */
+
+// @use "../utils/functions" as *;
+
+.margin-xs {
+  margin: space(xs);
+}
+.margin-sm {
+  margin: space(sm);
+}
+.margin-md {
+  margin: space(md);
+}
+.margin-lg {
+  margin: space(lg);
+}
+.margin-xl {
+  margin: space(xl);
+}
+.mb-0 {
+  margin-bottom: 0;
+}
+
+.m-0 {
+  margin: 0;
+}
+
+.mt-md {
+  margin-top: space(md);
+}
+
+.padding-xs {
+  padding: space(xs);
+}
+
+.padding-sm {
+  padding: space(sm);
+}
+
+.padding-md {
+  padding: space(md);
+}
+.padding-lg {
+  padding: space(lg);
+}
+.padding-xl {
+  padding: space(xl);
+}
+
+// -----------------------------------------------------------------------------
+
+// 2 - Typography
+
+h1,
+.text-h1 {
+  font-size: text(h1);
+}
+
+h2,
+.text-xxl {
+  font-size: text(xxl);
+}
+
+h3,
+.text-xl {
+  font-size: text(xl);
+}
+
+h4,
+.text-lg {
+  font-size: text(lg);
+}
+
+p {
+  font-size: text(md);
+  margin: space(xs) 0;
+}
+
+.text-sm {
+  font-size: text(sm);
+}
+
+.text-xs {
+  font-size: text(xs);
+}
+
+// -----------------------------------------------------------------------------
+
+// 3 - Layout
+
+// Flex
+.flex-row {
+  flex-direction: row;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+.align-center {
+  align-items: center;
+}
+
+.align-start {
+  align-items: flex-start;
+}
+
+.align-end {
+  align-items: flex-end;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-start {
+  justify-content: flex-start;
+}
+
+.justify-end {
+  justify-content: flex-end;
+}
+
+.justify-space-between {
+  justify-content: space-between;
+}
+
+.justify-space-around {
+  justify-content: space-around;
+}
+
+.justify-space-evenly {
+  justify-content: space-evenly;
+}
