@@ -60,7 +60,7 @@ export const Primary: Story = {
   parameters: {
     design: {
       type: 'figma',
-      url: 'https://www.figma.com/design/FGllmkDCvBsITR6gkWYjqh/Gamma-Compose?t=PUJivLaa7njwvx7Q-1',
+      url: 'https://www.figma.com/file/FGllmkDCvBsITR6gkWYjqh/Gamma-Compose?t=PUJivLaa7njwvx7Q-1',
     },
   },
 }

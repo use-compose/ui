@@ -1,5 +1,5 @@
 <template>
-  <label v-if="label" :for="name" class="y_label">{{ label }} :</label>
+  <label v-if="label" :for="name" class="y-label">{{ label }} :</label>
   <input
     ref="yInput"
     :value="modelValue"
@@ -82,18 +82,17 @@ onMounted(() => {
 <style lang="scss">
 @import '@/assets/scss/utils';
 
-.y_label {
+.y-label {
   color: color(primary);
   font-size: text(lg);
-  margin-bottom: 15px;
-  display: block;
-  height: 22px;
+  margin: space(xs) 0 space(xxs);
+  display: inline-block;
 }
 
 .y-input {
   @include theme-component;
   @include interactive-component;
-  @include component(bg, color(main-dark));
+  @include component(bg-color, color(main-dark));
   @include component(color, color(primary));
   @include component(padding-y, space(sm));
 

@@ -5,8 +5,8 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
 import { BaseProps } from '@/utils/base-props'
+import { computed } from 'vue'
 import { useBaseComponent } from '../../../composables/use-base-component'
 
 export interface CardProps extends BaseProps {}
@@ -27,7 +27,7 @@ const yCardClasses = computed(() => {
   @include theme-component;
 
   @include component(bg-opacity, 0.5);
-  @include component(bg, hsla(from color(primary) h s l / component(bg-opacity)));
+  // @include component(bg, hsla(from color(primary) h s l / component(bg-opacity)));
 
   padding: space(sm);
   border-radius: var(--border-radius);

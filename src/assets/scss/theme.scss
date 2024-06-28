@@ -189,7 +189,7 @@
     box-shadow-color: utils.color(primary),
     box-shadow-base: utils.component(box-shadow-x) utils.component(box-shadow-y) 0 0 black,
     box-shadow-hover: utils.component(box-shadow-x) utils.component(box-shadow-y) 0 0 utils.component(box-shadow-color),
-    bg: hsla(from utils.color(primary) h s l / utils.component(bg-opacity)),
+    bg-color: utils.color(primary),
     color: utils.color(main-dark),
     box-shadow: utils.component(box-shadow-base),
     padding-x: utils.space(unit),
@@ -204,7 +204,7 @@
   padding: utils.component(padding-y) utils.component(padding-x);
   border: utils.component(border-width) solid utils.color(main-dark);
   border-radius: utils.theme(border-radius);
-  background-color: utils.component(bg);
+  background-color: hsla(from utils.component(bg-color) h s l / utils.component(bg-opacity));
   box-shadow: utils.component(box-shadow);
   color: utils.component(color);
   outline: none;
