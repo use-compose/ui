@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
 
-import YButton, { YButtonProps } from './YButton.vue'
 import { action } from '@storybook/addon-actions'
+import YButton, { YButtonProps } from './YButton.vue'
 
 // More on how to set up stories at: https://storybook.js.org/docs/vue/writing-stories/introduction
 const meta = {
@@ -56,6 +56,12 @@ export const Primary: Story = {
   render: (args) => renderTemplate(args),
   args: {
     color: 'primary',
+  },
+  parameters: {
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/design/Mz4qkA5XoK9IuUnbuoaj28/Untitled?node-id=3-3&t=YVLfc2RRiCuQe5LD-1',
+    },
   },
 }
 
