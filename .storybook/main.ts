@@ -1,6 +1,5 @@
 import type { StorybookConfig } from '@storybook/vue3-vite'
-import { loadConfigFromFile, mergeConfig } from 'vite'
-import path from 'path'
+import { mergeConfig } from 'vite'
 
 const config: StorybookConfig = {
   stories: ['../src/**/*.mdx', '../src/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
@@ -17,30 +16,25 @@ const config: StorybookConfig = {
   docs: {
     autodocs: 'tag',
   },
-  async viteFinal(config, { configType }) {
-    const { config: userConfig } = await loadConfigFromFile(
-      path.resolve(__dirname, '../vite.config.ts'),
-    )
-
+  async viteFinal(config) {
     return mergeConfig(config, {
-      ...userConfig,
-      css: {
-        postcss: null,
-        preprocessorOptions: {
-          scss: {
-            additionalData: `
-              @import "${path.resolve(__dirname, '../src/assets/scss/theme')}";
-            `,
-          },
-        },
-      },
-      // TODO: doesn't work?
-      resolve: {
-        alias: [
-          { find: '@', replacement: path.resolve(__dirname, './src') },
-          { find: '@/composables', replacement: path.resolve(__dirname, './src/composables') },
-        ],
-      },
+      // css: {
+      //   postcss: null,
+      //   preprocessorOptions: {
+      //     scss: {
+      //       additionalData: `
+      //         @import "${path.resolve(__dirname, '../src/assets/scss/theme')}";
+      //       `,
+      //     },
+      //   },
+      // },
+      // // TODO: doesn't work?
+      // resolve: {
+      //   alias: [
+      //     { find: '@', replacement: path.resolve(__dirname, './src') },
+      //     { find: '@/composables', replacement: path.resolve(__dirname, '.src/composables') },
+      //   ],
+      // },
     })
   },
 }

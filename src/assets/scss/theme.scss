@@ -130,7 +130,7 @@
 @include utils.cssvars(
   "color",
   (
-    primary: utils.color(primary),
+    primary: #fbe134,
     main-dark: #0b0c0c,
     bg: var(--color-bg),
     primary-80: color-mix(in srgb, utils.color(primary) 80%, transparent),

@@ -24,7 +24,7 @@ jobs:
         run: npm install
 
       - name: Build Storybook
-        run: npm run build-storybook
+        run: npm run build-storybook -- --test
 
       - name: Install SSH Key
         uses: shimataro/ssh-key-action@v2
