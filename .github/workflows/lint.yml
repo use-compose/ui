@@ -2,7 +2,8 @@ name: Lint and format
 on:
   pull_request:
     branches:
-      - [main, dev]
+      - main
+      - dev
 # https://zellwk.com/blog/github-actions-deploy/
 
 jobs:
