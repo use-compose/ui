@@ -20,7 +20,10 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           username: ${{ secrets.SSH_USERNAME }}
           script: |
-            cd /home/{{ secrets.SSH_USERNAME }}/sites/libs/compose
+            echo $HOME/sites/libs/compose
+            cd $HOME/sites/libs/compose
+            ls -la
+            git status
             if [ -d '.git' ]; then
               git pull origin main
             else
