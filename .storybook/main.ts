@@ -1,6 +1,8 @@
 import type { StorybookConfig } from '@storybook/vue3-vite'
 import { mergeConfig } from 'vite'
 
+// https://uxdesign.cc/how-to-connect-storybook-figma-toppling-the-great-divide-6c1923182653
+
 const config: StorybookConfig = {
   stories: ['../src/**/*.mdx', '../src/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
   addons: [
