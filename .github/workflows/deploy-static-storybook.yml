@@ -36,4 +36,4 @@ jobs:
         run: ssh-keyscan -H ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
 
       - name: Deploy build with rsync
-        run: rsync -avz ./storybook-static/ ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }}:/var/www/storybook-gamma-compose.arthurplazanet.com/
+        run: rsync -avz ./storybook-static/ ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }}:/var/www/compose-ui.arthurplazanet.com/
