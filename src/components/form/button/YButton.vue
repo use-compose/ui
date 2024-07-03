@@ -7,9 +7,9 @@
 <script setup lang="ts">
 // TODO: resolve alias
 // import { useBaseComponent } from '@/composables/use-base-component'
-import { useBaseComponent } from '../../../composables/use-base-component'
 import { BaseProps } from '@/utils/base-props'
 import { computed } from 'vue'
+import { useBaseComponent } from '../../../composables/use-base-component'
 
 export interface YButtonProps extends BaseProps {
   color?: string
@@ -63,6 +63,11 @@ const handleClick = (e: Event) => {
   &.-small {
     @include component(padding-y, space(xxs));
     @include component(padding-x, space(xs));
+  }
+
+  &.-large {
+    @include component(padding-y, space(md));
+    @include component(padding-x, space(md));
   }
 
   // &.y-button--large {
