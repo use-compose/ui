@@ -32,7 +32,7 @@ type Story = StoryObj<typeof meta>
  * See https://storybook.js.org/docs/vue/api/csf
  * to learn how to use render functions.
  */
-const template = '<YButton @click="handleClick" v-bind="args">YButtdfbsdfon</YButton>'
+const template = '<YButton @click="handleClick" v-bind="args">YButton</YButton>'
 
 // Define a generic render function
 const renderTemplate = (args: YButtonProps) => ({
@@ -73,6 +73,7 @@ export const Disabled: Story = {
 }
 
 export const Large: Story = {
+  render: (args) => renderTemplate(args),
   args: {
     size: 'large',
   },
