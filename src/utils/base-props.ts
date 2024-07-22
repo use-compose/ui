@@ -1,4 +1,4 @@
-export interface BaseProps {
+export interface ThemeComponentBaseProps {
   raw?: boolean
   disabled?: boolean
   outlined?: boolean

@@ -1,7 +1,7 @@
-import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import { resolve } from 'path'
 import { fileURLToPath, URL } from 'url'
+import { defineConfig } from 'vite'
 
 const pathSrc = resolve(__dirname, './src')
 

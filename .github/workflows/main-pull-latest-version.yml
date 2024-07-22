@@ -2,7 +2,7 @@ name: Pull latest version
 on:
   push:
     branches:
-      - dev
+      - main
 
 jobs:
   pull-latest-version:
