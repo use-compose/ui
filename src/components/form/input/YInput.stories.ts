@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
 
 import { useThemeComponentStory } from '@/composables'
+import { defineEmits } from 'vue'
 import YInput, { YInputProps } from './YInput.vue'
 
 const { commonArgTypes, generateCommonStories } = useThemeComponentStory<YInputProps>(YInput)
