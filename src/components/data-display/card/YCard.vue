@@ -5,13 +5,13 @@
 </template>
 
 <script setup lang="ts">
-import { BaseProps } from '@/utils/base-props'
+import { ThemeComponentBaseProps } from '@/utils/base-props'
 import { computed } from 'vue'
 import { useBaseComponent } from '../../../composables/use-base-component'
 
-export interface CardProps extends BaseProps {}
+export interface YCardProps extends ThemeComponentBaseProps {}
 
-const props = withDefaults(defineProps<CardProps>(), {})
+const props = withDefaults(defineProps<YCardProps>(), {})
 
 const { baseClasses } = useBaseComponent(props)
 

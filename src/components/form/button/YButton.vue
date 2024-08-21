@@ -6,12 +6,11 @@
 
 <script setup lang="ts">
 // TODO: resolve alias
-// import { useBaseComponent } from '@/composables/use-base-component'
-import { BaseProps } from '@/utils/base-props'
-import { computed } from 'vue'
-import { useBaseComponent } from '../../../composables/use-base-component'
+import { useBaseComponent } from '@/composables/use-base-component'
+import { ThemeComponentBaseProps } from '@/utils/base-props'
+import { computed, defineProps, withDefaults } from 'vue'
 
-export interface YButtonProps extends BaseProps {
+export interface YButtonProps extends ThemeComponentBaseProps {
   color?: string
   size?: 'small' | 'medium' | 'large'
 }

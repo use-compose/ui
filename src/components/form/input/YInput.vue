@@ -19,10 +19,10 @@
 <script setup lang="ts">
 // TODO: resolve alias
 import { useBaseComponent } from '@/composables'
-import { BaseProps } from '@/utils/base-props'
+import { ThemeComponentBaseProps } from '@/utils/base-props'
 import { computed, onMounted, ref } from 'vue'
 
-interface YInputProps extends BaseProps {
+export interface YInputProps extends ThemeComponentBaseProps {
   modelValue: string | null
   label?: string
   name?: string
@@ -58,7 +58,6 @@ const yInputClasses = computed(() => {
 const emit = defineEmits(['update:modelValue', 'blur'])
 
 const handleInput = (event: Event) => {
-  console.log('handleChange')
   emit('update:modelValue', (event.target as HTMLInputElement).value)
 }
 
