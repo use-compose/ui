@@ -1,12 +1,10 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { Wrapper } from '.'
-import { YButton } from '.'
-import { YInput } from '.'
+import { Wrapper, YButton, YInput } from '.'
+import AppCompose from './AppCompose.vue'
+import Card from './data-display/card/YCard.vue'
 import Container from './layout/container/Container.vue'
 import Flex from './layout/flex/Flex.vue'
-import AppCompose from './AppCompose.vue'
-import Card from './data-display/card/Card.vue'
 
 defineProps<{ msg: string }>()
 

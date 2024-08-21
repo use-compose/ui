@@ -1,19 +1,20 @@
 import { Meta, StoryObj } from '@storybook/vue3'
 
-import Card from './Card.vue'
-import { CardProps } from './Card.vue'
+import { useThemeComponentStory } from '@/composables'
 import YButton from '../../form/button/YButton.vue'
 import Flex from '../../layout/flex/Flex.vue'
-// import YButton from '@/components/form/button/YButton.vue'
-// import Flex from '@/components/layout/flex/Flex.vue'
+import YCard, { YCardProps } from './YCard.vue'
 
-// More on how to set up stories at: https://storybook.js.org/docs/writing-stories
+const { commonArgTypes, generateCommonStories } = useThemeComponentStory(YCard)
+
 const meta = {
   title: 'Compose/Card',
-  component: Card,
-  // This component will have an automatically generated docsPage entry: https://storybook.js.org/docs/writing-docs/autodocs
+  component: YCard,
   tags: ['autodocs'],
-} satisfies Meta<typeof Card>
+  argTypes: {
+    ...commonArgTypes,
+  },
+} satisfies Meta<typeof YCard>
 
 export default meta
 type Story = StoryObj<typeof meta>
@@ -22,21 +23,21 @@ type Story = StoryObj<typeof meta>
  * See https://storybook.js.org/docs/api/csf
  * to learn how to use render functions.
  */
+
 const template = `
- <Card v-bind="args">
+ <YCard v-bind="args">
   <p>
     Lorem, ipsum dolor sit amet consectetur adipisicing elit. Illum hic harum architecto quisquam
     consequatur minima a rerum, alias minus nihil perspiciatis voluptate asperiores quaerat
     blanditiis temporibus accusantium cum. Exercitationem, dicta?
   </p> 
   <Flex justify="flex-end" align="flex-end"><YButton @click="handleClick" v-bind="args" style="--component-margin-bottom: 0">YButton</YButton></Flex>
-</Card>
-
+</YCard>
  `
 
 // Define a generic render function
-const renderTemplate = (args: CardProps) => ({
-  components: { Card, YButton, Flex },
+const renderTemplate = (args: YCardProps) => ({
+  components: { YCard, YButton, Flex },
   setup() {
     return {
       args,
@@ -45,14 +46,6 @@ const renderTemplate = (args: CardProps) => ({
   template,
 })
 
-export const Primary: Story = {
-  render: (args) => renderTemplate(args),
-  args: {},
-}
+const { Default, Outlined, Disabled, Raw } = generateCommonStories(renderTemplate)
 
-export const Outlined: Story = {
-  render: (args) => renderTemplate(args),
-  args: {
-    outlined: true,
-  },
-}
+export { Default, Disabled, Outlined, Raw }

@@ -1,7 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
 
+import { useThemeComponentStory } from '@/composables'
 import { action } from '@storybook/addon-actions'
 import YButton, { YButtonProps } from './YButton.vue'
+
+const { commonArgTypes, generateCommonStories } = useThemeComponentStory(YButton)
 
 // More on how to set up stories at: https://storybook.js.org/docs/vue/writing-stories/introduction
 const meta = {
@@ -10,6 +13,7 @@ const meta = {
   // This component will have an automatically generated docsPage entry: https://storybook.js.org/docs/vue/writing-docs/autodocs
   tags: ['autodocs'],
   argTypes: {
+    ...commonArgTypes,
     size: { control: 'select', options: ['small', 'medium', 'large'] },
     disabled: { control: 'boolean' },
     default: {
@@ -52,6 +56,8 @@ const renderTemplate = (args: YButtonProps) => ({
   template,
 })
 
+const { Default, Outlined, Disabled, Raw } = generateCommonStories(renderTemplate)
+
 export const Primary: Story = {
   render: (args) => renderTemplate(args),
   args: {
@@ -62,13 +68,6 @@ export const Primary: Story = {
       type: 'figma',
       url: 'https://www.figma.com/file/FGllmkDCvBsITR6gkWYjqh/Gamma-Compose?t=PUJivLaa7njwvx7Q-1',
     },
-  },
-}
-
-export const Disabled: Story = {
-  render: (args) => renderTemplate(args),
-  args: {
-    disabled: true,
   },
 }
 
@@ -85,3 +84,5 @@ export const Small: Story = {
     size: 'small',
   },
 }
+
+export { Default, Disabled, Outlined, Raw }
