@@ -5,13 +5,6 @@ export function useBaseComponent(props: ThemeComponentBaseProps) {
   const baseClasses = computed(() => {
     const { disabled, raw, outlined, interactive } = props
 
-    // return {
-    //   disabled: disabled,
-    //   raw: raw,
-    //   outlined: outlined,
-    //   interactive: interactive,
-    // }
-
     return [
       disabled ? `disabled` : '',
       raw ? 'raw' : '',

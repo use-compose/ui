@@ -15,8 +15,6 @@ const meta = {
   argTypes: {
     small: { control: 'boolean' },
     big: { control: 'boolean' },
-    // backgroundColor: { control: "color" },
-    // onClick: { action: "handleClick"},
   },
   args: {
     modelValue: 'Default',
@@ -52,12 +50,6 @@ const renderTemplate = (args: YInputProps) => ({
 })
 
 const { Default, Outlined, Disabled, Raw } = generateCommonStories(renderTemplate)
-
-// export const Default: Story = {
-//   args: {
-//     modelValue: 'Default',
-//   },
-// }
 
 export const Small: Story = {
   args: {

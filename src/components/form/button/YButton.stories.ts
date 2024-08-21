@@ -71,13 +71,6 @@ export const Primary: Story = {
   },
 }
 
-// export const Disabled: Story = {
-//   render: (args) => renderTemplate(args),
-//   args: {
-//     disabled: true,
-//   },
-// }
-
 export const Large: Story = {
   render: (args) => renderTemplate(args),
   args: {
@@ -91,12 +84,5 @@ export const Small: Story = {
     size: 'small',
   },
 }
-// function useGenericStory(ExampleComponent: any): {
-//   commonArgTypes: any
-//   createTemplate: any
-//   generateCommonStories: any
-// } {
-//   throw new Error('Function not implemented.')
-// }
 
 export { Default, Disabled, Outlined, Raw }
