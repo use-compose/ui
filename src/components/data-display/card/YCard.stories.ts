@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from '@storybook/vue3'
+import { Meta } from '@storybook/vue3'
 
 import { useThemeComponentStory } from '@/composables'
 import YButton from '../../form/button/YButton.vue'
@@ -17,7 +17,7 @@ const meta = {
 } satisfies Meta<typeof YCard>
 
 export default meta
-type Story = StoryObj<typeof meta>
+
 /*
  *👇 Render functions are a framework specific feature to allow you control on how the component renders.
  * See https://storybook.js.org/docs/api/csf

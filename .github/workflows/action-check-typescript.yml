@@ -1,6 +1,8 @@
 name: 'action-check-typescript'
 on:
   pull_request:
+    branches:
+      - main
 permissions:
   contents: write  # Ensures that the workflow token can write to the repository contents
   pull-requests: write  # Ensures the token can write to pull requests
@@ -18,7 +20,7 @@ jobs:
           include: '["\\.ts$", "\\.vue$"]'  # Adjusted to include .vue files
       - name: Detecting files changed
         id: files
-        uses: umani/changed-files@v4.0.0
+        uses: umani/changed-files@v4.0.1
         with:
           repo-token: ${{ github.token }}
           pattern: '^.*\.(ts|vue)$'  # Adjusted to include .vue files
