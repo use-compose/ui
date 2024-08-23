@@ -4,6 +4,8 @@ on:
     branches:
       - main
       - dev
+  branches-ignore:
+      - renovate/**
 # https://zellwk.com/blog/github-actions-deploy/
 jobs:
   lint-format-build:
