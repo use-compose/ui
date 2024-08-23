@@ -2,7 +2,7 @@
 import { ref } from 'vue'
 import { Wrapper, YButton, YInput } from '.'
 import AppCompose from './AppCompose.vue'
-import Card from './data-display/card/YCard.vue'
+import YCard from './data-display/card/YCard.vue'
 import Container from './layout/container/Container.vue'
 import Flex from './layout/flex/Flex.vue'
 
