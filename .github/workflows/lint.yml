@@ -25,10 +25,13 @@ jobs:
         run: npm run lint
 
       - name: Format
+        if: ${{ always() }}
         run: npm run format
 
       - name: Lint Style
+        if: ${{ always() }}
         run: npm run lint:style
 
       - name: Build
+        if: ${{ always() }}
         run: npm run build
