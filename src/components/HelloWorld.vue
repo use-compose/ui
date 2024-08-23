@@ -2,7 +2,7 @@
 import { ref } from 'vue'
 import { Wrapper, YButton, YInput } from '.'
 import AppCompose from './AppCompose.vue'
-import Card from './data-display/card/YCard.vue'
+import YCard from './data-display/card/YCard.vue'
 import Container from './layout/container/Container.vue'
 import Flex from './layout/flex/Flex.vue'
 
@@ -56,11 +56,11 @@ const toggleDisplayMsg = () => {
       </Flex>
       <Container>
         <YButton @click="toggleDisplayMsg">Button</YButton>
-        <Card>
+        <YCard>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque quos esse blanditiis
           quaerat non sed, pariatur dolores aspernatur alias nesciunt nemo recusandae architecto
           quia. In, enim ut. Debitis, beatae similique!
-        </Card>
+        </YCard>
         <YInput v-model="input" label="Message" placeholder="Message" />
         <YInput v-model="input" label="Message" placeholder="Message" />
         <YInput v-model="input" big label="Message" placeholder="Message" />
