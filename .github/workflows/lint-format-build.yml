@@ -4,7 +4,7 @@ on:
     branches:
       - main
       - dev
-  branches-ignore:
+    branches-ignore:
       - renovate/**
 # https://zellwk.com/blog/github-actions-deploy/
 jobs:
