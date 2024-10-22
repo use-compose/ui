@@ -196,25 +196,26 @@
     padding-y: 0,
     margin-bottom: utils.space(unit),
     border-width: 2px,
-    font-size: 1rem
+    font-size: 1rem,
+    border-color: utils.color(main-dark)
   )
 );
 
 @mixin theme-component {
   padding: utils.component(padding-y) utils.component(padding-x);
-  border: utils.component(border-width) solid utils.color(main-dark);
+  border: utils.component(border-width) solid utils.component(border-color);
   border-radius: utils.theme(border-radius);
   background-color: hsla(from utils.component(bg-color) h s l / utils.component(bg-opacity));
   box-shadow: utils.component(box-shadow);
   color: utils.component(color);
   outline: none;
 
-  &:not(.disabled) {
+  &:not(.-disabled) {
     &:hover {
       box-shadow: utils.component(box-shadow-hover);
     }
 
-    &.raw {
+    &.-raw {
       box-shadow: none;
 
       &:hover {
@@ -229,10 +230,30 @@
       }
     }
 
-    &.outlined {
+    &.-outlined {
       background-color: transparent;
       color: utils.color(primary);
     }
+
+    &.-small {
+      @include component(padding-y, space(xs));
+      @include component(padding-x, space(xs));
+    }
+
+    &.-large {
+      @include component(padding-y, space(md));
+      @include component(padding-x, space(md));
+    }
+  }
+
+  &.-disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+
+  &.-interactive {
+    @include interactive-component;
   }
 }
 

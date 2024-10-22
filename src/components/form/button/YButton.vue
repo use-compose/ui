@@ -1,34 +1,25 @@
 <template>
-  <button :class="getClasses" :disabled="disabled" type="button" @click="handleClick">
-    <slot></slot>
+  <button :class="getClasses" :disabled="props.disabled" type="button" @click="handleClick">
+    <slot>YButton</slot>
   </button>
 </template>
 
 <script setup lang="ts">
 // TODO: resolve alias
-import { useBaseComponent } from '@/composables/use-base-component'
+import { basePropsDefault, useBaseProps } from '@/composables/use-base-props'
 import { ThemeComponentBaseProps } from '@/utils/base-props'
 import { computed, defineProps, withDefaults } from 'vue'
 
-export interface YButtonProps extends ThemeComponentBaseProps {
-  color?: string
-  size?: 'small' | 'medium' | 'large'
-}
+export interface YButtonProps extends ThemeComponentBaseProps {}
 
 const props = withDefaults(defineProps<YButtonProps>(), {
-  color: 'primary',
-  size: 'medium',
+  ...basePropsDefault,
 })
 
-const { baseClasses } = useBaseComponent(props)
+const { baseClasses } = useBaseProps(props)
 
 const getClasses = computed(() => {
-  return [
-    ...baseClasses.value,
-    'y-button',
-    props.color ? `${props.color}-button` : '',
-    props.size ? `-${props.size}` : '',
-  ]
+  return [{ ...baseClasses.value }, 'y-button']
 })
 
 // listen to click event
@@ -54,23 +45,10 @@ const handleClick = (e: Event) => {
 
   @include theme-component;
   @include interactive-component;
-
-  // @include component(bg, color(primary));
-
   @include component(padding-y, space(xs));
 
   &.-small {
     @include component(padding-y, space(xxs));
-    @include component(padding-x, space(xs));
   }
-
-  &.-large {
-    @include component(padding-y, space(md));
-    @include component(padding-x, space(md));
-  }
-
-  // &.y-button--large {
-  //   --component-padding-y: space(sm);
-  // }
 }
 </style>
