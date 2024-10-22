@@ -1,5 +1,5 @@
 import { ThemeComponentBaseProps } from '@/utils/base-props'
-import { ArgTypes, StoryFn } from '@storybook/vue3'
+import { ArgTypes, StoryObj } from '@storybook/vue3'
 import { Component } from 'vue'
 
 // const themeComponentMeta = {
@@ -22,12 +22,16 @@ import { Component } from 'vue'
 //   args: {}, // default value
 // } satisfies Meta<typeof ThemeComponent>
 
+type Story = StoryObj<Component>
+
 export function useThemeComponentStory<T extends ThemeComponentBaseProps>(component: Component) {
-  const commonArgs = {
+  const commonArgs: ThemeComponentBaseProps = {
     raw: false,
     disabled: false,
     outlined: false,
     interactive: false,
+    size: 'medium',
+    color: 'primary',
   }
 
   const commonArgTypes: ArgTypes = {
@@ -35,55 +39,93 @@ export function useThemeComponentStory<T extends ThemeComponentBaseProps>(compon
     disabled: { control: 'boolean' },
     outlined: { control: 'boolean' },
     interactive: { control: 'boolean' },
+    size: { control: 'select', options: ['small', 'medium', 'large'] },
+    color: { control: 'select', options: ['primary', 'secondary', 'default'] },
   }
 
-  const renderTemplate = (args: ThemeComponentBaseProps & Partial<T>) => ({
-    // const componentName = component.name
-    template: `
-      <${component.name} v-bind="args">
-        <p>
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Illum hic harum architecto quisquam
-          consequatur minima a rerum, alias minus nihil perspiciatis voluptate asperiores quaerat
-          blanditiis temporibus accusantium cum. Exercitationem, dicta?
-        </p> 
-        <Flex justify="flex-end" align="flex-end"><YButton @click="handleClick" v-bind="args" style="--component-margin-bottom: 0">YButton</YButton></Flex>
-      </${component.name}>
-    `,
-    context: args,
-    // return {
-    //   components: { [componentName as string]: component },
-    //   setup() {
-    //     return { args }
-    //   },
-    //   template: args.template,
-    // }
-  })
+  // const defaultRenderFunction: ArgsStoryFn<VueRenderer> = (args) => ({
+  //   components: { component },
+  //   context: args,
+  //   template,
+  // })
 
-  function generateCommonStories(Template: StoryFn<Component>) {
-    const Default = Template.bind({})
-    Default.args = { ...commonArgs }
+  const renderDefaultStory: Story = {
+    render: (args: T) => ({
+      components: { component },
+      template: '<Component :is="component" v-bind="args" />',
+      setup() {
+        return { args }
+      },
+    }),
+    args: { ...commonArgs },
+  }
 
-    const Outlined = Template.bind({})
-    Outlined.args = { ...commonArgs, outlined: true }
+  function generateCommonStories(componentBaseStory: Story = renderDefaultStory): {
+    Default: Story
+    Primary: Story
+    Outlined: Story
+    Disabled: Story
+    Raw: Story
+    Interactive: Story
+    Large: Story
+    Small: Story
+  } {
+    const Default = {
+      ...componentBaseStory,
+      args: { ...commonArgs },
+    }
 
-    const Disabled = Template.bind({})
-    Disabled.args = { ...commonArgs, disabled: true }
+    const Primary: Story = {
+      ...componentBaseStory,
+      args: { ...commonArgs, ...componentBaseStory.args, color: 'primary' },
+    }
 
-    const Raw = Template.bind({})
-    Raw.args = { ...commonArgs, raw: true }
+    const Outlined: Story = {
+      ...componentBaseStory,
+      args: { ...commonArgs, ...componentBaseStory.args, outlined: true },
+    }
+
+    const Disabled: Story = {
+      ...componentBaseStory,
+      args: { ...commonArgs, ...componentBaseStory.args, disabled: true },
+    }
+
+    const Raw: Story = {
+      ...componentBaseStory,
+      args: { ...commonArgs, ...componentBaseStory.args, raw: true },
+    }
+
+    const Interactive: Story = {
+      ...componentBaseStory,
+      args: { ...commonArgs, ...componentBaseStory.args, interactive: true },
+    }
+
+    const Large: Story = {
+      ...componentBaseStory,
+      args: { ...commonArgs, ...componentBaseStory.args, size: 'large' },
+    }
+
+    const Small: Story = {
+      ...componentBaseStory,
+      args: { ...commonArgs, ...componentBaseStory.args, size: 'small' },
+    }
 
     return {
       Default,
+      Primary,
       Outlined,
       Disabled,
       Raw,
+      Interactive,
+      Large,
+      Small,
     }
   }
 
   return {
     commonArgs,
     commonArgTypes,
-    renderTemplate,
+    renderDefaultStory,
     generateCommonStories,
   }
 }

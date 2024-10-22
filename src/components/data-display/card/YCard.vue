@@ -5,18 +5,18 @@
 </template>
 
 <script setup lang="ts">
+import { useBaseProps } from '@/composables/use-base-props'
 import { ThemeComponentBaseProps } from '@/utils/base-props'
 import { computed } from 'vue'
-import { useBaseComponent } from '../../../composables/use-base-component'
 
 export interface YCardProps extends ThemeComponentBaseProps {}
 
 const props = withDefaults(defineProps<YCardProps>(), {})
 
-const { baseClasses } = useBaseComponent(props)
+const { baseClasses } = useBaseProps(props)
 
 const yCardClasses = computed(() => {
-  return [...baseClasses.value, 'y-card']
+  return [{ ...baseClasses.value }, 'y-card']
 })
 </script>
 
@@ -38,10 +38,6 @@ const yCardClasses = computed(() => {
     transform: unset;
 
     @include component(box-shadow, component(box-shadow-hover));
-  }
-
-  &.outlined {
-    border: 1px solid color(primary);
   }
 
   // @include media('tablet') {

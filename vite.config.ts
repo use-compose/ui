@@ -37,6 +37,8 @@ export default defineConfig((configEnv) => {
           additionalData: `
              @import "@/assets/scss/theme.scss";
           `,
+          // https://github.com/sass/dart-sass/issues/2352#issuecomment-2358290696
+          api: 'modern',
         },
       },
     },

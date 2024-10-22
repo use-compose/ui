@@ -18,18 +18,17 @@
 
 <script setup lang="ts">
 // TODO: resolve alias
-import { useBaseComponent } from '@/composables'
+import { useBaseProps } from '@/composables'
+import { basePropsDefault } from '@/composables/use-base-props'
 import { ThemeComponentBaseProps } from '@/utils/base-props'
 import { computed, onMounted, ref } from 'vue'
 
 export interface YInputProps extends ThemeComponentBaseProps {
-  modelValue: string | null
+  modelValue?: string | null
   label?: string
   name?: string
   placeholder?: string
   type?: string
-  small?: boolean
-  big?: boolean
   hero?: boolean
   noBorder?: boolean
   noMargin?: boolean
@@ -38,16 +37,17 @@ export interface YInputProps extends ThemeComponentBaseProps {
   focus?: boolean
 }
 
-const props = defineProps<YInputProps>()
+const props = withDefaults(defineProps<YInputProps>(), {
+  ...basePropsDefault,
+  modelValue: '',
+})
 
-const { baseClasses } = useBaseComponent(props)
+const { baseClasses } = useBaseProps(props)
 
 const yInputClasses = computed(() => {
   return [
-    ...baseClasses.value,
+    { ...baseClasses.value },
     'y-input',
-    props.small ? 'y-input--small' : '',
-    props.big ? 'y-input--big' : '',
     props.hero ? 'y-input--hero' : '',
     // props.noBorder ? 'no-border' : '',
     // props.noMargin ? 'no-margin' : '',
@@ -72,7 +72,6 @@ const handleFocus = () => yInput.value?.focus()
 
 onMounted(() => {
   if (props.focus) {
-    console.log(yInput)
     handleFocus()
   }
 })
@@ -94,10 +93,10 @@ onMounted(() => {
   @include component(bg-color, color(main-dark));
   @include component(color, color(primary));
   @include component(padding-y, space(sm));
+  @include component(border-color, color(primary));
 
   margin-bottom: space(unit);
   width: 100%;
-  border-color: color(primary);
 
   &::placeholder {
     color: inherit;
@@ -105,7 +104,7 @@ onMounted(() => {
   }
 
   &.y-input--hero {
-    @include component(bg, color(primary));
+    @include component(bg-color, color(primary));
     @include component(color, color(main-dark));
     @include component(box-shadow, unset);
     @include component(padding-y, space(md));
@@ -117,14 +116,7 @@ onMounted(() => {
     }
   }
 
-  &.y-input--small {
-    padding: space(xs);
-
-    @include component(padding-y, space(xs));
-    @include component(padding-x, space(xs));
-  }
-
-  &.y-input--big {
+  &.-big {
     @include component(padding-y, space(unit));
   }
 }
@@ -134,10 +126,10 @@ onMounted(() => {
 }
 
 .no-border {
-  border: none;
+  @include component(border, none);
 }
 
 .no-margin {
-  margin-bottom: 0;
+  @include component('margin-bottom', 0);
 }
 </style>

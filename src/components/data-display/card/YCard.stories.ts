@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/vue3'
+import { ArgTypes, Meta, StoryObj } from '@storybook/vue3'
 
 import { useThemeComponentStory } from '@/composables'
 import YButton from '../../form/button/YButton.vue'
@@ -10,14 +10,17 @@ const { commonArgTypes, generateCommonStories } = useThemeComponentStory(YCard)
 const meta = {
   title: 'Compose/Card',
   component: YCard,
+  subcomponents: { YButton, Flex },
   tags: ['autodocs'],
   argTypes: {
     ...commonArgTypes,
   },
+  args: {},
 } satisfies Meta<typeof YCard>
 
 export default meta
 
+type Story = StoryObj<typeof meta>
 /*
  *👇 Render functions are a framework specific feature to allow you control on how the component renders.
  * See https://storybook.js.org/docs/api/csf
@@ -31,21 +34,26 @@ const template = `
     consequatur minima a rerum, alias minus nihil perspiciatis voluptate asperiores quaerat
     blanditiis temporibus accusantium cum. Exercitationem, dicta?
   </p> 
-  <Flex justify="flex-end" align="flex-end"><YButton @click="handleClick" v-bind="args" style="--component-margin-bottom: 0">YButton</YButton></Flex>
+  <Flex justify="flex-end" align="flex-end"><YButton v-bind="args" style="--component-margin-bottom: 0">YButton</YButton></Flex>
 </YCard>
  `
 
 // Define a generic render function
-const renderTemplate = (args: YCardProps) => ({
+const renderTemplate = (args: YCardProps, { argTypes }: ArgTypes) => ({
   components: { YCard, YButton, Flex },
-  setup() {
-    return {
-      args,
-    }
-  },
+  props: Object.keys(argTypes),
+
   template,
+  setup() {
+    return { args }
+  },
 })
 
-const { Default, Outlined, Disabled, Raw } = generateCommonStories(renderTemplate)
+const baseStory: Story = {
+  render: renderTemplate,
+  args: {},
+}
 
-export { Default, Disabled, Outlined, Raw }
+const { Default, Outlined, Disabled, Raw, Small, Large } = generateCommonStories(baseStory)
+
+export { Default, Disabled, Large, Outlined, Raw, Small }
