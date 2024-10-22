@@ -3,4 +3,6 @@ export interface ThemeComponentBaseProps {
   disabled?: boolean
   outlined?: boolean
   interactive?: boolean
+  size?: 'small' | 'medium' | 'large'
+  color?: 'primary' | 'secondary' | 'default'
 }

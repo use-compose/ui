@@ -7,82 +7,40 @@ import YButton, { YButtonProps } from './YButton.vue'
 const { commonArgTypes, generateCommonStories } = useThemeComponentStory(YButton)
 
 // More on how to set up stories at: https://storybook.js.org/docs/vue/writing-stories/introduction
-const meta = {
+const meta: Meta<typeof YButton> = {
   title: 'Compose/Form/YButton',
   component: YButton,
   // This component will have an automatically generated docsPage entry: https://storybook.js.org/docs/vue/writing-docs/autodocs
   tags: ['autodocs'],
   argTypes: {
     ...commonArgTypes,
-    size: { control: 'select', options: ['small', 'medium', 'large'] },
-    disabled: { control: 'boolean' },
-    default: {
-      control: 'text',
-      description: 'Slot content',
-      defaultValue: 'Badge',
-    },
     onClick: { action: 'handleClick' },
     // backgroundColor: { control: "color" },
     // onClick: { action: "handleClick"},
   },
-  args: {}, // default value
-} satisfies Meta<typeof YButton>
+  args: {
+    onClick: action('onClick'),
+  }, // default value
+}
 
 export default meta
+
 type Story = StoryObj<typeof meta>
 
-/*
- *👇 Render functions are a framework specific feature to allow you control on how the component renders.
- * See https://storybook.js.org/docs/vue/api/csf
- * to learn how to use render functions.
- */
-const template = '<YButton @click="handleClick" v-bind="args">YButton</YButton>'
-
-// Define a generic render function
-const renderTemplate = (args: YButtonProps) => ({
-  components: { YButton },
-  setup() {
-    // Define the handleClick method here
-    const handleClick = () => {
-      action('handleClick')()
-      // Your actual handleClick logic if any
-    }
-
-    return {
-      args,
-      handleClick,
-    }
-  },
-  template,
-})
-
-const { Default, Outlined, Disabled, Raw } = generateCommonStories(renderTemplate)
-
-export const Primary: Story = {
-  render: (args) => renderTemplate(args),
-  args: {
-    color: 'primary',
-  },
-  parameters: {
-    design: {
-      type: 'figma',
-      url: 'https://www.figma.com/file/FGllmkDCvBsITR6gkWYjqh/Gamma-Compose?t=PUJivLaa7njwvx7Q-1',
+const renderGenericStory: Story = {
+  render: (args: YButtonProps, { argTypes }) => ({
+    components: { YButton },
+    props: Object.keys(argTypes),
+    template: `
+    <YButton v-bind="args">Label</YButton>
+  `,
+    setup() {
+      return { args }
     },
-  },
+  }),
+  args: {},
 }
 
-export const Large: Story = {
-  render: (args) => renderTemplate(args),
-  args: {
-    size: 'large',
-  },
-}
+const { Default, Outlined, Disabled, Raw, Large, Small } = generateCommonStories(renderGenericStory)
 
-export const Small: Story = {
-  render: (args) => renderTemplate(args),
-  args: {
-    size: 'small',
-  },
-}
-
-export { Default, Disabled, Outlined, Raw }
+export { Default, Disabled, Large, Outlined, Raw, Small }

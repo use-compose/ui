@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
 
 import { useThemeComponentStory } from '@/composables'
-import { defineEmits } from 'vue'
+import { action } from '@storybook/addon-actions'
 import YInput, { YInputProps } from './YInput.vue'
 
 const { commonArgTypes, generateCommonStories } = useThemeComponentStory<YInputProps>(YInput)
@@ -10,15 +10,24 @@ const { commonArgTypes, generateCommonStories } = useThemeComponentStory<YInputP
 const meta = {
   title: 'Compose/Form/YInput',
   component: YInput,
-  ...commonArgTypes.value,
+  ...commonArgTypes,
   // This component will have an automatically generated docsPage entry: https://storybook.js.org/docs/vue/writing-docs/autodocs
   tags: ['autodocs'],
   argTypes: {
-    small: { control: 'boolean' },
-    big: { control: 'boolean' },
+    ...commonArgTypes,
+    hero: { control: 'boolean' },
+    label: { control: 'text' },
+    onBlur: { action: 'handleBlur' },
+    // handleInput: { control: 'text' },
+    // backgroundColor: { control: "color" },
+    // onClick: { action: "handleClick"},
+    'onUpdate:modelValue': { action: 'onInput', control: 'text' },
+    modelValue: { control: 'text' },
   },
   args: {
-    modelValue: 'Default',
+    modelValue: 'YInput',
+    onBlur: action('onBlur'),
+    'onUpdate:modelValue': action('onInput'),
   }, // default value
 } satisfies Meta<typeof YInput>
 
@@ -30,47 +39,39 @@ type Story = StoryObj<typeof meta>
  * to learn how to use render functions.
  */
 
-const template = '<YInput v-bind="args" />'
+const renderGenericStory: Story = {
+  render: (args: YInputProps, { argTypes }) => ({
+    components: { YInput },
+    props: Object.keys(argTypes),
+    template: `
+    <YInput v-bind="args" />
+  `,
+    setup() {
+      // const emit = defineEmits(['update:modelValue', 'blur'])
 
-const renderTemplate = (args: YInputProps) => ({
-  components: { YInput },
-  setup() {
-    const emit = defineEmits(['update:modelValue', 'blur'])
+      // const handleInput = (event: Event) => {
+      //   emit('update:modelValue', (event.target as HTMLInputElement).value)
+      // }
 
-    const handleInput = (event: Event) => {
-      emit('update:modelValue', (event.target as HTMLInputElement).value)
-    }
-
-    return {
-      args,
-      modelValue: 'fsddf',
-      handleInput,
-    }
-  },
-  template,
-})
-
-const { Default, Outlined, Disabled, Raw } = generateCommonStories(renderTemplate)
-
-export const Small: Story = {
+      return {
+        args,
+        // handleInput,
+      }
+    },
+  }),
   args: {
-    modelValue: 'Small',
-    small: true,
+    modelValue: 'YInput',
   },
 }
 
-export const Big: Story = {
-  args: {
-    modelValue: 'Big',
-    big: true,
-  },
-}
+const { Default, Outlined, Disabled, Raw, Small, Large } = generateCommonStories(renderGenericStory)
 
 export const Hero: Story = {
   args: {
+    ...Default.args,
     modelValue: 'Hero',
     hero: true,
   },
 }
 
-export { Default, Disabled, Outlined, Raw }
+export { Default, Disabled, Large, Outlined, Raw, Small }

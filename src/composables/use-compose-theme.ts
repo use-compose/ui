@@ -32,9 +32,6 @@ function checkMissingProperties(providedTheme: YTheme) {
   // Loop through each property and check if it exists in the object
   properties.forEach((property) => {
     if (providedTheme[property] === undefined) {
-      console.warn(
-        `Warning: Property ${String(property)} is missing., assigned default value: ${defaultTheme[property]}`,
-      )
       providedTheme[property] = defaultTheme[property]
     }
   })
@@ -51,13 +48,11 @@ export function useComposeTheme(userTheme?: YTheme) {
 
   if (userTheme) {
     initialTheme = checkMissingProperties(userTheme)
-    console.log('🖇️ ~ userTheme → ', userTheme)
   } else {
     initialTheme = getStorageTheme() || defaultTheme
   }
 
   const theme: Ref<YTheme> = ref(initialTheme)
-  console.log('🖇️ ~ useComposeTheme ~ theme → ', theme)
 
   function updateThemeProperty(key: keyof YTheme, value: string) {
     if (key in theme.value) {
@@ -68,7 +63,6 @@ export function useComposeTheme(userTheme?: YTheme) {
         setStorageTheme(newTheme)
       }
     } else {
-      console.warn(`Property ${key} does not exist on the theme object`)
     }
   }
 
@@ -98,7 +92,6 @@ const themeContext: ThemeComposition = {
 
 export function useTheme() {
   const { theme, updateThemeProperty } = inject(themeCompositionKey) || themeContext
-  console.log('🖇️ ~ useTheme ~ theme → ', theme)
 
   if (!theme || !updateThemeProperty) {
     throw new Error(
@@ -113,7 +106,6 @@ export function useTheme() {
   }
 
   function setPrimary(color: string) {
-    console.log('🖇️ ~ useTheme ~ color → ', color)
     theme.value.primary = color
   }
 

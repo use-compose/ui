@@ -7,7 +7,7 @@ on:
 # https://zellwk.com/blog/github-actions-deploy/
 jobs:
   lint-format-build:
-    if: !startsWith(github.event.pull_request.head.ref, 'renovate/')
+    if: ${{ ! startsWith(github.event.pull_request.head.ref, 'renovate/') }}
     runs-on: ubuntu-latest
 
     steps:

@@ -1,4 +1,4 @@
-export { useBaseComponent } from './use-base-component'
+export { useBaseProps } from './use-base-props'
 export { useComposeTheme, useTheme } from './use-compose-theme'
 export { useStorage } from './use-storage'
 export { useThemeComponentStory } from './use-theme-component-story'
