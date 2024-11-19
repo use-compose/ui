@@ -14,13 +14,12 @@ interface AppComposeProps {
 
 const props = defineProps<AppComposeProps>()
 
-if (props.theme) {
-  useComposeTheme(props.theme)
-} else {
-  useComposeTheme()
-}
+// if (props.theme) {
+useComposeTheme(props.theme)
+// } else {
+// useComposeTheme()
+// }
 
-useTheme()
 // setPrimary('#FCECF0')
 // setBackground('#ABCDF8')
 </script>

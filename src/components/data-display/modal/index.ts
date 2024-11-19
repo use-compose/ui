@@ -1,0 +1,4 @@
+export { default as ModalProvider } from '../../providers/ModalProvider.vue'
+export { default as YModalFooter } from './components/YModalFooter.vue'
+export { default as YModalHeader } from './components/YModalHeader.vue'
+export { default as YBaseModal } from './YBaseModal.vue'
