@@ -31,11 +31,11 @@ import { modalDefaultProps } from '@/composables/components'
 import { computed, defineEmits } from 'vue'
 import YModalFooter, { BaseModalFooterProps } from './components/YModalFooter.vue'
 import { BaseModalHeaderProps } from './components/YModalHeader.vue'
-import { BaseModalProps } from './types/YBaseModal.interface'
+import { BaseModalProps, YModalSize } from './types/YBaseModal.interface'
 
 const props = withDefaults(defineProps<BaseModalProps>(), {
   ...modalDefaultProps,
-  size: 'medium',
+  size: YModalSize.Medium,
 })
 
 const { baseClasses } = useBaseProps(props)

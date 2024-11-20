@@ -1,6 +1,18 @@
 import { ThemeComponentBaseProps } from '@/utils/base-props'
 import { Component, Raw } from 'vue'
 
+export enum YModalSize {
+  Small = 'small',
+  Medium = 'medium',
+  Large = 'large',
+}
+
+export enum YModalType {
+  Default = 'default',
+  Drawer = 'drawer',
+  FullScreen = 'full-screen',
+}
+
 export interface BaseModalProps extends ThemeComponentBaseProps {
   hasCloseButton?: boolean
   hasHeader?: boolean
@@ -13,8 +25,8 @@ export interface BaseModalProps extends ThemeComponentBaseProps {
   hasButtonGroupLeft?: boolean
   hasAction?: boolean
   action?: () => void
-  size?: 'small' | 'medium' | 'large'
-  type?: 'default' | 'drawer' | 'full-screen'
+  size?: YModalSize
+  type?: YModalType
 }
 
 export interface ModalSlotOptions {

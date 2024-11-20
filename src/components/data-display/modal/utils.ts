@@ -1,4 +1,4 @@
-import { BaseModalProps } from './types/YBaseModal.interface'
+import { BaseModalProps, YModalSize, YModalType } from './types/YBaseModal.interface'
 
 export const modalDefaultProps: BaseModalProps = {
   hasCloseButton: true,
@@ -12,5 +12,6 @@ export const modalDefaultProps: BaseModalProps = {
   hasButtonGroupLeft: false,
   hasAction: true,
   action: () => {},
-  size: 'medium',
+  size: YModalSize.Medium,
+  type: YModalType.Default,
 }
