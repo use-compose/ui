@@ -1,3 +1,4 @@
+export { modalDefaultProps, useModal } from './components'
 export { useBaseProps } from './use-base-props'
 export { useComposeTheme, useTheme } from './use-compose-theme'
 export { useStorage } from './use-storage'

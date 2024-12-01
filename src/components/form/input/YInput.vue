@@ -115,10 +115,6 @@ onMounted(() => {
       @include component(box-shadow, component(box-shadow-base));
     }
   }
-
-  &.-big {
-    @include component(padding-y, space(unit));
-  }
 }
 
 .error-label {

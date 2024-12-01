@@ -1,13 +1,18 @@
-export { default as AppCompose } from '../../src/components/AppCompose.vue'
+export { default as AppCompose } from './AppCompose.vue'
+export { default as HelloWorld } from './HelloWorld.vue'
 
 //  layout
-export { default as Wrapper } from '../../src/components/layout/Wrapper.vue'
-export { default as Container } from '../../src/components/layout/container/Container.vue'
-export { default as Flex } from '../../src/components/layout/flex/Flex.vue'
+export { Column, Container, Flex, Wrapper } from './layout'
 
 // form
-export { default as YButton } from '../../src/components/form/button/YButton.vue'
-export { default as YInput } from '../../src/components/form/input/YInput.vue'
+export { YButton, YInput } from './form'
+// YCheckbox, YColorInput,
 
 // data-display
-export { default as YCard } from './data-display/card/YCard.vue'
+export { YBaseModal, YCard } from './data-display'
+
+// providers
+export { ModalProvider } from './providers'
+
+// BaseComponents
+export { default as BaseComponent } from './BaseComponent.vue'

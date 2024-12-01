@@ -7,9 +7,8 @@
   * 5 - Theme
   * 6 - Breakpoints
 */
-
-@use "base/base";
-@use "utils" as utils;
+@use 'base/base';
+@use 'utils' as utils;
 // @import "utils/utils";
 // @import "base/base";
 // import all functions and mixins from utils
@@ -17,10 +16,10 @@
 // @use "utils/mixins" as *;
 
 @include utils.cssvars(
-  "theme",
+  'theme',
   (
     border-radius: 0,
-    bg-opacity: 1
+    bg-opacity: 1,
   )
 );
 
@@ -48,7 +47,7 @@
 }
 
 @include utils.cssvars(
-  "space",
+  'space',
   (
     unit: 1em,
     xxs: calc(0.25 * var(--space-unit)),
@@ -57,7 +56,7 @@
     md: calc(1.25 * var(--space-unit)),
     lg: calc(2 * var(--space-unit)),
     xl: calc(3.25 * var(--space-unit)),
-    xxl: calc(5.25 * var(--space-unit))
+    xxl: calc(5.25 * var(--space-unit)),
   )
 );
 
@@ -105,7 +104,7 @@
 
 /* https://utopia.fyi/type/calculator/?c=320,16,1.25,1620,16,1.5,5,5,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12 */
 @include utils.cssvars(
-  "text",
+  'text',
   (
     xs: clamp(0.4444rem, 0.6881rem + -0.2407vw, 0.64rem),
     sm: clamp(0.6667rem, 0.8328rem + -0.1641vw, 0.8rem),
@@ -113,7 +112,7 @@
     lg: clamp(1.25rem, 1.1885rem + 0.3077vw, 1.5rem),
     xl: clamp(1.5625rem, 1.3933rem + 0.8462vw, 2.25rem),
     xxl: clamp(1.9531rem, 1.6031rem + 1.75vw, 3.375rem),
-    h1: clamp(2.4414rem, 1.7962rem + 3.226vi, 5.0625rem)
+    h1: clamp(2.4414rem, 1.7962rem + 3.226vi, 5.0625rem),
   )
 );
 
@@ -128,11 +127,13 @@
 // }
 
 @include utils.cssvars(
-  "color",
+  'color',
   (
     primary: #fbe134,
     main-dark: #0b0c0c,
+    dark-50: color-mix(in srgb, utils.color(main-dark) 70%, transparent),
     bg: var(--color-bg),
+    bg-50: color-mix(in srgb, utils.color(bg) 50%, transparent),
     primary-80: color-mix(in srgb, utils.color(primary) 80%, transparent),
     primary-60: color-mix(in srgb, utils.color(primary) 60%, transparent),
     primary-40: color-mix(in srgb, utils.color(primary) 40%, transparent),
@@ -140,7 +141,7 @@
     primary-10: color-mix(in srgb, utils.color(primary) 10%, transparent),
     color-white: #fff,
     theme-color: utils.color(primary),
-    initial-light: #f5f5f5
+    initial-light: #f5f5f5,
   )
 );
 
@@ -181,14 +182,15 @@
 // 4 - Components
 
 @include utils.cssvars(
-  "component",
+  'component',
   (
     box-shadow-x: 4px,
     box-shadow-y: 4px,
     bg-opacity: 1,
     box-shadow-color: utils.color(primary),
     box-shadow-base: utils.component(box-shadow-x) utils.component(box-shadow-y) 0 0 black,
-    box-shadow-hover: utils.component(box-shadow-x) utils.component(box-shadow-y) 0 0 utils.component(box-shadow-color),
+    box-shadow-hover: utils.component(box-shadow-x) utils.component(box-shadow-y) 0 0
+      utils.component(box-shadow-color),
     bg-color: utils.color(primary),
     color: utils.color(main-dark),
     box-shadow: utils.component(box-shadow-base),
@@ -197,7 +199,7 @@
     margin-bottom: utils.space(unit),
     border-width: 2px,
     font-size: 1rem,
-    border-color: utils.color(main-dark)
+    border-color: utils.color(main-dark),
   )
 );
 
@@ -214,42 +216,30 @@
     &:hover {
       box-shadow: utils.component(box-shadow-hover);
     }
-
-    &.-raw {
-      box-shadow: none;
-
-      &:hover {
-        transform: none;
-        box-shadow: none;
-      }
-
-      &:active,
-      &:focus-visible {
-        transform: none;
-        box-shadow: none;
-      }
-    }
-
-    &.-outlined {
-      background-color: transparent;
-      color: utils.color(primary);
-    }
-
-    &.-small {
-      @include component(padding-y, space(xs));
-      @include component(padding-x, space(xs));
-    }
-
-    &.-large {
-      @include component(padding-y, space(md));
-      @include component(padding-x, space(md));
-    }
   }
 
+  &.-small {
+    @include component(padding-y, space(xs));
+    @include component(padding-x, space(xs));
+  }
+
+  &.-large {
+    @include component(padding-y, space(md));
+    @include component(padding-x, space(md));
+  }
   &.-disabled {
     opacity: 0.5;
     cursor: not-allowed;
     pointer-events: none;
+  }
+
+  &.-outlined {
+    background-color: transparent;
+    color: utils.color(primary);
+  }
+
+  &.-raw {
+    @include raw-component;
   }
 
   &.-interactive {
@@ -261,7 +251,7 @@
   font-weight: bold;
   margin-bottom: utils.component(margin-bottom);
 
-  &:not(.disabled) {
+  &:not(.-disabled) {
     &:active,
     &:focus-visible {
       transform: translate(4px, 4px);
@@ -273,7 +263,7 @@
     }
   }
 
-  &.disabled {
+  &.-disabled {
     opacity: 0.5;
     cursor: not-allowed;
   }
@@ -337,11 +327,11 @@ $breakpoint-desktop: 1024px;
 $breakpoint-desktop-xl: 1280px;
 $breakpoint-desktop-xxl: 1820px;
 $breakpoints: (
-  "mobile": $breakpoint-mobile,
-  "tablet": $breakpoint-tablet,
-  "desktop": $breakpoint-desktop,
-  "desktop-xl": $breakpoint-desktop-xl,
-  "desktop-xxl": $breakpoint-desktop-xxl
+  'mobile': $breakpoint-mobile,
+  'tablet': $breakpoint-tablet,
+  'desktop': $breakpoint-desktop,
+  'desktop-xl': $breakpoint-desktop-xl,
+  'desktop-xxl': $breakpoint-desktop-xxl,
 );
 
 // Breakpoints
@@ -357,4 +347,30 @@ $breakpoints: (
   @media only screen and (min-width: $query) {
     @content;
   }
+}
+
+// -----------------------------------------------------------------------------
+
+// 7 - Sizes
+// Used for Modals, Dialogs, Cards, etc.
+
+@include utils.cssvars(
+  'size',
+  (
+    small: 320px,
+    medium: 640px,
+    large: 960px,
+  )
+);
+
+.size-small {
+  width: utils.size(small);
+}
+
+.size-medium {
+  width: utils.size(medium);
+}
+
+.size-large {
+  width: utils.size(large);
 }
