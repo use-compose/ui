@@ -1,27 +1,23 @@
 <script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
 // import './assets/scss/main.scss'
+import { AppCompose, HelloWorld, ModalProvider } from './components'
 </script>
 
 <template>
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
-  </div>
-  <HelloWorld msg="Vite + Vue" />
+  <AppCompose>
+    <ModalProvider>
+      <HelloWorld msg="App" />
+    </ModalProvider>
+  </AppCompose>
 </template>
 
 <style scoped>
-.logo {
+/* .logo {
   height: 6em;
   padding: 1.5em;
-  will-change: filter;
+  2: filter;
   transition: filter 300ms;
-}
+} */
 
 .logo:hover {
   filter: drop-shadow(0 0 2em #646cffaa);

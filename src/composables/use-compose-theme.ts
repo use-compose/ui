@@ -62,7 +62,6 @@ export function useComposeTheme(userTheme?: YTheme) {
         const newTheme = JSON.stringify(theme.value) as unknown as YTheme
         setStorageTheme(newTheme)
       }
-    } else {
     }
   }
 

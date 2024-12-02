@@ -1,6 +1,8 @@
 // @use "../utils/utils" as *;
-@forward "reset";
-@forward "utilities";
+@forward 'reset';
+@forward 'utilities';
+@forward 'fonts';
+@forward 'animations';
 
 // :root {
 //   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;

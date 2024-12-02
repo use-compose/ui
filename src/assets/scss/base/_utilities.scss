@@ -5,6 +5,12 @@
   * 3 - Layout
 */
 
+// 0 - General
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
 // -----------------------------------------------------------------------------
 
 // 1 - Spacing
@@ -32,7 +38,7 @@
   margin-bottom: 0;
 }
 
-.m-0 {
+.margin-0 {
   margin: 0;
 }
 
@@ -100,6 +106,10 @@ p {
 // 3 - Layout
 
 // Flex
+.flex {
+  display: flex;
+}
+
 .flex-row {
   flex-direction: row;
 }
@@ -118,6 +128,18 @@ p {
 
 .align-end {
   align-items: flex-end;
+}
+
+.align-self-center {
+  align-self: center;
+}
+
+.align-self-start {
+  align-self: flex-start;
+}
+
+.align-self-end {
+  align-self: flex-end;
 }
 
 .justify-center {
@@ -142,4 +164,13 @@ p {
 
 .justify-space-evenly {
   justify-content: space-evenly;
+}
+
+// -----------------------------------------------------------------------------
+
+// 4 - Components
+.custom-input {
+  opacity: 0.01;
+  position: fixed;
+  left: -9999px;
 }

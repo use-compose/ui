@@ -1,7 +1,7 @@
 // Accessors for CSS Custom Properties
 
 //  Colors
-@function color($name, $prefix: color, $fallback: "") {
+@function color($name, $prefix: color, $fallback: '') {
   @return var(--#{$prefix}-#{$name}, #{$fallback});
 }
 
@@ -26,9 +26,14 @@
 }
 
 @function hslac($color, $alpha) {
-  @if type-of($color) == "color" {
+  @if type-of($color) == 'color' {
     @return hsla(hue($color), saturation($color), lightness($color), $alpha);
   } @else {
     @error "You didn't pass a color object";
   }
+}
+
+// Sizes
+@function size($name, $prefix: size) {
+  @return var(--#{$prefix}-#{$name});
 }
