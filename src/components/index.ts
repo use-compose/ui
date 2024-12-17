@@ -9,7 +9,7 @@ export { YButton, YInput } from './form'
 // YCheckbox, YColorInput,
 
 // data-display
-export { YBaseModal, YCard } from './data-display'
+export { YBaseModal, YCard, YModal, YModalFooter, YModalHeader } from './data-display'
 
 // providers
 export { ModalProvider } from './providers'

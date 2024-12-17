@@ -37,3 +37,8 @@
 @function size($name, $prefix: size) {
   @return var(--#{$prefix}-#{$name});
 }
+
+// Layout
+@function layout($name, $prefix: layout) {
+  @return var(--#{$prefix}-#{$name});
+}

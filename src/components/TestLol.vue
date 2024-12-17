@@ -33,11 +33,24 @@
     </Flex>
     <Container>
       <YButton @click="toggleDisplayMsg">Button</YButton>
-      <YCard>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque quos esse blanditiis quaerat
-        non sed, pariatur dolores aspernatur alias nesciunt nemo recusandae architecto quia. In,
-        enim ut. Debitis, beatae similique!
-      </YCard>
+      <Flex style="--row">
+        <YCard>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque quos esse blanditiis
+          quaerat non sed, pariatur dolores aspernatur alias nesciunt nemo recusandae architecto
+          quia. In, enim ut. Debitis, beatae similique!
+        </YCard>
+        <YCard :cover="'@/assets/cheval.png'">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque quos esse blanditiis
+          quaerat non sed, pariatur dolores aspernatur alias nesciunt nemo recusandae architecto
+          quia. In, enim ut. Debitis, beatae similique!
+        </YCard>
+        <YCard>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque quos esse blanditiis
+          quaerat non sed, pariatur dolores aspernatur alias nesciunt nemo recusandae architecto
+          quia. In, enim ut. Debitis, beatae similique!
+        </YCard>
+      </Flex>
+
       <YInput v-model="input" label="Message" placeholder="Message" />
       <YInput v-model="input" label="Message" placeholder="Message" />
       <YInput v-model="input" size="large" label="Message" placeholder="Message" />
@@ -129,14 +142,51 @@
       </Column>
     </Flex>
     <p class="read-the-docs">Click on the Vite and Vue logos to learn more</p>
-    <YButton @click="toggleModal">Button</YButton>
-    <YButton @click="openCustomModal">openCustomModal</YButton>
+    <Flex>
+      <YButton @click="toggleModal">Button</YButton>
+      <YButton @click="openCustomModal">openCustomModal</YButton>
+      <YButton @click="showComplexModal = true">Open Complex Modal</YButton>
+      <YButton @click="openDrawer">Open Drawer</YButton>
+    </Flex>
+
+    <YModal
+      v-model="showComplexModal"
+      :hasFooter="true"
+      header="Custom header"
+      @close="closeComplexModal"
+      @action="console.log('Action!')"
+    >
+      <!-- Complex Form as Main Slot -->
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus ut quidem vero debitis
+        eligendi corporis! Sint exercitationem ipsam temporibus earum obcaecati, omnis, numquam
+        minima ducimus sit itaque, minus optio nemo?
+      </p>
+    </YModal>
+
+    <YModal
+      v-model="showDrawer"
+      type="drawer"
+      size="medium"
+      :hasFooter="true"
+      @close="closeComplexModal"
+    >
+      <!-- <template #header>
+        <h1>Form Drawer</h1>
+      </template> -->
+
+      <!-- Complex Form as Main Slot -->
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus ut quidem vero debitis
+        eligendi corporis! Sint exercitationem ipsam temporibus earum obcaecati, omnis, numquam
+        minima ducimus sit itaque, minus optio nemo?
+      </p>
+    </YModal>
   </Wrapper>
 </template>
 
 <script setup lang="ts">
 import {
-  BaseComponent,
   Column,
   Container,
   Flex,
@@ -145,24 +195,26 @@ import {
   YCard,
   // YColorInput,
   YInput,
+  YModal,
 } from '@/components'
 import { useModal } from '@/composables'
 import { ref } from 'vue'
+import { YModalSize } from './data-display/modal/types'
 
 const count = ref(0)
 const input = ref('')
 // const color = ref('')
 const showMsg = ref(false)
 
+const showComplexModal = ref(false)
+
+const showDrawer = ref(false)
+
 const toggleDisplayMsg = () => {
   showMsg.value = !showMsg.value
 }
 
-const {
-  show,
-  close,
-  modalState: { isVisible },
-} = useModal()
+const { show } = useModal()
 
 // const newModelLol = show({
 //   component: BaseComponent,
@@ -177,22 +229,34 @@ const {
 
 function openCustomModal() {
   show({
-    component: BaseComponent,
+    content: 'test',
     props: {
-      size: 'large',
+      size: YModalSize.Large,
       hasHeader: true,
       // size: 'medium',
-      header: 'Custom Header',
+      header: 'Custom xw<xw<dx<Heqsdqsdqdsader',
     },
   })
 }
 
-const toggleModal = () => {
-  if (isVisible) {
-    close()
-  } else {
-    openCustomModal()
-  }
+// const toggleModal = () => {
+//   if (isVisible) {
+//     close()
+//   } else {
+//     openCustomModal()
+//   }
+// }
+
+function openComplexModal() {
+  showComplexModal.value = true
+}
+
+function openDrawer() {
+  showDrawer.value = true
+}
+
+function closeComplexModal() {
+  // showComplexModal.value = false
 }
 </script>
 

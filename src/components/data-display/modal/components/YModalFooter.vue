@@ -1,38 +1,65 @@
 <template>
-  <footer class="y-modal-footer">
+  <footer class="y-modal-footer" :class="footerClasses">
     <slot>
-      <div class="flex justify-end">
-        <YButton v-if="hasAction" @click="handleAction">Save</YButton>
-      </div>
+      <template v-if="hasButtonGroupLeft">
+        <YButton @click="leftAction">
+          {{ leftBtnText }}
+        </YButton>
+      </template>
+
+      <template v-if="hasButtonGroupRight">
+        <YButton v-if="hasCancelBtn" color="secondary" @click="cancel">
+          {{ cancelBtnText }}
+        </YButton>
+
+        <YButton @click="handleAction">
+          {{ actionBtnText }}
+        </YButton>
+      </template>
     </slot>
   </footer>
 </template>
+
 <script setup lang="ts">
-import YButton from '@/components/form/button/YButton.vue'
+import { YButton } from '@/components'
+import { computed, inject } from 'vue'
+import { modalActionsKey, ModalActionsKeyInterface } from '../types'
+import { YModalFooterProps } from '../types/YBaseModal.interface'
 
-export interface BaseModalFooterProps {
-  hasAction: boolean
-  action: () => void
-}
+const { action, cancel, leftAction, close } = inject(modalActionsKey) as ModalActionsKeyInterface
 
-const emit = defineEmits(['action', 'close'])
+const props = defineProps<YModalFooterProps>()
 
-const props = withDefaults(defineProps<BaseModalFooterProps>(), {
-  hasAction: true,
-  action: () => {},
-})
+const hasCancelBtn = computed(() => !!cancel)
 
 function handleAction() {
-  if (props.action) {
-    props.action()
+  if (!!action) {
+    action()
+  } else {
+    close()
   }
-  emit('close')
 }
+
+const { hasButtonGroupRight, hasButtonGroupLeft, actionBtnText, cancelBtnText, leftBtnText } = props
+
+const footerClasses = computed(() => {
+  return {
+    'justify-end': hasButtonGroupRight && !hasButtonGroupLeft,
+    'justify-between': hasButtonGroupLeft && hasButtonGroupRight,
+    'justify-start': !hasButtonGroupRight && hasButtonGroupLeft,
+  }
+})
 </script>
 <style lang="scss" scoped>
 @import '@/assets/scss/utils';
 
 .y-modal-footer {
+  display: flex;
+  gap: layout(gap);
   padding: space(sm) space(md);
+
+  :deep(.y-button) {
+    @include component(margin-bottom, component(box-shadow-y));
+  }
 }
 </style>

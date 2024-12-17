@@ -374,3 +374,15 @@ $breakpoints: (
 .size-large {
   width: utils.size(large);
 }
+
+// -----------------------------------------------------------------------------
+
+// 7 - Layout
+// Used for Layout components (Grid, Flexbox, etc.)
+
+@include utils.cssvars(
+  'layout',
+  (
+    gap: utils.space(sm),
+  )
+);

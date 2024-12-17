@@ -1,8 +1,6 @@
 <template>
-  <Transition appear name="fade">
-    <div aria-hidden="true" :class="getClasses" @click="handleClick">
-      <slot />
-    </div>
+  <Transition name="fade">
+    <div v-if="modelValue" aria-hidden="true" :class="getClasses" @click="handleClick"></div>
   </Transition>
 </template>
 
@@ -10,6 +8,7 @@
 import { computed, defineProps, withDefaults } from 'vue'
 
 export interface YOverlayProps {
+  modelValue: boolean
   color?: string
   opacity?: number
   blur?: boolean
@@ -29,8 +28,6 @@ const getClasses = computed(() => {
 const emit = defineEmits(['click'])
 
 const handleClick = (e: Event) => {
-  console.log('📟 - file: YOverlay.vue:47 - handleClick → ', handleClick)
-
   emit('click', e)
 }
 </script>

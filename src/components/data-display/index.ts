@@ -1,2 +1,2 @@
 export { default as YCard } from './card/YCard.vue'
-export { default as YBaseModal } from './modal/YBaseModal.vue'
+export { YBaseModal, YModal, YModalFooter, YModalHeader } from './modal'
