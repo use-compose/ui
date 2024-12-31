@@ -143,7 +143,6 @@
     </Flex>
     <p class="read-the-docs">Click on the Vite and Vue logos to learn more</p>
     <Flex>
-      <YButton @click="toggleModal">Button</YButton>
       <YButton @click="openCustomModal">openCustomModal</YButton>
       <YButton @click="showComplexModal = true">Open Complex Modal</YButton>
       <YButton @click="openDrawer">Open Drawer</YButton>
@@ -154,7 +153,6 @@
       :hasFooter="true"
       header="Custom header"
       has
-      @close="closeComplexModal"
       @action="console.log('Action!')"
       @cancel="console.log('Cancel!')"
       @leftAction="console.log('Left Action!')"
@@ -199,10 +197,9 @@
 
     <YModal
       v-model="showDrawer"
-      type="drawer"
-      size="medium"
+      :type="YModalType.Drawer"
+      :size="YModalSize.Medium"
       :hasFooter="true"
-      @close="closeComplexModal"
     >
       <!-- <template #header>
         <h1>Form Drawer</h1>
@@ -296,7 +293,7 @@ import {
 } from '@/components'
 import { useModal } from '@/composables'
 import { ref } from 'vue'
-import { YModalSize } from './overlays/modal/types'
+import { YModalSize, YModalType } from './overlays/modal/types'
 
 const count = ref(0)
 const input = ref('')
@@ -336,25 +333,7 @@ function openCustomModal() {
   })
 }
 
-// const toggleModal = () => {
-//   if (isVisible) {
-//     close()
-//   } else {
-//     openCustomModal()
-//   }
-// }
-
-function openComplexModal() {
-  showComplexModal.value = true
-}
-
 function openDrawer() {
   showDrawer.value = true
 }
-
-function closeComplexModal() {
-  // showComplexModal.value = false
-}
 </script>
-
-<style scoped></style>

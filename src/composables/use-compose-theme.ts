@@ -123,6 +123,9 @@ export function useTheme() {
       const { primary, background, dark } = theme.value
 
       const appComposeElement = document.querySelector('.app-compose') as HTMLElement
+
+      if (!appComposeElement) return
+
       appComposeElement.style.setProperty('--color-primary', primary || null)
       appComposeElement.style.setProperty('--color-bg', background || null)
       appComposeElement.style.setProperty('--color-main-dark', dark || null)
