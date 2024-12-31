@@ -1,4 +1,4 @@
-import { ThemeComponentBaseProps } from '@/utils/base-props'
+import { ThemeComponentBaseProps } from '@/types/base-props'
 import { ArgTypes, StoryObj } from '@storybook/vue3'
 import { Component } from 'vue'
 
@@ -26,21 +26,21 @@ type Story = StoryObj<Component>
 
 export function useThemeComponentStory<T extends ThemeComponentBaseProps>(component: Component) {
   const commonArgs: ThemeComponentBaseProps = {
-    raw: false,
     disabled: false,
-    outlined: false,
     interactive: false,
+    raw: false,
     size: 'medium',
     color: 'primary',
+    variant: 'contained',
   }
 
   const commonArgTypes: ArgTypes = {
-    raw: { control: 'boolean' },
     disabled: { control: 'boolean' },
-    outlined: { control: 'boolean' },
     interactive: { control: 'boolean' },
+    raw: { control: 'boolean' },
     size: { control: 'select', options: ['small', 'medium', 'large'] },
     color: { control: 'select', options: ['primary', 'secondary', 'default'] },
+    variant: { control: 'select', options: ['contained', 'outlined', 'text'] },
   }
 
   // const defaultRenderFunction: ArgsStoryFn<VueRenderer> = (args) => ({
@@ -82,7 +82,7 @@ export function useThemeComponentStory<T extends ThemeComponentBaseProps>(compon
 
     const Outlined: Story = {
       ...componentBaseStory,
-      args: { ...commonArgs, ...componentBaseStory.args, outlined: true },
+      args: { ...commonArgs, ...componentBaseStory.args, variant: 'outlined' },
     }
 
     const Disabled: Story = {

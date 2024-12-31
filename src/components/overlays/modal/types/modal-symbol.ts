@@ -24,7 +24,6 @@ interface ModalActionsKeyInterface {
   action?(): void
   cancel?(): void
   close(): void
-  leftAction?(): void
   open(): void
   toggle?(): void
 }

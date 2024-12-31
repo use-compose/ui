@@ -1,2 +1,2 @@
-export { modalDefaultProps } from '../../components/data-display/modal/utils'
+export { modalDefaultProps } from '../../components/overlays/modal/utils'
 export { useModal } from './use-modal'

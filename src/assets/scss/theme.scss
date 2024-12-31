@@ -9,9 +9,35 @@
 */
 @use 'base/base';
 @use 'utils' as utils;
+
+@property --color-primary {
+  syntax: '<color>';
+  inherits: true;
+}
+
 // @import "utils/utils";
 // @import "base/base";
 // import all functions and mixins from utils
+
+@property --raw {
+  syntax: '<number>';
+  initial-value: 0;
+  inherits: false;
+}
+
+:root {
+  /* https://dev.to/tracygjg/conditional-css-437e */
+  --TRUE: 1;
+  --FALSE: 0;
+}
+
+body {
+  --not-raw: calc(1 - var(--raw));
+}
+
+.-raw {
+  --raw: var(--TRUE);
+}
 
 // @use "utils/mixins" as *;
 
@@ -20,6 +46,8 @@
   (
     border-radius: 0,
     bg-opacity: 1,
+    base-unit: 4px,
+    base-unit-calc: calc(4px * var(--not-raw, 1)),
   )
 );
 
@@ -129,8 +157,10 @@
 @include utils.cssvars(
   'color',
   (
-    primary: #fbe134,
-    main-dark: #0b0c0c,
+    // primary: #fbe134,
+    primsqsdary: var(--color-primary),
+    // main-dark: #0b0c0c,
+    main-dark: var(--color-main-dark),
     dark-50: color-mix(in srgb, utils.color(main-dark) 70%, transparent),
     bg: var(--color-bg),
     bg-50: color-mix(in srgb, utils.color(bg) 50%, transparent),
@@ -141,7 +171,7 @@
     primary-10: color-mix(in srgb, utils.color(primary) 10%, transparent),
     color-white: #fff,
     theme-color: utils.color(primary),
-    initial-light: #f5f5f5,
+    initial-light: #f5f5f5
   )
 );
 
@@ -184,8 +214,8 @@
 @include utils.cssvars(
   'component',
   (
-    box-shadow-x: 4px,
-    box-shadow-y: 4px,
+    box-shadow-x: var(--theme-base-unit-calc),
+    box-shadow-y: var(--theme-base-unit-calc),
     bg-opacity: 1,
     box-shadow-color: utils.color(primary),
     box-shadow-base: utils.component(box-shadow-x) utils.component(box-shadow-y) 0 0 black,
@@ -200,6 +230,7 @@
     border-width: 2px,
     font-size: 1rem,
     border-color: utils.color(main-dark),
+    border: utils.component(border-width) solid utils.component(border-color),
   )
 );
 
@@ -254,7 +285,7 @@
   &:not(.-disabled) {
     &:active,
     &:focus-visible {
-      transform: translate(4px, 4px);
+      transform: translate(var(--theme-base-unit-calc), var(--theme-base-unit-calc));
       -box-shadow: none;
 
       &:hover {
@@ -270,16 +301,17 @@
 }
 
 @mixin raw-component {
+  // --raw: var(--TRUE);
   box-shadow: none;
 
   &:hover {
-    transform: none;
+    // transform: none;
     box-shadow: none;
   }
 
   &:active,
   &:focus-visible {
-    transform: none;
+    // transform: none;
     box-shadow: none;
   }
 }

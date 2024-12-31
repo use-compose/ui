@@ -122,9 +122,10 @@ export function useTheme() {
     if (isClientSide()) {
       const { primary, background, dark } = theme.value
 
-      document.documentElement.style.setProperty('--color-primary', primary || null)
-      document.documentElement.style.setProperty('--color-bg', background || null)
-      document.documentElement.style.setProperty('--color-main-dark', dark || null)
+      const appComposeElement = document.querySelector('.app-compose') as HTMLElement
+      appComposeElement.style.setProperty('--color-primary', primary || null)
+      appComposeElement.style.setProperty('--color-bg', background || null)
+      appComposeElement.style.setProperty('--color-main-dark', dark || null)
     }
   })
 

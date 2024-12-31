@@ -2,14 +2,17 @@ export { default as AppCompose } from './AppCompose.vue'
 export { default as HelloWorld } from './HelloWorld.vue'
 
 //  layout
-export { Column, Container, Flex, Wrapper } from './layout'
+export { Container, Flex, Wrapper } from './layout'
 
 // form
 export { YButton, YInput } from './form'
 // YCheckbox, YColorInput,
 
 // data-display
-export { YBaseModal, YCard, YModal, YModalFooter, YModalHeader } from './data-display'
+export { YCard } from './data-display'
+
+// overlays
+export { YBaseModal, YModal, YModalFooter, YModalHeader } from './overlays'
 
 // providers
 export { ModalProvider } from './providers'

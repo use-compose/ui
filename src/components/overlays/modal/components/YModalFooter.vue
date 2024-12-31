@@ -1,21 +1,13 @@
 <template>
   <footer class="y-modal-footer" :class="footerClasses">
     <slot>
-      <template v-if="hasButtonGroupLeft">
-        <YButton @click="leftAction">
-          {{ leftBtnText }}
-        </YButton>
-      </template>
+      <YButton v-if="hasCancelBtn" color="secondary" @click="cancel">
+        {{ cancelBtnText }}
+      </YButton>
 
-      <template v-if="hasButtonGroupRight">
-        <YButton v-if="hasCancelBtn" color="secondary" @click="cancel">
-          {{ cancelBtnText }}
-        </YButton>
-
-        <YButton @click="handleAction">
-          {{ actionBtnText }}
-        </YButton>
-      </template>
+      <YButton @click="handleAction">
+        {{ actionBtnText }}
+      </YButton>
     </slot>
   </footer>
 </template>
@@ -26,7 +18,7 @@ import { computed, inject } from 'vue'
 import { modalActionsKey, ModalActionsKeyInterface } from '../types'
 import { YModalFooterProps } from '../types/YBaseModal.interface'
 
-const { action, cancel, leftAction, close } = inject(modalActionsKey) as ModalActionsKeyInterface
+const { action, cancel, close } = inject(modalActionsKey) as ModalActionsKeyInterface
 
 const props = defineProps<YModalFooterProps>()
 
@@ -40,13 +32,12 @@ function handleAction() {
   }
 }
 
-const { hasButtonGroupRight, hasButtonGroupLeft, actionBtnText, cancelBtnText, leftBtnText } = props
+const { actionBtnText, cancelBtnText } = props
 
 const footerClasses = computed(() => {
   return {
-    'justify-end': hasButtonGroupRight && !hasButtonGroupLeft,
-    'justify-between': hasButtonGroupLeft && hasButtonGroupRight,
-    'justify-start': !hasButtonGroupRight && hasButtonGroupLeft,
+    'justify-end': !!action && !cancel,
+    'justify-between': !!action && !!cancel,
   }
 })
 </script>
@@ -60,6 +51,7 @@ const footerClasses = computed(() => {
 
   :deep(.y-button) {
     @include component(margin-bottom, component(box-shadow-y));
+    border: component(border);
   }
 }
 </style>

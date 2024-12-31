@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import { modalKey, ModalKeyInterface } from '@/components/data-display/modal/types'
+import { modalKey, ModalKeyInterface } from '@/components/overlays/modal/types'
 import { inject } from 'vue'
 
 export function useModal() {

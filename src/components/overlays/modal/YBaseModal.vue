@@ -27,7 +27,7 @@
 </template>
 
 <script lang="ts" setup>
-import { YModalFooter, YModalHeader } from '@/components/data-display/modal'
+import { YModalFooter, YModalHeader } from '@/components/overlays/modal'
 import { useBaseProps } from '@/composables'
 import { modalDefaultProps } from '@/composables/components'
 import { computed } from 'vue'
@@ -40,8 +40,6 @@ const props = withDefaults(defineProps<BaseModalProps>(), {
   size: YModalSize.Medium,
 })
 
-const hasFooter = computed(() => props.hasButtonGroupLeft || props.hasButtonGroupRight)
-
 // Classes and styling
 const { baseClasses } = useBaseProps(props)
 
@@ -53,7 +51,6 @@ const yModalClasses = computed(() => {
 const yModalHeaderProps = computed<YModalHeaderProps>(() => {
   return {
     hasCloseButton: props.hasCloseButton,
-    hasHeader: props.hasHeader,
     header: props.header,
     hasVerticalHeader: props.hasVerticalHeader,
   }
@@ -61,11 +58,8 @@ const yModalHeaderProps = computed<YModalHeaderProps>(() => {
 
 const yModalFooterProps = computed<YModalFooterProps>(() => {
   return {
-    hasButtonGroupLeft: props.hasButtonGroupLeft,
-    hasButtonGroupRight: props.hasButtonGroupRight,
     actionBtnText: props.actionBtnText,
     cancelBtnText: props.cancelBtnText,
-    leftBtnText: props.leftBtnText,
   }
 })
 </script>
@@ -79,8 +73,12 @@ const yModalFooterProps = computed<YModalFooterProps>(() => {
   padding: 0;
   position: fixed;
   z-index: 1001;
-  border: component(border);
-  background-color: component(bg-color);
+  border: 4px solid color(main-dark);
+  @include component(border-width, 4px);
+  background-color: color(main-dark);
+  background-color: color(bg);
+  display: flex;
+  flex-direction: column;
 }
 
 .y-modal {
@@ -89,7 +87,7 @@ const yModalFooterProps = computed<YModalFooterProps>(() => {
   left: 50%;
   transform: translate(-50%, -50%);
   max-width: 100%;
-  max-height: 100%;
+  max-height: calc(100svh - 5%);
 }
 
 .y-drawer {
@@ -99,8 +97,7 @@ const yModalFooterProps = computed<YModalFooterProps>(() => {
   height: 100svh;
   right: 0;
   width: clamp(260px, 65%, 896px);
-  display: flex;
-  flex-direction: column;
+
   transition: transform 0.5s ease;
 
   .y-modal-content {
@@ -110,5 +107,21 @@ const yModalFooterProps = computed<YModalFooterProps>(() => {
 
 .y-modal-content {
   padding: space(sm) space(md);
+  overflow-y: auto;
+  scrollbar-width: 3px;
+  scrollbar-color: component(color);
+  scrollbar-gutter: stable both-edges;
+
+  // custom scrollbar
+  &::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 3px;
+    background-color: color(primary);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: component(color);
+    box-shadow: 0 0 1px rgba(255, 255, 255, 0.5);
+  }
 }
 </style>

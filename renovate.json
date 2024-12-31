@@ -6,11 +6,6 @@
   "branchPrefix": "renovate/",
   "packageRules": [
     {
-      "matchDepTypes": ["dependencies", "devDependencies"],
-      "matchUpdateTypes": ["major"],
-      "enabled": false
-    },
-    {
       "matchDepTypes": ["dependencies"],
       "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
       "automergeType": "branch",

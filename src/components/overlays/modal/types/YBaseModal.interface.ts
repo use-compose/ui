@@ -25,16 +25,12 @@ export interface BaseModalProps extends ThemeComponentBaseProps {
   hasVerticalHeader?: boolean
 
   // Body specific props
-  hasMainSlot?: boolean
   mainSlot?: string
 
   // Footer specific props
   hasFooter?: boolean
-  hasButtonGroupRight?: boolean
-  hasButtonGroupLeft?: boolean
   actionBtnText?: string
   cancelBtnText?: string
-  leftBtnText?: string
 
   // Modal specific props
   size?: YModalSize
@@ -49,11 +45,8 @@ export interface YModalHeaderProps {
 }
 
 export interface YModalFooterProps {
-  hasButtonGroupLeft?: boolean
-  hasButtonGroupRight?: boolean
   actionBtnText?: string
   cancelBtnText?: string
-  leftBtnText?: string
 }
 
 export interface ModalSlotOptions {

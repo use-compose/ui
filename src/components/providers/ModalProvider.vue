@@ -17,10 +17,10 @@
 
 <script setup lang="ts">
 import { provide, reactive } from 'vue'
-import { YModal } from '../data-display/modal'
-import { YModalSize } from '../data-display/modal/types'
-import { modalKey, ModalState, ShowModalParams } from '../data-display/modal/types/modal-symbol'
-import { allowScroll, preventScroll } from '../data-display/modal/utils'
+import { YModal } from '../overlays/modal'
+import { YModalSize } from '../overlays/modal/types'
+import { modalKey, ModalState, ShowModalParams } from '../overlays/modal/types/modal-symbol'
+import { allowScroll, preventScroll } from '../overlays/modal/utils'
 
 // Define the modal state
 const modalState = reactive<ModalState>({

@@ -20,7 +20,7 @@
 // TODO: resolve alias
 import { useBaseProps } from '@/composables'
 import { basePropsDefault } from '@/composables/use-base-props'
-import { ThemeComponentBaseProps } from '@/utils/base-props'
+import { ThemeComponentBaseProps } from '@/types/base-props'
 import { computed, onMounted, ref } from 'vue'
 
 export interface YInputProps extends ThemeComponentBaseProps {
@@ -46,7 +46,7 @@ const { baseClasses } = useBaseProps(props)
 
 const yInputClasses = computed(() => {
   return [
-    { ...baseClasses.value },
+    [...baseClasses.value],
     'y-input',
     props.hero ? 'y-input--hero' : '',
     // props.noBorder ? 'no-border' : '',

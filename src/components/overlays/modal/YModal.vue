@@ -44,11 +44,10 @@ const emit: (event: string, ...args: any[]) => void = defineEmits([
   'close',
   'action',
   'cancel',
-  'leftAction',
 ])
 
 const attrs = useAttrs()
-console.log('📟 - file: YModal.vue:51 - attrs → ', attrs)
+console.log('📟 - file: YModal.vue:51 - attrs → ', attrs.onCancel)
 // const { open, close, isVisible } = useModal({ attrs: props, emit })
 
 // We first declare open and close which are always always available
@@ -71,7 +70,7 @@ const modalActions: ModalActionsKeyInterface = {
 function cancel() {
   emit('cancel')
 }
-if (attrs.cancel) {
+if (attrs.onCancel) {
   modalActions.cancel = cancel
 }
 
@@ -80,13 +79,6 @@ function action() {
 }
 if (attrs.action) {
   modalActions.action = action
-}
-
-function leftAction() {
-  emit('leftAction')
-}
-if (attrs.leftAction) {
-  modalActions.leftAction = leftAction
 }
 
 // We wrap the value from the v-model in a computed property

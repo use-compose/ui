@@ -35,6 +35,5 @@ const { close } = inject(modalActionsKey) as ModalActionsKeyInterface
   font-family: gotham;
   text-transform: uppercase;
   padding: space(sm) space(md);
-  // border-bottom:;
 }
 </style>

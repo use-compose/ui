@@ -38,7 +38,13 @@ const renderGenericStory: Story = {
       return { args }
     },
   }),
-  args: {},
+  args: {
+    size: 'medium',
+    color: 'primary',
+    variant: 'contained',
+    disabled: false,
+    raw: false,
+  },
 }
 
 const { Default, Outlined, Disabled, Raw, Large, Small } = generateCommonStories(renderGenericStory)

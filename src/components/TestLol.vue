@@ -153,10 +153,43 @@
       v-model="showComplexModal"
       :hasFooter="true"
       header="Custom header"
+      has
       @close="closeComplexModal"
       @action="console.log('Action!')"
+      @cancel="console.log('Cancel!')"
+      @leftAction="console.log('Left Action!')"
     >
       <!-- Complex Form as Main Slot -->
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus ut quidem vero debitis
+        eligendi corporis! Sint exercitationem ipsam temporibus earum obcaecati, omnis, numquam
+        minima ducimus sit itaque, minus optio nemo?
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus ut quidem vero debitis
+        eligendi corporis! Sint exercitationem ipsam temporibus earum obcaecati, omnis, numquam
+        minima ducimus sit itaque, minus optio nemo?
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus ut quidem vero debitis
+        eligendi corporis! Sint exercitationem ipsam temporibus earum obcaecati, omnis, numquam
+        minima ducimus sit itaque, minus optio nemo?
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus ut quidem vero debitis
+        eligendi corporis! Sint exercitationem ipsam temporibus earum obcaecati, omnis, numquam
+        minima ducimus sit itaque, minus optio nemo?
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus ut quidem vero debitis
+        eligendi corporis! Sint exercitationem ipsam temporibus earum obcaecati, omnis, numquam
+        minima ducimus sit itaque, minus optio nemo?
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus ut quidem vero debitis
+        eligendi corporis! Sint exercitationem ipsam temporibus earum obcaecati, omnis, numquam
+        minima ducimus sit itaque, minus optio nemo?
+      </p>
       <p>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus ut quidem vero debitis
         eligendi corporis! Sint exercitationem ipsam temporibus earum obcaecati, omnis, numquam
@@ -181,13 +214,77 @@
         eligendi corporis! Sint exercitationem ipsam temporibus earum obcaecati, omnis, numquam
         minima ducimus sit itaque, minus optio nemo?
       </p>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus ut quidem vero debitis
+        eligendi corporis! Sint exercitationem ipsam temporibus earum obcaecati, omnis, numquam
+        minima ducimus sit itaque, minus optio nemo?
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus ut quidem vero debitis
+        eligendi corporis! Sint exercitationem ipsam temporibus earum obcaecati, omnis, numquam
+        minima ducimus sit itaque, minus optio nemo?
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus ut quidem vero debitis
+        eligendi corporis! Sint exercitationem ipsam temporibus earum obcaecati, omnis, numquam
+        minima ducimus sit itaque, minus optio nemo?
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus ut quidem vero debitis
+        eligendi corporis! Sint exercitationem ipsam temporibus earum obcaecati, omnis, numquam
+        minima ducimus sit itaque, minus optio nemo?
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus ut quidem vero debitis
+        eligendi corporis! Sint exercitationem ipsam temporibus earum obcaecati, omnis, numquam
+        minima ducimus sit itaque, minus optio nemo?
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus ut quidem vero debitis
+        eligendi corporis! Sint exercitationem ipsam temporibus earum obcaecati, omnis, numquam
+        minima ducimus sit itaque, minus optio nemo?
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus ut quidem vero debitis
+        eligendi corporis! Sint exercitationem ipsam temporibus earum obcaecati, omnis, numquam
+        minima ducimus sit itaque, minus optio nemo?
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus ut quidem vero debitis
+        eligendi corporis! Sint exercitationem ipsam temporibus earum obcaecati, omnis, numquam
+        minima ducimus sit itaque, minus optio nemo?
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus ut quidem vero debitis
+        eligendi corporis! Sint exercitationem ipsam temporibus earum obcaecati, omnis, numquam
+        minima ducimus sit itaque, minus optio nemo?
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus ut quidem vero debitis
+        eligendi corporis! Sint exercitationem ipsam temporibus earum obcaecati, omnis, numquam
+        minima ducimus sit itaque, minus optio nemo?
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus ut quidem vero debitis
+        eligendi corporis! Sint exercitationem ipsam temporibus earum obcaecati, omnis, numquam
+        minima ducimus sit itaque, minus optio nemo?
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus ut quidem vero debitis
+        eligendi corporis! Sint exercitationem ipsam temporibus earum obcaecati, omnis, numquam
+        minima ducimus sit itaque, minus optio nemo?
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus ut quidem vero debitis
+        eligendi corporis! Sint exercitationem ipsam temporibus earum obcaecati, omnis, numquam
+        minima ducimus sit itaque, minus optio nemo?
+      </p>
     </YModal>
   </Wrapper>
 </template>
 
 <script setup lang="ts">
 import {
-  Column,
   Container,
   Flex,
   Wrapper,
@@ -199,7 +296,7 @@ import {
 } from '@/components'
 import { useModal } from '@/composables'
 import { ref } from 'vue'
-import { YModalSize } from './data-display/modal/types'
+import { YModalSize } from './overlays/modal/types'
 
 const count = ref(0)
 const input = ref('')
