@@ -1,8 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
 
 import { useThemeComponentStory } from '@/composables'
-import { action } from '@storybook/addon-actions'
-import type { BaseModalProps } from './types/YBaseModal.interface'
+import { YModalSize, YModalType, type BaseModalProps } from './types/YBaseModal.interface'
 import YBaseModal from './YBaseModal.vue'
 
 const { commonArgTypes, generateCommonStories } = useThemeComponentStory(YBaseModal)
@@ -18,27 +17,17 @@ const meta: Meta<typeof YBaseModal> = {
     hasCloseButton: { control: 'boolean' },
     hasHeader: { control: 'boolean' },
     header: { control: 'text' },
-    hasMainSlot: { control: 'boolean' },
     mainSlot: { control: 'text' },
     hasFooter: { control: 'boolean' },
-    hasButtonGroupRight: { control: 'boolean' },
-    hasButtonGroupLeft: { control: 'boolean' },
-    hasAction: { control: 'boolean' },
-    action: { action: 'handleClick' },
     size: { control: 'text' },
     type: { control: 'text' },
   },
   args: {
     hasCloseButton: false,
     hasHeader: false,
-    hasMainSlot: false,
     hasFooter: false,
-    hasButtonGroupRight: false,
-    hasButtonGroupLeft: false,
-    hasAction: false,
-    action: action('onClick'),
-    size: 'medium',
-    type: 'default',
+    size: YModalSize.Medium,
+    type: YModalType.Default,
   },
 }
 
@@ -65,10 +54,9 @@ const Default: Story = {
   args: {
     hasHeader: true,
     header: 'Modal Component',
-    size: 'medium',
   },
 }
 
-const { Outlined, Raw } = generateCommonStories(renderGenericStory)
+const { Outlined, Raw } = generateCommonStories(Default)
 
 export { Default, Outlined, Raw }

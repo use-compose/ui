@@ -2,54 +2,50 @@
   <!-- Render slot content as the main app content -->
   <slot />
 
-  <!-- Only render YBaseModal when a component is passed to `openModal` -->
-  <Teleport to="body">
-    <YOverlay v-if="modalState.isVisible" @click="close" />
+  <YModal v-model="modalState.isVisible" v-bind="modalState.props">
+    <template #header>
+      <slot name="header" />
+    </template>
 
-    <Transition appear :name="transitionName">
-      <YBaseModal v-if="modalState.isVisible" v-bind="modalState.props" @close="close">
-        <!-- Render the dynamic component passed to openModal -->
-        <Component :is="modalState.component" v-if="modalState.component" />
-      </YBaseModal>
-    </Transition>
-  </Teleport>
+    {{ modalState.content }}
+
+    <template #footer>
+      <slot name="footer" />
+    </template>
+  </YModal>
 </template>
 
 <script setup lang="ts">
-import { YOverlay } from '@/components/overlays'
-import { computed, markRaw, provide, reactive } from 'vue'
-import { YBaseModal } from '../data-display'
-import { modalKey, ModalState, ShowModalParams } from '../data-display/modal/types/modal-symbol'
-import { allowScroll, preventScroll } from '../data-display/modal/utils/prevent-scroll'
-
-const transitionName = computed(() => {
-  return 'fade'
-})
+import { provide, reactive } from 'vue'
+import { YModal } from '../overlays/modal'
+import { YModalSize } from '../overlays/modal/types'
+import { modalKey, ModalState, ShowModalParams } from '../overlays/modal/types/modal-symbol'
+import { allowScroll, preventScroll } from '../overlays/modal/utils'
 
 // Define the modal state
 const modalState = reactive<ModalState>({
   isVisible: false,
-  component: undefined,
+  content: undefined,
   props: {},
-  slots: {},
 })
 
 const defaultShowModalParams: ShowModalParams = {
-  component: `<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+  content: `<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
   Est modi, earum vel quo architecto numquam reprehenderit nesciunt tempore!
   Enim eaque et tempore, voluptas fugit reprehenderit beatae commodi aliquam eveniet amet.</p>`,
   props: {
     hasHeader: true,
     header: 'Modal Component',
-    size: 'medium',
+    size: YModalSize.Medium,
   },
 }
 
 // Function to open modal with dynamic component and props
-function show({ component, props, slots }: ShowModalParams = defaultShowModalParams) {
-  modalState.component = markRaw(component)
+function show({ content, props }: ShowModalParams = defaultShowModalParams) {
+  console.log('🚀 - file: ModalProvider.vue - line 41 - show - content', content)
+  console.log('🚀 - file: ModalProvider.vue - line 42 - show - props', props)
+  modalState.content = content
   modalState.props = props
-  modalState.slots = slots
   modalState.isVisible = true
   preventScroll()
 }

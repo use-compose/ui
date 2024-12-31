@@ -1,0 +1,31 @@
+name: Run Tests - Accessibility
+on:
+  pull_request:
+    branches:
+      - main
+      - dev
+# https://zellwk.com/blog/github-actions-deploy/
+jobs:
+  test-playwright:
+    if: ${{ ! startsWith(github.event.pull_request.head.ref, 'renovate/') }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Install Playwright
+        run: npx playwright install --with-deps
+
+      - name: Run Storybook tests
+        run: yarn test-storybook
+        env:
+          TARGET_URL: 'https://compose-ui.arthurplazanet.com/'

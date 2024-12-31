@@ -10,15 +10,15 @@ const config: StorybookConfig = {
     '@storybook/addon-essentials',
     '@storybook/addon-interactions',
     '@chromatic-com/storybook',
+    // '@storybook/addon-docs',
     '@storybook/addon-designs',
+    '@storybook/addon-a11y'
   ],
   framework: {
     name: '@storybook/vue3-vite',
     options: {},
   },
-  docs: {
-    autodocs: 'tag',
-  },
+  docs: {},
   async viteFinal(config) {
     return mergeConfig(config, {
       // css: {

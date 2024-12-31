@@ -1,19 +1,17 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
 
-import { useThemeComponentStory } from '@/composables'
+import { YButton } from '@/components'
 import { action } from '@storybook/addon-actions'
+import { ref } from 'vue'
 import YOverlay, { YOverlayProps } from './YOverlay.vue'
-
-const { commonArgTypes } = useThemeComponentStory(YOverlay)
 
 // More on how to set up stories at: https://storybook.js.org/docs/vue/writing-stories/introduction
 const meta: Meta<typeof YOverlay> = {
-  title: 'Compose/feedback/YOverlay',
+  title: 'Compose/Overlays/YOverlay',
   component: YOverlay,
   // This component will have an automatically generated docsPage entry: https://storybook.js.org/docs/vue/writing-docs/autodocs
   tags: ['autodocs'],
   argTypes: {
-    ...commonArgTypes,
     onClick: { action: 'handleClick' },
     color: { control: 'color' },
     opacity: { control: 'number' },
@@ -30,15 +28,29 @@ type Story = StoryObj<typeof meta>
 
 const renderGenericStory: Story = {
   render: (args: YOverlayProps, { argTypes }) => ({
-    components: { YOverlay },
+    components: { YOverlay, YButton },
     props: Object.keys(argTypes),
     template: `
-    <YOverlay v-bind="args" />
-  `,
+         <div>
+           <YButton @click="open">Open Overlay</YButton>
+           <YOverlay v-bind="args" v-model="isVisible" @click="close">
+         </div>
+       `,
     setup() {
-      return { args }
+      const isVisible = ref(false)
+
+      const open = () => {
+        isVisible.value = true
+      }
+
+      const close = () => {
+        isVisible.value = false
+      }
+
+      return { args, open, close, isVisible }
     },
   }),
+
   args: {},
 }
 
