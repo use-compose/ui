@@ -1,11 +1,11 @@
 <template>
-  <div>
+  <div class="app-compose">
     <slot />
   </div>
 </template>
 
 <script lang="ts" setup>
-import { useComposeTheme, useTheme } from '@/composables/use-compose-theme'
+import { useComposeTheme } from '@/composables/use-compose-theme'
 import { YTheme } from '@/types'
 
 interface AppComposeProps {

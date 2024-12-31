@@ -8,7 +8,10 @@ h2,
 h3,
 h4,
 h5 {
-  overflow-wrap: break-word;
+  // overflow-wrap: break-word;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 button,

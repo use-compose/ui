@@ -7,7 +7,7 @@
 <script setup lang="ts">
 // TODO: resolve alias
 import { basePropsDefault, useBaseProps } from '@/composables/use-base-props'
-import { ThemeComponentBaseProps } from '@/utils/base-props'
+import { ThemeComponentBaseProps } from '@/types/base-props'
 import { computed, defineProps, withDefaults } from 'vue'
 
 export interface YButtonProps extends ThemeComponentBaseProps {}
@@ -19,7 +19,7 @@ const props = withDefaults(defineProps<YButtonProps>(), {
 const { baseClasses } = useBaseProps(props)
 
 const getClasses = computed(() => {
-  return [{ ...baseClasses.value }, 'y-button']
+  return [[...baseClasses.value], 'y-button']
 })
 
 // listen to click event

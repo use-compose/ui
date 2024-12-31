@@ -1,21 +1,39 @@
-import { ThemeComponentBaseProps } from '@/utils/base-props'
+import { Color, Size, ThemeComponentBaseProps, Variant } from '@/types/base-props'
 import { computed } from 'vue'
 
-enum BasePropClasses {
-  disabled = '-disabled',
-  raw = '-raw',
-  outlined = '-outlined',
-  interactive = '-interactive',
-  small = '-small',
-  medium = '-medium',
-  large = '-large',
-  color = '-primary',
+export enum BasePropClasses {
+  Disabled = '-disabled',
+  Raw = '-raw',
+  Outlined = '-outlined',
+  Text = '-text',
+  Interactive = '-interactive',
+  Small = '-small',
+  Medium = '-medium',
+  Large = '-large',
+  Color = '-primary',
+}
+
+const variantClasses: { [key in Variant]: string } = {
+  contained: '',
+  outlined: BasePropClasses.Outlined,
+  text: '',
+}
+
+const sizeClasses: { [key in Size]: string } = {
+  small: BasePropClasses.Small,
+  medium: BasePropClasses.Medium,
+  large: BasePropClasses.Large,
+}
+
+const colorClasses: { [key in Color]: string } = {
+  primary: BasePropClasses.Color,
+  secondary: '-secondary',
+  danger: '',
 }
 
 export const basePropsDefault: ThemeComponentBaseProps = {
   disabled: false,
-  raw: false,
-  outlined: false,
+  variant: 'contained',
   interactive: false,
   size: 'medium',
   color: 'primary',
@@ -23,22 +41,20 @@ export const basePropsDefault: ThemeComponentBaseProps = {
 
 export function useBaseProps(props: ThemeComponentBaseProps) {
   const baseClasses = computed(() => {
-    const { disabled, raw, outlined, interactive, size, color } = props
+    const { disabled, raw, interactive, size, color, variant } = props
 
-    const sizeProp =
-      size === 'small'
-        ? BasePropClasses.small
-        : size === 'large'
-          ? BasePropClasses.large
-          : BasePropClasses.medium
-    return {
-      [BasePropClasses.disabled]: disabled,
-      [BasePropClasses.raw]: raw,
-      [BasePropClasses.outlined]: outlined,
-      [BasePropClasses.interactive]: interactive,
-      [BasePropClasses.color]: color,
-      [sizeProp]: true,
-    }
+    const variantClass = variant ? variantClasses[variant] : ''
+    const sizeClass = size ? sizeClasses[size] : ''
+    const colorClass = color ? colorClasses[color] : ''
+
+    return [
+      disabled ? BasePropClasses.Disabled : '',
+      raw ? BasePropClasses.Raw : '',
+      interactive ? BasePropClasses.Interactive : '',
+      variantClass,
+      sizeClass,
+      colorClass,
+    ]
   })
 
   return {

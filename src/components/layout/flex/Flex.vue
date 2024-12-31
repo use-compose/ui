@@ -18,7 +18,8 @@ interface FlexProps {
     | 'space-evenly'
     | 'stretch'
     | 'normal'
-  align: 'flex-start' | 'flex-end' | 'center' | 'baseline' | 'stretch' | 'normal'
+  align?: 'flex-start' | 'flex-end' | 'center' | 'baseline' | 'stretch' | 'normal'
+  gap?: string
 }
 
 const props = withDefaults(defineProps<FlexProps>(), {
@@ -36,6 +37,7 @@ const flexStyle = computed(() => {
     '--direction': props.direction,
     '--justifyContent': props.justify,
     '--alignItems': props.align,
+    '--layout-gap': props.gap,
   }
 })
 
@@ -79,7 +81,7 @@ const flexStyle = computed(() => {
   flex-flow: var(--direction) wrap;
   align-items: var(--alignItems);
   justify-content: var(--justifyContent);
-  gap: var(--flex-gap);
+  gap: layout(gap);
   padding: space(sm) 0;
 }
 </style>

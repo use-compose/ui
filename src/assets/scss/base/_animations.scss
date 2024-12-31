@@ -1,5 +1,3 @@
-// Vue transitions
-
 // Fade
 .fade-enter-active,
 .fade-leave-active {
@@ -9,4 +7,56 @@
 .fade-enter-from,
 .fade-leave-to {
   opacity: 0;
+}
+
+.drawer-slide-enter-active {
+  animation: drawer-slide-in 0.5s ease;
+}
+.drawer-slide-leave-active {
+  animation: drawer-slide-out 0.5s ease;
+}
+
+.drawer-slide-enter-from,
+.drawer-slide-leave-to {
+  transform: translateX(100%);
+}
+
+@keyframes modal-fade-out {
+  from {
+    --modal-opacity: 100%;
+    --modal-z-index: 100;
+  }
+  to {
+    --modal-opacity: 0%;
+    --modal-z-index: 0;
+  }
+}
+
+@keyframes modal-fade-in {
+  from {
+    --modal-opacity: 0%;
+    --modal-z-index: 0;
+  }
+  to {
+    --modal-opacity: 100%;
+    --modal-z-index: 100;
+  }
+}
+
+@keyframes drawer-slide-out {
+  from {
+    transform: translateX(0%);
+  }
+  to {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes drawer-slide-in {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0%);
+  }
 }
