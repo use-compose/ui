@@ -5,7 +5,7 @@ export { default as HelloWorld } from './HelloWorld.vue'
 export { Container, Flex, Wrapper } from './layout'
 
 // form
-export { YButton, YInput } from './form'
+export { YButton, YCheckbox, YInput } from './form'
 // YCheckbox, YColorInput,
 
 // data-display

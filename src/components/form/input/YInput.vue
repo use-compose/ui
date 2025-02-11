@@ -89,7 +89,7 @@ onMounted(() => {
 
 .y-input {
   @include theme-component;
-  @include interactive-component;
+
   @include component(bg-color, color(main-dark));
   @include component(color, color(primary));
   @include component(padding-y, space(sm));

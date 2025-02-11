@@ -68,9 +68,9 @@ body {
   --space-xxs: calc(0.25 * var(--space-unit));
   --space-xs: calc(0.5 * var(--space-unit));
   --space-sm: calc(0.75 * var(--space-unit));
-  --space-md: calc(1.25 * var(--space-unit));
-  --space-lg: calc(2 * var(--space-unit));
-  --space-xl: calc(3.25 * var(--space-unit));
+  --space-md: calc(1.25 * var(--space-unit)); // 20px
+  --space-lg: calc(2 * var(--space-unit)); // 32px
+  --space-xl: calc(3.25 * var(--space-unit)); // 52px
   --space-xxl: calc(5.25 * var(--space-unit));
 }
 
@@ -158,7 +158,7 @@ body {
   'color',
   (
     // primary: #fbe134,
-    primsqsdary: var(--color-primary),
+    primary: var(--color-primary),
     // main-dark: #0b0c0c,
     main-dark: var(--color-main-dark),
     dark-50: color-mix(in srgb, utils.color(main-dark) 70%, transparent),
@@ -214,6 +214,7 @@ body {
 @include utils.cssvars(
   'component',
   (
+    height: 2.625rem,
     box-shadow-x: var(--theme-base-unit-calc),
     box-shadow-y: var(--theme-base-unit-calc),
     bg-opacity: 1,
@@ -235,7 +236,7 @@ body {
 );
 
 @mixin theme-component {
-  padding: utils.component(padding-y) utils.component(padding-x);
+  padding: utils.component(padding, utils.component(padding-y) utils.component(padding-x));
   border: utils.component(border-width) solid utils.component(border-color);
   border-radius: utils.theme(border-radius);
   background-color: hsla(from utils.component(bg-color) h s l / utils.component(bg-opacity));
@@ -250,13 +251,15 @@ body {
   }
 
   &.-small {
-    @include component(padding-y, space(xs));
+    // @include component(padding-y, space(xs));
     @include component(padding-x, space(xs));
+    @include component(height, 2rem); // 32px
   }
 
   &.-large {
-    @include component(padding-y, space(md));
+    // @include component(padding-y, space(md));
     @include component(padding-x, space(md));
+    @include component(height, 3rem); // 48px
   }
   &.-disabled {
     opacity: 0.5;
@@ -271,10 +274,6 @@ body {
 
   &.-raw {
     @include raw-component;
-  }
-
-  &.-interactive {
-    @include interactive-component;
   }
 }
 
@@ -416,5 +415,18 @@ $breakpoints: (
   'layout',
   (
     gap: utils.space(sm),
+  )
+);
+
+// -----------------------------------------------------------------------------
+
+// 8 - Components
+// Used for specific Components (Buttons, Inputs, etc.)
+
+@include utils.cssvars(
+  'y-btn',
+  (
+    height: 2.625rem,
+    // 42px
   )
 );

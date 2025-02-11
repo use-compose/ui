@@ -1,13 +1,13 @@
 // Accessors for CSS Custom Properties
 
 //  Colors
-@function color($name, $prefix: color, $fallback: '') {
+@function color($name, $fallback: '', $prefix: color) {
   @return var(--#{$prefix}-#{$name}, #{$fallback});
 }
 
 //  Components
-@function component($name, $prefix: component) {
-  @return var(--#{$prefix}-#{$name});
+@function component($name, $prefix: component, $fallback: '') {
+  @return var(--#{$prefix}-#{$name}, #{$fallback});
 }
 
 //  Typography
@@ -40,5 +40,15 @@
 
 // Layout
 @function layout($name, $prefix: layout) {
+  @return var(--#{$prefix}-#{$name});
+}
+
+// Button
+@function y-btn($name, $prefix: y-btn) {
+  @return var(--#{$prefix}-#{$name});
+}
+
+// Checkbox
+@function y-checkbox($name, $prefix: y-checkbox) {
   @return var(--#{$prefix}-#{$name});
 }

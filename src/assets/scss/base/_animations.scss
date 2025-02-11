@@ -1,7 +1,9 @@
+@use '../utils' as utils;
+
 // Fade
 .fade-enter-active,
 .fade-leave-active {
-  transition: opacity 0.5s ease;
+  transition: opacity 0.5s;
 }
 
 .fade-enter-from,
@@ -58,5 +60,27 @@
   }
   to {
     transform: translateX(0%);
+  }
+}
+
+@keyframes checked-in {
+  0% {
+    transform: scale(0);
+    background-color: transparent;
+  }
+  100% {
+    transform: scale(1);
+    background-color: utils.color(main-dark, black);
+  }
+}
+
+@keyframes checked-out {
+  0% {
+    transform: scale(1);
+    background-color: utils.color(main-dark, black);
+  }
+  100% {
+    transform: scale(0);
+    background-color: transparent;
   }
 }

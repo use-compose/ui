@@ -4,7 +4,6 @@ type Variant = 'contained' | 'outlined' | 'text'
 
 interface ThemeComponentBaseProps {
   disabled?: boolean
-  interactive?: boolean
   raw?: boolean
   size?: Size
   color?: Color
