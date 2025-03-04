@@ -69,7 +69,7 @@
     "@typescript-eslint/parser": "6.21.0",
     "@vitejs/plugin-vue": "4.6.2",
     "axe-playwright": "^2.0.3",
-    "chromatic": "11.26.1",
+    "chromatic": "11.27.0",
     "eslint": "8.57.1",
     "eslint-config-prettier": "9.1.0",
     "eslint-plugin-prettier": "5.2.3",
