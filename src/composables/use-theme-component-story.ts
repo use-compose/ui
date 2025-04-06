@@ -27,7 +27,6 @@ type Story = StoryObj<Component>
 export function useThemeComponentStory<T extends ThemeComponentBaseProps>(component: Component) {
   const commonArgs: ThemeComponentBaseProps = {
     disabled: false,
-    interactive: false,
     raw: false,
     size: 'medium',
     color: 'primary',
@@ -36,7 +35,6 @@ export function useThemeComponentStory<T extends ThemeComponentBaseProps>(compon
 
   const commonArgTypes: ArgTypes = {
     disabled: { control: 'boolean' },
-    interactive: { control: 'boolean' },
     raw: { control: 'boolean' },
     size: { control: 'select', options: ['small', 'medium', 'large'] },
     color: { control: 'select', options: ['primary', 'secondary', 'default'] },
@@ -52,7 +50,7 @@ export function useThemeComponentStory<T extends ThemeComponentBaseProps>(compon
   const renderDefaultStory: Story = {
     render: (args: T) => ({
       components: { component },
-      template: '<Component :is="component" v-bind="args" />',
+      template: '<component  v-bind="args" />',
       setup() {
         return { args }
       },
@@ -66,7 +64,6 @@ export function useThemeComponentStory<T extends ThemeComponentBaseProps>(compon
     Outlined: Story
     Disabled: Story
     Raw: Story
-    Interactive: Story
     Large: Story
     Small: Story
   } {
@@ -95,11 +92,6 @@ export function useThemeComponentStory<T extends ThemeComponentBaseProps>(compon
       args: { ...commonArgs, ...componentBaseStory.args, raw: true },
     }
 
-    const Interactive: Story = {
-      ...componentBaseStory,
-      args: { ...commonArgs, ...componentBaseStory.args, interactive: true },
-    }
-
     const Large: Story = {
       ...componentBaseStory,
       args: { ...commonArgs, ...componentBaseStory.args, size: 'large' },
@@ -116,7 +108,6 @@ export function useThemeComponentStory<T extends ThemeComponentBaseProps>(compon
       Outlined,
       Disabled,
       Raw,
-      Interactive,
       Large,
       Small,
     }

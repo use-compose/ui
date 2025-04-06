@@ -35,26 +35,36 @@
 // CSS Custom properties modifiers
 
 //  Spacing
-@mixin space($name, $value: "", $prefix: space) {
+@mixin space($name, $value: '', $prefix: space) {
   --#{$prefix}-#{$name}: #{$value};
 }
 
 //  Typography
-@mixin text($name, $value: "", $prefix: text) {
+@mixin text($name, $value: '', $prefix: text) {
   --#{$prefix}-#{$name}: #{$value};
 }
 
 // Colors
-@mixin color($name, $value: "", $prefix: color) {
+@mixin color($name, $value: '', $prefix: color) {
   --#{$prefix}-#{$name}: #{$value};
 }
 
 // Components
-@mixin component($name, $value: "", $prefix: component) {
+@mixin component($name, $value: '', $prefix: component) {
   --#{$prefix}-#{$name}: #{$value};
 }
 
 // Theme
-@mixin theme($name, $value: "", $prefix: theme) {
+@mixin theme($name, $value: '', $prefix: theme) {
+  --#{$prefix}-#{$name}: #{$value};
+}
+
+// Theme
+@mixin y-btn($name, $value: '', $prefix: y-btn) {
+  --#{$prefix}-#{$name}: #{$value};
+}
+
+// Checkbox
+@mixin y-checkbox($name, $value: '', $prefix: y-checkbox) {
   --#{$prefix}-#{$name}: #{$value};
 }

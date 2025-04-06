@@ -60,7 +60,7 @@
 
     <YInput v-model="input" error error-msg="ERROR" label="Message" placeholder="Message" />
     <YInput v-model="input" label="Message" placeholder="Message" />
-
+    <YCheckbox v-model="checked" label="checkbox" />
     <h5 v-show="showMsg">{{ input }}</h5>
     <Flex style="--flex-gap: 0">
       <Column style="--column-bg: blue; --width-tablet: 3; --width-mobile: 4">
@@ -287,6 +287,7 @@ import {
   Wrapper,
   YButton,
   YCard,
+  YCheckbox,
   // YColorInput,
   YInput,
   YModal,
@@ -295,8 +296,11 @@ import { useModal } from '@/composables'
 import { ref } from 'vue'
 import { YModalSize, YModalType } from './overlays/modal/types'
 
+// const { theme } = useTheme()
+
 const count = ref(0)
 const input = ref('')
+const checked = ref(false)
 // const color = ref('')
 const showMsg = ref(false)
 
@@ -337,3 +341,10 @@ function openDrawer() {
   showDrawer.value = true
 }
 </script>
+<style>
+body {
+  --color-primary: #e3c567;
+  --color-main-dark: #616970;
+  --color-bg: #f8f9fa;
+}
+</style>
