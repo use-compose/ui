@@ -20,7 +20,7 @@ jobs:
           known_hosts: unnecessary
 
       - name: Set Up SSH
-        uses: webfactory/ssh-agent@v0.9.0
+        uses: webfactory/ssh-agent@v0.9.1
         with:
           ssh-private-key: ${{ secrets.SSH_KEY }} # Your SSH key for connecting to servers
 
