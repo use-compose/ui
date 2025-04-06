@@ -48,7 +48,7 @@ const yInputClasses = computed(() => {
   return [
     [...baseClasses.value],
     'y-input',
-    props.hero ? 'y-input--hero' : '',
+    props.hero ? 'y-input-hero' : '',
     // props.noBorder ? 'no-border' : '',
     // props.noMargin ? 'no-margin' : '',
   ]
@@ -103,7 +103,7 @@ onMounted(() => {
     opacity: 0.4;
   }
 
-  &.y-input--hero {
+  &.y-input-hero {
     @include component(bg-color, color(primary));
     @include component(color, color(main-dark));
     @include component(box-shadow, unset);

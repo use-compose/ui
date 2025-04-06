@@ -48,7 +48,6 @@ const handleClick = (e: Event) => {
 
   &.-small {
     @include component(padding-x, space(sm));
-    // @include y-btn(height, compone);
   }
 }
 </style>

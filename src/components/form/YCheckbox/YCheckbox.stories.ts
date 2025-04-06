@@ -22,7 +22,7 @@ const meta = {
     label: { control: 'text' },
     // 'onUpdate:modelValue': { action: 'onInput', control: 'boolean' },
     onBlur: { action: 'handleBlur' },
-    onChange: { action: 'handleInput' },
+    // onChange: { action: 'handleInput' },
   },
   args: {
     ...commonArgs,

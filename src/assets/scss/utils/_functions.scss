@@ -25,13 +25,13 @@
   @return var(--#{$prefix}-#{$name});
 }
 
-@function hslac($color, $alpha) {
-  @if type-of($color) == 'color' {
-    @return hsla(hue($color), saturation($color), lightness($color), $alpha);
-  } @else {
-    @error "You didn't pass a color object";
-  }
-}
+// @function hslac($color, $alpha) {
+//   @if type-of($color) == 'color' {
+//     @return hsla(color.hue($color), saturate($color), lightness($color), $alpha);
+//   } @else {
+//     @error "You didn't pass a color object";
+//   }
+// }
 
 // Sizes
 @function size($name, $prefix: size) {

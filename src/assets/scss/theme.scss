@@ -9,6 +9,7 @@
 */
 @use 'base/base';
 @use 'utils' as utils;
+@use 'sass:map';
 
 @property --color-primary {
   syntax: '<color>';
@@ -27,8 +28,8 @@
 
 :root {
   /* https://dev.to/tracygjg/conditional-css-437e */
-  --TRUE: 1;
-  --FALSE: 0;
+  --true: 1;
+  --false: 0;
 }
 
 body {
@@ -36,7 +37,7 @@ body {
 }
 
 .-raw {
-  --raw: var(--TRUE);
+  --raw: var(--true);
 }
 
 // @use "utils/mixins" as *;
@@ -62,17 +63,17 @@ body {
   */
 
 /* Spacing | Global */
-:root {
-  --space-unit: clamp(1em, 1.5vw, 2em);
-  --space-unit: 1em;
-  --space-xxs: calc(0.25 * var(--space-unit));
-  --space-xs: calc(0.5 * var(--space-unit));
-  --space-sm: calc(0.75 * var(--space-unit));
-  --space-md: calc(1.25 * var(--space-unit)); // 20px
-  --space-lg: calc(2 * var(--space-unit)); // 32px
-  --space-xl: calc(3.25 * var(--space-unit)); // 52px
-  --space-xxl: calc(5.25 * var(--space-unit));
-}
+// :root {
+//   --space-unit: clamp(1em, 1.5vw, 2em);
+//   --space-unit: 1em;
+//   --space-xxs: calc(0.25 * var(--space-unit));
+//   --space-xs: calc(0.5 * var(--space-unit));
+//   --space-sm: calc(0.75 * var(--space-unit));
+//   --space-md: calc(1.25 * var(--space-unit)); // 20px
+//   --space-lg: calc(2 * var(--space-unit)); // 32px
+//   --space-xl: calc(3.25 * var(--space-unit)); // 52px
+//   --space-xxl: calc(5.25 * var(--space-unit));
+// }
 
 @include utils.cssvars(
   'space',
@@ -261,6 +262,7 @@ body {
     @include component(padding-x, space(md));
     @include component(height, 3rem); // 48px
   }
+
   &.-disabled {
     opacity: 0.5;
     cursor: not-allowed;
@@ -275,6 +277,11 @@ body {
   &.-raw {
     @include raw-component;
   }
+
+  // &.-interactive {
+  @include interactive-component;
+
+  // }
 }
 
 @mixin interactive-component {
@@ -300,7 +307,7 @@ body {
 }
 
 @mixin raw-component {
-  // --raw: var(--TRUE);
+  // --raw: var(--true);
   box-shadow: none;
 
   &:hover {
@@ -373,7 +380,7 @@ $breakpoints: (
 }
 
 @mixin media($size) {
-  $query: map-get($breakpoints, $size);
+  $query: map.get($breakpoints, $size);
 
   @media only screen and (min-width: $query) {
     @content;

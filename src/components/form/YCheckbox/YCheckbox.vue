@@ -1,24 +1,23 @@
 <template>
-  <div>
-    <label class="y-label"
-      >{{ label }}s
-      <input
-        class="y-checkbox-label"
-        :class="yCheckboxClasses"
-        ref="yCheckbox"
-        :value="modelValue"
-        type="checkbox"
-        :name="name"
-        :placeholder="placeholder"
-        autocomplete="off"
-        :disabled="props.disabled"
-        @change="handleChange"
-        @blur="handleBlur"
-      />
-      <label v-if="error" class="error-label" :for="name">
-        {{ errorMsg }}
-      </label>
+  <div class="y-checkbox-wrapper">
+    <label class="y-label">{{ label }}</label>
+    <input
+      class="y-checkbox-label"
+      :class="yCheckboxClasses"
+      ref="yCheckbox"
+      :value="modelValue"
+      type="checkbox"
+      :name="name"
+      :placeholder="placeholder"
+      autocomplete="off"
+      :disabled="props.disabled"
+      @change="handleChange"
+      @blur="handleBlur"
+    />
+    <label v-if="error" class="error-label" :for="name">
+      {{ errorMsg }}
     </label>
+    <!-- </label> -->
   </div>
 </template>
 
@@ -47,7 +46,7 @@ const props = withDefaults(defineProps<YCheckboxProps>(), {
 const { baseClasses } = useBaseProps(props)
 
 const yCheckboxClasses = computed(() => {
-  return [[...baseClasses.value], 'y-checkbox', props.hero ? 'y-input--hero' : '']
+  return [[...baseClasses.value], 'y-checkbox', props.hero ? 'y-input-hero' : '']
 })
 
 // listen to input event
@@ -114,14 +113,32 @@ onMounted(() => {
     width: 80%;
     top: 10%;
     left: 10%;
+
+    animation: var(--y-checkbox-animation);
   }
 
-  &:checked::before {
-    animation: checked-in 0.3s 0s forwards;
-  }
+  // &:checked {
+  //   --y-checkbox-animation: var(--animate-checked-in);
+  // }
 
-  &:not(:checked)::before {
-    animation: checked-out 0.3s 0s forwards;
-  }
+  // &:not(:checked) {
+  //   --y-checkbox-animation: var(--animate-checked-out);
+  // }
+}
+
+.y-checkbox-wrapper .y-checkbox {
+  --first-render: 0;
+  --animate-checked-in: checked-in 0.3s 0s forwards;
+  --animate-checked-out: checked-out 0.3s 0s forwards;
+}
+
+.y-checkbox-wrapper:has(.y-checkbox:checked),
+.y-checkbox-wrapper:has(.y-checkbox:checked) .y-checkbox {
+  --y-checkbox-animation: var(--animate-checked-in);
+  --first-render: 1;
+}
+
+.y-checkbox-wrapper:has(.y-checkbox:not(:checked)) .y-checkbox::before {
+  --y-checkbox-animation: calc(var(--animate-checked-out) * var(--first-render));
 }
 </style>
