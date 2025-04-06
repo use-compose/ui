@@ -1,7 +1,9 @@
+@use '../utils' as utils;
+
 // Fade
 .fade-enter-active,
 .fade-leave-active {
-  transition: opacity 0.5s ease;
+  transition: opacity 0.5s;
 }
 
 .fade-enter-from,
@@ -12,6 +14,7 @@
 .drawer-slide-enter-active {
   animation: drawer-slide-in 0.5s ease;
 }
+
 .drawer-slide-leave-active {
   animation: drawer-slide-out 0.5s ease;
 }
@@ -26,6 +29,7 @@
     --modal-opacity: 100%;
     --modal-z-index: 100;
   }
+
   to {
     --modal-opacity: 0%;
     --modal-z-index: 0;
@@ -37,6 +41,7 @@
     --modal-opacity: 0%;
     --modal-z-index: 0;
   }
+
   to {
     --modal-opacity: 100%;
     --modal-z-index: 100;
@@ -47,6 +52,7 @@
   from {
     transform: translateX(0%);
   }
+
   to {
     transform: translateX(100%);
   }
@@ -56,7 +62,32 @@
   from {
     transform: translateX(100%);
   }
+
   to {
     transform: translateX(0%);
+  }
+}
+
+@keyframes checked-in {
+  0% {
+    transform: scale(0);
+    background-color: transparent;
+  }
+
+  100% {
+    transform: scale(1);
+    background-color: utils.color(main-dark, black);
+  }
+}
+
+@keyframes checked-out {
+  0% {
+    transform: scale(1);
+    background-color: utils.color(main-dark, black);
+  }
+
+  100% {
+    transform: scale(0);
+    background-color: transparent;
   }
 }

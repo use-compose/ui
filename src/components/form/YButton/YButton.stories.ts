@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
 
 import { useThemeComponentStory } from '@/composables'
-import { action } from '@storybook/addon-actions'
 import YButton, { YButtonProps } from './YButton.vue'
 
 const { commonArgTypes, generateCommonStories } = useThemeComponentStory(YButton)
@@ -19,7 +18,7 @@ const meta: Meta<typeof YButton> = {
     // onClick: { action: "handleClick"},
   },
   args: {
-    onClick: action('onClick'),
+    // onClick: action('onClick'),
   }, // default value
 }
 

@@ -1,13 +1,13 @@
 // Accessors for CSS Custom Properties
 
 //  Colors
-@function color($name, $prefix: color, $fallback: '') {
+@function color($name, $fallback: '', $prefix: color) {
   @return var(--#{$prefix}-#{$name}, #{$fallback});
 }
 
 //  Components
-@function component($name, $prefix: component) {
-  @return var(--#{$prefix}-#{$name});
+@function component($name, $prefix: component, $fallback: '') {
+  @return var(--#{$prefix}-#{$name}, #{$fallback});
 }
 
 //  Typography
@@ -25,13 +25,13 @@
   @return var(--#{$prefix}-#{$name});
 }
 
-@function hslac($color, $alpha) {
-  @if type-of($color) == 'color' {
-    @return hsla(hue($color), saturation($color), lightness($color), $alpha);
-  } @else {
-    @error "You didn't pass a color object";
-  }
-}
+// @function hslac($color, $alpha) {
+//   @if type-of($color) == 'color' {
+//     @return hsla(color.hue($color), saturate($color), lightness($color), $alpha);
+//   } @else {
+//     @error "You didn't pass a color object";
+//   }
+// }
 
 // Sizes
 @function size($name, $prefix: size) {
@@ -40,5 +40,15 @@
 
 // Layout
 @function layout($name, $prefix: layout) {
+  @return var(--#{$prefix}-#{$name});
+}
+
+// Button
+@function y-btn($name, $prefix: y-btn) {
+  @return var(--#{$prefix}-#{$name});
+}
+
+// Checkbox
+@function y-checkbox($name, $prefix: y-checkbox) {
   @return var(--#{$prefix}-#{$name});
 }

@@ -4,10 +4,10 @@
     "dist"
   ],
   "main": "./dist/gamma-compose.umd.cjs",
-  "module": "./dist/gamma-compose.js",
+  "module": "./dist/gamma-compose.mjs",
   "exports": {
     ".": {
-      "import": "./dist/gamma-compose.js",
+      "import": "./dist/gamma-compose.mjs",
       "require": "./dist/gamma-compose.umd.cjs"
     },
     "./dist/style.css": {
@@ -30,7 +30,7 @@
     "lint:fix": "eslint --fix 'src/**/*.{jsx,ts,tsx}'",
     "js:lint": "eslint  --ignore-pattern .gitignore --fix src/",
     "js:lint:check": "eslint --ext .js,.ts,.vue --ignore-path .gitignore src/",
-    "lint:style": "stylelint \"**/*.{vue,scss,css}\"",
+    "lint:style": "stylelint \"**/*.{scss,css}\"",
     "lint:style:fix": "stylelint --fix \"**/*.{vue,scss,css}\"",
     "format": "prettier --write src//**/*.{ts,tsx,css} --config ./.prettierrc",
     "prepare": "husky install",
@@ -53,7 +53,7 @@
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^3.2.3",
-    "@eslint/js": "9.22.0",
+    "@eslint/js": "9.24.0",
     "@storybook/addon-a11y": "^8.4.7",
     "@storybook/addon-designs": "^8.0.4",
     "@storybook/addon-docs": "^8.4.7",
@@ -71,22 +71,22 @@
     "axe-playwright": "^2.0.3",
     "chromatic": "11.27.0",
     "eslint": "8.57.1",
-    "eslint-config-prettier": "9.1.0",
-    "eslint-plugin-prettier": "5.2.3",
+    "eslint-config-prettier": "10.1.1",
+    "eslint-plugin-prettier": "5.2.6",
     "eslint-plugin-vue": "^9.32.0",
     "husky": "8.0.3",
     "lint-staged": "15.5.0",
     "prettier": "3.5.3",
     "prettier-plugin-organize-imports": "4.1.0",
     "react-dom": "18.3.1",
-    "sass": "1.85.1",
+    "sass": "1.86.3",
     "storybook": "^8.4.7",
-    "stylelint": "16.16.0",
+    "stylelint": "16.17.0",
     "stylelint-config-recommended-vue": "1.6.0",
     "stylelint-config-standard-scss": "14.0.0",
     "typescript": "~5.8.0",
     "typescript-eslint": "7.18.0",
-    "vite": "5.4.14",
+    "vite": "5.4.17",
     "vite-plugin-dts": "3.9.1",
     "vite-plugin-linter": "2.1.1",
     "vue-tsc": "2.2.8"

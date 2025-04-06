@@ -38,17 +38,16 @@ const handleClick = (e: Event) => {
 @import '@/assets/scss/utils';
 
 .y-button {
+  height: y-btn(height);
   cursor: pointer;
   text-transform: uppercase;
   margin-bottom: space(unit);
-  padding: space(xs) space(unit);
 
+  @include y-btn(height, component(height));
   @include theme-component;
-  @include interactive-component;
-  @include component(padding-y, space(xs));
 
   &.-small {
-    @include component(padding-y, space(xxs));
+    @include component(padding-x, space(sm));
   }
 }
 </style>

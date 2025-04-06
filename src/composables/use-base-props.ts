@@ -6,7 +6,6 @@ export enum BasePropClasses {
   Raw = '-raw',
   Outlined = '-outlined',
   Text = '-text',
-  Interactive = '-interactive',
   Small = '-small',
   Medium = '-medium',
   Large = '-large',
@@ -34,14 +33,13 @@ const colorClasses: { [key in Color]: string } = {
 export const basePropsDefault: ThemeComponentBaseProps = {
   disabled: false,
   variant: 'contained',
-  interactive: false,
   size: 'medium',
   color: 'primary',
 }
 
 export function useBaseProps(props: ThemeComponentBaseProps) {
   const baseClasses = computed(() => {
-    const { disabled, raw, interactive, size, color, variant } = props
+    const { disabled, raw, size, color, variant } = props
 
     const variantClass = variant ? variantClasses[variant] : ''
     const sizeClass = size ? sizeClasses[size] : ''
@@ -50,7 +48,6 @@ export function useBaseProps(props: ThemeComponentBaseProps) {
     return [
       disabled ? BasePropClasses.Disabled : '',
       raw ? BasePropClasses.Raw : '',
-      interactive ? BasePropClasses.Interactive : '',
       variantClass,
       sizeClass,
       colorClass,
