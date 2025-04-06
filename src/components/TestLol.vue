@@ -292,11 +292,11 @@ import {
   YInput,
   YModal,
 } from '@/components'
-import { useModal, useTheme } from '@/composables'
+import { useModal } from '@/composables'
 import { ref } from 'vue'
 import { YModalSize, YModalType } from './overlays/modal/types'
 
-const { theme } = useTheme()
+// const { theme } = useTheme()
 
 const count = ref(0)
 const input = ref('')

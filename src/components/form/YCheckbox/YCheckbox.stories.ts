@@ -50,7 +50,7 @@ const renderGenericStory: Story = {
     setup(props: YCheckboxProps) {
       const checked = ref(false)
       const emit = defineEmits(['update:modelValue', 'blur'])
-      const updateModel = (event) => (checked.value = event)
+      const updateModel = (val: boolean) => (checked.value = val)
 
       const handleInput = (event: Event) => {
         if (props.disabled) {
