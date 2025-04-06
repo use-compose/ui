@@ -13,14 +13,13 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
         with:
-          node-version: 20
+          fetch-depth: 0
 
       - name: Install dependencies
-        run: npm install
+        uses: ./.github/actions/install-dependencies
+        with:
+          node_version: 20
 
       - name: Lint
         run: npm run lint
