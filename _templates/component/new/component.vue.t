@@ -1,0 +1,26 @@
+---
+to: src/components/<%= name %>/<%= name %>.vue
+---
+
+<template>
+  <div :class="getClasses">
+    <slot />
+  </div>
+</template>
+
+<script setup lang="ts">
+import { basePropsDefault, useBaseProps } from '@/composables/use-base-props'
+import { ThemeComponentBaseProps } from '@/types/base-props'
+import { computed, defineProps, withDefaults } from 'vue'
+import type { <%= name %>Props } from './types'
+
+const props = withDefaults(defineProps<<%= name %>Props>(), {
+  ...basePropsDefault,
+})
+
+const { baseClasses } = useBaseProps(props)
+
+const getClasses = computed(() => {
+  return [[...baseClasses.value]]
+})
+</script>
