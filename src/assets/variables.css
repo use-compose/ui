@@ -1,0 +1,73 @@
+/**
+ * Do not edit directly, this file was auto-generated.
+ */
+
+:root {
+  --color-arylide-yellow-100: hsl(45, 67%, 93%);
+  --color-arylide-yellow-200: hsl(45, 69%, 86%);
+  --color-arylide-yellow-300: hsl(45, 68%, 79%);
+  --color-arylide-yellow-400: hsl(45, 69%, 72%);
+  --color-arylide-yellow-500: hsl(45, 69%, 65%);
+  --color-arylide-yellow-600: hsl(45, 69%, 52%);
+  --color-arylide-yellow-700: hsl(45, 69%, 39%);
+  --color-arylide-yellow-800: hsl(45, 68%, 26%);
+  --color-arylide-yellow-900: hsl(46, 70%, 13%);
+  --color-arylide-yellow-default: hsl(45, 69%, 65%);
+  --color-night-100: hsl(180, 3%, 81%);
+  --color-night-200: hsl(180, 4%, 62%);
+  --color-night-300: hsl(180, 4%, 43%);
+  --color-night-400: hsl(180, 4%, 24%);
+  --color-night-500: hsl(180, 4%, 5%);
+  --color-night-600: hsl(180, 5%, 4%);
+  --color-night-700: hsl(180, 7%, 3%);
+  --color-night-800: hsl(0, 0%, 2%);
+  --color-night-900: hsl(180, 20%, 1%);
+  --color-night-default: hsl(180, 4%, 5%);
+  --color-battleship-gray-100: hsl(0, 0%, 92%);
+  --color-battleship-gray-200: hsl(0, 0%, 84%);
+  --color-battleship-gray-300: hsl(0, 0%, 76%);
+  --color-battleship-gray-400: hsl(0, 0%, 68%);
+  --color-battleship-gray-500: hsl(0, 0%, 60%);
+  --color-battleship-gray-600: hsl(0, 0%, 48%);
+  --color-battleship-gray-700: hsl(0, 0%, 36%);
+  --color-battleship-gray-800: hsl(0, 0%, 24%);
+  --color-battleship-gray-900: hsl(0, 0%, 12%);
+  --color-battleship-gray-default: hsl(0, 0%, 60%);
+  --color-white-smoke-100: hsl(0, 0%, 99%);
+  --color-white-smoke-200: hsl(0, 0%, 98%);
+  --color-white-smoke-300: hsl(0, 0%, 98%);
+  --color-white-smoke-400: hsl(0, 0%, 97%);
+  --color-white-smoke-500: hsl(0, 0%, 96%);
+  --color-white-smoke-600: hsl(0, 0%, 77%);
+  --color-white-smoke-700: hsl(0, 0%, 58%);
+  --color-white-smoke-800: hsl(0, 0%, 38%);
+  --color-white-smoke-900: hsl(0, 0%, 19%);
+  --color-white-smoke-default: hsl(0, 0%, 96%);
+  --color-primary-lighter: hsl( from var(--color-primary, var(--color-arylide-yellow-500)) h s calc(l + 40%) / alpha );;
+  --color-primary-light: hsl( from var(--color-primary, var(--color-arylide-yellow-500)) h s calc(l + 30%) / alpha );;
+  --color-primary-base: var(--color-primary, var(--color-arylide-yellow-500));
+  --color-primary-dark: hsl( from var(--color-primary, var(--color-arylide-yellow-500)) h s calc(l + 20%) / alpha );;
+  --color-primary-darker: hsl( from var(--color-primary, var(--color-arylide-yellow-500)) h s calc(l + 10%) / alpha );;
+  --color-secondary-lighter: hsl( from var(--color-bg, var(--color-night-500)) h s calc(l + 40%) / alpha );;
+  --color-secondary-light: hsl( from var(--color-bg, var(--color-night-500)) h s calc(l + 30%) / alpha );;
+  --color-secondary-dark: hsl( from var(--color-bg, var(--color-night-500)) h s calc(l + 20%) / alpha );;
+  --color-secondary-darker: hsl( from var(--color-bg, var(--color-night-500)) h s calc(l + 10%) / alpha );;
+  --component-color: color-mix( in srgb, var(--font-color, var(--color-night-500)) calc(100% * var(--primary, var(--color-arylide-yellow-500(, var(--color-night-500));
+  --color-secondary-base: var(--color-night-500);
+  --component-bg-primary-base: var(--color-primary-base);
+  --component-bg-primary-hover: var(--color-primary-dark);
+  --component-bg-primary-active: var(--color-primary-darker);
+  --component-bg-primary-disabled: var(--color-primary-lighter);
+  --component-bg-secondary-hover: var(--color-secondary-dark);
+  --component-bg-secondary-active: var(--color-secondary-darker);
+  --component-bg-secondary-disabled: var(--color-secondary-light);
+  --component-primary-base: var(--color-primary-base);
+  --component-primary-disabled: var(--color-primary-light);
+  --component-primary-active: var(--color-primary-dark);
+  --component-primary-hover: var(--color-primary-light);
+  --component-secondary-disabled: var(--color-secondary-light);
+  --component-secondary-active: var(--color-secondary-dark);
+  --component-secondary-hover: var(--color-secondary-light);
+  --component-bg-secondary-base: var(--color-secondary-base);
+  --component-secondary-base: var(--color-secondary-base);
+}

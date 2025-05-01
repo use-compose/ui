@@ -3,12 +3,7 @@
     <slot>
       <div class="flex justify-between">
         <h2 class="margin-0">{{ header }}</h2>
-        <CloseIcon
-          v-if="props.hasCloseButton"
-          @click="close"
-          class="cursor-pointer align-self-start"
-          :width="48"
-        />
+        <CloseIcon v-if="props.hasCloseButton" @click="close" class="cursor-pointer align-self-start" :width="48" />
       </div>
     </slot>
   </header>

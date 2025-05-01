@@ -1,0 +1,87 @@
+{
+  "color": {
+    "primary": {
+      "hue": {
+        "value": " var(--primary-hue, 45)",
+        "attribute": {
+          "type": "primary-hsl",
+          "item": "hue"
+        }
+      },
+      "saturation": {
+        "value": " var(--primary-saturation, 68%)",
+        "attribute": {
+          "type": "primary-hsl",
+          "item": "saturation"
+        }
+      },
+      "lightness": {
+        "value": " var(--primary-lightness, 64%)",
+        "attribute": {
+          "type": "primary-hsl",
+          "item": "lightness"
+        }
+      }
+    },
+    "secondary": {
+      "hue": {
+        "value": " var(--secondary-hue, 210)",
+        "attribute": {
+          "type": "secondary-hsl",
+          "item": "hue"
+        }
+      },
+      "saturation": {
+        "value": " var(--secondary-saturation, 100%)",
+        "attribute": {
+          "type": "secondary-hsl",
+          "item": "saturation"
+        }
+      },
+      "lightness": {
+        "value": " var(--secondary-lightness, 50%)",
+        "attribute": {
+          "type": "secondary-hsl",
+          "item": "lightness"
+        }
+      }
+    },
+    "night": {
+      "base": {
+        "value": "{color.night.500}",
+        "type": "color",
+        "attribute": {
+          "type": "semantic"
+        }
+      },
+      "lighter": {
+        "value": "{color.night.400}",
+        "type": "color",
+        "attribute": {
+          "type": "semantic"
+        }
+      },
+      "light": {
+        "value": "{color.night.300}",
+        "type": "color",
+        "attribute": {
+          "type": "semantic"
+        }
+      },
+      "dark": {
+        "value": "{color.night.200}",
+        "type": "color",
+        "attribute": {
+          "type": "semantic"
+        }
+      },
+      "darker": {
+        "value": "{color.night.100}",
+        "type": "color",
+        "attribute": {
+          "type": "semantic"
+        }
+      }
+    }
+  }
+}

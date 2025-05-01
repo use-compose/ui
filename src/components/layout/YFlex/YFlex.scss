@@ -1,0 +1,27 @@
+// Uncomment if needed
+// @use '@/assets/scss/utils' as utils;
+// @use '@/assets/scss/theme.scss' as *;
+
+// TODO: change to kebab-case
+.y-flex {
+  // @include cssvars(
+  //   '',
+  //   (
+  //     flex-gap: space(xs),
+  //     direction: row,
+  //     alignItems: flex-start,
+  //     justifyContent: flex-start,
+  //   )
+  // );
+  // --flex-gap: space(xs);
+  // --direction: v-bind(direction);
+  // --alignItems: v-bind(alignItems);
+  // --justifyContent: v-bind(justifyContent);
+
+  display: flex;
+  flex-flow: var(--direction) wrap;
+  align-items: var(--alignItems);
+  justify-content: var(--justifyContent);
+  gap: var(--layout-gap);
+  padding: var(--space-sm) 0;
+}

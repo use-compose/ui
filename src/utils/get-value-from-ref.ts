@@ -37,10 +37,12 @@ export type MaybeRefOrGetter<T = any> = MaybeRef<T> | (() => T)
 
 export function getValueFromRef<T>(source: MaybeRefOrGetter<T>): T {
   if (typeof source === 'function') {
+    console.log('📟 - file: get-value-frosdfsdfsfdsdfm-ref.ts:40 - source → ', source)
     return (source as AnyFn)()
   }
-
+  console.log('📟 - file: get-value-from-ref.ts:42 - source → ', source)
   const unrefSource = unref(source)
+  console.log('📟 - unrefSource → ', unrefSource)
 
   // Custom additional condition that, if after applying unref on the source (which returns the ref value or the source itself if it's not a ref)
   // check if the result is an object and contains a '_isVue' property in it, then we return the $el property which will contains the desired value

@@ -1,6 +1,8 @@
 <template>
   <Transition name="fade">
-    <div v-if="modelValue" aria-hidden="true" :class="getClasses" @click="handleClick"></div>
+    <div v-if="modelValue" aria-hidden="true" :class="getClasses" :style="getStyles" @click="handleClick">
+      <slot />
+    </div>
   </Transition>
 </template>
 
@@ -11,35 +13,34 @@ export interface YOverlayProps {
   modelValue: boolean
   color?: string
   opacity?: number
-  blur?: boolean
+  blur?: number | string
+  zIndex?: number
 }
 
 const props = withDefaults(defineProps<YOverlayProps>(), {
-  color: 'var(--color-bg)',
-  opacity: 0.5,
-  blur: false,
+  // color: 'var(--color-bg)',
+  opacity: 0.2,
+  blur: '8px',
   centerChildren: true,
+  zIndex: 1000,
 })
 
 const getClasses = computed(() => {
-  return ['y-overlay', { '-blur': props.blur }, { [`-color-${props.color}`]: props.color }]
+  return ['y-overlay', { '-blur': props.blur }, props.color && { [`-color-${props.color}`]: props.color }]
+})
+
+const getStyles = computed(() => {
+  return {
+    ...(props.color && { '--overlay-bg': props.color ? props.color : 'var(--color-bg)' }),
+    '--overlay-opacity': props.opacity,
+    '--overlay-blur': props.blur,
+    '--dialog-z-index': props.zIndex,
+  }
 })
 
 const emit = defineEmits(['click'])
 
-const handleClick = (e: Event) => {
+function handleClick(e: Event) {
   emit('click', e)
 }
 </script>
-
-<style lang="scss">
-@import '@/assets/scss/utils';
-
-.y-overlay {
-  position: fixed;
-  inset: 0;
-  background-color: color(dark-50);
-  transition: opacity 0.3s ease;
-  z-index: 999;
-}
-</style>

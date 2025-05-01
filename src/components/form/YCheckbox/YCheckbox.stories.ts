@@ -3,7 +3,8 @@ import type { Meta, StoryObj } from '@storybook/vue3'
 import { useThemeComponentStory } from '@/composables'
 import { action } from '@storybook/addon-actions'
 import { defineEmits, ref } from 'vue'
-import YCheckbox, { YCheckboxProps } from './YCheckbox.vue'
+import YCheckbox from './YCheckbox.vue'
+import type { YCheckboxProps } from './types'
 
 const { commonArgTypes, commonArgs, generateCommonStories } =
   useThemeComponentStory<YCheckboxProps>(YCheckbox)

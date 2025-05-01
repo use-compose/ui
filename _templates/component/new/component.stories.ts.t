@@ -9,7 +9,6 @@ import { useThemeComponentStory } from '@/composables'
 
 const { commonArgTypes, commonArgs, generateCommonStories } = useThemeComponentStory<<%= name %>Props>(<%= name %>)
 
-
 const meta: Meta<typeof <%= name %>> = {
   // TODO: TO CHANGE PATH
   title: 'Compose/<%= name %>',

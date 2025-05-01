@@ -1,0 +1,63 @@
+{
+  "$type": "color",
+  "theme": {
+    "hue": {
+      "value": "var(--color-primary-hue)",
+      "attribute": {
+        "type": "theme-hsl",
+        "item": "hue"
+      }
+    },
+    "saturation": {
+      "value": "var(--color-primary-saturation)",
+      "attribute": {
+        "type": "theme-hsl",
+        "item": "saturation"
+      }
+    },
+    "lightness": {
+      "value": "var(--color-primary-lightness)",
+      "attribute": {
+        "type": "theme-hsl",
+        "item": "lightness"
+      }
+    },
+    "night": {
+      "base": {
+        "value": "{color.night.500}",
+        "type": "color",
+        "attribute": {
+          "type": "theme"
+        }
+      },
+      "lighter": {
+        "value": "{color.night.400}",
+        "type": "color",
+        "attribute": {
+          "type": "theme"
+        }
+      },
+      "light": {
+        "value": "{color.night.300}",
+        "type": "color",
+        "attribute": {
+          "type": "theme"
+        }
+      },
+      "dark": {
+        "value": "{color.night.200}",
+        "type": "color",
+        "attribute": {
+          "type": "theme"
+        }
+      },
+      "darker": {
+        "value": "{color.night.100}",
+        "type": "color",
+        "attribute": {
+          "type": "theme"
+        }
+      }
+    }
+  }
+}

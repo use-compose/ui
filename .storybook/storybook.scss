@@ -1,0 +1,32 @@
+@import '@/assets/scss/theme.scss'; /* :root {
+  --color-primary: #e3c567;
+  --color-main-dark: #616970;
+  --color-bg: #f8f9fa;
+} */
+
+.brutalist-button {
+  font-family: 'Courier New', monospace;
+  font-size: 1.1rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  color: black;
+  background-color: #fffb00;
+  border: 4px solid black;
+  padding: 1rem 2rem;
+  cursor: pointer;
+  box-shadow: 4px 4px 0 black;
+  transition: all 0.1s linear;
+  outline: none;
+}
+
+.brutalist-button:hover {
+  background-color: black;
+  color: #fffb00;
+  box-shadow: 6px 6px 0 #ff00ff;
+  border-color: #ff00ff;
+}
+
+.brutalist-button:active {
+  box-shadow: none;
+  transform: translate(2px, 2px);
+}

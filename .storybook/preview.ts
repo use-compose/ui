@@ -1,7 +1,9 @@
 import type { Preview } from '@storybook/vue3'
-import { AppCompose, useTheme, Wrapper } from '../src'
+import { AppCompose, Wrapper, YTheme } from '../src'
 
-import './storybook.css'
+// import '../src/assets/css/theme/color/color.css'
+// import '../src/assets/css/theme/component/component.css'
+// import './storybook.scss'
 
 const preview: Preview = {
   parameters: {
@@ -23,9 +25,7 @@ const preview: Preview = {
             <story />
         </AppCompose>`,
       setup() {
-        const { theme, setPrimary } = useTheme()
-
-        setPrimary('#e3c567')
+        const theme: YTheme = { primary: 'hsl(45, 69%, 65%)', background: 'hsl(0, 0%, 19%)', dark: '#0b0c0c', secondary: 'blue' }
 
         console.log('📟 - file: preview.ts:35 - theme → ', theme)
 

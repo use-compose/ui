@@ -1,8 +1,8 @@
 import { Theme, YTheme } from '@/types/theme'
 import { isClientSide } from '@/utils/is-client-side'
+import tinycolor from 'tinycolor2'
 import { InjectionKey, Ref, inject, provide, ref, watchEffect } from 'vue'
 import { useStorage } from './use-storage'
-
 export interface ColorTheme {
   [key: string]: string
 }
@@ -11,6 +11,7 @@ export const defaultTheme: YTheme = {
   primary: '#ABCDF8',
   background: '#FCECF0',
   dark: '#0b0c0c',
+  danger: '#E3514A',
 }
 
 interface ThemeComposition {
@@ -20,6 +21,7 @@ interface ThemeComposition {
     '--color-primary': string | undefined
     '--color-bg': string | undefined
     '--color-main-dark': string | undefined
+    '--color-danger': string | undefined
   }
 }
 
@@ -70,6 +72,7 @@ export function useComposeTheme(userTheme?: YTheme) {
       [Theme.primary]: theme.primary,
       [Theme.background]: theme.background,
       [Theme.dark]: theme.dark,
+      [Theme.danger]: theme.danger,
     }
   }
 
@@ -78,6 +81,54 @@ export function useComposeTheme(userTheme?: YTheme) {
     updateThemeProperty,
     renderTheme,
   }
+
+  watchEffect(() => {
+    if (isClientSide()) {
+      const { primary, secondary, background, dark } = theme.value
+
+      const appComposeElement = document.querySelector(':root') as HTMLElement
+      console.log('📟 - appComposeElement → ', appComposeElement)
+      // const appComposeElement = document.documentElement as HTMLElement
+      console.log('📟 - appComposeElement → ', appComposeElement)
+
+      if (!appComposeElement) return
+
+      // H S L for Primary
+      const hsl = tinycolor(primary).toHsl()
+      appComposeElement.style.setProperty('--color-primary-hue', (Math.round(hsl.h * 100) / 100).toString())
+      // appComposeElement.style.setProperty('--theme-primary-saturation', Math.round(hsl.s * 100).toString() + '%')
+      appComposeElement.style.setProperty('--color-primary-saturation', Math.round(hsl.s * 100).toString() + '%')
+      // appComposeElement.style.setProperty('--theme-primary-lightness', Math.round(hsl.l * 100).toString() + '%')
+      appComposeElement.style.setProperty('--color-primary-lightness', Math.round(hsl.l * 100).toString() + '%')
+      appComposeElement.style.setProperty('--color-primary', 'hsl(var(--color-primary-hue) var(--color-primary-saturation) var(--color-primary-lightness))')
+
+      appComposeElement.style.setProperty('--theme-hue', 'var(--theme-primary-hue)')
+      appComposeElement.style.setProperty('--theme-saturation', 'var(--theme-primary-saturation)')
+      appComposeElement.style.setProperty('--theme-lightness', 'var(--theme-primary-lightness)')
+
+      const hslSecondary = tinycolor(secondary).toHsl()
+      appComposeElement.style.setProperty('--color-secondary-hue', (Math.round(hslSecondary.h * 100) / 100).toString())
+      appComposeElement.style.setProperty('--color-secondary-saturation', Math.round(hslSecondary.s * 100).toString() + '%')
+      appComposeElement.style.setProperty('--color-secondary-lightness', Math.round(hslSecondary.l * 100).toString() + '%')
+      appComposeElement.style.setProperty('--color-secondary', 'hsl(var(--color-secondary-hue) var(--color-secondary-saturation) var(--color-secondary-lightness))')
+
+      const hslDark = tinycolor(dark).toHsl()
+      appComposeElement.style.setProperty('--color-main-dark-hue', (Math.round(hslDark.h * 100) / 100).toString())
+      appComposeElement.style.setProperty('--color-main-dark-saturation', (Math.round(hslDark.s * 100) / 100).toString())
+      appComposeElement.style.setProperty('--color-main-dark-lightness', (Math.round(hslDark.l * 100) / 100).toString())
+      appComposeElement.style.setProperty('--color-main-dark', 'hsl(var(--color-main-dark-h) calc(var(--color-main-dark-s) * 100%) calc(var(--color-main-dark-l) * 100%))')
+
+      const hslDanger = tinycolor(theme.value.danger).toHsl()
+      appComposeElement.style.setProperty('--color-danger-hue', (Math.round(hslDanger.h * 100) / 100).toString())
+      appComposeElement.style.setProperty('--color-danger-saturation', (Math.round(hslDanger.s * 100) / 100).toString())
+      appComposeElement.style.setProperty('--color-danger-lightness', (Math.round(hslDanger.l * 100) / 100).toString())
+      appComposeElement.style.setProperty('--color-danger', 'hsl(var(--color-danger-h) calc(var(--color-danger-s) * 100%) calc(var(--color-danger-l) * 100%))')
+
+      appComposeElement.style.setProperty('--color-bg', background || null)
+      appComposeElement.style.setProperty('--color-main-dark', dark || null)
+      appComposeElement.style.setProperty('--color-danger', theme.value.danger || null)
+    }
+  })
 
   provide(themeCompositionKey, themeComposition)
 
@@ -93,15 +144,11 @@ export function useTheme() {
   const { theme, updateThemeProperty } = inject(themeCompositionKey) || themeContext
 
   if (!theme || !updateThemeProperty) {
-    throw new Error(
-      'useTheme must be used within a component that has a parent providing theme, updateThemeProperty, and renderTheme',
-    )
+    throw new Error('useTheme must be used within a component that has a parent providing theme, updateThemeProperty, and renderTheme')
   }
 
   function getPrimary() {
-    return isClientSide()
-      ? getComputedStyle(document.documentElement).getPropertyValue('--color-primary')
-      : ''
+    return isClientSide() ? getComputedStyle(document.documentElement).getPropertyValue('--color-primary') : ''
   }
 
   function setPrimary(color: string) {
@@ -109,28 +156,12 @@ export function useTheme() {
   }
 
   function getBackground() {
-    return isClientSide()
-      ? getComputedStyle(document.documentElement).getPropertyValue('--color-bg')
-      : ''
+    return isClientSide() ? getComputedStyle(document.documentElement).getPropertyValue('--color-bg') : ''
   }
 
   function setBackground(color: string) {
     theme.value.background = color
   }
-
-  watchEffect(() => {
-    if (isClientSide()) {
-      const { primary, background, dark } = theme.value
-
-      const appComposeElement = document.querySelector('.app-compose') as HTMLElement
-
-      if (!appComposeElement) return
-
-      appComposeElement.style.setProperty('--color-primary', primary || null)
-      appComposeElement.style.setProperty('--color-bg', background || null)
-      appComposeElement.style.setProperty('--color-main-dark', dark || null)
-    }
-  })
 
   return { theme, updateThemeProperty, getPrimary, setPrimary, getBackground, setBackground }
 }

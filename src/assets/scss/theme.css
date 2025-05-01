@@ -1,3 +1,8 @@
+/* @property --color-primary {
+  syntax: '<color>';
+  inherits: true;
+} */
+
 :root {
   --color-theme-100: color-mix(in srgb, var(--color-theme, var(--color-primary)), white 10%);
   --color-theme-200: color-mix(in srgb, var(--color-theme, var(--color-primary)), white 20%);

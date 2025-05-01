@@ -10,15 +10,18 @@ export { useComposeTheme, useTheme } from './composables'
 
 export {
   AppCompose,
-  Container,
-  Flex,
-  ModalProvider,
+  // ModalProvider,
   Wrapper,
-  YBaseModal,
+  // YBaseModal,
   YButton,
   YCard,
+  // Container,
+  YFlex,
   YInput,
 } from './components'
+
+export { Theme } from './types/theme'
+export type { YTheme } from './types/theme'
 
 export function helloAnqsdqsdqsdqsqsdything(thing: string): string {
   return `Helloo ${thing}!`

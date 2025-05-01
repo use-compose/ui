@@ -1,0 +1,82 @@
+@use '@/assets/scss/utils' as *;
+@use '@/assets/scss/theme.scss';
+
+:root {
+  --modal-size-small: 32rem;
+  --modal-size-default: 56rem;
+  --dialog-z-index: 1000;
+  --z-index-base: 1000;
+  --overlay-z-index: var(--dialog-z-index);
+  --modal-z-index: calc(var(--dialog-z-index) + 1);
+}
+
+.modal-small {
+  --modal-size: var(--modal-size-small);
+}
+
+.modal-default {
+  --modal-size: var(--modal-size-default);
+}
+
+.y-overlay {
+  z-index: var(--overlay-z-index);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  overflow: auto;
+  position: fixed;
+  inset: 0;
+  background-color: var(--overlay-bg, color(main-bg));
+  backdrop-filter: blur(var(--overlay-blur, 8px));
+  transition: opacity 0.3s ease;
+}
+
+.rt-dialog {
+  // @include theme-component;
+  display: flex;
+  flex-direction: column;
+  z-index: var(--dialog-z-index);
+}
+
+.rt-modal {
+  --modal-z-index: calc(var(--dialog-z-index) + 1);
+
+  position: relative;
+  max-width: 100%;
+  height: auto;
+  margin: 5rem 0;
+  z-index: var(--modal-z-index);
+}
+
+.rt-drawer {
+  top: 0;
+  bottom: 0;
+  height: 100svh;
+  right: 0;
+  transition: transform 0.5s ease;
+}
+
+.rt-modal,
+.rt-drawer {
+  width: var(--modal-size);
+}
+
+.y-modal-content {
+  padding: space(sm) space(md);
+  overflow-y: auto;
+  scrollbar-width: 3px;
+  scrollbar-color: component(color);
+  scrollbar-gutter: stable both-edges;
+
+  // custom scrollbar
+  &::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 3px;
+    background-color: color(primary);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: component(color);
+    box-shadow: 0 0 1px rgba(255, 255, 255, 0.5);
+  }
+}

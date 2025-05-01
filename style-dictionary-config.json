@@ -1,0 +1,22 @@
+{
+  "source": [
+    "./style-dictionary/tokens/**/*.json"
+  ],
+  "platforms": {
+    "css": {
+      "transformGroup": "css",
+      "files": [
+        {
+          "destination": "./src/assets/variables.css",
+          "format": "css/variables",
+          "options": {
+            "outputReferences": true
+          }
+        }
+      ],
+      "transforms": [
+        "color/hsl"
+      ]
+    }
+  }
+}

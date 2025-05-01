@@ -7,12 +7,29 @@
   * 5 - Theme
   * 6 - Breakpoints
 */
+@use './theme/variables.scss' as *;
+@use '../css/theme/color/color.css';
+@use '../css/theme/component/component.css';
+@use 'components/index';
 @use 'base/base';
 @use 'utils' as utils;
 @use 'sass:map';
 
-@property --color-primary {
+// @property --color-primary {
+//   syntax: '<color>';
+//   initial-value: #e3c567;
+//   inherits: true;
+// }
+
+@property --color-main-dark {
   syntax: '<color>';
+  initial-value: #616970;
+  inherits: true;
+}
+
+@property --color-bg {
+  syntax: '<color>';
+  initial-value: #f8f9fa;
   inherits: true;
 }
 
@@ -23,8 +40,45 @@
 @property --raw {
   syntax: '<number>';
   initial-value: 0;
-  inherits: false;
+  inherits: true;
 }
+@property --primary {
+  syntax: '<number>';
+  initial-value: 0;
+  inherits: true;
+}
+
+@property --color-hue {
+  syntax: '<number>';
+  initial-value: 0;
+  inherits: true;
+}
+@property --color-saturation {
+  syntax: '<number>';
+  initial-value: 0;
+  inherits: true;
+}
+@property --color-lightness {
+  syntax: '<percentage>';
+  initial-value: 0;
+  inherits: true;
+}
+
+// @property --theme-hue {
+//   syntax: '<number>';
+//   initial-value: 0;
+//   inherits: true;
+// }
+// @property --theme-saturation {
+//   syntax: '<number>';
+//   initial-value: 0;
+//   inherits: true;
+// }
+// @property --theme-lightness {
+//   syntax: '<percentage>';
+//   initial-value: 0;
+//   inherits: true;
+// }
 
 :root {
   /* https://dev.to/tracygjg/conditional-css-437e */
@@ -36,7 +90,7 @@ body {
   --not-raw: calc(1 - var(--raw));
 }
 
-.-raw {
+.raw {
   --raw: var(--true);
 }
 
@@ -49,6 +103,10 @@ body {
     bg-opacity: 1,
     base-unit: 4px,
     base-unit-calc: calc(4px * var(--not-raw, 1)),
+    primary: calc(1 - var(--secondary) - var(--text)),
+    state: 'base',
+    variant: 'contained',
+    color: 'hsl(var(--theme-hue), var(--theme-saturation), var(--theme-lightness))',
   )
 );
 
@@ -151,7 +209,7 @@ body {
 
 // @property --component-bg {
 //   syntax: "<color>";
-//   inherits: false;
+//   inherits: true;
 //   initial-value: hsla(from utils.color(primary) h s l / utils.theme(bg-opacity));
 // }
 
@@ -160,16 +218,17 @@ body {
   (
     // primary: #fbe134,
     primary: var(--color-primary),
+    danger: var(--color-danger),
     // main-dark: #0b0c0c,
     main-dark: var(--color-main-dark),
-    dark-50: color-mix(in srgb, utils.color(main-dark) 70%, transparent),
+    dark-50: color-mix(in srgb, utils.color(main-dark) 70%, white),
     bg: var(--color-bg),
-    bg-50: color-mix(in srgb, utils.color(bg) 50%, transparent),
-    primary-80: color-mix(in srgb, utils.color(primary) 80%, transparent),
-    primary-60: color-mix(in srgb, utils.color(primary) 60%, transparent),
-    primary-40: color-mix(in srgb, utils.color(primary) 40%, transparent),
-    primary-20: color-mix(in srgb, utils.color(primary) 20%, transparent),
-    primary-10: color-mix(in srgb, utils.color(primary) 10%, transparent),
+    bg-50: color-mix(in srgb, utils.color(bg) 50%, white),
+    primary-80: color-mix(in srgb, utils.color(primary) 80%, white),
+    primary-60: color-mix(in srgb, utils.color(primary) 60%, white),
+    primary-40: color-mix(in srgb, utils.color(primary) 40%, white),
+    primary-20: color-mix(in srgb, utils.color(primary) 20%, white),
+    primary-10: color-mix(in srgb, utils.color(primary) 10%, white),
     color-white: #fff,
     theme-color: utils.color(primary),
     initial-light: #f5f5f5
@@ -221,64 +280,271 @@ body {
     bg-opacity: 1,
     box-shadow-color: utils.color(primary),
     box-shadow-base: utils.component(box-shadow-x) utils.component(box-shadow-y) 0 0 black,
-    box-shadow-hover: utils.component(box-shadow-x) utils.component(box-shadow-y) 0 0
-      utils.component(box-shadow-color),
-    bg-color: utils.color(primary),
-    color: utils.color(main-dark),
+    box-shadow-hover: utils.component(box-shadow-x) utils.component(box-shadow-y) 0 0 utils.component(box-shadow-color),
+    // bg-color: color-mix(in srgb, var(--color-font-base) calc(100% + utils.color(primary, 0)), transparent),
+    // color: utils.color(main-dark),
     box-shadow: utils.component(box-shadow-base),
     padding-x: utils.space(unit),
     padding-y: 0,
     margin-bottom: utils.space(unit),
     border-width: 2px,
     font-size: 1rem,
-    border-color: utils.color(main-dark),
+    // border-color: utils.color(main-dark),
     border: utils.component(border-width) solid utils.component(border-color),
+    // Design Tokens
+    primary: utils.theme(primary),
+    state: utils.theme(state),
+    variant: utils.theme(variant),
+    not-contained: calc(1 - var(--contained, 1)),
   )
 );
 
+$colors: ('primary', 'secondary', 'danger');
+$states: ('base', 'hover', 'active', 'focus', 'disabled');
+$variants: ('contained', 'outlined', 'text');
+
+/* 
+ * .primary will give the following CSS:
+ * .primary {
+ *   color: var(--color-primary);
+ * }
+*/
+// $color-state: primary-base;
+// @each $color in $colors {
+//   .#{$color} {
+//     --color: var(--color-#{$color});
+//   }
+//   @each $state in $states {
+//     @if $state == 'base' {
+//       .#{$color}.#{$state} {
+//         --color-state: #{$color}-#{$state};
+//       }
+//     } @else {
+//       .#{$color}.#{$state},
+//       .#{$color}:#{$state} {
+//         --color-state: #{$color}-#{$state};
+//       }
+//     }
+//     :root {
+//       --color-bg-#{$state}: var(--color-bg-#{$color}-#{$state});
+//       --color-text-#{$state}: var(--color-text-#{$color}-#{$state});
+//       --color-border-#{$state}: var(--color-border-#{$color}-#{$state});
+//     }
+//   }
+// }
+// .contained {
+//   --color-bg-token: var(--color);
+//   --color-text-token: var(--color-text-night-base);
+// }
+
+// .outlined {
+//   --color-bg-token: transparent;
+//   --color-text-token: currentcolor;
+//   --color-border-token: currentcolor;
+// }
+// .text {
+//   --color-bg-token: transparent;
+//   --color-text-token: currentcolor;
+//   --color-border-token: transparent;
+// }
+
+// .primary {
+//   --color-lightness: var(--color-primary-l);
+//   --color-saturation: var(--color-primary-s);
+//   --color-hue: var(--color-primary-h);
+// }
+
+// .secondary {
+//   --color-lightness: var(--color-secondary-l);
+//   --color-saturation: var(--color-secondary-s);
+//   --color-hue: var(--color-secondary-h);
+// }
+
+// .danger {
+//   --color-lightness: var(--color-danger-l);
+//   --color-saturation: var(--color-danger-s);
+//   --color-hue: var(--color-danger-h);
+// }
+
+// .primary,
+// .secondary,
+// .danger {
+//   &:hover,
+//   &.hover {
+//     --theme-lightness: var(--theme-state-hover);
+//   }
+// }
+
+/* 
+ * Variants
+*/
+
+@mixin theming($color, $state) {
+  --color-bg-token: var(--color-#{$initial}-#{$value});
+}
+/// même mixin que précédemment
+
+// /// boucle unique sans bloc “base” à part
+// @each $color-key, $color in $colors {
+//   @each $state-key, $state in $states {
+//     // on compose dynamiquement le sélecteur :
+//     // - si state == base, on reste sur la classe seule
+//     // - sinon on ajoute le pseudo‑state
+//     $selector: if($state == base, '.#{$color}', '.#{$state}');
+
+//     // on injecte le style
+//     #{$selector} {
+//       @include utils.component-themed($color, $state);
+//     }
+//   }
+// }
+
 @mixin theme-component {
   padding: utils.component(padding, utils.component(padding-y) utils.component(padding-x));
-  border: utils.component(border-width) solid utils.component(border-color);
+  border-width: utils.component(border-width);
+  border-style: solid;
   border-radius: utils.theme(border-radius);
-  background-color: hsla(from utils.component(bg-color) h s l / utils.component(bg-opacity));
+  // background-color: hsla(from utils.component(bg-color) h s l / utils.component(bg-opacity));
+  // background-color: var(--component-bg);
   box-shadow: utils.component(box-shadow);
-  color: utils.component(color);
+  // color: utils.component(color);
   outline: none;
 
-  &:not(.-disabled) {
-    &:hover {
-      box-shadow: utils.component(box-shadow-hover);
-    }
+  // color: color-mix(in srgb, var(--color-font-base) calc(100% + utils.color(primary, 0)), transparent);
+  // color: hsl(var(--color-h) calc(var(--color-s) * 100%) calc(var(--color-l) * 100%));
+  // background-color: hsla(from utils.component(bg-color) util component(bg-opacity) / 100%);
+  // border-color: color-mix(in srgb, var(--color-bg) calc(100% * var(--primary, 0)), var(--color-font-base));
+  // border-color: color-mix(in srgb, var(--color-bg) calc(100% * var(--primary, 0)), var(--color-font-base));
+
+  background-color: $component-color-bg;
+  border-color: $component-color-border;
+  color: $component-color-text;
+
+  &.primary {
+    --component-bg-hue: var(--color-primary-hue);
+    --component-bg-saturation: var(--color-primary-saturation);
+    --component-bg-lightness: var(--color-primary-lightness);
+
+    --component-border-hue: var(--color-primary-hue);
+    --component-border-saturation: var(--color-primary-saturation);
+    --component-border-lightness: var(--color-primary-lightness);
+
+    --component-text-hue: var(--color-primary-hue);
+    --component-text-saturation: var(--color-primary-saturation);
+    --component-text-lightness: var(--color-primary-lightness);
   }
 
-  &.-small {
-    // @include component(padding-y, space(xs));
-    @include component(padding-x, space(xs));
-    @include component(height, 2rem); // 32px
+  &.secondary {
+    --component-bg-hue: var(--color-secondary-hue);
+    --component-bg-saturation: var(--color-secondary-saturation);
+    --component-bg-lightness: var(--color-secondary-lightness);
+
+    --component-border-hue: var(--color-secondary-hue);
+    --component-border-saturation: var(--color-secondary-saturation);
+    --component-border-lightness: var(--color-secondary-lightness);
+
+    --component-text-hue: var(--color-secondary-hue);
+    --component-text-saturation: var(--color-secondary-saturation);
+    --component-text-lightness: var(--color-secondary-lightness);
   }
 
-  &.-large {
-    // @include component(padding-y, space(md));
-    @include component(padding-x, space(md));
-    @include component(height, 3rem); // 48px
+  &.danger {
+    --component-bg-hue: var(--color-danger-hue);
+    --component-bg-saturation: var(--color-danger-saturation);
+    --component-bg-lightness: var(--color-danger-lightness);
   }
 
-  &.-disabled {
+  &:hover,
+  .hover {
+    --component-bg-lightness: var(--component-state-hover);
+  }
+
+  &:active,
+  &.active {
+    --component-bg-lightness: var(--component-state-active);
+    // transform: translate(var(--theme-base-unit-calc), var(--theme-base-unit-calc));
+    // box-shadow: none;
+  }
+
+  &:focus,
+  &:focus-visible,
+  &.focus {
+    --component-bg-lightness: var(--component-state-focus);
+    // box-shadow: none;
+    // transform: translate(var(--theme-base-unit-calc), var(--theme-base-unit-calc));
+  }
+
+  &:disabled,
+  &.disabled {
     opacity: 0.5;
     cursor: not-allowed;
     pointer-events: none;
+    --component-bg-lightness: var(--component-state-disabled);
   }
 
-  &.-outlined {
-    background-color: transparent;
-    color: utils.color(primary);
+  // &.primary:not(.disabled) {
+  //   --theme-hue: var(--color-primary-hue);
+  //   --theme-saturation: var(--color-primary-saturation);
+  //   --theme-lightness: var(--color-primary-lightness);
+  // }
+
+  // &.secondary:not(.disabled) {
+  //   --theme-hue: var(--color-secondary-hue);
+  //   --theme-saturation: var(--color-secondary-saturation);
+  //   --theme-lightness: var(--color-secondary-lightness);
+  // }
+  // &.danger:not(.disabled) {
+  //   --theme-hue: var(--color-danger-hue);
+  //   --theme-saturation: var(--color-danger-saturation);
+  //   --theme-lightness: var(--color-danger-lightness);
+  // }
+  // @include utils.component(border-color, utils.color(border-primary-base));
+
+  // @include utils.component(bg-color, utils.color(bg-primary-base));
+
+  // background-color: var(--color-bg-token);
+  // color: var(--color-text-token);
+  // border-color: var(--color-border-token);
+
+  &.small {
+    // @include utils.component(padding-y, space(xs));
+    @include utils.component(padding-x, space(xs));
+    @include utils.component(height, 2rem); // 32px
   }
 
-  &.-raw {
+  &.large {
+    // @include utils.component(padding-y, space(md));
+    @include utils.component(padding-x, space(md));
+    @include utils.component(height, 3rem); // 48px
+  }
+
+  &.contained {
+    --component-bg-opacity: var(--component-variant-contained-bg);
+    --component-border-opacity: var(--component-variant-contained-border);
+    --component-text-opacity: var(--component-variant-contained-text);
+  }
+
+  &.outlined {
+    --component-bg-opacity: var(--component-variant-outlined-bg);
+    --component-border-opacity: var(--component-variant-outlined-border);
+    --component-text-opacity: var(--component-variant-outlined-text);
+  }
+  // &.text {
+  &.text {
+    --component-bg-opacity: var(--component-variant-text-bg);
+    --component-border-opacity: var(--component-variant-text-border);
+    --component-text-opacity: var(--component-variant-text-text);
+  }
+  // &.outlined {
+  //   background-color: transparent;
+  //   color: utils.color(primary);
+  // }
+
+  &.raw {
     @include raw-component;
   }
 
-  // &.-interactive {
+  // &.interactive {
   @include interactive-component;
 
   // }
@@ -288,21 +554,36 @@ body {
   font-weight: bold;
   margin-bottom: utils.component(margin-bottom);
 
-  &:not(.-disabled) {
-    &:active,
-    &:focus-visible {
-      transform: translate(var(--theme-base-unit-calc), var(--theme-base-unit-calc));
-      -box-shadow: none;
+  // &:hover,
+  // &.hover {
+  //   --theme-lightness: var(--theme-state-hover);
+  //   @include utils.component(bg-color, utils.color(bg-primary-active));
+  //   @include utils.component(border-color, utils.color(border-primary-active));
+  // }
 
-      &:hover {
-        box-shadow: none;
-      }
-    }
-  }
+  // &:not(.disabled) {
+  //   &:active,
+  //   &:focus-visible {
+  //     @include utils.component(bg-color, utils.color(bg-primary-active));
+  //     @include utils.component(border-color, utils.color(border-primary-active));
+  //     transform: translate(var(--theme-base-unit-calc), var(--theme-base-unit-calc));
+  //     box-shadow: none;
 
-  &.-disabled {
+  //     &:hover {
+  //       box-shadow: none;
+  //     }
+  //   }
+  // }
+
+  &.disabled {
     opacity: 0.5;
     cursor: not-allowed;
+    @include utils.component(bg-color, utils.color(bg-primary-disabled));
+    @include utils.component(border-color, utils.color(border-primary-disabled));
+  }
+
+  &.danger {
+    @include danger-component;
   }
 }
 
@@ -313,6 +594,7 @@ body {
   &:hover {
     // transform: none;
     box-shadow: none;
+    @include utils.component(bg-color, utils.color(primary-60));
   }
 
   &:active,
@@ -320,6 +602,12 @@ body {
     // transform: none;
     box-shadow: none;
   }
+}
+
+@mixin danger-component {
+  @include utils.component(bg-color, utils.color(danger));
+  @include utils.component(color, utils.color(main-dark));
+  @include utils.component(box-shadow-color, utils.color(primary-60));
 }
 
 h1,

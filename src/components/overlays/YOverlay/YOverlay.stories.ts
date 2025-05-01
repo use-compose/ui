@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/vue3'
+import type { ArgTypes, Meta, StoryObj } from '@storybook/vue3'
 
 import { YButton } from '@/components'
 import { action } from '@storybook/addon-actions'
@@ -12,12 +12,17 @@ const meta: Meta<typeof YOverlay> = {
   // This component will have an automatically generated docsPage entry: https://storybook.js.org/docs/vue/writing-docs/autodocs
   tags: ['autodocs'],
   argTypes: {
+    modelValue: { control: 'boolean' },
     onClick: { action: 'handleClick' },
     color: { control: 'color' },
     opacity: { control: 'number' },
     blur: { control: 'number' },
   },
   args: {
+    modelValue: false,
+    color: '',
+    opacity: 0.5,
+    blur: '8px',
     onClick: action('onClick'),
   }, // default value
 }
@@ -27,13 +32,13 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 const renderGenericStory: Story = {
-  render: (args: YOverlayProps, { argTypes }) => ({
+  render: (args: YOverlayProps, { argTypes }: ArgTypes) => ({
     components: { YOverlay, YButton },
     props: Object.keys(argTypes),
     template: `
          <div>
            <YButton @click="open">Open Overlay</YButton>
-           <YOverlay v-bind="args" v-model="isVisible" @click="close">
+           <YOverlay v-bind="args" v-model="isVisible" @click="close" />
          </div>
        `,
     setup() {
@@ -50,8 +55,6 @@ const renderGenericStory: Story = {
       return { args, open, close, isVisible }
     },
   }),
-
-  args: {},
 }
 
 const Default = renderGenericStory

@@ -1,0 +1,16 @@
+@import '@/assets/scss/utils';
+
+.y-button {
+  cursor: pointer;
+  text-transform: uppercase;
+  margin-bottom: space(unit);
+  padding: space(xs) space(unit);
+
+  @include theme-component;
+
+  @include component(padding-y, space(xs));
+
+  &.-small {
+    @include component(padding-y, space(xxs));
+  }
+}

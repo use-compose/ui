@@ -1,0 +1,36 @@
+{
+  "theme": {
+    "state": {
+      "base": {
+        "value": 0,
+        "attribute": {
+          "type": "state"
+        }
+      },
+      "hover": {
+        "value": "10%",
+        "attribute": {
+          "type": "state"
+        }
+      },
+      "active": {
+        "value": "20%",
+        "attribute": {
+          "type": "state"
+        }
+      },
+      "focus": {
+        "value": "30%",
+        "attribute": {
+          "type": "state"
+        }
+      },
+      "disabled": {
+        "value": "40%",
+        "attribute": {
+          "type": "state"
+        }
+      }
+    }
+  }
+}

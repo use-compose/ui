@@ -26,7 +26,7 @@ type Story = StoryObj<Component>
 
 export function useThemeComponentStory<T extends ThemeComponentBaseProps>(component: Component) {
   const commonArgs: ThemeComponentBaseProps = {
-    disabled: false,
+    state: 'base',
     raw: false,
     size: 'medium',
     color: 'primary',
@@ -34,11 +34,11 @@ export function useThemeComponentStory<T extends ThemeComponentBaseProps>(compon
   }
 
   const commonArgTypes: ArgTypes = {
-    disabled: { control: 'boolean' },
     raw: { control: 'boolean' },
     size: { control: 'select', options: ['small', 'medium', 'large'] },
-    color: { control: 'select', options: ['primary', 'secondary', 'default'] },
+    color: { control: 'select', options: ['primary', 'secondary', 'default', 'danger'] },
     variant: { control: 'select', options: ['contained', 'outlined', 'text'] },
+    state: { control: 'select', options: ['base', 'hover', 'active', 'focus', 'disabled'] },
   }
 
   // const defaultRenderFunction: ArgsStoryFn<VueRenderer> = (args) => ({

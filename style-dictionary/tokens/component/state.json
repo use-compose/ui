@@ -1,0 +1,26 @@
+{
+  "component": {
+    "state": {
+      "base": {
+        "value": 0,
+        "target": "var(--component-bg-lightness)"
+      },
+      "hover": {
+        "value": "10%",
+        "target": "var(--component-bg-lightness)"
+      },
+      "active": {
+        "value": "20%",
+        "target": "var(--component-bg-lightness)"
+      },
+      "focus": {
+        "value": "30%",
+        "target": "var(--component-bg-lightness)"
+      },
+      "disabled": {
+        "value": "40%",
+        "target": "var(--component-bg-lightness)"
+      }
+    }
+  }
+}

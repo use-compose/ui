@@ -1,0 +1,23 @@
+/**
+ * Do not edit directly, this file was auto-generated.
+ */
+
+:root {
+  --component-color-bg: hsl(var(--component-bg-hue), var(--component-bg-saturation), var(--component-bg-lightness), var(--component-bg-opacity));
+  --component-color-border: hsl(var(--component-border-hue), var(--component-border-saturation), var(--component-border-lightness), var(--component-border-opacity));
+  --component-color-text: hsl(var(--component-text-hue), var(--component-text-saturation), var(--component-text-lightness), var(--component-text-opacity));
+  --component-state-base: 0;
+  --component-state-hover: 10%;
+  --component-state-active: 20%;
+  --component-state-focus: 30%;
+  --component-state-disabled: 40%;
+  --component-variant-contained-bg: 1;
+  --component-variant-contained-border: 0;
+  --component-variant-contained-text: 1;
+  --component-variant-outlined-bg: 0;
+  --component-variant-outlined-border: 1;
+  --component-variant-outlined-text: 1;
+  --component-variant-text-bg: 0;
+  --component-variant-text-border: 0;
+  --component-variant-text-text: 1;
+}

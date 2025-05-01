@@ -1,0 +1,16 @@
+@use '@/assets/scss/utils' as utils;
+@use '@/assets/scss/theme.scss' as *;
+
+.y-button {
+  height: y-btn(height);
+  cursor: pointer;
+  text-transform: uppercase;
+  margin-bottom: space(unit);
+
+  @include utils.y-btn(height, component(height));
+  @include theme-component;
+
+  &.-small {
+    @include utils.component(padding-x, space(sm));
+  }
+}
