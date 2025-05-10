@@ -71,7 +71,7 @@
     "axe-playwright": "^2.0.3",
     "chromatic": "11.28.2",
     "eslint": "8.57.1",
-    "eslint-config-prettier": "10.1.2",
+    "eslint-config-prettier": "10.1.5",
     "eslint-plugin-prettier": "5.4.0",
     "eslint-plugin-vue": "^10.0.0",
     "husky": "8.0.3",
