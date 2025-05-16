@@ -147,12 +147,12 @@
 
     <YModal
       v-model="showComplexModal"
-      :hasFooter="true"
+      :has-footer="true"
       header="Custom header"
       has
       @action="console.log('Action!')"
       @cancel="console.log('Cancel!')"
-      @leftAction="console.log('Left Action!')"
+      @left-action="console.log('Left Action!')"
     >
       <!--  Complex Form as Main Slot -->
       <p>

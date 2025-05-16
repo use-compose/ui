@@ -25,7 +25,7 @@ const props = defineProps<YModalFooterProps>()
 const hasCancelBtn = computed(() => !!cancel)
 
 function handleAction() {
-  if (!!action) {
+  if (action) {
     action()
   } else {
     close()
