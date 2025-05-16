@@ -7,7 +7,7 @@ const { generateCommonStories } = useThemeComponentStory<YFlexProps>(YFlex)
 
 const meta: Meta<typeof YFlex> = {
   // TODO: TO CHANGE PATH
-  title: 'Compose/YFlex',
+  title: 'Components/Layout/YFlex',
   component: YFlex,
   tags: ['autodocs'],
 }

@@ -9,7 +9,7 @@ const { commonArgTypes, generateCommonStories } = useThemeComponentStory<YInputP
 
 // More on how to set up stories at: https://storybook.js.org/docs/vue/writing-stories/introduction
 const meta = {
-  title: 'Compose/Form/YInput',
+  title: 'Components/Form/YInput',
   component: YInput,
   ...commonArgTypes,
   // This component will have an automatically generated docsPage entry: https://storybook.js.org/docs/vue/writing-docs/autodocs

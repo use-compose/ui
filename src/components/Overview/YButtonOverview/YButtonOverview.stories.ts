@@ -9,7 +9,7 @@ const { commonArgTypes, commonArgs, generateCommonStories } =
 
 const meta: Meta<typeof YButtonOverview> = {
   // TODO: TO CHANGE PATH
-  title: 'Compose/YButtonOverview',
+  title: 'Overviews/YButtonOverview',
   component: YButtonOverview,
   tags: ['autodocs'],
   argTypes: {
