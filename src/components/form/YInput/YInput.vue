@@ -1,6 +1,16 @@
 <template>
   <label v-if="label" :for="name" class="y-label">{{ label }} :</label>
-  <input ref="yInput" :value="modelValue" :type="type" :name="name" :placeholder="placeholder" :class="yInputClasses" autocomplete="off" @input="handleInput" @blur="handleBlur" />
+  <input
+    ref="yInput"
+    :value="modelValue"
+    :type="type"
+    :name="name"
+    :placeholder="placeholder"
+    :class="yInputClasses"
+    autocomplete="off"
+    @input="handleInput"
+    @blur="handleBlur"
+  />
   <label v-if="error" class="error-label" :for="name">
     {{ errorMsg }}
   </label>

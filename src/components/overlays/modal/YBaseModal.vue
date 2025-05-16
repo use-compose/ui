@@ -9,7 +9,11 @@
     <section v-if="slots.default || mainSlot" class="y-modal-content">
       <slot>
         <div>
-          <h4>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Est modi, earum vel quo architecto numquam reprehenderit nesciunt tempore! Enim eaque et tempore, voluptas fugit reprehenderit beatae commodi aliquam eveniet amet.</h4>
+          <h4>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Est modi, earum vel quo
+            architecto numquam reprehenderit nesciunt tempore! Enim eaque et tempore, voluptas fugit
+            reprehenderit beatae commodi aliquam eveniet amet.
+          </h4>
         </div>
       </slot>
     </section>

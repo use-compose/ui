@@ -1,7 +1,11 @@
 import { getValueFromRef } from '@/utils/get-value-from-ref'
 import { onBeforeUnmount, onMounted, Ref, watchEffect } from 'vue'
 
-export function useEventListener(target: Ref<EventTarget | null> | EventTarget, event: string, handler: (e: Event) => any) {
+export function useEventListener(
+  target: Ref<EventTarget | null> | EventTarget,
+  event: string,
+  handler: (e: Event) => any,
+) {
   function addEventListener() {
     const realTarget = getValueFromRef(target)
     console.log('📟 - realTarget → ', realTarget)

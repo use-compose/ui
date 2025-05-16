@@ -1,6 +1,12 @@
 <template>
   <Transition name="fade">
-    <div v-if="modelValue" aria-hidden="true" :class="getClasses" :style="getStyles" @click="handleClick">
+    <div
+      v-if="modelValue"
+      aria-hidden="true"
+      :class="getClasses"
+      :style="getStyles"
+      @click="handleClick"
+    >
       <slot />
     </div>
   </Transition>
@@ -26,7 +32,11 @@ const props = withDefaults(defineProps<YOverlayProps>(), {
 })
 
 const getClasses = computed(() => {
-  return ['y-overlay', { '-blur': props.blur }, props.color && { [`-color-${props.color}`]: props.color }]
+  return [
+    'y-overlay',
+    { '-blur': props.blur },
+    props.color && { [`-color-${props.color}`]: props.color },
+  ]
 })
 
 const getStyles = computed(() => {

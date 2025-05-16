@@ -6,7 +6,8 @@ import { computed, defineEmits, ref } from 'vue'
 import YCheckbox from './YCheckbox.vue'
 import type { YCheckboxProps } from './types'
 
-const { commonArgTypes, commonArgs, generateCommonStories } = useThemeComponentStory<YCheckboxProps>(YCheckbox)
+const { commonArgTypes, commonArgs, generateCommonStories } =
+  useThemeComponentStory<YCheckboxProps>(YCheckbox)
 
 // More on how to set up stories at: https://storybook.js.org/docs/vue/writing-stories/introduction
 const meta = {

@@ -1,4 +1,8 @@
-import { modalActionsKey, ModalActionsKeyInterface, YModalType } from '@/components/overlays/modal/types'
+import {
+  modalActionsKey,
+  ModalActionsKeyInterface,
+  YModalType,
+} from '@/components/overlays/modal/types'
 import { BaseModalProps } from '@/components/overlays/modal/types/YBaseModal.interface'
 import { allowScroll, preventScroll } from '@/components/overlays/modal/utils'
 import { getValueFromRef } from '@/utils/get-value-from-ref'
