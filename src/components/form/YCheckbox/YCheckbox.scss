@@ -3,6 +3,7 @@
 
 .y-checkbox {
   @include theme-component;
+  @include interactive-component;
 
   @include component(margin-bottom, 0);
   @include component(padding-x, 0);
@@ -38,17 +39,16 @@
     animation: var(--y-checkbox-animation);
   }
 
-  // &:checked {
-  //   --y-checkbox-animation: var(--animate-checked-in);
-  // }
+  &:checked {
+    --y-checkbox-animation: var(--animate-checked-in);
+  }
 
-  // &:not(:checked) {
-  //   --y-checkbox-animation: var(--animate-checked-out);
-  // }
+  &:not(:checked).is-clicked-once {
+    --y-checkbox-animation: var(--animate-checked-out);
+  }
 }
 
 .y-checkbox-wrapper .y-checkbox {
-  --first-render: 0;
   --animate-checked-in: checked-in 0.3s 0s forwards;
   --animate-checked-out: checked-out 0.3s 0s forwards;
 }
@@ -56,9 +56,8 @@
 .y-checkbox-wrapper:has(.y-checkbox:checked),
 .y-checkbox-wrapper:has(.y-checkbox:checked) .y-checkbox {
   --y-checkbox-animation: var(--animate-checked-in);
-  --first-render: 1;
 }
 
-.y-checkbox-wrapper:has(.y-checkbox:not(:checked)) .y-checkbox::before {
-  --y-checkbox-animation: calc(var(--animate-checked-out) * var(--first-render));
+.y-checkbox-wrapper:has(.y-checkbox:not(:checked)) .y-checkbox.is-clicked-once {
+  --y-checkbox-animation: var(--animate-checked-out);
 }

@@ -32,7 +32,6 @@
     </Flex>
     <VerticalTitle>Title</VerticalTitle>
     <Container>
-      <YButton @click="toggleDisplayMsg">Button</YButton>
       <Flex style="--row">
         
         <YCard :cover="'@/assets/cheval.png'">
@@ -55,7 +54,6 @@
 
     <YInput v-model="input" error error-msg="ERROR" label="Message" placeholder="Message" />
     <YInput v-model="input" label="Message" placeholder="Message" />
-    <h5 v-show="showMsg">{{ input }}</h5>
     <Flex style="--flex-gap: 0">
       <Column style="--column-bg: blue; --width-tablet: 3; --width-mobile: 4">
         <p>
@@ -138,9 +136,14 @@
     <YButtonOverview />
     <p class="read-the-docs">Click on the Vite and Vue logos to learn more</p>
     <Flex>
-      <YButton @click="showComplexModal = true">Open Complex Modal</YButton>
       <YButton @click="openDrawer">Open Drawer</YButton>
     </Flex>
+
+!-->
+    <YButton @click="toggleDisplayMsg">Button</YButton>
+    <h5 v-show="showMsg">{{ input }}</h5>
+
+    <YButton @click="showComplexModal = true">Open Complex Modal</YButton>
 
     <YModal
       v-model="showComplexModal"
@@ -150,13 +153,8 @@
       @action="console.log('Action!')"
       @cancel="console.log('Cancel!')"
       @leftAction="console.log('Left Action!')"
-    > -->
-    <!-- Complex Form as Main Slot -->
-    <!-- <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus ut quidem vero debitis
-        eligendi corporis! Sint exercitationem ipsam temporibus earum obcaecati, omnis, numquam
-        minima ducimus sit itaque, minus optio nemo?
-      </p>
+    >
+      <!--  Complex Form as Main Slot -->
       <p>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus ut quidem vero debitis
         eligendi corporis! Sint exercitationem ipsam temporibus earum obcaecati, omnis, numquam
@@ -187,36 +185,44 @@
         eligendi corporis! Sint exercitationem ipsam temporibus earum obcaecati, omnis, numquam
         minima ducimus sit itaque, minus optio nemo?
       </p>
-    </YModal> -->
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus ut quidem vero debitis
+        eligendi corporis! Sint exercitationem ipsam temporibus earum obcaecati, omnis, numquam
+        minima ducimus sit itaque, minus optio nemo?
+      </p>
+    </YModal>
 
-    <!-- <YModal
+    <YModal
       v-model="showDrawer"
       :type="YModalType.Drawer"
       :size="YModalSize.Medium"
-      :hasFooter="true"
-    > -->
-    <!-- <template #header>
+      :has-footer="true"
+    >
+      <template #header>
         <h1>Form Drawer</h1>
-      </template> -->
+      </template>
 
-    <!-- Complex Form as Main Slot -->
-    <!-- </YModal> -->
+      <!-- Complex Form as Main Slot -->
+    </YModal>
     <YInput v-model="input" label="Message" placeholder="Message" />
     <YCheckbox v-model="checked" label="Checkbox" />
-    <YButton>openCustomModal</YButton>
-    <YCard> Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque quos esse blanditiis quaerat non sed, pariatur dolores aspernatur alias nesciunt nemo recusandae architecto quia. In, enim ut. Debitis, beatae similique! </YCard>
+    <YButton variant="outlined" @click="openDrawer">openCustomModal</YButton>
+    <YCard>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque quos esse blanditiis quaerat
+      non sed, pariatur dolores aspernatur alias nesciunt nemo recusandae architecto quia. In, enim
+      ut. Debitis, beatae similique!
+    </YCard>
     <YColorInput v-model="color" label="Color" />
   </Wrapper>
 </template>
 
 <script setup lang="ts">
-import { Wrapper, YButton, YCard, YCheckbox, YColorInput, YInput } from '@/components'
+import { Wrapper, YButton, YCard, YCheckbox, YInput, YModal } from '@/components'
 import { ref } from 'vue'
-import { YModalSize } from './overlays/modal/types'
+import { YModalSize, YModalType } from './overlays/modal/types'
 
 // const { theme } = useTheme()
 
-const count = ref(0)
 const input = ref('')
 const checked = ref(false)
 const color = ref('#e3c567')
@@ -244,17 +250,17 @@ const toggleDisplayMsg = () => {
 //   },
 // })
 
-function openCustomModal() {
-  show({
-    content: 'test',
-    props: {
-      size: YModalSize.Large,
-      hasHeader: true,
-      // size: 'medium',
-      header: 'Custom xw<xw<dx<Heqsdqsdqdsader',
-    },
-  })
-}
+// function openCustomModal() {
+//   show({
+//     content: 'test',
+//     props: {
+//       size: YModalSize.Large,
+//       hasHeader: true,
+//       // size: 'medium',
+//       header: 'Custom xw<xw<dx<Heqsdqsdqdsader',
+//     },
+//   })
+// }
 
 function openDrawer() {
   showDrawer.value = true

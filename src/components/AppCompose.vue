@@ -5,6 +5,8 @@
 </template>
 
 <script lang="ts" setup>
+import '@/assets/css/theme.css'
+// import '@/assets/css/global.css'
 import { useComposeTheme } from '@/composables/use-compose-theme'
 import { YTheme } from '@/types'
 

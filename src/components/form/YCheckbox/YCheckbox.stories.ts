@@ -1,13 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
 
-import { useThemeComponentStory } from '@/composables'
+import { useBaseProps, useThemeComponentStory } from '@/composables'
 import { action } from '@storybook/addon-actions'
-import { defineEmits, ref } from 'vue'
+import { computed, defineEmits, ref } from 'vue'
 import YCheckbox from './YCheckbox.vue'
 import type { YCheckboxProps } from './types'
 
-const { commonArgTypes, commonArgs, generateCommonStories } =
-  useThemeComponentStory<YCheckboxProps>(YCheckbox)
+const { commonArgTypes, commonArgs, generateCommonStories } = useThemeComponentStory<YCheckboxProps>(YCheckbox)
 
 // More on how to set up stories at: https://storybook.js.org/docs/vue/writing-stories/introduction
 const meta = {
@@ -46,22 +45,26 @@ const renderGenericStory: Story = {
     components: { YCheckbox },
     props: Object.keys(argTypes),
     template: `
-    <YCheckbox v-bind="args" :modelValue="checked" @update:modelValue="updateModel" />
+    <YCheckbox v-bind="args" :class="getClasses" :modelValue="checked" @update:modelValue="updateModel" />
   `,
     setup(props: YCheckboxProps) {
       const checked = ref(false)
       const emit = defineEmits(['update:modelValue', 'blur'])
       const updateModel = (val: boolean) => (checked.value = val)
+      const { baseClasses, isDisabled } = useBaseProps(props)
 
       const handleInput = (event: Event) => {
-        if (props.disabled) {
+        if (isDisabled) {
           event.preventDefault()
         } else {
           emit('update:modelValue', !props.modelValue)
         }
       }
 
+      const getClasses = computed(() => ({ ...baseClasses.value }))
+
       return {
+        getClasses,
         modelValue: props.modelValue,
         args,
         handleInput,

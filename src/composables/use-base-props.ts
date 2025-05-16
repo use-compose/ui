@@ -1,4 +1,4 @@
-import { Color, Size, State, ThemeComponentBaseProps, Variant } from '@/types/base-props'
+import { Color, Size, State, ThemeComponentBaseProps } from '@/types/base-props'
 import { computed } from 'vue'
 import { useColor } from './color'
 import { useVariants } from './tokens-theming/variants'
@@ -12,12 +12,6 @@ export enum BasePropClasses {
   Medium = 'medium',
   Large = 'large',
   Color = 'primary',
-}
-
-const variantClasses: { [key in Variant]: string } = {
-  contained: 'variant-contained',
-  outlined: 'variant-outlined',
-  text: 'variant-text',
 }
 
 const sizeClasses: { [key in Size]: string } = {
@@ -59,8 +53,8 @@ export function useBaseProps(props: ThemeComponentBaseProps) {
       classes.push(variantClass.value)
     }
     const sizeClass = size ? sizeClasses[size] : ''
-    const colorClass = color ? colorClasses[color] : ''
-    const stateClass = state ? stateClasses[state] : ''
+    const colorClass = color ? colorClasses[color] : colorClasses.primary
+    const stateClass = state ? stateClasses[state] : stateClasses.base
 
     classes.push(sizeClass)
     classes.push(colorClass)
@@ -69,7 +63,6 @@ export function useBaseProps(props: ThemeComponentBaseProps) {
     if (raw) {
       classes.push(BasePropClasses.Raw)
     }
-    // const semanticClass = `${color}-${state}`
 
     return classes
   })

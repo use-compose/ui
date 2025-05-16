@@ -4,7 +4,7 @@ export const componentStatesTransform = {
   filter: (token) => {
     console.log('📟 - token → ', token)
     console.log('📟 - token → ', token.attributes)
-    return token.attribute?.type === 'state'
+    return token.attribute?.type === 'bg-lightness'
   },
   transform: function (token) {
     console.log('📟 - token → ', token)
@@ -12,6 +12,7 @@ export const componentStatesTransform = {
     console.log('📟 - ratio → ', ratio)
     const sign = ratio >= 0 ? '+' : '-'
     console.log('📟 - sign → ', sign)
-    return `hsl(var(--theme-hue), var(--theme-saturation), calc(var(--theme-lightness) ${sign} ${Math.abs(ratio)}%))`
+    console.log('📟 -  `calc(var(--component-bg-lightness) ${sign} ${Math.abs(ratio)}%)` → ', `calc(var(--component-bg-lightness) ${sign} ${Math.abs(ratio)}%))`)
+    return `calc(var(--component-bg-lightness) ${sign} ${Math.abs(ratio)}%)`
   },
 }

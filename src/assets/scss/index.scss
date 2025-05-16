@@ -11,14 +11,4 @@
  *
  */
 
-// @import "theme";
-
-// Base styles
-// @use "base/base.scss" as *;
-// @use "base/reset" as *;
-// @use "base/utilities" as *;
-
-// // Utils
-// @use "utils/mixins" as *;
-// @use "utils/functions" as *;
-// @use "utils/breakpoints" as *;
+@use 'theme';

@@ -1,16 +1,17 @@
-@import '@/assets/scss/utils';
+@use '@/assets/scss/utils' as utils;
+@use '@/assets/scss/theme.scss' as *;
 
-.y-button {
+.y-divider {
   cursor: pointer;
   text-transform: uppercase;
-  margin-bottom: space(unit);
-  padding: space(xs) space(unit);
+  margin-bottom: utils.space(unit);
+  padding: utils.space(xs) utils.space(unit);
 
   @include theme-component;
 
-  @include component(padding-y, space(xs));
+  @include utils.component(padding-y, space(xs));
 
   &.-small {
-    @include component(padding-y, space(xxs));
+    @include utils.component(padding-y, space(xxs));
   }
 }

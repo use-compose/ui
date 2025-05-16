@@ -19,6 +19,7 @@ const props = withDefaults(defineProps<FlexProps>(), {
   direction: 'row',
   justify: 'normal',
   align: 'normal',
+  gap: '1rem',
 })
 
 const flexClasses = computed(() => {

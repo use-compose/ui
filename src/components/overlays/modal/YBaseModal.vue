@@ -15,7 +15,7 @@
     </section>
 
     <YModalFooter v-if="hasFooter" v-bind="props">
-      <template v-slot:default>
+      <template #default>
         <slot name="footer" />
       </template>
     </YModalFooter>
@@ -29,6 +29,7 @@ import { modalDefaultProps } from '@/composables/components'
 import { computed, useSlots } from 'vue'
 import { BaseModalProps, YModalSize } from './types'
 import { getModalClasses } from './utils/modal-classes'
+import './YModal.scss'
 
 const props = withDefaults(defineProps<BaseModalProps>(), {
   ...modalDefaultProps,
@@ -46,9 +47,6 @@ const slots = useSlots()
 </script>
 
 <style lang="scss">
-@import '@/assets/scss/utils';
-@import '@/assets/scss/base/animations';
-
 // @mixin dialog {
 //   // @include theme-component;
 //   padding: 0;

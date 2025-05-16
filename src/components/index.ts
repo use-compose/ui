@@ -11,7 +11,7 @@ export { YFlex } from './layout/YFlex'
 // form
 export { YButton } from './form/YButton'
 export { YCheckbox } from './form/YCheckbox'
-// export { YColorInput } from './form/YColorInput'
+export { YColorInput } from './form/YColorInput'
 export { YInput } from './form/YInput'
 
 // data-display

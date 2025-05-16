@@ -3,7 +3,12 @@
     <slot>
       <div class="flex justify-between">
         <h2 class="margin-0">{{ header }}</h2>
-        <CloseIcon v-if="props.hasCloseButton" @click="close" class="cursor-pointer align-self-start" :width="48" />
+        <CloseIcon
+          v-if="props.hasCloseButton"
+          class="cursor-pointer align-self-start"
+          :width="48"
+          @click="close"
+        />
       </div>
     </slot>
   </header>
@@ -22,13 +27,3 @@ const props = withDefaults(defineProps<YModalHeaderProps>(), {
 
 const { close } = inject(modalActionsKey) as ModalActionsKeyInterface
 </script>
-
-<style lang="scss" scoped>
-@import '@/assets/scss/utils';
-
-.y-modal-header {
-  font-family: gotham;
-  text-transform: uppercase;
-  padding: space(sm) space(md);
-}
-</style>

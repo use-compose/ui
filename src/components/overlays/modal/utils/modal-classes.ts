@@ -24,5 +24,5 @@ export const modalTypeClass: { [key in YModalTypeValue]: string } = {
 function getModalClasses(props: BaseModalProps = modalDefaultProps): string {
   const { size, type } = props
 
-  return `${modalSizeClass[size || YModalSize.Medium]} ${modalTypeClass[type || YModalType.Default]}`
+  return `y-dialog ${modalSizeClass[size || YModalSize.Medium]} ${modalTypeClass[type || YModalType.Default]}`
 }

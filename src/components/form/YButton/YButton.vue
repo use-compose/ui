@@ -1,5 +1,5 @@
 <template>
-  <button :class="getClasses" :disabled="isDisabled" type="button" :style="semanticTokens" @click="handleClick">
+  <button :class="getClasses" :disabled="isDisabled" type="button" @click="handleClick">
     <slot>YButton</slot>
   </button>
 </template>
@@ -15,7 +15,7 @@ const props = withDefaults(defineProps<YButtonProps>(), {
   ...basePropsDefault,
 })
 
-const { baseClasses, isDisabled, semanticTokens } = useBaseProps(props)
+const { baseClasses, isDisabled } = useBaseProps(props)
 
 const getClasses = computed(() => {
   return [[...baseClasses.value], 'y-button']
@@ -32,7 +32,3 @@ const handleClick = (e: Event) => {
   }
 }
 </script>
-
-<style lang="scss">
-@import '@/assets/scss/utils';
-</style>

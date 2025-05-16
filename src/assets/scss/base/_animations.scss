@@ -24,29 +24,29 @@
   transform: translateX(100%);
 }
 
-@keyframes modal-fade-out {
-  from {
-    --modal-opacity: 100%;
-    --modal-z-index: 100;
-  }
+// @keyframes modal-fade-out {
+//   from {
+//     --modal-opacity: 100%;
+//     --modal-z-index: 100;
+//   }
 
-  to {
-    --modal-opacity: 0%;
-    --modal-z-index: 0;
-  }
-}
+//   to {
+//     --modal-opacity: 0%;
+//     --modal-z-index: 0;
+//   }
+// }
 
-@keyframes modal-fade-in {
-  from {
-    --modal-opacity: 0%;
-    --modal-z-index: 0;
-  }
+// @keyframes modal-fade-in {
+//   from {
+//     --modal-opacity: 0%;
+//     --modal-z-index: 0;
+//   }
 
-  to {
-    --modal-opacity: 100%;
-    --modal-z-index: 100;
-  }
-}
+//   to {
+//     --modal-opacity: 100%;
+//     --modal-z-index: 100;
+//   }
+// }
 
 @keyframes drawer-slide-out {
   from {

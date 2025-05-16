@@ -20,14 +20,14 @@ const props = withDefaults(defineProps<YDividerProps>(), {
 const { baseClasses, isDisabled } = useBaseProps(props)
 
 const getClasses = computed(() => {
-  return [[...baseClasses.value], 'y-button']
+  return [[...baseClasses.value], 'y-divider']
 })
 
 // listen to click event
 const emit = defineEmits(['click'])
 
 const handleClick = (e: Event) => {
-  if (props.disabled) {
+  if (isDisabled) {
     e.preventDefault()
   } else {
     emit('click', e)

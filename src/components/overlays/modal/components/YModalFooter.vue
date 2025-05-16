@@ -1,12 +1,12 @@
 <template>
   <footer class="y-modal-footer" :class="footerClasses">
     <slot>
-      <YButton v-if="hasCancelBtn" color="secondary" @click="cancel">
-        {{ cancelBtnText }}
-      </YButton>
-
       <YButton @click="handleAction">
         {{ actionBtnText }}
+      </YButton>
+
+      <YButton v-if="hasCancelBtn" color="secondary" @click="cancel">
+        {{ cancelBtnText }}
       </YButton>
     </slot>
   </footer>
@@ -41,17 +41,3 @@ const footerClasses = computed(() => {
   }
 })
 </script>
-<style lang="scss" scoped>
-@import '@/assets/scss/utils';
-
-.y-modal-footer {
-  display: flex;
-  gap: layout(gap);
-  padding: space(sm) space(md);
-
-  :deep(.y-button) {
-    @include component(margin-bottom, component(box-shadow-y));
-    border: component(border);
-  }
-}
-</style>

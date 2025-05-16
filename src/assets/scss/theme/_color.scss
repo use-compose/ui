@@ -1,0 +1,34 @@
+@mixin resolve-color-hsl($color) {
+  --color-bg-hue: var(--color-bg-#{$color}-hue);
+  --color-bg-saturation: var(--color-bg-#{$color}-saturation);
+  --color-bg-lightness: var(--color-bg-#{$color}-lightness);
+  --color-bg-opacity: var(--color-bg-#{$color}-opacity);
+
+  --color-border-hue: var(--color-border-#{$color}-hue);
+  --color-border-saturation: var(--color-border-#{$color}-saturation);
+  --color-border-lightness: var(--color-border-#{$color}-lightness);
+  --color-border-opacity: var(--color-border-#{$color}-opacity);
+
+  --color-text-hue: var(--color-text-#{$color}-hue);
+  --color-text-saturation: var(--color-text-#{$color}-saturation);
+  --color-text-lightness: var(--color-text-#{$color}-lightness);
+  --color-text-opacity: var(--color-text-#{$color}-opacity);
+}
+
+@mixin primary {
+  &.primary {
+    @include resolve-color-hsl(primary);
+  }
+}
+
+@mixin secondary {
+  &.secondary {
+    @include resolve-color-hsl(secondary);
+  }
+}
+
+@mixin danger {
+  &.danger {
+    @include resolve-color-hsl(danger);
+  }
+}

@@ -3,21 +3,19 @@
  */
 
 :root {
-  --component-color-bg: hsl(var(--component-bg-hue), var(--component-bg-saturation), var(--component-bg-lightness), var(--component-bg-opacity));
-  --component-color-border: hsl(var(--component-border-hue), var(--component-border-saturation), var(--component-border-lightness), var(--component-border-opacity));
-  --component-color-text: hsl(var(--component-text-hue), var(--component-text-saturation), var(--component-text-lightness), var(--component-text-opacity));
-  --component-state-base: 0;
-  --component-state-hover: 10%;
-  --component-state-active: 20%;
-  --component-state-focus: 30%;
-  --component-state-disabled: 40%;
-  --component-variant-contained-bg: 1;
-  --component-variant-contained-border: 0;
-  --component-variant-contained-text: 1;
-  --component-variant-outlined-bg: 0;
-  --component-variant-outlined-border: 1;
-  --component-variant-outlined-text: 1;
-  --component-variant-text-bg: 0;
-  --component-variant-text-border: 0;
-  --component-variant-text-text: 1;
+  --component-bg-hue: calc(var(--color-bg-hue));
+  --component-bg-saturation: calc(var(--color-bg-saturation) + var(--variant-bg-saturation) + var(--state-bg-saturation));
+  --component-bg-lightness: calc(var(--color-bg-lightness) + var(--variant-bg-lightness));
+  --component-bg-opacity: calc(var(--color-bg-opacity) + var(--variant-bg-opacity) + var(--state-bg-opacity));
+  --component-border-hue: calc(var(--color-border-hue));
+  --component-border-saturation: calc(var(--color-border-saturation) + var(--variant-border-saturation) + var(--state-border-saturation));
+  --component-border-lightness: calc(var(--color-border-lightness) + var(--variant-border-lightness) + var(--state-border-lightness));
+  --component-border-opacity: calc(var(--color-border-opacity) + var(--variant-border-opacity) + var(--state-border-opacity));
+  --component-text-hue: calc(var(--color-text-hue));
+  --component-text-saturation: calc(var(--color-text-saturation) + var(--variant-text-saturation) + var(--state-text-saturation));
+  --component-text-lightness: calc(var(--color-text-lightness) + var(--variant-text-lightness) + var(--state-text-lightness));
+  --component-text-opacity: calc(var(--color-text-opacity) + var(--variant-text-opacity) + var(--state-text-opacity));
+  --component-opacity-bg: var(--component-bg-opacity);
+  --component-opacity-border: var(--component-border-opacity);
+  --component-opacity-text: var(--component-text-opacity);
 }

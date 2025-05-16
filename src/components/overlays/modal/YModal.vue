@@ -23,7 +23,6 @@ import { YOverlay } from '@/components/overlays/YOverlay'
 import { useModal } from '@/composables/modal'
 import { defineComponent, type SetupContext } from 'vue'
 import { YBaseModal } from '.'
-import './YModal.scss'
 import type { BaseModalProps } from './types/YBaseModal.interface'
 import { YModalSize } from './types/YBaseModal.interface'
 import { modalDefaultProps } from './utils'
@@ -65,15 +64,4 @@ export default defineComponent({
     }
   },
 })
-// const props = withDefaults(defineProps<BaseModalProps & { modelValue: boolean }>(), {
-//   ...modalDefaultProps,
-//   hasCloseButton: true,
-//   size: YModalSize.Medium,
-//   modelValue: false,
-// })
-
-// const { transitionName, isVisible, close, zIndex } = useModal({
-//   props,
-//   modalContext,
-// })
 </script>

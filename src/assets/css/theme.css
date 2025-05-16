@@ -1,0 +1,280 @@
+/* @property --color-primary {
+  syntax: '<color>';
+  inherits: true;
+} */
+@import '@/assets/css/global.css';
+
+
+/* 
+ * CSS Type Grinding - https://www.bitovi.com/blog/css-only-type-grinding-casting-tokens-into-useful-values
+*/
+
+/*
+ * Color Properties
+*/
+@property --color {
+  syntax: 'primary | secondary | danger';
+  initial-value: primary;
+  inherits: true;
+}
+
+@property --primary {
+  syntax: '<integer>';
+  initial-value: 1;
+  inherits: true;
+}
+
+@property --secondary {
+  syntax: '<integer>';
+  initial-value: 1;
+  inherits: true;
+}
+
+@property --danger {
+  syntax: '<integer>';
+  initial-value: 1;
+  inherits: true;
+}
+
+@property --primary-else-0 {
+  syntax: 'primary | <integer>';
+  initial-value: 0;
+  inherits: true;
+}
+
+@property --secondary-else-0 {
+  syntax: 'secondary | <integer>';
+  initial-value: 0;
+  inherits: true;
+}
+
+@property --danger-else-0 {
+  syntax: 'danger | <integer>';
+  initial-value: 0;
+  inherits: true;
+}
+
+.primary {
+  --color: primary;
+}
+
+.secondary {
+  --color: secondary;
+}
+
+.danger {
+  --color: danger;
+}
+
+.primary,
+.secondary,
+.danger {
+  --danger-else-0: var(--color);
+  --danger: var(--danger-else-0);
+
+  --primary-else-0: var(--color);
+  --primary: var(--primary-else-0);
+
+  --secondary-else-0: var(--color);
+  --secondary: var(--secondary-else-0);
+
+  /* Get current color based on the value we pass to --color */
+  --theme-current-color: color-mix(in srgb, var(--color-primary) calc(var(--primary) * 100%), color-mix(in srgb, var(--color-secondary) calc(var(--secondary) * 100%), var(--color-danger) calc(var(--danger) * 100%)));
+
+  --component-box-shadow: var(--component-box-shadow-base);
+  --component-box-shadow-color: var(--theme-current-color);
+  --component-box-shadow-x: var(--theme-base-unit-calc);
+  --component-box-shadow-y: var(--theme-base-unit-calc);
+  --component-transform: translate(0, 0);
+  --component-box-shadow-base: var(--component-box-shadow-x) var(--component-box-shadow-y) 0 0 black;
+  --component-box-shadow-hover: var(--component-box-shadow-x) var(--component-box-shadow-y) 0 0 var(--component-box-shadow-color);
+  --component-box-shadow-focus: var(--component-box-shadow-x) var(--component-box-shadow-y) 0 0 var(--component-box-shadow-color);
+  --component-box-shadow-active: calc(var(--component-box-shadow-x) - 50% * var(--theme-base-unit-calc)) calc(var(--component-box-shadow-y) - 50% * var(--theme-base-unit-calc)) 0 0 var(--component-box-shadow-color);
+
+}
+
+/* 
+ * Variant Properties
+*/
+@property --variant {
+  syntax: 'contained | outlined | text';
+  initial-value: contained;
+  inherits: true;
+}
+
+@property --contained {
+  syntax: '<integer>';
+  initial-value: 1;
+  inherits: true;
+}
+
+@property --contained-else-0 {
+  syntax: 'contained | <integer>';
+  initial-value: 0;
+  inherits: true;
+}
+
+@property --outlined {
+  syntax: '<integer>';
+  initial-value: 1;
+  inherits: true;
+}
+
+@property --outlined-else-0 {
+  syntax: 'outlined | <integer>';
+  initial-value: 0;
+  inherits: true;
+}
+
+@property --text {
+  syntax: '<integer>';
+  initial-value: 1;
+  inherits: true;
+}
+
+@property --text-else-0 {
+  syntax: 'text | <integer>';
+  initial-value: 0;
+  inherits: true;
+}
+
+.contained {
+  --variant: contained;
+}
+
+.outlined {
+  --variant: outlined;
+}
+
+.text {
+  --variant: text;
+}
+
+.contained,
+.outlined,
+.text {
+  --contained-else-0: var(--variant);
+  --contained: var(--contained-else-0);
+
+  --outlined-else-0: var(--variant);
+  --outlined: var(--outlined-else-0);
+
+  --text-else-0: var(--variant);
+  --text: var(--text-else-0);
+}
+
+/* 
+ * State Properties
+*/
+@property --state {
+  syntax: 'base | hover | active | focus | disabled';
+  initial-value: base;
+  inherits: true;
+}
+
+@property --base {
+  syntax: '<integer>';
+  initial-value: 1;
+  inherits: true;
+}
+
+@property --base-else-0 {
+  syntax: 'base | <integer>';
+  initial-value: 0;
+  inherits: true;
+}
+
+@property --hover {
+  syntax: '<integer>';
+  initial-value: 1;
+  inherits: true;
+}
+
+@property --hover-else-0 {
+  syntax: 'hover | <integer>';
+  initial-value: 0;
+  inherits: true;
+}
+
+@property --active {
+  syntax: '<integer>';
+  initial-value: 1;
+  inherits: true;
+}
+
+@property --active-else-0 {
+  syntax: 'active | <integer>';
+  initial-value: 0;
+  inherits: true;
+}
+
+@property --focus {
+  syntax: '<integer>';
+  initial-value: 1;
+  inherits: true;
+}
+
+@property --focus-else-0 {
+  syntax: 'focus | <integer>';
+  initial-value: 0;
+  inherits: true;
+}
+
+@property --disabled {
+  syntax: '<integer>';
+  initial-value: 1;
+  inherits: true;
+}
+
+@property --disabled-else-0 {
+  syntax: 'disabled | <integer>';
+  initial-value: 0;
+  inherits: true;
+}
+
+/* 
+.base {
+  --state: base;
+}
+
+.hover {
+  --state: hover;
+}
+
+.active {
+  --state: active;
+}
+
+.focus {
+  --state: focus;
+}
+
+.disabled {
+  --state: disabled;
+} */
+
+/* .focus,
+:focus,
+:focus-within,
+:focus-visible {
+  --state: focus;
+}
+
+.disabled {
+  --state: disabled;
+}
+
+:root {}
+
+.app-compose {
+
+
+
+  --base: var(--disabled);
+  --hover: var(--active);
+  --active: var(--hover);
+  --focus: var(--base);
+  --disabled: var(--state);
+  /* --ttt: hsl(calc(45 * 1), calc(68% * 1), calc(39% * 0 + 0% * 0 + 0% * 1 + 0% * 0 + 0% * 0 + 50% * 1 + 40% * 0 + 30% * 0 + 30% * 0 + 0% * 0));
+  background-color: var(--ttt);
+  color: blue; */

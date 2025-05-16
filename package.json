@@ -2,7 +2,6 @@
   "name": "gamma-compose",
   "version": "0.0.0",
   "dependencies": {
-    "tinycolor2": "1.6.0",
     "vue": "3.5.13"
   },
   "devDependencies": {
@@ -19,6 +18,7 @@
     "@storybook/test-runner": "^0.22.0",
     "@storybook/vue3": "^8.4.7",
     "@storybook/vue3-vite": "^8.4.7",
+    "@types/tinycolor2": "^1.4.6",
     "@typescript-eslint/eslint-plugin": "6.21.0",
     "@typescript-eslint/parser": "6.21.0",
     "@vitejs/plugin-vue": "4.6.2",
@@ -39,6 +39,7 @@
     "stylelint": "16.17.0",
     "stylelint-config-recommended-vue": "1.6.0",
     "stylelint-config-standard-scss": "14.0.0",
+    "tinycolor2": "1.6.0",
     "typescript": "~5.8.0",
     "typescript-eslint": "7.18.0",
     "unreadable-typescript": "^1.0.0",
@@ -79,7 +80,7 @@
     "build": "vue-tsc && vite build",
     "build-style": "style-dictionary build --config style-dictionary-config.json",
     "build-style2": "style-dictionary build --config sd.config.js",
-    "build-style3": "style-dictionary build --config mdr.js",
+    "build-style3": "style-dictionary build --config style-dictionary/config.js",
     "build-ignore-ts-error": "vite build",
     "build-storybook": "storybook build",
     "build-storybook-docs": "storybook build --docs",

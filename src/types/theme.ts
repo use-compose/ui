@@ -1,5 +1,6 @@
 export enum Theme {
   primary = '--color-primary',
+  secondary = '--color-secondary',
   background = '--color-bg',
   dark = '--color-main-dark',
   danger = '--color-danger',

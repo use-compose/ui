@@ -1,3 +1,4 @@
+import { toRef } from 'vue'
 /*
  * Initially inspired from VueUse
  * https://github.com/vueuse/vueuse/blob/main/packages/shared/toValue/index.ts
@@ -10,7 +11,7 @@
  * TODO-NUXT-3: once we upgrade to Vue 3.3+, remove the three first typing declarations and import them from vue
  */
 
-import { Ref, unref, VueElement } from 'vue'
+import { isRef, Ref, unref, VueElement } from 'vue'
 
 /**
  * Any function
@@ -40,6 +41,14 @@ export function getValueFromRef<T>(source: MaybeRefOrGetter<T>): T {
     console.log('📟 - file: get-value-frosdfsdfsfdsdfm-ref.ts:40 - source → ', source)
     return (source as AnyFn)()
   }
+  if (isRef(source)) {
+    console.log('📟 - file: get-value-from-ref.ts:41 - source → ', source)
+    console.log('📟 - file: get-value-from-ref.ts:41 - source.value → ', source.value)
+    const sourceRef = toRef(source)
+    console.log('📟 - sourceRef → ', sourceRef)
+    return sourceRef.value
+  }
+
   console.log('📟 - file: get-value-from-ref.ts:42 - source → ', source)
   const unrefSource = unref(source)
   console.log('📟 - unrefSource → ', unrefSource)

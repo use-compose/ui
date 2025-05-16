@@ -1,7 +1,19 @@
 <template>
   <div class="y-checkbox-wrapper">
     <label class="y-label">{{ label }}</label>
-    <input class="y-checkbox-label" :class="yCheckboxClasses" ref="yCheckbox" :value="modelValue" type="checkbox" :name="name" :placeholder="placeholder" autocomplete="off" :disabled="props.disabled" @change="handleChange" @blur="handleBlur" />
+    <input
+      ref="yCheckbox"
+      class="y-checkbox-label"
+      :class="yCheckboxClasses"
+      :value="modelValue"
+      type="checkbox"
+      :name="name"
+      :placeholder="placeholder"
+      autocomplete="off"
+      :disabled="isDisabled"
+      @change="handleChange"
+      @blur="handleBlur"
+    />
     <label v-if="error" class="error-label" :for="name">
       {{ errorMsg }}
     </label>
@@ -21,17 +33,27 @@ const props = withDefaults(defineProps<YCheckboxProps>(), {
   name: 'checkbox-input' + Math.random().toString(36).substring(7),
 })
 
-const { baseClasses } = useBaseProps(props)
+const { baseClasses, isDisabled } = useBaseProps(props)
+
+const isClickedOnce = ref(false)
 
 const yCheckboxClasses = computed(() => {
-  return [[...baseClasses.value], 'y-checkbox', props.hero ? 'y-input-hero' : '']
+  return [
+    [...baseClasses.value],
+    'y-checkbox',
+    props.hero ? 'y-input-hero' : '',
+    isClickedOnce.value ? 'is-clicked-once' : '',
+  ]
 })
 
 // listen to input event
 const emit = defineEmits(['update:modelValue', 'blur'])
 
 const handleChange = (event: Event) => {
-  if (props.disabled) {
+  if (!isClickedOnce.value) {
+    isClickedOnce.value = true
+  }
+  if (isDisabled) {
     event.preventDefault()
   } else {
     emit('update:modelValue', !props.modelValue)
@@ -54,7 +76,3 @@ onMounted(() => {
   }
 })
 </script>
-
-<style lang="scss">
-@import '@/assets/scss/utils';
-</style>
