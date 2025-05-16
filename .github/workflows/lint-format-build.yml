@@ -19,7 +19,7 @@ jobs:
       - name: Install dependencies
         uses: ./.github/actions/install-dependencies
         with:
-          node_version: 20
+          node_version: 22
 
       - name: Lint
         run: npm run lint
