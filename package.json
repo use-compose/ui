@@ -26,6 +26,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc && vite build",
+    "build:style": "style-dictionary build --config style-dictionary/config.js",
     "build-ignore-ts-error": "vite build",
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
