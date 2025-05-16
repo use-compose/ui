@@ -1,3 +1,4 @@
+import { toRef } from 'vue'
 /*
  * Initially inspired from VueUse
  * https://github.com/vueuse/vueuse/blob/main/packages/shared/toValue/index.ts
@@ -10,7 +11,7 @@
  * TODO-NUXT-3: once we upgrade to Vue 3.3+, remove the three first typing declarations and import them from vue
  */
 
-import { Ref, unref, VueElement } from 'vue'
+import { isRef, Ref, unref, VueElement } from 'vue'
 
 /**
  * Any function
@@ -37,10 +38,20 @@ export type MaybeRefOrGetter<T = any> = MaybeRef<T> | (() => T)
 
 export function getValueFromRef<T>(source: MaybeRefOrGetter<T>): T {
   if (typeof source === 'function') {
+    console.log('📟 - file: get-value-frosdfsdfsfdsdfm-ref.ts:40 - source → ', source)
     return (source as AnyFn)()
   }
+  if (isRef(source)) {
+    console.log('📟 - file: get-value-from-ref.ts:41 - source → ', source)
+    console.log('📟 - file: get-value-from-ref.ts:41 - source.value → ', source.value)
+    const sourceRef = toRef(source)
+    console.log('📟 - sourceRef → ', sourceRef)
+    return sourceRef.value
+  }
 
+  console.log('📟 - file: get-value-from-ref.ts:42 - source → ', source)
   const unrefSource = unref(source)
+  console.log('📟 - unrefSource → ', unrefSource)
 
   // Custom additional condition that, if after applying unref on the source (which returns the ref value or the source itself if it's not a ref)
   // check if the result is an object and contains a '_isVue' property in it, then we return the $el property which will contains the desired value

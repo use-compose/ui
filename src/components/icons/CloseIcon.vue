@@ -51,13 +51,13 @@ export default defineComponent({
       type: Number,
     },
   },
+  setup() {
+    return {}
+  },
   computed: {
     viewBox() {
       return `0 0 ${this.size} ${this.size}`
     },
-  },
-  setup() {
-    return {}
   },
 })
 </script>

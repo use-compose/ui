@@ -1,105 +1,67 @@
 <template>
   <Teleport to="body">
-    <YOverlay v-model="isVisible" @click="close" />
+    <YOverlay v-model="isVisible" :z-index="zIndex" @click="close">
+      <Transition appear :name="transitionName">
+        <YBaseModal v-if="isVisible" v-bind="props" @click.stop>
+          <template #header>
+            <slot name="header" />
+          </template>
 
-    <Transition :name="transitionName">
-      <YBaseModal v-if="isVisible" v-bind="props">
-        <template #header>
-          <slot name="header" />
-        </template>
+          <slot />
 
-        <slot />
-
-        <template #footer>
-          <slot name="footer" />
-        </template>
-      </YBaseModal>
-    </Transition>
+          <template #footer>
+            <slot name="footer" />
+          </template>
+        </YBaseModal>
+      </Transition>
+    </YOverlay>
   </Teleport>
 </template>
 
-<script setup lang="ts">
-import { YOverlay } from '@/components/overlays'
-import { computed, provide, useAttrs, watch } from 'vue'
+<script lang="ts">
+import { YOverlay } from '@/components/overlays/YOverlay'
+import { useModal } from '@/composables/modal'
+import { defineComponent, type SetupContext } from 'vue'
 import { YBaseModal } from '.'
-import { modalActionsKey, ModalActionsKeyInterface } from './types'
 import type { BaseModalProps } from './types/YBaseModal.interface'
-import { YModalSize, YModalType } from './types/YBaseModal.interface'
-import { allowScroll, modalDefaultProps, preventScroll } from './utils'
+import { YModalSize } from './types/YBaseModal.interface'
+import { modalDefaultProps } from './utils'
 
-const props = withDefaults(defineProps<BaseModalProps & { modelValue: boolean }>(), {
-  ...modalDefaultProps,
-  hasCloseButton: true,
-  size: YModalSize.Medium,
-  modelValue: false,
-})
+export default defineComponent({
+  name: 'YModal',
+  components: {
+    YBaseModal,
+    YOverlay,
+  },
+  props: {
+    ...modalDefaultProps,
+    hasCloseButton: {
+      type: Boolean,
+      default: true,
+    },
+    size: {
+      type: String,
+      default: YModalSize.Medium,
+    },
+    modelValue: {
+      type: Boolean,
+      default: false,
+    },
+  },
+  setup(props: BaseModalProps & { modelValue: boolean }, context: SetupContext) {
+    // if (context) {
+    const { transitionName, isVisible, close, zIndex } = useModal({
+      props,
+      modalContext: context,
+    })
 
-const transitionName = computed(() => {
-  return props.type === YModalType.Default ? 'fade' : 'drawer-slide'
-})
-
-// const { close, isVisible } = inject(modalActionsKey) as ModalActionsKeyInterface
-const emit: (event: string, ...args: any[]) => void = defineEmits([
-  'update:modelValue',
-  'close',
-  'action',
-  'cancel',
-])
-
-const attrs = useAttrs()
-console.log('📟 - file: YModal.vue:51 - attrs → ', attrs.onCancel)
-// const { open, close, isVisible } = useModal({ attrs: props, emit })
-
-// We first declare open and close which are always always available
-function open() {
-  // TODO-NUXT-3: Replace with emit('update:modelValue', true)
-  emit('update:modelValue', true)
-}
-
-function close() {
-  // TODO-NUXT-3: Replace with emit('update:modelValue', false)
-  emit('update:modelValue', false)
-}
-
-const modalActions: ModalActionsKeyInterface = {
-  open,
-  close,
-}
-
-// Based on their existence, we add the other actions
-function cancel() {
-  emit('cancel')
-}
-if (attrs.onCancel) {
-  modalActions.cancel = cancel
-}
-
-function action() {
-  emit('action')
-}
-if (attrs.action) {
-  modalActions.action = action
-}
-
-// We wrap the value from the v-model in a computed property
-// to avoid the warning about mutating a prop directly
-// as value / modelValue can not be directly used as a prop
-const isVisible = computed(() => {
-  return props.modelValue
-})
-
-// We watch the value of the model and prevent scrolling when the modal is open
-watch(
-  () => props.modelValue,
-  (value) => {
-    console.log('watch modelValue', value)
-    if (value) {
-      preventScroll()
-    } else {
-      allowScroll()
+    return {
+      transitionName,
+      props,
+      isVisible,
+      close,
+      zIndex,
     }
   },
-)
-
-provide(modalActionsKey, modalActions)
+})
 </script>

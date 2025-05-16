@@ -10,9 +10,9 @@ to: src/components/<%= name %>/<%= name %>.vue
 
 <script setup lang="ts">
 import { basePropsDefault, useBaseProps } from '@/composables/use-base-props'
-import { ThemeComponentBaseProps } from '@/types/base-props'
 import { computed, defineProps, withDefaults } from 'vue'
 import type { <%= name %>Props } from './types'
+import './<%= name %>.scss'
 
 const props = withDefaults(defineProps<<%= name %>Props>(), {
   ...basePropsDefault,

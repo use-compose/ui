@@ -1,0 +1,45 @@
+{
+  "component": {
+    "bg": {
+      "hue": { "value": "calc(var(--color-bg-hue))" },
+      "saturation": { "value": "calc(var(--color-bg-saturation) + var(--variant-bg-saturation) + var(--state-bg-saturation))" },
+      "lightness": { "value": "calc(var(--color-bg-lightness) + var(--variant-bg-lightness) + var(--state-bg-lightness))" },
+      "opacity": { "value": "calc(var(--color-bg-opacity) + var(--variant-bg-opacity) + var(--state-bg-opacity))" }
+    },
+    "border": {
+      "hue": { "value": "calc(var(--color-border-hue))" },
+      "saturation": { "value": "calc(var(--color-border-saturation) + var(--variant-border-saturation) + var(--state-border-saturation))" },
+      "lightness": { "value": "calc(var(--color-border-lightness) + var(--variant-border-lightness) + var(--state-border-lightness))" },
+      "opacity": { "value": "calc(var(--color-border-opacity) + var(--variant-border-opacity) + var(--state-border-opacity))" }
+    },
+    "text": {
+      "hue": { "value": "calc(var(--color-text-hue))" },
+      "saturation": { "value": "calc(var(--color-text-saturation) + var(--variant-text-saturation) + var(--state-text-saturation))" },
+      "lightness": { "value": "calc(var(--color-text-lightness) + var(--variant-text-lightness) + var(--state-text-lightness))" },
+      "opacity": { "value": "calc(var(--color-text-opacity) + var(--variant-text-opacity) + var(--state-text-opacity))" }
+    },
+    "opacity": {
+      "bg": {
+        "value": "var(--component-bg-opacity)",
+        "type": "opacity",
+        "attribute": {
+          "type": "base-component"
+        }
+      },
+      "border": {
+        "value": "var(--component-border-opacity)",
+        "type": "opacity",
+        "attribute": {
+          "type": "base-component"
+        }
+      },
+      "text": {
+        "value": "var(--component-text-opacity)",
+        "type": "opacity",
+        "attribute": {
+          "type": "base-component"
+        }
+      }
+    }
+  }
+}

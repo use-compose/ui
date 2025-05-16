@@ -1,7 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
 
 import { useThemeComponentStory } from '@/composables'
-import YButton, { YButtonProps } from './YButton.vue'
+import YButton from './YButton.vue'
+import type { YButtonProps } from './types'
 
 const { commonArgTypes, generateCommonStories } = useThemeComponentStory(YButton)
 
@@ -41,7 +42,7 @@ const renderGenericStory: Story = {
     size: 'medium',
     color: 'primary',
     variant: 'contained',
-    disabled: false,
+    state: 'base',
     raw: false,
   },
 }
