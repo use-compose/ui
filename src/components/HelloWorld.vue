@@ -1,8 +1,7 @@
 <script setup lang="ts">
-import { useTheme } from '@/composables'
 import TestLol from './TestLol.vue'
 
-useTheme()
+// useTheme()
 
 defineProps<{ msg: string }>()
 </script>

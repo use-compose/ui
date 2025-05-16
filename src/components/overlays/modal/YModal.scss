@@ -1,0 +1,122 @@
+@use '@/assets/scss/utils' as *;
+@use '@/assets/scss/theme.scss' as *;
+
+:root {
+  --modal-size-small: 32rem;
+  --modal-size-default: 56rem;
+  --dialog-z-index: 1000;
+  --z-index-base: 1000;
+  --overlay-z-index: var(--dialog-z-index);
+  --modal-z-index: calc(var(--dialog-z-index) + 1);
+}
+
+.modal-small {
+  --modal-size: var(--modal-size-small);
+}
+
+.modal-default {
+  --modal-size: var(--modal-size-default);
+}
+
+.y-overlay {
+  z-index: var(--overlay-z-index);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  overflow: auto;
+  position: fixed;
+  inset: 0;
+  background-color: var(--overlay-bg, color(main-bg));
+  backdrop-filter: blur(var(--overlay-blur, 8px));
+  transition: opacity 0.3s ease;
+}
+@mixin dialog {
+  // @include theme-component;
+  padding: 0;
+  position: fixed;
+  z-index: var(--dialog-z-index);
+  border: 2px solid color(main-dark);
+  @include component(border-width, 4px);
+  background-color: color(main-dark);
+  background-color: color(bg);
+  display: flex;
+  flex-direction: column;
+}
+// .y-dialog {
+//   @include theme-component;
+//   position: fixed;
+//   display: flex;
+//   flex-direction: column;
+//   background-color: white;
+//   @include component(border-width, 2px);
+
+//   // border: 2px solid var(--dialog-border-color, color(main-dark));
+// }
+
+.y-modal {
+  @include dialog;
+  --modal-z-index: calc(var(--dialog-z-index) + 1);
+
+  position: relative;
+  max-width: 100%;
+  height: auto;
+  margin: 5rem 0;
+  z-index: var(--modal-z-index);
+}
+
+.y-drawer {
+  @include dialog;
+  top: 0;
+  bottom: 0;
+  height: 100svh;
+  right: 0;
+  width: clamp(260px, 65%, 896px);
+
+  transition: transform 0.5s ease;
+
+  .y-modal-content {
+    flex-grow: 1;
+  }
+}
+
+.y-modal,
+.y-drawer {
+  width: var(--modal-size);
+}
+
+.y-modal-content {
+  padding: space(sm) space(md);
+  overflow-y: auto;
+  scrollbar-width: 3px;
+  scrollbar-color: component(color);
+  scrollbar-gutter: stable both-edges;
+
+  // custom scrollbar
+  &::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 3px;
+    background-color: color(primary);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: component(color);
+    box-shadow: 0 0 1px rgba(255, 255, 255, 0.5);
+  }
+}
+
+.y-modal-header {
+  font-family: gotham;
+  text-transform: uppercase;
+  padding: space(sm) space(md);
+}
+
+.y-modal-footer {
+  display: flex;
+  gap: layout(gap);
+  padding: space(sm) space(md);
+
+  :deep(.y-button) {
+    @include component(margin-bottom, component(box-shadow-y));
+    border: component(border);
+  }
+}

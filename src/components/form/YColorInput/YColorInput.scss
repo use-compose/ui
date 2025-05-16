@@ -1,0 +1,46 @@
+@use '@/assets/scss/utils' as utils;
+@use '@/assets/scss/theme.scss' as *;
+
+.y_label {
+  color: var(--primary);
+  font-size: #{var(--h4)};
+  margin-bottom: 15px;
+  display: block;
+  height: 22px;
+}
+
+.y-color-input {
+  display: inline-block;
+  cursor: pointer;
+
+  @include theme-component;
+
+  @include utils.component(padding-x, 0);
+  @include utils.component(padding-y, 0);
+  --component-margin-bottom: 0;
+  height: calc(2 * var(--space-unit));
+  background-color: v-bind('modelValue');
+
+  &.y-input-small {
+    padding: var(--space-xs);
+    --component-padding-y: var(--space-xs);
+    --component-padding-x: var(--space-xs);
+  }
+
+  &.y-input-big {
+    --component-padding-y: var(--space-unit);
+  }
+
+  // TODO: check if to keep these 3 classes
+  .error-label {
+    font-size: 80%;
+  }
+
+  .no-border {
+    border: none;
+  }
+
+  .no-margin {
+    margin-bottom: 0;
+  }
+}

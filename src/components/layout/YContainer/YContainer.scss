@@ -1,0 +1,29 @@
+// Uncomment if needed
+// @use '@/assets/scss/utils' as *;
+@use '@/assets/scss/theme.scss' as *;
+
+// TODO: change to kebab-case
+.y-container {
+  max-width: $breakpoint-mobile;
+  padding: var(--space-unit);
+
+  @include media('tablet') {
+    max-width: $breakpoint-tablet;
+  }
+
+  @include media('desktop') {
+    max-width: $breakpoint-desktop;
+  }
+
+  @include media('desktop-xl') {
+    max-width: $breakpoint-desktop-xl;
+  }
+
+  @include media('desktop-xxl') {
+    max-width: $breakpoint-desktop-xxl;
+  }
+
+  &.fluid {
+    width: 100%;
+  }
+}

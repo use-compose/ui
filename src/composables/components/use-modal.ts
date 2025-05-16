@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import { modalKey, ModalKeyInterface } from '@/components/overlays/modal/types'
 import { inject } from 'vue'
 

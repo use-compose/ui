@@ -6,7 +6,7 @@ on:
       - dev
 # https://zellwk.com/blog/github-actions-deploy/
 jobs:
-  lint-format-build:
+  lint:
     if: ${{ ! startsWith(github.event.pull_request.head.ref, 'renovate/') }}
     runs-on: ubuntu-latest
 
@@ -24,13 +24,55 @@ jobs:
       - name: Lint
         run: npm run lint
 
-      - name: Format
-        if: ${{ always() }}
-        run: npm run format
+  lint-style:
+    if: ${{ ! startsWith(github.event.pull_request.head.ref, 'renovate/') }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install dependencies
+        uses: ./.github/actions/install-dependencies
+        with:
+          node_version: 20
 
       - name: Lint Style
         if: ${{ always() }}
         run: npm run lint:style
+
+  format:
+    if: ${{ ! startsWith(github.event.pull_request.head.ref, 'renovate/') }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install dependencies
+        uses: ./.github/actions/install-dependencies
+        with:
+          node_version: 20
+
+      - name: Format
+        if: ${{ always() }}
+        run: npm run format
+
+  build:
+    if: ${{ ! startsWith(github.event.pull_request.head.ref, 'renovate/') }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install dependencies
+        uses: ./.github/actions/install-dependencies
+        with:
+          node_version: 20
 
       - name: Build
         if: ${{ always() }}

@@ -1,0 +1,26 @@
+import type { Meta , StoryObj} from '@storybook/vue3';
+import YContainer from './YContainer.vue';
+import type { YContainerProps } from './types';
+import { useThemeComponentStory } from '@/composables'
+
+const { commonArgTypes, commonArgs, generateCommonStories } = useThemeComponentStory<YContainerProps>(YContainer)
+
+const meta: Meta<typeof YContainer> = {
+  // TODO: TO CHANGE PATH
+  title: 'Compose/YContainer',
+  component: YContainer,
+  tags: ['autodocs'],
+  argTypes: {
+    ...commonArgTypes,
+  },
+  args: {
+    ...commonArgs,
+  },
+};
+ 
+export default meta;
+type Story = StoryObj<typeof meta>;
+
+const { Default } = generateCommonStories()
+
+export { Default }

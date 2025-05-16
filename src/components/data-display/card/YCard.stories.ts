@@ -1,8 +1,7 @@
-import { ArgTypes, Meta, StoryObj } from '@storybook/vue3'
-
 import YButton from '@/components/form/YButton/YButton.vue'
 import { useThemeComponentStory } from '@/composables'
-import Flex from '../../layout/flex/Flex.vue'
+import { ArgTypes, Meta, StoryObj } from '@storybook/vue3'
+import { YFlex } from '../../layout/YFlex'
 import YCard, { YCardProps } from './YCard.vue'
 
 const { commonArgTypes, generateCommonStories } = useThemeComponentStory(YCard)
@@ -10,7 +9,7 @@ const { commonArgTypes, generateCommonStories } = useThemeComponentStory(YCard)
 const meta = {
   title: 'Compose/Card',
   component: YCard,
-  subcomponents: { YButton, Flex },
+  subcomponents: { YButton, YFlex },
   tags: ['autodocs'],
   argTypes: {
     ...commonArgTypes,
@@ -34,13 +33,13 @@ const template = `
     consequatur minima a rerum, alias minus nihil perspiciatis voluptate asperiores quaerat
     blanditiis temporibus accusantium cum. Exercitationem, dicta?
   </p> 
-  <Flex justify="flex-end" align="flex-end"><YButton v-bind="args" style="--component-margin-bottom: 0">YButton</YButton></Flex>
+  <YFlex justify="flex-end" align="flex-end"><YButton v-bind="args" style="--component-margin-bottom: 0">YButton</YButton></YFlex>
 </YCard>
  `
 
 // Define a generic render function
 const renderTemplate = (args: YCardProps, { argTypes }: ArgTypes) => ({
-  components: { YCard, YButton, Flex },
+  components: { YCard, YButton, YFlex },
   props: Object.keys(argTypes),
 
   template,

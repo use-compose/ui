@@ -1,0 +1,66 @@
+/**
+ * Do not edit directly, this file was auto-generated.
+ */
+
+:root {
+  --state-base-bg-hue: 0;
+  --state-base-bg-saturation: 0%;
+  --state-base-bg-lightness: var(--color-primary-lightness);
+  --state-base-bg-opacity: 1;
+  --state-base-border-hue: 0;
+  --state-base-border-saturation: 0%;
+  --state-base-border-lightness: 0%;
+  --state-base-border-opacity: 1;
+  --state-base-text-hue: 0;
+  --state-base-text-saturation: 0%;
+  --state-base-text-lightness: 0%;
+  --state-base-text-opacity: 1;
+  --state-hover-bg-hue: 0;
+  --state-hover-bg-saturation: 0%;
+  --state-hover-bg-lightness: 50%;
+  --state-hover-bg-opacity: 1;
+  --state-hover-border-hue: 0;
+  --state-hover-border-saturation: 0%;
+  --state-hover-border-lightness: 0%;
+  --state-hover-border-opacity: 1;
+  --state-hover-text-hue: 0;
+  --state-hover-text-saturation: 0%;
+  --state-hover-text-lightness: 0%;
+  --state-hover-text-opacity: 1;
+  --state-active-bg-hue: 0;
+  --state-active-bg-saturation: 0%;
+  --state-active-bg-lightness: 40%;
+  --state-active-bg-opacity: 1;
+  --state-active-border-hue: 0;
+  --state-active-border-saturation: 0%;
+  --state-active-border-lightness: 0%;
+  --state-active-border-opacity: 1;
+  --state-active-text-hue: 0;
+  --state-active-text-saturation: 0%;
+  --state-active-text-lightness: 0%;
+  --state-active-text-opacity: 1;
+  --state-focus-bg-hue: 0;
+  --state-focus-bg-saturation: 0%;
+  --state-focus-bg-lightness: 40%;
+  --state-focus-bg-opacity: 1;
+  --state-focus-border-hue: 0;
+  --state-focus-border-saturation: 0%;
+  --state-focus-border-lightness: 0%;
+  --state-focus-border-opacity: 1;
+  --state-focus-text-hue: 0;
+  --state-focus-text-saturation: 0%;
+  --state-focus-text-lightness: 0%;
+  --state-focus-text-opacity: 1;
+  --state-disabled-bg-hue: 0;
+  --state-disabled-bg-saturation: 0%;
+  --state-disabled-bg-lightness: 0%;
+  --state-disabled-bg-opacity: 1;
+  --state-disabled-border-hue: 0;
+  --state-disabled-border-saturation: 0%;
+  --state-disabled-border-lightness: 0%;
+  --state-disabled-border-opacity: 1;
+  --state-disabled-text-hue: 0;
+  --state-disabled-text-saturation: 0%;
+  --state-disabled-text-lightness: 0%;
+  --state-disabled-text-opacity: 1;
+}

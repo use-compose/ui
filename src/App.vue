@@ -1,14 +1,12 @@
 <script setup lang="ts">
 // import './assets/scss/main.scss'
-import { ref } from 'vue'
-import { AppCompose, HelloWorld, ModalProvider } from './components'
+import { AppCompose, HelloWorld } from './components'
 
 import type { YTheme } from './types'
 
-const theme = ref<YTheme>({})
-
-theme.value = {
+const theme: YTheme = {
   primary: '#e3c567',
+  danger: '#E3514A',
   background: '#ABCDF8',
   dark: '#0b0c0c',
 }
@@ -16,9 +14,9 @@ theme.value = {
 
 <template>
   <AppCompose :theme="theme">
-    <ModalProvider>
-      <HelloWorld msg="App" />
-    </ModalProvider>
+    <!-- <ModalProvider> -->
+    <HelloWorld msg="App" />
+    <!-- </ModalProvider> -->
   </AppCompose>
 </template>
 

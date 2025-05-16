@@ -1,0 +1,75 @@
+@mixin resolve-state-hsl($state) {
+  --state-bg-hue: var(--state-#{$state}-bg-hue);
+  --state-bg-saturation: var(--state-#{$state}-bg-saturation);
+  --state-bg-lightness: var(--state-#{$state}-bg-lightness);
+  --state-bg-opacity: var(--state-#{$state}-bg-opacity);
+
+  --state-border-hue: var(--state-#{$state}-border-hue);
+  --state-border-saturation: var(--state-#{$state}-border-saturation);
+  --state-border-lightness: var(--state-#{$state}-border-lightness);
+  --state-border-opacity: var(--state-#{$state}-border-opacity);
+
+  --state-text-hue: var(--state-#{$state}-text-hue);
+  --state-text-saturation: var(--state-#{$state}-text-saturation);
+  --state-text-lightness: var(--state-#{$state}-text-lightness);
+  --state-text-opacity: var(--state-#{$state}-text-opacity);
+
+  --state: #{$state};
+}
+
+@mixin base {
+  &.base:not([disabled]) {
+    @include resolve-state-hsl(base);
+
+    @content;
+  }
+}
+
+@mixin hover {
+  &:not([disabled]),
+  &:not(.disabled) {
+    &:hover,
+    &.hover {
+      @include resolve-state-hsl(hover);
+
+      @content;
+    }
+  }
+}
+
+@mixin focus {
+  &:not([disabled]),
+  &:not(.disabled) {
+    &:focus,
+    &.focus-visible,
+    &.focus,
+    &:focus-visible {
+      @include resolve-state-hsl(focus);
+      @content;
+    }
+  }
+}
+@mixin active {
+  &:not([disabled]),
+  &:not(.disabled) {
+    &:active,
+    &.active {
+      @include resolve-state-hsl(active);
+
+      @content;
+    }
+  }
+}
+
+@mixin disabled {
+  &:disabled,
+  &.disabled,
+  &[disabled] {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+    @include resolve-state-hsl(disabled);
+
+    @content;
+  }
+}

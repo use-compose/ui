@@ -7,12 +7,32 @@
   * 5 - Theme
   * 6 - Breakpoints
 */
+// @use '../css/global.css' as *;
+// @use '../css/theme/src/assets/variables.css' as *;
+// @use '@/assets/css/theme/src/assets/variables.css';
+
 @use 'base/base';
+@use 'theme/theme' as theme;
 @use 'utils' as utils;
 @use 'sass:map';
+@use 'sass:math';
+// @use '../css/theme/variables.css' as *;
 
-@property --color-primary {
+// @property --color-primary {
+//   syntax: '<color>';
+//   initial-value: #e3c567;
+//   inherits: true;
+// }
+
+@property --color-main-dark {
   syntax: '<color>';
+  initial-value: #616970;
+  inherits: true;
+}
+
+@property --color-bg {
+  syntax: '<color>';
+  initial-value: #f8f9fa;
   inherits: true;
 }
 
@@ -23,8 +43,45 @@
 @property --raw {
   syntax: '<number>';
   initial-value: 0;
-  inherits: false;
+  inherits: true;
 }
+// @property --primary {
+//   syntax: '<number>';
+//   initial-value: 0;
+//   inherits: true;
+// }
+
+@property --color-hue {
+  syntax: '<number>';
+  initial-value: 0;
+  inherits: true;
+}
+@property --color-saturation {
+  syntax: '<number>';
+  initial-value: 0;
+  inherits: true;
+}
+@property --color-lightness {
+  syntax: '<percentage>';
+  initial-value: 0;
+  inherits: true;
+}
+
+// @property --theme-hue {
+//   syntax: '<number>';
+//   initial-value: 0;
+//   inherits: true;
+// }
+// @property --theme-saturation {
+//   syntax: '<number>';
+//   initial-value: 0;
+//   inherits: true;
+// }
+// @property --theme-lightness {
+//   syntax: '<percentage>';
+//   initial-value: 0;
+//   inherits: true;
+// }
 
 :root {
   /* https://dev.to/tracygjg/conditional-css-437e */
@@ -36,7 +93,7 @@ body {
   --not-raw: calc(1 - var(--raw));
 }
 
-.-raw {
+.raw {
   --raw: var(--true);
 }
 
@@ -47,8 +104,28 @@ body {
   (
     border-radius: 0,
     bg-opacity: 1,
-    base-unit: 4px,
-    base-unit-calc: calc(4px * var(--not-raw, 1)),
+    base-unit: 6px,
+    unit-50: calc(var(--theme-base-unit) * 0.5),
+    base-unit-calc: calc(var(--theme-base-unit) * var(--not-raw, 1)),
+    // primary: calc(1 - var(--secondary) - var(--text)),
+    // secondary: calc(1 - var(--primary) - var(--text)),
+    // danger: calc(1 - var(--primary) - var(--secondary)),
+    // state: 'base',
+    variant: 'contained',
+    current-color: color-mix(
+        in srgb,
+        var(--color-primary) calc(var(--primary) * 100%),
+        color-mix(
+          in srgb,
+          var(--color-secondary) calc(var(--secondary) * 100%),
+          var(--color-danger) calc(var(--danger) * 100%)
+        )
+      ),
+    // current-color: calc(
+    //     var(--primary) * var(--color-primary) + var(--secondary) * var(--color-secondary) +
+    //       var(--danger) * var(--color-danger)
+    //   ),
+     // color: 'hsl(var(--theme-hue), var(--theme-saturation), var(--theme-lightness))',
   )
 );
 
@@ -78,7 +155,7 @@ body {
 @include utils.cssvars(
   'space',
   (
-    unit: 1em,
+    unit: 1rem,
     xxs: calc(0.25 * var(--space-unit)),
     xs: calc(0.5 * var(--space-unit)),
     sm: calc(0.75 * var(--space-unit)),
@@ -151,7 +228,7 @@ body {
 
 // @property --component-bg {
 //   syntax: "<color>";
-//   inherits: false;
+//   inherits: true;
 //   initial-value: hsla(from utils.color(primary) h s l / utils.theme(bg-opacity));
 // }
 
@@ -159,20 +236,24 @@ body {
   'color',
   (
     // primary: #fbe134,
-    primary: var(--color-primary),
+    // primary: var(--color-primary),
+    // danger: var(--color-danger),
     // main-dark: #0b0c0c,
     main-dark: var(--color-main-dark),
-    dark-50: color-mix(in srgb, utils.color(main-dark) 70%, transparent),
+    dark-50: color-mix(in srgb, utils.color(main-dark) 70%, white),
     bg: var(--color-bg),
-    bg-50: color-mix(in srgb, utils.color(bg) 50%, transparent),
-    primary-80: color-mix(in srgb, utils.color(primary) 80%, transparent),
-    primary-60: color-mix(in srgb, utils.color(primary) 60%, transparent),
-    primary-40: color-mix(in srgb, utils.color(primary) 40%, transparent),
-    primary-20: color-mix(in srgb, utils.color(primary) 20%, transparent),
-    primary-10: color-mix(in srgb, utils.color(primary) 10%, transparent),
+    bg-50: color-mix(in srgb, utils.color(bg) 50%, white),
+    primary-80: color-mix(in srgb, utils.color(primary) 80%, white),
+    primary-60: color-mix(in srgb, utils.color(primary) 60%, white),
+    primary-40: color-mix(in srgb, utils.color(primary) 40%, white),
+    primary-20: color-mix(in srgb, utils.color(primary) 20%, white),
+    primary-10: color-mix(in srgb, utils.color(primary) 10%, white),
     color-white: #fff,
     theme-color: utils.color(primary),
     initial-light: #f5f5f5
+  ),
+  (
+    root: true,
   )
 );
 
@@ -216,94 +297,260 @@ body {
   'component',
   (
     height: 2.625rem,
-    box-shadow-x: var(--theme-base-unit-calc),
-    box-shadow-y: var(--theme-base-unit-calc),
-    bg-opacity: 1,
-    box-shadow-color: utils.color(primary),
-    box-shadow-base: utils.component(box-shadow-x) utils.component(box-shadow-y) 0 0 black,
-    box-shadow-hover: utils.component(box-shadow-x) utils.component(box-shadow-y) 0 0
-      utils.component(box-shadow-color),
-    bg-color: utils.color(primary),
-    color: utils.color(main-dark),
-    box-shadow: utils.component(box-shadow-base),
+    // box-shadow-x: utils.theme(base-unit-calc),
+    // box-shadow-y: utils.theme(base-unit-calc),
+    // bg-opacity: 1,
+    transform: translate(0, 0),
+    transform-value: calc(utils.theme(base-unit-calc) / 2 * var(--active)),
+    // box-shadow-color: utils.theme(current-color),
+    // box-shadow-base: utils.component(box-shadow-x) utils.component(box-shadow-y) 0 0 black,
+    // box-shadow-hover: utils.component(box-shadow-x) utils.component(box-shadow-y) 0 0
+    //   utils.component(box-shadow-color),
+    // box-shadow-focus: utils.component(box-shadow-x) utils.component(box-shadow-y) 0 0
+    //   utils.component(box-shadow-color),
+    // box-shadow-active: calc(utils.component(box-shadow-x) - 50% * var(--theme-base-unit-calc))
+    //   calc(utils.component(box-shadow-y) - 50% * utils.theme(base-unit-calc)) 0 0
+    //   utils.component(box-shadow-color),
+    transform-hover: utils.component(transform),
+    transform-focus: translate(0, 0),
+    transform-focus-visible: translate(0, 0),
+    transform-active: translate(3px, 3px),
+    transform-disabled: none,
+    // box-shadow-disabled: calc(utils.component(box-shadow-x) - 50% * utils.theme(base-unit-calc))
+    //   calc(utils.component(box-shadow-y) - 50% * utils.theme(base-unit-calc)) 0 0
+    //   utils.component(box-shadow-color),
+    // bg-color: calc(
+    //     var(--color-primary) * var(--theme-primary, 1) + var(--color-secondary) *
+    //       var(--theme-secondary, 0) + var(--color-danger) * var(--theme-danger, 0)
+    //   ),
+    color: initial,
+    // box-shadow: utils.component(box-shadow-base),
     padding-x: utils.space(unit),
-    padding-y: 0,
+    padding-y: utils.space(xxs),
     margin-bottom: utils.space(unit),
-    border-width: 2px,
-    font-size: 1rem,
+    border-width: 0,
+    border-style: solid,
     border-color: utils.color(main-dark),
-    border: utils.component(border-width) solid utils.component(border-color),
+    font-size: 1rem,
+    // border-color: utils.color(main-dark),
+    // border: utils.component(border-width) solid utils.component(border-color),
+    // Design Tokens
+    // primary: utils.theme(primary),
+    // state: utils.theme(state),
+    // variant: utils.theme(variant),
+    not-contained: calc(1 - var(--contained, 1)),
+    transition: all 0.1s linear,
+
+    // bg-hue: var(--component-bg-hue),
+    // bg-saturation: var(--component-bg-saturation),
+    // bg-lightness: var(--component-bg-lightness),
+    // bg-opacity: var(--component-bg-opacity),
+    // border-hue: var(--component-border-hue),
+    // border-saturation: var(--component-border-saturation),
+    // border-lightness: var(--component-border-lightness),
+    // border-opacity: var(--component-border-opacity),
+    // text-hue: var(--component-text-hue),
+    // text-saturation: var(--component-text-saturation),
+    // text-lightness: var(--component-text-lightness),
+    // text-opacity: var(--component-text-opacity),
+    // color-bg: hsl(var(--component-bg-hue), var(--component-bg-saturation), var(--component-bg-lightness), var(--component-bg-opacity)),
+    // color-border: hsl(var(--component-border-hue), var(--component-border-saturation), var(--component-border-lightness), var(--component-border-opacity)),
+     // color-text: hsl(var(--component-text-hue), var(--component-text-saturation), var(--component-text-lightness), var(--component-text-opacity)),
   )
 );
 
+$colors: ('primary', 'secondary', 'danger');
+$states: ('base', 'hover', 'active', 'focus', 'disabled');
+$variants: ('contained', 'outlined', 'text');
+
+@mixin apply-state($stateVar) {
+  &:#{$stateVar},
+  &.#{$stateVar} {
+    @include utils.component(box-shadow, utils.component(box-shadow-#{$stateVar}));
+    @include utils.component(transform, utils.component(transform-#{$stateVar}));
+  }
+}
+
 @mixin theme-component {
-  padding: utils.component(padding, utils.component(padding-y) utils.component(padding-x));
-  border: utils.component(border-width) solid utils.component(border-color);
-  border-radius: utils.theme(border-radius);
-  background-color: hsla(from utils.component(bg-color) h s l / utils.component(bg-opacity));
+  // --theme-current-color: calc(
+  //   var(--primary) * var(--color-primary) + var(--secondary) * var(--color-secondary) +
+  //     var(--danger) * var(--color-danger)
+  // );
+  // --theme-current-color: color-mix(
+  //   in srgb,
+  //   var(--color-primary) calc(var(--primary) * 100%),
+  //   color-mix(
+  //     in srgb,
+  //     var(--color-secondary) calc(var(--secondary) * 100%),
+  //     var(--color-danger) calc(var(--danger) * 100%)
+  //   )
+  // );
+  background-color: utils.component(bg-color);
+  border-color: utils.component(border-color);
+  // color: var(--component-color-text);
+  // @include utils.component(primary, 1);
+  padding: utils.component(padding-y) utils.component(padding-x);
+  // border-radius: utils.theme(borderradius);
   box-shadow: utils.component(box-shadow);
-  color: utils.component(color);
   outline: none;
+  transform: utils.component(transform);
+  transition: utils.component(transition);
 
-  &:not(.-disabled) {
-    &:hover {
-      box-shadow: utils.component(box-shadow-hover);
-    }
+  &.small {
+    // @include utils.component(padding-y, space(xs));
+    @include utils.component(padding-x, space(xs));
+    @include utils.component(height, 2rem); // 32px
   }
 
-  &.-small {
-    // @include component(padding-y, space(xs));
-    @include component(padding-x, space(xs));
-    @include component(height, 2rem); // 32px
+  &.large {
+    // @include utils.component(padding-y, space(md));
+    @include utils.component(padding-x, space(md));
+    @include utils.component(height, 3rem); // 48px
   }
 
-  &.-large {
-    // @include component(padding-y, space(md));
-    @include component(padding-x, space(md));
-    @include component(height, 3rem); // 48px
-  }
+  // &.outlined {
+  //   background-color: transparent;
+  //   color: utils.color(primary);
+  // }
 
-  &.-disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-    pointer-events: none;
-  }
+  @include apply-state('hover');
 
-  &.-outlined {
-    background-color: transparent;
-    color: utils.color(primary);
-  }
-
-  &.-raw {
+  &.raw {
     @include raw-component;
   }
 
-  // &.-interactive {
-  @include interactive-component;
+  // &.interactive {
+
+  font-weight: bold;
+  margin-bottom: utils.component(margin-bottom);
+  border-width: utils.component(border-width);
+  border-style: utils.component(border-style);
+  border: utils.component(border-width) utils.component(border-style) utils.component(border-color);
+  font-size: 1rem;
+  // @include utils.component(
+  //   bg-color,
+  //   hsl(
+  //     var(--component-bg-hue) var(--component-bg-saturation)
+  //       calc(var(--component-bg-lightness) * 1%) / var(--component-bg-opacity)
+  //   )
+  // );
+  // @include utils.component(
+  //   text-color,
+  //   hsl(
+  //     var(--component-text-hue) var(--component-text-saturation)
+  //       calc(var(--component-text-lightness) * 1%) / var(--component-text-opacity)
+  //   )
+  // );
+  // @include utils.component(
+  //   color-border,
+  //   hsl(
+  //     var(--component-border-hue) var(--component-border-saturation)
+  //       calc(var(--component-border-lightness) * 1%) / var(--component-border-opacity)
+  //   )
+  // );
+
+  @include theme.primary;
+  @include theme.secondary;
+  @include theme.danger;
+
+  @include theme.base;
+  @include theme.hover;
+
+  @include theme.disabled;
+
+  &.disabled {
+    @include utils.component(bg-color, utils.color(bg-primary-disabled));
+    @include utils.component(border-color, utils.color(border-primary-disabled));
+  }
+
+  // &.contained {
+  @include theme.contained;
+  // }
+
+  // &.outlined {
+  @include theme.outlined;
+  // }
+
+  // &.text {
+  @include theme.text;
+  // }
+
+  // --danger-else-0: var(--color);
+  // --danger: var(--danger-else-0);
+
+  // --primary-else-0: var(--color);
+  // --primary: var(--primary-else-0);
+
+  // --secondary-else-0: var(--color);
+  // --secondary: var(--secondary-else-0);
+
+  --component-bg-hue: calc(var(--color-bg-hue));
+  --component-bg-saturation: calc(
+    var(--color-bg-saturation) + var(--variant-bg-saturation) + var(--state-bg-saturation)
+  );
+  // --component-bg-lightness: calc(var(--color-bg-lightness) + var(--variant-bg-lightness) + var(--state-bg-lightness));
+  --component-bg-lightness: calc(var(--variant-bg-lightness) + var(--state-bg-lightness));
+  --component-bg-opacity: calc(
+    var(--color-bg-opacity) * var(--variant-bg-opacity) * var(--state-bg-opacity)
+  );
+  --component-border-hue: calc(var(--color-border-hue));
+  --component-border-saturation: calc(
+    var(--color-border-saturation) + var(--variant-border-saturation) +
+      var(--state-border-saturation)
+  );
+  --component-border-lightness: calc(
+    var(--color-border-lightness) + var(--variant-border-lightness) + var(--state-border-lightness)
+  );
+  --component-border-opacity: calc(
+    var(--color-border-opacity) * var(--variant-border-opacity) * var(--state-border-opacity)
+  );
+  --component-text-hue: calc(var(--color-text-hue));
+  --component-text-saturation: calc(
+    var(--color-text-saturation) + var(--variant-text-saturation) + var(--state-text-saturation)
+  );
+  --component-text-lightness: calc((var(--color-text-lightness) - var(--threshold) * 1%) * -100%);
+  --component-text-opacity: var(--state-text-opacity);
+  --component-opacity-bg: var(--component-bg-opacity);
+  --component-opacity-border: var(--component-border-opacity);
+  --component-opacity-text: var(--component-text-opacity);
+
+  --component-color-bg: hsl(
+    var(--component-bg-hue),
+    var(--component-bg-saturation),
+    var(--component-bg-lightness),
+    var(--component-bg-opacity)
+  );
+  --component-color-border: hsl(
+    var(--component-border-hue),
+    var(--component-border-saturation),
+    var(--component-border-lightness),
+    var(--component-border-opacity)
+  );
+  --component-color-text: hsl(
+    var(--component-text-hue),
+    var(--component-text-saturation),
+    var(--component-text-lightness),
+    var(--component-text-opacity)
+  );
+
+  background-color: var(--component-color-bg);
+  border-color: var(--component-color-border);
+  color: var(--component-color-text);
 
   // }
 }
 
 @mixin interactive-component {
-  font-weight: bold;
-  margin-bottom: utils.component(margin-bottom);
+  @include theme.focus;
+  @include apply-state('focus');
+  @include apply-state('focus-visible');
+  @include apply-state('disabled');
+  @include apply-state('active');
+  // &:hover {
+  //   box-shadow: none;
+  // }
 
-  &:not(.-disabled) {
-    &:active,
-    &:focus-visible {
-      transform: translate(var(--theme-base-unit-calc), var(--theme-base-unit-calc));
-      -box-shadow: none;
-
-      &:hover {
-        box-shadow: none;
-      }
-    }
-  }
-
-  &.-disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-  }
+  @include theme.active;
 }
 
 @mixin raw-component {
@@ -313,6 +560,7 @@ body {
   &:hover {
     // transform: none;
     box-shadow: none;
+    @include utils.component(bg-color, utils.color(primary-60));
   }
 
   &:active,
@@ -353,6 +601,38 @@ p {
 
 .text-xs {
   font-size: utils.text(xs);
+}
+
+// -----------------------------------------------------------------------------
+// 5 - Theme / component props
+
+@mixin resolve-hsl-value($prop, $prop-value) {
+  --#{$prop}-bg-hue: var(--#{$prop}-#{$prop-value}-bg-hue);
+  --#{$prop}-bg-saturation: var(--#{$prop}-#{$prop-value}-bg-saturation);
+  --#{$prop}-bg-lightness: var(--#{$prop}-#{$prop-value}-bg-lightness);
+  --#{$prop}-bg-opacity: var(--#{$prop}-#{$prop-value}-bg-opacity);
+
+  --#{$prop}-border-hue: var(--#{$prop}-#{$prop-value}-border-hue);
+  --#{$prop}-border-saturation: var(--#{$prop}-#{$prop-value}-border-saturation);
+  --#{$prop}-border-lightness: var(--#{$prop}-#{$prop-value}-border-lightness);
+  --#{$prop}-border-opacity: var(--#{$prop}-#{$prop-value}-border-opacity);
+
+  --#{$prop}-text-hue: var(--#{$prop}-#{$prop-value}-text-hue);
+  --#{$prop}-text-saturation: var(--#{$prop}-#{$prop-value}-text-saturation);
+  --#{$prop}-text-lightness: var(--#{$prop}-#{$prop-value}-text-lightness);
+  --#{$prop}-text-opacity: var(--#{$prop}-#{$prop-value}-text-opacity);
+
+  --#{$prop}: #{$prop-value};
+}
+
+// Colors
+
+@mixin base {
+  &.base:not([disabled]) {
+    @include resolve-hsl-value('state', base);
+
+    @content;
+  }
 }
 
 // -----------------------------------------------------------------------------
@@ -433,7 +713,7 @@ $breakpoints: (
 @include utils.cssvars(
   'y-btn',
   (
-    height: 2.625rem,
+    height: 45px,
     // 42px
   )
 );

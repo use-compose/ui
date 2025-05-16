@@ -1,0 +1,80 @@
+@use '../utils/mixins' as mixins;
+@use '../utils/functions' as functions;
+@use './state' as state;
+
+@mixin resolve-variant-hsl($variant) {
+  --variant-bg-hue: var(--variant-#{$variant}-bg-hue);
+  --variant-bg-saturation: var(--variant-#{$variant}-bg-saturation);
+  --variant-bg-lightness: var(--variant-#{$variant}-bg-lightness);
+  --variant-bg-opacity: var(--variant-#{$variant}-bg-opacity);
+
+  --variant-border-hue: var(--variant-#{$variant}-border-hue);
+  --variant-border-saturation: var(--variant-#{$variant}-border-saturation);
+  --variant-border-lightness: var(--variant-#{$variant}-border-lightness);
+  --variant-border-opacity: var(--variant-#{$variant}-border-opacity);
+
+  --variant-text-hue: var(--variant-#{$variant}-text-hue);
+  --variant-text-saturation: var(--variant-#{$variant}-text-saturation);
+  --variant-text-lightness: var(--variant-#{$variant}-text-lightness);
+  --variant-text-opacity: var(--variant-#{$variant}-text-opacity);
+
+  --variant: #{$variant};
+}
+
+// Call the mixin to calculate all variants and all properties dynamically
+
+@mixin contained {
+  &.contained {
+    @include resolve-variant-hsl(contained);
+    @include mixins.component(color-text, white);
+  }
+}
+
+@mixin outlined {
+  &.outlined {
+    @include resolve-variant-hsl(outlined);
+    @include mixins.component(border-width, 2px);
+    @include mixins.component(border-style, solid);
+    @include mixins.component(color-border, currentcolor);
+    @include mixins.component(bg-opacity, var(--variant-bg-opacity));
+    @include mixins.component(bg-opacity, var(--variant-bg-opacity));
+
+    @include state.hover {
+      @include mixins.component(bg-opacity, var(--state-hover-bg-lightness));
+    }
+    @include state.active {
+      @include mixins.component(bg-opacity, var(--state-active-bg-lightness));
+    }
+    @include state.focus {
+      @include mixins.component(bg-opacity, var(--state-focus-bg-lightness));
+    }
+
+    @include state.disabled {
+      @include mixins.component(bg-opacity, var(--state-disabled-bg-lightness));
+    }
+  }
+}
+
+@mixin text {
+  &.text {
+    @include resolve-variant-hsl(text);
+    @include mixins.component(box-shadow, none);
+    box-shadow: none;
+    transform: none;
+
+    @include state.hover {
+      @include mixins.component(border-color, var(--state-hover-bg-lightness));
+      --variant-text-border-opacity: 1; // @include mixins.component(bg-opacity, var(--state-hover-bg-lightness));
+    }
+    @include state.active {
+      @include mixins.component(bg-opacity, var(--state-active-bg-lightness));
+    }
+    @include state.focus {
+      @include mixins.component(bg-opacity, var(--state-focus-bg-lightness));
+    }
+
+    @include state.disabled {
+      @include mixins.component(bg-opacity, var(--state-disabled-bg-lightness));
+    }
+  }
+}

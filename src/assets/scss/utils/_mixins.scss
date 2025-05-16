@@ -24,10 +24,14 @@
  * }
  *
  */
-@mixin cssvars($prefix, $css_variables) {
+@mixin cssvars($prefix, $css_variables, $root: false) {
   :root {
     @each $name, $value in $css_variables {
-      --#{$prefix}-#{$name}: #{$value};
+      @if $prefix == '' {
+        --#{$name}: #{$value};
+      } @else {
+        --#{$prefix}-#{$name}: #{$value};
+      }
     }
   }
 }
@@ -67,4 +71,8 @@
 // Checkbox
 @mixin y-checkbox($name, $value: '', $prefix: y-checkbox) {
   --#{$prefix}-#{$name}: #{$value};
+}
+
+@mixin theme-color($name, $value: '', $prefix: '') {
+  --#{$name}: #{$value};
 }

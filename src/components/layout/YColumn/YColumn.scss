@@ -1,0 +1,18 @@
+@use '@/assets/scss/utils';
+
+.yColumn {
+  // https://css-tricks.com/responsive-designs-and-css-custom-properties-building-a-flexible-grid-system/
+
+  --columns: 12; /* Number of columns in the grid system */
+  --width: var(--width-mobile, 0); /* Width of the element */
+
+  background-color: var(--column-bg, transparent);
+
+  flex-basis: calc(var(--width) / var(--columns) * 100%);
+}
+
+@media (min-width: 576px) {
+  .yColumn {
+    --width: var(--width-tablet, var(--width-mobile, 0));
+  }
+}
