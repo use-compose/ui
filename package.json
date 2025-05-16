@@ -3,21 +3,26 @@
   "files": [
     "dist"
   ],
-  "main": "./dist/gamma-compose.umd.cjs",
-  "module": "./dist/gamma-compose.mjs",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
   "exports": {
     ".": {
-      "import": "./dist/gamma-compose.mjs",
-      "require": "./dist/gamma-compose.umd.cjs"
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
     },
-    "./dist/style.css": {
+    "./package.json": "./package.json",
+    "./style": {
       "import": "./dist/style.css",
       "require": "./dist/style.css"
     }
   },
+  "sideEffects": [
+    "./dist/style.css"
+  ],
   "private": true,
   "version": "0.0.0",
-  "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc && vite build",
@@ -35,7 +40,8 @@
     "format": "prettier --write src//**/*.{ts,tsx,css} --config ./.prettierrc",
     "prepare": "husky install",
     "chromatic": "chromatic --exit-zero-on-changes",
-    "test-storybook": "test-storybook"
+    "test-storybook": "test-storybook",
+    "component:new": "npx hygen component new"
   },
   "husky": {
     "hooks": {
@@ -73,7 +79,7 @@
     "eslint": "8.57.1",
     "eslint-config-prettier": "10.1.5",
     "eslint-plugin-prettier": "5.4.0",
-    "eslint-plugin-vue": "^10.0.0",
+    "eslint-plugin-vue": "10.0.0",
     "husky": "8.0.3",
     "lint-staged": "15.5.2",
     "prettier": "3.5.3",
