@@ -33,8 +33,6 @@ Sources:
 
 - [CSS-only Type Grinding](https://www.bitovi.com/blog/css-only-type-grinding-casting-tokens-into-useful-values)
 
-::: tip example
-
 ```css
 @property --color {
   syntax: 'primary | secondary | danger';
