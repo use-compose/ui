@@ -8,7 +8,7 @@ const { commonArgTypes, commonArgs, generateCommonStories } =
 
 const meta: Meta<typeof YLabel> = {
   // TODO: TO CHANGE PATH
-  title: 'Compose/YLabel',
+  title: 'Components/YLabel',
   component: YLabel,
   tags: ['autodocs'],
   argTypes: {

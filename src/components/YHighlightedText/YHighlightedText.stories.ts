@@ -5,7 +5,7 @@ import type { YHighlightedTextProps } from './types'
 
 const meta: Meta<typeof YHighlightedText> = {
   // TODO: TO CHANGE PATH
-  title: 'Compose/YHighlightedText',
+  title: 'Animations/YHighlightedText',
   component: YHighlightedText,
   tags: ['autodocs'],
 }

@@ -31,7 +31,7 @@ const props = withDefaults(defineProps<FlexProps>(), {
 })
 
 const flexClasses = computed(() => {
-  return ['yFlex']
+  return ['y-flex']
 })
 
 const flexStyle = computed(() => {

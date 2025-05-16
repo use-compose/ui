@@ -4,7 +4,7 @@ import type { YVerticalTitleProps } from './types'
 
 const meta: Meta<typeof YVerticalTitle> = {
   // TODO: TO CHANGE PATH
-  title: 'Compose/YVerticalTitle',
+  title: 'Components/YVerticalTitle',
   component: YVerticalTitle,
   tags: ['autodocs'],
 }

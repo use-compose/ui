@@ -10,7 +10,7 @@ const { commonArgTypes, generateCommonStories } = useThemeComponentStory(YBaseMo
 
 // More on how to set up stories at: https://storybook.js.org/docs/vue/writing-stories/introduction
 const meta: Meta<typeof YBaseModal> = {
-  title: 'Compose/Overlays/YModal',
+  title: 'Components/Overlays/YModal',
   component: YBaseModal,
   // This component will have an automatically generated docsPage entry: https://storybook.js.org/docs/vue/writing-docs/autodocs
   tags: ['autodocs'],
