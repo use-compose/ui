@@ -7,7 +7,7 @@ import YOverlay, { YOverlayProps } from './YOverlay.vue'
 
 // More on how to set up stories at: https://storybook.js.org/docs/vue/writing-stories/introduction
 const meta: Meta<typeof YOverlay> = {
-  title: 'Components/Overlay/YOverlay',
+  title: 'Components/Overlays/YOverlay',
   component: YOverlay,
   // This component will have an automatically generated docsPage entry: https://storybook.js.org/docs/vue/writing-docs/autodocs
   tags: ['autodocs'],
