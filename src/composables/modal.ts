@@ -2,12 +2,12 @@ import {
   modalActionsKey,
   ModalActionsKeyInterface,
   YModalType,
-} from '@/components/overlays/modal/types'
-import { BaseModalProps } from '@/components/overlays/modal/types/YBaseModal.interface'
-import { allowScroll, preventScroll } from '@/components/overlays/modal/utils'
+} from '@/components/overlays/YModal/types'
+import { BaseModalProps } from '@/components/overlays/YModal/types/YBaseModal.interface'
+import { allowScroll, preventScroll } from '@/components/overlays/YModal/utils'
 import { getValueFromRef } from '@/utils/get-value-from-ref'
 import { computed, provide, SetupContext, useAttrs, watch } from 'vue'
-import '../components/overlays/modal/YModal.scss'
+import '../components/overlays/YModal/YModal.scss'
 import { useStack } from './stack'
 
 interface UseModalParams {

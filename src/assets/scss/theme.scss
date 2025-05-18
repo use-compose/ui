@@ -398,13 +398,13 @@ $variants: ('contained', 'outlined', 'text');
 
   &.small {
     // @include utils.component(padding-y, space(xs));
-    @include utils.component(padding-x, space(xs));
+    @include utils.component(padding-x, utils.space(xs));
     @include utils.component(height, 2rem); // 32px
   }
 
   &.large {
     // @include utils.component(padding-y, space(md));
-    @include utils.component(padding-x, space(md));
+    @include utils.component(padding-x, utils.space(md));
     @include utils.component(height, 3rem); // 48px
   }
 
@@ -421,6 +421,7 @@ $variants: ('contained', 'outlined', 'text');
 
   // &.interactive {
 
+  height: utils.component(height);
   font-weight: bold;
   margin-bottom: utils.component(margin-bottom);
   border-width: utils.component(border-width);

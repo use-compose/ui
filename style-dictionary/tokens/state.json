@@ -44,7 +44,7 @@
       "bg": {
         "hue": { "value": 0 },
         "saturation": { "value": "0%" },
-        "lightness": { "value": "40%" },
+        "lightness": { "value": "30%" },
         "opacity": { "value": 1 }
       },
       "border": {
@@ -64,7 +64,7 @@
       "bg": {
         "hue": { "value": 0 },
         "saturation": { "value": "0%" },
-        "lightness": { "value": "40%" },
+        "lightness": { "value": "30%" },
         "opacity": { "value": 1 }
       },
       "border": {

@@ -1,5 +1,6 @@
 /**
  * Do not edit directly, this file was auto-generated.
+ * State tokens
  */
 
 :root {
@@ -29,7 +30,7 @@
   --state-hover-text-opacity: 1;
   --state-active-bg-hue: 0;
   --state-active-bg-saturation: 0%;
-  --state-active-bg-lightness: 40%;
+  --state-active-bg-lightness: 30%;
   --state-active-bg-opacity: 1;
   --state-active-border-hue: 0;
   --state-active-border-saturation: 0%;
@@ -41,7 +42,7 @@
   --state-active-text-opacity: 1;
   --state-focus-bg-hue: 0;
   --state-focus-bg-saturation: 0%;
-  --state-focus-bg-lightness: 40%;
+  --state-focus-bg-lightness: 30%;
   --state-focus-bg-opacity: 1;
   --state-focus-border-hue: 0;
   --state-focus-border-saturation: 0%;

@@ -1,6 +1,5 @@
 import StyleDictionary from 'style-dictionary'
 import { formats, transformGroups } from 'style-dictionary/enums'
-import tinycolor from 'tinycolor2'
 import { filterBuildTimeSCSS } from './filters/filter-build-time-scss.js'
 import { themeTypesFormatter } from './formatters/theme-types.js'
 import { parseInitialTheme } from './parsers/initial-theme-parser.js'
@@ -11,24 +10,6 @@ StyleDictionary.registerFilter(filterBuildTimeSCSS)
 
 StyleDictionary.registerFormat(themeTypesFormatter)
 StyleDictionary.registerTransform(componentStatesTransform)
-
-const tt = ['hue', 'saturation', 'lightness']
-
-tt.forEach((channel, i) => {
-  StyleDictionary.registerTransform({
-    name: `color/${channel}`,
-    type: 'value',
-    filter: (token) => {
-      return token.attributes.type === 'primary-hsl' && token.attributes.item === channel
-    },
-    transform: (token) => {
-      const hsl = tinycolor(token.value).toHsl()
-      if (channel === 'hue') return `${hsl.h}deg`
-      if (channel === 'saturation') return `${hsl.s * 100}%`
-      if (channel === 'lightness') return `${hsl.l * 100}%`
-    },
-  })
-})
 
 function generateThemeFiles(directories) {
   const genericAttributes = {
@@ -47,7 +28,7 @@ function generateThemeFiles(directories) {
       filter: (token) => {
         // console.log('📟 - dir → ', dir)
         if (token.attributes.type === 'conditional') {
-          console.log('📟 - token → ', token)
+          // console.log('📟 - token → ', token)
         }
         // console.log('📟 - token → ', token)
         // console.log('token.path[0] === dironents + dir)')
@@ -91,9 +72,9 @@ export default {
     css: {
       transformGroup: transformGroups.css,
       transforms: [
-        'color/hue',
-        'color/saturation',
-        'color/lightness',
+        // 'color/hue',
+        // 'color/saturation',
+        // 'color/lightness',
         'attribute/cti', // pick up category/type/item
         'color/hsl',
         // 'custom/component-state',
@@ -132,6 +113,16 @@ export default {
           filter: (token) => {
             return token.attributes?.category === 'variant'
           },
+          options: {
+            fileHeader: (defaultMessage) => {
+              // defaultMessage are the 2 lines above that appear in the default file header
+              // you can use this to add a message before or after the default message 👇
+
+              // the fileHeader function should return an array of strings
+              // which will be formatted in the proper comment style for a given format
+              return [...defaultMessage, 'Variant tokens']
+            },
+          },
           //   options: {
           //     outputReferences: true,
           //   },
@@ -142,10 +133,20 @@ export default {
           //   // filter only the tokens that are inside the global object
           filter: (token) => {
             if (token.type === 'color') {
-              console.log('📟 - token → ', token)
+              // console.log('📟 - token → ', token)
             }
             // console.log(token)
             return token.attributes?.category === 'color'
+          },
+          options: {
+            fileHeader: (defaultMessage) => {
+              // defaultMessage are the 2 lines above that appear in the default file header
+              // you can use this to add a message before or after the default message 👇
+
+              // the fileHeader function should return an array of strings
+              // which will be formatted in the proper comment style for a given format
+              return [...defaultMessage, 'Color tokens']
+            },
           },
           // options: {
           //   outputReferences: true,
@@ -158,13 +159,23 @@ export default {
           filter: (token) => {
             return token.attributes?.category === 'state'
           },
+          options: {
+            fileHeader: (defaultMessage) => {
+              // defaultMessage are the 2 lines above that appear in the default file header
+              // you can use this to add a message before or after the default message 👇
+
+              // the fileHeader function should return an array of strings
+              // which will be formatted in the proper comment style for a given format
+              return [...defaultMessage, 'State tokens']
+            },
+          },
           //   options: {
           //     outputReferences: true,
           //   },
         },
         // dynamically generate file outputs for each dironent
         // ...generateThemeFiles(['color', 'component', 'theme', 'conditional']),
-        ...generateThemeFiles(['component', 'theme']),
+        ...generateThemeFiles(['component']),
         // {
         //   destination: 'dironents/background/background-vars.css',
         //   format: formats.cssVariables,
