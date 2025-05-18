@@ -42,8 +42,6 @@ const defaultShowModalParams: ShowModalParams = {
 
 // Function to open modal with dynamic component and props
 function show({ content, props }: ShowModalParams = defaultShowModalParams) {
-  console.log('🚀 - file: ModalProvider.vue - line 41 - show - content', content)
-  console.log('🚀 - file: ModalProvider.vue - line 42 - show - props', props)
   modalState.content = content
   modalState.props = props
   modalState.isVisible = true

@@ -30,12 +30,7 @@ function generateThemeFiles(directories) {
         if (token.attributes.type === 'conditional') {
           // console.log('📟 - token → ', token)
         }
-        // console.log('📟 - token → ', token)
-        // console.log('token.path[0] === dironents + dir)')
-        // console.log('📟 - token.path[0] → ', token.path[0])
-        // console.log('📟 - dironents + dir) → ', token.attributes.category)
-        // console.log('📟 - dironents + dir) → ', dir)
-        // console.log('📟 - dironents + dir) → ', token.attributes.category === dir)
+
         return token.path[0] === dir || token.attributes.type === dir
       },
     }

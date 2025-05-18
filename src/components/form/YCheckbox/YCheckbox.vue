@@ -5,6 +5,7 @@
       ref="yCheckbox"
       class="y-checkbox-label"
       :class="yCheckboxClasses"
+      :style="!isClickedOnce && '--is-clicked-once: none'"
       :value="modelValue"
       type="checkbox"
       :name="name"
@@ -38,12 +39,7 @@ const { baseClasses, isDisabled } = useBaseProps(props)
 const isClickedOnce = ref(false)
 
 const yCheckboxClasses = computed(() => {
-  return [
-    [...baseClasses.value],
-    'y-checkbox',
-    props.hero ? 'y-input-hero' : '',
-    isClickedOnce.value ? 'is-clicked-once' : '',
-  ]
+  return [[...baseClasses.value], 'y-checkbox', props.hero ? 'y-input-hero' : '']
 })
 
 // listen to input event
@@ -71,7 +67,6 @@ const handleFocus = () => yInput.value?.focus()
 
 onMounted(() => {
   if (props.focus) {
-    console.log(yInput)
     handleFocus()
   }
 })

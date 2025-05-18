@@ -8,8 +8,6 @@
   @include component(margin-bottom, 0);
   @include component(padding-x, 0);
   @include component(padding-y, 0);
-  @include component(padding, 0);
-  padding: component(padding);
   height: calc(0.75 * y-checkbox(height));
 
   @include y-checkbox(height, component(height));
@@ -18,7 +16,6 @@
   position: relative;
   z-index: 1;
   aspect-ratio: 1 / 1;
-
   margin: 0;
   appearance: none;
 
@@ -50,7 +47,7 @@
 
 .y-checkbox-wrapper .y-checkbox {
   --animate-checked-in: checked-in 0.3s 0s forwards;
-  --animate-checked-out: checked-out 0.3s 0s forwards;
+  --animate-checked-out: var(--is-clicked-once, checked-out 0.3s 0s forwards);
 }
 
 .y-checkbox-wrapper:has(.y-checkbox:checked),
@@ -58,6 +55,6 @@
   --y-checkbox-animation: var(--animate-checked-in);
 }
 
-.y-checkbox-wrapper:has(.y-checkbox:not(:checked)) .y-checkbox.is-clicked-once {
+.y-checkbox-wrapper:has(.y-checkbox:not(:checked)) .y-checkbox {
   --y-checkbox-animation: var(--animate-checked-out);
 }

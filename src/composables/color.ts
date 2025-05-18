@@ -94,7 +94,7 @@ function getBorderColor(props: ThemeComponentBaseProps) {
 }
 // Composables
 export function useColor(props: Partial<ThemeComponentBaseProps>) {
-  // eslint -disable-next-line no-console
+  // eslint-disable-next-line no-console
   console.log('📟 - props → ', props)
   // const color = props.color ? toRef(props, 'color') : toRef(props, 'raw')
   // const variant = props.variant ? toRef(props, 'variant') : toRef(props, 'raw')

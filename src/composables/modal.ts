@@ -5,8 +5,7 @@ import {
 } from '@/components/overlays/YModal/types'
 import { BaseModalProps } from '@/components/overlays/YModal/types/YBaseModal.interface'
 import { allowScroll, preventScroll } from '@/components/overlays/YModal/utils'
-import { getValueFromRef } from '@/utils/get-value-from-ref'
-import { computed, provide, SetupContext, useAttrs, watch } from 'vue'
+import { computed, provide, SetupContext, watch } from 'vue'
 import '../components/overlays/YModal/YModal.scss'
 import { useStack } from './stack'
 
@@ -19,13 +18,8 @@ interface UseModalParams {
 }
 
 export function useModal({ props, modalContext }: UseModalParams) {
-  console.log('📟 - props → ', props)
   const modalInstance = Symbol('rt-modal') // unique identity to identify the modal instance in the stack
   const stack = useStack()
-  useAttrs
-  console.log('modalRef → ', modalContext)
-  const modalRefValue = getValueFromRef(modalContext)
-  console.log('📟 - modalRefValue → ', modalRefValue)
 
   const transitionName = computed(() => {
     if (props.type === YModalType.Drawer) {
@@ -41,8 +35,6 @@ export function useModal({ props, modalContext }: UseModalParams) {
 
   // const { close, isVisible } = inject(modalActionsKey) as ModalActionsKeyInterface
   // const emit = defineEmits(['update:modelValue', 'close', 'action', 'cancel'])
-  // console.log("📟 - defineEmits(['update:modelValue', 'close', 'action', 'cancel']) → ", defineEmits['close'])
-  console.log('📟 - emit → ', emit)
 
   // const { open, close, isVisible } = useModal({ attrs: props, emit })
 
