@@ -7,7 +7,7 @@ import YCard, { YCardProps } from './YCard.vue'
 const { commonArgTypes, generateCommonStories } = useThemeComponentStory(YCard)
 
 const meta = {
-  title: 'Components/Data Display/Card',
+  title: 'Components/Data Display/YCard',
   component: YCard,
   subcomponents: { YButton, YFlex },
   tags: ['autodocs'],
