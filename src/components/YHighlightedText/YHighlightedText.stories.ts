@@ -43,4 +43,11 @@ const renderGenericStory: Story = {
 
 const Default = renderGenericStory
 
-export { Default }
+const Inactive = {
+  ...renderGenericStory,
+  args: {
+    active: false,
+  },
+}
+
+export { Default, Inactive }

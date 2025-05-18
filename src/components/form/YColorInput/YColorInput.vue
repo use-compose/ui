@@ -56,14 +56,12 @@ const yColorInputClasses = computed(() => {
 const emit = defineEmits(['update:modelValue', 'blur', 'change'])
 
 const attrs = useAttrs()
-console.log('📟 - attrs → ', attrs)
 
 const handleChange = (event: Event) => {
   // If change event emit exists, call it
   if (attrs.onChange) {
     emit('change', event)
   }
-  console.log('handleChange')
   emit('update:modelValue', (event.target as HTMLInputElement).value)
 }
 

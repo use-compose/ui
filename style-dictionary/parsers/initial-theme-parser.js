@@ -27,9 +27,7 @@ const parseInitialTheme = {
   pattern: /initial-theme\.json$/,
   parser: ({ contents, filePath }) => {
     const object = JSON.parse(contents)
-    console.log('📟 - object → ', object)
     const themeTokens = generateThemeTokens(object)
-    console.log('📟 - theme → ', themeTokens)
     return themeTokens
   },
 }

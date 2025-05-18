@@ -18,6 +18,7 @@ export function useStorage() {
         try {
           return JSON.parse(storedTheme)
         } catch (error) {
+          // eslint-disable-next-line no-console
           console.error('Failed to parse theme from localStorage', error)
         }
       }

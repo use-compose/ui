@@ -84,7 +84,7 @@ export function useThemeComponentStory<T extends ThemeComponentBaseProps>(compon
 
     const Disabled: Story = {
       ...componentBaseStory,
-      args: { ...commonArgs, ...componentBaseStory.args, disabled: true },
+      args: { ...commonArgs, ...componentBaseStory.args, state: 'disabled' },
     }
 
     const Raw: Story = {

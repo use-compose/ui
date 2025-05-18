@@ -10,9 +10,9 @@ import { modalDefaultProps } from './modal-default-props'
 export { getModalClasses }
 
 export const modalSizeClass: { [key in YModalSizeValue]: string } = {
-  [YModalSize.Small]: 'size-small',
-  [YModalSize.Medium]: 'size-medium',
-  [YModalSize.Large]: 'size-large',
+  [YModalSize.Small]: 'modal-small',
+  [YModalSize.Medium]: 'modal-default',
+  [YModalSize.Large]: 'modal-large',
 }
 
 export const modalTypeClass: { [key in YModalTypeValue]: string } = {

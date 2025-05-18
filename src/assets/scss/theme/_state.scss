@@ -1,3 +1,5 @@
+@use '@/assets/scss/utils' as utils;
+
 @mixin resolve-state-hsl($state) {
   --state-bg-hue: var(--state-#{$state}-bg-hue);
   --state-bg-saturation: var(--state-#{$state}-bg-saturation);
@@ -14,11 +16,14 @@
   --state-text-lightness: var(--state-#{$state}-text-lightness);
   --state-text-opacity: var(--state-#{$state}-text-opacity);
 
+  @include utils.component(box-shadow, utils.component(box-shadow-#{$state}));
+  @include utils.component(transform, utils.component(transform-#{$state}));
+
   --state: #{$state};
 }
 
 @mixin base {
-  &.base:not([disabled]) {
+  &.base:not([disabled]):not(.disabled) {
     @include resolve-state-hsl(base);
 
     @content;
@@ -26,8 +31,7 @@
 }
 
 @mixin hover {
-  &:not([disabled]),
-  &:not(.disabled) {
+  &:not([disabled]):not(.disabled) {
     &:hover,
     &.hover {
       @include resolve-state-hsl(hover);
@@ -38,8 +42,7 @@
 }
 
 @mixin focus {
-  &:not([disabled]),
-  &:not(.disabled) {
+  &:not([disabled]):not(.disabled) {
     &:focus,
     &.focus-visible,
     &.focus,
@@ -50,8 +53,7 @@
   }
 }
 @mixin active {
-  &:not([disabled]),
-  &:not(.disabled) {
+  &:not([disabled]):not(.disabled) {
     &:active,
     &.active {
       @include resolve-state-hsl(active);

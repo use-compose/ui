@@ -36,7 +36,7 @@
   position: fixed;
   z-index: var(--dialog-z-index);
   border: 2px solid color(main-dark);
-  @include component(border-width, 4px);
+  border-width: 4px;
   background-color: color(main-dark);
   background-color: color(bg);
   display: flex;

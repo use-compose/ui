@@ -4,14 +4,11 @@ import { onBeforeUnmount, onMounted, Ref, watchEffect } from 'vue'
 export function useEventListener(
   target: Ref<EventTarget | null> | EventTarget,
   event: string,
-  handler: (e: Event) => any,
+  handler: (e: Event) => void,
 ) {
   function addEventListener() {
     const realTarget = getValueFromRef(target)
-    console.log('📟 - realTarget → ', realTarget)
-    console.log('📟 - realTarget instanceof EventTarget → ', realTarget instanceof EventTarget)
     if (realTarget instanceof EventTarget) {
-      console.log('📟 - realTarget instanceof EventTarget → ', realTarget instanceof EventTarget)
       realTarget.addEventListener(event, handler)
     }
   }
@@ -28,7 +25,6 @@ export function useEventListener(
   onBeforeUnmount(removeEventListener)
 
   const realTarget = getValueFromRef(target)
-  console.log('📟 - realTarget → ', realTarget)
 
   // Watch for changes to the target and update the listener accordingly
   watchEffect(

@@ -16,17 +16,17 @@ import { isRef, Ref, unref, VueElement } from 'vue'
 /**
  * Any function
  */
-export type AnyFn = (...args: any[]) => any
+export type AnyFn<T> = (...args: T[]) => T
 
 /**
  * Maybe it's a ref, or a plain value
  */
-export type MaybeRef<T = any> = T | Ref<T>
+export type MaybeRef<T> = T | Ref<T>
 
 /**
  * Maybe it's a ref, or a plain value, or a getter function
  */
-export type MaybeRefOrGetter<T = any> = MaybeRef<T> | (() => T)
+export type MaybeRefOrGetter<T> = MaybeRef<T> | (() => T)
 
 /**
  * @param source - A getter, an existing ref, or a non-function value.
@@ -38,20 +38,14 @@ export type MaybeRefOrGetter<T = any> = MaybeRef<T> | (() => T)
 
 export function getValueFromRef<T>(source: MaybeRefOrGetter<T>): T {
   if (typeof source === 'function') {
-    console.log('📟 - file: get-value-frosdfsdfsfdsdfm-ref.ts:40 - source → ', source)
-    return (source as AnyFn)()
+    return (source as AnyFn<T>)()
   }
   if (isRef(source)) {
-    console.log('📟 - file: get-value-from-ref.ts:41 - source → ', source)
-    console.log('📟 - file: get-value-from-ref.ts:41 - source.value → ', source.value)
     const sourceRef = toRef(source)
-    console.log('📟 - sourceRef → ', sourceRef)
     return sourceRef.value
   }
 
-  console.log('📟 - file: get-value-from-ref.ts:42 - source → ', source)
   const unrefSource = unref(source)
-  console.log('📟 - unrefSource → ', unrefSource)
 
   // Custom additional condition that, if after applying unref on the source (which returns the ref value or the source itself if it's not a ref)
   // check if the result is an object and contains a '_isVue' property in it, then we return the $el property which will contains the desired value

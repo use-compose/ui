@@ -88,7 +88,6 @@ export function useComposeTheme(userTheme?: YTheme) {
   watchEffect(() => {
     if (isClientSide()) {
       const { primary, secondary, background, dark, danger } = theme.value
-      console.log('📟 - primary → ', primary)
 
       const appComposeElement = document.documentElement
 
@@ -96,38 +95,24 @@ export function useComposeTheme(userTheme?: YTheme) {
 
       // H S L for Primary
       const hsl = tinycolor(primary).toHsl()
-      console.log('📟 - hsl → ', hsl)
+
       appComposeElement.style.setProperty(
         '--color-primary-hue',
         Math.round(hsl.h).toString() + 'deg',
       )
-      console.log(
-        "📟 - (Math.round(hsl.h * 100) / 100).toString() + 'deg' → ",
-        (Math.round(hsl.h * 100) / 100).toString() + 'deg',
-      )
+
       appComposeElement.style.setProperty(
         '--color-primary-saturation',
         Math.round(hsl.s * 100).toString() + '%',
       )
-      console.log(
-        "📟 -  Math.round(hsl.s * 100).toString() + '%' → ",
-        Math.round(hsl.s * 100).toString() + '%',
-      )
+
       // appComposeElement.style.setProperty('--color-primary-saturation', Math.round(hsl.s * 100).toString())
       appComposeElement.style.setProperty(
         '--color-primary-lightness',
         Math.round(hsl.l * 100).toString() + '%',
       )
-      console.log(
-        "📟 - Math.round(hsl.l * 100).toString() + '%' → ",
-        Math.round(hsl.l * 100).toString() + '%',
-      )
       appComposeElement.style.setProperty(
         '--color-primary-opacity',
-        (Math.round(hsl.a * 100) / 100).toString(),
-      )
-      console.log(
-        '📟 - (Math.round(hsl.a * 100) / 100).toString() → ',
         (Math.round(hsl.a * 100) / 100).toString(),
       )
       appComposeElement.style.setProperty(
@@ -140,7 +125,6 @@ export function useComposeTheme(userTheme?: YTheme) {
       // appComposeElement.style.setProperty('--theme-lightness', 'var(--theme-primary-lightness)')
 
       const hslSecondary = tinycolor(secondary).toHsl()
-      console.log('📟 - hslSecondary → ', hslSecondary)
       appComposeElement.style.setProperty(
         '--color-secondary-hue',
         (Math.round(hslSecondary.h * 100) / 100).toString() + 'deg',
@@ -185,8 +169,6 @@ export function useComposeTheme(userTheme?: YTheme) {
       )
 
       const hslDanger = tinycolor(danger).toHsl()
-      console.log('📟 - danger → ', danger)
-      console.log('📟 - hslDanger → ', hslDanger)
       appComposeElement.style.setProperty(
         '--color-danger-hue',
         (Math.round(hslDanger.h * 100) / 100).toString() + 'deg',
@@ -250,7 +232,6 @@ export function useTheme() {
   }
 
   function setSecondary(color: string) {
-    console.log('📟 - color → ', color)
     theme.value.secondary = color
   }
 
@@ -275,10 +256,6 @@ export function useTheme() {
   }
 
   function getHexColor(color: string) {
-    console.log('📟 - color → ', color)
-
-    console.log('tinycolor(color) → ', tinycolor(color))
-    console.log('tinycolor(color).toHexString() → ', tinycolor(color).toHexString())
     return tinycolor(color).toHexString()
   }
 
