@@ -8,6 +8,7 @@
     :placeholder="placeholder"
     :class="yInputClasses"
     autocomplete="off"
+    :disabled="isDisabled"
     @input="handleInput"
     @blur="handleBlur"
   />
@@ -29,7 +30,7 @@ const props = withDefaults(defineProps<YInputProps>(), {
   modelValue: '',
 })
 
-const { baseClasses } = useBaseProps(props)
+const { baseClasses, isDisabled } = useBaseProps(props)
 
 const yInputClasses = computed(() => {
   return [

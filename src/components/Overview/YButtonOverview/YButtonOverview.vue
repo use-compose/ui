@@ -66,12 +66,12 @@ withDefaults(defineProps<YButtonOverviewProps>(), {
   ...basePropsDefault,
 })
 
-const [primaryColor, primaryColorModifier] = defineModel<string, string>('primaryColor', {
+const [primaryColor] = defineModel<string, string>('primaryColor', {
   set(value: string) {
     return setPrimaryColor(value)
   },
 })
-console.log('📟 - primaryColorModifier → ', primaryColorModifier)
+
 const secondaryColor = defineModel<string, string>('secondaryColor', {
   set(value: string) {
     return setSecondaryColor(value)

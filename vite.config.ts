@@ -63,7 +63,5 @@ export default defineConfig(() => {
     },
   }
 
-  console.log(viteConfig)
-
   return viteConfig
 })
