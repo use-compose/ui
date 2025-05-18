@@ -78,31 +78,23 @@
   --secondary: var(--secondary-else-0);
 
   /* Get current color based on the value we pass to --color */
-  --theme-current-color: color-mix(
-    in srgb,
-    var(--color-primary) calc(var(--primary) * 100%),
-    color-mix(
-      in srgb,
-      var(--color-secondary) calc(var(--secondary) * 100%),
-      var(--color-danger) calc(var(--danger) * 100%)
-    )
-  );
+  --theme-current-color: color-mix(in srgb,
+      var(--color-primary) calc(var(--primary) * 100%),
+      color-mix(in srgb,
+        var(--color-secondary) calc(var(--secondary) * 100%),
+        var(--color-danger) calc(var(--danger) * 100%)));
 
   --component-box-shadow: var(--component-box-shadow-base);
   --component-box-shadow-color: var(--theme-current-color);
-  --component-box-shadow-x: var(--theme-base-unit-calc);
-  --component-box-shadow-y: var(--theme-base-unit-calc);
+  --component-box-shadow-x: calc(0.80 * var(--theme-base-unit-calc));
+  --component-box-shadow-y: calc(0.80 * var(--theme-base-unit-calc));
   --component-transform: translate(0, 0);
-  --component-box-shadow-base: var(--component-box-shadow-x) var(--component-box-shadow-y) 0 0 black;
-  --component-box-shadow-hover: var(--component-box-shadow-x) var(--component-box-shadow-y) 0 0
-    var(--component-box-shadow-color);
-  --component-box-shadow-focus: var(--component-box-shadow-x) var(--component-box-shadow-y) 0 0
-    var(--component-box-shadow-color);
-  --component-box-shadow-active: calc(
-      var(--component-box-shadow-x) - 50% * var(--theme-base-unit-calc)
-    )
-    calc(var(--component-box-shadow-y) - 50% * var(--theme-base-unit-calc)) 0 0
-    var(--component-box-shadow-color);
+  --component-box-shadow-base: calc(var(--component-box-shadow-x) * 0.5) calc(var(--component-box-shadow-y) * 0.5) 0 0 black;
+  /* --component-box-shadow-base: none; */
+  --component-box-shadow-hover: var(--component-box-shadow-x) var(--component-box-shadow-y) 0 0 var(--component-box-shadow-color);
+  /* --component-box-shadow-hover: var(--component-box-shadow-x) var(--component-box-shadow-y) 0 0 black; */
+  --component-box-shadow-focus: var(--component-box-shadow-x) var(--component-box-shadow-y) 0 0 var(--component-box-shadow-color);
+  --component-box-shadow-active: calc(var(--component-box-shadow-x) - 50% * var(--theme-base-unit-calc)) calc(var(--component-box-shadow-y) - 50% * var(--theme-base-unit-calc)) 0 0 var(--component-box-shadow-color);
 }
 
 /* 

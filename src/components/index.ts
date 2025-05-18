@@ -15,10 +15,10 @@ export { YColorInput } from './form/YColorInput'
 export { YInput } from './form/YInput'
 
 // data-display
-export { YCard } from './data-display/card'
+export { YCard } from './YCard'
 
 // overlays
-export { YModal } from './overlays/modal'
+export { YModal } from './overlays/YModal'
 
 // providers
 // export { ModalProvider } from './providers'

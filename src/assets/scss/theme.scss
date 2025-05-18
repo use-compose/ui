@@ -7,23 +7,14 @@
   * 5 - Theme
   * 6 - Breakpoints
 */
-// @use '../css/global.css' as *;
-// @use '../css/theme/src/assets/variables.css' as *;
-// @use '@/assets/css/theme/src/assets/variables.css';
 
 @use 'base/base';
 @use 'theme/theme' as theme;
 @use 'utils' as utils;
 @use 'sass:map';
 @use 'sass:math';
-// @use '../css/theme/variables.css' as *;
 
-// @property --color-primary {
-//   syntax: '<color>';
-//   initial-value: #e3c567;
-//   inherits: true;
-// }
-
+// TODO: Old version
 @property --color-main-dark {
   syntax: '<color>';
   initial-value: #616970;
@@ -36,52 +27,11 @@
   inherits: true;
 }
 
-// @import "utils/utils";
-// @import "base/base";
-// import all functions and mixins from utils
-
 @property --raw {
   syntax: '<number>';
   initial-value: 0;
   inherits: true;
 }
-// @property --primary {
-//   syntax: '<number>';
-//   initial-value: 0;
-//   inherits: true;
-// }
-
-@property --color-hue {
-  syntax: '<number>';
-  initial-value: 0;
-  inherits: true;
-}
-@property --color-saturation {
-  syntax: '<number>';
-  initial-value: 0;
-  inherits: true;
-}
-@property --color-lightness {
-  syntax: '<percentage>';
-  initial-value: 0;
-  inherits: true;
-}
-
-// @property --theme-hue {
-//   syntax: '<number>';
-//   initial-value: 0;
-//   inherits: true;
-// }
-// @property --theme-saturation {
-//   syntax: '<number>';
-//   initial-value: 0;
-//   inherits: true;
-// }
-// @property --theme-lightness {
-//   syntax: '<percentage>';
-//   initial-value: 0;
-//   inherits: true;
-// }
 
 :root {
   /* https://dev.to/tracygjg/conditional-css-437e */
@@ -107,10 +57,6 @@ body {
     base-unit: 6px,
     unit-50: calc(var(--theme-base-unit) * 0.5),
     base-unit-calc: calc(var(--theme-base-unit) * var(--not-raw, 1)),
-    // primary: calc(1 - var(--secondary) - var(--text)),
-    // secondary: calc(1 - var(--primary) - var(--text)),
-    // danger: calc(1 - var(--primary) - var(--secondary)),
-    // state: 'base',
     variant: 'contained',
     current-color: color-mix(
         in srgb,
@@ -121,6 +67,7 @@ body {
           var(--color-danger) calc(var(--danger) * 100%)
         )
       ),
+    // Can not be called in SCSS as it's gonna be built once, removing the dynamic advantage of CSS Custom Properties at runtime
     // current-color: calc(
     //     var(--primary) * var(--color-primary) + var(--secondary) * var(--color-secondary) +
     //       var(--danger) * var(--color-danger)
@@ -257,38 +204,6 @@ body {
   )
 );
 
-// :root {
-//   --color-primary: #fbe134;
-//   --primary: hsl(from var(--color-primary) h s l / 100%);
-//   --color-main-dark: #0b0c0c;
-//   --main-dark: hsl(from var(--color-main-dark) h s l / 100%);
-//   --color-bg: #0b0c0c;
-
-//   /*
-//    * TODO: search if we keep color-mix
-//    * sources:
-//    * https://una.im/color-mix-opacity/
-//    * https://developer.chrome.com/docs/css-ui/css-color-mix
-//    */
-//   --primary-80: color-mix(in srgb, utils.color(primary) 80%, transparent);
-//   --primary-60: color-mix(in srgb, utils.color(primary) 60%, transparent);
-//   --primary-40: color-mix(in srgb, utils.color(primary) 40%, transparent);
-//   --primary-20: color-mix(in srgb, utils.color(primary) 20%, transparent);
-//   --primary-10: color-mix(in srgb, utils.color(primary) 10%, transparent);
-//   --color-white: #fff;
-//   --text-color: ;
-//   --theme-color: var(--color-primary);
-//   --initial-light: #f5f5f5;
-
-//   --color-dark: #0b0c0c;
-
-//   /* TODO: Dark Mode? */
-//   /* Or apply it via media query */
-//   @media (prefers-color-scheme: dark) {
-//     // --color-primary: var(--main-dark);
-//   }
-// }
-
 // -----------------------------------------------------------------------------
 
 // 4 - Components
@@ -297,34 +212,14 @@ body {
   'component',
   (
     height: 2.625rem,
-    // box-shadow-x: utils.theme(base-unit-calc),
-    // box-shadow-y: utils.theme(base-unit-calc),
-    // bg-opacity: 1,
     transform: translate(0, 0),
     transform-value: calc(utils.theme(base-unit-calc) / 2 * var(--active)),
-    // box-shadow-color: utils.theme(current-color),
-    // box-shadow-base: utils.component(box-shadow-x) utils.component(box-shadow-y) 0 0 black,
-    // box-shadow-hover: utils.component(box-shadow-x) utils.component(box-shadow-y) 0 0
-    //   utils.component(box-shadow-color),
-    // box-shadow-focus: utils.component(box-shadow-x) utils.component(box-shadow-y) 0 0
-    //   utils.component(box-shadow-color),
-    // box-shadow-active: calc(utils.component(box-shadow-x) - 50% * var(--theme-base-unit-calc))
-    //   calc(utils.component(box-shadow-y) - 50% * utils.theme(base-unit-calc)) 0 0
-    //   utils.component(box-shadow-color),
     transform-hover: utils.component(transform),
     transform-focus: translate(0, 0),
     transform-focus-visible: translate(0, 0),
     transform-active: translate(3px, 3px),
     transform-disabled: none,
-    // box-shadow-disabled: calc(utils.component(box-shadow-x) - 50% * utils.theme(base-unit-calc))
-    //   calc(utils.component(box-shadow-y) - 50% * utils.theme(base-unit-calc)) 0 0
-    //   utils.component(box-shadow-color),
-    // bg-color: calc(
-    //     var(--color-primary) * var(--theme-primary, 1) + var(--color-secondary) *
-    //       var(--theme-secondary, 0) + var(--color-danger) * var(--theme-danger, 0)
-    //   ),
     color: initial,
-    // box-shadow: utils.component(box-shadow-base),
     padding-x: utils.space(unit),
     padding-y: utils.space(xxs),
     margin-bottom: utils.space(unit),
@@ -332,30 +227,8 @@ body {
     border-style: solid,
     border-color: utils.color(main-dark),
     font-size: 1rem,
-    // border-color: utils.color(main-dark),
-    // border: utils.component(border-width) solid utils.component(border-color),
-    // Design Tokens
-    // primary: utils.theme(primary),
-    // state: utils.theme(state),
-    // variant: utils.theme(variant),
     not-contained: calc(1 - var(--contained, 1)),
     transition: all 0.1s linear,
-
-    // bg-hue: var(--component-bg-hue),
-    // bg-saturation: var(--component-bg-saturation),
-    // bg-lightness: var(--component-bg-lightness),
-    // bg-opacity: var(--component-bg-opacity),
-    // border-hue: var(--component-border-hue),
-    // border-saturation: var(--component-border-saturation),
-    // border-lightness: var(--component-border-lightness),
-    // border-opacity: var(--component-border-opacity),
-    // text-hue: var(--component-text-hue),
-    // text-saturation: var(--component-text-saturation),
-    // text-lightness: var(--component-text-lightness),
-    // text-opacity: var(--component-text-opacity),
-    // color-bg: hsl(var(--component-bg-hue), var(--component-bg-saturation), var(--component-bg-lightness), var(--component-bg-opacity)),
-    // color-border: hsl(var(--component-border-hue), var(--component-border-saturation), var(--component-border-lightness), var(--component-border-opacity)),
-     // color-text: hsl(var(--component-text-hue), var(--component-text-saturation), var(--component-text-lightness), var(--component-text-opacity)),
   )
 );
 
@@ -363,34 +236,10 @@ $colors: ('primary', 'secondary', 'danger');
 $states: ('base', 'hover', 'active', 'focus', 'disabled');
 $variants: ('contained', 'outlined', 'text');
 
-@mixin apply-state($stateVar) {
-  &:#{$stateVar},
-  &.#{$stateVar} {
-    @include utils.component(box-shadow, utils.component(box-shadow-#{$stateVar}));
-    @include utils.component(transform, utils.component(transform-#{$stateVar}));
-  }
-}
-
 @mixin theme-component {
-  // --theme-current-color: calc(
-  //   var(--primary) * var(--color-primary) + var(--secondary) * var(--color-secondary) +
-  //     var(--danger) * var(--color-danger)
-  // );
-  // --theme-current-color: color-mix(
-  //   in srgb,
-  //   var(--color-primary) calc(var(--primary) * 100%),
-  //   color-mix(
-  //     in srgb,
-  //     var(--color-secondary) calc(var(--secondary) * 100%),
-  //     var(--color-danger) calc(var(--danger) * 100%)
-  //   )
-  // );
   background-color: utils.component(bg-color);
   border-color: utils.component(border-color);
-  // color: var(--component-color-text);
-  // @include utils.component(primary, 1);
   padding: utils.component(padding-y) utils.component(padding-x);
-  // border-radius: utils.theme(borderradius);
   box-shadow: utils.component(box-shadow);
   outline: none;
   transform: utils.component(transform);
@@ -398,91 +247,42 @@ $variants: ('contained', 'outlined', 'text');
 
   &.small {
     // @include utils.component(padding-y, space(xs));
-    @include utils.component(padding-x, space(xs));
+    @include utils.component(padding-x, utils.space(xs));
     @include utils.component(height, 2rem); // 32px
   }
 
   &.large {
     // @include utils.component(padding-y, space(md));
-    @include utils.component(padding-x, space(md));
+    @include utils.component(padding-x, utils.space(md));
     @include utils.component(height, 3rem); // 48px
   }
-
-  // &.outlined {
-  //   background-color: transparent;
-  //   color: utils.color(primary);
-  // }
-
-  @include apply-state('hover');
 
   &.raw {
     @include raw-component;
   }
 
-  // &.interactive {
-
+  height: utils.component(height);
   font-weight: bold;
   margin-bottom: utils.component(margin-bottom);
   border-width: utils.component(border-width);
   border-style: utils.component(border-style);
   border: utils.component(border-width) utils.component(border-style) utils.component(border-color);
   font-size: 1rem;
-  // @include utils.component(
-  //   bg-color,
-  //   hsl(
-  //     var(--component-bg-hue) var(--component-bg-saturation)
-  //       calc(var(--component-bg-lightness) * 1%) / var(--component-bg-opacity)
-  //   )
-  // );
-  // @include utils.component(
-  //   text-color,
-  //   hsl(
-  //     var(--component-text-hue) var(--component-text-saturation)
-  //       calc(var(--component-text-lightness) * 1%) / var(--component-text-opacity)
-  //   )
-  // );
-  // @include utils.component(
-  //   color-border,
-  //   hsl(
-  //     var(--component-border-hue) var(--component-border-saturation)
-  //       calc(var(--component-border-lightness) * 1%) / var(--component-border-opacity)
-  //   )
-  // );
 
+  // Color Props
   @include theme.primary;
   @include theme.secondary;
   @include theme.danger;
 
+  // State Props
   @include theme.base;
   @include theme.hover;
-
   @include theme.disabled;
 
-  &.disabled {
-    @include utils.component(bg-color, utils.color(bg-primary-disabled));
-    @include utils.component(border-color, utils.color(border-primary-disabled));
-  }
-
-  // &.contained {
+  // Variant Props
   @include theme.contained;
-  // }
-
-  // &.outlined {
   @include theme.outlined;
-  // }
-
-  // &.text {
   @include theme.text;
-  // }
-
-  // --danger-else-0: var(--color);
-  // --danger: var(--danger-else-0);
-
-  // --primary-else-0: var(--color);
-  // --primary: var(--primary-else-0);
-
-  // --secondary-else-0: var(--color);
-  // --secondary: var(--secondary-else-0);
 
   --component-bg-hue: calc(var(--color-bg-hue));
   --component-bg-saturation: calc(
@@ -536,20 +336,10 @@ $variants: ('contained', 'outlined', 'text');
   background-color: var(--component-color-bg);
   border-color: var(--component-color-border);
   color: var(--component-color-text);
-
-  // }
 }
 
 @mixin interactive-component {
   @include theme.focus;
-  @include apply-state('focus');
-  @include apply-state('focus-visible');
-  @include apply-state('disabled');
-  @include apply-state('active');
-  // &:hover {
-  //   box-shadow: none;
-  // }
-
   @include theme.active;
 }
 
@@ -557,11 +347,11 @@ $variants: ('contained', 'outlined', 'text');
   // --raw: var(--true);
   box-shadow: none;
 
-  &:hover {
-    // transform: none;
-    box-shadow: none;
-    @include utils.component(bg-color, utils.color(primary-60));
-  }
+  // &:hover {
+  //   // transform: none;
+  //   box-shadow: none;
+  //   @include utils.component(bg-color, utils.color(primary-60));
+  // }
 
   &:active,
   &:focus-visible {

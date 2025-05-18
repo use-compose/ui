@@ -27,8 +27,7 @@
 </template>
 
 <script lang="ts" setup>
-import { YModalFooter, YModalHeader } from '@/components/overlays/modal'
-import { useBaseProps } from '@/composables'
+import { YModalFooter, YModalHeader } from '@/components/overlays/YModal'
 import { modalDefaultProps } from '@/composables/components'
 import { computed, useSlots } from 'vue'
 import { BaseModalProps, YModalSize } from './types'
@@ -40,11 +39,8 @@ const props = withDefaults(defineProps<BaseModalProps>(), {
   size: YModalSize.Medium,
 })
 
-// Classes and styling
-const { baseClasses } = useBaseProps(props)
-
 const yModalClasses = computed(() => {
-  return [[...baseClasses.value], getModalClasses(props)]
+  return getModalClasses(props)
 })
 
 const slots = useSlots()

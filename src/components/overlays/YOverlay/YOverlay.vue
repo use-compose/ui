@@ -1,12 +1,6 @@
 <template>
-  <Transition name="fade">
-    <div
-      v-if="modelValue"
-      aria-hidden="true"
-      :class="getClasses"
-      :style="getStyles"
-      @click="handleClick"
-    >
+  <Transition appear name="fade">
+    <div v-show="modelValue" :class="getClasses" :style="getStyles" @click="handleClick">
       <slot />
     </div>
   </Transition>

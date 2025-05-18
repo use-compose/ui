@@ -1,4 +1,4 @@
-import { modalKey, ModalKeyInterface } from '@/components/overlays/modal/types'
+import { modalKey, ModalKeyInterface } from '@/components/overlays/YModal/types'
 import { inject } from 'vue'
 
 export function useModal() {
