@@ -211,7 +211,6 @@ body {
 @include utils.cssvars(
   'component',
   (
-    height: 2.625rem,
     transform: translate(0, 0),
     transform-value: calc(utils.theme(base-unit-calc) / 2 * var(--active)),
     transform-hover: utils.component(transform),
