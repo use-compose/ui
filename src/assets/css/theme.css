@@ -84,6 +84,12 @@
       color-mix(in srgb,
         var(--color-secondary) calc(var(--secondary) * 100%),
         var(--color-danger) calc(var(--danger) * 100%)));
+  /* 
+  --theme-current-color-hue: calc(var(--color-bg-hue) * var(--primary) + var(--color-bg-hue) * var(--secondary) + var(--color-bg-hue) * var(--danger));
+  --theme-current-color-saturation: calc(var(--color-bg-saturation) * var(--primary) + var(--color-bg-saturation) * var(--secondary) + var(--color-bg-saturation) * var(--danger));
+  --theme-current-color-lightness: calc(var(--color-bg-lightness) * var(--primary) + var(--color-bg-lightness) * var(--secondary) + var(--color-bg-lightness) * var(--danger));
+  --theme-current-color-opacity: calc(var(--color-bg-opacity) * var(--primary) + var(--color-bg-opacity) * var(--secondary) + var(--color-bg-opacity) * var(--danger)); */
+
 
   --component-box-shadow: var(--component-box-shadow-base);
   --component-box-shadow-color: var(--theme-current-color);
