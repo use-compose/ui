@@ -1,6 +1,14 @@
 @use '@/assets/scss/utils/index' as *;
 @use '@/assets/scss/theme.scss' as *;
 
+// Needed for the animation
+// https://css-tricks.com/exploring-property-and-its-animating-powers/
+@property --transform-scale {
+  syntax: '<number>';
+  inherits: false;
+  initial-value: 0;
+}
+
 .y-checkbox {
   @include theme-component;
   @include interactive-component;
@@ -8,9 +16,9 @@
   @include component(margin-bottom, 0);
   @include component(padding-x, 0);
   @include component(padding-y, 0);
-  height: calc(0.75 * y-checkbox(height));
+  // height: calc(0.75 * y-checkbox(height));
 
-  @include y-checkbox(height, component(height));
+  @include component(height, 32px);
 
   cursor: pointer;
   position: relative;
@@ -23,15 +31,14 @@
     content: '';
     border-color: var(--color-primary);
     display: flex;
-    transform: scale(0);
+    --transform-scale: 0;
     transition: 120ms transform ease-in-out;
-    width: var(--width);
-    height: var(--height);
     position: absolute;
-    height: 80%;
-    width: 80%;
-    top: 10%;
-    left: 10%;
+    height: 70%;
+    width: 70%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(var(--transform-scale));
 
     animation: var(--y-checkbox-animation);
   }
