@@ -6,7 +6,7 @@
 :root {
   --state-base-bg-hue: 0;
   --state-base-bg-saturation: 0%;
-  --state-base-bg-lightness: var(--color-primary-lightness);
+  --state-base-bg-lightness: 60%;
   --state-base-bg-opacity: 1;
   --state-base-border-hue: 0;
   --state-base-border-saturation: 0%;
