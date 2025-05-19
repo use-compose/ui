@@ -7,6 +7,7 @@
 /* 
  * CSS Type Grinding - https://www.bitovi.com/blog/css-only-type-grinding-casting-tokens-into-useful-values
 */
+@layer state;
 
 /*
  * Color Properties
@@ -167,6 +168,13 @@
   --text: var(--text-else-0);
 }
 
+
+/* TODO: dynamic font color based on background */
+.y-button span {
+  --color-text-not-percentage: var(--color-text-lightness) / 1%;
+  --component-text-lightness: calc(((var(--component-bg-lightness) / 1%) - var(--threshold) * 1%) * -100%);
+}
+
 /* 
  * State Properties
 */
@@ -236,26 +244,53 @@
   inherits: true;
 }
 
-/* 
-.base {
-  --state: base;
+@layer state {
+  .base:not([disabled]):not(.disabled) {
+    --state: base;
+  }
+
+  .hover {
+    --state: hover;
+  }
+
+  .active {
+    --state: active;
+  }
+
+  .focus {
+    --state: focus;
+  }
+
+  .disabled {
+    --state: disabled;
+  }
+
+  .base,
+  .hover,
+  .active,
+  .focus,
+  .focus-visible,
+  .disabled {
+    --base-else-0: var(--state);
+    --base: var(--base-else-0);
+
+    --hover-else-0: var(--state);
+    --hover: var(--hover-else-0);
+
+    --active-else-0: var(--state);
+    --active: var(--active-else-0);
+
+    --focus-else-0: var(--state);
+    --focus: var(--focus-else-0);
+
+    --disabled-else-0: var(--state);
+    --disabled: var(--disabled-else-0);
+
+  }
+
+
 }
 
-.hover {
-  --state: hover;
-}
-
-.active {
-  --state: active;
-}
-
-.focus {
-  --state: focus;
-}
-
-.disabled {
-  --state: disabled;
-} */
 
 /* .focus,
 :focus,
