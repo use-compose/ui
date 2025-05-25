@@ -74,7 +74,7 @@
     "@storybook/vue3-vite": "^8.4.7",
     "@vitejs/plugin-vue": "4.6.2",
     "axe-playwright": "^2.0.3",
-    "chromatic": "11.28.2",
+    "chromatic": "11.28.4",
     "eslint": "9.27.0",
     "eslint-config-prettier": "10.1.5",
     "eslint-plugin-prettier": "5.4.0",
