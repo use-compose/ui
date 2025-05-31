@@ -1,10 +1,6 @@
-import { useThemeComponentStory } from '@/composables'
 import type { Meta, StoryObj } from '@storybook/vue3'
 import YFlex from '../layout/YFlex/YFlex.vue'
 import YSection from './YSection.vue'
-import type { YSectionProps } from './types'
-
-const { generateCommonStories } = useThemeComponentStory<YSectionProps>(YSection)
 
 const meta: Meta<typeof YSection> = {
   // TODO: TO CHANGE PATH
@@ -33,7 +29,6 @@ const Default: Story = {
       </YFlex>
     </YSection>`,
   }),
-  // args,
 }
 
 export { Default }
