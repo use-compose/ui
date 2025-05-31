@@ -1,7 +1,7 @@
 @use '@/assets/scss/utils' as utils;
 @use '@/assets/scss/theme.scss' as *;
 
-.vertical-title {
+.y-vertical-title {
   font-family: 'gotham';
   font-size: clamp(1.125rem, 2.6vw + 0.1rem, 3.4rem);
   font-weight: bold;
