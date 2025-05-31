@@ -1,0 +1,55 @@
+// Uncomment if needed
+@use '@/assets/scss/utils' as utils;
+@use '@/assets/scss/theme.scss' as *;
+
+// TODO: change to kebab-case
+.y-section {
+  container-name: section;
+  container-type: inline-size;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 15px 22px 10px;
+  // overflow: hidden;
+  // padding: 2.5rem 1.25rem 1.25rem 1.25rem;
+  .y-vertical-title {
+    font-size: utils.text(xl);
+  }
+
+  @include media(tablet) {
+    flex-wrap: nowrap;
+    padding: 40px 20px 10px 0;
+
+    .y-vertical-title {
+      font-size: utils.text(xxl);
+    }
+  }
+
+  @include media(desktop) {
+    padding: 50px 37px 0 0;
+  }
+
+  &:last-child {
+    padding-bottom: 22px;
+
+    @include media(desktop) {
+      padding-bottom: 50px;
+    }
+  }
+  .y-section__content,
+  .y-section > :nth-child(2) {
+    flex-grow: 1;
+  }
+
+  @container section(min-width: 0) {
+    .y-vertical-title {
+      font-size: clamp(8.125rem, 4cqi + 0.1rem, /*2.875rem*/ 3.4rem);
+    }
+  }
+
+  @container section(min-width: 768px) {
+    .y-vertical-title {
+      font-size: clamp(8.125rem, 5cqi + 0.1rem, 3.4rem);
+    }
+  }
+}

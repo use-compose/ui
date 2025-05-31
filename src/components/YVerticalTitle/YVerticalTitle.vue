@@ -1,5 +1,5 @@
 <template>
-  <p class="vertical-title" :class="small && 'small'">
+  <p class="y-vertical-title" :class="small && 'small'">
     <slot />
   </p>
 </template>
