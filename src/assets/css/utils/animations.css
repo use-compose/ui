@@ -1,0 +1,17 @@
+@property --user-event-interaction {
+  syntax: 'clicked | hovered | focused | active';
+  initial-value: 'clicked';
+  inherits: true;
+}
+
+@property --is-clicked-once {
+  syntax: 'true | false';
+  initial-value: 'false';
+  inherits: true;
+}
+
+@property --clicked {
+  syntax: '<integer>';
+  initial-value: none;
+  inherits: true;
+}

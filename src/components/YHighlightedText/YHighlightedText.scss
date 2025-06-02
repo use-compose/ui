@@ -56,9 +56,7 @@
       // }
 
       > span {
-        --animate-in: highlight-to-left 0.5s 0.1s forwards;
-        --animate-out: highlight-to-right 0.4s forwards;
-        background-size: 0% 100%;
+        // background-size: 0% 100%;
         -webkit-background-clip: padding-box, text;
         background-clip: padding-box, text;
         background-repeat: no-repeat;
@@ -69,6 +67,8 @@
     &.active > span {
       --animate-in: highlight-to-right 0.5s forwards;
       --animate-out: highlight-to-left 0.4s 0.1s forwards;
+      // --animate-in: highlight-to-left 0.5s 0.1s forwards;
+      // --animate-out: var(--is-hovered-once, highlight-to-right 0.4s forwards);
     }
 
     &.animate:has(> span:hover) > span {
@@ -76,7 +76,7 @@
     }
 
     &.animate:has(> span:not(:hover)) > span {
-      --highlight-animate: var(--animate-out);
+      --highlight-animate: var(--is-hovered-once, var(--animate-out));
     }
   }
 }

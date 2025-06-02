@@ -215,9 +215,20 @@ export function useTheme() {
     )
   }
 
+  type ThemeValue = (typeof Theme)[keyof typeof Theme]
+
+  function getThemeColor(color: ThemeValue) {
+    if (color)
+      return isClientSide()
+        ? getComputedStyle(document.documentElement).getPropertyValue(color as string)
+        : ''
+  }
+  // eslint-disable-next-line no-console
+  console.log('📟 - getThemeColor → ', getThemeColor(Theme.danger))
+
   function getPrimary() {
     return isClientSide()
-      ? getComputedStyle(document.documentElement).getPropertyValue('--color-primary')
+      ? getComputedStyle(document.documentElement).getPropertyValue(Theme.primary)
       : ''
   }
 

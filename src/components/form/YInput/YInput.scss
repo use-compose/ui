@@ -1,51 +1,6 @@
 @use '@/assets/scss/utils/index' as *;
 @use '@/assets/scss/theme.scss' as *;
 
-.y-label {
-  color: color(primary);
-  font-size: text(lg);
-  margin: space(xs) 0 space(xxs);
-  display: inline-block;
-}
-
 .y-input {
   @include theme-component;
-
-  @include component(bg-color, color(main-dark));
-  // @include component(color, color(primary));
-  @include component(padding-y, space(sm));
-  @include component(border-color, color(primary));
-
-  margin-bottom: space(unit);
-  width: 100%;
-
-  &::placeholder {
-    // color: inherit;
-    opacity: 0.4;
-  }
-
-  &.y-input-hero {
-    @include component(bg-color, color(primary));
-    @include component(color, color(main-dark));
-    @include component(box-shadow, unset);
-    @include component(padding-y, space(md));
-    @include component(padding-x, space(md));
-    @include component(font-size, text(xl));
-
-    &:hover:not(:focus-visible, :active) {
-      @include component(box-shadow, component(box-shadow-base));
-    }
-  }
-}
-
-.error-label {
-  font-size: 80%;
-}
-
-.no-border {
-  @include component(border, none);
-}
-
-.no-margin {
-  @include component('margin-bottom', 0);
 }

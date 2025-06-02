@@ -8,7 +8,7 @@
 import '@/assets/css/theme.css'
 // import '@/assets/css/global.css'
 import { useComposeTheme } from '@/composables/use-compose-theme'
-import { YTheme } from '@/types'
+import type { YTheme } from '@/types'
 
 interface AppComposeProps {
   theme?: YTheme
@@ -16,11 +16,11 @@ interface AppComposeProps {
 
 const props = defineProps<AppComposeProps>()
 
-// if (props.theme) {
-useComposeTheme(props.theme)
-// } else {
-// useComposeTheme()
-// }
+if (props.theme) {
+  useComposeTheme(props.theme)
+} else {
+  useComposeTheme()
+}
 
 // setPrimary('#FCECF0')
 // setBackground('#ABCDF8')

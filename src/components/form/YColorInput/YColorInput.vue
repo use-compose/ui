@@ -1,5 +1,5 @@
 <template>
-  <div class="y-color-input-wrapper">
+  <YInput ref="inputColor" class="y-color-input-wrapper">
     <YLabel class="y-label" :for="name">{{ label }}</YLabel>
     <input
       :value="modelValue"
@@ -10,7 +10,7 @@
       @change="handleChange"
       @blur="handleBlur"
     />
-  </div>
+  </YInput>
 </template>
 
 <script setup lang="ts">
@@ -19,7 +19,8 @@ import { YLabel } from '@/components/YLabel'
 import { useBaseProps } from '@/composables'
 import { ThemeComponentBaseProps } from '@/types/base-props'
 import { isClientSide } from '@/utils/is-client-side'
-import { computed, onMounted, useAttrs } from 'vue'
+import { computed, onMounted, ref, useAttrs } from 'vue'
+import YInput from '../YInput/YInput.vue'
 import './YColorInput.scss'
 
 export interface YColorInputProps extends ThemeComponentBaseProps {
@@ -47,8 +48,6 @@ const yColorInputClasses = computed(() => {
     props.small ? 'y-input-small' : '',
     props.big ? 'y-input-big' : '',
     props.hero ? 'y-input-hero' : '',
-    // props.noBorder ? 'no-border' : '',
-    // props.noMargin ? 'no-margin' : '',
   ]
 })
 
@@ -64,8 +63,9 @@ const handleChange = (event: Event) => {
   }
   emit('update:modelValue', (event.target as HTMLInputElement).value)
 }
+const inputColor = ref<EventTarget | null>(null)
+// const lol = useInputEvent(inputColor)
 
-// listen to blur event
 const handleBlur = () => {
   emit('blur')
 }

@@ -1,25 +1,21 @@
 <template>
-  <YFlex>
+  <YFlex align="center">
     <YColorInput v-model="primaryColor" label="Primary" />
     <YColorInput v-model="secondaryColor" color="secondary" label="Secondary" />
     <YColorInput v-model="dangerColor" color="danger" label="Danger" />
   </YFlex>
-  <div style="display: flex; flex-direction: column; gap: 2rem">
+  <div style="display: flex; flex-direction: column; align-items: center; gap: 2rem">
     <!-- <button class="brutalist-button">CLICK ME</button> -->
 
     <!-- Outer loop: each variant in a separate row or section -->
     <!-- <div v-for="size in sizes.slice().reverse()" :key="size"> -->
     <!-- <h3>{{ size.toUpperCase() }}</h3> -->
     <div v-for="color in colors" :key="color">
-      <h3>{{ color }}</h3>
+      <h3 :class="color">{{ color }}</h3>
       <!-- Inner loop: each tone for that variant -->
-      <div>
-        <!-- Loop: each state -->
-        <div
-          v-for="variant in variants"
-          :key="variant"
-          style="display: flex; gap: 1rem; align-items: center; position: relative"
-        >
+      <!-- Loop: each state -->
+      <div v-for="variant in variants" :key="variant" style="margin-bottom: 1rem">
+        <div style="display: flex; gap: 1rem; align-items: center; position: relative">
           <small class="variant-label">{{ variant }}</small>
           <!-- If your component has a specific "state" prop, use :state="state" -->
           <!-- If "disabled" is done by a boolean, conditionally set :disabled="(state === 'disabled')" -->
@@ -45,8 +41,9 @@
               {{ state }}
             </YButton>
           </div>
-          <!-- </div> -->
         </div>
+
+        <!-- </div> -->
       </div>
     </div>
   </div>

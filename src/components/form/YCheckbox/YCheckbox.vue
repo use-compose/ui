@@ -5,14 +5,14 @@
       ref="yCheckbox"
       class="y-checkbox-label"
       :class="yCheckboxClasses"
-      :style="!isClickedOnce && '--is-clicked-once: none'"
+      :style="!isClickedOnce && '--clicked: none'"
       :value="modelValue"
       type="checkbox"
       :name="name"
       :placeholder="placeholder"
       autocomplete="off"
       :disabled="isDisabled"
-      @change="handleChange"
+      @change="handleEvent($event)"
       @blur="handleBlur"
     />
     <label v-if="error" class="error-label" :for="name">
@@ -24,6 +24,7 @@
 
 <script setup lang="ts">
 import { useBaseProps } from '@/composables'
+import { useInputEvent } from '@/composables/animation'
 import { basePropsDefault } from '@/composables/use-base-props'
 import { computed, onMounted, ref } from 'vue'
 import type { YCheckboxProps } from './types'
@@ -36,19 +37,22 @@ const props = withDefaults(defineProps<YCheckboxProps>(), {
 
 const { baseClasses, isDisabled } = useBaseProps(props)
 
-const isClickedOnce = ref(false)
+// const isClickedOnce = ref(false)
 
 const yCheckboxClasses = computed(() => {
   return [[...baseClasses.value], 'y-checkbox', props.hero ? 'y-input-hero' : '']
 })
 
+const yCheckbox = ref<EventTarget | null>(null)
 // listen to input event
-const emit = defineEmits(['update:modelValue', 'blur'])
+const emit = defineEmits(['update:modelValue', 'blur', 'change'])
+
+const { handleEvent, handleInput } = useInputEvent(yCheckbox)
 
 const handleChange = (event: Event) => {
-  if (!isClickedOnce.value) {
-    isClickedOnce.value = true
-  }
+  // if (!isClickedOnce.value) {
+  //   isClickedOnce.value = true
+  // }
   if (isDisabled) {
     event.preventDefault()
   } else {

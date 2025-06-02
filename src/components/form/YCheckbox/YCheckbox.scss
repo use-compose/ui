@@ -1,5 +1,6 @@
 @use '@/assets/scss/utils/index' as *;
 @use '@/assets/scss/theme.scss' as *;
+@use '@/assets/scss/theme/theme.scss' as theme;
 
 // Needed for the animation
 // https://css-tricks.com/exploring-property-and-its-animating-powers/
@@ -19,6 +20,22 @@
   // height: calc(0.75 * y-checkbox(height));
 
   @include component(height, 32px);
+  
+  @include theme.active {
+    @include state(bg-lightness, var(--state-hover-bg-lightness));
+  }
+
+  @include theme.focus {
+    @include state(bg-lightness, var(--state-hover-bg-lightness));
+  }
+
+  @include theme.active {
+    @include state(bg-lightness, var(--state-hover-bg-lightness));
+  }
+
+  @include theme.focus {
+    @include state(bg-lightness, var(--state-hover-bg-lightness));
+  }
 
   cursor: pointer;
   position: relative;

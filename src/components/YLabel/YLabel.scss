@@ -1,11 +1,9 @@
-// Uncomment if needed
-// @use '@/assets/scss/utils' as utils;
-// @use '@/assets/scss/theme.scss' as *;
+@use '@/assets/scss/utils/index' as *;
+@use '@/assets/scss/theme.scss' as *;
 
-// TODO: change to kebab-case
-.YLabel {
-  // Add your styles here
-  // Example:
-  // color: theme.$primary-color;
-  // background-color: utils.getColor('background');
+.y-label {
+  color: color(primary);
+  font-size: text(lg);
+  margin: space(xs) 0 space(xxs);
+  display: inline-block;
 }

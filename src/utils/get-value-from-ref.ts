@@ -1,4 +1,3 @@
-import { toRef } from 'vue'
 /*
  * Initially inspired from VueUse
  * https://github.com/vueuse/vueuse/blob/main/packages/shared/toValue/index.ts
@@ -41,7 +40,10 @@ export function getValueFromRef<T>(source: MaybeRefOrGetter<T>): T {
     return (source as AnyFn<T>)()
   }
   if (isRef(source)) {
-    const sourceRef = toRef(source)
+    console.log('📟 - source → ', source)
+    const sourceRef = source
+    console.log('📟 - sourceRef → ', sourceRef)
+    console.log('📟 - sourceRef.value → ', sourceRef.value)
     return sourceRef.value
   }
 
