@@ -1,16 +1,14 @@
-import type { Meta, StoryObj } from '@storybook/vue3'
-
 import { useThemeComponentStory } from '@/composables'
-import { action } from '@storybook/addon-actions'
-import YInput from './YInput.vue'
-import type { YInputProps } from './types'
+import type { Meta, StoryObj } from '@storybook/vue3'
+import YInputText from './YInputText.vue'
+import type { YInputTextProps } from './types'
 
-const { commonArgTypes, generateCommonStories } = useThemeComponentStory<YInputProps>(YInput)
+const { commonArgTypes, commonArgs, generateCommonStories } =
+  useThemeComponentStory<YInputTextProps>(YInputText)
 
-// More on how to set up stories at: https://storybook.js.org/docs/vue/writing-stories/introduction
 const meta = {
-  title: 'Components/Form/YInput',
-  component: YInput,
+  title: 'Components/Form/YInputText',
+  component: YInputText,
   ...commonArgTypes,
   // This component will have an automatically generated docsPage entry: https://storybook.js.org/docs/vue/writing-docs/autodocs
   tags: ['autodocs'],
@@ -18,22 +16,23 @@ const meta = {
     ...commonArgTypes,
     hero: { control: 'boolean' },
     label: { control: 'text' },
-    onBlur: { action: 'handleBlur' },
+    // onBlur: { action: 'handleBlur' },
     // handleInput: { control: 'text' },
     // backgroundColor: { control: "color" },
     // onClick: { action: "handleClick"},
-    'onUpdate:modelValue': { action: 'onInput', control: 'text' },
+    // 'onUpdate:modelValue': { action: 'onInput', control: 'text' },
     modelValue: { control: 'text' },
   },
   args: {
     modelValue: 'YInput',
-    onBlur: action('onBlur'),
-    'onUpdate:modelValue': action('onInput'),
+    // onBlur: action('onBlur'),
+    // 'onUpdate:modelValue': action('onInput'),
   }, // default value
-} satisfies Meta<typeof YInput>
+} satisfies Meta<typeof YInputText>
 
 export default meta
 type Story = StoryObj<typeof meta>
+
 /*
  *👇 Render functions are a framework specific feature to allow you control on how the component renders.
  * See https://storybook.js.org/docs/vue/api/csf
@@ -41,11 +40,11 @@ type Story = StoryObj<typeof meta>
  */
 
 const renderGenericStory: Story = {
-  render: (args: YInputProps, { argTypes }) => ({
-    components: { YInput },
+  render: (args: YInputTextProps, { argTypes }) => ({
+    components: { YInputText },
     props: Object.keys(argTypes),
     template: `
-    <YInput v-bind="args" />
+    <YInputText v-bind="args" />
   `,
     setup() {
       // const emit = defineEmits(['update:modelValue', 'blur'])

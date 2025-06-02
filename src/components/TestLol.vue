@@ -192,6 +192,8 @@
       </p>
     </YModal>
 
+    <YColorInput v-model="color" label="Color" />
+
     <YModal
       v-model="showDrawer"
       :type="YModalType.Drawer"
@@ -219,6 +221,7 @@
 <script setup lang="ts">
 import { Wrapper, YButton, YCard, YCheckbox, YInput, YModal } from '@/components'
 import { ref } from 'vue'
+import YColorInput from './form/YColorInput/YColorInput.vue'
 import { YModalSize, YModalType } from './overlays/YModal/types'
 
 // const { theme } = useTheme()

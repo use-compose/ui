@@ -52,6 +52,7 @@ export function useBaseProps(props: ThemeComponentBaseProps) {
       const { variantClass } = useVariants(variant)
       classes.push(variantClass.value)
     }
+
     const sizeClass = size ? sizeClasses[size] : ''
     const colorClass = color ? colorClasses[color] : colorClasses.primary
     const stateClass = state ? stateClasses[state] : stateClasses.base

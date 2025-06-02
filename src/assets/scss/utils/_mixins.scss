@@ -53,6 +53,11 @@
   --#{$prefix}-#{$name}: #{$value};
 }
 
+// State
+@mixin state($name, $value: '', $prefix: state) {
+  --#{$prefix}-#{$name}: #{$value};
+}
+
 // Components
 @mixin component($name, $value: '', $prefix: component) {
   --#{$prefix}-#{$name}: #{$value};

@@ -88,13 +88,16 @@ export function useComposeTheme(userTheme?: YTheme) {
   watchEffect(() => {
     if (isClientSide()) {
       const { primary, secondary, background, dark, danger } = theme.value
+      console.log('📟 - primary → ', primary)
 
       const appComposeElement = document.documentElement
+      console.log('📟 - appComposeElement → ', appComposeElement)
 
       if (!appComposeElement) return
 
       // H S L for Primary
       const hsl = tinycolor(primary).toHsl()
+      console.log('📟 - hsl → ', hsl)
 
       appComposeElement.style.setProperty(
         '--color-primary-hue',
@@ -208,6 +211,8 @@ const themeContext: ThemeComposition = {
 
 export function useTheme() {
   const { theme, updateThemeProperty } = inject(themeCompositionKey) || themeContext
+  console.log('📟 - theme → ', theme)
+  console.log('📟 - updateThemeProperty → ', updateThemeProperty)
 
   if (!theme || !updateThemeProperty) {
     throw new Error(
@@ -215,13 +220,23 @@ export function useTheme() {
     )
   }
 
+  type ThemeValue = (typeof Theme)[keyof typeof Theme]
+
+  function getThemeColor(color: ThemeValue) {
+    if (color)
+      return isClientSide()
+        ? getComputedStyle(document.documentElement).getPropertyValue(color as string)
+        : ''
+  }
+
   function getPrimary() {
     return isClientSide()
-      ? getComputedStyle(document.documentElement).getPropertyValue('--color-primary')
+      ? getComputedStyle(document.documentElement).getPropertyValue(Theme.primary)
       : ''
   }
 
   function setPrimary(color: string) {
+    console.log('📟 - color → ', color)
     theme.value.primary = color
   }
 
