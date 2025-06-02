@@ -99,16 +99,5 @@
     "vite-plugin-dts": "3.9.1",
     "vite-plugin-linter": "2.1.1",
     "vue-tsc": "2.2.10"
-  },
-  "pnpm": {
-    "onlyBuiltDependencies": [
-      "@swc/core",
-      "esbuild",
-      "style-dictionary"
-    ],
-    "ignoredBuiltDependencies": [
-      "@bundled-es-modules/glob",
-      "@parcel/watcher"
-    ]
   }
 }
