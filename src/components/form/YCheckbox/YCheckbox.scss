@@ -20,6 +20,22 @@
   // height: calc(0.75 * y-checkbox(height));
 
   @include component(height, 32px);
+  
+  @include theme.active {
+    @include state(bg-lightness, var(--state-hover-bg-lightness));
+  }
+
+  @include theme.focus {
+    @include state(bg-lightness, var(--state-hover-bg-lightness));
+  }
+
+  @include theme.active {
+    @include state(bg-lightness, var(--state-hover-bg-lightness));
+  }
+
+  @include theme.focus {
+    @include state(bg-lightness, var(--state-hover-bg-lightness));
+  }
 
   @include theme.active {
     @include state(bg-lightness, var(--state-hover-bg-lightness));

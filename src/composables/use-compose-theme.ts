@@ -1,5 +1,6 @@
 import { Theme, YTheme } from '@/types/theme'
 import { isClientSide } from '@/utils/is-client-side'
+import { modeOklch, modeRgb, useMode } from 'culori/fn'
 import tinycolor from 'tinycolor2'
 import { InjectionKey, Ref, inject, provide, ref, watchEffect } from 'vue'
 import { useStorage } from './use-storage'
@@ -8,7 +9,7 @@ export interface ColorTheme {
 }
 
 export const defaultTheme: YTheme = {
-  primary: '#ABCDF8',
+  primary: '#e3c568',
   secondary: '#0c0d0d',
   background: '#FCECF0',
   dark: '#0b0c0c',
@@ -41,6 +42,37 @@ function checkMissingProperties(providedTheme: YTheme) {
   })
 
   return providedTheme
+}
+
+function setColorProperties(element: HTMLElement, color: string, prefix: string) {
+  const oklch = useMode(modeOklch)
+  const rgb = useMode(modeRgb)
+  // eslint-disable-next-line no-console
+  console.log('📟 - rgb → ', rgb)
+  const colorInstance = oklch(color)
+
+  if (!colorInstance) {
+    // eslint-disable-next-line no-console
+    console.warn(`📟 - Invalid color provided for prefix "${prefix}": ${color}`)
+    return
+  }
+  // const lightness = colorInstance.lightness()
+  const lightness = colorInstance.l
+  // const chroma = colorInstance.chroma()
+  const chroma = colorInstance.c
+  // const hue = colorInstance.hue()
+  const hue = colorInstance?.h || 0
+  const opacity = 1
+
+  element.style.setProperty(`--color-${prefix}-lightness`, lightness.toFixed(2).toString())
+  element.style.setProperty(`--color-${prefix}-chroma`, chroma.toFixed(2).toString())
+  element.style.setProperty(`--color-${prefix}-hue`, hue.toFixed(2).toString())
+  element.style.setProperty(`--color-${prefix}-opacity`, opacity.toString())
+
+  element.style.setProperty(
+    `--color-${prefix}`,
+    `oklch(var(--color-${prefix}-lightness) var(--color-${prefix}-chroma) var(--color-${prefix}-hue) / var(--color-${prefix}-opacity))`,
+  )
 }
 
 export function useComposeTheme(userTheme?: YTheme) {
@@ -88,113 +120,136 @@ export function useComposeTheme(userTheme?: YTheme) {
   watchEffect(() => {
     if (isClientSide()) {
       const { primary, secondary, background, dark, danger } = theme.value
-      console.log('📟 - primary → ', primary)
 
       const appComposeElement = document.documentElement
-      console.log('📟 - appComposeElement → ', appComposeElement)
 
       if (!appComposeElement) return
+      // const oklch = converter('oklch')
+      // const primaryColor = Color(primary).lch()
+      // console.warn('qsdqsdqsdsq', oklch(primary))
+      // // H S L for Primary
+      // const lightness = primaryColor.lightness()
+      // const chroma = primaryColor.chroma()
+      // const hue = primaryColor.hue()
+      // const opacity = primaryColor.alpha()
 
-      // H S L for Primary
-      const hsl = tinycolor(primary).toHsl()
-      console.log('📟 - hsl → ', hsl)
+      if (primary) {
+        setColorProperties(appComposeElement, primary, 'primary')
+      }
 
-      appComposeElement.style.setProperty(
-        '--color-primary-hue',
-        Math.round(hsl.h).toString() + 'deg',
-      )
+      if (secondary) {
+        setColorProperties(appComposeElement, secondary, 'secondary')
+      }
 
-      appComposeElement.style.setProperty(
-        '--color-primary-saturation',
-        Math.round(hsl.s * 100).toString() + '%',
-      )
+      if (background) {
+        setColorProperties(appComposeElement, background, 'bg')
+      }
 
-      // appComposeElement.style.setProperty('--color-primary-saturation', Math.round(hsl.s * 100).toString())
-      appComposeElement.style.setProperty(
-        '--color-primary-lightness',
-        Math.round(hsl.l * 100).toString() + '%',
-      )
-      appComposeElement.style.setProperty(
-        '--color-primary-opacity',
-        (Math.round(hsl.a * 100) / 100).toString(),
-      )
-      appComposeElement.style.setProperty(
-        '--color-primary',
-        'hsl(var(--color-primary-hue) var(--color-primary-saturation) var(--color-primary-lightness) / var(--color-primary-opacity))',
-      )
+      if (dark) {
+        setColorProperties(appComposeElement, dark, 'main-dark')
+      }
 
-      // appComposeElement.style.setProperty('--theme-hue', 'var(--theme-primary-hue)')
-      // appComposeElement.style.setProperty('--theme-saturation', 'var(--theme-primary-saturation)')
-      // appComposeElement.style.setProperty('--theme-lightness', 'var(--theme-primary-lightness)')
+      if (danger) {
+        setColorProperties(appComposeElement, danger, 'danger')
+      }
 
-      const hslSecondary = tinycolor(secondary).toHsl()
-      appComposeElement.style.setProperty(
-        '--color-secondary-hue',
-        (Math.round(hslSecondary.h * 100) / 100).toString() + 'deg',
-      )
-      appComposeElement.style.setProperty(
-        '--color-secondary-saturation',
-        Math.round(hslSecondary.s * 100).toString() + '%',
-      )
-      appComposeElement.style.setProperty(
-        '--color-secondary-lightness',
-        Math.round(hslSecondary.l * 100).toString() + '%',
-      )
-      appComposeElement.style.setProperty(
-        '--color-secondary-opacity',
-        (Math.round(hslSecondary.a * 100) / 100).toString(),
-      )
-      appComposeElement.style.setProperty(
-        '--color-secondary',
-        'hsl(var(--color-secondary-hue) var(--color-secondary-saturation) var(--color-secondary-lightness) / var(--color-secondary-opacity))',
-      )
+      // const secondaryColor = Color(secondary).lch()
 
-      const hslDark = tinycolor(dark).toHsl()
-      appComposeElement.style.setProperty(
-        '--color-main-dark-hue',
-        (Math.round(hslDark.h * 100) / 100).toString() + 'deg',
-      )
-      appComposeElement.style.setProperty(
-        '--color-main-dark-saturation',
-        (Math.round(hslDark.s * 100) / 100).toString() + '%',
-      )
-      appComposeElement.style.setProperty(
-        '--color-main-dark-lightness',
-        (Math.round(hslDark.l * 100) / 100).toString() + '%',
-      )
-      appComposeElement.style.setProperty(
-        '--color-main-dark-opacity',
-        (Math.round(hslDark.a * 100) / 100).toString(),
-      )
-      appComposeElement.style.setProperty(
-        '--color-main-dark',
-        'hsl(var(--color-main-dark-h) calc(var(--color-main-dark-s) * 100%) calc(var(--color-main-dark-l) * 100%))',
-      )
+      // const hslSecondary = tinycolor(secondaryColor).toHsl()
 
-      const hslDanger = tinycolor(danger).toHsl()
-      appComposeElement.style.setProperty(
-        '--color-danger-hue',
-        (Math.round(hslDanger.h * 100) / 100).toString() + 'deg',
-      )
-      appComposeElement.style.setProperty(
-        '--color-danger-saturation',
-        Math.round(hslDanger.s * 100).toString() + '%',
-      )
-      appComposeElement.style.setProperty(
-        '--color-danger-lightness',
-        Math.round(hslDanger.l * 100).toString() + '%',
-      )
-      appComposeElement.style.setProperty(
-        '--color-danger-opacity',
-        (Math.round(hslDanger.a * 100) / 100).toString(),
-      )
-      appComposeElement.style.setProperty(
-        '--color-danger',
-        'hsl(var(--color-danger-hue) var(--color-danger-saturation) var(--color-danger-lightness) / var(--color-danger-opacity))',
-      )
+      // const secondaryLightness = secondaryColor.lightness()
+      // const secondaryChroma = secondaryColor.chroma()
+      // const secondaryHue = secondaryColor.hue()
+      // const secondaryOpacity = secondaryColor.alpha()
 
-      appComposeElement.style.setProperty('--color-bg', background || null)
-      appComposeElement.style.setProperty('--color-main-dark', dark || null)
+      // appComposeElement.style.setProperty('--color-secondary-hue', secondaryHue.toString())
+      // appComposeElement.style.setProperty(
+      //   '--color-secondary-chroma',
+      //   (secondaryChroma / 100).toString(),
+      // )
+      // appComposeElement.style.setProperty(
+      //   '--color-secondary-saturation',
+      //   Math.round(hslSecondary.s).toString() + '%',
+      // )
+      // appComposeElement.style.setProperty(
+      //   '--color-secondary-lightness',
+      //   (secondaryLightness / 100).toString(),
+      // )
+      // appComposeElement.style.setProperty('--color-secondary-opacity', secondaryOpacity.toString())
+      // appComposeElement.style.setProperty(
+      //   '--color-secondary',
+      //   'oklch(var(--color-secondary-lightness) var(--color-secondary-chroma) var(--color-secondary-hue) / var(--color-secondary-opacity))',
+      // )
+
+      // const hslDark = tinycolor(dark).toHsl()
+      // const darkOklch = new Color({ color: [hslDark.h, hslDark.s, hslDark.l], type: 'hsl' })
+
+      // const darkLightness = darkOklch.lchab[0] // L
+      // const darkChroma = darkOklch.lchab[1] // C
+      // const darkHue = darkOklch.lchab[2] // H
+      // const darkOpacity = 1 // A
+
+      // appComposeElement.style.setProperty(
+      //   '--color-main-dark-hue',
+      //   (Math.round(darkHue) / 100).toString() + 'deg',
+      // )
+      // appComposeElement.style.setProperty(
+      //   '--color-main-dark-chroma',
+      //   (Math.round(darkChroma) / 100).toString() + 'deg',
+      // )
+      // appComposeElement.style.setProperty(
+      //   '--color-main-dark-saturation',
+      //   (Math.round(hslDark.s) / 100).toString() + '%',
+      // )
+      // appComposeElement.style.setProperty(
+      //   '--color-main-dark-lightness',
+      //   (Math.round(darkLightness) / 100).toString() + '%',
+      // )
+      // appComposeElement.style.setProperty(
+      //   '--color-main-dark-opacity',
+      //   (Math.round(darkOpacity) / 100).toString(),
+      // )
+      // appComposeElement.style.setProperty(
+      //   '--color-main-dark',
+      //   'oklch(var(--color-main-dark-lightness) var(--color-main-dark-chroma) var(--color-main-dark-hue) / var(--color-main-dark-opacity))',
+      // )
+
+      // const hslDanger = tinycolor(danger).toHsl()
+      // const dangerOklch = new Color({ color: [hslDanger.h, hslDanger.s, hslDanger.l], type: 'hsl' })
+
+      // const dangerLightness = dangerOklch.lchab[0] // L
+      // const dangerChroma = dangerOklch.lchab[1] // C
+      // const dangerHue = dangerOklch.lchab[2] // H
+      // const dangerOpacity = 1 // A
+
+      // appComposeElement.style.setProperty(
+      //   '--color-danger-hue',
+      //   (Math.round(dangerHue) / 100).toString() + 'deg',
+      // )
+
+      // appComposeElement.style.setProperty(
+      //   '--color-danger-chroma',
+      //   (Math.round(dangerChroma) / 100).toString() + 'deg',
+      // )
+      // appComposeElement.style.setProperty(
+      //   '--color-danger-saturation',
+      //   Math.round(hslDanger.s).toString() + '%',
+      // )
+      // appComposeElement.style.setProperty(
+      //   '--color-danger-lightness',
+      //   Math.round(dangerLightness).toString() + '%',
+      // )
+      // appComposeElement.style.setProperty(
+      //   '--color-danger-opacity',
+      //   (Math.round(dangerOpacity) / 100).toString(),
+      // )
+      // appComposeElement.style.setProperty(
+      //   '--color-danger',
+      //   'oklch(var(--color-danger-lightness) var(--color-danger-chroma) var(--color-danger-hue) / var(--color-danger-opacity))',
+      // )
+
+      // appComposeElement.style.setProperty('--color-bg', background || null)
+      // appComposeElement.style.setProperty('--color-main-dark', dark || null)
       // appComposeElement.style.setProperty('--color-danger', theme.value.danger || null)
     }
   })
@@ -211,8 +266,6 @@ const themeContext: ThemeComposition = {
 
 export function useTheme() {
   const { theme, updateThemeProperty } = inject(themeCompositionKey) || themeContext
-  console.log('📟 - theme → ', theme)
-  console.log('📟 - updateThemeProperty → ', updateThemeProperty)
 
   if (!theme || !updateThemeProperty) {
     throw new Error(
@@ -229,47 +282,6 @@ export function useTheme() {
         : ''
   }
 
-  function getPrimary() {
-    return isClientSide()
-      ? getComputedStyle(document.documentElement).getPropertyValue(Theme.primary)
-      : ''
-  }
-
-  function setPrimary(color: string) {
-    console.log('📟 - color → ', color)
-    theme.value.primary = color
-  }
-
-  function getSecondary() {
-    return isClientSide()
-      ? getComputedStyle(document.documentElement).getPropertyValue('--color-secondary')
-      : ''
-  }
-
-  function setSecondary(color: string) {
-    theme.value.secondary = color
-  }
-
-  function getBackground() {
-    return isClientSide()
-      ? getComputedStyle(document.documentElement).getPropertyValue('--color-bg')
-      : ''
-  }
-
-  function setBackground(color: string) {
-    theme.value.background = color
-  }
-
-  function getDanger() {
-    return isClientSide()
-      ? getComputedStyle(document.documentElement).getPropertyValue('--color-danger')
-      : ''
-  }
-
-  function setDanger(color: string) {
-    theme.value.danger = color
-  }
-
   function getHexColor(color: string) {
     return tinycolor(color).toHexString()
   }
@@ -277,14 +289,14 @@ export function useTheme() {
   return {
     theme,
     updateThemeProperty,
-    getPrimary,
-    setPrimary,
-    getSecondary,
-    setSecondary,
-    getBackground,
-    setBackground,
-    getDanger,
-    setDanger,
+    getPrimary: getThemeColor(Theme.primary),
+    setPrimary: updateThemeProperty.bind(null, 'primary'),
+    getSecondary: getThemeColor(Theme.secondary),
+    setSecondary: updateThemeProperty.bind(null, 'secondary'),
+    getBackground: getThemeColor(Theme.background),
+    setBackground: updateThemeProperty.bind(null, 'background'),
+    getDanger: getThemeColor(Theme.danger),
+    setDanger: updateThemeProperty.bind(null, 'danger'),
     getHexColor,
   }
 }
