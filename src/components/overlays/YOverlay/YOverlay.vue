@@ -18,7 +18,7 @@ export interface YOverlayProps {
 }
 
 const props = withDefaults(defineProps<YOverlayProps>(), {
-  // color: 'var(--color-bg)',
+  color: 'var(--overlay-bg)',
   opacity: 0.2,
   blur: '8px',
   centerChildren: true,

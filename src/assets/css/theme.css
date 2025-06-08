@@ -343,3 +343,10 @@ h5 {
   text-transform: uppercase;
   color: var(--theme-current-color);
 }
+
+.switch-color {
+  --threshold: 0.10;
+  --light: var(--color-primary-lightness);
+  --switch: calc((var(--light) - var(--threshold)));
+  color: oklch(from currentcolor calc(l - var(--threshold)) c h);
+}

@@ -13,6 +13,7 @@ export { YButton } from './form/YButton'
 export { YCheckbox } from './form/YCheckbox'
 export { YColorInput } from './form/YColorInput'
 export { YInput } from './form/YInput'
+export { YInputText } from './YInputText'
 
 // data-display
 export { YCard } from './YCard'
