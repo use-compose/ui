@@ -1,6 +1,7 @@
 <script setup lang="ts">
 // import './assets/scss/main.scss'
 import { AppCompose, HelloWorld } from './components'
+import { YHeader } from './components/YHeader'
 
 import type { YTheme } from './types'
 
@@ -14,6 +15,7 @@ const theme: YTheme = {
 
 <template>
   <AppCompose :theme="theme">
+    <YHeader title="YCompose" title-link="/" />
     <!-- <ModalProvider> -->
     <HelloWorld msg="App" />
     <!-- </ModalProvider> -->
