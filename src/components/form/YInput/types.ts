@@ -1,9 +1,11 @@
 import { ThemeComponentBaseProps } from '@/types/base-props'
 
 export interface YInputProps extends ThemeComponentBaseProps {
-  modelValue?: string | null
+  modelValue?: string | number | boolean
   label?: string
   name?: string
+  inputClass?: string
+  inputRef?: string
   placeholder?: string
   type?: string
   hero?: boolean

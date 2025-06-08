@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/vue3'
 import YInputText from './YInputText.vue'
 import type { YInputTextProps } from './types'
 
-const { commonArgTypes, commonArgs, generateCommonStories } =
+const { commonArgTypes, generateCommonStories } =
   useThemeComponentStory<YInputTextProps>(YInputText)
 
 const meta = {
