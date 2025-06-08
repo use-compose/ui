@@ -13,7 +13,13 @@
   // overflow: hidden;
   // padding: 2.5rem 1.25rem 1.25rem 1.25rem;
   .y-vertical-title {
-    font-size: utils.text(xl);
+    font-size: utils.text(xxl);
+    text-align: right;
+    flex: unset;
+    margin-inline-end: var(--space-sm);
+    margin-block: var(--space-xxs);
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
   }
 
   @include media(tablet) {

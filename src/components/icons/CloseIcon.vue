@@ -49,6 +49,7 @@ export default defineComponent({
     },
     height: {
       type: Number,
+      default: 24,
     },
   },
   setup() {

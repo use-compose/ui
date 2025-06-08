@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
 
-import { YButton, YInput, YModal } from '@/components'
+import { YButton, YModal } from '@/components'
+import { YInputText } from '@/components/YInputText'
 import { modalDefaultProps, useThemeComponentStory } from '@/composables'
 import { ref } from 'vue'
 import { YModalSize, YModalType, type BaseModalProps } from './types/YBaseModal.interface'
@@ -48,7 +49,7 @@ const renderTemplate = (args: BaseModalProps) => {
       return `
         <YModal v-bind="args" v-model="isVisible" @action="close" @cancel="close" @leftAction="close">
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec pur</p>
-          <YInput value="Example value" placeholder="Enter your name" />
+          <YInputText value="Example value" placeholder="Enter your name" />
         </YModal>`
     case YModalType.Default:
       return `
@@ -69,7 +70,7 @@ const renderTemplate = (args: BaseModalProps) => {
 
 const DefaultStory: Story = {
   render: (args: BaseModalProps, { argTypes }) => ({
-    components: { YModal, YButton, YInput },
+    components: { YModal, YButton, YInputText },
     props: Object.keys(argTypes),
     template: `
       <div>
