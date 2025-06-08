@@ -1,21 +1,12 @@
 @use '@/assets/scss/utils' as utils;
+@use '../utils/mixins' as mixins;
 
-@mixin resolve-state-hsl($state) {
-  --state-bg-hue: var(--state-#{$state}-bg-hue);
-  --state-bg-saturation: var(--state-#{$state}-bg-saturation);
-  --state-bg-lightness: var(--state-#{$state}-bg-lightness);
-  --state-bg-opacity: var(--state-#{$state}-bg-opacity);
-
-  --state-border-hue: var(--state-#{$state}-border-hue);
-  --state-border-saturation: var(--state-#{$state}-border-saturation);
-  --state-border-lightness: var(--state-#{$state}-border-lightness);
-  --state-border-opacity: var(--state-#{$state}-border-opacity);
-
-  --state-text-hue: var(--state-#{$state}-text-hue);
-  --state-text-saturation: var(--state-#{$state}-text-saturation);
-  --state-text-lightness: var(--state-#{$state}-text-lightness);
-  --state-text-opacity: var(--state-#{$state}-text-opacity);
-
+@mixin resolve-state($state) {
+  @include mixins.resolve-lch-value('state', #{$state});
+  @include mixins.state(
+    bg-lightness,
+    calc(var(--state-base-bg-lightness) + var(--state-#{$state}-bg-lightness))
+  );
   @include utils.component(box-shadow, utils.component(box-shadow-#{$state}));
   @include utils.component(transform, utils.component(transform-#{$state}));
 
@@ -24,7 +15,7 @@
 
 @mixin base {
   &.base:not([disabled]):not(.disabled) {
-    @include resolve-state-hsl(base);
+    @include resolve-state(base);
 
     @content;
   }
@@ -34,7 +25,7 @@
   &:not([disabled]):not(.disabled) {
     &:hover,
     &.hover {
-      @include resolve-state-hsl(hover);
+      @include resolve-state(hover);
 
       @content;
     }
@@ -47,7 +38,7 @@
     &.focus-visible,
     &.focus,
     &:focus-visible {
-      @include resolve-state-hsl(focus);
+      @include resolve-state(focus);
       @content;
     }
   }
@@ -56,7 +47,7 @@
   &:not([disabled]):not(.disabled) {
     &:active,
     &.active {
-      @include resolve-state-hsl(active);
+      @include resolve-state(active);
 
       @content;
     }
@@ -70,7 +61,7 @@
     opacity: 0.5;
     cursor: not-allowed;
     transform: none;
-    @include resolve-state-hsl(disabled);
+    @include resolve-state(disabled);
 
     @content;
   }

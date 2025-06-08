@@ -1,70 +1,46 @@
 <template>
-  <YInput ref="inputColor" class="y-color-input-wrapper">
-    <YLabel class="y-label" :for="name">{{ label }}</YLabel>
-    <input
-      :value="modelValue"
-      type="color"
-      :class="yColorInputClasses"
-      :name="name"
-      autocomplete="off"
-      @change="handleChange"
-      @blur="handleBlur"
-    />
+  <YInput
+    v-bind="props"
+    :value="modelValue"
+    type="color"
+    input-class="y-color-input"
+    :name="name"
+    autocomplete="off"
+    :label="label"
+    @change="handleChange"
+    @blur="handleBlur"
+  >
   </YInput>
 </template>
 
 <script setup lang="ts">
 // TODO: resolve alias
-import { YLabel } from '@/components/YLabel'
-import { useBaseProps } from '@/composables'
-import { ThemeComponentBaseProps } from '@/types/base-props'
+import { useInput } from '@/composables/input'
 import { isClientSide } from '@/utils/is-client-side'
-import { computed, onMounted, ref, useAttrs } from 'vue'
+import { EmitFn, onMounted, useAttrs } from 'vue'
 import YInput from '../YInput/YInput.vue'
 import './YColorInput.scss'
-
-export interface YColorInputProps extends ThemeComponentBaseProps {
-  modelValue?: string | null
-  label?: string
-  name?: string
-  small?: boolean
-  big?: boolean
-  hero?: boolean
-  noBorder?: boolean
-  noMargin?: boolean
-}
+import { YColorInputProps } from './types'
 
 const props = withDefaults(defineProps<YColorInputProps>(), {
   name: 'color-input' + Math.random().toString(36).substring(7),
   variant: 'contained',
 })
 
-const { baseClasses } = useBaseProps(props)
-
-const yColorInputClasses = computed(() => {
-  return [
-    [...baseClasses.value],
-    'y-color-input',
-    props.small ? 'y-input-small' : '',
-    props.big ? 'y-input-big' : '',
-    props.hero ? 'y-input-hero' : '',
-  ]
-})
-
 // listen to input event
-const emit = defineEmits(['update:modelValue', 'blur', 'change'])
+const emit: EmitFn = defineEmits(['update:modelValue', 'blur', 'change'])
 
 const attrs = useAttrs()
 
-const handleChange = (event: Event) => {
-  // If change event emit exists, call it
-  if (attrs.onChange) {
-    emit('change', event)
-  }
-  emit('update:modelValue', (event.target as HTMLInputElement).value)
-}
-const inputColor = ref<EventTarget | null>(null)
+// const handleChange = (event: Event) => {
+//   // If change event emit exists, call it
+//   if (attrs.onChange) {
+//     emit('change', event)
+//   }
+//   emit('update:modelValue', (event.target as HTMLInputElement).value)
+// }
 // const lol = useInputEvent(inputColor)
+const { modelValue, handleChange } = useInput({ props, attrs, emit })
 
 const handleBlur = () => {
   emit('blur')
