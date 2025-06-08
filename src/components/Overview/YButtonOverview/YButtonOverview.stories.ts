@@ -1,4 +1,4 @@
-import YButton from '@/components/form/YButton/YButton.vue'
+import { YButton } from '@/components/YButton'
 import { useThemeComponentStory } from '@/composables'
 import type { ArgTypes, Meta, StoryObj } from '@storybook/vue3'
 import YButtonOverview from './YButtonOverview.vue'

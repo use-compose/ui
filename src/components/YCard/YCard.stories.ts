@@ -1,4 +1,4 @@
-import YButton from '@/components/form/YButton/YButton.vue'
+import { YButton } from '@/components/YButton'
 import { useThemeComponentStory } from '@/composables'
 import { ArgTypes, Meta, StoryObj } from '@storybook/vue3'
 import { YFlex } from '../layout/YFlex'

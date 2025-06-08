@@ -2,7 +2,6 @@ import { modalActionsKey, ModalActionsKeyInterface, YModalType } from '@/compone
 import { BaseModalProps } from '@/components/YModal/types/YBaseModal.interface'
 import { allowScroll, preventScroll } from '@/components/YModal/utils'
 import { computed, provide, SetupContext, watch } from 'vue'
-import '../components/overlays/YModal/YModal.scss'
 import { useStack } from './stack'
 
 interface UseModalParams {
