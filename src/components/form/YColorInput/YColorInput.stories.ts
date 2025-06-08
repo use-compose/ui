@@ -1,8 +1,8 @@
 import { useThemeComponentStory } from '@/composables'
-import { action } from '@storybook/addon-actions'
 import type { Meta, StoryObj } from '@storybook/vue3'
 import { defineEmits } from 'vue'
-import YColorInput, { YColorInputProps } from './YColorInput.vue'
+import YColorInput from './YColorInput.vue'
+import { YColorInputProps } from './types'
 
 const { commonArgTypes, generateCommonStories } =
   useThemeComponentStory<YColorInputProps>(YColorInput)
@@ -19,11 +19,9 @@ const meta = {
     label: { control: 'text' },
     // backgroundColor: { control: "color" },
     // onClick: { action: "handleClick"},
-    'onUpdate:modelValue': { action: 'onInput' },
   },
   args: {
     modelValue: 'var(--color-primary)',
-    'onUpdate:modelValue': action('onInput'),
   }, // default value
 } satisfies Meta<typeof YColorInput>
 
