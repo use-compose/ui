@@ -1,34 +1,39 @@
-@mixin resolve-color-hsl($color) {
+@use '../utils/mixins' as mixins;
+
+@mixin resolve-lch-value($color) {
   --color-bg-hue: var(--color-bg-#{$color}-hue);
   --color-bg-saturation: var(--color-bg-#{$color}-saturation);
   --color-bg-lightness: var(--color-bg-#{$color}-lightness);
   --color-bg-opacity: var(--color-bg-#{$color}-opacity);
+  --color-bg-chroma: var(--color-bg-#{$color}-chroma);
 
   --color-border-hue: var(--color-border-#{$color}-hue);
   --color-border-saturation: var(--color-border-#{$color}-saturation);
   --color-border-lightness: var(--color-border-#{$color}-lightness);
   --color-border-opacity: var(--color-border-#{$color}-opacity);
+  --color-border-chroma: var(--color-border-#{$color}-chroma);
 
   --color-text-hue: var(--color-text-#{$color}-hue);
   --color-text-saturation: var(--color-text-#{$color}-saturation);
   --color-text-lightness: var(--color-text-#{$color}-lightness);
   --color-text-opacity: var(--color-text-#{$color}-opacity);
+  --color-text-chroma: var(--color-text-#{$color}-chroma);
 }
 
 @mixin primary {
   &.primary {
-    @include resolve-color-hsl(primary);
+    @include resolve-lch-value(primary);
   }
 }
 
 @mixin secondary {
   &.secondary {
-    @include resolve-color-hsl(secondary);
+    @include resolve-lch-value(secondary);
   }
 }
 
 @mixin danger {
   &.danger {
-    @include resolve-color-hsl(danger);
+    @include resolve-lch-value(danger);
   }
 }

@@ -2,37 +2,18 @@
 @use '../utils/functions' as functions;
 @use './state' as state;
 
-@mixin resolve-variant-hsl($variant) {
-  --variant-bg-hue: var(--variant-#{$variant}-bg-hue);
-  --variant-bg-saturation: var(--variant-#{$variant}-bg-saturation);
-  --variant-bg-lightness: var(--variant-#{$variant}-bg-lightness);
-  --variant-bg-opacity: var(--variant-#{$variant}-bg-opacity);
-
-  --variant-border-hue: var(--variant-#{$variant}-border-hue);
-  --variant-border-saturation: var(--variant-#{$variant}-border-saturation);
-  --variant-border-lightness: var(--variant-#{$variant}-border-lightness);
-  --variant-border-opacity: var(--variant-#{$variant}-border-opacity);
-
-  --variant-text-hue: var(--variant-#{$variant}-text-hue);
-  --variant-text-saturation: var(--variant-#{$variant}-text-saturation);
-  --variant-text-lightness: var(--variant-#{$variant}-text-lightness);
-  --variant-text-opacity: var(--variant-#{$variant}-text-opacity);
-
-  --variant: #{$variant};
-}
-
 // Call the mixin to calculate all variants and all properties dynamically
 
 @mixin contained {
   &.contained {
-    @include resolve-variant-hsl(contained);
+    @include mixins.resolve-lch-value('variant', contained);
     @include mixins.component(color-text, white);
   }
 }
 
 @mixin outlined {
   &.outlined {
-    @include resolve-variant-hsl(outlined);
+    @include mixins.resolve-lch-value('variant', outlined);
     @include mixins.component(border-width, 2px);
     @include mixins.component(border-style, solid);
     @include mixins.component(color-border, var(--theme-current-color));
@@ -60,7 +41,7 @@
 
 @mixin text {
   &.text {
-    @include resolve-variant-hsl(text);
+    @include mixins.resolve-lch-value('variant', text);
     @include mixins.component(box-shadow, none);
     box-shadow: none;
     transform: none;

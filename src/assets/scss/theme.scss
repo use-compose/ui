@@ -8,6 +8,7 @@
   * 6 - Breakpoints
 */
 
+@use 'base/base';
 @use 'theme/theme' as theme;
 @use 'utils' as utils;
 @use 'sass:map';
@@ -287,10 +288,16 @@ $variants: ('contained', 'outlined', 'text');
     var(--color-bg-saturation) + var(--variant-bg-saturation) + var(--state-bg-saturation)
   );
   // --component-bg-lightness: calc(var(--color-bg-lightness) + var(--variant-bg-lightness) + var(--state-bg-lightness));
-  --component-bg-lightness: calc(var(--variant-bg-lightness) + var(--state-bg-lightness));
+  --component-bg-lightness: calc(
+    var(--variant-bg-lightness) + var(--state-bg-lightness) + var(--color-bg-lightness)
+  );
   --component-bg-opacity: calc(
     var(--color-bg-opacity) * var(--variant-bg-opacity) * var(--state-bg-opacity)
   );
+  --component-bg-chroma: calc(
+    var(--color-bg-chroma) + var(--variant-bg-chroma) + var(--state-bg-chroma)
+  );
+
   --component-border-hue: calc(var(--color-border-hue));
   --component-border-saturation: calc(
     var(--color-border-saturation) + var(--variant-border-saturation) +
@@ -302,33 +309,54 @@ $variants: ('contained', 'outlined', 'text');
   --component-border-opacity: calc(
     var(--color-border-opacity) * var(--variant-border-opacity) * var(--state-border-opacity)
   );
+  --component-border-chroma: calc(
+    var(--color-border-chroma) + var(--variant-border-chroma) + var(--state-border-chroma)
+  );
+
   --component-text-hue: calc(var(--color-text-hue));
   --component-text-saturation: calc(
     var(--color-text-saturation) + var(--variant-text-saturation) + var(--state-text-saturation)
   );
-  --component-text-lightness: calc((var(--color-text-lightness) - var(--threshold) * 1%) * -100%);
+  // --component-text-lightness: calc((var(--color-text-lightness) - var(--threshold) * 1%) * -100%);
+  --component-text-lightness: calc((var(--color-text-lightness)));
   --component-text-opacity: var(--state-text-opacity);
+  --component-text-chroma: calc(
+    var(--color-text-chroma) + var(--variant-text-chroma) + var(--state-text-chroma)
+  );
+
   --component-opacity-bg: var(--component-bg-opacity);
   --component-opacity-border: var(--component-border-opacity);
   --component-opacity-text: var(--component-text-opacity);
 
-  --component-color-bg: hsl(
-    var(--component-bg-hue),
-    var(--component-bg-saturation),
-    var(--component-bg-lightness),
-    var(--component-bg-opacity)
+  // --component-color-bg: hsl(
+  //   var(--component-bg-hue),
+  //   var(--component-bg-saturation),
+  //   var(--component-bg-lightness),
+  //   var(--component-bg-opacity)
+  // );
+  // --component-color-border: hsl(
+  //   var(--component-border-hue),
+  //   var(--component-border-saturation),
+  //   var(--component-border-lightness),
+  //   var(--component-border-opacity)
+  // );
+  // --component-color-text: hsl(
+  //   var(--component-text-hue),
+  //   var(--component-text-saturation),
+  //   var(--component-text-lightness),
+  //   var(--component-text-opacity)
+  // );
+  --component-color-bg: oklch(
+    var(--component-bg-lightness) var(--component-bg-chroma) var(--component-bg-hue) /
+      var(--component-bg-opacity)
   );
-  --component-color-border: hsl(
-    var(--component-border-hue),
-    var(--component-border-saturation),
-    var(--component-border-lightness),
-    var(--component-border-opacity)
+  --component-color-border: oklch(
+    var(--component-border-lightness) var(--component-border-chroma) var(--component-border-hue) /
+      var(--component-border-opacity)
   );
-  --component-color-text: hsl(
-    var(--component-text-hue),
-    var(--component-text-saturation),
-    var(--component-text-lightness),
-    var(--component-text-opacity)
+  --component-color-text: oklch(
+    var(--component-text-lightness) var(--component-text-chroma) var(--component-text-hue) /
+      var(--component-text-opacity)
   );
 
   background-color: var(--component-color-bg);
@@ -406,38 +434,6 @@ p {
 
 .text-xs {
   font-size: utils.text(xs);
-}
-
-// -----------------------------------------------------------------------------
-// 5 - Theme / component props
-
-@mixin resolve-hsl-value($prop, $prop-value) {
-  --#{$prop}-bg-hue: var(--#{$prop}-#{$prop-value}-bg-hue);
-  --#{$prop}-bg-saturation: var(--#{$prop}-#{$prop-value}-bg-saturation);
-  --#{$prop}-bg-lightness: var(--#{$prop}-#{$prop-value}-bg-lightness);
-  --#{$prop}-bg-opacity: var(--#{$prop}-#{$prop-value}-bg-opacity);
-
-  --#{$prop}-border-hue: var(--#{$prop}-#{$prop-value}-border-hue);
-  --#{$prop}-border-saturation: var(--#{$prop}-#{$prop-value}-border-saturation);
-  --#{$prop}-border-lightness: var(--#{$prop}-#{$prop-value}-border-lightness);
-  --#{$prop}-border-opacity: var(--#{$prop}-#{$prop-value}-border-opacity);
-
-  --#{$prop}-text-hue: var(--#{$prop}-#{$prop-value}-text-hue);
-  --#{$prop}-text-saturation: var(--#{$prop}-#{$prop-value}-text-saturation);
-  --#{$prop}-text-lightness: var(--#{$prop}-#{$prop-value}-text-lightness);
-  --#{$prop}-text-opacity: var(--#{$prop}-#{$prop-value}-text-opacity);
-
-  --#{$prop}: #{$prop-value};
-}
-
-// Colors
-
-@mixin base {
-  &.base:not([disabled]) {
-    @include resolve-hsl-value('state', base);
-
-    @content;
-  }
 }
 
 // -----------------------------------------------------------------------------
