@@ -1,8 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
 
-import { useBaseProps, useThemeComponentStory } from '@/composables'
-import { action } from '@storybook/addon-actions'
-import { computed, defineEmits, ref } from 'vue'
+import { useThemeComponentStory } from '@/composables'
+import { ref } from 'vue'
 import YCheckbox from './YCheckbox.vue'
 import type { YCheckboxProps } from './types'
 
@@ -22,13 +21,11 @@ const meta = {
     hero: { control: 'boolean' },
     label: { control: 'text' },
     // 'onUpdate:modelValue': { action: 'onInput', control: 'boolean' },
-    onBlur: { action: 'handleBlur' },
     // onChange: { action: 'handleInput' },
   },
   args: {
     ...commonArgs,
     // 'onUpdate:modelValue': action('onInput'),
-    onBlur: action('onBlur'),
     modelValue: false,
   }, // default value
 } satisfies Meta<typeof YCheckbox>
@@ -46,30 +43,14 @@ const renderGenericStory: Story = {
     components: { YCheckbox },
     props: Object.keys(argTypes),
     template: `
-    <YCheckbox v-bind="args" :class="getClasses" :modelValue="checked" @update:modelValue="updateModel" />
+    <YCheckbox v-bind="args"  />
   `,
     setup(props: YCheckboxProps) {
       const checked = ref(false)
-      const emit = defineEmits(['update:modelValue', 'blur'])
-      const updateModel = (val: boolean) => (checked.value = val)
-      const { baseClasses, isDisabled } = useBaseProps(props)
-
-      const handleInput = (event: Event) => {
-        if (isDisabled) {
-          event.preventDefault()
-        } else {
-          emit('update:modelValue', !props.modelValue)
-        }
-      }
-
-      const getClasses = computed(() => ({ ...baseClasses.value }))
 
       return {
-        getClasses,
         modelValue: props.modelValue,
         args,
-        handleInput,
-        updateModel,
         checked,
       }
     },

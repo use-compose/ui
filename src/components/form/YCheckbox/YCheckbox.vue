@@ -1,32 +1,24 @@
 <template>
-  <div class="y-checkbox-wrapper">
-    <label class="y-label">{{ label }}</label>
-    <input
-      ref="yCheckbox"
-      class="y-checkbox-label"
-      :class="yCheckboxClasses"
-      :style="!isClickedOnce && '--clicked: none'"
-      :value="modelValue"
-      type="checkbox"
-      :name="name"
-      :placeholder="placeholder"
-      autocomplete="off"
-      :disabled="isDisabled"
-      @change="handleEvent($event)"
-      @blur="handleBlur"
-    />
-    <label v-if="error" class="error-label" :for="name">
-      {{ errorMsg }}
-    </label>
-    <!-- </label> -->
-  </div>
+  <YInput
+    v-bind="props"
+    input-ref="yCheckboxRef"
+    :value="modelValue"
+    type="checkbox"
+    input-class="y-checkbox"
+    :name="name"
+    autocomplete="off"
+    @input="handleEvent"
+    @blur="handleEvent"
+    @change="handleChange"
+  />
 </template>
 
 <script setup lang="ts">
-import { useBaseProps } from '@/composables'
-import { useInputEvent } from '@/composables/animation'
+import { useClickEvent } from '@/composables/animation'
+import { useInput } from '@/composables/input'
 import { basePropsDefault } from '@/composables/use-base-props'
-import { computed, onMounted, ref } from 'vue'
+import { EmitFn, onMounted, useAttrs, useTemplateRef } from 'vue'
+import YInput from '../YInput/YInput.vue'
 import type { YCheckboxProps } from './types'
 import './YCheckbox.scss'
 
@@ -35,43 +27,29 @@ const props = withDefaults(defineProps<YCheckboxProps>(), {
   name: 'checkbox-input' + Math.random().toString(36).substring(7),
 })
 
-const { baseClasses, isDisabled } = useBaseProps(props)
+const yCheckboxRef = useTemplateRef<EventTarget | null>('yCheckboxRef')
 
-// const isClickedOnce = ref(false)
+const { isClickedOnce } = useClickEvent(yCheckboxRef)
+// eslint-disable-next-line no-console
+console.log('📟 - isClickedOnce → ', isClickedOnce)
 
-const yCheckboxClasses = computed(() => {
-  return [[...baseClasses.value], 'y-checkbox', props.hero ? 'y-input-hero' : '']
+defineOptions({
+  name: 'YCheckbox',
 })
 
-const yCheckbox = ref<EventTarget | null>(null)
 // listen to input event
-const emit = defineEmits(['update:modelValue', 'blur', 'change'])
+const emit: EmitFn = defineEmits(['update:modelValue', 'blur', 'change', 'input'])
+const attrs = useAttrs()
+const { handleEvent, handleChange, modelValue, handleFocus } = useInput({ props, attrs, emit })
+// eslint-disable-next-line no-console
+console.log('📟 - handleFocus → ', handleFocus)
 
-const { handleEvent, handleInput } = useInputEvent(yCheckbox)
-
-const handleChange = (event: Event) => {
-  // if (!isClickedOnce.value) {
-  //   isClickedOnce.value = true
-  // }
-  if (isDisabled) {
-    event.preventDefault()
-  } else {
-    emit('update:modelValue', !props.modelValue)
-  }
-}
-
-// listen to blur event
-const handleBlur = () => {
-  emit('blur')
-}
-
-// focus prop
-const yInput = ref<HTMLInputElement | null>(null)
-const handleFocus = () => yInput.value?.focus()
+// const handleFocus = () => yInput.value?.focus()
 
 onMounted(() => {
-  if (props.focus) {
-    handleFocus()
+  if (props.focus && yCheckboxRef.value) {
+    // If focus prop is true, focus the input element
+    // handleFocus(yCheckboxRef.value as HTMLInputElement)
   }
 })
 </script>

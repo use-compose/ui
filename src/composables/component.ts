@@ -3,7 +3,7 @@
 // Types
 import { computed, type StyleValue } from 'vue'
 
-export type ClassValue = any
+export type ClassValue = string | string[] | Record<string, boolean> | undefined
 
 export interface ComponentAtributes {
   class?: ClassValue
