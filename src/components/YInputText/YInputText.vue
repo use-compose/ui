@@ -10,7 +10,7 @@
 </template>
 
 <script lang="ts">
-import { YInput } from '@/components/form/YInput'
+import { YInput } from '@/components/YInput'
 import { useInput } from '@/composables/input'
 import { defineComponent, SetupContext, useAttrs } from 'vue'
 import type { YInputTextProps } from './types'

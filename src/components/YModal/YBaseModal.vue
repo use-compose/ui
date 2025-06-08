@@ -27,7 +27,7 @@
 </template>
 
 <script lang="ts" setup>
-import { YModalFooter, YModalHeader } from '@/components/overlays/YModal'
+import { YModalFooter, YModalHeader } from '@/components/YModal'
 import { modalDefaultProps } from '@/composables/components'
 import { computed, useSlots } from 'vue'
 import { BaseModalProps, YModalSize } from './types'

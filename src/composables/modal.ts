@@ -1,10 +1,6 @@
-import {
-  modalActionsKey,
-  ModalActionsKeyInterface,
-  YModalType,
-} from '@/components/overlays/YModal/types'
-import { BaseModalProps } from '@/components/overlays/YModal/types/YBaseModal.interface'
-import { allowScroll, preventScroll } from '@/components/overlays/YModal/utils'
+import { modalActionsKey, ModalActionsKeyInterface, YModalType } from '@/components/YModal/types'
+import { BaseModalProps } from '@/components/YModal/types/YBaseModal.interface'
+import { allowScroll, preventScroll } from '@/components/YModal/utils'
 import { computed, provide, SetupContext, watch } from 'vue'
 import '../components/overlays/YModal/YModal.scss'
 import { useStack } from './stack'

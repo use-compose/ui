@@ -15,10 +15,10 @@
 
 <script setup lang="ts">
 // TODO: resolve alias
+import { YInput } from '@/components/YInput'
 import { useInput } from '@/composables/input'
 import { isClientSide } from '@/utils/is-client-side'
 import { EmitFn, onMounted, useAttrs } from 'vue'
-import YInput from '../YInput/YInput.vue'
 import './YColorInput.scss'
 import { YColorInputProps } from './types'
 
