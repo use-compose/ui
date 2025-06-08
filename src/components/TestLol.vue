@@ -221,7 +221,7 @@
 <script setup lang="ts">
 import { Wrapper, YButton, YCard, YCheckbox, YColorInput, YInputText, YModal } from '@/components'
 import { ref } from 'vue'
-import { YModalSize, YModalType } from './overlays/YModal/types'
+import { YModalSize, YModalType } from './YModal/types'
 
 // const { theme } = useTheme()
 

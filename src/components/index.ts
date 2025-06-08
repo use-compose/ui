@@ -9,17 +9,18 @@ export { YContainer } from './layout/YContainer'
 export { YFlex } from './layout/YFlex'
 
 // form
-export { YButton } from './form/YButton'
-export { YCheckbox } from './form/YCheckbox'
-export { YColorInput } from './form/YColorInput'
-export { YInput } from './form/YInput'
+export { YButton } from './YButton'
+export { YCheckbox } from './YCheckbox'
+export { YColorInput } from './YColorInput'
+export { YInput } from './YInput'
 export { YInputText } from './YInputText'
 
 // data-display
 export { YCard } from './YCard'
 
 // overlays
-export { YModal } from './overlays/YModal'
+export { YBaseModal, YModal, YModalFooter, YModalHeader } from './YModal'
+export { YOverlay } from './YOverlay'
 
 // providers
 // export { ModalProvider } from './providers'

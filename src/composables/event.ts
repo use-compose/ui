@@ -1,4 +1,4 @@
-import { YInputProps } from '@/components/form/YInput/types'
+import { YInputProps } from '@/components/YInput/types'
 import { isClientSide } from '@/utils/is-client-side'
 import { EmitFn, Ref, ref } from 'vue'
 import { useBaseProps } from './use-base-props'

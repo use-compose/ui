@@ -19,7 +19,7 @@
 </template>
 
 <script lang="ts">
-import { YOverlay } from '@/components/overlays/YOverlay'
+import { YOverlay } from '@/components/YOverlay'
 import { useModal } from '@/composables/modal'
 import { defineComponent, type SetupContext } from 'vue'
 import { YBaseModal } from '.'
