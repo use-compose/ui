@@ -192,7 +192,7 @@
       </p>
     </YModal>
 
-    <YColorInput v-model="color" label="Color" />
+    <!-- <YColorInput v-model="color" label="Color" /> -->
 
     <YModal
       v-model="showDrawer"
@@ -206,7 +206,7 @@
 
       <!-- Complex Form as Main Slot -->
     </YModal>
-    <YInput v-model="input" label="Message" placeholder="Message" />
+    <YInputText v-model="input" label="Message" placeholder="Message" />
     <YCheckbox v-model="checked" label="Checkbox" />
     <YButton variant="outlined" @click="openDrawer">openCustomModal</YButton>
     <YCard>
@@ -219,9 +219,8 @@
 </template>
 
 <script setup lang="ts">
-import { Wrapper, YButton, YCard, YCheckbox, YInput, YModal } from '@/components'
+import { Wrapper, YButton, YCard, YCheckbox, YColorInput, YInputText, YModal } from '@/components'
 import { ref } from 'vue'
-import YColorInput from './form/YColorInput/YColorInput.vue'
 import { YModalSize, YModalType } from './overlays/YModal/types'
 
 // const { theme } = useTheme()

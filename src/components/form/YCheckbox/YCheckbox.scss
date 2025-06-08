@@ -20,7 +20,7 @@
   // height: calc(0.75 * y-checkbox(height));
 
   @include component(height, 32px);
-  
+
   @include theme.active {
     @include state(bg-lightness, var(--state-hover-bg-lightness));
   }
@@ -72,14 +72,14 @@
     --y-checkbox-animation: var(--animate-checked-in);
   }
 
-  &:not(:checked).is-clicked-once {
+  &:not(:checked) {
     --y-checkbox-animation: var(--animate-checked-out);
   }
 }
 
 .y-checkbox-wrapper .y-checkbox {
   --animate-checked-in: checked-in 0.3s 0s forwards;
-  --animate-checked-out: var(--is-clicked-once, checked-out 0.3s 0s forwards);
+  --animate-checked-out: var(--has-changed-once, checked-out 0.3s 0s forwards);
 }
 
 .y-checkbox-wrapper:has(.y-checkbox:checked),

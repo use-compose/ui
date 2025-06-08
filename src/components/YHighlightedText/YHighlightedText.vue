@@ -1,23 +1,17 @@
 <template>
-  <Component
-    :is="level"
-    ref="highlightedText"
-    :class="getClasses"
-    :style="!isHoveredOnce && '--is-hovered-once: none'"
-  >
+  <Component :is="level" ref="highlightedTextRef" :class="getClasses">
     <!-- <span> -->
-    <span><slot></slot></span>
+    <span class="switch-color"><slot></slot></span>
     <!-- </span> -->
   </Component>
 </template>
 
 <script setup lang="ts">
+import { useAnimation } from '@/composables'
 import { useEventListener } from '@/composables/event-listener'
-import { computed, ref } from 'vue'
+import { computed, useTemplateRef } from 'vue'
 import type { YHighlightedTextProps } from './types'
 import './YHighlightedText.scss'
-
-const highlightedText = ref<EventTarget | null>(null)
 
 const props = withDefaults(defineProps<YHighlightedTextProps>(), {
   level: 'h1',
@@ -25,27 +19,22 @@ const props = withDefaults(defineProps<YHighlightedTextProps>(), {
 })
 
 // const activeAndAnimate = computed(() => props.animate)
+const highlightedTextRef = useTemplateRef<HTMLElement>('highlightedTextRef')
 
-const isHoveredOnce = ref(false)
+const { isHoveredOnce } = useAnimation(highlightedTextRef)
 
-const isHovered = ref(false)
-
-useEventListener(highlightedText, 'mouseenter', () => {
+useEventListener(highlightedTextRef, 'mouseenter', () => {
   if (!isHoveredOnce.value) {
     isHoveredOnce.value = true
   }
-  isHovered.value = true
-})
-useEventListener(highlightedText, 'mouseleave', () => {
-  isHovered.value = false
 })
 
 // const { media } = useBreakpoints();
 
 const getClasses = computed(() => [
   'highlighted-text',
+  'switch-color',
   { animate: props.animate },
   { active: props.active },
-  { 'not-hovered-yet': !isHoveredOnce.value },
 ])
 </script>
