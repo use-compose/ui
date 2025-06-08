@@ -1,23 +1,39 @@
 <template>
   <YInput
     v-bind="props"
+    input-class="y-input-text"
+    type="text"
     :value="modelValue"
-    @input="$emit('update:modelValue', $event)"
-    type="checkbox"
-    class="y-input-text"
-  >
-    <slot />
-  </YInput>
+    @input="handleInput"
+  />
+  <!-- <div><p>qsdqs</p></div> -->
 </template>
 
-<script setup lang="ts">
-import { basePropsDefault } from '@/composables/use-base-props'
-import { defineProps, withDefaults } from 'vue'
-import { YInput } from '../form'
+<script lang="ts">
+import { YInput } from '@/components/form/YInput'
+import { useInput } from '@/composables/input'
+import { defineComponent, SetupContext, useAttrs } from 'vue'
 import type { YInputTextProps } from './types'
-import './YInputText.scss'
 
-const props = withDefaults(defineProps<YInputTextProps>(), {
-  ...basePropsDefault,
+export default defineComponent({
+  name: 'YInputText',
+  components: {
+    YInput,
+  },
+  emits: ['update:modelValue', 'input', 'change', 'blur'],
+  setup(props: YInputTextProps, context: SetupContext) {
+    const attrs: Record<string, unknown> = useAttrs()
+    const emit = context.emit
+
+    const { modelValue, handleInput } = useInput({ props, attrs, emit })
+
+    return {
+      modelValue,
+      props,
+      handleInput,
+    }
+  },
 })
+
+// const model = defineModel(props ? props.modelValue : '', { type: String })
 </script>
