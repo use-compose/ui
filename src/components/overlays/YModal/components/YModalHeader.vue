@@ -7,6 +7,7 @@
           v-if="props.hasCloseButton"
           class="cursor-pointer align-self-start"
           :width="48"
+          :height="48"
           @click="close"
         />
       </div>
