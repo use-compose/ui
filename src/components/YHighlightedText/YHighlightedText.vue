@@ -1,5 +1,10 @@
 <template>
-  <Component :is="level" ref="highlightedText" :class="getClasses">
+  <Component
+    :is="level"
+    ref="highlightedText"
+    :class="getClasses"
+    :style="!isHoveredOnce && '--is-hovered-once: none'"
+  >
     <!-- <span> -->
     <span><slot></slot></span>
     <!-- </span> -->
@@ -21,9 +26,14 @@ const props = withDefaults(defineProps<YHighlightedTextProps>(), {
 
 // const activeAndAnimate = computed(() => props.animate)
 
+const isHoveredOnce = ref(false)
+
 const isHovered = ref(false)
 
 useEventListener(highlightedText, 'mouseenter', () => {
+  if (!isHoveredOnce.value) {
+    isHoveredOnce.value = true
+  }
   isHovered.value = true
 })
 useEventListener(highlightedText, 'mouseleave', () => {
@@ -36,5 +46,6 @@ const getClasses = computed(() => [
   'highlighted-text',
   { animate: props.animate },
   { active: props.active },
+  { 'not-hovered-yet': !isHoveredOnce.value },
 ])
 </script>

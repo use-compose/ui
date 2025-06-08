@@ -35,7 +35,8 @@
     @include resolve-variant-hsl(outlined);
     @include mixins.component(border-width, 2px);
     @include mixins.component(border-style, solid);
-    @include mixins.component(color-border, currentcolor);
+    @include mixins.component(color-border, var(--theme-current-color));
+    @include mixins.component(color-text, var(--theme-current-color));
     @include mixins.component(bg-opacity, var(--variant-bg-opacity));
     @include mixins.component(bg-opacity, var(--variant-bg-opacity));
 
@@ -63,6 +64,7 @@
     @include mixins.component(box-shadow, none);
     box-shadow: none;
     transform: none;
+    @include mixins.component(color-text, var(--theme-current-color));
 
     @include state.hover {
       @include mixins.component(bg-opacity, var(--state-active-bg-lightness));

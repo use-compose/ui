@@ -8,7 +8,6 @@
   * 6 - Breakpoints
 */
 
-@use 'base/base';
 @use 'theme/theme' as theme;
 @use 'utils' as utils;
 @use 'sass:map';
@@ -257,9 +256,8 @@ $variants: ('contained', 'outlined', 'text');
     @include utils.component(height, 3rem); // 48px
   }
 
-  &.raw {
-    @include raw-component;
-  }
+  @include raw-component;
+  @include hero-component;
 
   height: utils.component(height);
   font-weight: bold;
@@ -344,19 +342,36 @@ $variants: ('contained', 'outlined', 'text');
 }
 
 @mixin raw-component {
-  // --raw: var(--true);
-  box-shadow: none;
-
-  // &:hover {
-  //   // transform: none;
-  //   box-shadow: none;
-  //   @include utils.component(bg-color, utils.color(primary-60));
-  // }
-
-  &:active,
-  &:focus-visible {
-    // transform: none;
+  &.raw {
+    // --raw: var(--true);
     box-shadow: none;
+
+    // &:hover {
+    //   // transform: none;
+    //   box-shadow: none;
+    //   @include utils.component(bg-color, utils.color(primary-60));
+    // }
+
+    &:active,
+    &:focus-visible {
+      // transform: none;
+      box-shadow: none;
+    }
+  }
+}
+
+@mixin hero-component {
+  &.hero {
+    @include utils.component(bg-color, utils.color(primary));
+    @include utils.component(color, utils.color(main-dark));
+    @include utils.component(box-shadow, unset);
+    @include utils.component(padding-y, utils.space(md));
+    @include utils.component(padding-x, utils.space(md));
+    @include utils.component(font-size, utils.text(xl));
+
+    &:hover:not(:focus-visible, :active) {
+      @include utils.component(box-shadow, utils.component(box-shadow-base));
+    }
   }
 }
 

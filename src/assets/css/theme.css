@@ -181,6 +181,11 @@
   --component-text-lightness: calc(((var(--component-bg-lightness) / 1%) - var(--threshold) * 1%) * -100%);
 }
 
+.outlined {
+  --component-color-border: var(--theme-current-color);
+  --component-color-text: var(--theme-current-color);
+}
+
 /* 
  * State Properties
 */
@@ -323,3 +328,18 @@
   /* --ttt: hsl(calc(45 * 1), calc(68% * 1), calc(39% * 0 + 0% * 0 + 0% * 1 + 0% * 0 + 0% * 0 + 50% * 1 + 40% * 0 + 30% * 0 + 30% * 0 + 0% * 0));
   background-color: var(--ttt);
   color: blue; */
+
+
+h1,
+.text-h1,
+h2,
+.text-xxl,
+h3,
+.text-xl,
+h4,
+.text-lg,
+h5 {
+  font-family: gotham-black;
+  text-transform: uppercase;
+  color: var(--theme-current-color);
+}

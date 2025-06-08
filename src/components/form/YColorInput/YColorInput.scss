@@ -1,24 +1,16 @@
 @use '@/assets/scss/utils' as utils;
 @use '@/assets/scss/theme.scss' as *;
 
-.y_label {
-  color: var(--primary);
-  font-size: #{var(--h4)};
-  margin-bottom: 15px;
-  display: block;
-  height: 22px;
-}
-
 .y-color-input {
   display: inline-block;
   cursor: pointer;
+  position: relative;
 
   @include theme-component;
-
   @include utils.component(padding-x, 0);
   @include utils.component(padding-y, 0);
   --component-margin-bottom: 0;
-  height: calc(2 * var(--space-unit));
+  height: calc(1.5 * var(--space-unit));
   background-color: v-bind('modelValue');
 
   &.y-input-small {
@@ -42,5 +34,23 @@
 
   .no-margin {
     margin-bottom: 0;
+  }
+
+  &:hover::after {
+    position: absolute;
+    content: '';
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: var(--border-radius);
+    box-shadow: inset 0 0 0 1px var(--color-border);
+    transition:
+      transform 0.2s ease-in-out,
+      box-shadow 0.2s ease-in-out;
+    background-image: conic-gradient(red, yellow, lime, aqua, blue, magenta, red);
+    opacity: 0.5;
+    filter: blur(10px);
+    animation: scale-in 0.2s ease-in-out forwards;
   }
 }
