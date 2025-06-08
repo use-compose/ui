@@ -1,9 +1,7 @@
-import { ThemeComponentBaseProps } from '@/types/base-props'
 import { getValueFromRef } from '@/utils/get-value-from-ref'
 import { isClientSide } from '@/utils/is-client-side'
-import { defineEmits, Ref, ref, useAttrs, watch } from 'vue'
+import { Ref, ref, watch } from 'vue'
 import { useEventListener } from './event-listener'
-import { useBaseProps } from './use-base-props'
 
 export function useClickEvent(target: Ref<EventTarget | null> | EventTarget) {
   if (!isClientSide()) {
@@ -42,96 +40,104 @@ export function useClickEvent(target: Ref<EventTarget | null> | EventTarget) {
   return { isClickedOnce }
 }
 
-export function useInputEvent<T>(
-  target: Ref<EventTarget | null> | EventTarget,
-  props?: ThemeComponentBaseProps & Record<string, any>,
-) {
-  if (!isClientSide()) {
-    return { handleInput: () => {}, handleEvent: () => {} }
-  }
-  const { isDisabled } = useBaseProps(props || {})
-  const realTarget = getValueFromRef(target) as HTMLElement
-  const attrs = useAttrs()
-  const emit = defineEmits(['update:modelValue', 'input', 'change', 'focus', 'blur'])
+// export function useInputEvent<T>(
+//   target: Ref<EventTarget | null> | EventTarget,
+//   props?: ThemeComponentBaseProps & Record<string, any>,
+//   attrs?: SetupContext['attrs'],
+//   emit?: EmitFn | undefined,
+// ) {
+//   const vm = getCurrentInstance()
+//   console.log('📟 - vm → ', vm)
+//   console.log('📟 - emit → ', emit)
+//   if (!isClientSide()) {
+//     return { handleInput: () => {}, handleEvent: () => {} }
+//   }
+//   const { isDisabled } = useBaseProps(props || {})
+//   console.log('📟 - props → ', props)
+//   const realTarget = getValueFromRef(target) as HTMLElement
+//   console.log('📟 - realTarget → ', realTarget)
+//   console.log('📟 - attrs → ', attrs)
+//   // const emit = defineEmits(['update:modelValue', 'input', 'change', 'focus', 'blur'])
 
-  function handleInput(value: T) {
-    emit('update:modelValue', value)
-    emit('input', value)
-  }
+//   function handleInput(value: T) {
+//     emit('update:modelValue', value)
+//     emit('input', value)
+//   }
 
-  function handleChange(value: T) {
-    emit('change', value)
-    emit('update:modelValue', value)
-  }
+//   function handleChange(value: T) {
+//     emit('change', value)
+//     emit('update:modelValue', value)
+//   }
 
-  function handleFocus(value: T) {
-    emit('focus', value)
-  }
-  function handleBlur(value: T) {
-    emit('blur', value)
-  }
+//   function handleFocus(value: T) {
+//     emit('focus', value)
+//   }
+//   function handleBlur(value: T) {
+//     emit('blur', value)
+//   }
 
-  function updateModelValue(value: T) {
-    emit('update:modelValue', value)
-  }
+//   function updateModelValue(value: T) {
+//     emit('update:modelValue', value)
+//   }
 
-  function handleEvent(event: Event) {
-    const value = (event.target as HTMLInputElement).value as T
-    if (isDisabled.value) {
-      event.preventDefault()
-    }
-    //   // // If change event emit exists, call it
-    if (attrs[event.type] && !isDisabled.value) {
-      // @ts-ignore
-      attrs[event.type](value)
-    }
-    const eventType = event.type as keyof typeof emit
-    // emit(eventType, value)
-    if (attrs.onChange) {
-      handleChange(value)
-    }
-    if (attrs.onInput) {
-      handleInput(value)
-    }
-    if (attrs.onFocus) {
-      handleFocus(value)
-    }
-    if (attrs.onBlur) {
-      handleBlur(value)
-    }
+//   function handleEvent(event: Event) {
+//     const value = (event.target as HTMLInputElement).value as T
+//     if (isDisabled.value) {
+//       event.preventDefault()
+//     }
+//     //   // // If change event emit exists, call it
+//     if (attrs[event.type] && !isDisabled.value) {
+//       // @ts-ignore
+//       attrs[event.type](value)
+//     }
+//     const eventType = event.type as keyof typeof emit
+//     // emit(eventType, value)
+//     if (attrs.onChange) {
+//       handleChange(value)
+//     }
+//     if (attrs.onInput) {
+//       handleInput(value)
+//     }
+//     if (attrs.onFocus) {
+//       handleFocus(value)
+//     }
+//     if (attrs.onBlur) {
+//       handleBlur(value)
+//     }
 
-    updateModelValue(value)
-  }
+//     updateModelValue(value)
+//   }
 
-  return {
-    handleInput,
-    handleEvent,
-  }
-}
+//   return {
+//     handleInput,
+//     handleEvent,
+//   }
+// }
 
 export function useAnimation(target: Ref<EventTarget | null> | EventTarget) {
-  const { handleInput } = useInputEvent(target, {
-    modelValue: '',
-    'onUpdate:modelValue': () => {},
-    onInput: () => {},
-    onChange: () => {},
-    onFocus: () => {},
-    onBlur: () => {},
-  })
+  // const { handleInput } = useInputEvent(target, {
+  //   modelValue: '',
+  //   'onUpdate:modelValue': () => {},
+  //   onInput: () => {},
+  //   onChange: () => {},
+  //   onFocus: () => {},
+  //   onBlur: () => {},
+  // })
   const isClickedOnce = ref(false)
   const isHoveredOnce = ref(false)
   // const realTarget = getValueFromRef(target) as HTMLElement
 
-  // function isTargetClicked(event: MouseEvent) {
-  //   const realTarget = getValueFromRef(target)
+  function isTargetClicked(event: Event) {
+    const realTarget = getValueFromRef(target)
 
-  //   if (realTarget && event.target === realTarget) {
-  //     isClickedOnce.value = true
-  //   }
-  // }
+    if (realTarget && event.target === realTarget) {
+      isClickedOnce.value = true
+    }
+  }
+
+  useEventListener(target, 'click', isTargetClicked)
 
   return {
-    handleInput,
     isClickedOnce,
     isHoveredOnce,
   }
