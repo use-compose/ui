@@ -1,4 +1,4 @@
-import { YInputProps } from '@/components/form/YInput/types'
+import { YInputProps } from '@/components/YInput/types'
 import { EmitFn, InjectionKey, provide, Ref, ref, watch } from 'vue'
 import { InputEventValue, useInputEvent } from './event'
 // type YinputEvents = 'update:modelValue' | 'focus' | 'blur' | 'change' | 'input' | 'click'

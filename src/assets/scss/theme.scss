@@ -43,6 +43,10 @@ body {
   --not-raw: calc(1 - var(--raw));
 }
 
+a {
+  text-decoration: none;
+}
+
 .raw {
   --raw: var(--true);
 }
