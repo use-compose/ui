@@ -1,0 +1,12 @@
+// Uncomment if needed
+@use '@/assets/scss/utils' as utils;
+@use '@/assets/scss/theme.scss' as *;
+
+// TODO: change to kebab-case
+.y-tag {
+  @include theme-component;
+
+  display: inline-flex;
+  // text-transform: uppercase;
+  @include utils.component(padding-y, 0.15rem);
+}
