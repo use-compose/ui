@@ -1,7 +1,7 @@
 <template>
   <div class="y-section">
     <YVerticalTitle v-if="title" class="y-section__title">
-      <YHighlightedText>{{ title }}</YHighlightedText>
+      {{ title }}
     </YVerticalTitle>
     <div class="y-section__content">
       <slot />
@@ -11,7 +11,6 @@
 
 <script setup lang="ts">
 import { defineProps } from 'vue'
-import { YHighlightedText } from '../YHighlightedText'
 import { YVerticalTitle } from '../YVerticalTitle'
 import './YSection.css'
 import './YSection.scss'

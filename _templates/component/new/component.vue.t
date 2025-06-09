@@ -4,7 +4,9 @@ to: src/components/<%= name %>/<%= name %>.vue
 
 <template>
   <div :class="getClasses">
-    <slot />
+    <slot>
+      <p>Default content for <%= name %> component</p>
+    </slot>
   </div>
 </template>
 
