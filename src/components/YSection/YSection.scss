@@ -10,17 +10,6 @@
   display: flex;
   flex-wrap: wrap;
   padding: 15px 22px 10px;
-  // overflow: hidden;
-  // padding: 2.5rem 1.25rem 1.25rem 1.25rem;
-  .y-vertical-title {
-    font-size: utils.text(xxl);
-    text-align: right;
-    flex: unset;
-    margin-inline-end: var(--space-sm);
-    margin-block: var(--space-xxs);
-    writing-mode: vertical-rl;
-    transform: rotate(180deg);
-  }
 
   @include media(tablet) {
     flex-wrap: nowrap;
@@ -42,6 +31,7 @@
       padding-bottom: 50px;
     }
   }
+
   .y-section__content,
   .y-section > :nth-child(2) {
     flex-grow: 1;

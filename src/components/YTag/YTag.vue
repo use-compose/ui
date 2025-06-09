@@ -1,11 +1,7 @@
----
-to: src/components/<%= name %>/<%= name %>.vue
----
-
 <template>
   <div :class="getClasses">
     <slot>
-      <p>Default content for <%= name %> component</p>
+      <span>YTag</span>
     </slot>
   </div>
 </template>
@@ -13,16 +9,16 @@ to: src/components/<%= name %>/<%= name %>.vue
 <script setup lang="ts">
 import { basePropsDefault, useBaseProps } from '@/composables/use-base-props'
 import { computed, defineProps, withDefaults } from 'vue'
-import type { <%= name %>Props } from './types'
-import './<%= name %>.scss'
+import type { YTagProps } from './types'
+import './YTag.scss'
 
-const props = withDefaults(defineProps<<%= name %>Props>(), {
+const props = withDefaults(defineProps<YTagProps>(), {
   ...basePropsDefault,
 })
 
 const { baseClasses } = useBaseProps(props)
 
 const getClasses = computed(() => {
-  return [[...baseClasses.value]]
+  return [...baseClasses.value, 'y-tag']
 })
 </script>

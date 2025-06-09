@@ -9,12 +9,15 @@
   @include theme-component;
   @include utils.component(padding-x, 0);
   @include utils.component(padding-y, 0);
+
   --component-margin-bottom: 0;
+
   height: calc(1.5 * var(--space-unit));
   background-color: v-bind('modelValue');
 
   &.y-input-small {
     padding: var(--space-xs);
+
     --component-padding-y: var(--space-xs);
     --component-padding-x: var(--space-xs);
   }

@@ -90,17 +90,14 @@
   --#{$prop}-bg-chroma: var(--#{$prop}-#{$prop-value}-bg-chroma);
   --#{$prop}-bg-lightness: var(--#{$prop}-#{$prop-value}-bg-lightness);
   --#{$prop}-bg-opacity: var(--#{$prop}-#{$prop-value}-bg-opacity);
-
   --#{$prop}-border-hue: var(--#{$prop}-#{$prop-value}-border-hue);
   --#{$prop}-border-chroma: var(--#{$prop}-#{$prop-value}-border-chroma);
   --#{$prop}-border-lightness: var(--#{$prop}-#{$prop-value}-border-lightness);
   --#{$prop}-border-opacity: var(--#{$prop}-#{$prop-value}-border-opacity);
-
   --#{$prop}-text-hue: var(--#{$prop}-#{$prop-value}-text-hue);
   --#{$prop}-text-chroma: var(--#{$prop}-#{$prop-value}-text-chroma);
   --#{$prop}-text-lightness: var(--#{$prop}-#{$prop-value}-text-lightness);
   --#{$prop}-text-opacity: var(--#{$prop}-#{$prop-value}-text-opacity);
-
   --#{$prop}: #{$prop-value};
 }
 

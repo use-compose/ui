@@ -30,6 +30,7 @@
   backdrop-filter: blur(var(--overlay-blur, 8px));
   transition: opacity 0.3s ease;
 }
+
 @mixin dialog {
   // @include theme-component;
   padding: 0;
@@ -42,6 +43,7 @@
   display: flex;
   flex-direction: column;
 }
+
 // .y-dialog {
 //   @include theme-component;
 //   position: fixed;
@@ -55,6 +57,7 @@
 
 .y-modal {
   @include dialog;
+
   --modal-z-index: calc(var(--dialog-z-index) + 1);
 
   position: relative;
@@ -66,12 +69,12 @@
 
 .y-drawer {
   @include dialog;
+
   top: 0;
   bottom: 0;
   height: 100svh;
   right: 0;
   width: clamp(260px, 65%, 896px);
-
   transition: transform 0.5s ease;
 
   .y-modal-content {
@@ -93,14 +96,14 @@
 
   // custom scrollbar
   &::-webkit-scrollbar {
-    -webkit-appearance: none;
+    appearance: none;
     width: 3px;
     background-color: color(primary);
   }
 
   &::-webkit-scrollbar-thumb {
     background-color: component(color);
-    box-shadow: 0 0 1px rgba(255, 255, 255, 0.5);
+    box-shadow: 0 0 1px rgb(255 255 255 / 50%);
   }
 }
 
@@ -117,6 +120,7 @@
 
   :deep(.y-button) {
     @include component(margin-bottom, component(box-shadow-y));
+
     border: component(border);
   }
 }
