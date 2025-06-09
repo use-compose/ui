@@ -43,17 +43,21 @@
   &.text {
     @include mixins.resolve-lch-value('variant', text);
     @include mixins.component(box-shadow, none);
+
     box-shadow: none;
     transform: none;
+
     @include mixins.component(color-text, var(--theme-current-color));
 
     @include state.hover {
       @include mixins.component(bg-opacity, var(--state-active-bg-lightness));
+
       // --variant-text-border-opacity: 1; // @include mixins.component(bg-opacity, var(--state-hover-bg-lightness));
     }
 
     @include state.focus {
       @include mixins.component(bg-opacity, var(--state-base-bg-lightness));
+
       // @include mixins.component(border-width, 2px);
       // @include mixins.component(border-style, solid);
       // @include mixins.component(color-border, currentcolor);
@@ -61,6 +65,7 @@
 
     @include state.active {
       @include mixins.component(bg-opacity, var(--state-hover-bg-lightness));
+
       outline: 2px solid currentcolor;
     }
 

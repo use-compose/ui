@@ -3,8 +3,8 @@
 
 .y-card {
   @include theme-component;
-
   @include component(bg-opacity, 0.5);
+
   // @include component(bg, hsla(from color(primary) h s l / component(bg-opacity)));
 
   padding: space(sm);

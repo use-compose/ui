@@ -9,7 +9,6 @@
 
     <!-- Outer loop: each variant in a separate row or section -->
     <!-- <div v-for="size in sizes.slice().reverse()" :key="size"> -->
-    <!-- <h3>{{ size.toUpperCase() }}</h3> -->
     <div v-for="color in colors" :key="color">
       <h3 :class="color">{{ color }}</h3>
       <!-- Inner loop: each tone for that variant -->

@@ -71,11 +71,13 @@
 @keyframes checked-in {
   0% {
     --transform-scale: 0;
+
     background-color: transparent;
   }
 
   100% {
     --transform-scale: 1;
+
     background-color: utils.color(main-dark, black);
   }
 }
@@ -83,11 +85,13 @@
 @keyframes checked-out {
   0% {
     --transform-scale: 1;
+
     background-color: utils.color(main-dark, black);
   }
 
   100% {
     --transform-scale: 0;
+
     background-color: transparent;
   }
 }
@@ -103,6 +107,7 @@
     opacity: 1;
   }
 }
+
 @keyframes scale-out {
   0% {
     transform: scale(1);

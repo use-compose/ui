@@ -241,8 +241,6 @@ $states: ('base', 'hover', 'active', 'focus', 'disabled');
 $variants: ('contained', 'outlined', 'text');
 
 @mixin theme-component {
-  background-color: utils.component(bg-color);
-  border-color: utils.component(border-color);
   padding: utils.component(padding-y) utils.component(padding-x);
   box-shadow: utils.component(box-shadow);
   outline: none;
@@ -291,6 +289,7 @@ $variants: ('contained', 'outlined', 'text');
   --component-bg-saturation: calc(
     var(--color-bg-saturation) + var(--variant-bg-saturation) + var(--state-bg-saturation)
   );
+
   // --component-bg-lightness: calc(var(--color-bg-lightness) + var(--variant-bg-lightness) + var(--state-bg-lightness));
   --component-bg-lightness: calc(
     var(--variant-bg-lightness) + var(--state-bg-lightness) + var(--color-bg-lightness)
@@ -301,7 +300,6 @@ $variants: ('contained', 'outlined', 'text');
   --component-bg-chroma: calc(
     var(--color-bg-chroma) + var(--variant-bg-chroma) + var(--state-bg-chroma)
   );
-
   --component-border-hue: calc(var(--color-border-hue));
   --component-border-saturation: calc(
     var(--color-border-saturation) + var(--variant-border-saturation) +
@@ -316,18 +314,17 @@ $variants: ('contained', 'outlined', 'text');
   --component-border-chroma: calc(
     var(--color-border-chroma) + var(--variant-border-chroma) + var(--state-border-chroma)
   );
-
   --component-text-hue: calc(var(--color-text-hue));
   --component-text-saturation: calc(
     var(--color-text-saturation) + var(--variant-text-saturation) + var(--state-text-saturation)
   );
+
   // --component-text-lightness: calc((var(--color-text-lightness) - var(--threshold) * 1%) * -100%);
   --component-text-lightness: calc((var(--color-text-lightness)));
   --component-text-opacity: var(--state-text-opacity);
   --component-text-chroma: calc(
     var(--color-text-chroma) + var(--variant-text-chroma) + var(--state-text-chroma)
   );
-
   --component-opacity-bg: var(--component-bg-opacity);
   --component-opacity-border: var(--component-border-opacity);
   --component-opacity-text: var(--component-text-opacity);
