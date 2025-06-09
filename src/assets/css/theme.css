@@ -71,10 +71,8 @@
 .danger {
   --danger-else-0: var(--color);
   --danger: var(--danger-else-0);
-
   --primary-else-0: var(--color);
   --primary: var(--primary-else-0);
-
   --secondary-else-0: var(--color);
   --secondary: var(--secondary-else-0);
 
@@ -84,6 +82,7 @@
       color-mix(in srgb,
         var(--color-secondary) calc(var(--secondary) * 100%),
         var(--color-danger) calc(var(--danger) * 100%)));
+
   /* 
   --theme-current-color-hue: calc(var(--color-bg-hue) * var(--primary) + var(--color-bg-hue) * var(--secondary) + var(--color-bg-hue) * var(--danger));
   --theme-current-color-saturation: calc(var(--color-bg-saturation) * var(--primary) + var(--color-bg-saturation) * var(--secondary) + var(--color-bg-saturation) * var(--danger));
@@ -97,8 +96,10 @@
   --component-box-shadow-y: calc(0.80 * var(--theme-base-unit-calc));
   --component-transform: translate(0, 0);
   --component-box-shadow-base: calc(var(--component-box-shadow-x) * 0.5) calc(var(--component-box-shadow-y) * 0.5) 0 0 black;
+
   /* --component-box-shadow-base: none; */
   --component-box-shadow-hover: var(--component-box-shadow-x) var(--component-box-shadow-y) 0 0 var(--component-box-shadow-color);
+
   /* --component-box-shadow-hover: var(--component-box-shadow-x) var(--component-box-shadow-y) 0 0 black; */
   --component-box-shadow-focus: var(--component-box-shadow-x) var(--component-box-shadow-y) 0 0 var(--component-box-shadow-color);
   --component-box-shadow-active: calc(var(--component-box-shadow-x) - 50% * var(--theme-base-unit-calc)) calc(var(--component-box-shadow-y) - 50% * var(--theme-base-unit-calc)) 0 0 var(--component-box-shadow-color);
@@ -166,10 +167,8 @@
 .text {
   --contained-else-0: var(--variant);
   --contained: var(--contained-else-0);
-
   --outlined-else-0: var(--variant);
   --outlined: var(--outlined-else-0);
-
   --text-else-0: var(--variant);
   --text: var(--text-else-0);
 }
@@ -256,7 +255,7 @@
 }
 
 @layer state {
-  .base:not([disabled]):not(.disabled) {
+  .base:not([disabled], .disabled) {
     --state: base;
   }
 
@@ -284,16 +283,12 @@
   .disabled {
     --base-else-0: var(--state);
     --base: var(--base-else-0);
-
     --hover-else-0: var(--state);
     --hover: var(--hover-else-0);
-
     --active-else-0: var(--state);
     --active: var(--active-else-0);
-
     --focus-else-0: var(--state);
     --focus: var(--focus-else-0);
-
     --disabled-else-0: var(--state);
     --disabled: var(--disabled-else-0);
 
@@ -348,5 +343,6 @@ h5 {
   --threshold: 0.10;
   --light: var(--color-primary-lightness);
   --switch: calc((var(--light) - var(--threshold)));
+
   color: oklch(from currentcolor calc(l - var(--threshold)) c h);
 }

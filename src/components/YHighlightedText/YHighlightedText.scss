@@ -7,27 +7,25 @@
 
 .highlighted-text {
   font-family: gotham;
-  text-transform: uppercase;
   font-weight: bold;
   text-transform: uppercase;
+
   /* TODO: check responsive line-height */
   line-height: 135%;
-  margin: 0;
   margin: 0;
 
   --hovered: false;
 
   > span {
-    position: relative;
-
     background-image: linear-gradient(var(--color-primary), var(--color-primary));
     position: relative;
-    box-decoration-break: clone;
+
     // border-left: 5px solid var(--color-primary);
     padding: 2px;
+
     // background-image: var(--highlighted-bg);
-    -webkit-box-decoration-break: clone;
     box-decoration-break: clone;
+
     // &::before {
     left: clamp(-30px, -1.4vw, -2px);
     padding-left: clamp(2px, 1.4vw, 30px);
@@ -61,17 +59,18 @@
 
         color: var(--color-primary);
         background-size: 0% 100%;
-        -webkit-background-clip: padding-box, text;
         background-clip: padding-box, text;
         background-repeat: no-repeat;
         background-position: left;
         animation: var(--highlight-animate);
       }
     }
+
     &.active > span {
       // color: color-mix(in srgb, white var(--switch), black 50%);
       color: white;
       background-size: 100% 100%;
+
       --animate-in: highlight-to-right 0.5s forwards;
       --animate-out: highlight-to-left 0.4s 0.1s forwards;
     }
@@ -90,10 +89,13 @@
   0% {
     background-size: 0% 100%;
   }
+
   50% {
     background-size: 100% 100%;
+
     // background-position: left;
   }
+
   100% {
     background-size: 100% 100%;
     background-image: linear-gradient(var(--color-primary), var(--color-primary));
@@ -104,14 +106,17 @@
 @keyframes highlight-to-right {
   0% {
     background-size: 100% 100%;
+
     // background-position: right;
     background-image: linear-gradient(var(--color-primary), var(--color-primary));
     color: white;
   }
+
   50% {
     background-size: 100% 100%;
     background-position: right;
   }
+
   100% {
     background-size: 0% 100%;
     background-color: transparent;

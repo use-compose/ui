@@ -13,10 +13,10 @@
 .y-checkbox {
   @include theme-component;
   @include interactive-component;
-
   @include component(margin-bottom, 0);
   @include component(padding-x, 0);
   @include component(padding-y, 0);
+
   // height: calc(0.75 * y-checkbox(height));
 
   @include component(height, 32px);
@@ -56,7 +56,9 @@
     content: '';
     border-color: var(--color-primary);
     display: flex;
+
     --transform-scale: 0;
+
     transition: 120ms transform ease-in-out;
     position: absolute;
     height: 70%;
@@ -64,7 +66,6 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%) scale(var(--transform-scale));
-
     animation: var(--y-checkbox-animation);
   }
 
