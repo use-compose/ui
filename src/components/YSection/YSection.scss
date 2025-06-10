@@ -17,6 +17,10 @@
 
     .y-vertical-title {
       font-size: utils.text(xxl);
+
+      // Need to re-calculate as initially set in SCSS
+      --space-unit: 1rem;
+      --space-xs: calc(0.25 * var(--space-unit));
     }
   }
 
