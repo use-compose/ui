@@ -1,21 +1,9 @@
 import { ThemeComponentBaseProps } from '@/types/base-props'
 import { computed } from 'vue'
-// import { useColor } from './color'
 import { colorProps, useColor } from './tokens-theming/color'
 import { sizeProps, useSize } from './tokens-theming/size'
 import { stateProps, useState } from './tokens-theming/state'
 import { useVariant, variantProps } from './tokens-theming/variant'
-
-export enum BasePropClasses {
-  Disabled = 'disabled',
-  Raw = 'raw',
-  Outlined = 'outlined',
-  Text = 'text',
-  Small = 'small',
-  Medium = 'medium',
-  Large = 'large',
-  Color = 'primary',
-}
 
 export const basePropsDefault: ThemeComponentBaseProps = {
   variant: 'contained',
@@ -50,7 +38,7 @@ export function useBaseProps(props: ThemeComponentBaseProps) {
     const classes = []
 
     if (mergedProps.value.raw) {
-      classes.push(BasePropClasses.Raw)
+      classes.push('raw')
     }
 
     return [variantClass.value, stateClass.value, sizeClass.value, colorClass.value]

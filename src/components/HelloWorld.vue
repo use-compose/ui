@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import TestLol from './TestLol.vue'
+import Playground from './Playground.vue'
 
 // useTheme()
 
@@ -7,7 +7,7 @@ defineProps<{ msg: string }>()
 </script>
 
 <template>
-  <TestLol />
+  <Playground />
 </template>
 
 <style scoped>
