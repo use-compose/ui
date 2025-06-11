@@ -1,7 +1,8 @@
 <template>
   <Component :is="level" ref="highlightedTextRef" :class="getClasses">
     <!-- <span> -->
-    <span class="switch-color"><slot></slot></span>
+    <!-- <span class="switch-color"><slot></slot></span> -->
+    <span><slot></slot></span>
     <!-- </span> -->
   </Component>
 </template>
@@ -29,11 +30,8 @@ useEventListener(highlightedTextRef, 'mouseenter', () => {
   }
 })
 
-// const { media } = useBreakpoints();
-
 const getClasses = computed(() => [
   'highlighted-text',
-  'switch-color',
   { animate: props.animate },
   { active: props.active },
 ])
