@@ -1,5 +1,5 @@
 {
-  "name": "gamma-compose",
+  "name": "@compose/ui",
   "files": [
     "dist"
   ],
@@ -21,7 +21,6 @@
   "sideEffects": [
     "./dist/style.css"
   ],
-  "private": true,
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
