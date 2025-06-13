@@ -224,6 +224,7 @@ a {
     transform-active: translate(3px, 3px),
     transform-disabled: none,
     color: initial,
+    margin-x: utils.space(sm),
     padding-x: utils.space(unit),
     padding-y: utils.space(xxs),
     margin-bottom: utils.space(unit),
@@ -242,6 +243,7 @@ $variants: ('contained', 'outlined', 'text');
 
 @mixin theme-component {
   padding: utils.component(padding-y) utils.component(padding-x);
+  margin: 0 utils.component(margin-x) 0 utils.component(margin-bottom);
   box-shadow: utils.component(box-shadow);
   outline: none;
   transform: utils.component(transform);

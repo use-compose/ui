@@ -78,10 +78,10 @@
 
   /* Get current color based on the value we pass to --color */
   --theme-current-color: color-mix(in srgb,
-      var(--color-primary) calc(var(--primary) * 100%),
+      var(--color-primary, #e3c566) calc(var(--primary) * 100%),
       color-mix(in srgb,
-        var(--color-secondary) calc(var(--secondary) * 100%),
-        var(--color-danger) calc(var(--danger) * 100%)));
+        var(--color-secondary, #000000) calc(var(--secondary) * 100%),
+        var(--color-danger, #bd1414) calc(var(--danger) * 100%)));
 
   /* 
   --theme-current-color-hue: calc(var(--color-bg-hue) * var(--primary) + var(--color-bg-hue) * var(--secondary) + var(--color-bg-hue) * var(--danger));

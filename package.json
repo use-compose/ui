@@ -1,5 +1,5 @@
 {
-  "name": "gamma-compose",
+  "name": "@use-compose/ui",
   "files": [
     "dist"
   ],
@@ -8,11 +8,19 @@
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "exports": {
-    ".": {
-      "import": "./dist/index.mjs",
-      "require": "./dist/index.cjs"
-    },
     "./package.json": "./package.json",
+    "./components": {
+      "import": "./dist/components",
+      "require": "./dist/components"
+    },
+    "./composables": {
+      "import": "./dist/composables/",
+      "require": "./dist/composables/"
+    },
+    "./types": {
+      "import": "./dist/types/",
+      "require": "./dist/types/"
+    },
     "./style": {
       "import": "./dist/style.css",
       "require": "./dist/style.css"
@@ -21,8 +29,7 @@
   "sideEffects": [
     "./dist/style.css"
   ],
-  "private": true,
-  "version": "0.0.0",
+  "version": "0.0.1",
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc && vite build",
@@ -69,7 +76,7 @@
     "@storybook/addon-links": "^8.4.7",
     "@storybook/blocks": "^8.4.7",
     "@storybook/test": "^8.4.7",
-    "@storybook/test-runner": "^0.22.0",
+    "@storybook/test-runner": "^0.23.0",
     "@storybook/vue3": "^8.4.7",
     "@storybook/vue3-vite": "^8.4.7",
     "@types/culori": "^4.0.0",
@@ -87,7 +94,7 @@
     "prettier": "3.5.3",
     "prettier-plugin-organize-imports": "4.1.0",
     "react-dom": "19.1.0",
-    "sass": "1.89.0",
+    "sass": "1.89.2",
     "storybook": "^8.4.7",
     "style-dictionary": "^4.0.0-prerelease.30",
     "stylelint": "16.20.0",
@@ -101,5 +108,9 @@
     "vite-plugin-dts": "3.9.1",
     "vite-plugin-linter": "2.1.1",
     "vue-tsc": "2.2.10"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/use-compose/compose-ui.git"
   }
 }

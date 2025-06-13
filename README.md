@@ -1,10 +1,15 @@
 # UI Library
 
-Vue 3 + TypeScript + Vite + Storybook
+Vue 3 / Vite components Library using CSS Custom Properties and OKlch color space, allowing dynamic theming and runtime color changes.
+
+## Installation
+
+````bash
+
 
 ```bash
 npm install
-```
+````
 
 Start playground
 

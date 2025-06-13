@@ -21,7 +21,4 @@ if (props.theme) {
 } else {
   useComposeTheme()
 }
-
-// setPrimary('#FCECF0')
-// setBackground('#ABCDF8')
 </script>

@@ -1,7 +1,7 @@
 <template>
-  <div class="y-input-wrapper" :class="isDisabled ? 'disabled' : ''">
-    <YLabel v-if="label" class="y-label" :for="name">{{ label }}</YLabel>
+  <YFlex align="flex-end" gap="0">
     <input
+      :id="name"
       :ref="inputRef"
       :value="modelValue"
       :type="type"
@@ -12,11 +12,13 @@
       :disabled="isDisabled"
       @:[event]="handleEvent"
     />
+    <YLabel v-if="label" class="y-label" :for="name">{{ label }}</YLabel>
+
     <!-- <input v-on="$attrs" :class="yInputClasses" ref="yInput" /> -->
     <!-- <label v-if="error" class="error-label" :for="name">
       {{ errorMsg }}
     </label> -->
-  </div>
+  </YFlex>
 </template>
 
 <script lang="ts" generic="T">
@@ -27,6 +29,7 @@ import { useComponentProps } from '@/composables/component'
 import { inputEventsKey, inputEventsKeyInterface } from '@/composables/input'
 import { defineComponentBaseProps } from '@/composables/use-base-props'
 import { computed, defineComponent, inject, ref, SetupContext, useAttrs } from 'vue'
+import { YFlex } from '../layout/YFlex'
 import type { YInputProps } from './types'
 import './YInput.scss'
 
@@ -34,6 +37,7 @@ export default defineComponent({
   name: 'YInput',
   components: {
     YLabel,
+    YFlex,
   },
   props: {
     ...defineComponentBaseProps,

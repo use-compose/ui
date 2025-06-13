@@ -1,5 +1,5 @@
 <template>
-  <YFlex align="center">
+  <YFlex align="center" justify="center">
     <YColorInput v-model="primaryColor" label="Primary" />
     <YColorInput v-model="secondaryColor" color="secondary" label="Secondary" />
     <YColorInput v-model="dangerColor" color="danger" label="Danger" />

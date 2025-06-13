@@ -45,11 +45,11 @@ export function useHoverEvent(target: TemplateRef<EventTarget | null>) {
       console.warn('📟 - element is undefined or null', element)
       return
     }
-    if (!element.hasAttribute('$el')) {
+    if (!element?.hasAttribute('$el')) {
       // eslint-disable-next-line no-console
       console.warn('📟 - element.$el is undefined or null', element)
     }
-    element.style.setProperty('--is-hovered-once', 'none')
+    element.style.setProperty('--is-not-hovered-yet', '1')
   })
 
   watch(
@@ -61,7 +61,7 @@ export function useHoverEvent(target: TemplateRef<EventTarget | null>) {
         return
       }
       if (newVal) {
-        ;(element as HTMLElement).style.removeProperty('--is-hovered-once')
+        ;(element as HTMLElement).style.setProperty('--is-not-hovered-yet', '0')
       }
     },
   )

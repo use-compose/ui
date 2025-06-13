@@ -24,8 +24,6 @@ export function useInputEvent(props: YInputProps, attrs: Record<string, unknown>
     return '' as T
   }
 
-  // const inputEvent: InputEvent = new InputEvent('input')
-
   const inputValue: Ref<string | number | boolean> = ref(props.modelValue ?? getFallbackValue())
 
   const { isDisabled } = useBaseProps(props)
@@ -35,26 +33,6 @@ export function useInputEvent(props: YInputProps, attrs: Record<string, unknown>
     inputValue.value = value
   }
 
-  // function onInput(e: InputEvent) {
-  //   const el = e.target as HTMLInputElement | HTMLTextAreaElement
-  //   inputValue.value = el.value
-  // }
-
-  // function onChange(e: Event) {
-  //   const el = e.target as HTMLInputElement | HTMLTextAreaElement
-  //   inputValue.value = el.value
-  // }
-  // function onInput(e: Event) {
-  //   const el = e.target as HTMLTextAreaElement
-  //   model.value = el.value
-  //   if (props.modelModifiers?.trim) {
-  //     const caretPosition = [el.selectionStart, el.selectionEnd]
-  //     nextTick(() => {
-  //       el.selectionStart = caretPosition[0]
-  //       el.selectionEnd = caretPosition[1]
-  //     })
-  //   }
-  // }
   function handleEvent(event: Event) {
     if (!event || !event.target) {
       // eslint-disable-next-line no-console
