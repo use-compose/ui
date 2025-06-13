@@ -1,5 +1,5 @@
 {
-  "name": "@compose/ui",
+  "name": "@use-compose/ui",
   "files": [
     "dist"
   ],
@@ -8,11 +8,19 @@
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "exports": {
-    ".": {
-      "import": "./dist/index.mjs",
-      "require": "./dist/index.cjs"
-    },
     "./package.json": "./package.json",
+    "./components": {
+      "import": "./dist/components",
+      "require": "./dist/components"
+    },
+    "./composables": {
+      "import": "./dist/composables/",
+      "require": "./dist/composables/"
+    },
+    "./types": {
+      "import": "./dist/types/",
+      "require": "./dist/types/"
+    },
     "./style": {
       "import": "./dist/style.css",
       "require": "./dist/style.css"
@@ -21,7 +29,7 @@
   "sideEffects": [
     "./dist/style.css"
   ],
-  "version": "0.0.0",
+  "version": "0.0.1",
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc && vite build",
@@ -100,5 +108,9 @@
     "vite-plugin-dts": "3.9.1",
     "vite-plugin-linter": "2.1.1",
     "vue-tsc": "2.2.10"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/use-compose/compose-ui.git"
   }
 }

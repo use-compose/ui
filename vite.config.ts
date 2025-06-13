@@ -8,7 +8,7 @@ import dts from 'vite-plugin-dts'
 
 export default defineConfig(() => {
   const viteConfig = {
-    plugins: [vue(), dts({ rollupTypes: true })],
+    plugins: [vue(), dts({})],
     resolve: {
       alias: [
         { find: '@', replacement: fileURLToPath(new URL('./src/', import.meta.url)) },
