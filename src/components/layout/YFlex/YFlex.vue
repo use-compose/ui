@@ -26,8 +26,8 @@ interface FlexProps {
 const props = withDefaults(defineProps<FlexProps>(), {
   direction: 'row',
   justify: 'normal',
-  align: 'normal',
-  gap: '1rem',
+  align: 'center',
+  gap: 'var(--space-sm)',
 })
 
 const flexClasses = computed(() => {

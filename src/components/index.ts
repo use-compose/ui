@@ -1,5 +1,4 @@
 export { default as AppCompose } from './AppCompose.vue'
-export { default as HelloWorld } from './HelloWorld.vue'
 
 //  layout
 // export { Container, Flex, Wrapper } from './layout'

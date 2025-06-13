@@ -56,10 +56,10 @@ export function useInputEvent(props: YInputProps, attrs: Record<string, unknown>
     const value = el.value
 
     // Run native DOM event handler if present
-    // const attrHandler = attrs[event.type]
-    // if (typeof attrHandler === 'function') {
-    //   attrHandler(event)
-    // }
+    const attrHandler = attrs[event.type]
+    if (typeof attrHandler === 'function') {
+      attrHandler(event)
+    }
 
     // const value = customValue ? customValue : (event.target as HTMLInputElement).value as T
     switch (event.type) {
