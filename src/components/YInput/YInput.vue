@@ -10,7 +10,8 @@
       :class="yInputClasses"
       autocomplete="off"
       :disabled="isDisabled"
-      @:[event]="handleEvent"
+      @:[event]="handleLocalEvent"
+      @update:modelValue="emit('update:modelValue', $event)"
     />
     <YLabel v-if="label" class="y-label" :for="name">{{ label }}</YLabel>
 
@@ -27,7 +28,7 @@ import { YLabel } from '@/components/YLabel'
 import { useComponentProps } from '@/composables/component'
 import { useComponentTheme } from '@/composables/component-theme'
 import { inputEventsKey, inputEventsKeyInterface } from '@/composables/input'
-import { computed, inject, ref, useAttrs } from 'vue'
+import { computed, inject, useAttrs } from 'vue'
 import type { YInputProps } from './types'
 import './YInput.scss'
 
@@ -40,9 +41,15 @@ const props = withDefaults(defineProps<YInputProps>(), {
 })
 
 const attrs = useAttrs()
-const yInput = ref<HTMLInputElement | null>(null)
+
+// If YInput is used from another component, it will inject the input events
 const injectEvents = inject(inputEventsKey) as inputEventsKeyInterface
-console.log('📟 - injectEvents → ', injectEvents)
+
+if (injectEvents?.handleEvent === undefined) {
+  // eslint-disable-next-line no-console
+  console.warn('The YInput component is used natively')
+}
+
 const componentProps = useComponentProps({
   class: attrs.class as string | string[] | Record<string, boolean> | undefined,
 })
@@ -56,11 +63,26 @@ const yInputClasses = computed(() => {
     props.inputClass ? props.inputClass : [],
   ]
 })
+
+const emit = defineEmits(['update:modelValue'])
+
+function handleLocalEvent(event: Event) {
+  const handleEvent =
+    injectEvents?.handleEvent ||
+    ((event: Event) => {
+      if (isDisabled.value) {
+        event.preventDefault()
+      } else {
+        emit('update:modelValue', (event.target as HTMLInputElement).value)
+      }
+    })
+  return handleEvent(event)
+}
 </script>
 <!-- <script lang="ts" generic="T">
 // TODO: resolve alias
 import { YLabel } from '@/components/YLabel'
-import { useBaseProps } from '@/composables'
+import { useComponentTheme } from '@/composables'
 import { useComponentProps } from '@/composables/component'
 import { inputEventsKey, inputEventsKeyInterface } from '@/composables/input'
 import { defineComponentBaseProps } from '@/composables/use-base-props'

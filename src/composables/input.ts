@@ -43,7 +43,6 @@ export function useInput({ props, attrs, emit }: UseInputParams): inputEventsKey
   //     // isDisabled: ref(false),
   //   }
   // }
-  console.log('useInput called with props:', props)
   const {
     handleEvent,
     handleChange,

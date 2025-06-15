@@ -1,5 +1,5 @@
 export { useAnimation } from './animation'
-export { useBaseProps } from './component-theme'
+export { useComponentTheme } from './component-theme'
 export { modalDefaultProps, useModal } from './components'
 export { useComposeTheme, useTheme } from './use-compose-theme'
 export { useStorage } from './use-storage'
