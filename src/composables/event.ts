@@ -6,7 +6,6 @@ import { useComponentTheme } from './component-theme'
 export type InputEventValue = string | number | boolean
 
 export function useInputEvent(props: YInputProps, attrs: Record<string, unknown>, emit: EmitFn) {
-  console.log('📟 - props → ', props)
   if (!isClientSide()) {
     return {
       handleInput: () => {},

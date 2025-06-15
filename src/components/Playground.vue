@@ -216,6 +216,15 @@
       ut. Debitis, beatae similique!
     </YCard>
     <YColorInput v-model="color" label="Color" />
+    <h4>Print variable</h4>
+    <pre>{{ input }}</pre>
+    <pre>{{ checked }}</pre>
+    <pre>{{ color }}</pre>
+    <pre>{{ showMsg }}</pre>
+    <pre>{{ showComplexModal }}</pre>
+    <pre>{{ showDrawer }}</pre>
+    <pre>{{ $attrs }}</pre>
+    <pre>{{ $props }}</pre>
   </Wrapper>
 </template>
 

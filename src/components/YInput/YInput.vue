@@ -10,7 +10,8 @@
       :class="yInputClasses"
       autocomplete="off"
       :disabled="isDisabled"
-      @:[event]="(event) => handleLocalEvent(event)"
+      v-on="injectEvents ? injectEvents : attrs"
+      @:[event]="handleEvent"
       @update:modelValue="emit('update:modelValue', $event)"
     />
     <YLabel v-if="label" class="y-label" :for="name">{{ label }}</YLabel>
@@ -67,16 +68,15 @@ const yInputClasses = computed(() => {
 const emit = defineEmits(['update:modelValue'])
 
 function handleLocalEvent(event: Event) {
-  const handleEvent =
-    injectEvents?.handleEvent ||
-    ((event: Event) => {
-      if (isDisabled.value) {
-        event.preventDefault()
-      } else {
-        emit('update:modelValue', (event.target as HTMLInputElement).value)
-      }
-    })
-  return handleEvent(event)
+  if (injectEvents && injectEvents?.handleEvent) {
+    injectEvents.handleEvent(event)
+  } else {
+    if (isDisabled.value) {
+      event.preventDefault()
+    } else {
+      emit('update:modelValue', (event.target as HTMLInputElement).value)
+    }
+  }
 }
 </script>
 <!-- <script lang="ts" generic="T">
