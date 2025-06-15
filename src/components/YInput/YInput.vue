@@ -28,8 +28,8 @@ import { YFlex } from '@/components/YFlex'
 import { YLabel } from '@/components/YLabel'
 import { useComponentProps } from '@/composables/component'
 import { useComponentTheme } from '@/composables/component-theme'
-import { inputEventsKey, inputEventsKeyInterface } from '@/composables/input'
-import { computed, inject, useAttrs } from 'vue'
+import { inputEventsKey, inputEventsKeyInterface, useInput } from '@/composables/input'
+import { computed, defineEmits, EmitFn, inject, useAttrs } from 'vue'
 import type { YInputProps } from './types'
 import './YInput.scss'
 
@@ -40,8 +40,14 @@ const props = withDefaults(defineProps<YInputProps>(), {
   placeholder: '',
   inputRef: 'yInput',
 })
-
 const attrs = useAttrs()
+const emit: EmitFn = defineEmits(['update:modelValue'])
+
+const { modelValue } = useInput({
+  props,
+  attrs,
+  emit,
+})
 
 // If YInput is used from another component, it will inject the input events
 const injectEvents = inject(inputEventsKey) as inputEventsKeyInterface
@@ -51,7 +57,6 @@ if (injectEvents?.handleEvent === undefined) {
   console.warn('The YInput component is used natively')
 } else {
   // eslint-disable-next-line no-console
-  const { handleEvent } = injectEvents
 }
 
 const componentProps = useComponentProps({
@@ -67,8 +72,6 @@ const yInputClasses = computed(() => {
     props.inputClass ? props.inputClass : [],
   ]
 })
-
-const emit = defineEmits(['update:modelValue'])
 
 function handleLocalEvent(event: Event) {
   if (injectEvents && injectEvents?.handleEvent) {
