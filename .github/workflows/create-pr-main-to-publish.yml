@@ -1,0 +1,71 @@
+name: Release and publish package
+
+on:
+  push:
+    branches:
+      - main
+
+permissions: read-all
+
+jobs:
+  create-pr:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Set up Git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+      - name: Check for existing PR
+        id: check_pr
+        run: |
+          PR_EXISTS=$(gh pr list --base publish --head main --json number --jq '. | length')
+          echo "pr_exists=$PR_EXISTS" >> $GITHUB_ENV
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Create Pull Request
+        if: env.pr_exists == '0'
+        run: |
+          gh pr create --base publish --head main --title "Auto PR: main to publish" --body "This PR is automatically created by a GitHub Action."
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Output PR URL
+        if: env.pr_exists == '0'
+        run: |
+          PR_URL=$(gh pr view --json url --jq '.url')
+          echo "Pull Request created: $PR_URL"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Check for existing tag
+        id: check_tag
+        run: |
+          TAG_EXISTS=$(git tag -l "v*")
+          if [[ -n "$TAG_EXISTS" ]]; then
+            echo "tag_exists=true" >> $GITHUB_ENV
+          else
+            echo "tag_exists=false" >> $GITHUB_ENV
+          fi
+      - name: Create Tag
+        if: env.tag_exists == 'false'
+        run: |
+          git tag -a "v$(date +'%Y%m%d%H%M%S')" -m "Release on $(date +'%Y-%m-%d %H:%M:%S')"
+          git push origin --tags
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Publish to npm
+        run: |
+          npm install
+          npm run build
+          npm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: Output tag
+        if: env.tag_exists == 'false'
+        run: |
+          TAG=$(git describe --tags --abbrev=0)
+          echo "Tag created: $TAG"
+          echo "tag=$TAG" >> $GITHUB_ENV
