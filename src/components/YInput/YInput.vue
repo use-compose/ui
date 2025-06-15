@@ -12,7 +12,7 @@
       :disabled="isDisabled"
       v-on="injectEvents ? injectEvents : attrs"
       @:[event]="handleEvent"
-      @update:modelValue="emit('update:modelValue', $event)"
+      @update:modelValue="handleLocalEvent"
     />
     <YLabel v-if="label" class="y-label" :for="name">{{ label }}</YLabel>
 
@@ -49,6 +49,9 @@ const injectEvents = inject(inputEventsKey) as inputEventsKeyInterface
 if (injectEvents?.handleEvent === undefined) {
   // eslint-disable-next-line no-console
   console.warn('The YInput component is used natively')
+} else {
+  // eslint-disable-next-line no-console
+  const { handleEvent } = injectEvents
 }
 
 const componentProps = useComponentProps({
