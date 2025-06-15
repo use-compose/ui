@@ -1,5 +1,6 @@
 import { ThemeComponentBaseProps } from '@/types/base-props'
 import { computed } from 'vue'
+import { useRaw } from './raw'
 import { colorProps, useColor } from './tokens-theming/color'
 import { sizeProps, useSize } from './tokens-theming/size'
 import { stateProps, useState } from './tokens-theming/state'
@@ -10,6 +11,7 @@ export const basePropsDefault: ThemeComponentBaseProps = {
   size: 'medium',
   color: 'primary',
   state: 'base',
+  raw: false,
 }
 
 export const defineComponentBaseProps = {
@@ -23,34 +25,34 @@ export const defineComponentBaseProps = {
   },
 }
 
-export function useBaseProps(props: ThemeComponentBaseProps) {
+type BaseProps<T> = T & ThemeComponentBaseProps
+
+export function useComponentTheme<T>(props: BaseProps<T>) {
   const mergedProps = computed(() => ({
     ...basePropsDefault,
     ...props,
   }))
 
-  const { variantClass } = useVariant(props)
-  const { stateClass, isDisabled } = useState(props)
-  const { colorClass } = useColor(props)
-  const { sizeClass } = useSize(props)
+  const { variantClass } = useVariant(mergedProps.value)
+  const { stateClass, isDisabled } = useState(mergedProps.value)
+  const { colorClass } = useColor(mergedProps.value)
+  const { sizeClass } = useSize(mergedProps.value)
+  const { isRaw } = useRaw(mergedProps.value)
 
   const baseClasses = computed(() => {
     const classes = []
 
-    if (mergedProps.value.raw) {
+    if (isRaw.value) {
       classes.push('raw')
     }
 
-    return [variantClass.value, stateClass.value, sizeClass.value, colorClass.value]
+    classes.push(variantClass.value, stateClass.value, sizeClass.value, colorClass.value)
+    return [...classes]
   })
 
   // const semanticTokens = computed(() => {
   //   return getTokenColors(props)
   // })
-
-  const isRaw = computed(() => {
-    return props.raw
-  })
 
   return {
     baseClasses,

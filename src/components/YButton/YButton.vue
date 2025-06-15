@@ -6,7 +6,7 @@
 
 <script setup lang="ts">
 // TODO: resolve alias
-import { basePropsDefault, useBaseProps } from '@/composables/use-base-props'
+import { basePropsDefault, useComponentTheme } from '@/composables/component-theme'
 import { computed, defineProps, withDefaults } from 'vue'
 import { YButtonProps } from './types'
 import './YButton.scss'
@@ -15,7 +15,7 @@ const props = withDefaults(defineProps<YButtonProps>(), {
   ...basePropsDefault,
 })
 
-const { baseClasses, isDisabled } = useBaseProps(props)
+const { baseClasses, isDisabled } = useComponentTheme(props)
 
 const getClasses = computed(() => {
   return [[...baseClasses.value], 'y-button']

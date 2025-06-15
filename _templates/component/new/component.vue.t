@@ -20,7 +20,7 @@ const props = withDefaults(defineProps<<%= name %>Props>(), {
   ...basePropsDefault,
 })
 
-const { baseClasses } = useBaseProps(props)
+const { baseClasses } = useComponentTheme(props)
 
 const getClasses = computed(() => {
   return [[...baseClasses.value]]

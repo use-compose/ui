@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
-import YFlex from '../layout/YFlex/YFlex.vue'
+import YFlex from '../YFlex/YFlex.vue'
 import { YHighlightedText } from '../YHighlightedText'
 import YSection from './YSection.vue'
 

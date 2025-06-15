@@ -89,20 +89,23 @@
   --theme-current-color-lightness: calc(var(--color-bg-lightness) * var(--primary) + var(--color-bg-lightness) * var(--secondary) + var(--color-bg-lightness) * var(--danger));
   --theme-current-color-opacity: calc(var(--color-bg-opacity) * var(--primary) + var(--color-bg-opacity) * var(--secondary) + var(--color-bg-opacity) * var(--danger)); */
 
+  --is-box-shadow-hidden: calc(1 - var(--raw, 0));
 
   --component-box-shadow: var(--component-box-shadow-base);
   --component-box-shadow-color: var(--theme-current-color);
-  --component-box-shadow-x: calc(0.80 * var(--theme-base-unit-calc));
-  --component-box-shadow-y: calc(0.80 * var(--theme-base-unit-calc));
+  --component-box-shadow-x: calc(var(--is-box-shadow-hidden) * 0.80 * var(--theme-base-unit-calc));
+  --component-box-shadow-y: calc(var(--is-box-shadow-hidden) * 0.80 * var(--theme-base-unit-calc));
   --component-transform: translate(0, 0);
   --component-box-shadow-base: calc(var(--component-box-shadow-x) * 0.5) calc(var(--component-box-shadow-y) * 0.5) 0 0 black;
 
   /* --component-box-shadow-base: none; */
+
   --component-box-shadow-hover: var(--component-box-shadow-x) var(--component-box-shadow-y) 0 0 var(--component-box-shadow-color);
 
   /* --component-box-shadow-hover: var(--component-box-shadow-x) var(--component-box-shadow-y) 0 0 black; */
   --component-box-shadow-focus: var(--component-box-shadow-x) var(--component-box-shadow-y) 0 0 var(--component-box-shadow-color);
   --component-box-shadow-active: calc(var(--component-box-shadow-x) - 50% * var(--theme-base-unit-calc)) calc(var(--component-box-shadow-y) - 50% * var(--theme-base-unit-calc)) 0 0 var(--component-box-shadow-color);
+
 }
 
 /* 
@@ -291,12 +294,20 @@
     --focus: var(--focus-else-0);
     --disabled-else-0: var(--state);
     --disabled: var(--disabled-else-0);
-
   }
-
-
 }
 
+
+/* Raw */
+@property --raw {
+  syntax: '<number>';
+  initial-value: 0;
+  inherits: true;
+}
+
+.raw {
+  --raw: 1;
+}
 
 /* .focus,
 :focus,

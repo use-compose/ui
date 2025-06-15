@@ -12,7 +12,7 @@
 import { YButton, YFlex } from '@/components'
 
 import { useTheme } from '@/composables'
-import { basePropsDefault } from '@/composables/use-base-props'
+import { basePropsDefault } from '@/composables/component-theme'
 import { defineProps, ref, withDefaults } from 'vue'
 import { YColorInput } from '../YColorInput'
 import type { YThemePickerProps } from './types'

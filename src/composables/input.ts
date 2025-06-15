@@ -30,6 +30,20 @@ export interface inputEventsKeyInterface {
 export const inputEventsKey: InjectionKey<inputEventsKeyInterface> = Symbol('inputEvents')
 
 export function useInput({ props, attrs, emit }: UseInputParams): inputEventsKeyInterface {
+  // if (import.meta.server) {
+  //   return {
+  //     handleEvent: () => {},
+  //     handleChange: () => {},
+  //     handleInput: () => {},
+  //     handleBlur: () => {},
+  //     updateModelValue: () => {},
+  //     inputValue: ref('' as InputEventValue),
+  //     handleFocus: () => {},
+  //     modelValue: ref('' as InputEventValue),
+  //     // isDisabled: ref(false),
+  //   }
+  // }
+  console.log('useInput called with props:', props)
   const {
     handleEvent,
     handleChange,
