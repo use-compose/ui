@@ -10,7 +10,7 @@
       :class="yInputClasses"
       autocomplete="off"
       :disabled="isDisabled"
-      @:[event]="handleLocalEvent"
+      @:[event]="(event) => handleLocalEvent(event)"
       @update:modelValue="emit('update:modelValue', $event)"
     />
     <YLabel v-if="label" class="y-label" :for="name">{{ label }}</YLabel>
