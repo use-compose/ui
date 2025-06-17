@@ -206,20 +206,39 @@
 
       <!-- Complex Form as Main Slot -->
     </YModal>
+    <YInput v-model="input" :raw="true" type="time" label="Message" placeholder="Message" />
     <YInputText v-model="input" label="Message" placeholder="Message" />
     <YCheckbox v-model="checked" label="Checkbox" />
-    <YButton variant="outlined" @click="openDrawer">openCustomModal</YButton>
+    <YButton raw variant="outlined" @click="openDrawer">openCustomModal</YButton>
     <YCard>
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque quos esse blanditiis quaerat
       non sed, pariatur dolores aspernatur alias nesciunt nemo recusandae architecto quia. In, enim
       ut. Debitis, beatae similique!
     </YCard>
     <YColorInput v-model="color" label="Color" />
+    <h4>Print variable</h4>
+    <pre>{{ input }}</pre>
+    <pre>{{ checked }}</pre>
+    <pre>{{ color }}</pre>
+    <pre>{{ showMsg }}</pre>
+    <pre>{{ showComplexModal }}</pre>
+    <pre>{{ showDrawer }}</pre>
+    <pre>{{ $attrs }}</pre>
+    <pre>{{ $props }}</pre>
   </Wrapper>
 </template>
 
 <script setup lang="ts">
-import { Wrapper, YButton, YCard, YCheckbox, YColorInput, YInputText, YModal } from '@/components'
+import {
+  Wrapper,
+  YButton,
+  YCard,
+  YCheckbox,
+  YColorInput,
+  YInput,
+  YInputText,
+  YModal,
+} from '@/components'
 import { ref } from 'vue'
 import { YModalSize, YModalType } from './YModal/types'
 

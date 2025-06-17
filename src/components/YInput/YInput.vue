@@ -10,7 +10,9 @@
       :class="yInputClasses"
       autocomplete="off"
       :disabled="isDisabled"
+      v-on="injectEvents ? injectEvents : attrs"
       @:[event]="handleEvent"
+      @update:modelValue="handleLocalEvent"
     />
     <YLabel v-if="label" class="y-label" :for="name">{{ label }}</YLabel>
 
@@ -21,10 +23,72 @@
   </YFlex>
 </template>
 
-<script lang="ts" generic="T">
+<script setup lang="ts">
+import { YFlex } from '@/components/YFlex'
+import { YLabel } from '@/components/YLabel'
+import { useComponentProps } from '@/composables/component'
+import { useComponentTheme } from '@/composables/component-theme'
+import { inputEventsKey, inputEventsKeyInterface, useInput } from '@/composables/input'
+import { computed, defineEmits, EmitFn, inject, useAttrs } from 'vue'
+import type { YInputProps } from './types'
+import './YInput.scss'
+
+const props = withDefaults(defineProps<YInputProps>(), {
+  // ...defineComponentBaseProps,
+  name: 'input-' + Math.random().toString(36).substring(7),
+  type: 'text',
+  placeholder: '',
+  inputRef: 'yInput',
+})
+const attrs = useAttrs()
+const emit: EmitFn = defineEmits(['update:modelValue'])
+
+const { modelValue } = useInput({
+  props,
+  attrs,
+  emit,
+})
+
+// If YInput is used from another component, it will inject the input events
+const injectEvents = inject(inputEventsKey) as inputEventsKeyInterface
+
+if (injectEvents?.handleEvent === undefined) {
+  // eslint-disable-next-line no-console
+  console.warn('The YInput component is used natively')
+} else {
+  // eslint-disable-next-line no-console
+}
+
+const componentProps = useComponentProps({
+  class: attrs.class as string | string[] | Record<string, boolean> | undefined,
+})
+const { baseClasses, isDisabled } = useComponentTheme(props)
+const yInputClasses = computed(() => {
+  return [
+    ...baseClasses.value,
+    'y-input',
+    props.hero ? 'y-input-hero' : '',
+    ...componentProps.value,
+    props.inputClass ? props.inputClass : [],
+  ]
+})
+
+function handleLocalEvent(event: Event) {
+  if (injectEvents && injectEvents?.handleEvent) {
+    injectEvents.handleEvent(event)
+  } else {
+    if (isDisabled.value) {
+      event.preventDefault()
+    } else {
+      emit('update:modelValue', (event.target as HTMLInputElement).value)
+    }
+  }
+}
+</script>
+<!-- <script lang="ts" generic="T">
 // TODO: resolve alias
 import { YLabel } from '@/components/YLabel'
-import { useBaseProps } from '@/composables'
+import { useComponentTheme } from '@/composables'
 import { useComponentProps } from '@/composables/component'
 import { inputEventsKey, inputEventsKeyInterface } from '@/composables/input'
 import { defineComponentBaseProps } from '@/composables/use-base-props'
@@ -82,11 +146,12 @@ export default defineComponent({
     // eslint-disable-next-line no-console
     console.log('📟 - context → ', context)
     // Use the base props composable to get common classes and disabled state
-    const { baseClasses, isDisabled } = useBaseProps(props)
+    const { baseClasses, isDisabled } = useComponentTheme(props)
     const attrs = useAttrs()
     const yInput = ref<HTMLInputElement | null>(null)
 
-    const { handleEvent, modelValue } = inject(inputEventsKey) as inputEventsKeyInterface
+    const injec = inject(inputEventsKey) as inputEventsKeyInterface
+    console.log('📟 - qsdqsd → ', qsdqsd)
 
     const componentProps = useComponentProps({
       class: attrs.class as string | string[] | Record<string, boolean> | undefined,
@@ -159,38 +224,4 @@ export default defineComponent({
     }
     // const { updateModelValue, handleChange, handleInput, handleBlur, modelValue } = inputEvents
   },
-})
-// This is the setup function for the component
-
-// const { eventsToEmit, triggerEvent } = useDynamicEmits(attrs)
-// console.log('📟 - eventsToEmit → ', eventsToEmit)
-
-// eventsToEmit?.forEach((event: string) => {
-//   console.log('📟 - event → ', event)
-//   console.log('📟 - attrs[event] → ', attrs[event])
-//   // console.log('📟 - event → ', event)
-//   // console.log('📟 - attrs[event] → ', attrs[event])
-// })
-// // if (attrs[eventsToEmit]) {
-// //   console.log('📟 - eventsToEmit → ', eventsToEmit)
-// //   console.log('📟 - triggerEvent → ', triggerEvent)
-// // }
-// // console.log('📟 - eventsToEmit → ', eventsToEmit)
-// // listen to input event
-// // const emit = defineEmits(eventsToEmit)
-
-// // const eventToEmits = att
-
-// function handleEvent(event: Event) {
-//   console.log('📟 - event → ', event)
-//   // If change event emit exists, call it
-//   if (attrs[event]) {
-//     // console.log('📟 - eventToEmits → ', eventToEmits)
-//     // console.log('📟 - attrs[event] → ', attrs[event])
-//     // @ts-ignore
-//     const isCustomEvent = event.replace(/^on/, '').toLowerCase()
-//     triggerEvent(isCustomEvent, attrs[event])
-//   }
-//   // emit('update:modelValue', (event.target as HTMLInputElement).value)
-// }
-</script>
+}) -->

@@ -2,10 +2,10 @@ export { default as AppCompose } from './AppCompose.vue'
 
 //  layout
 // export { Container, Flex, Wrapper } from './layout'
-export { default as Wrapper } from './layout/Wrapper.vue'
-export { YColumn } from './layout/YColumn'
-export { YContainer } from './layout/YContainer'
-export { YFlex } from './layout/YFlex'
+export { default as Wrapper } from './Wrapper.vue'
+export { YColumn } from './YColumn'
+export { YContainer } from './YContainer'
+export { YFlex } from './YFlex'
 
 // form
 export { YButton } from './YButton'
