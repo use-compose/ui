@@ -48,7 +48,10 @@ jobs:
           -H "Accept: application/vnd.github+json" \
           -H "X-GitHub-Api-Version: 2022-11-28" \
           /repos/use-compose/compose-ui/releases \
-          -f "target_commitish=main" -f "make_latest=true" -f "draft=false" -f "prerelease=false" \
+          -f "target_commitish=main" -f "make_latest=true" -f "draft=false" -f "prerelease=false"
+        env:
+          GH_TOKEN: ${{ github.token }}
+
       - name: Create Tag
         if: env.tag_exists == 'false'
         run: |
@@ -56,6 +59,7 @@ jobs:
           git push origin --tags
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Publish to npm
         run: |
           npm install
