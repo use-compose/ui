@@ -25,6 +25,19 @@ const meta: Meta<typeof <%= name %>> = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-const { Default } = generateCommonStories()
+const renderGenericStory: Story = {
+  render: (args: <%= name %>Props, { argTypes }) => ({
+    components: { <%= name %> },
+    props: Object.keys(argTypes),
+    template: `
+      <<%= name %> v-bind="args" />
+  `,
+    setup() {
+      return { args }
+    },
+  }),
+}
 
-export { Default }
+const { Default, Outlined, Disabled, Raw, Small, Large } = generateCommonStories(renderGenericStory)
+
+export { Default, Outlined, Disabled, Raw, Small, Large }

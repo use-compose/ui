@@ -11,8 +11,10 @@ export { YFlex } from './YFlex'
 export { YButton } from './YButton'
 export { YCheckbox } from './YCheckbox'
 export { YColorInput } from './YColorInput'
+export { YDateInput } from './YDateInput'
 export { YInput } from './YInput'
 export { YInputText } from './YInputText'
+export { YTimeInput } from './YTimeInput'
 
 // data-display
 export { YCard } from './YCard'

@@ -1,10 +1,17 @@
 import { ThemeComponentBaseProps } from '@/types/base-props'
 import { computed } from 'vue'
-import { useRaw } from './raw'
-import { colorProps, useColor } from './tokens-theming/color'
-import { sizeProps, useSize } from './tokens-theming/size'
-import { stateProps, useState } from './tokens-theming/state'
-import { useVariant, variantProps } from './tokens-theming/variant'
+import {
+  colorProps,
+  rawProps,
+  sizeProps,
+  stateProps,
+  useColor,
+  useRaw,
+  useSize,
+  useState,
+  useVariant,
+  variantProps,
+} from './theming'
 
 export const basePropsDefault: ThemeComponentBaseProps = {
   variant: 'contained',
@@ -19,10 +26,7 @@ export const defineComponentBaseProps = {
   ...variantProps,
   ...stateProps,
   ...sizeProps,
-  raw: {
-    type: Boolean,
-    default: false,
-  },
+  ...rawProps,
 }
 
 type BaseProps<T> = T & ThemeComponentBaseProps
@@ -37,16 +41,18 @@ export function useComponentTheme<T>(props: BaseProps<T>) {
   const { stateClass, isDisabled } = useState(mergedProps.value)
   const { colorClass } = useColor(mergedProps.value)
   const { sizeClass } = useSize(mergedProps.value)
-  const { isRaw } = useRaw(mergedProps.value)
+  const { rawClasses } = useRaw(mergedProps.value)
 
   const baseClasses = computed(() => {
     const classes = []
 
-    if (isRaw.value) {
-      classes.push('raw')
-    }
-
-    classes.push(variantClass.value, stateClass.value, sizeClass.value, colorClass.value)
+    classes.push(
+      variantClass.value,
+      stateClass.value,
+      sizeClass.value,
+      colorClass.value,
+      rawClasses.value,
+    )
     return [...classes]
   })
 
@@ -57,7 +63,6 @@ export function useComponentTheme<T>(props: BaseProps<T>) {
   return {
     baseClasses,
     isDisabled,
-    isRaw,
     // semanticTokens,
   }
 }

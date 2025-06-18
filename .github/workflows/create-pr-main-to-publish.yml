@@ -50,12 +50,12 @@ jobs:
         run: |
           # Extract tag_name from package.json (assumes "version": "1.2.3")
           TAG_NAME="v$(jq -r .version package.json)"
-          
+
           gh api \
             --method POST \
             -H "Accept: application/vnd.github+json" \
             -H "X-GitHub-Api-Version: 2022-11-28" \
-            /repos/use-compose/compose-ui/releases \
+            /repos/use-compose/ui/releases \
             -f tag_name="$TAG_NAME" \
             -f target_commitish=main \
             -f name="$TAG_NAME" \

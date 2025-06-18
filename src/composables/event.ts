@@ -30,6 +30,7 @@ export function useInputEvent(props: YInputProps, attrs: Record<string, unknown>
 
   function updateModelValue(value: InputEventValue) {
     emit('update:modelValue', value)
+
     inputValue.value = value
   }
 
