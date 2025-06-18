@@ -6,9 +6,6 @@
     type="checkbox"
     input-class="y-checkbox"
     class="y-checkbox-wrapper"
-    :name="name"
-    autocomplete="off"
-    @blur="handleEvent"
     @change="handleCheckedChange"
   />
 </template>
@@ -38,13 +35,11 @@ defineOptions({
 // listen to input event
 const emit: EmitFn = defineEmits(['update:modelValue', 'blur', 'change', 'input'])
 const attrs = useAttrs()
-const { handleEvent, handleChange, modelValue, handleFocus } = useInput({
+const { handleChange, modelValue } = useInput({
   props,
   attrs,
   emit,
 })
-// eslint-disable-next-line no-console
-console.log('📟 - handleFocus → ', handleFocus)
 
 // const handleFocus = () => yInput.value?.focus()
 const handleCheckedChange = (event: Event) => {

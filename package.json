@@ -1,5 +1,6 @@
 {
   "name": "@use-compose/ui",
+  "version": "0.0.3",
   "files": [
     "dist"
   ],
@@ -9,6 +10,11 @@
   "types": "./dist/index.d.ts",
   "exports": {
     "./package.json": "./package.json",
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs",
+      "types": "./dist/index.d.ts"
+    },
     "./components": {
       "import": "./dist/components",
       "require": "./dist/components"
@@ -16,10 +22,6 @@
     "./composables": {
       "import": "./dist/composables/",
       "require": "./dist/composables/"
-    },
-    "./types": {
-      "import": "./dist/types/",
-      "require": "./dist/types/"
     },
     "./style": {
       "import": "./dist/style.css",
@@ -29,7 +31,6 @@
   "sideEffects": [
     "./dist/style.css"
   ],
-  "version": "0.0.2",
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc && vite build",
@@ -66,7 +67,6 @@
     "vue": "3.5.16"
   },
   "devDependencies": {
-    "@chromatic-com/storybook": "^3.2.3",
     "@eslint/js": "^9.26.0",
     "@storybook/addon-a11y": "^8.4.7",
     "@storybook/addon-designs": "^8.0.4",
@@ -90,6 +90,7 @@
     "eslint-plugin-vue": "^10.0.0",
     "globals": "^16.1.0",
     "husky": "8.0.3",
+    "hygen": "^6.2.11",
     "lint-staged": "16.1.0",
     "prettier": "3.5.3",
     "prettier-plugin-organize-imports": "4.1.0",
@@ -111,6 +112,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/use-compose/compose-ui.git"
+    "url": "https://github.com/use-compose/ui.git"
   }
 }

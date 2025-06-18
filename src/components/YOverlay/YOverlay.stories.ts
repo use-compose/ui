@@ -1,7 +1,6 @@
 import type { ArgTypes, Meta, StoryObj } from '@storybook/vue3'
 
 import { YButton } from '@/components'
-import { action } from '@storybook/addon-actions'
 import { ref } from 'vue'
 import YOverlay, { YOverlayProps } from './YOverlay.vue'
 
@@ -23,8 +22,7 @@ const meta: Meta<typeof YOverlay> = {
     color: '',
     opacity: 0.5,
     blur: '8px',
-    onClick: action('onClick'),
-  }, // default value
+  }, // default value´
 }
 
 export default meta

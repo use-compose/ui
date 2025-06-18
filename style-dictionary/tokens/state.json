@@ -22,7 +22,7 @@
     },
     "hover": {
       "bg": {
-        "lightness": { "value": 0.1 },
+        "lightness": { "value": 0.05 },
         "chroma": { "value": 0 },
         "hue": { "value": 0 },
         "opacity": { "value": 1 }
@@ -42,7 +42,7 @@
     },
     "active": {
       "bg": {
-        "lightness": { "value": 0.2 },
+        "lightness": { "value": 0.1 },
         "chroma": { "value": 0 },
         "hue": { "value": 0 },
         "opacity": { "value": 1 }
@@ -62,7 +62,7 @@
     },
     "focus": {
       "bg": {
-        "lightness": { "value": 0.2 },
+        "lightness": { "value": 0.15 },
         "chroma": { "value": 0 },
         "hue": { "value": 0 },
         "opacity": { "value": 1 }

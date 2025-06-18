@@ -43,14 +43,14 @@ const renderGenericStory: Story = {
     components: { YCheckbox },
     props: Object.keys(argTypes),
     template: `
-    <YCheckbox v-bind="args"  />
+    <YCheckbox v-bind="args" v-model="checked"  />
   `,
     setup(props: YCheckboxProps) {
       const checked = ref(false)
 
       return {
         modelValue: props.modelValue,
-        args,
+        props: args,
         checked,
       }
     },

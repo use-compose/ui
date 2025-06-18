@@ -16,10 +16,12 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+
       - name: Set up Git
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
+
       - name: Check for existing PR
         id: check_pr
         run: |
@@ -27,12 +29,14 @@ jobs:
           echo "pr_exists=$PR_EXISTS" >> $GITHUB_ENV
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Create Pull Request
         if: env.pr_exists == '0'
         run: |
           gh pr create --base publish --head main --title "Auto PR: main to publish" --body "This PR is automatically created by a GitHub Action."
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Output PR URL
         if: env.pr_exists == '0'
         run: |
@@ -40,15 +44,25 @@ jobs:
           echo "Pull Request created: $PR_URL"
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Check for existing tag
         id: check_tag
         run: |
+          # Extract tag_name from package.json (assumes "version": "1.2.3")
+          TAG_NAME="v$(jq -r .version package.json)"
+
           gh api \
-          --method POST \
-          -H "Accept: application/vnd.github+json" \
-          -H "X-GitHub-Api-Version: 2022-11-28" \
-          /repos/use-compose/compose-ui/releases \
-          -f "target_commitish=main" -f "make_latest=true" -f "draft=false" -f "prerelease=false"
+            --method POST \
+            -H "Accept: application/vnd.github+json" \
+            -H "X-GitHub-Api-Version: 2022-11-28" \
+            /repos/use-compose/ui/releases \
+            -f tag_name="$TAG_NAME" \
+            -f target_commitish=main \
+            -f name="$TAG_NAME" \
+            -f make_latest=true \
+            -F draft=false \
+            -F prerelease=false
+
         env:
           GH_TOKEN: ${{ github.token }}
 
@@ -67,6 +81,7 @@ jobs:
           npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
       - name: Output tag
         if: env.tag_exists == 'false'
         run: |

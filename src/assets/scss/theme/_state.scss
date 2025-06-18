@@ -5,7 +5,7 @@
   @include mixins.resolve-lch-value('state', #{$state});
   @include mixins.state(
     bg-lightness,
-    calc(var(--state-base-bg-lightness) + var(--state-#{$state}-bg-lightness))
+    calc(var(--state-base-bg-lightness) - var(--state-#{$state}-bg-lightness))
   );
   @include utils.component(box-shadow, utils.component(box-shadow-#{$state}));
   @include utils.component(transform, utils.component(transform-#{$state}));
