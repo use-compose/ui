@@ -17,7 +17,7 @@
 </template>
 
 <script setup lang="ts">
-import { EmitFn, useAttrs } from 'vue'
+import { useAttrs } from 'vue'
 
 import { YFlex } from '@/components/YFlex'
 import { YLabel } from '@/components/YLabel'
@@ -36,7 +36,6 @@ const props = withDefaults(defineProps<YInputProps>(), {
   inputRef: 'yInput',
 })
 // const attrs = useAttrs()
-const emit: EmitFn = defineEmits(['update:modelValue'])
 
 // const { modelValue } = useInput({
 //   props,

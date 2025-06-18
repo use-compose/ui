@@ -47,8 +47,7 @@ const renderGenericStory: Story = {
   `,
     setup(props: YCheckboxProps) {
       const checked = ref(false)
-      console.log('props', props)
-      console.log('args', args)
+
       return {
         modelValue: props.modelValue,
         props: args,
