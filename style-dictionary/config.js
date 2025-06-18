@@ -71,7 +71,7 @@ export default {
         // 'color/saturation',
         // 'color/lightness',
         'attribute/cti', // pick up category/type/item
-        'color/hsl',
+        // 'color/hsl',
         // 'custom/component-state',
       ],
       buildPath: './src/assets/css/theme/',

@@ -1,5 +1,5 @@
 import { YInputProps } from '@/components/YInput/types'
-import { EmitFn, InjectionKey, provide, Ref, ref, watch } from 'vue'
+import { InjectionKey, provide, Ref, ref, watch } from 'vue'
 import { InputEventValue, useInputEvent } from './event'
 // type YinputEvents = 'update:modelValue' | 'focus' | 'blur' | 'change' | 'input' | 'click'
 
@@ -9,7 +9,7 @@ interface UseInputParams {
   // This allows for more flexibility in the props passed to useInput
   props: YInputProps & { modelValue?: string | number | boolean }
   attrs: Record<string, unknown>
-  emit: EmitFn
+  emit: (event: string, value: InputEventValue) => void
 
   // TODO:?
   // editor?: Editor
@@ -30,6 +30,19 @@ export interface inputEventsKeyInterface {
 export const inputEventsKey: InjectionKey<inputEventsKeyInterface> = Symbol('inputEvents')
 
 export function useInput({ props, attrs, emit }: UseInputParams): inputEventsKeyInterface {
+  // if (import.meta.server) {
+  //   return {
+  //     handleEvent: () => {},
+  //     handleChange: () => {},
+  //     handleInput: () => {},
+  //     handleBlur: () => {},
+  //     updateModelValue: () => {},
+  //     inputValue: ref('' as InputEventValue),
+  //     handleFocus: () => {},
+  //     modelValue: ref('' as InputEventValue),
+  //     // isDisabled: ref(false),
+  //   }
+  // }
   const {
     handleEvent,
     handleChange,

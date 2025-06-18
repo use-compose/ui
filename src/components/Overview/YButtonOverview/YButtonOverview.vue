@@ -51,7 +51,7 @@
 <script setup lang="ts">
 import { YButton, YColorInput, YFlex } from '@/components'
 import { useTheme } from '@/composables'
-import { basePropsDefault } from '@/composables/use-base-props'
+import { basePropsDefault } from '@/composables/component-theme'
 import { colors, states, ThemeComponentBaseProps, variants } from '@/types/base-props'
 
 export interface YButtonOverviewProps extends ThemeComponentBaseProps {}

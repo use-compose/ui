@@ -1,6 +1,5 @@
 import { useThemeComponentStory } from '@/composables'
 import type { Meta, StoryObj } from '@storybook/vue3'
-import { defineEmits } from 'vue'
 import YColorInput from './YColorInput.vue'
 import { YColorInputProps } from './types'
 
@@ -41,16 +40,16 @@ const renderGenericStory: Story = {
     <YColorInput v-bind="args" />
   `,
     setup() {
-      const emit = defineEmits(['update:modelValue', 'blur'])
+      // const emit = defineEmits(['update:modelValue', 'blur'])
 
-      const handleInput = (event: Event) => {
-        emit('update:modelValue', (event.target as HTMLInputElement).value)
-      }
+      // const handleInput = (event: Event) => {
+      //   emit('update:modelValue', (event.target as HTMLInputElement).value)
+      // }
 
       return {
         args,
-        modelValue: 'fsddf',
-        handleInput,
+        // modelValue: 'fsddf',
+        // handleInput,
       }
     },
   }),

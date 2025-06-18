@@ -2,7 +2,7 @@ import type { Preview } from '@storybook/vue3'
 import { AppCompose, Wrapper, type YTheme } from '../src'
 
 const theme: YTheme = {
-  primary: '#6F53DB',
+  primary: '#e3c567',
   secondary: '#5942AF',
   background: '#f5f5f5',
   dark: '#0b0c0c',

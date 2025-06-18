@@ -6,9 +6,6 @@
     type="checkbox"
     input-class="y-checkbox"
     class="y-checkbox-wrapper"
-    :name="name"
-    autocomplete="off"
-    @blur="handleEvent"
     @change="handleCheckedChange"
   />
 </template>
@@ -16,8 +13,8 @@
 <script setup lang="ts">
 import { YInput } from '@/components/YInput'
 import { useAnimation } from '@/composables/animation'
+import { basePropsDefault } from '@/composables/component-theme'
 import { useInput } from '@/composables/input'
-import { basePropsDefault } from '@/composables/use-base-props'
 import { EmitFn, onMounted, useAttrs, useTemplateRef } from 'vue'
 import type { YCheckboxProps } from './types'
 import './YCheckbox.scss'
@@ -38,13 +35,11 @@ defineOptions({
 // listen to input event
 const emit: EmitFn = defineEmits(['update:modelValue', 'blur', 'change', 'input'])
 const attrs = useAttrs()
-const { handleEvent, handleChange, modelValue, handleFocus } = useInput({
+const { handleChange, modelValue } = useInput({
   props,
   attrs,
   emit,
 })
-// eslint-disable-next-line no-console
-console.log('📟 - handleFocus → ', handleFocus)
 
 // const handleFocus = () => yInput.value?.focus()
 const handleCheckedChange = (event: Event) => {

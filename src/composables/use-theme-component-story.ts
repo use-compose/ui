@@ -69,7 +69,7 @@ export function useThemeComponentStory<T extends ThemeComponentBaseProps>(compon
   } {
     const Default = {
       ...componentBaseStory,
-      args: { ...commonArgs },
+      args: { ...commonArgs, ...componentBaseStory.args },
     }
 
     const Primary: Story = {

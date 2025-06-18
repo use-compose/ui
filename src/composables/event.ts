@@ -1,7 +1,7 @@
 import { YInputProps } from '@/components/YInput/types'
 import { isClientSide } from '@/utils/is-client-side'
 import { EmitFn, Ref, ref } from 'vue'
-import { useBaseProps } from './use-base-props'
+import { useComponentTheme } from './component-theme'
 
 export type InputEventValue = string | number | boolean
 
@@ -26,10 +26,11 @@ export function useInputEvent(props: YInputProps, attrs: Record<string, unknown>
 
   const inputValue: Ref<string | number | boolean> = ref(props.modelValue ?? getFallbackValue())
 
-  const { isDisabled } = useBaseProps(props)
+  const { isDisabled } = useComponentTheme(props)
 
   function updateModelValue(value: InputEventValue) {
     emit('update:modelValue', value)
+
     inputValue.value = value
   }
 

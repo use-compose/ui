@@ -16,7 +16,7 @@
   --state-base-text-chroma: 0;
   --state-base-text-hue: 0;
   --state-base-text-opacity: 1;
-  --state-hover-bg-lightness: 0.1;
+  --state-hover-bg-lightness: 0.05;
   --state-hover-bg-chroma: 0;
   --state-hover-bg-hue: 0;
   --state-hover-bg-opacity: 1;
@@ -28,7 +28,7 @@
   --state-hover-text-chroma: 0;
   --state-hover-text-hue: 0;
   --state-hover-text-opacity: 1;
-  --state-active-bg-lightness: 0.2;
+  --state-active-bg-lightness: 0.1;
   --state-active-bg-chroma: 0;
   --state-active-bg-hue: 0;
   --state-active-bg-opacity: 1;
@@ -40,7 +40,7 @@
   --state-active-text-chroma: 0;
   --state-active-text-hue: 0;
   --state-active-text-opacity: 1;
-  --state-focus-bg-lightness: 0.2;
+  --state-focus-bg-lightness: 0.15;
   --state-focus-bg-chroma: 0;
   --state-focus-bg-hue: 0;
   --state-focus-bg-opacity: 1;

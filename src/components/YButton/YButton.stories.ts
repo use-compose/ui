@@ -2,7 +2,6 @@ import type { Meta, StoryObj } from '@storybook/vue3'
 
 import { useThemeComponentStory } from '@/composables'
 import YButton from './YButton.vue'
-import type { YButtonProps } from './types'
 
 const { commonArgTypes, generateCommonStories } = useThemeComponentStory(YButton)
 
@@ -28,15 +27,12 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 const renderGenericStory: Story = {
-  render: (args: YButtonProps, { argTypes }) => ({
+  render: (_, { argTypes }) => ({
     components: { YButton },
     props: Object.keys(argTypes),
     template: `
-    <YButton v-bind="args">Label</YButton>
+    <YButton v-bind="$props">Label</YButton>
   `,
-    setup() {
-      return { args }
-    },
   }),
   args: {
     size: 'medium',

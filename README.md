@@ -1,15 +1,19 @@
-# UI Library
+# Compose UI
+
+Unopinionated personal UI components library, that uses a mix of SCSS, runtime CSS Custom Properties and (less possible) JavaScript to allow dynamic theming and runtime color changes.
 
 Vue 3 / Vite components Library using CSS Custom Properties and OKlch color space, allowing dynamic theming and runtime color changes.
 
+- Unopinionated
+- Aim to use more CSS/SCSS and less JavaScript
+- Uses OKlch color space ([OKLCH](https://www.w3.org/TR/css-color-4/#oklch-notation) - https://www.w3.org/TR/css-color-4/#oklch-notation) - using each channel to control different aspects of the color (lightness, chroma, hue) as each of them is represented by a color, a variant and a state.
+- The interest is that everything is derivated from just one color at first, but it aims to be also usable with a predefined set of color in a Design System
+
 ## Installation
-
-````bash
-
 
 ```bash
 npm install
-````
+```
 
 Start playground
 
@@ -17,7 +21,7 @@ Start playground
 npm run dev
 ```
 
-## Storybook - [Link](https://compose-ui.arthurplazanet.com/)
+## Storybook - [Link](https://ui.arthurplazanet.com/)
 
 Start locally
 
@@ -25,106 +29,63 @@ Start locally
 npm run storybook
 ```
 
-## Run style-dictionary
+## Run style-dictionary - [Link](https://github.com/use-compose/ui/tree/dev/style-dictionary)
 
 ```bash
 npm run build:style
 ```
 
-## Assets structure
+## Assets - [Link](https://github.com/use-compose/ui/tree/dev/src/assets)
 
-### Mixins and functions to initialize CSS Custom Properties
+## Usage
 
-See [CSS Custom Properties (vars) with SASS/SCSS, a practical architecture strategy](https://dev.to/felipperegazio/css-custom-properties-vars-with-sass-scss-a-practical-architecture-strategy-1m88)
+1. Import the type `YTheme` to define your theme
 
-### Theming with HSL
+```vue
+<script setup lang="ts">
+import type { YTheme } from '@use-compose/ui'
 
-3 main props:
-
-#### Color: primary, secondary, danger - will play on the hue
-
-#### Variant: contained, outlined, text - will play on the opacity/lightness
-
-#### State: base, hover, focus/focus-visible, active, disabled - will play on the lightness
-
-With base Design Tokens for initial changing values: [style-dictionary](https://github.com/amzn/style-dictionary/tree/main)
-
-Sources:
-
-- [Switch font color for different backgrounds with CSS](https://css-tricks.com/switch-font-color-for-different-backgrounds-with-css/)
-- [Creating Color Themes With Custom Properties, HSL, and a Little calc()](https://css-tricks.com/creating-color-themes-with-custom-properties-hsl-and-a-little-calc/)
-
-#### Conditional / Boolean value in CSS
-
-- [Pseudo-boolean CSS custom properties](https://keithclark.co.uk/articles/pseudo-boolean-css-custom-properties/)
-
-#### CSS-only Type Grinding
-
-- [(not fully used) Cyclic Dependency Space Toggles](https://kizu.dev/cyclic-toggles/)
-
-- [Inline conditionals in CSS, now?](https://lea.verou.me/blog/2024/css-conditionals-now/)
-
-- [CSS-only Type Grinding](https://www.bitovi.com/blog/css-only-type-grinding-casting-tokens-into-useful-values)
-
-```css
-@property --color {
-  syntax: 'primary | secondary | danger';
-  initial-value: primary;
-  inherits: true;
+// The format of the color can be any valid CSS color value, such as hex, rgb, rgba, hsl, hsla, or named colors.
+const theme: YTheme = {
+  primary: '#6F53DB',
+  secondary: '#5942AF',
+  background: '#f5f5f5',
+  dark: '#0b0c0c',
+  danger: '#96524a',
 }
 
-@property --primary {
-  syntax: '<integer>';
-  initial-value: 1;
-  inherits: true;
-}
+// You can also save the theme in a reactive variable, such as `useCookie` if you're using Nuxt
 
-@property --secondary {
-  syntax: '<integer>';
-  initial-value: 1;
-  inherits: true;
-}
+// TODO: verify if needed 2 steps
+const theme: YTheme | undefined = useCookie<{ primary: string; background: string; dark: string }>(
+  'theme',
+)
+const myTheme = theme.value
+  ? theme.value
+  : { primary: '#000', background: '#ABCDF8', dark: '#0b0c0c' }
+</script>
+```
 
-@property --danger {
-  syntax: '<integer>';
-  initial-value: 1;
-  inherits: true;
-}
+2. Import the `AppCompose` component in the root of your app
 
-@property --primary-else-0 {
-  syntax: 'primary | <integer>';
-  initial-value: 0;
-  inherits: true;
-}
+```vue
+<template>
+  <AppCompose :theme="myTheme">
+    <!-- Your app content goes here -->
+  </AppCompose>
+</template>
 
-@property --secondary-else-0 {
-  syntax: 'secondary | <integer>';
-  initial-value: 0;
-  inherits: true;
-}
+<script setup lang="ts">
+import { AppCompose } from '@use-compose/ui'
+</script>
+```
 
-@property --danger-else-0 {
-  syntax: 'danger | <integer>';
-  initial-value: 0;
-  inherits: true;
-}
+3. Use and access the theme with the `useTheme` composable later anywhere in your app
 
---danger-else-0: var(--color);
---danger: var(--danger-else-0);
+```vue
+<script setup lang="ts">
+import { useTheme } from 'ui'
 
---primary-else-0: var(--color);
---primary: var(--primary-else-0);
-
---secondary-else-0: var(--color);
---secondary: var(--secondary-else-0);
-
---theme-current-color: color-mix(
-  in srgb,
-  var(--color-primary) calc(var(--primary) * 100%),
-  color-mix(
-    in srgb,
-    var(--color-secondary) calc(var(--secondary) * 100%),
-    var(--color-danger) calc(var(--danger) * 100%)
-  )
-);
+const { theme, setPrimary, setBackground } = useTheme()
+</script>
 ```

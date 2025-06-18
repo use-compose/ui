@@ -1,7 +1,7 @@
 import { YButton } from '@/components/YButton'
 import { useThemeComponentStory } from '@/composables'
 import { ArgTypes, Meta, StoryObj } from '@storybook/vue3'
-import { YFlex } from '../layout/YFlex'
+import { YFlex } from '../YFlex'
 import YCard, { YCardProps } from './YCard.vue'
 
 const { commonArgTypes, generateCommonStories } = useThemeComponentStory(YCard)
