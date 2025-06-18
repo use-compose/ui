@@ -206,8 +206,8 @@
 
       <!-- Complex Form as Main Slot -->
     </YModal>
-    <YInput v-model="input" :raw="true" type="time" label="Message" placeholder="Message" />
-    <YInputText v-model="input" label="Message" placeholder="Message" />
+    <!-- <YInput v-model="input" :raw="true" type="time" label="Message" placeholder="Message" /> -->
+    <YInputText v-model="input" :raw="true" label="Message" placeholder="Message" />
     <YCheckbox v-model="checked" label="Checkbox" />
     <YButton raw variant="outlined" @click="openDrawer">openCustomModal</YButton>
     <YCard>
@@ -215,6 +215,8 @@
       non sed, pariatur dolores aspernatur alias nesciunt nemo recusandae architecto quia. In, enim
       ut. Debitis, beatae similique!
     </YCard>
+    <YDateInput v-model="date" label="Date Input" placeholder="Select a date" />
+    <YTimeInput v-model="time" label="Time Input" placeholder="Select a time" />
     <YColorInput v-model="color" label="Color" />
     <h4>Print variable</h4>
     <pre>{{ input }}</pre>
@@ -235,9 +237,10 @@ import {
   YCard,
   YCheckbox,
   YColorInput,
-  YInput,
+  YDateInput,
   YInputText,
   YModal,
+  YTimeInput,
 } from '@/components'
 import { ref } from 'vue'
 import { YModalSize, YModalType } from './YModal/types'
@@ -248,6 +251,8 @@ const input = ref('')
 const checked = ref(false)
 const color = ref('#e3c567')
 // const color = ref('')
+const date = ref('')
+const time = ref('')
 const showMsg = ref(false)
 
 const showComplexModal = ref(false)

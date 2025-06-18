@@ -21,7 +21,7 @@ Start playground
 npm run dev
 ```
 
-## Storybook - [Link](https://compose-ui.arthurplazanet.com/)
+## Storybook - [Link](https://ui.arthurplazanet.com/)
 
 Start locally
 
@@ -29,13 +29,13 @@ Start locally
 npm run storybook
 ```
 
-## Run style-dictionary - [Link](https://github.com/use-compose/compose-ui/tree/dev/style-dictionary)
+## Run style-dictionary - [Link](https://github.com/use-compose/ui/tree/dev/style-dictionary)
 
 ```bash
 npm run build:style
 ```
 
-## Assets - [Link](https://github.com/use-compose/compose-ui/tree/dev/src/assets)
+## Assets - [Link](https://github.com/use-compose/ui/tree/dev/src/assets)
 
 ## Usage
 
@@ -43,7 +43,7 @@ npm run build:style
 
 ```vue
 <script setup lang="ts">
-import type { YTheme } from 'compose-ui'
+import type { YTheme } from '@use-compose/ui'
 
 // The format of the color can be any valid CSS color value, such as hex, rgb, rgba, hsl, hsla, or named colors.
 const theme: YTheme = {
@@ -76,7 +76,7 @@ const myTheme = theme.value
 </template>
 
 <script setup lang="ts">
-import { AppCompose } from 'compose-ui'
+import { AppCompose } from '@use-compose/ui'
 </script>
 ```
 
@@ -84,7 +84,7 @@ import { AppCompose } from 'compose-ui'
 
 ```vue
 <script setup lang="ts">
-import { useTheme } from 'compose-ui'
+import { useTheme } from 'ui'
 
 const { theme, setPrimary, setBackground } = useTheme()
 </script>

@@ -6,34 +6,20 @@
     :value="modelValue"
     @input="handleInput"
   />
-  <!-- <div><p>qsdqs</p></div> -->
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
 import { YInput } from '@/components/YInput'
 import { useInput } from '@/composables/input'
-import { defineComponent, SetupContext, useAttrs } from 'vue'
+import { defineEmits, useAttrs, type EmitFn } from 'vue'
 import type { YInputTextProps } from './types'
 
-export default defineComponent({
-  name: 'YInputText',
-  components: {
-    YInput,
-  },
-  emits: ['update:modelValue', 'input', 'change', 'blur'],
-  setup(props: YInputTextProps, context: SetupContext) {
-    const attrs: Record<string, unknown> = useAttrs()
-    const emit = context.emit
-
-    const { modelValue, handleInput } = useInput({ props, attrs, emit })
-
-    return {
-      modelValue,
-      props,
-      handleInput,
-    }
-  },
+const props = withDefaults(defineProps<YInputTextProps>(), {
+  name: 'text-input' + Math.random().toString(36).substring(7),
 })
 
-// const model = defineModel(props ? props.modelValue : '', { type: String })
+const emit: EmitFn = defineEmits(['update:modelValue', 'input', 'change', 'blur'])
+
+const attrs = useAttrs()
+const { modelValue, handleInput } = useInput({ props, attrs, emit })
 </script>

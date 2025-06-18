@@ -1,3 +1,4 @@
+import { getValueFromRef } from '@/utils/get-value-from-ref'
 import { onMounted, ref, TemplateRef, watch } from 'vue'
 
 export function useChangedEvent(target: TemplateRef<EventTarget | null>) {
@@ -39,13 +40,13 @@ export function useHoverEvent(target: TemplateRef<EventTarget | null>) {
   let element: { $el: HTMLElement | undefined } | HTMLElement | null = null
 
   onMounted(() => {
-    element = target.value as unknown as HTMLElement
+    element = getValueFromRef(target) as unknown as HTMLElement
     if (!element) {
       // eslint-disable-next-line no-console
       console.warn('📟 - element is undefined or null', element)
       return
     }
-    if (!element?.hasAttribute('$el')) {
+    if (element && element.hasAttribute('$el') ? false : true) {
       // eslint-disable-next-line no-console
       console.warn('📟 - element.$el is undefined or null', element)
     }

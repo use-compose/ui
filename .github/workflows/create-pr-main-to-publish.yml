@@ -50,7 +50,7 @@ jobs:
         run: |
           # Extract tag_name from package.json (assumes "version": "1.2.3")
           TAG_NAME="v$(jq -r .version package.json)"
-          
+
           gh api \
             --method POST \
             -H "Accept: application/vnd.github+json" \
