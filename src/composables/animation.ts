@@ -1,5 +1,12 @@
-import { getValueFromRef } from '@/utils/get-value-from-ref'
 import { onMounted, ref, TemplateRef, watch } from 'vue'
+
+const animationEvents = ['changed', 'hovered'] as const
+export type AnimationEvent = (typeof animationEvents)[number]
+
+// const animationEventsVars: { [key in AnimationEvent]: string } = {
+//   changed: '--has-changed-once',
+//   hovered: '--is-not-hovered-yet',
+// }
 
 export function useChangedEvent(target: TemplateRef<EventTarget | null>) {
   const hasChangedOnce = ref(false)
@@ -40,17 +47,21 @@ export function useHoverEvent(target: TemplateRef<EventTarget | null>) {
   let element: { $el: HTMLElement | undefined } | HTMLElement | null = null
 
   onMounted(() => {
-    element = getValueFromRef(target) as unknown as HTMLElement
+    element = target.value as unknown as HTMLElement | { $el: HTMLElement | undefined }
     if (!element) {
       // eslint-disable-next-line no-console
       console.warn('📟 - element is undefined or null', element)
       return
     }
-    if (element && element.hasAttribute('$el') ? false : true) {
+    if (element instanceof HTMLElement) {
+      element.style.setProperty('--is-not-hovered-yet', 'none')
+    } else if (element.$el) {
+      element.$el.style.setProperty('--is-not-hovered-yet', 'none')
+    } else {
       // eslint-disable-next-line no-console
       console.warn('📟 - element.$el is undefined or null', element)
+      return
     }
-    element.style.setProperty('--is-not-hovered-yet', '1')
   })
 
   watch(
@@ -61,8 +72,8 @@ export function useHoverEvent(target: TemplateRef<EventTarget | null>) {
         console.warn('📟 - element is undefined or null', element)
         return
       }
-      if (newVal) {
-        ;(element as HTMLElement).style.setProperty('--is-not-hovered-yet', '0')
+      if (newVal && element instanceof HTMLElement) {
+        element.style.removeProperty('--has-changed-once')
       }
     },
   )

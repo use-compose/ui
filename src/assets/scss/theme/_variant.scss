@@ -14,9 +14,8 @@
 @mixin outlined {
   &.outlined {
     @include mixins.resolve-lch-value('variant', outlined);
-    @include mixins.component(border-width, 2px);
     @include mixins.component(border-style, solid);
-    @include mixins.component(color-border, var(--theme-current-color));
+    @include mixins.component(border-color, var(--theme-current-color));
     @include mixins.component(color-text, var(--theme-current-color));
     @include mixins.component(bg-opacity, var(--variant-bg-opacity));
     @include mixins.component(bg-opacity, var(--variant-bg-opacity));

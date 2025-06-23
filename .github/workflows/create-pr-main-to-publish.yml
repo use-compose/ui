@@ -65,26 +65,3 @@ jobs:
 
         env:
           GH_TOKEN: ${{ github.token }}
-
-      - name: Create Tag
-        if: env.tag_exists == 'false'
-        run: |
-          git tag -a "v$(date +'%Y%m%d%H%M%S')" -m "Release on $(date +'%Y-%m-%d %H:%M:%S')"
-          git push origin --tags
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Publish to npm
-        run: |
-          npm install
-          npm run build
-          npm publish --access public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-
-      - name: Output tag
-        if: env.tag_exists == 'false'
-        run: |
-          TAG=$(git describe --tags --abbrev=0)
-          echo "Tag created: $TAG"
-          echo "tag=$TAG" >> $GITHUB_ENV
