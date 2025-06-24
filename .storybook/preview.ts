@@ -25,7 +25,7 @@ const preview: Preview = {
     (story) => ({
       components: { story, AppCompose, Wrapper },
       template: `
-        <AppCompose :theme="theme">
+        <AppCompose :theme="theme" use-bg-color>
           <Wrapper>
             <story />
           </Wrapper>

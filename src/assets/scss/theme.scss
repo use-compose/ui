@@ -228,9 +228,9 @@ a {
     padding-x: utils.space(unit),
     padding-y: utils.space(xxs),
     margin-bottom: utils.space(unit),
-    border-width: 0,
+    border-width: 2px,
     border-style: solid,
-    border-color: utils.color(main-dark),
+    border-color: transparent,
     font-size: 1rem,
     not-contained: calc(1 - var(--contained, 1)),
     transition: all 0.1s linear
@@ -442,6 +442,17 @@ p {
 // -----------------------------------------------------------------------------
 
 // 6 - Breakpoints
+
+@include utils.cssvars(
+  'breakpoint',
+  (
+    mobile: 640px,
+    tablet: 768px,
+    desktop: 1024px,
+    desktop-xl: 1280px,
+    desktop-xxl: 1820px,
+  )
+);
 
 $breakpoint-mobile: 640px;
 $breakpoint-tablet: 768px;

@@ -17,6 +17,6 @@ const props = withDefaults(defineProps<YCardProps>(), {})
 const { baseClasses } = useComponentTheme(props)
 
 const yCardClasses = computed(() => {
-  return [[...baseClasses.value], 'y-card']
+  return [...baseClasses.value, 'y-card']
 })
 </script>

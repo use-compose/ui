@@ -32,7 +32,7 @@ useEventListener(highlightedTextRef, 'mouseenter', () => {
 
 const getClasses = computed(() => [
   'highlighted-text',
-  { animate: props.animate },
-  { active: props.active },
+  props.active ? 'active' : '',
+  props.animate ? 'animate' : '',
 ])
 </script>

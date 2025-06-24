@@ -12,6 +12,7 @@ export { YButton } from './YButton'
 export { YCheckbox } from './YCheckbox'
 export { YColorInput } from './YColorInput'
 export { YDateInput } from './YDateInput'
+export { YDateTimeInput } from './YDateTimeInput'
 export { YInput } from './YInput'
 export { YInputText } from './YInputText'
 export { YTimeInput } from './YTimeInput'
@@ -22,6 +23,10 @@ export { YCard } from './YCard'
 // overlays
 export { YBaseModal, YModal, YModalFooter, YModalHeader } from './YModal'
 export { YOverlay } from './YOverlay'
+
+export { YHighlightedText } from './YHighlightedText'
+export { YSection } from './YSection'
+export { YVerticalTitle } from './YVerticalTitle'
 
 // providers
 // export { ModalProvider } from './providers'

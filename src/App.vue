@@ -1,6 +1,5 @@
 <template>
-  <AppCompose :theme="theme">
-    <YHeader title="YCompose" title-link="/" />
+  <AppCompose :theme="theme" :use-bg="true">
     <!-- <ModalProvider> -->
     <Playground />
     <!-- </ModalProvider> -->
@@ -11,7 +10,6 @@
 // import './assets/scss/main.scss'
 import { AppCompose } from './components'
 import Playground from './components/Playground.vue'
-import { YHeader } from './components/YHeader'
 
 import type { YTheme } from './types'
 

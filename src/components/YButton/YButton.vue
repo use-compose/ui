@@ -16,9 +16,10 @@ const props = withDefaults(defineProps<YButtonProps>(), {
 })
 
 const { baseClasses, isDisabled } = useComponentTheme(props)
+// const { variantClass } = useVariant(props)
 
 const getClasses = computed(() => {
-  return [[...baseClasses.value], 'y-button']
+  return [...baseClasses.value, 'y-button']
 })
 
 // listen to click event

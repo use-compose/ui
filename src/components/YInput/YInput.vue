@@ -1,5 +1,5 @@
 <template>
-  <YFlex align="flex-end" gap="0">
+  <div>
     <input
       :id="name"
       :ref="inputRef"
@@ -13,13 +13,12 @@
       v-on="handleEvent"
     />
     <YLabel v-if="label" class="y-label" :for="name">{{ label }}</YLabel>
-  </YFlex>
+  </div>
 </template>
 
 <script setup lang="ts">
 import { useAttrs } from 'vue'
 
-import { YFlex } from '@/components/YFlex'
 import { YLabel } from '@/components/YLabel'
 import { useComponentProps } from '@/composables/component'
 import { useComponentTheme } from '@/composables/component-theme'

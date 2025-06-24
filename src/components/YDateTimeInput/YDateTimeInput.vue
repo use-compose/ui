@@ -2,23 +2,21 @@
   <YInput
     v-bind="props"
     :value="modelValue"
-    type="date"
-    input-class="y-date-input"
+    input-class="y-datetime-input"
+    type="datetime-local"
     @change="handleChange"
-  >
-  </YInput>
+  />
 </template>
 
 <script setup lang="ts">
-// TODO: resolve alias
 import { YInput } from '@/components/YInput'
 import { useInput } from '@/composables/input'
 import { EmitFn, useAttrs } from 'vue'
-import './YDateInput.scss'
-import { YDateInputProps } from './types'
+import type { YDateTimeInputProps } from './types'
+import './YDateTimeInput.scss'
 
-const props = withDefaults(defineProps<YDateInputProps>(), {
-  name: 'date-input' + Math.random().toString(36).substring(7),
+const props = withDefaults(defineProps<YDateTimeInputProps>(), {
+  name: 'datetime-input' + Math.random().toString(36).substring(7),
 })
 
 // listen to input event
