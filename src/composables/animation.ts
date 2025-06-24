@@ -1,6 +1,6 @@
 import { onMounted, ref, TemplateRef, watch } from 'vue'
 
-const animationEvents = ['changed', 'hovered'] as const
+export const animationEvents = ['changed', 'hovered'] as const
 export type AnimationEvent = (typeof animationEvents)[number]
 
 // const animationEventsVars: { [key in AnimationEvent]: string } = {
