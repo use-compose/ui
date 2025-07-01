@@ -54,6 +54,7 @@ export function useComponentTheme<T>(props: BaseProps<T>) {
       rawClasses.value,
     )
     return [...classes]
+    return classes
   })
 
   // const semanticTokens = computed(() => {

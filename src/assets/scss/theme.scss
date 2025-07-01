@@ -110,10 +110,10 @@ a {
     xxs: calc(0.25 * var(--space-unit)),
     xs: calc(0.5 * var(--space-unit)),
     sm: calc(0.75 * var(--space-unit)),
-    md: calc(1.25 * var(--space-unit)),
-    lg: calc(2 * var(--space-unit)),
-    xl: calc(3.25 * var(--space-unit)),
-    xxl: calc(5.25 * var(--space-unit)),
+    md: calc(1 * var(--space-unit)),
+    lg: calc(1.5 * var(--space-unit)),
+    xl: calc(2 * var(--space-unit)),
+    xxl: calc(4 * var(--space-unit)),
   )
 );
 
@@ -270,7 +270,7 @@ $variants: ('contained', 'outlined', 'text');
   border-width: utils.component(border-width);
   border-style: utils.component(border-style);
   border: utils.component(border-width) utils.component(border-style) utils.component(border-color);
-  font-size: 1rem;
+  // font-size: 1rem;
 
   // Color Props
   @include theme.primary;
@@ -517,6 +517,7 @@ $breakpoints: (
   'layout',
   (
     gap: utils.space(sm),
+    mobile-padding: utils.space(md),
   )
 );
 

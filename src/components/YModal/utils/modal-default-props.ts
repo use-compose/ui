@@ -1,6 +1,7 @@
 import { BaseModalProps, YModalSize, YModalType } from '../types/YBaseModal.interface'
 
-export const modalDefaultProps: BaseModalProps = {
+export const modalDefaultProps: BaseModalProps & { modelValue: boolean } = {
+  modelValue: false,
   hasCloseButton: true,
   hasHeader: true,
   header: 'Modal Header',
