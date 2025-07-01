@@ -61,7 +61,7 @@
   --modal-z-index: calc(var(--dialog-z-index) + 1);
 
   position: relative;
-  max-width: 100%;
+  max-width: min(calc(100% - 2 * layout(mobile-padding)), var(--modal-size));
   height: auto;
   margin: 5rem 0;
   z-index: var(--modal-z-index);
@@ -82,9 +82,16 @@
   }
 }
 
-.y-modal,
 .y-drawer {
-  width: var(--modal-size);
+  width: 100%;
+  max-width: var(--modal-size, var(--modal-size-default));
+}
+
+@include media(tablet) {
+  .y-modal,
+  .y-drawer {
+    width: var(--modal-size, var(--modal-size-default));
+  }
 }
 
 .y-modal-content {

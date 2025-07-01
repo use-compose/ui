@@ -33,8 +33,8 @@ export interface BaseModalProps extends ThemeComponentBaseProps {
   cancelBtnText?: string
 
   // Modal specific props
-  size?: YModalSize
-  type?: YModalType
+  size?: YModalSizeValue
+  type?: YModalTypeValue
 }
 
 export interface YModalHeaderProps {

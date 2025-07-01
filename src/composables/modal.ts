@@ -51,6 +51,7 @@ export function useModal({ props, modalContext }: UseModalParams) {
   // Based on their existence, we add the other actions
   function cancel() {
     emit('cancel')
+    close()
   }
   if (attrs.onCancel) {
     modalActions.cancel = cancel
@@ -61,7 +62,7 @@ export function useModal({ props, modalContext }: UseModalParams) {
   function action() {
     emit('action')
   }
-  if (attrs.action) {
+  if (attrs.onAction) {
     modalActions.action = action
   }
 

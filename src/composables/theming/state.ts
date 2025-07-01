@@ -1,7 +1,16 @@
-import { State, states, ThemeComponentBaseProps } from '@/types/base-props'
 import { computed, PropType } from 'vue'
 
-export const stateProps = {
+export { stateProps, states, useState }
+export type { State, StateProps }
+
+const states = ['base', 'hover', 'active', 'focus', 'disabled'] as const
+type State = (typeof states)[number]
+
+interface StateProps {
+  state?: State
+}
+
+const stateProps = {
   state: {
     type: String as PropType<State>,
     default: 'base',
@@ -9,8 +18,8 @@ export const stateProps = {
   },
 }
 
-export function useState(props: ThemeComponentBaseProps) {
-  const state = props.state || 'base'
+function useState(props: StateProps) {
+  const { state = 'base' } = props
 
   const stateClasses: { [key in State]: string } = {
     base: 'base',

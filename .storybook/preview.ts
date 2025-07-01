@@ -26,10 +26,11 @@ const preview: Preview = {
       components: { story, AppCompose, Wrapper },
       template: `
         <AppCompose :theme="theme" use-bg-color>
-          <Wrapper>
+          <!-- <Wrapper> -->
             <story />
-          </Wrapper>
+          <!-- </Wrapper> -->
         </AppCompose>`,
+
       setup() {
         return {
           theme,

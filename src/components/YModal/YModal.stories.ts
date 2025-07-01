@@ -16,7 +16,6 @@ const meta: Meta<typeof YBaseModal> = {
   // This component will have an automatically generated docsPage entry: https://storybook.js.org/docs/vue/writing-docs/autodocs
   tags: ['autodocs'],
   argTypes: {
-    ...commonArgTypes,
     hasCloseButton: { control: 'boolean' },
     hasHeader: { control: 'boolean' },
     header: { control: 'text' },
@@ -43,17 +42,17 @@ export default meta
 
 type Story = StoryObj<typeof meta>
 
-const renderTemplate = (args: BaseModalProps) => {
+const renderTemplate = (args: BaseModalProps & { modelValue: boolean }) => {
   switch (args.type) {
     case YModalType.Drawer:
       return `
-        <YModal v-bind="args" v-model="isVisible" @action="close" @cancel="close" @leftAction="close">
+        <YModal v-bind="args" v-model="isVisible">
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec pur</p>
           <YInputText value="Example value" placeholder="Enter your name" />
         </YModal>`
     case YModalType.Default:
       return `
-        <YModal v-bind="args" v-model="isVisible" @action="close" @cancel="close" @leftAction="close">
+        <YModal v-bind="args" v-model="isVisible">
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec purus nec
             ligula luctus aliquam. Nulla facilisi. Nulla facilisi. Nulla facilisi. Nulla
@@ -62,14 +61,14 @@ const renderTemplate = (args: BaseModalProps) => {
         </YModal>`
     default:
       return `
-        <RtModal v-bind="args" v-model="showModal" @action="close">
+        <YModal v-bind="args" v-model="isVisible">
           <p>{{ args.mainSlot }}</p>
-        </RtModal>`
+        </YModal>`
   }
 }
 
 const DefaultStory: Story = {
-  render: (args: BaseModalProps, { argTypes }) => ({
+  render: (args: BaseModalProps & { modelValue: boolean }, { argTypes }) => ({
     components: { YModal, YButton, YInputText },
     props: Object.keys(argTypes),
     template: `
@@ -79,17 +78,13 @@ const DefaultStory: Story = {
       </div>
     `,
     setup() {
-      const isVisible = ref(false)
+      const isVisible = ref<boolean>(args.modelValue)
 
       const openModal = () => {
         isVisible.value = true
       }
 
-      const close = () => {
-        isVisible.value = false
-      }
-
-      return { args, openModal, close, isVisible }
+      return { args, isVisible, openModal }
     },
   }),
   args: {},

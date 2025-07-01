@@ -1,7 +1,15 @@
-import { ThemeComponentBaseProps, Variant, variants } from '@/types/base-props'
 import { computed, PropType } from 'vue'
 
-export const variantProps = {
+export { useVariant, variantProps, variants }
+export type { Variant, VariantProps }
+
+const variants = ['contained', 'outlined', 'text'] as const
+type Variant = (typeof variants)[number]
+interface VariantProps {
+  variant?: Variant
+}
+
+const variantProps = {
   variant: {
     type: String as PropType<Variant>,
     default: 'contained',
@@ -9,8 +17,8 @@ export const variantProps = {
   },
 }
 
-export function useVariant(props: ThemeComponentBaseProps) {
-  const variant = props.variant || 'contained'
+function useVariant(props: VariantProps) {
+  const { variant = 'contained' } = props
 
   const variantClasses: { [key in Variant]: string } = {
     contained: 'contained',
@@ -19,7 +27,7 @@ export function useVariant(props: ThemeComponentBaseProps) {
   }
 
   const variantClass = computed(() => {
-    return variantClasses[variant]
+    return variantClasses[variant] || variantClasses.contained
   })
 
   return {

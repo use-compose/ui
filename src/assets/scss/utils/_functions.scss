@@ -52,3 +52,8 @@
 @function y-checkbox($name, $prefix: y-checkbox) {
   @return var(--#{$prefix}-#{$name});
 }
+
+// Breakpoint
+@function breakpoint($name, $prefix: breakpoint) {
+  @return var(--#{$prefix}-#{$name});
+}

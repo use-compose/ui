@@ -82,6 +82,10 @@
   --#{$name}: #{$value};
 }
 
+@mixin breakpoint($name, $value: '', $prefix: breakpoint) {
+  --#{$prefix}-#{$name}: #{$value};
+}
+
 // -----------------------------------------------------------------------------
 // 5 - Theme / component props
 
