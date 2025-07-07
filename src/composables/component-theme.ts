@@ -32,16 +32,16 @@ export const defineComponentBaseProps = {
 type BaseProps<T> = T & ThemeComponentBaseProps
 
 export function useComponentTheme<T>(props: BaseProps<T>) {
-  const mergedProps = computed(() => ({
-    ...basePropsDefault,
-    ...props,
-  }))
+  // const mergedProps = computed(() => ({
+  //   ...basePropsDefault,
+  //   ...props,
+  // }))
 
-  const { variantClass } = useVariant(mergedProps.value)
-  const { stateClass, isDisabled } = useState(mergedProps.value)
-  const { colorClass } = useColor(mergedProps.value)
-  const { sizeClass } = useSize(mergedProps.value)
-  const { rawClasses } = useRaw(mergedProps.value)
+  const { variantClass } = useVariant(props)
+  const { stateClass, isDisabled } = useState(props)
+  const { colorClass } = useColor(props)
+  const { sizeClass } = useSize(props)
+  const { rawClasses } = useRaw(props)
 
   const baseClasses = computed(() => {
     const classes = []
@@ -53,7 +53,8 @@ export function useComponentTheme<T>(props: BaseProps<T>) {
       colorClass.value,
       rawClasses.value,
     )
-    return [...classes]
+    // return [...classes]
+    return classes
   })
 
   // const semanticTokens = computed(() => {

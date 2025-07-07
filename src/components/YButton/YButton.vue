@@ -6,7 +6,8 @@
 
 <script setup lang="ts">
 // TODO: resolve alias
-import { basePropsDefault, useComponentTheme } from '@/composables/component-theme'
+import { useColor, useRaw, useSize, useState, useVariant } from '@/composables'
+import { basePropsDefault } from '@/composables/component-theme'
 import { computed, defineProps, withDefaults } from 'vue'
 import { YButtonProps } from './types'
 import './YButton.scss'
@@ -15,11 +16,24 @@ const props = withDefaults(defineProps<YButtonProps>(), {
   ...basePropsDefault,
 })
 
-const { baseClasses, isDisabled } = useComponentTheme(props)
 // const { variantClass } = useVariant(props)
+const { isDisabled } = useState(props)
 
 const getClasses = computed(() => {
-  return [...baseClasses.value, 'y-button']
+  // const { variantClass } = useVariant(props)
+  const { variantClass } = useVariant(props)
+  const { stateClass } = useState(props)
+  const { colorClass } = useColor(props)
+  const { sizeClass } = useSize(props)
+  const { rawClasses } = useRaw(props)
+  return [
+    rawClasses.value,
+    'y-button',
+    variantClass.value,
+    stateClass.value,
+    colorClass.value,
+    sizeClass.value,
+  ]
 })
 
 // listen to click event
