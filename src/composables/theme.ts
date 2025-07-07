@@ -288,7 +288,7 @@ export function useTheme() {
 
   return {
     theme,
-    updateThemeProperty,
+    setThemeProperty: updateThemeProperty,
     getPrimary: getThemeColor(Theme.primary),
     setPrimary: updateThemeProperty.bind(null, 'primary'),
     getSecondary: getThemeColor(Theme.secondary),

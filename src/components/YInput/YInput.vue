@@ -1,5 +1,5 @@
 <template>
-  <YFlex align="flex-end" gap="0">
+  <div>
     <input
       :id="name"
       :ref="inputRef"
@@ -13,16 +13,15 @@
       v-on="handleEvent"
     />
     <YLabel v-if="label" class="y-label" :for="name">{{ label }}</YLabel>
-  </YFlex>
+  </div>
 </template>
 
 <script setup lang="ts">
 import { useAttrs } from 'vue'
 
-import { YFlex } from '@/components/YFlex'
 import { YLabel } from '@/components/YLabel'
+import { useColor, useRaw, useSize, useState, useVariant } from '@/composables'
 import { useComponentProps } from '@/composables/component'
-import { useComponentTheme } from '@/composables/component-theme'
 import { inputEventsKey, inputEventsKeyInterface } from '@/composables/input'
 import { computed, inject } from 'vue'
 import './YInput.scss'
@@ -56,10 +55,11 @@ const props = withDefaults(defineProps<YInputProps>(), {
 // const componentProps = useComponentProps({
 //   class: attrs.class as string | string[] | Record<string, boolean> | undefined,
 // })
-// const { baseClasses, isDisabled } = useComponentTheme(props)
+//   const { variantClass } = useVariant(props)
+
 // const yInputClasses = computed(() => {
 //   return [
-//     ...baseClasses.value,
+
 //     'y-input',
 //     props.hero ? 'y-input-hero' : '',
 //     ...componentProps.value,
@@ -68,7 +68,11 @@ const props = withDefaults(defineProps<YInputProps>(), {
 // })
 
 // Use the base props composable to get common classes and disabled state
-const { baseClasses, isDisabled } = useComponentTheme(props)
+const { variantClass } = useVariant(props)
+const { stateClass, isDisabled } = useState(props)
+const { colorClass } = useColor(props)
+const { sizeClass } = useSize(props)
+const { rawClasses } = useRaw(props)
 const attrs = useAttrs()
 
 const { handleEvent, modelValue } = inject(inputEventsKey) as inputEventsKeyInterface
@@ -80,7 +84,12 @@ const componentProps = useComponentProps({
 
 const yInputClasses = computed(() => {
   return [
-    ...baseClasses.value,
+    variantClass.value,
+    stateClass.value,
+    colorClass.value,
+    sizeClass.value,
+    rawClasses.value,
+
     'y-input',
     props.hero ? 'y-input-hero' : '',
     ...componentProps.value,

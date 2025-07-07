@@ -4,7 +4,7 @@ import Wrapper from './Wrapper.vue'
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 const meta = {
-  title: 'Components/Layout/Wrapper',
+  title: 'Components/Wrapper',
   component: Wrapper,
   // This component will have an automatically generated docsPage entry: https://storybook.js.org/docs/writing-docs/autodocs
   tags: ['autodocs'],
@@ -17,7 +17,7 @@ type Story = StoryObj<typeof meta>
  * See https://storybook.js.org/docs/api/csf
  * to learn how to use render functions.
  */
-export const Primary: Story = {
+export const Default: Story = {
   args: {
     // maxWidth: '1100',
   },

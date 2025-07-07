@@ -1,7 +1,16 @@
-import { Size, sizes, ThemeComponentBaseProps } from '@/types/base-props'
 import { computed, PropType } from 'vue'
 
-export const sizeProps = {
+export { sizeProps, sizes, useSize }
+export type { Size, SizeProps }
+
+const sizes = ['small', 'medium', 'large'] as const
+type Size = (typeof sizes)[number]
+
+interface SizeProps {
+  size?: Size
+}
+
+const sizeProps = {
   size: {
     type: String as PropType<Size>,
     default: 'medium',
@@ -9,8 +18,8 @@ export const sizeProps = {
   },
 }
 
-export function useSize(props: ThemeComponentBaseProps) {
-  const size = props.size || 'medium'
+function useSize(props: SizeProps) {
+  const { size = 'medium' } = props
 
   const sizeClasses: { [key in Size]: string } = {
     small: 'small',

@@ -1,6 +1,7 @@
 export { useAnimation } from './animation'
-export { useComponentTheme } from './component-theme'
+export { basePropsDefault, useComponentTheme } from './component-theme'
 export { modalDefaultProps, useModal } from './components'
 export { useComposeTheme, useTheme } from './theme'
+export { useColor, useRaw, useSize, useState, useVariant } from './theming'
 export { useStorage } from './use-storage'
 export { useThemeComponentStory } from './use-theme-component-story'

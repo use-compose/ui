@@ -1,5 +1,5 @@
 import { useThemeComponentStory } from '@/composables'
-import type { Meta } from '@storybook/vue3'
+import type { ArgTypes, Meta } from '@storybook/vue3'
 import YFlex from './YFlex.vue'
 import type { YFlexProps } from './types'
 
@@ -15,6 +15,25 @@ const meta: Meta<typeof YFlex> = {
 export default meta
 // type Story = StoryObj<typeof YFlex>;
 
-const { Default } = generateCommonStories()
+const renderGenericStory = {
+  render: (args: YFlexProps, argTypes: ArgTypes) => ({
+    components: { YFlex },
+    props: Object.keys(argTypes),
+    template: `
+    <YFlex v-bind="args">
+      <div class="bg-primary text-white p-4">Item 1</div>
+      <div class="bg-secondary text-white p-4">Item 2</div>
+      <div class="bg-tertiary text-white p-4">Item 3</div>
+    </YFlex>
+  `,
+    setup() {
+      return {
+        args,
+      }
+    },
+  }),
+}
 
-export { Default }
+const { Primary } = generateCommonStories(renderGenericStory)
+
+export { Primary }

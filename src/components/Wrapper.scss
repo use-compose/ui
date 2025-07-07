@@ -1,0 +1,19 @@
+@use '@/assets/scss/utils' as *;
+@use '@/assets/scss/theme.scss' as *;
+
+.wrapper {
+  // https://grafikart.fr/tutoriels/conteneur-css-1233
+  box-sizing: border-box;
+  width: min(breakpoint(desktop-xl), calc(100% - 2 * layout(mobile-padding)));
+
+  margin-inline: auto;
+
+  @include media(tablet) {
+    // https://css-tricks.com/use-css-clamp-to-create-a-more-flexible-wrapper-utility/
+    width: clamp(100%, 90vw, 70rem);
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: var(--space-unit);
+    padding-right: var(--space-unit);
+  }
+}

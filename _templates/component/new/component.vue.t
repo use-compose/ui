@@ -20,9 +20,18 @@ const props = withDefaults(defineProps<<%= name %>Props>(), {
   ...basePropsDefault,
 })
 
-const { baseClasses } = useComponentTheme(props)
+  const { variantClass } = useVariant(props)
+  const { stateClass, isDisabled } = useState(props)
+  const { colorClass } = useColor(props)
+  const { sizeClass } = useSize(props)
+  const { rawClasses } = useRaw(props)
 
 const getClasses = computed(() => {
-  return [[...baseClasses.value]]
+  return [[variantClass.value,
+    stateClass.value,
+    colorClass.value,
+    sizeClass.value,
+   rawClasses.value,
+]]
 })
 </script>

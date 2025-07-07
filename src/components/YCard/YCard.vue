@@ -5,7 +5,7 @@
 </template>
 
 <script setup lang="ts">
-import { useComponentTheme } from '@/composables/component-theme'
+import { useColor, useRaw, useSize, useState, useVariant } from '@/composables'
 import { ThemeComponentBaseProps } from '@/types/base-props'
 import { computed } from 'vue'
 import './YCard.scss'
@@ -14,9 +14,20 @@ export interface YCardProps extends ThemeComponentBaseProps {}
 
 const props = withDefaults(defineProps<YCardProps>(), {})
 
-const { baseClasses } = useComponentTheme(props)
+const { variantClass } = useVariant(props)
+const { stateClass } = useState(props)
+const { colorClass } = useColor(props)
+const { sizeClass } = useSize(props)
+const { rawClasses } = useRaw(props)
 
 const yCardClasses = computed(() => {
-  return [[...baseClasses.value], 'y-card']
+  return [
+    variantClass.value,
+    stateClass.value,
+    colorClass.value,
+    sizeClass.value,
+    rawClasses.value,
+    'y-card',
+  ]
 })
 </script>
