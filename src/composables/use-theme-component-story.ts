@@ -48,14 +48,18 @@ export function useThemeComponentStory<T extends ThemeComponentBaseProps>(compon
   // })
 
   const renderDefaultStory: Story = {
-    render: (args: T) => ({
+    render: (args: T, { argTypes }: ArgTypes) => ({
       components: { component },
-      template: '<component  v-bind="args" />',
+      template: `
+        <Component :is="component"  v-bind="args" >
+          <slot />
+        </Component>
+      `,
+      props: Object.keys(argTypes),
       setup() {
-        return { args }
+        return { args, component }
       },
     }),
-    args: { ...commonArgs },
   }
 
   function generateCommonStories(componentBaseStory: Story = renderDefaultStory): {

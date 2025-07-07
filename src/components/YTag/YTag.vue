@@ -7,7 +7,8 @@
 </template>
 
 <script setup lang="ts">
-import { basePropsDefault, useComponentTheme } from '@/composables/component-theme'
+import { useColor, useRaw, useSize, useState, useVariant } from '@/composables'
+import { basePropsDefault } from '@/composables/component-theme'
 import { computed, defineProps, withDefaults } from 'vue'
 import type { YTagProps } from './types'
 import './YTag.scss'
@@ -16,9 +17,21 @@ const props = withDefaults(defineProps<YTagProps>(), {
   ...basePropsDefault,
 })
 
-const { baseClasses } = useComponentTheme(props)
+const { variantClass } = useVariant(props)
+const { stateClass } = useState(props)
+const { colorClass } = useColor(props)
+const { sizeClass } = useSize(props)
+const { rawClasses } = useRaw(props)
 
 const getClasses = computed(() => {
-  return [...baseClasses.value, 'y-tag']
+  return [
+    variantClass.value,
+    stateClass.value,
+    colorClass.value,
+    sizeClass.value,
+    rawClasses.value,
+    ,
+    'y-tag',
+  ]
 })
 </script>

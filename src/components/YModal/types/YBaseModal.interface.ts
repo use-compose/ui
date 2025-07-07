@@ -18,6 +18,8 @@ export enum YModalType {
 export type YModalSizeValue = (typeof YModalSize)[keyof typeof YModalSize]
 
 export interface BaseModalProps extends ThemeComponentBaseProps {
+  modelValue?: boolean
+
   // Header specific props
   hasCloseButton?: boolean
   hasHeader?: boolean

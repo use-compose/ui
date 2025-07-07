@@ -74,7 +74,7 @@
   bottom: 0;
   height: 100svh;
   right: 0;
-  width: clamp(260px, 65%, 896px);
+  // width: clamp(260px, 65%, 896px);
   transition: transform 0.5s ease;
 
   .y-modal-content {
@@ -84,12 +84,13 @@
 
 .y-drawer {
   width: 100%;
-  max-width: var(--modal-size, var(--modal-size-default));
+  // max-width: var(--modal-size, var(--modal-size-default));
+  width: min(var(--modal-size), 100%);
 }
 
 @include media(tablet) {
-  .y-modal,
-  .y-drawer {
+  .y-modal {
+    // .y-drawer {
     width: var(--modal-size, var(--modal-size-default));
   }
 }

@@ -7,7 +7,7 @@ import { ref } from 'vue'
 import { YModalSize, YModalType, type BaseModalProps } from './types/YBaseModal.interface'
 import YBaseModal from './YBaseModal.vue'
 
-const { commonArgTypes, generateCommonStories } = useThemeComponentStory(YBaseModal)
+const { generateCommonStories } = useThemeComponentStory(YBaseModal)
 
 // More on how to set up stories at: https://storybook.js.org/docs/vue/writing-stories/introduction
 const meta: Meta<typeof YBaseModal> = {
@@ -42,7 +42,7 @@ export default meta
 
 type Story = StoryObj<typeof meta>
 
-const renderTemplate = (args: BaseModalProps & { modelValue: boolean }) => {
+const renderTemplate = (args: BaseModalProps) => {
   switch (args.type) {
     case YModalType.Drawer:
       return `
@@ -68,9 +68,9 @@ const renderTemplate = (args: BaseModalProps & { modelValue: boolean }) => {
 }
 
 const DefaultStory: Story = {
-  render: (args: BaseModalProps & { modelValue: boolean }, { argTypes }) => ({
+  render: (args: BaseModalProps, { argTypes }) => ({
     components: { YModal, YButton, YInputText },
-    props: Object.keys(argTypes),
+    props: Object.keys(argTypes).concat(['modelValue']),
     template: `
       <div>
         <YButton @click="openModal">Open ${args.type === YModalType.Drawer ? 'Drawer' : 'Modal'}</YButton>
@@ -78,7 +78,7 @@ const DefaultStory: Story = {
       </div>
     `,
     setup() {
-      const isVisible = ref<boolean>(args.modelValue)
+      const isVisible = ref<boolean>(args.modelValue || false)
 
       const openModal = () => {
         isVisible.value = true
