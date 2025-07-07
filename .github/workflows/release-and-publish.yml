@@ -1,18 +1,19 @@
-name: Release and publish package
+# .github/workflows/release-and-publish.yml
+name: Release and Publish Package
 
 on:
   push:
     branches:
       - main
 
-permissions: read-all
+permissions:
+  contents: write
+  pull-requests: write
 
 jobs:
-  create-pr:
+  release:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
-      pull-requests: write
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -45,23 +46,15 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Check for existing tag
-        id: check_tag
+      - name: Create GitHub Release from package.json version (if not exists)
         run: |
-          # Extract tag_name from package.json (assumes "version": "1.2.3")
           TAG_NAME="v$(jq -r .version package.json)"
+          if git rev-parse "$TAG_NAME" >/dev/null 2>&1; then
+            echo "Tag $TAG_NAME already exists. Skipping release."
+            exit 0
+          fi
 
-          gh api \
-            --method POST \
-            -H "Accept: application/vnd.github+json" \
-            -H "X-GitHub-Api-Version: 2022-11-28" \
-            /repos/use-compose/compose-ui/releases \
-            -f tag_name="$TAG_NAME" \
-            -f target_commitish=main \
-            -f name="$TAG_NAME" \
-            -f make_latest=true \
-            -F draft=false \
-            -F prerelease=false
-
+          echo "Creating release $TAG_NAME..."
+          gh release create "$TAG_NAME" --title "$TAG_NAME" --notes "Release $TAG_NAME" --target main --latest
         env:
-          GH_TOKEN: ${{ github.token }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
