@@ -32,10 +32,10 @@ export const defineComponentBaseProps = {
 type BaseProps<T> = T & ThemeComponentBaseProps
 
 export function useComponentTheme<T>(props: BaseProps<T>) {
-  const mergedProps = computed(() => ({
-    ...basePropsDefault,
-    ...props,
-  }))
+  // const mergedProps = computed(() => ({
+  //   ...basePropsDefault,
+  //   ...props,
+  // }))
 
   const { variantClass } = useVariant(props)
   const { stateClass, isDisabled } = useState(props)

@@ -30,7 +30,6 @@ const getClasses = computed(() => {
     colorClass.value,
     sizeClass.value,
     rawClasses.value,
-    ,
     'y-tag',
   ]
 })

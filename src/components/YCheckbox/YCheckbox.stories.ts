@@ -44,7 +44,7 @@ const renderGenericStory: Story = {
     template: `
     <YCheckbox v-bind="args" v-model="args.modelValue"  />
   `,
-    setup(props: YCheckboxProps) {
+    setup() {
       return {
         args,
       }

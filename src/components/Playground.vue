@@ -223,10 +223,10 @@
     sed, pariatur dolores aspernatur alias nesciunt nemo recusandae architecto quia. In, enim ut.
     Debitis, beatae similique!
   </YCard>
-  <YDateInput :raw="true" v-model="date" label="Date Input" placeholder="Select a date" />
-  <YTimeInput :raw="true" v-model="time" label="Time Input" placeholder="Select a time" />
-  <YDateTimeInput :raw="true" v-model="datetime" />
-  <YColorInput :raw="true" v-model="color" label="Color" />
+  <YDateInput v-model="date" :raw="true" label="Date Input" placeholder="Select a date" />
+  <YTimeInput v-model="time" :raw="true" label="Time Input" placeholder="Select a time" />
+  <YDateTimeInput v-model="datetime" :raw="true" />
+  <YColorInput v-model="color" :raw="true" label="Color" />
   <h4>Print variable</h4>
   <pre>{{ input }}</pre>
   <pre>{{ checked }}</pre>
