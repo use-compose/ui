@@ -1,4 +1,4 @@
-import { ThemeComponentBaseProps } from '@/types/base-props'
+import { ThemeComponentBaseProps } from '@/composables/component-theme'
 
 export interface YTagProps extends ThemeComponentBaseProps {
   // Component specific props

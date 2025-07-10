@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
+import type { YVerticalTitleProps } from './YVerticalTitle.types'
 import YVerticalTitle from './YVerticalTitle.vue'
-import type { YVerticalTitleProps } from './types'
 
 const meta: Meta<typeof YVerticalTitle> = {
   // TODO: TO CHANGE PATH

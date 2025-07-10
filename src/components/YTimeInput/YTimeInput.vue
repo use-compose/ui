@@ -18,7 +18,7 @@ import { YInput } from '@/components/YInput'
 import { useInput } from '@/composables/input'
 import { EmitFn, useAttrs } from 'vue'
 import './YTimeInput.scss'
-import { YTimeInputProps } from './types'
+import { YTimeInputProps } from './YTimeInput.types'
 
 const props = withDefaults(defineProps<YTimeInputProps>(), {
   name: 'time-input' + Math.random().toString(36).substring(7),

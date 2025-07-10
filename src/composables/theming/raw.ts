@@ -1,4 +1,4 @@
-import { ThemeComponentBaseProps } from '@/types/base-props'
+import { ThemeComponentBaseProps } from '@/composables/component-theme'
 import { computed } from 'vue'
 
 export const rawProps = {
