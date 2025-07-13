@@ -1,4 +1,4 @@
-import { ThemeComponentBaseProps } from '@/types/base-props'
+import { Color, Size, State, Variant } from '@/composables/theming'
 import { computed } from 'vue'
 import {
   colorProps,
@@ -12,6 +12,14 @@ import {
   useVariant,
   variantProps,
 } from './theming'
+
+export interface ThemeComponentBaseProps {
+  raw?: boolean
+  size?: Size
+  color?: Color
+  variant?: Variant
+  state?: State
+}
 
 export const basePropsDefault: ThemeComponentBaseProps = {
   variant: 'contained',

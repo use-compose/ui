@@ -1,9 +1,18 @@
 @use '@/assets/scss/utils' as utils;
 @use '@/assets/scss/theme.scss' as *;
 
+@include utils.cssvars(
+  'y-vertical-title',
+  (
+    // font-size-xs-and-xl: clamp(1.125rem, 2.6vw + 0.1rem, /*2.875rem*/ 3.4rem),
+    font-size-xs-and-xl: utils.text(xxl),
+    font-size-md: clamp(1.125rem, 3.5vw + 0.1rem, 3.4rem)
+  )
+);
+
 .y-vertical-title {
   font-family: gotham;
-  font-size: clamp(1.125rem, 2.6vw + 0.1rem, 3.4rem);
+  font-size: utils.component(font-size-xs-and-xl, 'y-vertical-title');
   font-weight: bold;
   text-transform: uppercase;
   color: var(--theme-color);
@@ -14,7 +23,8 @@
   flex: 1 0 100%;
 
   @include media(tablet) {
-    font-size: clamp(1.125rem, 3.5vw + 0.1rem, 3.4rem);
+    font-size: utils.component(font-size-md, 'y-vertical-title');
+
     display: flex;
     align-items: center;
     justify-content: flex-end;
@@ -31,6 +41,6 @@
   }
 
   @include media(desktop-xl) {
-    font-size: clamp(1.125rem, 2.6vw + 0.1rem, /*2.875rem*/ 3.4rem);
+    font-size: utils.component(font-size-xs-and-xl, 'y-vertical-title');
   }
 }

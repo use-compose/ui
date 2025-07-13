@@ -6,7 +6,7 @@
 
 <script setup lang="ts">
 import './YVerticalTitle.scss'
-import type { YVerticalTitleProps } from './types'
+import type { YVerticalTitleProps } from './YVerticalTitle.types'
 
 withDefaults(defineProps<YVerticalTitleProps>(), {
   small: false,

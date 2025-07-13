@@ -4,8 +4,6 @@
 
 // TODO: change to kebab-case
 .y-section {
-  container-name: section;
-  container-type: inline-size;
   width: 100%;
   display: flex;
   flex-wrap: wrap;
@@ -16,9 +14,9 @@
     padding: 40px 20px 10px 0;
 
     .y-vertical-title {
-      font-size: utils.text(xxl);
+      //   font-size: utils.text(xxl);
 
-      // Need to re-calculate as initially set in SCSS
+      //   // Need to re-calculate as initially set in SCSS
       --space-unit: 1rem;
       --space-xs: calc(0.25 * var(--space-unit));
     }
@@ -36,20 +34,18 @@
     }
   }
 
-  .y-section__content,
-  .y-section > :nth-child(2) {
-    flex-grow: 1;
-  }
+  // .y-section__content,
+  // .y-section > :nth-child(2) {
+  //   flex-grow: 1;
+  // }
 
-  @container section(min-width: 0) {
-    .y-vertical-title {
-      font-size: clamp(8.125rem, 4cqi + 0.1rem, /*2.875rem*/ 3.4rem);
-    }
-  }
-
-  @container section(min-width: 768px) {
-    .y-vertical-title {
-      font-size: clamp(8.125rem, 5cqi + 0.1rem, 3.4rem);
-    }
-  }
+  // .y-vertical-title {
+  //   font-size: clamp(8.125rem, 4cqi + 0.1rem, /*2.875rem*/ 3.4rem);
+  // }
 }
+
+// @include media(tablet) {
+//   .y-vertical-title {
+//     font-size: clamp(8.125rem, 5cqi + 0.1rem, 3.4rem);
+//   }
+// }

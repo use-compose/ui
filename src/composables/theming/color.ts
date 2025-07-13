@@ -1,15 +1,24 @@
-import { Color, colors, ThemeComponentBaseProps } from '@/types/base-props'
 import { computed, PropType } from 'vue'
 
-export const colorProps = {
+export { colorProps, colors, useColor }
+export type { Color, ColorProps }
+
+const colors = ['primary', 'secondary', 'danger'] as const
+type Color = (typeof colors)[number]
+
+interface ColorProps {
+  color?: Color
+}
+
+const colorProps = {
   color: {
     type: String as PropType<Color>,
     default: 'primary',
     validator: (value: Color) => colors.includes(value),
   },
 }
-export function useColor(props: ThemeComponentBaseProps) {
-  const color = props.color || 'primary'
+function useColor(props: ColorProps) {
+  const { color = 'primary' } = props
 
   const colorClasses: { [key in Color]: string } = {
     primary: 'primary',
@@ -18,7 +27,7 @@ export function useColor(props: ThemeComponentBaseProps) {
   }
 
   const colorClass = computed(() => {
-    return colorClasses[color]
+    return colorClasses[color] || colorClasses.primary
   })
 
   return {

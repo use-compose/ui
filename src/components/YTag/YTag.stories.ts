@@ -1,7 +1,7 @@
 import { useThemeComponentStory } from '@/composables'
 import type { Meta } from '@storybook/vue3'
+import type { YTagProps } from './YTag.types'
 import YTag from './YTag.vue'
-import type { YTagProps } from './types'
 
 const { commonArgTypes, commonArgs, generateCommonStories } =
   useThemeComponentStory<YTagProps>(YTag)

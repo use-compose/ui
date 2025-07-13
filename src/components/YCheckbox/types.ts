@@ -1,4 +1,4 @@
-import { ThemeComponentBaseProps } from '@/types/base-props'
+import { ThemeComponentBaseProps } from '@/composables/component-theme'
 
 export interface YCheckboxProps extends ThemeComponentBaseProps {
   modelValue?: boolean
