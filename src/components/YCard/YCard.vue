@@ -6,7 +6,7 @@
 
 <script setup lang="ts">
 import { useColor, useRaw, useSize, useState, useVariant } from '@/composables'
-import { ThemeComponentBaseProps } from '@/types/base-props'
+import { ThemeComponentBaseProps } from '@/composables/component-theme'
 import { computed } from 'vue'
 import './YCard.scss'
 

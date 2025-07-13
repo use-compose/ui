@@ -12,7 +12,6 @@
 <script setup lang="ts">
 import { defineProps } from 'vue'
 import { YVerticalTitle } from '../YVerticalTitle'
-import './YSection.css'
 import './YSection.scss'
 
 interface Props {

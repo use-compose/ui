@@ -1,6 +1,6 @@
-import { ThemeComponentBaseProps } from '@/types/base-props'
 import { ArgTypes, StoryObj } from '@storybook/vue3'
 import { Component } from 'vue'
+import { ThemeComponentBaseProps } from './component-theme'
 
 // const themeComponentMeta = {
 //   title: 'Compose/Form/YButton',
