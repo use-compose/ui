@@ -4,9 +4,6 @@
     :value="modelValue"
     type="date"
     input-class="y-date-input"
-    :name="name"
-    autocomplete="off"
-    :label="label"
     @change="handleChange"
   >
   </YInput>

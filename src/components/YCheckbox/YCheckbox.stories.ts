@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
 
 import { useThemeComponentStory } from '@/composables'
-import { ref } from 'vue'
 import YCheckbox from './YCheckbox.vue'
 import type { YCheckboxProps } from './types'
 
@@ -31,7 +30,7 @@ const meta = {
 } satisfies Meta<typeof YCheckbox>
 
 export default meta
-type Story = StoryObj<typeof meta>
+type Story = StoryObj<typeof YCheckbox>
 /*
  *👇 Render functions are a framework specific feature to allow you control on how the component renders.
  * See https://storybook.js.org/docs/vue/api/csf
@@ -43,18 +42,15 @@ const renderGenericStory: Story = {
     components: { YCheckbox },
     props: Object.keys(argTypes),
     template: `
-    <YCheckbox v-bind="args" v-model="checked"  />
+    <YCheckbox v-bind="args" v-model="args.modelValue"  />
   `,
-    setup(props: YCheckboxProps) {
-      const checked = ref(false)
-
+    setup() {
       return {
-        modelValue: props.modelValue,
-        props: args,
-        checked,
+        args,
       }
     },
   }),
+  args: { modelValue: false, label: 'Label' },
 }
 
 const { Default, Outlined, Disabled, Raw, Large, Small } = generateCommonStories(renderGenericStory)

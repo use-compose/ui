@@ -1,7 +1,7 @@
 import { useThemeComponentStory } from '@/composables'
 import type { Meta } from '@storybook/vue3'
+import type { YTimeInputProps } from './YTimeInput.types'
 import YTimeInput from './YTimeInput.vue'
-import type { YTimeInputProps } from './types'
 
 const { commonArgTypes, commonArgs, generateCommonStories } =
   useThemeComponentStory<YTimeInputProps>(YTimeInput)

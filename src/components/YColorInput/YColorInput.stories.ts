@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/vue3'
 import YColorInput from './YColorInput.vue'
 import { YColorInputProps } from './types'
 
-const { commonArgTypes, generateCommonStories } =
+const { commonArgs, commonArgTypes, generateCommonStories } =
   useThemeComponentStory<YColorInputProps>(YColorInput)
 
 // More on how to set up stories at: https://storybook.js.org/docs/vue/writing-stories/introduction
@@ -20,6 +20,7 @@ const meta = {
     // onClick: { action: "handleClick"},
   },
   args: {
+    ...commonArgs,
     modelValue: 'var(--color-primary)',
   }, // default value
 } satisfies Meta<typeof YColorInput>
@@ -37,17 +38,18 @@ const renderGenericStory: Story = {
     components: { YColorInput },
     props: Object.keys(argTypes),
     template: `
-    <YColorInput v-bind="args" />
+    <YColorInput v-bind="$props" />
   `,
     setup() {
       // const emit = defineEmits(['update:modelValue', 'blur'])
-
+      const color = args.modelValue || 'var(--color-primary)'
       // const handleInput = (event: Event) => {
       //   emit('update:modelValue', (event.target as HTMLInputElement).value)
       // }
 
       return {
         args,
+        color,
         // modelValue: 'fsddf',
         // handleInput,
       }

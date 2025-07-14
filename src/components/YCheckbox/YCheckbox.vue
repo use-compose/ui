@@ -13,14 +13,12 @@
 <script setup lang="ts">
 import { YInput } from '@/components/YInput'
 import { useAnimation } from '@/composables/animation'
-import { basePropsDefault } from '@/composables/component-theme'
 import { useInput } from '@/composables/input'
 import { EmitFn, onMounted, useAttrs, useTemplateRef } from 'vue'
 import type { YCheckboxProps } from './types'
 import './YCheckbox.scss'
 
 const props = withDefaults(defineProps<YCheckboxProps>(), {
-  ...basePropsDefault,
   name: 'checkbox-input' + Math.random().toString(36).substring(7),
 })
 

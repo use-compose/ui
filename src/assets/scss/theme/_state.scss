@@ -8,7 +8,10 @@
     calc(var(--state-base-bg-lightness) - var(--state-#{$state}-bg-lightness))
   );
   @include utils.component(box-shadow, utils.component(box-shadow-#{$state}));
-  @include utils.component(transform, utils.component(transform-#{$state}));
+
+  &:not(.raw) {
+    @include utils.component(transform, utils.component(transform-#{$state}));
+  }
 
   --state: #{$state};
 }

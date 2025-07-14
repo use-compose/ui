@@ -17,6 +17,10 @@ import './YHighlightedText.scss'
 const props = withDefaults(defineProps<YHighlightedTextProps>(), {
   level: 'h1',
   active: true,
+
+  // Stick the highlighted text to the left side of the container on mobile viewports
+  // 💡 Will only works if used inside a "Wrapper" element
+  stickToLeft: false,
 })
 
 // const activeAndAnimate = computed(() => props.animate)
@@ -32,7 +36,8 @@ useEventListener(highlightedTextRef, 'mouseenter', () => {
 
 const getClasses = computed(() => [
   'highlighted-text',
-  { animate: props.animate },
-  { active: props.active },
+  props.active ? 'active' : '',
+  props.animate ? 'animate' : '',
+  props.stickToLeft ? 'stick-to-left' : '',
 ])
 </script>

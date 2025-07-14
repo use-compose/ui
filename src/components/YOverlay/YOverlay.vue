@@ -1,5 +1,5 @@
 <template>
-  <Transition appear name="fade">
+  <Transition name="fade">
     <div v-show="modelValue" :class="getClasses" :style="getStyles" @click="handleClick">
       <slot />
     </div>

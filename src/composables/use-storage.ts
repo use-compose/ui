@@ -26,6 +26,9 @@ export function useStorage() {
   }
 
   function setStorageTheme(theme: YTheme) {
+    if (!isClientSide()) {
+      return
+    }
     window.localStorage.setItem(StorageKeys.yTheme, JSON.stringify(theme))
   }
 
