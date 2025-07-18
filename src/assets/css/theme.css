@@ -93,7 +93,7 @@
   --theme-current-color: color-mix(in srgb,
       var(--color-primary, #e3c566) calc(var(--primary) * 100%),
       color-mix(in srgb,
-        var(--color-secondary, #000000) calc(var(--secondary) * 100%),
+        var(--color-secondary, #000) calc(var(--secondary) * 100%),
         var(--color-danger, #bd1414) calc(var(--danger) * 100%)));
 
   /* 
@@ -103,7 +103,6 @@
   --theme-current-color-opacity: calc(var(--color-bg-opacity) * var(--primary) + var(--color-bg-opacity) * var(--secondary) + var(--color-bg-opacity) * var(--danger)); */
 
   --is-box-shadow-hidden: calc(1 - var(--raw, 0));
-
   --component-box-shadow: var(--component-box-shadow-base);
   --component-box-shadow-color: var(--theme-current-color);
   --component-box-shadow-x: calc(var(--is-box-shadow-hidden) * 0.80 * var(--theme-base-unit-calc));

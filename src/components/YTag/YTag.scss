@@ -10,6 +10,7 @@
 
   // text-transform: uppercase;
   @include utils.component(padding-y, 0.15rem);
+
   box-shadow: none;
   border: 2px solid
     color-mix(in srgb, var(--color-main-dark) var(--primary), var(--color-primary) 50%);
