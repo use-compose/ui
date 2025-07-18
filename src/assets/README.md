@@ -4,17 +4,36 @@
 
 See [CSS Custom Properties (vars) with SASS/SCSS, a practical architecture strategy](https://dev.to/felipperegazio/css-custom-properties-vars-with-sass-scss-a-practical-architecture-strategy-1m88)
 
-## Theming with HSL
+## Theming with OKlch color space
 
 3 main props:
 
-### Color: primary, secondary, danger - will play on the hue
+### Variant: contained, outlined, text - will play on the Lightness
 
-### Variant: contained, outlined, text - will play on the opacity/lightness
+### Color: primary, secondary, danger - will play on the Chroma
 
-### State: base, hover, focus/focus-visible, active, disabled - will play on the lightness
+### State: base, hover, focus/focus-visible, active, disabled - will play on the Lightness
 
 With base Design Tokens for initial changing values: [style-dictionary](https://github.com/amzn/style-dictionary/tree/main)
+
+CSS is used to defines initial tokens and runtime calculations, allowing dynamic theming and runtime color changes.
+
+SCSS Mixins will allow different variations of Lightness/Chroma/Hue based on combination of Color/Variant/State.
+
+e.g. in the Variants mixins:
+
+```scss
+@mixin outlined {
+  &.outlined {
+    // ... some styling rules
+
+    // Use the state mixin to apply some specific styles for the outlined variant combined with the hover state
+    @include state.hover {
+      @include mixins.component(bg-opacity, var(--state-active-bg-lightness));
+    }
+  }
+}
+```
 
 Sources:
 

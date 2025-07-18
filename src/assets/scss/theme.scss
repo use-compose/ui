@@ -270,6 +270,7 @@ $variants: ('contained', 'outlined', 'text');
   border-width: utils.component(border-width);
   border-style: utils.component(border-style);
   border: utils.component(border-width) utils.component(border-style) utils.component(border-color);
+
   // font-size: 1rem;
 
   // Color Props
@@ -533,7 +534,6 @@ $breakpoints: (
     // 42px
   )
 );
-
 @include utils.cssvars(
   'y-highlighted-text',
   (

@@ -1,5 +1,4 @@
 import vue from '@vitejs/plugin-vue'
-import path, { resolve } from 'path'
 import { fileURLToPath, URL } from 'url'
 import { defineConfig } from 'vite'
 import dts from 'vite-plugin-dts'
@@ -11,7 +10,7 @@ export default defineConfig({
     vue(),
     dts({
       entryRoot: './src',
-      tsconfigPath: path.join(__dirname, './tsconfig.json'),
+      tsconfigPath: fileURLToPath(new URL('./tsconfig.json', import.meta.url)),
       include: ['./src/**/*'],
       outDir: './dist',
       rollupTypes: true,
@@ -29,10 +28,10 @@ export default defineConfig({
     emptyOutDir: true,
     reportCompressedSize: true,
     lib: {
-      entry: resolve(__dirname, 'src/index.ts'),
+      entry: fileURLToPath(new URL('./src/index.ts', import.meta.url)),
       name: '@use-compose/ui',
       fileName: 'index',
-      formats: ['es'], // optionally also 'cjs' if you want CJS support
+      // formats: ['es'], // optionally also 'cjs' if you want CJS support
     },
     rollupOptions: {
       external: ['vue'],
@@ -40,9 +39,9 @@ export default defineConfig({
         globals: {
           vue: 'Vue',
         },
-        entryFileNames: `index.mjs`,
+        // entryFileNames: `index.js`,
         // optional: preserve modules for tree-shaking
-        preserveModules: false,
+        // preserveModules: false,
       },
     },
   },
