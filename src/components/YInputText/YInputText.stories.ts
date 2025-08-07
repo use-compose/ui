@@ -1,5 +1,6 @@
 import { useThemeComponentStory } from '@/composables'
 import type { Meta, StoryObj } from '@storybook/vue3'
+import { ref } from 'vue'
 import YInputText from './YInputText.vue'
 import type { YInputTextProps } from './types'
 
@@ -44,9 +45,10 @@ const renderGenericStory: Story = {
     components: { YInputText },
     props: Object.keys(argTypes),
     template: `
-    <YInputText v-bind="args" />
+    <YInputText v-model="inputVal" v-bind="args" />
   `,
-    setup() {
+    setup(props: YInputTextProps) {
+      const inputVal = ref('modelValue')
       // const emit = defineEmits(['update:modelValue', 'blur'])
 
       // const handleInput = (event: Event) => {
@@ -55,6 +57,8 @@ const renderGenericStory: Story = {
 
       return {
         args,
+        props,
+        inputVal,
         // handleInput,
       }
     },

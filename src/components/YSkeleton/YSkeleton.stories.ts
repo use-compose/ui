@@ -1,18 +1,14 @@
----
-to: src/components/<%= name %>/<%= name %>.stories.ts
----
-
 import type { Meta , StoryObj} from '@storybook/vue3';
-import <%= name %> from './<%= name %>.vue';
-import type { <%= name %>Props } from './types';
+import YSkeleton from './YSkeleton.vue';
+import type { YSkeletonProps } from './types';
 // import { useThemeComponentStory } from '@/composables'
 
-// const { commonArgTypes, commonArgs, generateCommonStories } = useThemeComponentStory<<%= name %>Props>(<%= name %>)
+// const { commonArgTypes, commonArgs, generateCommonStories } = useThemeComponentStory<YSkeletonProps>(YSkeleton)
 
-const meta: Meta<typeof <%= name %>> = {
+const meta: Meta<typeof YSkeleton> = {
   // TODO: TO CHANGE PATH
-  title: 'Components/<%= name %>',
-  component: <%= name %>,
+  title: 'Components/YSkeleton',
+  component: YSkeleton,
   tags: ['autodocs'],
   argTypes: {
     // ...commonArgTypes,
@@ -23,14 +19,14 @@ const meta: Meta<typeof <%= name %>> = {
 };
  
 export default meta;
-type Story = StoryObj<typeof <%= name %>>;
+type Story = StoryObj<typeof YSkeleton>;
 
 const renderGenericStory: Story = {
-  render: (args: <%= name %>Props) => ({
-    components: { <%= name %> },
+  render: (args: YSkeletonProps) => ({
+    components: { YSkeleton },
     props: Object.keys(args),
     template: `
-      <<%= name %> v-bind="args" />
+      <YSkeleton v-bind="args" />
   `,
     setup() {
       return { args }

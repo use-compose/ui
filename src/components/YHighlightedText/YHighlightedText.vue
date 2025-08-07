@@ -24,7 +24,7 @@ const props = withDefaults(defineProps<YHighlightedTextProps>(), {
 })
 
 // const activeAndAnimate = computed(() => props.animate)
-const highlightedTextRef = useTemplateRef<HTMLElement>('highlightedTextRef')
+const highlightedTextRef = useTemplateRef<HTMLElement | null>('highlightedTextRef')
 
 const { isHoveredOnce } = useAnimation(highlightedTextRef)
 

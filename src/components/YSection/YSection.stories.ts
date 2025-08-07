@@ -5,7 +5,7 @@ import YSection from './YSection.vue'
 
 const meta: Meta<typeof YSection> = {
   // TODO: TO CHANGE PATH
-  title: 'Compose/YSection',
+  title: 'Components/YSection',
   component: YSection,
   tags: ['autodocs'],
   args: {

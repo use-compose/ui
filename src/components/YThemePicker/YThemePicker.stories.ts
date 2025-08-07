@@ -8,7 +8,7 @@ const { commonArgTypes, commonArgs, generateCommonStories } =
 
 const meta: Meta<typeof YThemePicker> = {
   // TODO: TO CHANGE PATH
-  title: 'Compose/YThemePicker',
+  title: 'Components/YThemePicker',
   component: YThemePicker,
   tags: ['autodocs'],
   argTypes: {

@@ -1,0 +1,29 @@
+.y-table {
+  table-layout: fixed;
+  border-collapse: collapse;
+  width: 100%;
+
+
+}
+
+.y-table thead {}
+
+/* 
+.y-table:has(thead tr th:hover) > thead tr th:first-of-type,
+.y-table:has(thead tr th:hover) > thead tr td:first-of-type {
+  opacity: 0.5;
+} */
+
+/* .y-table-body:hover>tr td {
+  opacity: 0.2;
+}
+
+.y-table-body:hover>tr:hover td,
+.y-table-body:hover>tr:hover th {
+  opacity: 0.5;
+}
+
+.y-table-body:hover>tr:hover td:hover,
+.y-table-body:hover>tr:hover th:hover {
+  opacity: 1;
+} */

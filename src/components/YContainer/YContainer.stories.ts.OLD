@@ -7,7 +7,7 @@ const { commonArgTypes, commonArgs, generateCommonStories } = useThemeComponentS
 
 const meta: Meta<typeof YContainer> = {
   // TODO: TO CHANGE PATH
-  title: 'Compose/YContainer',
+  title: 'Components/YContainer',
   component: YContainer,
   tags: ['autodocs'],
   argTypes: {

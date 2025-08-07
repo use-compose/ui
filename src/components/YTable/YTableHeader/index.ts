@@ -1,0 +1,1 @@
+export { default as YTableHeader } from './YTableHeader.vue'
