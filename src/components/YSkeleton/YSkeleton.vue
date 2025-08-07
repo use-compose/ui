@@ -9,19 +9,8 @@
 </template>
 
 <script setup lang="ts">
-import { computed, defineProps, withDefaults } from 'vue'
-import type { YSkeletonProps } from './types'
+import { computed } from 'vue'
 import './YSkeleton.scss'
-
-const props = withDefaults(defineProps<YSkeletonProps>(), {
-  // ...basePropsDefault,
-})
-
-// const { variantClass } = useVariant(props)
-// const { stateClass, isDisabled } = useState(props)
-// const { colorClass } = useColor(props)
-// const { sizeClass } = useSize(props)
-// const { rawClasses } = useRaw(props)
 
 const getClasses = computed(() => {
   return ['skeleton-container']

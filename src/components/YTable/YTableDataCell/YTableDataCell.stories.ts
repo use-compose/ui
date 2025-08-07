@@ -33,7 +33,7 @@ export default meta
 type Story = StoryObj<typeof YTableDataCell>
 
 const renderGenericStory: Story = {
-  render: (args: YTableDataCellProps, { argTypes }) => ({
+  render: (_, { argTypes }) => ({
     components: { YTableDataCell },
     props: Object.keys(argTypes),
     setup(props: YTableDataCellProps) {
