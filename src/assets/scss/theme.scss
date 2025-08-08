@@ -232,6 +232,7 @@ a {
     transform-active: translate(3px, 3px),
     transform-disabled: none,
     color: initial,
+    box-shadow: var(--component-box-shadow-base),
     margin-x: utils.space(sm),
     padding-x: utils.space(unit),
     padding-y: utils.space(xxs),
@@ -251,7 +252,7 @@ $variants: ('contained', 'outlined', 'text');
 
 @mixin theme-component {
   padding: utils.component(padding-y) utils.component(padding-x);
-  margin: 0 utils.component(margin-x) 0 utils.component(margin-bottom);
+  // margin: 0 utils.component(margin-x) 0 utils.component(margin-bottom);
   box-shadow: utils.component(box-shadow);
   outline: none;
   transform: utils.component(transform);
@@ -260,7 +261,7 @@ $variants: ('contained', 'outlined', 'text');
   &.small {
     // @include utils.component(padding-y, space(xs));
     @include utils.component(padding-x, utils.space(xs));
-    @include utils.component(height, 2rem); // 32px
+    @include utils.component(height, calc(utils.component(height) * 1)); // 32px
   }
 
   &.large {
@@ -296,6 +297,14 @@ $variants: ('contained', 'outlined', 'text');
   @include theme.contained;
   @include theme.outlined;
   @include theme.text;
+
+  // Prevent non-interactive component to have an effect on click or keyboard focus
+  &:active,
+  &:focus-visible {
+    transform: unset;
+
+    @include utils.component(box-shadow, utils.component(box-shadow-hover));
+  }
 
   --component-bg-hue: calc(var(--color-bg-hue));
   --component-bg-saturation: calc(

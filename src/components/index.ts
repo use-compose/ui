@@ -3,7 +3,7 @@ export { default as AppCompose } from './AppCompose.vue'
 //  layout
 // export { Container, Flex, Wrapper } from './layout'
 export { default as Wrapper } from './Wrapper.vue'
-export { YColumn } from './YColumn'
+// export { YColumn } from './YColumn'
 export { YContainer } from './YContainer'
 export { YFlex } from './YFlex'
 

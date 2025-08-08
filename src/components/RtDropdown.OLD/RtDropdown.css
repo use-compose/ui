@@ -1,0 +1,13 @@
+:root {
+  --dropdown-z-index: 1000;
+  --dropdown-menu-z-index: calc(var(--dropdown-z-index) - 1);
+  --dropdown-width: 16rem;
+}
+
+.rt-dropdown-menu {
+  /* --dropdown-menu-z-index: calc(var(--dropdown-z-index) + 1); */
+  z-index: var(--dropdown-menu-z-index);
+  transform: translateY(var(--spacing-3));
+
+  /* transition: transform 0.5s ease; */
+}

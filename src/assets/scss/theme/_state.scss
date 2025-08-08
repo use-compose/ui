@@ -17,57 +17,49 @@
 }
 
 @mixin base {
-  &.base:not([disabled], .disabled) {
-    @include resolve-state(base);
-
-    @content;
-  }
+  @include resolve-state(base);
+  @content;
 }
 
 @mixin hover {
-  &:not([disabled], .disabled) {
-    &:hover,
-    &.hover {
-      @include resolve-state(hover);
-
-      @content;
-    }
-  }
+  @include resolve-state(hover);
+  @content;
 }
 
 @mixin focus {
-  &:not([disabled], .disabled) {
-    &:focus,
-    &.focus-visible,
-    &.focus,
-    &:focus-visible {
-      @include resolve-state(focus);
-      @content;
-    }
-  }
+  @include resolve-state(focus);
+  @content;
 }
 
 @mixin active {
-  &:not([disabled], .disabled) {
-    &:active,
-    &.active {
-      @include resolve-state(active);
-
-      @content;
-    }
-  }
+  @include resolve-state(active);
+  @content;
 }
 
 @mixin disabled {
-  &:disabled,
-  &.disabled,
-  &[disabled] {
-    opacity: 0.5;
-    cursor: not-allowed;
-    transform: none;
+  @include resolve-state(disabled);
+  @content;
+}
 
-    @include resolve-state(disabled);
+.base:not([disabled], .disabled) {
+  @include base;
+}
 
-    @content;
-  }
+:is(.hover, :hover):not([disabled], .disabled) {
+  @include hover;
+}
+
+:is(.focus, .focus-visible, :focus, :focus-visible):not([disabled], .disabled, .base) {
+  @include focus;
+}
+
+:is(.active, :active):not([disabled], .disabled, .base) {
+  @include active;
+}
+
+:is(.disabled, :disabled, [disabled]) {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+  @include disabled;
 }

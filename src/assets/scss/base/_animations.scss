@@ -1,5 +1,11 @@
 @use '../utils' as utils;
 
+@property --slide-down-y {
+  syntax: '<length>';
+  initial-value: '0';
+  inherits: true;
+}
+
 // Fade
 .fade-enter-active,
 .fade-leave-active {
@@ -117,5 +123,39 @@
   100% {
     transform: scale(0);
     opacity: 0;
+  }
+}
+
+/* 
+ * Drodpdown slide down animation
+ */
+.slide-down-enter-active {
+  /* --slide-down-y: var(--spacing-3); */
+  animation: slide-down 0.25s ease-out forwards;
+}
+
+.slide-down-leave-active {
+  animation: slide-down 0.1s ease-in reverse forwards;
+}
+
+@keyframes slide-down {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(var(--slide-down-y));
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+
+  100% {
+    transform: translateX(100%);
   }
 }
