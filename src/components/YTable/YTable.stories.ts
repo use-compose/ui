@@ -19,7 +19,7 @@ const renderGenericStory: Story = {
     components: { YTable, YTableDataCell },
     props: Object.keys(args),
     template: `
-      <YTable :headers="headers" :rows="rows" :check="check" @checkbox-change="handleCheckboxChange">
+      <YTable :headers="headers" :rows="rows" >
         <template #header >
           <YTableDataCell v-for="(column, index) in headers" :key="index" header>
             {{ column.key }}
@@ -52,14 +52,6 @@ const renderGenericStory: Story = {
           value: 'column4',
         },
       ]
-      const check = {
-        label: 'Select',
-        name: 'select',
-        value: false,
-      }
-      const handleCheckboxChange = (value: boolean) => {
-        console.log('Checkbox changed:', value)
-      }
 
       const rows = computed(() => [
         { key: 'row1', column1: 'Row 1 Col 1', column2: 'Row 1 Col 2', column3: 'Row 1 Col 3' },
@@ -67,7 +59,7 @@ const renderGenericStory: Story = {
         { key: 'row3', column1: 'Row 3 Col 1', column2: 'Row 3 Col 2', column3: 'Row 3 Col 3' },
       ])
 
-      return { args, headers, rows, check, handleCheckboxChange }
+      return { args, headers, rows }
     },
   }),
 }
