@@ -2,7 +2,7 @@
   <tbody class="'y-table-body'">
     <YTableRow v-for="(row, index) in rows" :key="index">
       <slot v-bind="{ row, rowIndex: index }">
-        <YTableDataCell v-for="(cell, cellIndex) in rowValues" :key="cellIndex">
+        <YTableDataCell v-for="(cell, cellIndex) in rows" :key="cellIndex">
           {{ cell }}
         </YTableDataCell>
       </slot>

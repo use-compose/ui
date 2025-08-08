@@ -1,7 +1,7 @@
 <template>
   <table :class="getClasses">
     <YTableHeader>
-      <template #default>
+      <template #default="{ headerValues }">
         <slot name="header" v-bind="{ headerValues }" />
       </template>
     </YTableHeader>
