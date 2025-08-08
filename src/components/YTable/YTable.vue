@@ -34,20 +34,6 @@ const props = withDefaults(defineProps<YTableProps>(), {
   footer: () => [],
 })
 
-const headerValues = computed(() => {
-  if (props.headers) {
-    return props.headers.map((header) => {
-      if (typeof header === 'string') {
-        return header
-      } else if (typeof header === 'object' && 'value' in header) {
-        return header.value ? header.value : header.key || ''
-      }
-      return ''
-    })
-  }
-  return []
-})
-
 provide(yTableKey, props)
 
 const getClasses = computed(() => {

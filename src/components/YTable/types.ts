@@ -6,7 +6,7 @@ import { TableHeader } from './YTableHeader/YTableHeader.types'
 export type TableHeaders = TableHeader[]
 
 export interface YTableProps extends ThemeComponentBaseProps {
-  headers?: TableHeader[]
+  headers?: TableHeaders
 
   rows?: Record<string, string>[]
   footer?: TableFooter[] // Footer can be an array of TableFooter

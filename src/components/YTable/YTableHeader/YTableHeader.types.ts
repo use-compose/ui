@@ -1,10 +1,6 @@
-import { YTableDataCellProps } from '../YTableDataCell/types'
+export type { TableHeader }
 
-export type { TableHeader, YKeyValueHeader }
-
-interface YKeyValueHeader {
+interface TableHeader {
   key: string
   value: string
 }
-
-type TableHeader = string | YKeyValueHeader | YTableDataCellProps

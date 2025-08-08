@@ -1,21 +1,14 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
-import YTable from './YTable.vue'
+import { computed } from 'vue'
 import type { YTableProps } from './types'
-// import { useThemeComponentStory } from '@/composables'
-
-// const { commonArgTypes, commonArgs, generateCommonStories } = useThemeComponentStory<YTableProps>(YTable)
+import YTable from './YTable.vue'
+import { YTableDataCell } from './YTableDataCell'
 
 const meta: Meta<typeof YTable> = {
   // TODO: TO CHANGE PATH
   title: 'Components/Data/YTable',
   component: YTable,
   tags: ['autodocs'],
-  argTypes: {
-    // ...commonArgTypes,
-  },
-  args: {
-    // ...commonArgs,
-  },
 }
 
 export default meta
@@ -23,28 +16,60 @@ type Story = StoryObj<typeof YTable>
 
 const renderGenericStory: Story = {
   render: (args: YTableProps) => ({
-    components: { YTable },
+    components: { YTable, YTableDataCell },
     props: Object.keys(args),
     template: `
-      <YTable v-bind="args" />
+      <YTable :headers="headers" :rows="rows" :check="check" @checkbox-change="handleCheckboxChange">
+        <template #header >
+          <YTableDataCell v-for="(column, index) in headers" :key="index" header>
+            {{ column.key }}
+          </YTableDataCell>
+        </template>
+
+      <template #default="{ row }">
+          <YTableDataCell v-for="(column, index) in headers" :key="index">
+            {{ row[column.value] }}
+          </YTableDataCell>
+        </template> 
+      </YTable>
   `,
     setup() {
-      return { args }
+      const headers = [
+        {
+          key: 'Header 0',
+          value: 'column1',
+        },
+        {
+          key: 'Header 1',
+          value: 'column2',
+        },
+        {
+          key: 'Header 2',
+          value: 'column3',
+        },
+        {
+          key: 'Header 3',
+          value: 'column4',
+        },
+      ]
+      const check = {
+        label: 'Select',
+        name: 'select',
+        value: false,
+      }
+      const handleCheckboxChange = (value: boolean) => {
+        console.log('Checkbox changed:', value)
+      }
+
+      const rows = computed(() => [
+        { key: 'row1', column1: 'Row 1 Col 1', column2: 'Row 1 Col 2', column3: 'Row 1 Col 3' },
+        { key: 'row2', column1: 'Row 2 Col 1', column2: 'Row 2 Col 2', column3: 'Row 2 Col 3' },
+        { key: 'row3', column1: 'Row 3 Col 1', column2: 'Row 3 Col 2', column3: 'Row 3 Col 3' },
+      ])
+
+      return { args, headers, rows, check, handleCheckboxChange }
     },
   }),
-  args: {
-    headers: ['Header 1', 'Header 2', 'Header 3'],
-    rows: [
-      { 'Column 1': 'Row 1 Col 1', 'Column 2': 'Row 1 Col 2', 'Column 3': 'Row 1 Col 3' },
-      { 'Column 1': 'Row 2 Col 1', 'Column 2': 'Row 2 Col 2', 'Column 3': 'Row 2 Col 3' },
-      { 'Column 1': 'Row 3 Col 1', 'Column 2': 'Row 3 Col 2', 'Column 3': 'Row 3 Col 3' },
-    ],
-  },
 }
 
 export { renderGenericStory as Default }
-
-// TODO: if you use useThemeComponentStory
-// const { Default, Outlined, Disabled, Raw, Small, Large } = generateCommonStories(renderGenericStory)
-
-// export { Default, Outlined, Disabled, Raw, Small, Large }

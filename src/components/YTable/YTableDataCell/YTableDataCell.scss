@@ -5,9 +5,10 @@
 // TODO: change to kebab-case
 .y-table-data-cell {
   position: relative;
-  padding: utils.space(xs);
+  padding: utils.space(xs) utils.space(sm);
   text-align: left;
   white-space: nowrap;
+  place-content: center;
 
   --gap: var(--space-sm);
   --line-offset: calc(var(--gap) / 2);
