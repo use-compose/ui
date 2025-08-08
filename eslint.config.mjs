@@ -30,7 +30,7 @@ export default defineConfig([
           registeredComponentsOnly: false,
         },
       ],
-      '@typescript-eslint/no-empty-object-type': ['off', {}],
+      '@typescript-eslint/no-empty-object-type': 'off',
     },
     settings: {
       'editor.formatOnSave': true,

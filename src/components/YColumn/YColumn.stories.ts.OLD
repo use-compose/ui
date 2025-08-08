@@ -7,7 +7,7 @@ const { commonArgTypes, commonArgs, generateCommonStories } = useThemeComponentS
 
 const meta: Meta<typeof YColumn> = {
   // TODO: TO CHANGE PATH
-  title: 'Compose/YColumn',
+  title: 'Components/YColumn',
   component: YColumn,
   tags: ['autodocs'],
   argTypes: {

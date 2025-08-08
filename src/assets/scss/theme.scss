@@ -33,10 +33,17 @@
   inherits: true;
 }
 
+@property --border {
+  syntax: 'yes | <number>';
+  initial-value: 0;
+  inherits: true;
+}
+
 :root {
   /* https://dev.to/tracygjg/conditional-css-437e */
   --true: 1;
   --false: 0;
+  --has-border: var(--border, 1);
 }
 
 body {
@@ -194,11 +201,12 @@ a {
     dark-50: color-mix(in srgb, utils.color(main-dark) 70%, white),
     bg: var(--color-bg),
     bg-50: color-mix(in srgb, utils.color(bg) 50%, white),
-    primary-80: color-mix(in srgb, utils.color(primary) 80%, white),
-    primary-60: color-mix(in srgb, utils.color(primary) 60%, white),
-    primary-40: color-mix(in srgb, utils.color(primary) 40%, white),
-    primary-20: color-mix(in srgb, utils.color(primary) 20%, white),
-    primary-10: color-mix(in srgb, utils.color(primary) 10%, white),
+    primary-80: oklch(from utils.color(primary) l c h / 0.8),
+    primary-60: oklch(from utils.color(primary) l c h / 0.6),
+    primary-40: oklch(from utils.color(primary) l c h / 0.4),
+    primary-30: oklch(from utils.color(primary) l c h / 0.3),
+    primary-20: oklch(from utils.color(primary) l c h / 0.2),
+    primary-10: oklch(from utils.color(primary) l c h / 0.1),
     color-white: #fff,
     theme-color: utils.color(primary),
     initial-light: #f5f5f5
@@ -228,10 +236,10 @@ a {
     padding-x: utils.space(unit),
     padding-y: utils.space(xxs),
     margin-bottom: utils.space(unit),
-    border-width: 2px,
+    border-width: utils.space(xxs),
     border-style: solid,
     border-color: transparent,
-    font-size: 1rem,
+    font-size: utils.text(md),
     not-contained: calc(1 - var(--contained, 1)),
     transition: all 0.1s linear
   )
@@ -267,9 +275,10 @@ $variants: ('contained', 'outlined', 'text');
   height: utils.component(height);
   font-weight: bold;
   margin-bottom: utils.component(margin-bottom);
-  border-width: utils.component(border-width);
+  border-width: calc(var(--has-border) * utils.component(border-width));
   border-style: utils.component(border-style);
-  border: utils.component(border-width) utils.component(border-style) utils.component(border-color);
+  border: calc(var(--has-border) * utils.component(border-width)) utils.component(border-style)
+    utils.component(border-color);
 
   // font-size: 1rem;
 

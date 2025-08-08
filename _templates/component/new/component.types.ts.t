@@ -1,5 +1,5 @@
 ---
-to: src/components/<%= name %>/types.ts
+to: src/components/<%= name %>/<%= name %>.types.ts
 ---
 import { ThemeComponentBaseProps } from '@/composables/component-theme'
 
