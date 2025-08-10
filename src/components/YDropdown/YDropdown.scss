@@ -5,4 +5,9 @@
 // TODO: change to kebab-case
 .y-dropdown {
   position: relative;
+
+  &:has(> .y-menu) .y-menu {
+    background-color: var(--theme-current-color);
+    border: none;
+  }
 }

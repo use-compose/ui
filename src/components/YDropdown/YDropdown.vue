@@ -1,5 +1,5 @@
 <template>
-  <div ref="dropdownRef" class="y-dropdown" :style="yDropdownStyle">
+  <div ref="dropdownRef" :class="dropdownClasses" :style="yDropdownStyle">
     <!-- The dropdown trigger - we use the default slot -->
     <YDropdownTrigger>
       <template #default>
@@ -27,6 +27,8 @@
 <script lang="ts">
 import YDropdownTrigger from '@/components/YDropdown/YDropdownTrigger.vue'
 import YMenu from '@/components/YMenu/YMenu.vue'
+import { useRaw } from '@/composables'
+import { defineComponentBaseProps } from '@/composables/component-theme'
 import { useDropdown } from '@/composables/dropdown'
 import { useOnClickOutside } from '@/composables/on-click-outside'
 import { computed, defineComponent } from 'vue'
@@ -39,6 +41,7 @@ export default defineComponent({
     YMenu,
   },
   props: {
+    ...defineComponentBaseProps,
     hasScrollbar: {
       type: Boolean,
       default: false,
@@ -52,12 +55,16 @@ export default defineComponent({
     // 1. Use generic theme composable to get classes if it fits
     // const { themeClasses } = useComponentTheme(props)
     // or use specific one
-
+    const { rawClasses } = useRaw(props)
     const { isOpen, toggle, dropdownRef, dropdownMenuRef, dropdownTriggerRef, close, zIndex } =
       useDropdown({
         props,
         context,
       })
+
+    const dropdownClasses = computed(() => {
+      return ['y-dropdown', rawClasses.value]
+    })
 
     useOnClickOutside(dropdownRef, close, window, dropdownTriggerRef)
     // const { rawClasses } = useRaw(props)
@@ -65,6 +72,7 @@ export default defineComponent({
       '--dropdown-z-index': zIndex,
     }))
     return {
+      dropdownClasses,
       isOpen,
       toggle,
       dropdownRef,

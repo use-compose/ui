@@ -131,7 +131,7 @@
  */
 .slide-down-enter-active {
   /* --slide-down-y: var(--spacing-3); */
-  animation: slide-down 0.25s ease-out forwards;
+  animation: slide-down 0.55s ease-out forwards;
 }
 
 .slide-down-leave-active {
@@ -140,12 +140,12 @@
 
 @keyframes slide-down {
   from {
-    opacity: 0;
-    transform: translateY(-10px);
+    // opacity: 0;
+    transform: translateY(-50%);
   }
 
   to {
-    opacity: 1;
+    // opacity: 1;
     transform: translateY(var(--slide-down-y));
   }
 }

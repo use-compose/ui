@@ -1,9 +1,10 @@
+import { ThemeComponentBaseProps } from '@/composables/component-theme'
 import { InjectionKey, Ref } from 'vue'
 
 export { dropdownKey }
 export type { DropdownKeyInterface, YDropdownProps }
 
-interface YDropdownProps {
+interface YDropdownProps extends ThemeComponentBaseProps {
   hasScrollbar?: boolean
   openOnHover?: boolean
 }

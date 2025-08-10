@@ -6,15 +6,16 @@
 // TODO: change to kebab-case
 .y-menu {
   @include theme-component;
-  @include state.base;
-  @include color.primary;
+  // @include state.base;
+  // @include color.primary;
+
   border-width: 1px; /* rt-border */
   border-style: solid; /* rt-border-solid */
   border-color: #737373; /* rt-border-neutral-500 */
   position: absolute; /* rt-absolute */
   right: 0; /* rt-right-0 */
   max-width: 300px; /* rt-max-w-[300px] */
-  background-color: #ffffff; /* rt-bg-white */
+  background-color: inherit; /* rt-bg-white */
   padding-left: 1rem; /* rt-px-4 -> 16px */
   padding-right: 1rem; /* rt-px-4 -> 16px */
   @include utils.component(box-shadow, utils.component(box-shadow));

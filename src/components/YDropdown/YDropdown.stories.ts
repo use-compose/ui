@@ -27,9 +27,9 @@ const renderGenericStory: Story = {
     components: { YDropdown, YButton },
     props: Object.keys(args),
     template: `
-      <YDropdown v-bind="args">
+      <YDropdown raw v-bind="args">
     <template #default="{ toggle, isOpen }">
-      <YButton @click="toggle" class="mb-0">
+      <YButton  @click="toggle" class="mb-0">
         {{ isOpen ? 'Close Dropdown' : 'Open Dropdown' }}
       </YButton>
     </template>
