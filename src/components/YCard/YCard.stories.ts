@@ -1,6 +1,6 @@
 import { YButton } from '@/components/YButton'
 import { useThemeComponentStory } from '@/composables'
-import { ArgTypes, Meta, StoryObj } from '@storybook/vue3'
+import { ArgTypes, Meta, StoryObj } from '@storybook/vue3-vite'
 import { YFlex } from '../YFlex'
 import YCard, { YCardProps } from './YCard.vue'
 

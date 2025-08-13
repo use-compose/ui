@@ -1,6 +1,6 @@
-import type { Meta , StoryObj} from '@storybook/vue3';
-import YMenu from './YMenu.vue';
-import type { YMenuProps } from './types';
+import type { Meta, StoryObj } from '@storybook/vue3-vite'
+import type { YMenuProps } from './YMenu.types'
+import YMenu from './YMenu.vue'
 // import { useThemeComponentStory } from '@/composables'
 
 // const { commonArgTypes, commonArgs, generateCommonStories } = useThemeComponentStory<YMenuProps>(YMenu)
@@ -16,10 +16,10 @@ const meta: Meta<typeof YMenu> = {
   args: {
     // ...commonArgs,
   },
-};
- 
-export default meta;
-type Story = StoryObj<typeof YMenu>;
+}
+
+export default meta
+type Story = StoryObj<typeof YMenu>
 
 const renderGenericStory: Story = {
   render: (args: YMenuProps) => ({

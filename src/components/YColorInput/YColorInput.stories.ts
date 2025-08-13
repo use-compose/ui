@@ -1,5 +1,5 @@
 import { useThemeComponentStory } from '@/composables'
-import type { Meta, StoryObj } from '@storybook/vue3'
+import type { Meta, StoryObj } from '@storybook/vue3-vite'
 import YColorInput from './YColorInput.vue'
 import { YColorInputProps } from './types'
 

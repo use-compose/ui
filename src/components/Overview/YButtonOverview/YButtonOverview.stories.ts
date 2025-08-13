@@ -1,6 +1,6 @@
 import { YButton } from '@/components/YButton'
 import { useThemeComponentStory } from '@/composables'
-import type { ArgTypes, Meta, StoryObj } from '@storybook/vue3'
+import type { ArgTypes, Meta, StoryObj } from '@storybook/vue3-vite'
 import YButtonOverview from './YButtonOverview.vue'
 import type { YButtonOverviewProps } from './types'
 

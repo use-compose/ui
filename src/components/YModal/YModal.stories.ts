@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/vue3'
+import type { Meta, StoryObj } from '@storybook/vue3-vite'
 
 import { YButton, YModal } from '@/components'
 import { YInputText } from '@/components/YInputText'
