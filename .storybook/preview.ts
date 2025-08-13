@@ -1,4 +1,4 @@
-import type { Preview } from '@storybook/vue3'
+import type { Preview } from '@storybook/vue3-vite'
 import { AppCompose, Wrapper, type YTheme } from '../src'
 
 const theme: YTheme = {

@@ -1,5 +1,5 @@
 import { YCheckbox } from '@/components/YCheckbox'
-import type { Meta, StoryObj } from '@storybook/vue3'
+import type { Meta, StoryObj } from '@storybook/vue3-vite'
 import { reactive } from 'vue'
 import { YTableDataCell } from '../YTableDataCell'
 import { YTableRow } from '../YTableRow'
