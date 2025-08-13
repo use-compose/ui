@@ -5,7 +5,7 @@
 // TODO: change to kebab-case
 .y-container {
   max-width: $breakpoint-mobile;
-  padding: var(--space-unit);
+  padding: 0 var(--space-unitss, 1rem);
 
   @include media('tablet') {
     max-width: $breakpoint-tablet;

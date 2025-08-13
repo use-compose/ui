@@ -21,6 +21,7 @@ export { YTimeInput } from './YTimeInput'
 export { YCard } from './YCard'
 
 // overlays
+export { YDropdown } from './YDropdown'
 export { YBaseModal, YModal, YModalFooter, YModalHeader } from './YModal'
 export { YOverlay } from './YOverlay'
 

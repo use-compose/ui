@@ -1,26 +1,21 @@
 import { dropdownKey, YDropdownProps } from '@/components/YDropdown/YDropdown.types'
-import type { SetupContext } from 'vue'
 import { computed, provide, ref, unref, watch } from 'vue'
 import { useEventListener } from './event-listener'
 import { useStack } from './stack'
 
 interface UseDropdownParams {
   props: YDropdownProps
-  context?: SetupContext
   // TODO:?
   // editor?: Editor
 }
 
 export function useDropdown({
   props,
-  context,
   // dropdownRef,
   // isClosingOnSelection = true,
   // hasScrollbar = true
 }: // editor
 UseDropdownParams) {
-  console.log('📟 - context → ', context)
-  console.log('📟 - props → ', props)
   // eslint-disable-next-line no-console
   // console.log('📟 - context → ', context)
   // Register the dropdown instance in the stack for the z-index
@@ -72,7 +67,6 @@ UseDropdownParams) {
   )
 
   const zIndex = computed(() => stack.getZIndex(dropdownInstance))
-  console.log('📟 - zIndex → ', zIndex)
 
   provide(dropdownKey, {
     open,

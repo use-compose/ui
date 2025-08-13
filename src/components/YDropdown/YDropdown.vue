@@ -13,7 +13,7 @@
       <YMenu
         v-if="isOpen"
         ref="dropdownMenuRef"
-        :z-index="'calc(var(--dropdown-z-index) + 1)'"
+        :z-index="'calc(var(--dropdown-z-index) - 1)'"
         class="rt-max-h-[512px]"
       >
         <template #default>
@@ -51,7 +51,7 @@ export default defineComponent({
       default: false,
     },
   },
-  setup(props, context) {
+  setup(props) {
     // 1. Use generic theme composable to get classes if it fits
     // const { themeClasses } = useComponentTheme(props)
     // or use specific one
@@ -59,7 +59,6 @@ export default defineComponent({
     const { isOpen, toggle, dropdownRef, dropdownMenuRef, dropdownTriggerRef, close, zIndex } =
       useDropdown({
         props,
-        context,
       })
 
     const dropdownClasses = computed(() => {

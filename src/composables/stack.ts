@@ -5,7 +5,6 @@ import { computed, ref } from 'vue'
  * The stack is a simple array that stores the instances of the components that are uniquely identified by a symbol.
  */
 const stack = ref<symbol[]>([]) // Stores unique symbols like modal instances
-console.log('📟 - stack → ', stack)
 
 export function useStack() {
   function register(instance: symbol) {
@@ -32,7 +31,7 @@ export function useStack() {
     const index = getIndex(instance)
     return base + index * step
   }
-  console.log('stack → ', stack.value)
+
   const stackCount = computed(() => stack.value.length)
 
   return {
