@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/vue3'
+import type { Meta, StoryObj } from '@storybook/vue3-vite'
 import YTableDataCell from './YTableDataCell.vue'
 import type { YTableDataCellProps } from './types'
 

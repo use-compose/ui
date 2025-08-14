@@ -1,4 +1,4 @@
-import type { ArgTypes, Meta, StoryObj } from '@storybook/vue3'
+import type { ArgTypes, Meta, StoryObj } from '@storybook/vue3-vite'
 
 import { YButton } from '@/components'
 import { ref } from 'vue'

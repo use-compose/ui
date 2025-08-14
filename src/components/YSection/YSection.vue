@@ -3,14 +3,15 @@
     <YVerticalTitle v-if="title" class="y-section__title">
       {{ title }}
     </YVerticalTitle>
-    <div class="y-section__content">
+    <YContainer>
       <slot />
-    </div>
+    </YContainer>
   </div>
 </template>
 
 <script setup lang="ts">
 import { defineProps } from 'vue'
+import YContainer from '../YContainer/YContainer.vue'
 import { YVerticalTitle } from '../YVerticalTitle'
 import './YSection.scss'
 

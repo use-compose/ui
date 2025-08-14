@@ -1,5 +1,5 @@
 import { useThemeComponentStory } from '@/composables'
-import type { Meta } from '@storybook/vue3'
+import type { Meta } from '@storybook/vue3-vite'
 import YThemePicker from './YThemePicker.vue'
 import type { YThemePickerProps } from './types'
 

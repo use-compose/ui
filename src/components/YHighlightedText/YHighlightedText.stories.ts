@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/vue3'
+import type { Meta, StoryObj } from '@storybook/vue3-vite'
 import { ref } from 'vue'
 import YHighlightedText from './YHighlightedText.vue'
 import type { YHighlightedTextProps } from './types'

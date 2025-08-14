@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/vue3'
+import type { Meta, StoryObj } from '@storybook/vue3-vite'
 import type { YVerticalTitleProps } from './YVerticalTitle.types'
 import YVerticalTitle from './YVerticalTitle.vue'
 

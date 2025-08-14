@@ -1,7 +1,7 @@
 import YCheckbox from '@/components/YCheckbox/YCheckbox.vue'
 import { YHighlightedText } from '@/components/YHighlightedText'
 import { YTag } from '@/components/YTag'
-import type { Meta, StoryObj } from '@storybook/vue3'
+import type { Meta, StoryObj } from '@storybook/vue3-vite'
 import { computed, ref } from 'vue'
 import YTableDataCell from '../YTableDataCell/YTableDataCell.vue'
 import YTableHeader from './YTableHeader.vue'
