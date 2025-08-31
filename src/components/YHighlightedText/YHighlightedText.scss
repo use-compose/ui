@@ -17,8 +17,11 @@
   &.stick-to-left {
     position: relative;
     left: calc(
-      0px - utils.layout(mobile-padding) +
-        utils.component('left', 'y-highlighted-text', clamp(-30px, -1.4vw, -2px))
+      0px - utils.layout(mobile-padding) - utils.component(
+          'left',
+          'y-highlighted-text',
+          clamp(-30px, -1.4vw, -2px)
+        )
     );
     padding-right: clamp(2px, 1.4vw, 30px);
 
@@ -43,6 +46,7 @@
       background-size 0.5s ease-in-out,
       color 0.5s ease-in-out,
       background-color 0.5s ease-in-out;
+
     // TODO: right padding
     // padding: 4px 10px 1.4px; // padding-bottom 1.4px to balance with Gotham font
     // padding: 2px;
@@ -55,14 +59,17 @@
       > span {
         color: var(--color-primary);
         background-size: 0% 100%;
+
         // background-size: 100% 100%;
         background-clip: padding-box, text;
         background-repeat: no-repeat;
         background-position: left;
         animation: var(--highlight-animate);
+
         --animate-in: highlight-to-left 0.5s 0.1s forwards;
         --animate-out: var(--is-hovered-once, highlight-to-right 0.8s forwards);
       }
+
       &.active > span {
         --animate-in: highlight-to-right 0.5s forwards;
         --animate-out: var(--is-hovered-once, highlight-to-left 0.8s 0.1s forwards);
@@ -83,12 +90,14 @@
 @keyframes highlight-to-left {
   0% {
     background-size: 0% 100%;
+
     // background-color: transparent;
     color: var(--color-primary);
   }
 
   50% {
     background-size: 100% 100%;
+
     // color: white;
     // background-position: left;
   }

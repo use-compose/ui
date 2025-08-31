@@ -1,12 +1,18 @@
 export default {
-  extends: ['stylelint-config-standard-scss'],
+  ignoreFiles: ['storybook-static/**', 'dist/**', 'node_modules/**'],
+  extends: [
+    'stylelint-config-standard',
+    'stylelint-config-standard-scss',
+    'stylelint-config-recommended-vue',
+  ],
+  files: ['**/*.{vue,scss,sass,css}'],
   rules: {
-    'selector-class-pattern': [
-      '^[-]?[a-z0-9]+(?:-[a-z0-9]+)*$',
-      {
-        message: 'Expected class selector to be kebab-case',
-      },
-    ],
+    // 'selector-class-pattern': [
+    //   '^[-]?[a-z0-9]+(?:-[a-z0-9]+)*$',
+    //   {
+    //     message: 'Expected class selector to be kebab-case',
+    //   },
+    // ],
     // 'custom-property-pattern': [
     //   '^[--][a-z0-9-]+$',
     //   {
@@ -14,27 +20,26 @@ export default {
     //   },
     // ],
   },
-  customSyntax: 'postcss-scss',
-  overrides: [
-    {
-      files: ['**/*.vue'],
-      customSyntax: 'postcss-html',
-      rules: {
-        'block-closing-brace-empty-line-before': null,
-        'block-closing-brace-newline-after': null,
-        'block-closing-brace-newline-before': null,
-        'block-closing-brace-space-before': null,
-        'block-opening-brace-newline-after': null,
-        'block-opening-brace-space-after': null,
-        'block-opening-brace-space-before': null,
-        'declaration-block-semicolon-newline-after': null,
-        'declaration-block-semicolon-space-after': null,
-        'declaration-block-semicolon-space-before': null,
-        'declaration-block-trailing-semicolon': null,
-      },
-    },
-  ],
-  ignoreFiles: ['storybook-static/**', 'dist/**', 'node_modules/**'],
+  // customSyntax: 'postcss-scss',
+  // overrides: [
+  //   {
+  //     files: ['**/*.vue'],
+  //     customSyntax: 'postcss-html',
+  //     rules: {
+  //       'block-closing-brace-empty-line-before': null,
+  //       'block-closing-brace-newline-after': null,
+  //       'block-closing-brace-newline-before': null,
+  //       'block-closing-brace-space-before': null,
+  //       'block-opening-brace-newline-after': null,
+  //       'block-opening-brace-space-after': null,
+  //       'block-opening-brace-space-before': null,
+  //       'declaration-block-semicolon-newline-after': null,
+  //       'declaration-block-semicolon-space-after': null,
+  //       'declaration-block-semicolon-space-before': null,
+  //       'declaration-block-trailing-semicolon': null,
+  //     },
+  //   },
+  // ],
 }
 
 // TODO: V2?

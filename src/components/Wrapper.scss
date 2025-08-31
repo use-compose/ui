@@ -5,7 +5,6 @@
   // https://grafikart.fr/tutoriels/conteneur-css-1233
   box-sizing: border-box;
   width: min(breakpoint(desktop-xl), calc(100% - 2 * layout(mobile-padding)));
-
   margin-inline: auto;
 
   @include media(tablet) {

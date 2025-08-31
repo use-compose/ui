@@ -36,9 +36,8 @@
   padding: 0;
   position: fixed;
   z-index: var(--dialog-z-index);
-  border: 2px solid color(main-dark);
+  border: 2px solid color(primary);
   border-width: 4px;
-  background-color: color(main-dark);
   background-color: color(bg);
   display: flex;
   flex-direction: column;
@@ -74,6 +73,7 @@
   bottom: 0;
   height: 100svh;
   right: 0;
+
   // width: clamp(260px, 65%, 896px);
   transition: transform 0.5s ease;
 
@@ -84,6 +84,7 @@
 
 .y-drawer {
   width: 100%;
+
   // max-width: var(--modal-size, var(--modal-size-default));
   width: min(var(--modal-size), 100%);
 }

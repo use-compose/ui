@@ -1,0 +1,1 @@
+export { default as YMenu } from './YMenu.vue'

@@ -236,6 +236,51 @@
   <pre>{{ showDrawer }}</pre>
   <pre>{{ $attrs }}</pre>
   <pre>{{ $props }}</pre>
+  <hr />
+
+  <YSection title="Dropdown">
+    <YFlex>
+      <YDropdown raw>
+        <template #default="{ toggle, isOpen }">
+          <YButton class="mb-0" @click="toggle">
+            {{ isOpen ? 'Close Dropdown' : 'Open Dropdown' }}
+          </YButton>
+        </template>
+        <template #dropdown>
+          <ul class="dropdown-menu">
+            <li><a href="#" class="dropdown-item">Item 1</a></li>
+            <li><a href="#" class="dropdown-item">Item 2</a></li>
+            <li><a href="#" class="dropdown-item">Item 3</a></li>
+          </ul>
+        </template>
+      </YDropdown>
+      <YDropdown raw>
+        <template #default="{ toggle, isOpen }">
+          <YButton class="mb-0" @click="toggle">
+            {{ isOpen ? 'Close Nested Dropdown 1' : 'Open Nested Dropdown 1' }}
+          </YButton>
+        </template>
+        <template #dropdown>
+          <ul class="dropdown-menu">
+            <YDropdown raw>
+              <template #default="{ toggle, isOpen }">
+                <YButton class="mb-0" :raw="false" @click="toggle">
+                  {{ isOpen ? 'Close Nested Dropdown 2' : 'Open Nested Dropdown 2' }}
+                </YButton>
+              </template>
+              <template #dropdown>
+                <ul class="dropdown-menu">
+                  <li><a href="#" class="dropdown-item">Item 1</a></li>
+                  <li><a href="#" class="dropdown-item">Item 2</a></li>
+                  <li><a href="#" class="dropdown-item">Item 3</a></li>
+                </ul>
+              </template>
+            </YDropdown>
+          </ul>
+        </template>
+      </YDropdown>
+    </YFlex>
+  </YSection>
 </template>
 
 <script setup lang="ts">
@@ -246,13 +291,16 @@ import {
   YColorInput,
   YDateInput,
   YDateTimeInput,
+  YDropdown,
   YInputText,
   YModal,
   YTimeInput,
 } from '@/components'
 import { ref } from 'vue'
+import YFlex from './YFlex/YFlex.vue'
 import { YHeader } from './YHeader'
 import { YModalSize, YModalType } from './YModal/types'
+import YSection from './YSection/YSection.vue'
 import { YThemePicker } from './YThemePicker'
 
 const input = ref('')

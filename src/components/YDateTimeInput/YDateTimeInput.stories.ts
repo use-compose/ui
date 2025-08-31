@@ -1,13 +1,14 @@
-import type { Meta , StoryObj} from '@storybook/vue3';
-import YDateTimeInput from './YDateTimeInput.vue';
-import type { YDateTimeInputProps } from './types';
 import { useThemeComponentStory } from '@/composables'
+import type { Meta, StoryObj } from '@storybook/vue3-vite'
+import YDateTimeInput from './YDateTimeInput.vue'
+import type { YDateTimeInputProps } from './types'
 
-const { commonArgTypes, commonArgs, generateCommonStories } = useThemeComponentStory<YDateTimeInputProps>(YDateTimeInput)
+const { commonArgTypes, commonArgs, generateCommonStories } =
+  useThemeComponentStory<YDateTimeInputProps>(YDateTimeInput)
 
 const meta: Meta<typeof YDateTimeInput> = {
   // TODO: TO CHANGE PATH
-  title: 'Compose/YDateTimeInput',
+  title: 'Components/Form/Input/YDateTimeInput',
   component: YDateTimeInput,
   tags: ['autodocs'],
   argTypes: {
@@ -16,10 +17,10 @@ const meta: Meta<typeof YDateTimeInput> = {
   args: {
     ...commonArgs,
   },
-};
- 
-export default meta;
-type Story = StoryObj<typeof meta>;
+}
+
+export default meta
+type Story = StoryObj<typeof meta>
 
 const renderGenericStory: Story = {
   render: (args: YDateTimeInputProps, { argTypes }) => ({
@@ -36,4 +37,4 @@ const renderGenericStory: Story = {
 
 const { Default, Outlined, Disabled, Raw, Small, Large } = generateCommonStories(renderGenericStory)
 
-export { Default, Outlined, Disabled, Raw, Small, Large }
+export { Default, Disabled, Large, Outlined, Raw, Small }

@@ -1,0 +1,49 @@
+// Uncomment if needed
+// @use '@/assets/scss/utils' as utils;
+// @use '@/assets/scss/theme.scss' as *;
+
+// TODO: change to kebab-case
+.y-table {
+  table-layout: fixed;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+/* https://css-tricks.com/examples/HoverEverythingBut/ */
+.y-table-body {
+  &:hover {
+    > .y-table-row {
+      .y-table-data-cell {
+        opacity: 0.5;
+      }
+
+      &:hover {
+        .y-table-data-cell {
+          opacity: 0.6;
+
+          background-color: var(--color-primary-20);
+          &:hover {
+            opacity: 1;
+            background-color: var(--color-primary-30);
+          }
+        }
+      }
+    }
+  }
+
+  &.with-bg {
+    background-color: var(--color-background);
+  }
+}
+.y-table-row {
+  // border-bottom: utils.space(xxs) solid utils.color(primary);
+
+  &:hover {
+    background-color: var(--color-primary-20);
+  }
+
+  // Add your styles here
+  // Example:
+  // color: theme.$primary-color;
+  // background-color: utils.getColor('background');
+}

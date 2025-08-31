@@ -1,6 +1,6 @@
 <template>
   <div :class="yContainerClasses">
-    <slot></slot>
+    <slot />
   </div>
 </template>
 
