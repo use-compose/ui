@@ -26,6 +26,6 @@ jobs:
         run: npx playwright install --with-deps
 
       - name: Run Storybook tests
-        run: yarn test-storybook
+        run: npm run test-storybook
         env:
           TARGET_URL: 'https://compose-ui.arthurplazanet.com/'

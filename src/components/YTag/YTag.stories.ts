@@ -8,7 +8,7 @@ const { commonArgTypes, commonArgs, generateCommonStories } =
 
 const meta: Meta<typeof YTag> = {
   // TODO: TO CHANGE PATH
-  title: 'Components/YTag',
+  title: 'Components/Data Display/YTag',
   component: YTag,
   tags: ['autodocs'],
   argTypes: {

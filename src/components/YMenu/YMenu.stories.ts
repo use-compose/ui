@@ -7,7 +7,7 @@ import YMenu from './YMenu.vue'
 
 const meta: Meta<typeof YMenu> = {
   // TODO: TO CHANGE PATH
-  title: 'Components/YMenu',
+  title: 'Components/Data Display/YMenu',
   component: YMenu,
   tags: ['autodocs'],
   argTypes: {

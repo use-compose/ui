@@ -6,7 +6,7 @@
       </template>
     </YTableHeader>
 
-    <YTableBody>
+    <YTableBody :rows="props.rows">
       <template #default="{ row }">
         <slot name="body" v-bind="{ row }" />
       </template>

@@ -8,7 +8,7 @@ import YDropdown from './YDropdown.vue'
 
 const meta: Meta<typeof YDropdown> = {
   // TODO: TO CHANGE PATH
-  title: 'Components/YDropdown',
+  title: 'Components/Form/YDropdown',
   component: YDropdown,
   tags: ['autodocs'],
   argTypes: {
@@ -27,58 +27,62 @@ const renderGenericStory: Story = {
     components: { YDropdown, YButton },
     props: Object.keys(args),
     template: `
-     <div>
       <YDropdown raw v-bind="args">
-    <template #default="{ toggle, isOpen }">
-      <YButton  @click="toggle" class="mb-0">
-        {{ isOpen ? 'Close Dropdown' : 'Open Dropdown' }}
-      </YButton>
-    </template>
-      <template #dropdown>
-        <ul class="dropdown-menu">
-          <li><a href="#" class="dropdown-item">Item 1</a></li>
-          <li><a href="#" class="dropdown-item">Item 2</a></li>
-          <li><a href="#" class="dropdown-item">Item 3</a></li>
-        </ul>
-      </template>
-    </YDropdown>
-     <YDropdown raw v-bind="args">
-    <template #default="{ toggle, isOpen }">
-      <YButton  @click="toggle" class="mb-0">
-        {{ isOpen ? 'Close Dropdown' : 'Open Dropdown' }}
-      </YButton>
-    </template>
-      <template #dropdown>
-        <ul class="dropdown-menu">
-          <li><YDropdown raw v-bind="args">
-    <template #default="{ toggle, isOpen }">
-      <YButton  @click="toggle" class="mb-0">
-        {{ isOpen ? 'Close Dropdown' : 'Open Dropdown' }}
-      </YButton>
-    </template>
-      <template #dropdown>
-        <ul class="dropdown-menu">
-          <li><a href="#" class="dropdown-item">Item 1</a></li>
-          <li><a href="#" class="dropdown-item">Item 2</a></li>
-          <li><a href="#" class="dropdown-item">Item 3</a></li>
-        </ul>
-      </template>
-    </YDropdown></li>
-          <li><a href="#" class="dropdown-item">Item 2</a></li>
-          <li><a href="#" class="dropdown-item">Item 3</a></li>
-        </ul>
-      </template>
-    </YDropdown>
-    
-     
-    </div>`,
+        <template #default="{ toggle, isOpen }">
+          <YButton  @click="toggle" class="mb-0">
+            {{ isOpen ? 'Close Dropdown' : 'Open Dropdown' }}
+          </YButton>
+        </template>
+          <template #dropdown>
+            <ul class="dropdown-menu">
+              <li><a href="#" class="dropdown-item">Item 1</a></li>
+              <li><a href="#" class="dropdown-item">Item 2</a></li>
+              <li><a href="#" class="dropdown-item">Item 3</a></li>
+            </ul>
+          </template>
+        </YDropdown>`,
     setup() {
       return { args }
     },
   }),
 }
 
-export { renderGenericStory as Default }
+const NestedDropdown: Story = {
+  ...renderGenericStory,
+  render: (args: YDropdownProps) => ({
+    components: { YDropdown, YButton },
+    props: Object.keys(args),
+    template: `
+      <YDropdown raw v-bind="args">
+        <template #default="{ toggle, isOpen }">
+          <YButton  @click="toggle" class="mb-0">
+            {{ isOpen ? 'Close Dropdown' : 'Open Dropdown' }}
+          </YButton>
+        </template>
+        <template #dropdown>
+          <YDropdown raw>
+            <template #default="{ toggle, isOpen }">
+              <YButton  @click="toggle" class="mb-0">
+                {{ isOpen ? 'Close Nested Dropdown' : 'Open Nested Dropdown' }}
+              </YButton>
+            </template>
+            <template #dropdown>
+              <ul class="dropdown-menu">
+                <li><a href="#" class="dropdown-item">Item 1</a></li>
+                <li><a href="#" class="dropdown-item">Item 2</a></li>
+                <li><a href="#" class="dropdown-item">Item 3</a></li>
+              </ul>
+            </template>
+          </YDropdown>
+        </template>
+      </YDropdown>`,
+    setup() {
+      return { args }
+    },
+  }),
+}
+
+export { renderGenericStory as Default, NestedDropdown }
 
 // TODO: if you use useThemeComponentStory
 // const { Default, Outlined, Disabled, Raw, Small, Large } = generateCommonStories(renderGenericStory)

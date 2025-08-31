@@ -6,7 +6,7 @@ import { YTableDataCell } from './YTableDataCell'
 
 const meta: Meta<typeof YTable> = {
   // TODO: TO CHANGE PATH
-  title: 'Components/Data/YTable',
+  title: 'Components/Data Display/Table/YTable',
   component: YTable,
   tags: ['autodocs'],
 }
