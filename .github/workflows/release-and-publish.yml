@@ -53,10 +53,10 @@ jobs:
           if git rev-parse "$TAG_NAME" >/dev/null 2>&1; then
             echo "Tag $TAG_NAME already exists. Skipping release."
             exit 0
+          else
+            echo "Creating release $TAG_NAME..."
+            gh release create "$TAG_NAME" --title "$TAG_NAME" --notes "Release $TAG_NAME" --target main --latest
           fi
-
-          echo "Creating release $TAG_NAME..."
-          gh release create "$TAG_NAME" --title "$TAG_NAME" --notes "Release $TAG_NAME" --target main --latest
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
