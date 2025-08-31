@@ -1,10 +1,10 @@
-import type { Meta, StoryObj } from '@storybook/vue3'
+import type { Meta, StoryObj } from '@storybook/vue3-vite'
 import type { YVerticalTitleProps } from './YVerticalTitle.types'
 import YVerticalTitle from './YVerticalTitle.vue'
 
 const meta: Meta<typeof YVerticalTitle> = {
   // TODO: TO CHANGE PATH
-  title: 'Components/Typography/YVerticalTitle',
+  title: 'Components/Data Display/YVerticalTitle',
   component: YVerticalTitle,
   tags: ['autodocs'],
 }

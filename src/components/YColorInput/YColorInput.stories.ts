@@ -1,5 +1,5 @@
 import { useThemeComponentStory } from '@/composables'
-import type { Meta, StoryObj } from '@storybook/vue3'
+import type { Meta, StoryObj } from '@storybook/vue3-vite'
 import YColorInput from './YColorInput.vue'
 import { YColorInputProps } from './types'
 
@@ -8,7 +8,7 @@ const { commonArgs, commonArgTypes, generateCommonStories } =
 
 // More on how to set up stories at: https://storybook.js.org/docs/vue/writing-stories/introduction
 const meta = {
-  title: 'Components/Form/YColorInput',
+  title: 'Components/Form/Input/YColorInput',
   component: YColorInput,
   // This component will have an automatically generated docsPage entry: https://storybook.js.org/docs/vue/writing-docs/autodocs
   tags: ['autodocs'],

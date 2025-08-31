@@ -1,6 +1,5 @@
 @use '@/assets/scss/utils' as utils;
 @use '@/assets/scss/theme.scss' as *;
-
 @include utils.cssvars(
   'y-vertical-title',
   (
@@ -24,7 +23,6 @@
 
   @include media(tablet) {
     font-size: utils.component(font-size-md, 'y-vertical-title');
-
     display: flex;
     align-items: center;
     justify-content: flex-end;

@@ -76,7 +76,7 @@ const myTheme = theme.value
 </template>
 
 <script setup lang="ts">
-import { AppCompose } from '@use-compose/ui'
+import { AppCompose } from '@use-Components/ui'
 </script>
 ```
 

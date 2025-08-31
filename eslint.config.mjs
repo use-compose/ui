@@ -1,3 +1,6 @@
+// For more info, see https://github.com/storybookjs/eslint-plugin-storybook#configuration-flat-config-format
+import storybook from 'eslint-plugin-storybook'
+
 import eslint from '@eslint/js'
 import eslintConfigPrettier from 'eslint-config-prettier'
 import pluginVue from 'eslint-plugin-vue'
@@ -12,6 +15,7 @@ export default defineConfig([
       eslint.configs.recommended,
       ...tseslint.configs.recommended,
       ...pluginVue.configs['flat/recommended'],
+      ...storybook.configs['flat/recommended'],
     ],
     files: ['**/*.{js,mjs,cjs,ts,vue}'],
     languageOptions: { parserOptions: { parser: tseslint.parser } },
@@ -30,7 +34,7 @@ export default defineConfig([
           registeredComponentsOnly: false,
         },
       ],
-      '@typescript-eslint/no-empty-object-type': ['off', {}],
+      '@typescript-eslint/no-empty-object-type': 'off',
     },
     settings: {
       'editor.formatOnSave': true,

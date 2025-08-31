@@ -1,10 +1,10 @@
-import type { Meta, StoryObj } from '@storybook/vue3'
+import type { Meta, StoryObj } from '@storybook/vue3-vite'
 import YHeader from './YHeader.vue'
 import type { YHeaderProps } from './types'
 
 const meta: Meta<typeof YHeader> = {
   // TODO: TO CHANGE PATH
-  title: 'Compose/YHeader',
+  title: 'Components/Layout/YHeader',
   component: YHeader,
   tags: ['autodocs'],
   argTypes: {

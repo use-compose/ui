@@ -82,10 +82,14 @@ export default {
         {
           destination: 'conditional.css',
           format: formats.cssVariables,
-          //   // filter only the tokens that are inside the global object
+          // parser: ({ contents, filePath }) => {
+          //   console.log('📟 - contents → ', contents)
+          //   return {}
+          // }, //   // filter only the tokens that are inside the global object
           filter: (token) => {
             return token.attribute?.type === 'conditional'
           },
+
           //   options: {
           //     outputReferences: true,
           //   },
@@ -148,11 +152,11 @@ export default {
           // },
         },
         {
-          destination: 'state.css',
+          destination: 'base.css',
           format: formats.cssVariables,
           //   // filter only the tokens that are inside the global object
           filter: (token) => {
-            return token.attributes?.category === 'state'
+            return token.attributes?.category === 'base'
           },
           options: {
             fileHeader: (defaultMessage) => {
@@ -161,14 +165,13 @@ export default {
 
               // the fileHeader function should return an array of strings
               // which will be formatted in the proper comment style for a given format
-              return [...defaultMessage, 'State tokens']
+              return [...defaultMessage, 'Base component variables']
             },
           },
           //   options: {
           //     outputReferences: true,
           //   },
         },
-        // dynamically generate file outputs for each dironent
         // ...generateThemeFiles(['color', 'component', 'theme', 'conditional']),
         ...generateThemeFiles(['component']),
         // {

@@ -10,11 +10,4 @@
   padding: space(sm);
   border-radius: var(--border-radius);
   word-wrap: break-word;
-
-  &:active,
-  &:focus-visible {
-    transform: unset;
-
-    @include component(box-shadow, component(box-shadow-hover));
-  }
 }

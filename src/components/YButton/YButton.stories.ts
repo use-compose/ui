@@ -1,4 +1,4 @@
-import type { ArgTypes, Meta, StoryObj } from '@storybook/vue3'
+import type { ArgTypes, Meta, StoryObj } from '@storybook/vue3-vite'
 import { YButtonProps } from './types'
 
 import { useThemeComponentStory } from '@/composables'

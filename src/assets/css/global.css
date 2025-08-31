@@ -3,4 +3,6 @@
 @import './theme/variant.css';
 @import './theme/component/component.css';
 @import './theme/color.css';
+@import './theme/base.css';
 @import './utils/animations.css';
+@import './components/table.css'

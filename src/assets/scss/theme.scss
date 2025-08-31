@@ -194,12 +194,13 @@ a {
     dark-50: color-mix(in srgb, utils.color(main-dark) 70%, white),
     bg: var(--color-bg),
     bg-50: color-mix(in srgb, utils.color(bg) 50%, white),
-    primary-80: color-mix(in srgb, utils.color(primary) 80%, white),
-    primary-60: color-mix(in srgb, utils.color(primary) 60%, white),
-    primary-40: color-mix(in srgb, utils.color(primary) 40%, white),
-    primary-20: color-mix(in srgb, utils.color(primary) 20%, white),
-    primary-10: color-mix(in srgb, utils.color(primary) 10%, white),
-    color-white: #fff,
+    primary-80: oklch(from utils.color(primary) l c h / 0.8),
+    primary-60: oklch(from utils.color(primary) l c h / 0.6),
+    primary-40: oklch(from utils.color(primary) l c h / 0.4),
+    primary-30: oklch(from utils.color(primary) l c h / 0.3),
+    primary-20: oklch(from utils.color(primary) l c h / 0.2),
+    primary-10: oklch(from utils.color(primary) l c h / 0.1),
+    white: #fff,
     theme-color: utils.color(primary),
     initial-light: #f5f5f5
   ),
@@ -224,14 +225,15 @@ a {
     transform-active: translate(3px, 3px),
     transform-disabled: none,
     color: initial,
+    box-shadow: var(--component-box-shadow-base),
     margin-x: utils.space(sm),
     padding-x: utils.space(unit),
     padding-y: utils.space(xxs),
     margin-bottom: utils.space(unit),
-    border-width: 2px,
+    // border-width: utils.space(xxs),
     border-style: solid,
     border-color: transparent,
-    font-size: 1rem,
+    font-size: utils.text(md),
     not-contained: calc(1 - var(--contained, 1)),
     transition: all 0.1s linear
   )
@@ -243,7 +245,7 @@ $variants: ('contained', 'outlined', 'text');
 
 @mixin theme-component {
   padding: utils.component(padding-y) utils.component(padding-x);
-  margin: 0 utils.component(margin-x) 0 utils.component(margin-bottom);
+  // margin: 0 utils.component(margin-x) 0 utils.component(margin-bottom);
   box-shadow: utils.component(box-shadow);
   outline: none;
   transform: utils.component(transform);
@@ -252,7 +254,7 @@ $variants: ('contained', 'outlined', 'text');
   &.small {
     // @include utils.component(padding-y, space(xs));
     @include utils.component(padding-x, utils.space(xs));
-    @include utils.component(height, 2rem); // 32px
+    @include utils.component(height, calc(utils.component(height) * 1)); // 32px
   }
 
   &.large {
@@ -265,14 +267,44 @@ $variants: ('contained', 'outlined', 'text');
   @include hero-component;
 
   height: utils.component(height);
+  min-height: utils.component(min-height);
   font-weight: bold;
   margin-bottom: utils.component(margin-bottom);
-  border-width: utils.component(border-width);
-  border-style: utils.component(border-style);
-  border: utils.component(border-width) utils.component(border-style) utils.component(border-color);
+
   // font-size: 1rem;
 
   // Color Props
+  // &.primary {
+  //   @include theme.primary;
+  // }
+  // &.secondary {
+  //   @include theme.secondary;
+  // }
+  // &.danger {
+  //   @include theme.danger;
+  // }
+
+  // // State Props
+  // &.base {
+  //   // @include theme.base;
+  // }
+  // &.hover {
+  //   @include theme.hover;
+  // }
+  // &.disabled {
+  //   @include theme.disabled;
+  // }
+
+  // // Variant Props
+  // &.contained {
+  //   @include theme.contained;
+  // }
+  // &.outlined {
+  //   @include theme.outlined;
+  // }
+  // &.text {
+  //   @include theme.text;
+  // }
   @include theme.primary;
   @include theme.secondary;
   @include theme.danger;
@@ -283,9 +315,22 @@ $variants: ('contained', 'outlined', 'text');
   @include theme.disabled;
 
   // Variant Props
-  @include theme.contained;
-  @include theme.outlined;
-  @include theme.text;
+  &.contained {
+    @include theme.contained;
+  }
+  &.outlined {
+    @include theme.outlined;
+  }
+  &.text {
+    @include theme.text;
+  }
+  // Prevent non-interactive component to have an effect on click or keyboard focus
+  // &:active,
+  // &:focus-visible {
+  //   transform: unset;
+
+  //   @include utils.component(box-shadow, utils.component(box-shadow-hover));
+  // }
 
   --component-bg-hue: calc(var(--color-bg-hue));
   --component-bg-saturation: calc(
@@ -533,7 +578,6 @@ $breakpoints: (
     // 42px
   )
 );
-
 @include utils.cssvars(
   'y-highlighted-text',
   (

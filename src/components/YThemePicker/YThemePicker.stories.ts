@@ -1,5 +1,5 @@
 import { useThemeComponentStory } from '@/composables'
-import type { Meta } from '@storybook/vue3'
+import type { Meta } from '@storybook/vue3-vite'
 import YThemePicker from './YThemePicker.vue'
 import type { YThemePickerProps } from './types'
 
@@ -8,7 +8,7 @@ const { commonArgTypes, commonArgs, generateCommonStories } =
 
 const meta: Meta<typeof YThemePicker> = {
   // TODO: TO CHANGE PATH
-  title: 'Compose/YThemePicker',
+  title: 'Composition/YThemePicker',
   component: YThemePicker,
   tags: ['autodocs'],
   argTypes: {

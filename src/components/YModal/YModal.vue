@@ -24,8 +24,7 @@ import { useModal } from '@/composables/modal'
 import { defineComponent, type SetupContext } from 'vue'
 import { YBaseModal } from '.'
 import type { BaseModalProps } from './types/YBaseModal.interface'
-import { YModalSize } from './types/YBaseModal.interface'
-import { modalDefaultProps } from './utils'
+import { modalPropsDefinition } from './utils/modal-default-props'
 
 export default defineComponent({
   name: 'YModal',
@@ -34,19 +33,7 @@ export default defineComponent({
     YOverlay,
   },
   props: {
-    ...modalDefaultProps,
-    hasCloseButton: {
-      type: Boolean,
-      default: true,
-    },
-    size: {
-      type: String,
-      default: YModalSize.Medium,
-    },
-    modelValue: {
-      type: Boolean,
-      default: false,
-    },
+    ...modalPropsDefinition,
   },
   setup(props: BaseModalProps & { modelValue: boolean }, context: SetupContext) {
     // if (context) {

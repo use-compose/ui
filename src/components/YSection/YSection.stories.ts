@@ -1,11 +1,13 @@
-import type { Meta, StoryObj } from '@storybook/vue3'
+import type { Meta, StoryObj } from '@storybook/vue3-vite'
 import YFlex from '../YFlex/YFlex.vue'
 import { YHighlightedText } from '../YHighlightedText'
 import YSection from './YSection.vue'
 
+// const path = getStoryPath('YSection')
+
 const meta: Meta<typeof YSection> = {
   // TODO: TO CHANGE PATH
-  title: 'Compose/YSection',
+  title: 'Components/Layout/YSection',
   component: YSection,
   tags: ['autodocs'],
   args: {

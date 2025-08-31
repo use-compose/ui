@@ -1,5 +1,5 @@
 import { useThemeComponentStory } from '@/composables'
-import type { Meta } from '@storybook/vue3'
+import type { Meta } from '@storybook/vue3-vite'
 import type { YTimeInputProps } from './YTimeInput.types'
 import YTimeInput from './YTimeInput.vue'
 
@@ -8,7 +8,7 @@ const { commonArgTypes, commonArgs, generateCommonStories } =
 
 const meta: Meta<typeof YTimeInput> = {
   // TODO: TO CHANGE PATH
-  title: 'Compose/YTimeInput',
+  title: 'Components/Form/Input/YTimeInput',
   component: YTimeInput,
   tags: ['autodocs'],
   argTypes: {

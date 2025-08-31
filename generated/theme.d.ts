@@ -1,4 +1,5 @@
 export interface YThemeToken {
+BaseZIndex: string;
 ColorPrimaryBgHue: string;
 ColorPrimaryBgSaturation: string;
 ColorPrimaryBgLightness: string;
