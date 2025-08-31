@@ -8,7 +8,7 @@ import YTableHeader from './YTableHeader.vue'
 
 const meta: Meta<typeof YTableHeader> = {
   // TODO: TO CHANGE PATH
-  title: 'Components/Data/YTableHeader',
+  title: 'Components/Data Display/Table/YTableHeader',
   component: YTableHeader,
   tags: ['autodocs'],
 }

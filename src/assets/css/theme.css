@@ -3,6 +3,7 @@
   inherits: true;
 } */
 @import '@/assets/css/global.css';
+@import '@/assets/css/components/theming.css';
 
 /* 
  * CSS Type Grinding - https://www.bitovi.com/blog/css-only-type-grinding-casting-tokens-into-useful-values
@@ -167,10 +168,20 @@
 
 .contained {
   --variant: contained;
+  --border: no;
 }
 
 .outlined {
+  --component-color-border: var(--theme-current-color);
+  --component-color-text: var(--theme-current-color);
+  --component-border-width: 2px;
+
+
+
+  --border: yes;
+
   --variant: outlined;
+  --border: yes;
 }
 
 .text {
@@ -186,6 +197,9 @@
   --outlined: var(--outlined-else-0);
   --text-else-0: var(--variant);
   --text: var(--text-else-0);
+  border-width: calc(var(--has-border) * var(--component-border-width));
+  border-style: calc(var(--has-border) * var(--component-border-style));
+  border: var(--component-border-width) var(--component-border-style) var(--component-color-border);
 }
 
 
@@ -195,10 +209,6 @@
   --component-text-lightness: calc(((var(--component-bg-lightness) / 1%) - var(--threshold) * 1%) * -100%);
 }
 
-.outlined {
-  --component-color-border: var(--theme-current-color);
-  --component-color-text: var(--theme-current-color);
-}
 
 /* 
  * State Properties

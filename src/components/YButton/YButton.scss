@@ -8,7 +8,7 @@
   cursor: pointer;
   text-transform: uppercase;
 
-  @include utils.component(height, 45px);
+  @include utils.component(min-height, 45px);
 
   // @include utils.component(padding-y, 0);
 }

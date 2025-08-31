@@ -4,7 +4,7 @@ import type { YHeaderProps } from './types'
 
 const meta: Meta<typeof YHeader> = {
   // TODO: TO CHANGE PATH
-  title: 'Components/YHeader',
+  title: 'Components/Layout/YHeader',
   component: YHeader,
   tags: ['autodocs'],
   argTypes: {

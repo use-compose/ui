@@ -6,7 +6,7 @@ import { YTableRow } from '../YTableRow'
 import YTableBody from './YTableBody.vue'
 
 const meta: Meta<typeof YTableBody> = {
-  title: 'Components/Data/YTableBody',
+  title: 'Components/Data Display/Table/YTableBody',
   component: YTableBody,
   tags: ['autodocs'],
 }

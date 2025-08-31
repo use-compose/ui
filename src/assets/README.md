@@ -2,7 +2,7 @@
 
 ## Mixins and functions to initialize CSS Custom Properties
 
-See [CSS Custom Properties (vars) with SASS/SCSS, a practical architecture strategy](https://dev.to/felipperegazio/css-custom-properties-vars-with-sass-scss-a-practical-architecture-strategy-1m88)
+Source [CSS Custom Properties (vars) with SASS/SCSS, a practical architecture strategy](https://dev.to/felipperegazio/css-custom-properties-vars-with-sass-scss-a-practical-architecture-strategy-1m88)
 
 ## Theming with OKlch color space
 

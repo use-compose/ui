@@ -1,0 +1,15 @@
+@property --border {
+  syntax: 'yes | no';
+  initial-value: no;
+  inherits: true;
+}
+
+@property --has-border {
+  syntax: 'no | <number>';
+  initial-value: 1;
+  inherits: true;
+}
+
+:root {
+  --has-border: var(--border, 0);
+}

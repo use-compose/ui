@@ -3,9 +3,11 @@ import YFlex from '../YFlex/YFlex.vue'
 import { YHighlightedText } from '../YHighlightedText'
 import YSection from './YSection.vue'
 
+// const path = getStoryPath('YSection')
+
 const meta: Meta<typeof YSection> = {
   // TODO: TO CHANGE PATH
-  title: 'Components/YSection',
+  title: 'Components/Layout/YSection',
   component: YSection,
   tags: ['autodocs'],
   args: {

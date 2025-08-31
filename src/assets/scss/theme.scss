@@ -33,17 +33,10 @@
   inherits: true;
 }
 
-@property --border {
-  syntax: 'yes | <number>';
-  initial-value: 0;
-  inherits: true;
-}
-
 :root {
   /* https://dev.to/tracygjg/conditional-css-437e */
   --true: 1;
   --false: 0;
-  --has-border: var(--border, 1);
 }
 
 body {
@@ -237,7 +230,7 @@ a {
     padding-x: utils.space(unit),
     padding-y: utils.space(xxs),
     margin-bottom: utils.space(unit),
-    border-width: utils.space(xxs),
+    // border-width: utils.space(xxs),
     border-style: solid,
     border-color: transparent,
     font-size: utils.text(md),
@@ -274,36 +267,52 @@ $variants: ('contained', 'outlined', 'text');
   @include hero-component;
 
   height: utils.component(height);
+  min-height: utils.component(min-height);
   font-weight: bold;
   margin-bottom: utils.component(margin-bottom);
-  border-width: calc(var(--has-border) * utils.component(border-width));
-  border-style: utils.component(border-style);
-  border: calc(var(--has-border) * utils.component(border-width)) utils.component(border-style)
-    utils.component(border-color);
 
   // font-size: 1rem;
 
   // Color Props
-  &.primary {
-    @include theme.primary;
-  }
-  &.secondary {
-    @include theme.secondary;
-  }
-  &.danger {
-    @include theme.danger;
-  }
+  // &.primary {
+  //   @include theme.primary;
+  // }
+  // &.secondary {
+  //   @include theme.secondary;
+  // }
+  // &.danger {
+  //   @include theme.danger;
+  // }
+
+  // // State Props
+  // &.base {
+  //   // @include theme.base;
+  // }
+  // &.hover {
+  //   @include theme.hover;
+  // }
+  // &.disabled {
+  //   @include theme.disabled;
+  // }
+
+  // // Variant Props
+  // &.contained {
+  //   @include theme.contained;
+  // }
+  // &.outlined {
+  //   @include theme.outlined;
+  // }
+  // &.text {
+  //   @include theme.text;
+  // }
+  @include theme.primary;
+  @include theme.secondary;
+  @include theme.danger;
 
   // State Props
-  &.base {
-    // @include theme.base;
-  }
-  &.hover {
-    @include theme.hover;
-  }
-  &.disabled {
-    @include theme.disabled;
-  }
+  @include theme.base;
+  @include theme.hover;
+  @include theme.disabled;
 
   // Variant Props
   &.contained {
@@ -315,14 +324,13 @@ $variants: ('contained', 'outlined', 'text');
   &.text {
     @include theme.text;
   }
-
   // Prevent non-interactive component to have an effect on click or keyboard focus
-  &:active,
-  &:focus-visible {
-    transform: unset;
+  // &:active,
+  // &:focus-visible {
+  //   transform: unset;
 
-    @include utils.component(box-shadow, utils.component(box-shadow-hover));
-  }
+  //   @include utils.component(box-shadow, utils.component(box-shadow-hover));
+  // }
 
   --component-bg-hue: calc(var(--color-bg-hue));
   --component-bg-saturation: calc(

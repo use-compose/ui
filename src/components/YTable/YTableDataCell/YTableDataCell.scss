@@ -12,11 +12,11 @@
 
   --gap: var(--space-sm);
   --line-offset: calc(var(--gap) / 2);
-  --line-thickness: calc(var(--component-border-width) / 4);
+  --line-thickness: calc(var(--space-xxs) / 4);
   --line-color: var(--color-primary);
 
   &:is(th) {
-    background-color: oklch(from var(--color-primary) l c h / 50%);
+    background-color: oklch(from var(--color-primary) l c h / 70%);
   }
 
   &:hover:not(th) {

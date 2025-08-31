@@ -4,7 +4,7 @@ import type { YTableDataCellProps } from './types'
 
 const meta: Meta<typeof YTableDataCell> = {
   // TODO: TO CHANGE PATH
-  title: 'Components/Data/YTableDataCell',
+  title: 'Components/Data Display/Table/YTableDataCell',
   component: YTableDataCell,
   tags: ['autodocs'],
   argTypes: {

@@ -6,7 +6,7 @@ import YSkeleton from './YSkeleton.vue'
 
 const meta: Meta<typeof YSkeleton> = {
   // TODO: TO CHANGE PATH
-  title: 'Components/YSkeleton',
+  title: 'Components/Data Display/YSkeleton',
   component: YSkeleton,
   tags: ['autodocs'],
   argTypes: {
