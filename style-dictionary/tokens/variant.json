@@ -59,6 +59,9 @@
         "hue": { "value": 0 },
         "opacity": { "value": 1 }
       }
+    },
+    "attributes": {
+      "type": "variants"
     }
   }
 }

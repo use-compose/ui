@@ -14,6 +14,7 @@ export const defaultTheme: YTheme = {
   background: '#FCECF0',
   dark: '#0b0c0c',
   danger: '#E3514A',
+  text: '#0c0d0d',
 }
 
 interface ThemeComposition {
@@ -25,6 +26,7 @@ interface ThemeComposition {
     '--color-bg': string | undefined
     '--color-main-dark': string | undefined
     '--color-danger': string | undefined
+    '--color-text': string | undefined
   }
 }
 
@@ -108,6 +110,7 @@ export function useComposeTheme(userTheme?: YTheme) {
       [Theme.background]: theme.background,
       [Theme.dark]: theme.dark,
       [Theme.danger]: theme.danger,
+      [Theme.text]: theme.text,
     }
   }
 
@@ -119,7 +122,7 @@ export function useComposeTheme(userTheme?: YTheme) {
 
   watchEffect(() => {
     if (isClientSide()) {
-      const { primary, secondary, background, dark, danger } = theme.value
+      const { primary, secondary, background, dark, danger, text } = theme.value
 
       const appComposeElement = document.documentElement
 
@@ -151,6 +154,10 @@ export function useComposeTheme(userTheme?: YTheme) {
 
       if (danger) {
         setColorProperties(appComposeElement, danger, 'danger')
+      }
+
+      if (text) {
+        setColorProperties(appComposeElement, text, 'text')
       }
 
       // const secondaryColor = Color(secondary).lch()
@@ -297,6 +304,8 @@ export function useTheme() {
     setBackground: updateThemeProperty.bind(null, 'background'),
     getDanger: getThemeColor(Theme.danger),
     setDanger: updateThemeProperty.bind(null, 'danger'),
+    getText: getThemeColor(Theme.text),
+    setText: updateThemeProperty.bind(null, 'text'),
     getHexColor,
   }
 }

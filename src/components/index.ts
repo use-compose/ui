@@ -1,36 +1,33 @@
-export { default as AppCompose } from './AppCompose.vue'
+export * from './AppCompose'
 
 //  layout
-// export { Container, Flex, Wrapper } from './layout'
-export { default as Wrapper } from './Wrapper.vue'
-// export { YColumn } from './YColumn'
-export { YContainer } from './YContainer'
-export { YFlex } from './YFlex'
+// export * from './layout'
+export * from './Wrapper'
+// export * from './YColumn'
+export * from './YContainer'
+export * from './YFlex'
 
 // form
-export { YButton } from './YButton'
-export { YCheckbox } from './YCheckbox'
-export { YColorInput } from './YColorInput'
-export { YDateInput } from './YDateInput'
-export { YDateTimeInput } from './YDateTimeInput'
-export { YInput } from './YInput'
-export { YInputText } from './YInputText'
-export { YTimeInput } from './YTimeInput'
+export * from './YButton'
+export * from './YCheckbox'
+export * from './YColorInput'
+export * from './YDateInput'
+export * from './YDateTimeInput'
+export * from './YInput'
+export * from './YInputText'
+export * from './YTimeInput'
 
 // data-display
-export { YCard } from './YCard'
+export * from './YCard'
 
 // overlays
-export { YDropdown } from './YDropdown'
-export { YBaseModal, YModal, YModalFooter, YModalHeader } from './YModal'
-export { YOverlay } from './YOverlay'
+export * from './YDropdown'
+export * from './YModal'
+export * from './YOverlay'
 
-export { YHighlightedText } from './YHighlightedText'
-export { YSection } from './YSection'
-export { YVerticalTitle } from './YVerticalTitle'
+export * from './YHighlightedText'
+export * from './YSection'
+export * from './YVerticalTitle'
 
 // providers
-// export { ModalProvider } from './providers'
-
-// BaseComponents
-export { default as BaseComponent } from './BaseComponent.vue'
+export * from './providers'

@@ -8,13 +8,8 @@
 import '@/assets/css/global.css'
 // import '@/assets/css/global.css'
 import { useComposeTheme } from '@/composables/theme'
-import type { YTheme } from '@/types'
 import { computed } from 'vue'
-
-interface AppComposeProps {
-  theme?: YTheme
-  useBgColor?: boolean
-}
+import { AppComposeProps } from './AppCompose.types'
 
 const props = defineProps<AppComposeProps>()
 

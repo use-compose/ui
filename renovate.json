@@ -8,13 +8,13 @@
     {
       "matchDepTypes": ["dependencies"],
       "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
-      "automergeType": "branch",
+      "automergeType": "pr",
       "automerge": true
     },
     {
       "matchDepTypes": ["devDependencies"],
       "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
-      "automergeType": "branch",
+      "automergeType": "pr",
       "automerge": true
     }
   ]

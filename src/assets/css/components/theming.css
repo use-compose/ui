@@ -13,3 +13,20 @@
 :root {
   --has-border: var(--border, 0);
 }
+
+@property --variant-bg-opacity {
+  syntax: '<number>';
+  initial-value: 1;
+  inherits: true;
+}
+
+/**
+ * Variants tokens
+ */
+.outlined {
+  --_bg-opacity: var(--component-bg-opacity, 0);
+  --_when-hover: calc(var(--hover) * var(--state-active-bg-lightness));
+  --_when-active: calc(var(--active) * var(--state-hover-bg-lightness));
+  --_when-focus: calc(var(--focus) * var(--state-base-bg-lightness));
+  --_when-disabled: calc(var(--disabled) * var(--state-disabled-bg-lightness));
+}

@@ -1,11 +1,11 @@
 // Uncomment if needed
 @use '@/assets/scss/utils' as utils;
-@use '@/assets/scss/theme.scss' as *;
+@use '@/assets/scss/global.scss' as *;
 @use '@/assets/scss/theme/state' as state;
 @use '@/assets/scss/theme/color' as color;
 // TODO: change to kebab-case
 .y-menu {
-  @include theme-component;
+  // @include theme-component;
   // @include state.base;
   // @include color.primary;
 

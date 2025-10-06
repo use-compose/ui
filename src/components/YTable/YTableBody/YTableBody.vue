@@ -1,24 +1,36 @@
 <template>
   <tbody class="'y-table-body'">
-    <YTableRow v-for="(row, index) in rows" :key="index">
-      <slot v-bind="{ row, rowIndex: index }">
-        <YTableDataCell v-for="(cell, cellIndex) in row" :key="cellIndex">
-          {{ cell }}
+    <template v-if="!props.rows || props.rows.length === 0">
+      <YTableRow>
+        <YTableDataCell :colspan="colspan">
+          <slot name="no-data" />
         </YTableDataCell>
-      </slot>
-    </YTableRow>
+      </YTableRow>
+    </template>
+
+    <template v-else>
+      <YTableRow v-for="(row, index) in rows" :key="index">
+        <slot v-bind="{ row, rowIndex: index }">
+          <YTableDataCell v-for="(cell, cellIndex) in row" :key="cellIndex">
+            {{ cell }}
+          </YTableDataCell>
+        </slot>
+      </YTableRow>
+    </template>
   </tbody>
 </template>
 
 <script setup lang="ts">
 import YTableDataCell from '@/components/YTable/YTableDataCell/YTableDataCell.vue'
 import YTableRow from '@/components/YTable/YTableRow/YTableRow.vue'
-import { inject } from 'vue'
+import { computed, inject } from 'vue'
 import { yTableKey, YTableKeyInterface, YTableProps } from '../types'
 
-const props = defineProps<Pick<YTableProps, 'rows'>>()
+const props = defineProps<Pick<YTableProps, 'rows' | 'headers'>>()
 
 const { rows } = inject(yTableKey) ? (inject(yTableKey) as YTableKeyInterface) : props
+
+const colspan = computed(() => Math.max(1, props.headers?.length || 1))
 
 // const rowValues = computed(() => {
 //   if (rows) {

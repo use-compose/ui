@@ -74,18 +74,13 @@ export default {
         // 'color/hsl',
         // 'custom/component-state',
       ],
-      buildPath: './src/assets/css/theme/',
+      buildPath: './src/assets/css/variables/',
       clearBuildPath: true,
 
       files: [
-        // → type–item only, drop category  files:
         {
           destination: 'conditional.css',
           format: formats.cssVariables,
-          // parser: ({ contents, filePath }) => {
-          //   console.log('📟 - contents → ', contents)
-          //   return {}
-          // }, //   // filter only the tokens that are inside the global object
           filter: (token) => {
             return token.attribute?.type === 'conditional'
           },
@@ -127,7 +122,7 @@ export default {
           //   },
         },
         {
-          destination: 'color.css',
+          destination: 'variants.css',
           format: formats.cssVariables,
           //   // filter only the tokens that are inside the global object
           filter: (token) => {
@@ -135,7 +130,9 @@ export default {
               // console.log('📟 - token → ', token)
             }
             // console.log(token)
-            return token.attributes?.category === 'color'
+            console.log('📟 - token.attributes?.type → ', token.attributes)
+            const variants = ['variant', 'state', 'color']
+            return variants.includes(token.attributes?.category)
           },
           options: {
             fileHeader: (defaultMessage) => {
@@ -144,7 +141,7 @@ export default {
 
               // the fileHeader function should return an array of strings
               // which will be formatted in the proper comment style for a given format
-              return [...defaultMessage, 'Color tokens']
+              return [...defaultMessage, 'Variant tokens']
             },
           },
           // options: {
@@ -179,6 +176,7 @@ export default {
         //   format: formats.cssVariables,
       ],
     },
+    // Types
     ts: {
       transformGroup: 'js',
       buildPath: 'generated/',
@@ -189,37 +187,5 @@ export default {
         },
       ],
     },
-    // scss: {
-    //   transformGroup: 'scss',
-    //   buildPath: './src/assets/scss/theme/',
-    //   clearBuildPath: true,
-    //   files: [
-    //     {
-    //       destination: 'variables.scss',
-    //       format: 'scss/variables',
-    //       filter: 'custom/filter-build-time-scss',
-    //     },
-    //   ],
-    // },
   },
 }
-
-// const lol = await sd.extend({
-//   source: ['./style-dictionary/tokens/**/*.json'],
-//   platforms: {
-//     css: {
-//       buildPath: './src/assets/theme/',
-//       clearBuildPath: true,
-//       files: [
-//         {
-//           destination: './src/assets/variables.css',
-//           format: 'css/variables',
-//         },
-//       ],
-//     },
-//   },
-// })
-
-// const lqsqsol = await lol.buildAllPlatforms()
-
-// export default lqsqsol

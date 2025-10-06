@@ -10,6 +10,10 @@
       <template #default="{ row }">
         <slot name="body" v-bind="{ row }" />
       </template>
+
+      <template #no-data>
+        <slot name="no-data" />
+      </template>
     </YTableBody>
 
     <YTableFooter v-if="$slots.footer" :footer="props.footer">

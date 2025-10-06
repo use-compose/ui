@@ -447,10 +447,6 @@ $variants: ('contained', 'outlined', 'text');
   }
 }
 
-// @mixin interactive-component {
-//   @include theme.focus;
-//   @include theme.active;
-
 @mixin raw-component {
   &.raw {
     // --raw: var(--true);
