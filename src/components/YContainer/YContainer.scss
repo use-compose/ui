@@ -1,11 +1,11 @@
 // Uncomment if needed
 // @use '@/assets/scss/utils' as *;
-@use '@/assets/scss/theme.scss' as *;
+@use '@/assets/scss/global.scss' as *;
 
 // TODO: change to kebab-case
 .y-container {
   max-width: $breakpoint-mobile;
-  padding: 0 var(--space-unitss, 1rem);
+  padding: 0 var(--space-units, 1rem);
 
   @include media('tablet') {
     max-width: $breakpoint-tablet;

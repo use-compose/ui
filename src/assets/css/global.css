@@ -1,8 +1,10 @@
-@import './theme/conditional.css';
-@import './theme/state.css';
-@import './theme/variant.css';
-@import './theme/component/component.css';
-@import './theme/color.css';
-@import './theme/base.css';
+@import './variables/conditional.css';
+@import './variables/state.css';
+@import './variables/variant.css';
+@import './variables/component/component.css';
+@import './variables/color.css';
+@import './variables/base.css';
 @import './utils/animations.css';
-@import './components/table.css'
+@import './components/table.css';
+@import '@/assets/css/components/theming.css';
+@import './theme.css';

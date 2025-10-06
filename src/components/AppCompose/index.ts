@@ -1,0 +1,1 @@
+export { default as AppCompose } from './AppCompose.vue'

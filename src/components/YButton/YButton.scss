@@ -1,5 +1,5 @@
 @use '@/assets/scss/utils' as utils;
-@use '@/assets/scss/theme.scss' as theme;
+@use '@/assets/scss/global.scss' as theme;
 
 .y-button {
   @include theme.theme-component;
