@@ -29,7 +29,7 @@ export default meta
 type Story = StoryObj<typeof AppCompose>
 
 const renderGenericStory: Story = {
-  render: (args, { argTypes }) => ({
+  render: (args) => ({
     components: { AppCompose },
     template: `
       <AppCompose v-bind="args" />

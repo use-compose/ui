@@ -1,5 +1,5 @@
 import type { ArgTypes, Meta, StoryObj } from '@storybook/vue3-vite'
-import { BaseModalProps } from './../../../storybook-static/src/components/overlays/modal/types/YBaseModal.interface.d'
+import { BaseModalProps } from './types'
 
 import { YButton, YModal } from '@/components'
 import { YInputText } from '@/components/YInputText'
@@ -163,7 +163,7 @@ export const NestedModal: Story = {
 }
 
 export const ModalWithSelectInput: Story = {
-  render: (args: BaseModalProps, { argTypes }: ArgTypes) => ({
+  render: (_, { argTypes }: ArgTypes) => ({
     components: { YModal, YButton, YDropdown },
     props: Object.keys(argTypes),
     template: `
