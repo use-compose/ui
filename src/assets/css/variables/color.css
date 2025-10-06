@@ -5,39 +5,30 @@
 
 :root {
   --color-primary-bg-hue: 0deg;
-  --color-primary-bg-saturation: 0%;
   --color-primary-bg-lightness: 0%;
   --color-primary-bg-opacity: 1;
   --color-primary-border-hue: 0deg;
-  --color-primary-border-saturation: 0%;
   --color-primary-border-lightness: 0%;
   --color-primary-border-opacity: 1;
   --color-primary-text-hue: 0deg;
-  --color-primary-text-saturation: 0%;
   --color-primary-text-lightness: 0%;
   --color-primary-text-opacity: 1;
   --color-secondary-bg-hue: 0deg;
-  --color-secondary-bg-saturation: 0%;
   --color-secondary-bg-lightness: 0%;
   --color-secondary-bg-opacity: 1;
   --color-secondary-border-hue: 0deg;
-  --color-secondary-border-saturation: 0%;
   --color-secondary-border-lightness: 0%;
   --color-secondary-border-opacity: 1;
   --color-secondary-text-hue: 0deg;
-  --color-secondary-text-saturation: 0%;
   --color-secondary-text-lightness: 0%;
   --color-secondary-text-opacity: 1;
   --color-danger-bg-hue: 0deg;
-  --color-danger-bg-saturation: 0%;
   --color-danger-bg-lightness: 0%;
   --color-danger-bg-opacity: 1;
   --color-danger-border-hue: 0deg;
-  --color-danger-border-saturation: 0%;
   --color-danger-border-lightness: 0%;
   --color-danger-border-opacity: 1;
   --color-danger-text-hue: 0deg;
-  --color-danger-text-saturation: 0%;
   --color-danger-text-lightness: 0%;
   --color-danger-text-opacity: 1;
   --color-arylide-yellow-100: #f9f3e1;
@@ -97,8 +88,6 @@
   --color-bg-danger: oklch(var(--color-bg-danger-lightness) var(--color-bg-danger-chroma) var(--color-bg-danger-hue) / var(--color-bg-danger-opacity));
   --color-bg-hue: var(--color-primary-hue) * var(--primary, 1) + var(--color-secondary-hue) * var(--secondary, 0) + var(--color-danger-hue) * var(--danger, 0);
   --color-bg-h: var(--theme-color-bg-hue);
-  --color-bg-saturation: var(--color-primary-saturation) * var(--primary, 1) + var(--color-secondary-saturation) * var(--secondary, 0) + var(--color-danger-saturation) * var(--danger, 0);
-  --color-bg-s: var(--theme-color-bg-saturation);
   --color-bg-lightness: var(--color-primary-lightness) * var(--primary, 1) + var(--color-secondary-lightness) * var(--secondary, 0) + var(--color-danger-lightness) * var(--danger, 0);
   --color-bg-l: var(--theme-color-bg-lightness);
   --color-bg-opacity: var(--color-primary-opacity);
@@ -119,7 +108,6 @@
   --color-border-danger-opacity: var(--color-danger-opacity, 1);
   --color-border-danger: oklch(var(--color-border-danger-lightness) var(--color-border-danger-chroma) var(--color-border-danger-hue) / var(--color-border-danger-opacity));
   --color-border-hue: var(--color-primary-hue) * var(--primary, 1) + var(--color-secondary-hue) * var(--secondary, 0) + var(--color-danger-hue) * var(--danger, 0);
-  --color-border-saturation: var(--color-primary-saturation) * var(--primary, 1) + var(--color-secondary-saturation) * var(--secondary, 0) + var(--color-danger-saturation) * var(--danger, 0);
   --color-border-lightness: var(--color-primary-lightness) * var(--primary, 1) + var(--color-secondary-lightness) * var(--secondary, 0) + var(--color-danger-lightness) * var(--danger, 0);
   --color-border-opacity: var(--color-primary-opacity);
   --color-text-primary-lightness: var(--color-primary-lightness, 0);
@@ -138,7 +126,6 @@
   --color-text-danger-opacity: var(--color-danger-opacity, 1);
   --color-text-danger: oklch(var(--color-text-danger-lightness) var(--color-text-danger-chroma) var(--color-text-danger-hue) / var(--color-text-danger-opacity));
   --color-text-hue: var(--color-primary-hue) * var(--primary, 1) + var(--color-secondary-hue) * var(--secondary, 0) + var(--color-danger-hue) * var(--danger, 0);
-  --color-text-saturation: var(--color-primary-saturation) * var(--primary, 1) + var(--color-secondary-saturation) * var(--secondary, 0) + var(--color-danger-saturation) * var(--danger, 0);
   --color-text-lightness: var(--color-primary-lightness) * var(--primary, 1) + var(--color-secondary-lightness) * var(--secondary, 0) + var(--color-danger-lightness) * var(--danger, 0);
   --color-text-opacity: var(--color-primary-opacity);
 }

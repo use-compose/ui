@@ -1,6 +1,5 @@
 import type { StorybookConfig } from '@storybook/vue3-vite'
 import { StoriesEntry } from 'storybook/internal/types'
-
 // https://uxdesign.cc/how-to-connect-storybook-figma-toppling-the-great-divide-6c1923182653
 
 async function findStories(): Promise<StoriesEntry[]> {
@@ -27,28 +26,37 @@ const config: StorybookConfig = {
   ],
   framework: {
     name: '@storybook/vue3-vite',
-    options: {},
+    options: {
+      docgen: 'vue-component-meta',
+    },
   },
   docs: {},
   // async viteFinal(config) {
   //   return mergeConfig(config, {
-  //     // css: {
-  //     //   postcss: null,
-  //     //   preprocessorOptions: {
-  //     //     scss: {
-  //     //       additionalData: `
-  //     //         @import "${path.resolve(__dirname, '../src/assets/scss/theme')}";
-  //     //       `,
-  //     //     },
-  //     //   },
-  //     // },
-  //     // // TODO: doesn't work?
-  //     // resolve: {
-  //     //   alias: [
-  //     //     { find: '@', replacement: path.resolve(__dirname, './src') },
-  //     //     { find: '@/composables', replacement: path.resolve(__dirname, '.src/composables') },
-  //     //   ],
-  //     // },
+  //     css: {
+  //       postcss: null,
+  //       preprocessorOptions: {
+  //         css: {
+  //           additionalData: `
+  //             @use "@/assets/css/global.css";
+  //           `,
+  //         },
+  //         // SCSS syntax
+  //         //
+  //         scss: {
+  //           additionalData: `
+  //             @use "@/assets/scss/index.scss";
+  //           `,
+  //         },
+  //       },
+  //     },
+  //     // TODO: doesn't work?
+  //     resolve: {
+  //       alias: [
+  //         { find: '@', replacement: path.resolve(__dirname, './src') },
+  //         { find: '@/composables', replacement: path.resolve(__dirname, '.src/composables') },
+  //       ],
+  //     },
   //   })
   // },
 }

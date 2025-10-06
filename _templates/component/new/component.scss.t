@@ -3,7 +3,7 @@ to: src/components/<%= name %>/<%= name %>.scss
 ---
 // Uncomment if needed
 // @use '@/assets/scss/utils' as utils;
-// @use '@/assets/scss/theme.scss' as *;
+// @use '@/assets/scss/global.scss' as *;
 
 // TODO: change to kebab-case
 .<%= name %> {

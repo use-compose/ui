@@ -33,7 +33,7 @@ const renderGenericStory: Story = {
     components: { YButton },
     props: Object.keys(argTypes),
     template: `
-    <YButton @click="handleClick"  v-bind="args">Label</YButton>
+    <YButton @click="handleClick" v-bind="args">Label</YButton>
   `,
     setup(props: YButtonProps) {
       const clickCount = ref(0)

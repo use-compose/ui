@@ -1,0 +1,221 @@
+/* _interactive.generated.scss
+ * Drop-in generator for color × variant × state
+ */
+
+@use 'sass:map';
+@use '../utils/mixins' as mixins; // your existing helpers
+@use '../utils/functions' as functions;
+@use './state' as state; // exposes state.hover/focus/active/disabled
+@use './color' as colors; // exposes colors.primary/secondary/danger + focus/active/disabled
+
+// ---------- DATA LAYERS ----------
+
+// 1) Colors (tones). If you add a new color, just append here.
+$COLORS: (primary, secondary, danger);
+
+// 2) Variant definitions (per-variant base + per-state props).
+//    Keys are your token-ish names that flow through mixins.component().
+$VARIANTS: (
+  contained: (
+    base: (
+      color-text: white,
+    ),
+    // customize states if needed:
+     // hover: (...), focus: (...), active: (...), disabled: (...)
+  ),
+
+  outlined: (
+    base: (
+      border-style: solid,
+      border-color: var(--theme-current-color),
+      color-text: var(--theme-current-color),
+      bg-opacity: var(--variant-bg-opacity),
+    ),
+    hover: (
+      bg-opacity: var(--state-active-bg-lightness),
+    ),
+    focus: (
+      bg-opacity: var(--state-base-bg-lightness),
+    ),
+    active: (
+      bg-opacity: var(--state-hover-bg-lightness),
+    ),
+    disabled: (
+      bg-opacity: var(--state-disabled-bg-lightness),
+    ),
+  ),
+
+  text: (
+    base: (
+      box-shadow: none,
+      transform: none,
+      color-text: var(--theme-current-color),
+    ),
+    hover: (
+      bg-opacity: var(--state-active-bg-lightness),
+    ),
+    focus: (
+      bg-opacity: var(--state-base-bg-lightness),
+    ),
+    active: (
+      bg-opacity: var(--state-hover-bg-lightness),
+    ),
+    disabled: (
+      bg-opacity: var(--state-disabled-bg-lightness),
+    ),
+  ),
+);
+
+// ---------- SMALL ADAPTERS ----------
+
+// Map color class -> theme mixin.
+@mixin apply-color($name) {
+  @if $name == primary {
+    @include colors.primary;
+  } @else if $name == secondary {
+    @include colors.secondary;
+  } @else if $name == danger {
+    @include colors.danger;
+  }
+}
+
+// Centralized visuals for generic interactive states
+@mixin focus-visual() {
+  @include colors.focus;
+}
+@mixin active-visual() {
+  @include colors.active;
+}
+@mixin disabled-visual() {
+  @include colors.disabled;
+}
+
+// Helper: apply a "prop: value" map through your component() mixin
+@mixin apply-props($props) {
+  @if $props != null {
+    @each $prop, $val in $props {
+      @include mixins.component($prop, $val);
+    }
+  }
+}
+
+// ---------- EMITTERS ----------
+
+// Emit a single variant block (+ per-state) for the current selector
+@mixin emit-variant($variant-name, $def) {
+  // Let your system compute per-variant variables (e.g., LCH, etc)
+  @include mixins.resolve-lch-value('variant', $variant-name);
+
+  // base (unwrapped)
+  @include apply-props(map.get($def, base));
+
+  // states (wrapped with your existing state.* mixins)
+  @include state.hover {
+    @include apply-props(map.get($def, hover));
+  }
+  @include state.focus {
+    @include apply-props(map.get($def, focus));
+  }
+  @include state.active {
+    @include apply-props(map.get($def, active));
+  }
+  @include state.disabled {
+    @include apply-props(map.get($def, disabled));
+  }
+}
+
+// Emit all variants as class modifiers on the current selector
+@mixin emit-variants($variants) {
+  @each $name, $def in $variants {
+    &.#{$name} {
+      @include emit-variant($name, $def);
+    }
+  }
+}
+
+// Emit color classes on the current selector
+@mixin emit-colors($colors) {
+  @each $c in $colors {
+    // Optional: resolve a color context variable if you have one
+    @include mixins.resolve-lch-value('color', $c);
+
+    &.#{$c} {
+      @include apply-color($c);
+    }
+  }
+}
+
+// ---------- COMMON INTERACTIVE WRAPPER ----------
+
+@mixin interactive-base {
+  &:not([disabled], .disabled) {
+    &:focus,
+    &.focus-visible,
+    &.focus,
+    &:focus-visible {
+      @include mixins.resolve-lch-value('state', focus);
+      @include focus-visual();
+    }
+
+    &:active,
+    &.active {
+      @include mixins.resolve-lch-value('state', active);
+      @include active-visual();
+    }
+  }
+
+  &.disabled,
+  &[disabled] {
+    @include disabled-visual();
+  }
+}
+
+// ---------- PUBLIC MIXIN ----------
+
+// Use this on a component root (e.g. .btn, .chip, .tag)
+// Generates color × variant, and injects state visuals once.
+@mixin interactive-component($colors: $COLORS, $variants: $VARIANTS) {
+  // Generic focus/active/disabled treatment (once)
+  @include interactive-base;
+
+  // Optional: keep your explicit state-prop classes for API parity
+  &:not([disabled], .disabled) {
+    &.base {
+      /* no-op placeholder if you rely on it */
+    }
+    &.hover {
+      @include state.hover {
+      }
+    }
+    &.focus {
+      @include state.focus {
+      }
+    }
+    &.active {
+      @include state.active {
+      }
+    }
+  }
+
+  // Colors (e.g., .primary, .secondary, .danger)
+  @include emit-colors($colors);
+
+  // Variants (e.g., .contained, .outlined, .text) + their state blocks
+  @include emit-variants($variants);
+}
+
+/* ---------- USAGE EXAMPLE ----------
+.btn {
+  // base structural styles…
+
+  // This line generates everything:
+  @include interactive-component();
+
+  // If you need raw CSS for a specific combo, layer it after:
+  &.text {
+    &:not([disabled], .disabled) {
+      &.active { outline: 2px solid currentcolor; }
+    }
+  }
+}
+------------------------------------ */

@@ -3,19 +3,16 @@
     "primary": {
       "bg": {
         "hue": { "value": "0deg" },
-        "saturation": { "value": "0%" },
         "lightness": { "value": "0%" },
         "opacity": { "value": 1 }
       },
       "border": {
         "hue": { "value": "0deg" },
-        "saturation": { "value": "0%" },
         "lightness": { "value": "0%" },
         "opacity": { "value": 1 }
       },
       "text": {
         "hue": { "value": "0deg" },
-        "saturation": { "value": "0%" },
         "lightness": { "value": "0%" },
         "opacity": { "value": 1 }
       },
@@ -26,19 +23,16 @@
     "secondary": {
       "bg": {
         "hue": { "value": "0deg" },
-        "saturation": { "value": "0%" },
         "lightness": { "value": "0%" },
         "opacity": { "value": 1 }
       },
       "border": {
         "hue": { "value": "0deg" },
-        "saturation": { "value": "0%" },
         "lightness": { "value": "0%" },
         "opacity": { "value": 1 }
       },
       "text": {
         "hue": { "value": "0deg" },
-        "saturation": { "value": "0%" },
         "lightness": { "value": "0%" },
         "opacity": { "value": 1 }
       }
@@ -46,22 +40,22 @@
     "danger": {
       "bg": {
         "hue": { "value": "0deg" },
-        "saturation": { "value": "0%" },
         "lightness": { "value": "0%" },
         "opacity": { "value": 1 }
       },
       "border": {
         "hue": { "value": "0deg" },
-        "saturation": { "value": "0%" },
         "lightness": { "value": "0%" },
         "opacity": { "value": 1 }
       },
       "text": {
         "hue": { "value": "0deg" },
-        "saturation": { "value": "0%" },
         "lightness": { "value": "0%" },
         "opacity": { "value": 1 }
       }
+    },
+    "attributes": {
+      "type": "variants"
     }
   }
 }

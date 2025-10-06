@@ -13,25 +13,28 @@
   @include mixins.resolve-lch-value('variant', outlined);
   @include mixins.component(border-style, solid);
   @include mixins.component(border-color, var(--theme-current-color));
-  @include mixins.component(color-text, var(--theme-current-color));
+  // @include mixins.component(color-text, var(--theme-current-color));
   @include mixins.component(bg-opacity, var(--variant-bg-opacity));
-  @include mixins.component(bg-opacity, var(--variant-bg-opacity));
+  // @include mixins.component(bg-opacity, var(--state-base-bg-opacity));
 
   @include state.hover {
-    @include mixins.component(bg-opacity, var(--state-active-bg-lightness));
+    // @include mixins.component(bg-opacity, var(--state-active-bg-lightness));
   }
 
   @include state.focus {
-    @include mixins.component(bg-opacity, var(--state-base-bg-lightness));
+    // @include mixins.component(bg-opacity, var(--state-base-bg-lightness));
   }
 
   @include state.active {
-    @include mixins.component(bg-opacity, var(--state-hover-bg-lightness));
+    @include mixins.component(bg-opacity, var(--state-active-bg-lightness));
   }
 
-  @include state.disabled {
-    @include mixins.component(bg-opacity, var(--state-disabled-bg-lightness));
+  [data-state='disabled'] & {
+    // @include mixins.component(bg-opacity, var(--state-disabled-bg-lightness));
   }
+  // @include state.disabled {
+  //   @include mixins.component(bg-opacity, var(--state-disabled-bg-lightness));
+  // }
 }
 
 @mixin text {
@@ -46,7 +49,7 @@
   @include state.hover {
     @include mixins.component(bg-opacity, var(--state-active-bg-lightness));
 
-    // --variant-text-border-opacity: 1; // @include mixins.component(bg-opacity, var(--state-hover-bg-lightness));
+    --variant-text-border-opacity: 1; // @include mixins.component(bg-opacity, var(--state-hover-bg-lightness));
   }
 
   @include state.focus {

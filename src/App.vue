@@ -8,9 +8,9 @@
 
 <script setup lang="ts">
 // import './assets/scss/main.scss'
+import './assets/css/global.css'
 import { AppCompose } from './components'
 import Playground from './components/Playground.vue'
-
 import type { YTheme } from './types'
 
 const theme: YTheme = {

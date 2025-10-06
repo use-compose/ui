@@ -107,10 +107,10 @@
 
 // Colors
 
-@mixin base {
-  &.base:not([disabled]) {
-    @include resolve-lch-value('state', base);
+// @mixin base {
+//   &.base:not([disabled]) {
+//     @include resolve-lch-value('state', base);
 
-    @content;
-  }
-}
+//     @content;
+//   }
+// }

@@ -62,7 +62,7 @@
     },
     "focus": {
       "bg": {
-        "lightness": { "value": 0.15 },
+        "lightness": { "value": 0.05 },
         "chroma": { "value": 0 },
         "hue": { "value": 0 },
         "opacity": { "value": 1 }
@@ -99,6 +99,9 @@
         "hue": { "value": 0 },
         "opacity": { "value": 1 }
       }
+    },
+    "attributes": {
+      "type": "variants"
     }
   }
 }

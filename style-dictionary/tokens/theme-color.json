@@ -1,25 +1,33 @@
 {
   "color": {
     "bg": {
-      "hue": { "value": "var(--color-primary-hue) * var(--primary, 1) + var(--color-secondary-hue) * var(--secondary, 0) + var(--color-danger-hue) * var(--danger, 0)" },
+      "hue": {
+        "value": "var(--color-primary-hue) * var(--primary, 1) + var(--color-secondary-hue) * var(--secondary, 0) + var(--color-danger-hue) * var(--danger, 0)"
+      },
       "h": { "value": "var(--theme-color-bg-hue)" },
-      "saturation": { "value": "var(--color-primary-saturation) * var(--primary, 1) + var(--color-secondary-saturation) * var(--secondary, 0) + var(--color-danger-saturation) * var(--danger, 0)" },
-      "s": { "value": "var(--theme-color-bg-saturation)" },
-      "lightness": { "value": "var(--color-primary-lightness) * var(--primary, 1) + var(--color-secondary-lightness) * var(--secondary, 0) + var(--color-danger-lightness) * var(--danger, 0)" },
+      "lightness": {
+        "value": "var(--color-primary-lightness) * var(--primary, 1) + var(--color-secondary-lightness) * var(--secondary, 0) + var(--color-danger-lightness) * var(--danger, 0)"
+      },
       "l": { "value": "var(--theme-color-bg-lightness)" },
       "opacity": { "value": "var(--color-primary-opacity)" },
       "o": { "value": "var(--theme-color-bg-opacity)" }
     },
     "border": {
-      "hue": { "value": "var(--color-primary-hue) * var(--primary, 1) + var(--color-secondary-hue) * var(--secondary, 0) + var(--color-danger-hue) * var(--danger, 0)" },
-      "saturation": { "value": "var(--color-primary-saturation) * var(--primary, 1) + var(--color-secondary-saturation) * var(--secondary, 0) + var(--color-danger-saturation) * var(--danger, 0)" },
-      "lightness": { "value": "var(--color-primary-lightness) * var(--primary, 1) + var(--color-secondary-lightness) * var(--secondary, 0) + var(--color-danger-lightness) * var(--danger, 0)" },
+      "hue": {
+        "value": "var(--color-primary-hue) * var(--primary, 1) + var(--color-secondary-hue) * var(--secondary, 0) + var(--color-danger-hue) * var(--danger, 0)"
+      },
+      "lightness": {
+        "value": "var(--color-primary-lightness) * var(--primary, 1) + var(--color-secondary-lightness) * var(--secondary, 0) + var(--color-danger-lightness) * var(--danger, 0)"
+      },
       "opacity": { "value": "var(--color-primary-opacity)" }
     },
     "text": {
-      "hue": { "value": "var(--color-primary-hue) * var(--primary, 1) + var(--color-secondary-hue) * var(--secondary, 0) + var(--color-danger-hue) * var(--danger, 0)" },
-      "saturation": { "value": "var(--color-primary-saturation) * var(--primary, 1) + var(--color-secondary-saturation) * var(--secondary, 0) + var(--color-danger-saturation) * var(--danger, 0)" },
-      "lightness": { "value": "var(--color-primary-lightness) * var(--primary, 1) + var(--color-secondary-lightness) * var(--secondary, 0) + var(--color-danger-lightness) * var(--danger, 0)" },
+      "hue": {
+        "value": "var(--color-primary-hue) * var(--primary, 1) + var(--color-secondary-hue) * var(--secondary, 0) + var(--color-danger-hue) * var(--danger, 0)"
+      },
+      "lightness": {
+        "value": "var(--color-primary-lightness) * var(--primary, 1) + var(--color-secondary-lightness) * var(--secondary, 0) + var(--color-danger-lightness) * var(--danger, 0)"
+      },
       "opacity": { "value": "var(--color-primary-opacity)" }
     }
   }

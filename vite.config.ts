@@ -47,14 +47,15 @@ export default defineConfig({
   },
   css: {
     preprocessorOptions: {
-      css: {
-        additionalData: `
-            //  @use "@/assets/css/global.css";
-          `,
-      },
+      // css: {
+      //   additionalData: `
+      //        @use "@/assets/css/global.css";
+      //     `,
+      // },
       scss: {
         additionalData: `
-              @use "@/assets/scss/index.scss";
+              @use "@/assets/scss/global.scss";
+              
           `,
         // https://github.com/sass/dart-sass/issues/2352#issuecomment-2358290696
         api: 'modern',
