@@ -10,7 +10,7 @@
   @include utils.component(box-shadow, utils.component(box-shadow-#{$state}));
 
   &:not(.raw) {
-    @include utils.component(transform, utils.component(transform-#{$state}));
+    // @include utils.component(transform, utils.component(transform-#{$state}));
   }
 
   --state: #{$state};

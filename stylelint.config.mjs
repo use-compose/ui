@@ -7,18 +7,21 @@ export default {
   ],
   files: ['**/*.{vue,scss,sass,css}'],
   rules: {
-    // 'selector-class-pattern': [
-    //   '^[-]?[a-z0-9]+(?:-[a-z0-9]+)*$',
-    //   {
-    //     message: 'Expected class selector to be kebab-case',
-    //   },
-    // ],
-    // 'custom-property-pattern': [
-    //   '^[--][a-z0-9-]+$',
-    //   {
-    //     message: 'Expected custom property name to be kebab-case',
-    //   },
-    // ],
+    // 'custom-property-pattern': 'foo-.+',
+    'at-rule-no-unknown': null,
+    'scss/at-rule-no-unknown': true,
+    'selector-class-pattern': [
+      '^[-]?[a-z0-9]+(?:-[a-z0-9]+)*$',
+      {
+        message: 'Expected class selector to be kebab-case',
+      },
+    ],
+    'custom-property-pattern': [
+      '^[--]+[a-z0-9-]+$',
+      {
+        message: 'Expected custom property name to be kebab-case',
+      },
+    ],
   },
   // customSyntax: 'postcss-scss',
   // overrides: [

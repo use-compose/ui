@@ -29,7 +29,7 @@
   "include": [
     "src/**/*.ts",
     "src/**/*.vue",
-    "src/index.js",
+    "src/index.ts",
     "style-dictionary/**/*.json",
     "style-dictionary/**/*.js"
   ],

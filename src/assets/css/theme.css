@@ -108,6 +108,8 @@
   --component-box-shadow-x: calc(var(--is-box-shadow-hidden) * 0.75 * var(--theme-base-unit-calc));
   --component-box-shadow-y: calc(var(--is-box-shadow-hidden) * 0.75 * var(--theme-base-unit-calc));
   --component-transform: translate(0, 0);
+  --transform-value: calc(var(--base) * 0px + var(--hover) * -2px + var(--active) * 1px);
+  --component-transform: translate(var(--transform-value), var(--transform-value));
   --component-box-shadow-base: calc(var(--component-box-shadow-x) * 0.5) calc(var(--component-box-shadow-y) * 0.5) 0 0 black;
   /* --component-box-shadow-base: 0; */
 
@@ -118,7 +120,7 @@
   /* --component-box-shadow-hover: var(--component-box-shadow-x) var(--component-box-shadow-y) 0 0 black; */
   --component-box-shadow-focus: var(--component-box-shadow-x) var(--component-box-shadow-y) 0 0 var(--component-box-shadow-color);
   /* --component-box-shadow-focus: none; */
-  --component-box-shadow-active: calc(var(--component-box-shadow-x) - 50% * var(--theme-base-unit-calc)) calc(var(--component-box-shadow-y) - 50% * var(--theme-base-unit-calc)) 0 0 var(--component-box-shadow-color);
+  --component-box-shadow-active: calc(var(--component-box-shadow-x) * var(--theme-base-unit-calc)) calc(var(--component-box-shadow-y) * var(--theme-base-unit-calc)) 0 0 var(--component-box-shadow-color);
 
 }
 
@@ -359,7 +361,7 @@ h3,
 h4,
 .text-lg,
 h5 {
-  font-family: gotham-black;
+  font-family: gotham;
   text-transform: uppercase;
   color: var(--theme-current-color);
 }
@@ -370,4 +372,12 @@ h5 {
   --switch: calc((var(--light) - var(--threshold)));
 
   color: oklch(from currentcolor calc(l - var(--threshold)) c h);
+}
+
+[data-compose-ui],
+.y-button,
+.y-input,
+.y-select {
+  box-shadow: var(--component-box-shadow);
+  transform: var(--component-transform);
 }

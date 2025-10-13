@@ -240,7 +240,7 @@
 
   <YSection title="Dropdown">
     <YFlex>
-      <YDropdown raw>
+      <YDropdown>
         <template #default="{ toggle, isOpen }">
           <YButton class="mb-0" @click="toggle">
             {{ isOpen ? 'Close Dropdown' : 'Open Dropdown' }}
@@ -254,7 +254,7 @@
           </ul>
         </template>
       </YDropdown>
-      <YDropdown raw>
+      <YDropdown>
         <template #default="{ toggle, isOpen }">
           <YButton class="mb-0" @click="toggle">
             {{ isOpen ? 'Close Nested Dropdown 1' : 'Open Nested Dropdown 1' }}

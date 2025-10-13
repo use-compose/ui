@@ -46,7 +46,7 @@ const renderGenericStory: Story = {
       background: '#f5f5f5',
       dark: '#333333',
     },
-    useBgColor: true,
+    useBg: true,
   },
 }
 
