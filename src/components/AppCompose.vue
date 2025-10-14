@@ -13,14 +13,14 @@ import { computed } from 'vue'
 
 interface AppComposeProps {
   theme?: YTheme
-  useBgColor?: boolean
+  useBg?: boolean
 }
 
 const props = defineProps<AppComposeProps>()
 
 const styles = computed(() => {
   return {
-    '--use-bg': props.useBgColor ? 1 : 0,
+    '--use-bg': props.useBg ? 1 : 0,
   }
 })
 

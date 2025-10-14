@@ -43,7 +43,7 @@ export default defineConfig([
       '@stylistic/semi': true,
     },
   },
-  { languageOptions: { globals: globals.browser } },
+  { languageOptions: { globals: { ...globals.browser, ...globals.node } } },
 
   // {
   //   files: ['**/*.vue'],

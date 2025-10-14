@@ -13,7 +13,7 @@ export default defineConfig({
       tsconfigPath: fileURLToPath(new URL('./tsconfig.json', import.meta.url)),
       include: ['./src/**/*'],
       outDir: './dist',
-      rollupTypes: true,
+      // rollupTypes: true,
     }),
   ],
   resolve: {
@@ -31,7 +31,7 @@ export default defineConfig({
       entry: fileURLToPath(new URL('./src/index.ts', import.meta.url)),
       name: '@use-compose/ui',
       fileName: 'index',
-      // formats: ['es'], // optionally also 'cjs' if you want CJS support
+      formats: ['es'], // optionally also 'cjs' if you want CJS support
     },
     rollupOptions: {
       external: ['vue'],
@@ -54,7 +54,7 @@ export default defineConfig({
       // },
       scss: {
         additionalData: `
-              @use "@/assets/scss/global.scss";
+              // @use "@/assets/scss/global.scss";
               
           `,
         // https://github.com/sass/dart-sass/issues/2352#issuecomment-2358290696
