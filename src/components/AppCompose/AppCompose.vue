@@ -15,7 +15,7 @@ const props = defineProps<AppComposeProps>()
 
 const styles = computed(() => {
   return {
-    '--use-bg': props.useBgColor ? 1 : 0,
+    '--use-bg': props.useBg ? 1 : 0,
   }
 })
 

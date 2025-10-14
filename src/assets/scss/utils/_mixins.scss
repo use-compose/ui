@@ -27,10 +27,12 @@
 @mixin cssvars($prefix, $css_variables, $root: false) {
   :root {
     @each $name, $value in $css_variables {
+      $key: '' + $name; // force string; avoids Sass color interpolation warnings
+
       @if $prefix == '' {
         --#{$name}: #{$value};
       } @else {
-        --#{$prefix}-#{$name}: #{$value};
+        --#{$prefix}-#{$key}: #{$value};
       }
     }
   }

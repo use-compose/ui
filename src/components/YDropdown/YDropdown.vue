@@ -64,9 +64,9 @@ export default defineComponent({
     const dropdownClasses = computed(() => {
       return ['y-dropdown', rawClasses.value]
     })
-
-    useOnClickOutside(dropdownRef, close, window, dropdownTriggerRef)
-    // const { rawClasses } = useRaw(props)
+    if (!import.meta.env.SSR) {
+      useOnClickOutside(dropdownRef, close, window, dropdownTriggerRef)
+    } // const { rawClasses } = useRaw(props)
     const yDropdownStyle = computed(() => ({
       '--dropdown-z-index': zIndex,
     }))

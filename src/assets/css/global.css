@@ -1,3 +1,4 @@
+@import './base/compose.css';
 @import './variables/conditional.css';
 @import './variables/state.css';
 @import './variables/variant.css';
