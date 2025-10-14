@@ -50,9 +50,6 @@ app.use('*all', async (req, res) => {
     }
 
     const { stream } = render(url)
-    console.log('📟 - render(url) → ', render(url))
-    console.log('📟 - url → ', url)
-    console.log('📟 - stream → ', stream)
 
     const [htmlStart, htmlEnd] = template.split('<!--app-html-->')
 
@@ -67,12 +64,12 @@ app.use('*all', async (req, res) => {
     res.end()
   } catch (e) {
     vite?.ssrFixStacktrace(e)
-    console.log(e.stack)
     res.status(500).end(e.stack)
   }
 })
 
 // Start http server
 app.listen(port, () => {
+  // eslint-disable-next-line no-console
   console.log(`Server started at http://localhost:${port}`)
 })
