@@ -11,10 +11,6 @@ import tseslint from 'typescript-eslint'
 /** @type {import('eslint').Linter.Config[]} */
 export default defineConfig([
   {
-    env: {
-      browser: true,
-      node: true,
-    },
     extends: [
       eslint.configs.recommended,
       ...tseslint.configs.recommended,
@@ -47,7 +43,7 @@ export default defineConfig([
       '@stylistic/semi': true,
     },
   },
-  { languageOptions: { globals: globals.browser } },
+  { languageOptions: { globals: { ...globals.browser, ...globals.node } } },
 
   // {
   //   files: ['**/*.vue'],
