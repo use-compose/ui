@@ -1,0 +1,35 @@
+{
+  "base": {
+    "typography": {
+      "text": {
+        "xs": { "value": "clamp(0.4444rem, 0.6881rem - 0.2407vw, 0.64rem)" },
+        "sm": { "value": "clamp(0.6667rem, 0.8328rem - 0.1641vw, 0.8rem)" },
+        "md": { "value": "clamp(1rem, 1rem + 0vw, 1rem)" },
+        "lg": { "value": "clamp(1.25rem, 1.1885rem + 0.3077vw, 1.5rem)" },
+        "xl": { "value": "clamp(1.5625rem, 1.3933rem + 0.8462vw, 2.25rem)" },
+        "xxl": { "value": "clamp(1.9531rem, 1.6031rem + 1.75vw, 3.375rem)" },
+        "h1": { "value": "clamp(2.4414rem, 1.7962rem + 3.226vi, 5.0625rem)" }
+      },
+      "heading": {
+        "height": { "value": "calc(1rem * 2.5)" }
+      }
+    },
+    "breakpoint": {
+      "mobile": { "value": "640px" },
+      "tablet": { "value": "768px" },
+      "desktop": { "value": "1024px" },
+      "desktop_xl": { "value": "1280px" },
+      "desktop_xxl": { "value": "1820px" }
+    },
+    "space": {
+      "unit": { "value": "1rem" },
+      "xxs": { "value": "calc(0.25 * var(--space-unit))" },
+      "xs": { "value": "calc(0.5 * var(--space-unit))" },
+      "sm": { "value": "calc(0.75 * var(--space-unit))" },
+      "md": { "value": "calc(1 * var(--space-unit))" },
+      "lg": { "value": "calc(1.5 * var(--space-unit))" },
+      "xl": { "value": "calc(2 * var(--space-unit))" },
+      "xxl": { "value": "calc(4 * var(--space-unit))" }
+    }
+  }
+}

@@ -1,27 +1,31 @@
 {
   "name": "@use-compose/ui",
-  "version": "0.2.0",
+  "version": "0.2.3",
   "files": [
     "dist"
   ],
-  "main": "./dist/index.js",
-  "module": "./dist/index.mjs",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "type": "module",
+  "bin": {
+    "compose-theme": "./bin/generate-theme.js"
+  },
   "exports": {
     "./package.json": "./dist/package.json",
     ".": {
-      "import": "./dist/index.js",
-      "require": "./dist/index.umd.cjs"
+      "import": "./dist/client/index.js",
+      "require": "./dist/client/index.cjs"
     },
     "./components": {
       "import": "./dist/components/index.js",
-      "require": "./dist/components/index.umd.cjs"
+      "require": "./dist/components/index.cjs"
     },
     "./style.css": "./dist/style.css"
   },
   "scripts": {
-    "dev": "node server",
+    "dev": "vite",
+    "dev:ssr": "node server",
     "build:client": "vite build --outDir dist/client",
     "build:server": "vite build --outDir dist/server --ssr src/entry-server.js",
     "build": "npm run build:client && npm run build:server",
