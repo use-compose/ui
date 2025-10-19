@@ -1,0 +1,8 @@
+{
+  "zIndex": {
+    "value": 1000,
+    "attributes": {
+      "type": "base"
+    }
+  }
+}

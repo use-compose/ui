@@ -1,11 +1,7 @@
-@import './base/compose.css';
-@import './variables/conditional.css';
-@import './variables/state.css';
-@import './variables/variant.css';
-@import './variables/component/component.css';
-@import './variables/color.css';
-@import './variables/base.css';
+@import './base/conditional.css';
+@import './base/variants.css';
+@import './base/component/component.css';
+@import './base/variables.css';
 @import './utils/animations.css';
 @import './components/table.css';
-@import '@/assets/css/components/theming.css';
 @import './theme.css';

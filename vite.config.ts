@@ -31,7 +31,9 @@ export default defineConfig({
       entry: fileURLToPath(new URL('./src/index.ts', import.meta.url)),
       name: '@use-compose/ui',
       fileName: 'index',
-      formats: ['es'], // optionally also 'cjs' if you want CJS support
+      formats: ['es', 'cjs'],
+
+      // formats: ['es'], // optionally also 'cjs' if you want CJS support
     },
     rollupOptions: {
       external: ['vue'],

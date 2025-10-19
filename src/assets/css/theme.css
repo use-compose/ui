@@ -351,6 +351,38 @@
   background-color: color-mix(in srgb, var(--color-bg) calc(var(--use-bg) * 100%), transparent calc((1 - var(--use-bg)) * 100%));
 }
 
+h1,
+.text-h1 {
+  font-size: var(--_text-h1);
+}
+
+h2,
+.text-xxl {
+  font-size: var(--_text-xxl);
+}
+
+h3,
+.text-xl {
+  font-size: var(--_text-xl);
+}
+
+h4,
+.text-lg {
+  font-size: var(--_text-lg);
+}
+
+p {
+  font-size: var(--_text-md);
+  margin: var(--space-xs) 0;
+}
+
+.text-sm {
+  font-size: var(--_text-sm);
+}
+
+.text-xs {
+  font-size: var(--_text-xs);
+}
 
 h1,
 .text-h1,

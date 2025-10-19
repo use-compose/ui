@@ -1,0 +1,29 @@
+/**
+ * Internal default theme variables
+ * Using CSS pseudo-private custom properties 
+ * https://lea.verou.me/blog/2021/10/custom-properties-with-defaults/
+ */
+:root {
+  --_zIndex-undefined: var(--zIndex-undefined, 1000);
+  --_typography-text: var(--typography-text, clamp(0.4444rem, 0.6881rem - 0.2407vw, 0.64rem));
+  --_typography-text: var(--typography-text, clamp(0.6667rem, 0.8328rem - 0.1641vw, 0.8rem));
+  --_typography-text: var(--typography-text, clamp(1rem, 1rem + 0vw, 1rem));
+  --_typography-text: var(--typography-text, clamp(1.25rem, 1.1885rem + 0.3077vw, 1.5rem));
+  --_typography-text: var(--typography-text, clamp(1.5625rem, 1.3933rem + 0.8462vw, 2.25rem));
+  --_typography-text: var(--typography-text, clamp(1.9531rem, 1.6031rem + 1.75vw, 3.375rem));
+  --_typography-text: var(--typography-text, clamp(2.4414rem, 1.7962rem + 3.226vi, 5.0625rem));
+  --_typography-heading: var(--typography-heading, calc(1rem * 2.5));
+  --_breakpoint-mobile: var(--breakpoint-mobile, 640px);
+  --_breakpoint-tablet: var(--breakpoint-tablet, 768px);
+  --_breakpoint-desktop: var(--breakpoint-desktop, 1024px);
+  --_breakpoint-desktop-xl: var(--breakpoint-desktop-xl, 1280px);
+  --_breakpoint-desktop-xxl: var(--breakpoint-desktop-xxl, 1820px);
+  --_space-unit: var(--space-unit, 1rem);
+  --_space-xxs: var(--space-xxs, calc(0.25 * var(--space-unit)));
+  --_space-xs: var(--space-xs, calc(0.5 * var(--space-unit)));
+  --_space-sm: var(--space-sm, calc(0.75 * var(--space-unit)));
+  --_space-md: var(--space-md, calc(1 * var(--space-unit)));
+  --_space-lg: var(--space-lg, calc(1.5 * var(--space-unit)));
+  --_space-xl: var(--space-xl, calc(2 * var(--space-unit)));
+  --_space-xxl: var(--space-xxl, calc(4 * var(--space-unit)));
+}
