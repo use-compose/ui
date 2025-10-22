@@ -93,7 +93,7 @@ export default {
           },
         },
         {
-          destination: 'variables.css',
+          destination: '../themes/private-theme.css',
           format: 'private-theme',
           filter: (token) => {
             if (token.attributes?.category === 'base') {
@@ -108,7 +108,7 @@ export default {
           // },
         },
         {
-          destination: '../../../../bin/templates/compose-theme.css',
+          destination: '../themes/public-theme.css',
           format: 'public-theme',
           filter: (token) => {
             if (token.attributes?.category === 'base') {
@@ -122,25 +122,25 @@ export default {
         /**
          * OKlch tokens
          */
-        {
-          destination: 'primitives.css',
-          format: formats.cssVariables,
-          filter: (token) => {
-            return token.attributes?.type === 'primitive'
-          },
-        },
-        {
-          destination: 'variant.css',
-          format: formats.cssVariables,
-          filter: (token) => {
-            return token.attributes?.category === 'variant'
-          },
-          options: {
-            fileHeader: (defaultMessage) => {
-              return [...defaultMessage, 'Variant tokens']
-            },
-          },
-        },
+        // {
+        //   destination: 'primitives.css',
+        //   format: formats.cssVariables,
+        //   filter: (token) => {
+        //     return token.attributes?.type === 'primitive'
+        //   },
+        // },
+        // {
+        //   destination: 'variant.css',
+        //   format: formats.cssVariables,
+        //   filter: (token) => {
+        //     return token.attributes?.category === 'variant'
+        //   },
+        //   options: {
+        //     fileHeader: (defaultMessage) => {
+        //       return [...defaultMessage, 'Variant tokens']
+        //     },
+        //   },
+        // },
         {
           destination: 'variants.css',
           format: formats.cssVariables,

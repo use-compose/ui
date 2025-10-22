@@ -11,7 +11,7 @@
       <!-- Outer loop: each variant in a separate row or section -->
       <!-- <div v-for="size in sizes.slice().reverse()" :key="size"> -->
       <div v-for="color in colors" :key="color">
-        <h3 :class="color">{{ color }}</h3>
+        <h3>{{ color }}</h3>
         <!-- Inner loop: each tone for that variant -->
         <!-- Loop: each state -->
         <div v-for="variant in variants" :key="variant" style="margin-bottom: 1rem">

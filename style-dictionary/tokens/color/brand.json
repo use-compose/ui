@@ -312,42 +312,5 @@
         }
       }
     }
-  },
-  "night": {
-    "base": {
-      "value": "{color.night.500}",
-      "type": "color",
-      "attribute": {
-        "type": "semantic"
-      }
-    },
-    "lighter": {
-      "value": "{color.night.400}",
-      "type": "color",
-      "attribute": {
-        "type": "semantic"
-      }
-    },
-    "light": {
-      "value": "{color.night.300}",
-      "type": "color",
-      "attribute": {
-        "type": "semantic"
-      }
-    },
-    "dark": {
-      "value": "{color.night.200}",
-      "type": "color",
-      "attribute": {
-        "type": "semantic"
-      }
-    },
-    "darker": {
-      "value": "{color.night.100}",
-      "type": "color",
-      "attribute": {
-        "type": "semantic"
-      }
-    }
   }
 }

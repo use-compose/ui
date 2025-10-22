@@ -11,4 +11,11 @@
   @include utils.component(min-height, 45px);
 
   // @include utils.component(padding-y, 0);
+
+  &:focus,
+  &:focus-visible,
+  &.focus {
+    outline: 3px solid var(--theme-current-color);
+    outline-offset: calc(var(--_layout-depth-base));
+  }
 }

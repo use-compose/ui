@@ -4,7 +4,9 @@ import { useEventListener } from './event-listener'
 export function useOnClickOutside(
   target: Ref<EventTarget | null> | EventTarget,
   handler: (e?: Event) => void,
-  eventListenerTarget: Ref<EventTarget | null> | EventTarget = window,
+  eventListenerTarget: Ref<EventTarget | null> | EventTarget | null = typeof window !== 'undefined'
+    ? window
+    : null,
   ignore?: Ref<EventTarget | null>,
 ) {
   function onClickOutsideHandler(event: Event) {
@@ -26,5 +28,7 @@ export function useOnClickOutside(
     handler(event)
   }
 
-  useEventListener(eventListenerTarget, 'mouseup', onClickOutsideHandler)
+  if (eventListenerTarget) {
+    useEventListener(eventListenerTarget, 'mouseup', onClickOutsideHandler)
+  }
 }

@@ -1,0 +1,32 @@
+/* [data-compose-ui]::before {
+  content: '';
+  position: relative;
+  inset: 0;
+  z-index: -2;
+  border-style: var(--_border-style-default);
+  border-width: calc(var(--_border-width-default) * 4);
+  border-top: none;
+  border-left: none;
+  border-color: var(--_color-shadow-dark);
+  background-color: blue;
+}
+
+[data-compose-ui]::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -4;
+  border-style: var(--_border-style-default);
+  border-width: calc(var(--_border-width-default) * 4);
+  border-top: none;
+  border-left: none;
+  border-color: var(--_color-shadow-dark);
+  background-color: var(--_color-shadow-dark);
+  background-color: transparent;
+
+  transform: translate(-50%, -50%);
+  --t-v: calc(0.25 - 0.75 * var(--_component-transform-depth)) transform: translate(0.25, 0.25);
+  transition:
+    box-shadow 0.2s ease-in-out,
+    transform 0.2s ease-in-out;
+} */
