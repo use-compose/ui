@@ -1,5 +1,5 @@
 <template>
-  <button :class="getClasses" :disabled="isDisabled" type="button" @click="handleClick">
+  <button data-compose-ui :class="getClasses" :disabled="isDisabled" @click="handleClick">
     <slot>YButton</slot>
   </button>
 </template>

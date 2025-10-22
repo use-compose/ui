@@ -7,6 +7,7 @@ const theme: YTheme = {
   background: '#f5f5f5',
   dark: '#0b0c0c',
   danger: '#96524a',
+  text: '#0b0c0c',
 }
 
 const preview: Preview = {

@@ -29,22 +29,6 @@
     @include state(bg-lightness, var(--state-hover-bg-lightness));
   }
 
-  @include theme.active {
-    @include state(bg-lightness, var(--state-hover-bg-lightness));
-  }
-
-  @include theme.focus {
-    @include state(bg-lightness, var(--state-hover-bg-lightness));
-  }
-
-  @include theme.active {
-    @include state(bg-lightness, var(--state-hover-bg-lightness));
-  }
-
-  @include theme.focus {
-    @include state(bg-lightness, var(--state-hover-bg-lightness));
-  }
-
   cursor: pointer;
   position: relative;
   z-index: 1;

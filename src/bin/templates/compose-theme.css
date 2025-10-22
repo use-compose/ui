@@ -1,0 +1,29 @@
+/**
+ * Internal default theme variables
+ * Using CSS pseudo-private custom properties 
+ * https://lea.verou.me/blog/2021/10/custom-properties-with-defaults/
+ */
+:root {
+  --_base-zIndex: var(--base-zIndex, 1000);
+  --_base-typography-text: var(--base-typography-text, clamp(0.4444rem, 0.6881rem - 0.2407vw, 0.64rem));
+  --_base-typography-text: var(--base-typography-text, clamp(0.6667rem, 0.8328rem - 0.1641vw, 0.8rem));
+  --_base-typography-text: var(--base-typography-text, clamp(1rem, 1rem + 0vw, 1rem));
+  --_base-typography-text: var(--base-typography-text, clamp(1.25rem, 1.1885rem + 0.3077vw, 1.5rem));
+  --_base-typography-text: var(--base-typography-text, clamp(1.5625rem, 1.3933rem + 0.8462vw, 2.25rem));
+  --_base-typography-text: var(--base-typography-text, clamp(1.9531rem, 1.6031rem + 1.75vw, 3.375rem));
+  --_base-typography-text: var(--base-typography-text, clamp(2.4414rem, 1.7962rem + 3.226vi, 5.0625rem));
+  --_base-typography-heading: var(--base-typography-heading, calc(1rem * 2.5));
+  --_base-breakpoint-mobile: var(--base-breakpoint-mobile, 640px);
+  --_base-breakpoint-tablet: var(--base-breakpoint-tablet, 768px);
+  --_base-breakpoint-desktop: var(--base-breakpoint-desktop, 1024px);
+  --_base-breakpoint-desktop-xl: var(--base-breakpoint-desktop-xl, 1280px);
+  --_base-breakpoint-desktop-xxl: var(--base-breakpoint-desktop-xxl, 1820px);
+  --_base-space-unit: var(--base-space-unit, 1rem);
+  --_base-space-xxs: var(--base-space-xxs, calc(0.25 * var(--space-unit)));
+  --_base-space-xs: var(--base-space-xs, calc(0.5 * var(--space-unit)));
+  --_base-space-sm: var(--base-space-sm, calc(0.75 * var(--space-unit)));
+  --_base-space-md: var(--base-space-md, calc(1 * var(--space-unit)));
+  --_base-space-lg: var(--base-space-lg, calc(1.5 * var(--space-unit)));
+  --_base-space-xl: var(--base-space-xl, calc(2 * var(--space-unit)));
+  --_base-space-xxl: var(--base-space-xxl, calc(4 * var(--space-unit)));
+}

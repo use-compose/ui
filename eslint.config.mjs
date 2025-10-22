@@ -63,6 +63,7 @@ export default defineConfig([
       '**/nuxt-compose-icons/',
       '**/storybook-static/',
       '**/style-dictionary/',
+      './bin/',
     ],
   },
   eslintConfigPrettier,

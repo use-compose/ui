@@ -77,6 +77,7 @@
   --color: danger;
 }
 
+[data-compose-ui],
 .primary,
 .secondary,
 .danger,
@@ -88,12 +89,27 @@
   --secondary-else-0: var(--color);
   --secondary: var(--secondary-else-0);
 
+  --base-else-0: var(--state);
+  --base: var(--base-else-0);
+  --hover-else-0: var(--state);
+  --hover: var(--hover-else-0);
+  --active-else-0: var(--state);
+  --active: var(--active-else-0);
+  --focus-else-0: var(--state);
+  --focus: var(--focus-else-0);
+  --disabled-else-0: var(--state);
+  --disabled: var(--disabled-else-0);
+
   /* Get current color based on the value we pass to --color */
-  --theme-current-color: color-mix(in srgb,
-      var(--color-primary, #e3c566) calc(var(--primary) * 100%),
-      color-mix(in srgb,
-        var(--color-secondary, #000) calc(var(--secondary) * 100%),
-        var(--color-danger, #bd1414) calc(var(--danger) * 100%)));
+  --theme-current-color: color-mix(
+    in srgb,
+    var(--color-primary, #e3c566) calc(var(--primary) * 100%),
+    color-mix(
+      in srgb,
+      var(--color-secondary, #000) calc(var(--secondary) * 100%),
+      var(--color-danger, #bd1414) calc(var(--danger) * 100%)
+    )
+  );
 
   /* 
   --theme-current-color-hue: calc(var(--color-bg-hue) * var(--primary) + var(--color-bg-hue) * var(--secondary) + var(--color-bg-hue) * var(--danger));
@@ -102,26 +118,59 @@
   --theme-current-color-opacity: calc(var(--color-bg-opacity) * var(--primary) + var(--color-bg-opacity) * var(--secondary) + var(--color-bg-opacity) * var(--danger)); */
 
   --is-box-shadow-hidden: calc(1 - var(--raw, 0));
-  --component-box-shadow: var(--component-box-shadow-base);
-  --component-box-shadow-color: var(--theme-current-color);
+  /* --component-box-shadow-hover: var(--component-box-shadow-x) var(--component-box-shadow-y) 0 0
+    var(--component-box-shadow-color); */
+  --component-box-shadow-color: calc(
+    var(--base) * var(--shadow-dark) + var(--hover) * var(--shadow-dark) + var(--active) *
+      var(--shadow-dark) + var(--focus) * var(--shadow-dark) + var(--disabled) * var(--shadow-dark)
+  );
+  --component-box-shadow-color: color-mix(
+    in srgb,
+    var(--shadow-dark) calc(var(--base) * 100% + var(--hover) * 100%),
+    /* var(--theme-current-color) */ var(--shadow-dark)
+      calc(var(--active) * 100% + var(--focus) * 100% + var(--disabled) * 100%)
+  );
   --shadow-dark: var(--color-main-dark);
-  --component-box-shadow-x: calc(var(--is-box-shadow-hidden) * 0.75 * var(--theme-base-unit-calc));
-  --component-box-shadow-y: calc(var(--is-box-shadow-hidden) * 0.75 * var(--theme-base-unit-calc));
-  --component-transform: translate(0, 0);
-  --transform-value: calc(var(--base) * 0px + var(--hover) * -2px + var(--active) * 1px);
-  --component-transform: translate(var(--transform-value), var(--transform-value));
-  --component-box-shadow-base: calc(var(--component-box-shadow-x) * 0.5) calc(var(--component-box-shadow-y) * 0.5) 0 0 black;
-  /* --component-box-shadow-base: 0; */
+  --component-shadow-depth: calc(
+    var(--base) * var(--_component-shadow-base) + var(--hover) * var(--_component-shadow-hover) +
+      var(--active) * var(--_component-shadow-active) + var(--focus) *
+      var(--_component-shadow-focus) + var(--disabled) * var(--_component-shadow-disabled) - 1 *
+      var(--_component-transform-depth)
+  );
+  --component-shadow-depth: calc(
+    var(--_component-shadow-base) - 0.75 * var(--_component-transform-depth)
+  );
+  --shadow-depth: calc(var(--component-shadow-depth) * var(--_layout-depth-base));
+  --component-box-shadow-x: calc(var(--is-box-shadow-hidden) * var(--shadow-depth, 0.75));
+  --component-box-shadow-y: calc(var(--is-box-shadow-hidden) * var(--shadow-depth, 0.75));
 
-  /* --component-box-shadow-base: none; */
+  /**
+   * Component Transform
+   */
+  --_component-transform-depth: calc(
+    var(--_component-transform-base) * var(--base) + var(--_component-transform-hover) *
+      var(--hover) + var(--_component-transform-active) * var(--active) +
+      var(--_component-transform-focus) * var(--focus) + var(--_component-transform-disabled) *
+      var(--disabled)
+  );
+  --transform-depth: calc(var(--_component-transform-depth) * var(--_layout-depth-base));
+  /* --transform-depth: var(--_component-transform-depth); */
+  --component-transform: translate(var(--transform-depth), var(--transform-depth));
+  --component-box-shadow: var(--component-box-shadow-x) var(--component-box-shadow-y) 0 0
+    var(--component-box-shadow-color);
+  --component-box-shadow-base: calc(var(--component-box-shadow-x))
+    calc(var(--component-box-shadow-y)) 0 0 black;
+  /* 
+  --component-box-shadow-hover: var(--component-box-shadow-x) var(--component-box-shadow-y) 0 0
+    var(--shadow-dark); */
 
-  --component-box-shadow-hover: var(--component-box-shadow-x) var(--component-box-shadow-y) 0 0 var(--shadow-dark);
+  box-shadow: var(--component-box-shadow);
+  transform: var(--component-transform);
 
   /* --component-box-shadow-hover: var(--component-box-shadow-x) var(--component-box-shadow-y) 0 0 black; */
-  --component-box-shadow-focus: var(--component-box-shadow-x) var(--component-box-shadow-y) 0 0 var(--component-box-shadow-color);
+  /* --component-box-shadow-focus: calc(var(--component-box-shadow-x) * var(--theme-base-unit-calc)) calc(var(--component-box-shadow-y) * var(--theme-base-unit-calc)) 0 0 var(--component-box-shadow-color); */
   /* --component-box-shadow-focus: none; */
-  --component-box-shadow-active: calc(var(--component-box-shadow-x) * var(--theme-base-unit-calc)) calc(var(--component-box-shadow-y) * var(--theme-base-unit-calc)) 0 0 var(--component-box-shadow-color);
-
+  /* --component-box-shadow-active: calc(var(--component-box-shadow-x) * var(--theme-base-unit-calc)) calc(var(--component-box-shadow-y) * var(--theme-base-unit-calc)) 0 0 var(--component-box-shadow-color); */
 }
 
 /* 
@@ -179,8 +228,6 @@
   /* --component-color-text: var(--theme-current-color); */
   --component-border-width: 2px;
 
-
-
   --border: yes;
 
   --variant: outlined;
@@ -205,13 +252,13 @@
   border: var(--component-border-width) var(--component-border-style) var(--component-color-border);
 }
 
-
 /* TODO: dynamic font color based on background */
 .y-button span {
   --color-text-not-percentage: var(--color-text-lightness) / 1%;
-  --component-text-lightness: calc(((var(--component-bg-lightness) / 1%) - var(--threshold) * 1%) * -100%);
+  --component-text-lightness: calc(
+    ((var(--component-bg-lightness) / 1%) - var(--threshold) * 1%) * -100%
+  );
 }
-
 
 /* 
  * State Properties
@@ -287,19 +334,26 @@
     --state: base;
   }
 
-  .hover {
+  .hover,
+  :hover {
     --state: hover;
   }
 
-  .active {
+  .active,
+  :active {
     --state: active;
   }
 
-  .focus {
+  :focus,
+  .focus-visible,
+  .focus,
+  :focus-visible {
     --state: focus;
   }
 
-  .disabled {
+  .disabled,
+  :disabled,
+  [disabled] {
     --state: disabled;
   }
 
@@ -309,19 +363,8 @@
   .focus,
   .focus-visible,
   .disabled {
-    --base-else-0: var(--state);
-    --base: var(--base-else-0);
-    --hover-else-0: var(--state);
-    --hover: var(--hover-else-0);
-    --active-else-0: var(--state);
-    --active: var(--active-else-0);
-    --focus-else-0: var(--state);
-    --focus: var(--focus-else-0);
-    --disabled-else-0: var(--state);
-    --disabled: var(--disabled-else-0);
   }
 }
-
 
 /* Raw */
 @property --raw {
@@ -333,7 +376,6 @@
 .raw {
   --raw: 1;
 }
-
 
 /* Use of Background color */
 
@@ -348,9 +390,45 @@
 }
 
 .app-compose {
-  background-color: color-mix(in srgb, var(--color-bg) calc(var(--use-bg) * 100%), transparent calc((1 - var(--use-bg)) * 100%));
+  background-color: color-mix(
+    in srgb,
+    var(--color-bg) calc(var(--use-bg) * 100%),
+    transparent calc((1 - var(--use-bg)) * 100%)
+  );
 }
 
+h1,
+.text-h1 {
+  font-size: var(--_text-h1);
+}
+
+h2,
+.text-xxl {
+  font-size: var(--_text-xxl);
+}
+
+h3,
+.text-xl {
+  font-size: var(--_text-xl);
+}
+
+h4,
+.text-lg {
+  font-size: var(--_text-lg);
+}
+
+p {
+  font-size: var(--_text-md);
+  margin: var(--space-xs) 0;
+}
+
+.text-sm {
+  font-size: var(--_text-sm);
+}
+
+.text-xs {
+  font-size: var(--_text-xs);
+}
 
 h1,
 .text-h1,
@@ -367,7 +445,7 @@ h5 {
 }
 
 .switch-color {
-  --threshold: 0.10;
+  --threshold: 0.1;
   --light: var(--color-primary-lightness);
   --switch: calc((var(--light) - var(--threshold)));
 

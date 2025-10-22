@@ -217,16 +217,16 @@ a {
   'component',
   (
     // height: auto,
-    transform: translate(0, 0),
-    transform-value: calc(utils.theme(base-unit-calc) / 2 * var(--active)),
-    transform-base: translate(0, 0),
-    transform-hover: utils.component(transform),
-    transform-focus: translate(0, 0),
-    transform-focus-visible: translate(0, 0),
-    transform-active: translate(3px, 3px),
-    transform-disabled: none,
+    // transform: translate(0, 0),
+    // transform-value: calc(utils.theme(base-unit-calc) / 2 * var(--active)),
+    // transform-base: translate(0, 0),
+    // transform-hover: utils.component(transform),
+    // transform-focus: translate(0, 0),
+    // transform-focus-visible: translate(0, 0),
+    // transform-active: translate(3px, 3px),
+    // transform-disabled: none,
     color: initial,
-    box-shadow: var(--component-box-shadow-base),
+    // box-shadow: var(--component-box-shadow-base),
     margin-x: utils.space(sm),
     padding-x: utils.space(unit),
     padding-y: utils.space(xxs),
@@ -247,9 +247,9 @@ $variants: ('contained', 'outlined', 'text');
 @mixin theme-component {
   padding: utils.component(padding-y) utils.component(padding-x);
   // margin: 0 utils.component(margin-x) 0 utils.component(margin-bottom);
-  box-shadow: utils.component(box-shadow);
+  // box-shadow: utils.component(box-shadow);
   outline: none;
-  transform: utils.component(transform);
+  // transform: utils.component(transform);
   transition: utils.component(transition);
 
   &.small {
@@ -306,44 +306,46 @@ $variants: ('contained', 'outlined', 'text');
   // &.text {
   //   @include theme.text;
   // }
-  &.primary {
-    @include theme.primary;
-  }
-  &.secondary {
-    @include theme.secondary;
-  }
-  &.danger {
-    @include theme.danger;
-  }
+  // &.primary {
+  @include theme.primary;
+  // }
+  // &.secondary {
+  @include theme.secondary;
+  // }
+  // &.danger {
+  @include theme.danger;
+  // }
 
   // State Props
-  &:not([disabled], .disabled) {
-    &.base {
-      @include theme.base;
-    }
+  // &:not([disabled], .disabled) {
+  //   &.base {
+  // }
 
-    &:hover,
-    &.hover {
-      @include theme.hover;
-    }
+  // &:hover,
+  // &.hover {
+  &:not([disabled], .disabled, :disabled) {
+    @include theme.base;
+    @include theme.hover;
   }
+  //   }
+  // }
 
-  &:disabled,
-  &.disabled,
-  &[disabled] {
-    @include theme.disabled;
-  }
+  // &:disabled,
+  // &.disabled,
+  // &[disabled] {
+  @include theme.disabled;
+  // }
 
   // Variant Props
-  &.contained {
-    @include theme.contained;
-  }
-  &.outlined {
-    @include theme.outlined;
-  }
-  &.text {
-    @include theme.text;
-  }
+  // &.contained {
+  @include theme.contained;
+  // }
+  // &.outlined {
+  @include theme.outlined;
+  // }
+  // &.text {
+  @include theme.text;
+  // }
   // Prevent non-interactive component to have an effect on click or keyboard focus
   // &:active,
   // &:focus-visible {
@@ -433,18 +435,20 @@ $variants: ('contained', 'outlined', 'text');
 }
 
 @mixin interactive-component {
-  &:not([disabled], .disabled) {
-    &:focus,
-    &.focus-visible,
-    &.focus,
-    &:focus-visible {
-      @include theme.focus;
-    }
-    &:active,
-    &.active {
-      @include theme.active;
-    }
+  // &:not([disabled], .disabled) {
+  //   &:focus,
+  //   &.focus-visible,
+  //   &.focus,
+  //   &:focus-visible {
+  &:not([disabled], .disabled, :disabled) {
+    @include theme.focus;
+    // }
+    // &:active,
+    // &.active {
+    @include theme.active;
   }
+  // }
+  // }
 }
 
 // @mixin interactive-component {
@@ -483,39 +487,6 @@ $variants: ('contained', 'outlined', 'text');
       @include utils.component(box-shadow, utils.component(box-shadow-base));
     }
   }
-}
-
-h1,
-.text-h1 {
-  font-size: utils.text(h1);
-}
-
-h2,
-.text-xxl {
-  font-size: utils.text(xxl);
-}
-
-h3,
-.text-xl {
-  font-size: utils.text(xl);
-}
-
-h4,
-.text-lg {
-  font-size: utils.text(lg);
-}
-
-p {
-  font-size: utils.text(md);
-  margin: utils.space(xs) 0;
-}
-
-.text-sm {
-  font-size: utils.text(sm);
-}
-
-.text-xs {
-  font-size: utils.text(xs);
 }
 
 // -----------------------------------------------------------------------------

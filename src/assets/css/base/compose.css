@@ -1,8 +1,0 @@
-:root {
-  /*
-   * Typography 
-   * Title height
-   *  40px
-   */
-  --_layout-title-height: var(--layout-title-height, calc(1rem * 2.5); );
-}

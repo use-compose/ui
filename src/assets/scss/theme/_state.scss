@@ -7,7 +7,7 @@
     bg-lightness,
     calc(var(--state-base-bg-lightness) - var(--state-#{$state}-bg-lightness))
   );
-  @include utils.component(box-shadow, utils.component(box-shadow-#{$state}));
+  // @include utils.component(box-shadow, utils.component(box-shadow-#{$state}));
 
   &:not(.raw) {
     // @include utils.component(transform, utils.component(transform-#{$state}));
@@ -17,7 +17,8 @@
 }
 
 @mixin base {
-  &.base:not([disabled], .disabled) {
+  // &.base:not([disabled], .disabled) {
+  &.base {
     @include resolve-state(base);
 
     @content;
@@ -25,37 +26,37 @@
 }
 
 @mixin hover {
-  &:not([disabled], .disabled) {
-    &:hover,
-    &.hover {
-      @include resolve-state(hover);
+  // &:not([disabled], .disabled) {
+  &:hover,
+  &.hover {
+    @include resolve-state(hover);
 
-      @content;
-    }
+    @content;
   }
+  // }
 }
 
 @mixin focus {
-  &:not([disabled], .disabled) {
-    &:focus,
-    &.focus-visible,
-    &.focus,
-    &:focus-visible {
-      @include resolve-state(focus);
-      @content;
-    }
+  // &:not([disabled], .disabled) {
+  &:focus,
+  &.focus-visible,
+  &.focus,
+  &:focus-visible {
+    @include resolve-state(focus);
+    @content;
   }
+  // }
 }
 
 @mixin active {
-  &:not([disabled], .disabled) {
-    &:active,
-    &.active {
-      @include resolve-state(active);
+  // &:not([disabled], .disabled) {
+  &:active,
+  &.active {
+    @include resolve-state(active);
 
-      @content;
-    }
+    @content;
   }
+  // }
 }
 
 @mixin disabled {

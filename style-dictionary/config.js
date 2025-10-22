@@ -1,7 +1,11 @@
 import StyleDictionary from 'style-dictionary'
 import { formats, transformGroups } from 'style-dictionary/enums'
 import { filterBuildTimeSCSS } from './filters/filter-build-time-scss.js'
-import { themeTypesFormatter } from './formatters/theme-types.js'
+import {
+  privateThemeTemplate,
+  publicThemeTemplate,
+  themeTypesFormatter,
+} from './formatters/theme-types.js'
 import { parseInitialTheme } from './parsers/initial-theme-parser.js'
 import { componentStatesTransform } from './transforms/component-states.js'
 
@@ -10,6 +14,9 @@ StyleDictionary.registerFilter(filterBuildTimeSCSS)
 
 StyleDictionary.registerFormat(themeTypesFormatter)
 StyleDictionary.registerTransform(componentStatesTransform)
+
+StyleDictionary.registerFormat(publicThemeTemplate)
+StyleDictionary.registerFormat(privateThemeTemplate)
 
 function generateThemeFiles(directories) {
   const genericAttributes = {
@@ -74,7 +81,7 @@ export default {
         // 'color/hsl',
         // 'custom/component-state',
       ],
-      buildPath: './src/assets/css/variables/',
+      buildPath: './src/assets/css/base/',
       clearBuildPath: true,
 
       files: [
@@ -84,99 +91,73 @@ export default {
           filter: (token) => {
             return token.attribute?.type === 'conditional'
           },
-
-          //   options: {
-          //     outputReferences: true,
-          //   },
         },
         {
-          destination: 'primitives.css',
-          format: formats.cssVariables,
-          //   // filter only the tokens that are inside the global object
+          destination: '../themes/private-theme.css',
+          format: 'private-theme',
           filter: (token) => {
-            return token.attributes?.type === 'primitive'
+            if (token.attributes?.category === 'base') {
+              console.log('📟 - token → ', token)
+            }
+            return token.attributes?.category === 'base'
           },
-          //   options: {
-          //     outputReferences: true,
+          // options: {
+          //   fileHeader: (defaultMessage) => {
+          //     return [...defaultMessage, 'Base component variables']
           //   },
+          // },
         },
         {
-          destination: 'variant.css',
-          format: formats.cssVariables,
-          //   // filter only the tokens that are inside the global object
+          destination: '../themes/public-theme.css',
+          format: 'public-theme',
           filter: (token) => {
-            return token.attributes?.category === 'variant'
+            if (token.attributes?.category === 'base') {
+              console.log('📟 - token → ', token)
+            }
+            return token.attributes?.category === 'base'
           },
-          options: {
-            fileHeader: (defaultMessage) => {
-              // defaultMessage are the 2 lines above that appear in the default file header
-              // you can use this to add a message before or after the default message 👇
-
-              // the fileHeader function should return an array of strings
-              // which will be formatted in the proper comment style for a given format
-              return [...defaultMessage, 'Variant tokens']
-            },
-          },
-          //   options: {
-          //     outputReferences: true,
-          //   },
         },
+
+        // -------------------------------------------------------
+        /**
+         * OKlch tokens
+         */
+        // {
+        //   destination: 'primitives.css',
+        //   format: formats.cssVariables,
+        //   filter: (token) => {
+        //     return token.attributes?.type === 'primitive'
+        //   },
+        // },
+        // {
+        //   destination: 'variant.css',
+        //   format: formats.cssVariables,
+        //   filter: (token) => {
+        //     return token.attributes?.category === 'variant'
+        //   },
+        //   options: {
+        //     fileHeader: (defaultMessage) => {
+        //       return [...defaultMessage, 'Variant tokens']
+        //     },
+        //   },
+        // },
         {
           destination: 'variants.css',
           format: formats.cssVariables,
-          //   // filter only the tokens that are inside the global object
           filter: (token) => {
-            if (token.type === 'color') {
-              // console.log('📟 - token → ', token)
-            }
-            // console.log(token)
-            console.log('📟 - token.attributes?.type → ', token.attributes)
             const variants = ['variant', 'state', 'color']
             return variants.includes(token.attributes?.category)
           },
           options: {
             fileHeader: (defaultMessage) => {
-              // defaultMessage are the 2 lines above that appear in the default file header
-              // you can use this to add a message before or after the default message 👇
-
-              // the fileHeader function should return an array of strings
-              // which will be formatted in the proper comment style for a given format
               return [...defaultMessage, 'Variant tokens']
             },
           },
-          // options: {
-          //   outputReferences: true,
-          // },
         },
-        {
-          destination: 'base.css',
-          format: formats.cssVariables,
-          //   // filter only the tokens that are inside the global object
-          filter: (token) => {
-            return token.attributes?.category === 'base'
-          },
-          options: {
-            fileHeader: (defaultMessage) => {
-              // defaultMessage are the 2 lines above that appear in the default file header
-              // you can use this to add a message before or after the default message 👇
-
-              // the fileHeader function should return an array of strings
-              // which will be formatted in the proper comment style for a given format
-              return [...defaultMessage, 'Base component variables']
-            },
-          },
-          //   options: {
-          //     outputReferences: true,
-          //   },
-        },
-        // ...generateThemeFiles(['color', 'component', 'theme', 'conditional']),
         ...generateThemeFiles(['component']),
-        // {
-        //   destination: 'dironents/background/background-vars.css',
-        //   format: formats.cssVariables,
       ],
     },
-    // Types
+    // Type declarations
     ts: {
       transformGroup: 'js',
       buildPath: 'generated/',
