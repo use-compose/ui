@@ -7,7 +7,7 @@ import { fileURLToPath } from 'node:url'
 const __dirname = dirname(fileURLToPath(import.meta.url))
 
 // Path to your theme file
-const initialTheme = resolve(__dirname, './templates/compose-theme.css')
+const initialTheme = resolve(__dirname, '../src/assets/css/themes/public-theme.css')
 
 var cwd = path.resolve()
 console.log('📟 - path → ', path)

@@ -7,4 +7,8 @@
   // font-size: text(lg);
   margin: 0 space(xs) 0 0;
   display: inline-block;
+
+  &:has(input) {
+    cursor: pointer;
+  }
 }

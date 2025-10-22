@@ -1,0 +1,68 @@
+@import 'https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;500&display=swap';
+
+@font-face {
+  font-family: gotham;
+  src: url('../fonts/GOTHAM-BOOK.OTF') format('opentype');
+  /* src: var(--_font-regular); */
+  /* src: url('/fonts/GOTHAM-BOOK.OTF') format('opentype'); */
+  font-display: swap;
+}
+
+@font-face {
+  font-family: gotham;
+  src: url('../fonts/GOTHAM-BOLD.OTF') format('opentype');
+  /* src: var(--_font-bold); */
+  font-weight: 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: gotham;
+  /* src: url('../fonts/GOTHAM-BLACKITALIC.OTF') format('opentype'); */
+  /* src: var(--_font-bolder); */
+  src: url('../fonts/GOTHAM-BLACKITALIC.OTF') format('opentype');
+  font-weight: 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: gotham;
+  /* src: url('../fonts/GOTHAM-BLACK.OTF') format('opentype'); */
+  src: var(--_font-bolder-italic);
+  font-weight: 900;
+  font-display: swap;
+}
+
+body {
+  /* font-family: 'Roboto Slab', serif; */
+  font-family: gotham;
+}
+
+h1,
+.text-h1 {
+  font-size: var(--_text-h1);
+}
+
+h2,
+.text-xxl {
+  font-size: var(--_text-xxl);
+}
+
+h3,
+.text-lg {
+  font-size: var(--_text-lg);
+}
+
+p,
+.text-md {
+  font-size: var(--_text-md);
+}
+
+.text-sm {
+  font-size: var(--_text-sm);
+}
+
+.text-xs {
+  font-size: var(--_text-xs);
+}

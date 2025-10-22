@@ -13,7 +13,7 @@ export default defineConfig({
       tsconfigPath: fileURLToPath(new URL('./tsconfig.json', import.meta.url)),
       include: ['./src/**/*'],
       outDir: './dist',
-      // rollupTypes: true,
+      rollupTypes: true,
     }),
   ],
   resolve: {
@@ -22,8 +22,9 @@ export default defineConfig({
       { find: '../../../', replacement: fileURLToPath(new URL('./src/assets', import.meta.url)) },
     ],
   },
+  // publicDir: 'public',
   build: {
-    copyPublicDir: false,
+    // copyPublicDir: false,
     outDir: './dist',
     emptyOutDir: true,
     reportCompressedSize: true,
@@ -33,6 +34,10 @@ export default defineConfig({
       fileName: 'index',
       formats: ['es', 'cjs'],
 
+      // Naming of CSS file Vite v6
+      //https://v6.vite.dev/config/build-options.html#build-lib
+      cssFileName: 'style',
+
       // formats: ['es'], // optionally also 'cjs' if you want CJS support
     },
     rollupOptions: {
@@ -41,6 +46,7 @@ export default defineConfig({
         globals: {
           vue: 'Vue',
         },
+        // assetFileNames: 'assets/[name][extname]',
         // entryFileNames: `index.js`,
         // optional: preserve modules for tree-shaking
         // preserveModules: false,
@@ -64,4 +70,14 @@ export default defineConfig({
       },
     },
   },
+  assetsInclude: [
+    '**/*.OTF',
+    '**/*.ttf',
+    '**/*.woff',
+    '**/*.woff2',
+    'fonts/*',
+    'assets/fonts/*',
+    '**/fonts/*',
+  ],
+  // publicDir: 'assets',
 })

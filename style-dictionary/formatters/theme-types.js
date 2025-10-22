@@ -10,6 +10,10 @@ export const themeTypesFormatter = {
 
 const toKebab = (s) => s.replace(/_/g, '-').replace(/\./g, '-')
 
+function capitalizeFirstLetter(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1)
+}
+
 // Collect tokens into { publicName, value } entries
 function collectTokens(dictionary) {
   return dictionary.allTokens.map((p) => {
@@ -19,7 +23,7 @@ function collectTokens(dictionary) {
       ? [p.attributes.category, p.attributes.type, p.attributes.item]
       : p.path
     // remove duplicates/empties and kebab-case
-    const name = `${p.attributes?.type}-${p.attributes.item}`
+    const name = `${p.attributes?.type}-${p.attributes.item}${p.attributes.subitem ? `-${p.attributes.subitem}` : ''}`
     return {
       publicName: `--${toKebab(name)}`,
       privateName: `--_${toKebab(name)}`,
@@ -34,10 +38,9 @@ export const publicThemeTemplate = {
   format: ({ dictionary }) => {
     const toks = collectTokens(dictionary)
     let header = `/**
- * App Theme Overrides
- * -------------------
- * Define only the public tokens (no underscore).
- * Leave unassigned to use library defaults.
+ * Theme Overrides
+ * List of CSS variables that can be used to override the default theme
+ * Simply uncomment the variables you want to use
  */
 :root {`
 
@@ -47,20 +50,22 @@ export const publicThemeTemplate = {
       const type = t?.type
       console.log('📟 - type → ', type)
       if (type && !usedTypes.has(type)) {
-        const sectionType = type
-          ? `/**
-* ${type.toUpperCase()} 
-*/`
-          : ''
+        const sectionType = `${usedTypes.size > 0 ? '\n' : ''}/* -------------------------------------------------- */
+/* ${capitalizeFirstLetter(type)} */
+/* -------------------------------------------------- */`
+
         usedTypes.add(type)
         if (sectionType) {
           header += `\n${sectionType}`
         }
       }
+      header += `\n  ${t.publicName}: ${t.value};`
     })
+    header += '\n}\n'
+    return header
 
-    const body = toks.map((t) => `  /* ${t.publicName}: ${t.value}; */`).join('\n')
-    return `${header}\n${body}\n}\n`
+    // const body = toks.map((t) => `  /* ${t.publicName}: ${t.value}; */`).join('\n')
+    // return `${header}\n${body}\n}\n`
   },
 }
 
@@ -68,13 +73,33 @@ export const privateThemeTemplate = {
   name: 'private-theme',
   format: ({ dictionary }) => {
     const toks = collectTokens(dictionary)
-    const header = `/**
+    let header = `/**
  * Internal default theme variables
  * Using CSS pseudo-private custom properties 
  * https://lea.verou.me/blog/2021/10/custom-properties-with-defaults/
  */
 :root {`
-    const body = toks.map((t) => `  ${t.privateName}: var(${t.publicName}, ${t.value});`).join('\n')
-    return `${header}\n${body}\n}\n`
+
+    const usedTypes = new Set()
+    toks.forEach((t) => {
+      console.log('📟 - t → ', t)
+      const type = t?.type
+      console.log('📟 - type → ', type)
+      if (type && !usedTypes.has(type)) {
+        const sectionType = `${usedTypes.size > 0 ? '\n' : ''}/* -------------------------------------------------- */
+/* ${capitalizeFirstLetter(type)} */
+/* -------------------------------------------------- */`
+
+        usedTypes.add(type)
+        if (sectionType) {
+          header += `\n${sectionType}`
+        }
+      }
+      header += `\n  ${t.privateName}: var(${t.publicName}, ${t.value});`
+    })
+    header += '\n}\n'
+    return header
+    // const body = toks.map((t) => `  ${t.privateName}: var(${t.publicName}, ${t.value});`).join('\n')
+    // return `${header}\n${body}\n}\n`
   },
 }

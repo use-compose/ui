@@ -1,10 +1,22 @@
 /**
- * App Theme Overrides
- * -------------------
- * Define only the public tokens (no underscore).
- * Leave unassigned to use library defaults.
+ * Theme Overrides
+ * List of CSS variables that can be used to override the default theme
+ * Simply uncomment the variables you want to use
  */
 :root {
+/* -------------------------------------------------- */
+/* Border */
+/* -------------------------------------------------- */
+  --border-width-default: 2px;
+  --border-style-default: solid;
+  --border-radius-default: 0;
+
+/* -------------------------------------------------- */
+/* Color */
+/* -------------------------------------------------- */
+  --color-shadow-dark: #616970;
+  --color-shadow-light: rgba(255, 255, 255, 0.25);
+
 /* -------------------------------------------------- */
 /* Breakpoints */
 /* -------------------------------------------------- */
@@ -18,6 +30,21 @@
 /* Layout */
 /* -------------------------------------------------- */
   --layout-zIndex: 1000;
+  --layout-depth-base: 6px;
+
+/* -------------------------------------------------- */
+/* Component */
+/* -------------------------------------------------- */
+  --component-shadow-base: 0.25;
+  --component-shadow-hover: 0.25;
+  --component-shadow-active: 0.25;
+  --component-shadow-focus: 0.25;
+  --component-shadow-disabled: 0;
+  --component-transform-base: -0.25;
+  --component-transform-hover: -0.45;
+  --component-transform-active: -0.15;
+  --component-transform-focus: -0.25;
+  --component-transform-disabled: 0;
 
 /* -------------------------------------------------- */
 /* Space */
@@ -34,7 +61,10 @@
 /* -------------------------------------------------- */
 /* Font */
 /* -------------------------------------------------- */
-  --font-gotham: assets/fonts/gotham/gotham.woff2;
+  --font-regular: url('/fonts/GOTHAM-BOOK.OTF');
+  --font-bold: url('/fonts/GOTHAM-BOLD.OTF');
+  --font-bolder: url('/fonts/GOTHAM-BLACK.OTF');
+  --font-bolder-italic: url('/fonts/GOTHAM-BLACKITALIC.OTF');
 
 /* -------------------------------------------------- */
 /* Text */
