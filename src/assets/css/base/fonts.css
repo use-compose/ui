@@ -2,7 +2,7 @@
 
 @font-face {
   font-family: gotham;
-  src: url('../fonts/GOTHAM-BOOK.OTF') format('opentype');
+  src: url('./fonts/GOTHAM-BOOK.OTF') format('opentype');
   /* src: var(--_font-regular); */
   /* src: url('/fonts/GOTHAM-BOOK.OTF') format('opentype'); */
   font-display: swap;
@@ -10,7 +10,7 @@
 
 @font-face {
   font-family: gotham;
-  src: url('../fonts/GOTHAM-BOLD.OTF') format('opentype');
+  src: url('/fonts/GOTHAM-BOLD.OTF') format('opentype');
   /* src: var(--_font-bold); */
   font-weight: 700;
   font-display: swap;
@@ -20,7 +20,7 @@
   font-family: gotham;
   /* src: url('../fonts/GOTHAM-BLACKITALIC.OTF') format('opentype'); */
   /* src: var(--_font-bolder); */
-  src: url('../fonts/GOTHAM-BLACKITALIC.OTF') format('opentype');
+  src: url('./fonts/GOTHAM-BLACKITALIC.OTF') format('opentype');
   font-weight: 900;
   font-style: italic;
   font-display: swap;
@@ -42,16 +42,19 @@ body {
 h1,
 .text-h1 {
   font-size: var(--_text-h1);
+  font-weight: 700;
 }
 
 h2,
 .text-xxl {
   font-size: var(--_text-xxl);
+  font-weight: 700;
 }
 
 h3,
 .text-lg {
   font-size: var(--_text-lg);
+  font-weight: 700;
 }
 
 p,
