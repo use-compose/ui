@@ -46,7 +46,7 @@ export default defineConfig({
         globals: {
           vue: 'Vue',
         },
-        // assetFileNames: 'assets/[name][extname]',
+        assetFileNames: 'assets/[name][extname]',
         // entryFileNames: `index.js`,
         // optional: preserve modules for tree-shaking
         // preserveModules: false,
