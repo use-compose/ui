@@ -93,43 +93,6 @@
 
 // -----------------------------------------------------------------------------
 
-// 2 - Typography
-
-h1,
-.text-h1 {
-  font-size: text(h1);
-}
-
-h2,
-.text-xxl {
-  font-size: text(xxl);
-}
-
-h3,
-.text-xl {
-  font-size: text(xl);
-}
-
-h4,
-.text-lg {
-  font-size: text(lg);
-}
-
-p {
-  font-size: text(md);
-  margin: space(xs) 0;
-}
-
-.text-sm {
-  font-size: text(sm);
-}
-
-.text-xs {
-  font-size: text(xs);
-}
-
-// -----------------------------------------------------------------------------
-
 // 3 - Layout
 
 // Flex
