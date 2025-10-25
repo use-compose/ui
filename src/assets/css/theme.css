@@ -434,20 +434,6 @@ p {
   font-size: var(--_text-xs);
 }
 
-h1,
-.text-h1,
-h2,
-.text-xxl,
-h3,
-.text-xl,
-h4,
-.text-lg,
-h5 {
-  font-family: gotham;
-  text-transform: uppercase;
-  color: var(--theme-current-color);
-}
-
 .switch-color {
   --threshold: 0.1;
   --light: var(--color-primary-lightness);

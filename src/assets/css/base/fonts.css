@@ -28,21 +28,37 @@
 
 @font-face {
   font-family: gotham;
-  /* src: url('../fonts/GOTHAM-BLACK.OTF') format('opentype'); */
-  src: var(--_font-bolder-italic);
+  src: url('../fonts/GOTHAM-BLACK.OTF') format('opentype');
+  /* src: var(--_font-bolder-italic); */
   font-weight: 900;
   font-display: swap;
 }
 
 body {
-  /* font-family: 'Roboto Slab', serif; */
+  font-family: 'Roboto Slab', serif;
+  /* font-family: gotham; */
+}
+
+h1,
+.text-h1,
+h2,
+.text-xxl,
+h3,
+.text-xl,
+h4,
+.text-lg {
   font-family: gotham;
+  text-transform: uppercase;
+  color: var(--theme-current-color);
 }
 
 h1,
 .text-h1 {
   font-size: var(--_text-h1);
-  font-weight: 700;
+  font-weight: 900;
+
+  /* Balance with Gotham font not fully-centered */
+  padding-top: 4px;
 }
 
 h2,
@@ -52,14 +68,18 @@ h2,
 }
 
 h3,
-.text-lg {
-  font-size: var(--_text-lg);
-  font-weight: 700;
+.text-xl {
+  font-size: var(--_text-xl);
 }
 
-p,
-.text-md {
+h4,
+.text-lg {
+  font-size: var(--_text-lg);
+}
+
+p {
   font-size: var(--_text-md);
+  margin: var(--space-xs) 0;
 }
 
 .text-sm {

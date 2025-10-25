@@ -1,6 +1,6 @@
 {
   "name": "@use-compose/ui",
-  "version": "0.2.5",
+  "version": "0.2.7",
   "files": [
     "dist"
   ],
@@ -21,7 +21,7 @@
       "import": "./dist/components/index.js",
       "require": "./dist/components/index.cjs"
     },
-    "./style.css": "./dist/style.css",
+    "./style.css": "./dist/assets/style.css",
     "./fonts/*": "./dist/fonts/*"
   },
   "scripts": {
