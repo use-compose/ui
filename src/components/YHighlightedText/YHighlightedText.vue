@@ -15,7 +15,7 @@ import type { YHighlightedTextProps } from './types'
 import './YHighlightedText.scss'
 
 const props = withDefaults(defineProps<YHighlightedTextProps>(), {
-  level: 'h1',
+  level: 'span',
   active: true,
 
   // Stick the highlighted text to the left side of the container on mobile viewports
