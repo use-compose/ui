@@ -50,7 +50,7 @@ const renderTemplate = (args: BaseModalProps) => {
       return `
         <YModal v-bind="args" v-model="isVisible">
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec pur</p>
-          <YInputText value="Example value" placeholder="Enter your name" />
+         <YInput data-compose-ui Text value="Example value" placeholder="Enter your name" />
         </YModal>`
     case YModalType.Default:
       return `

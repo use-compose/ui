@@ -1,0 +1,32 @@
+/*
+ * https://dev.to/janeori/css-type-casting-to-numeric-tanatan2-scalars-582j
+ * https://css-tip.com/screen-dimension/
+*/
+@property --100vw {
+  syntax: '<length>';
+  initial-value: 0px;
+  inherits: false;
+}
+@property --100vh {
+  syntax: '<length>';
+  initial-value: 0px;
+  inherits: false;
+}
+
+:root {
+  --100vw: 100vw;
+  --100vh: 100vh;
+  --viewport-width: calc(tan(atan2(var(--100vw), 1px)));
+  --viewport-height: calc(tan(atan2(var(--100vh), 1px)));
+  /* calc() wrapper required for Safari, bug:
+  // https://bugs.webkit.org/show_bug.cgi?id=263000
+  */
+}
+
+.viewport-size::before {
+  counter-reset: w var(--viewport-width) h var(--viewport-height);
+  content: counter(w) '×' counter(h);
+  display: grid;
+  font-size: var(--text-lg);
+}
+
