@@ -1,5 +1,6 @@
 <template>
   <YInput
+    data-compose-ui
     v-bind="props"
     ref="yCheckboxRef"
     :value="modelValue"

@@ -1,5 +1,5 @@
 <template>
-  <div aria-modal="true" role="dialog" tabindex="-1" :class="yModalClasses">
+  <div data-compose-ui aria-modal="true" role="dialog" tabindex="-1" :class="yModalClasses">
     <YModalHeader v-if="hasHeader" v-bind="props">
       <template #default>
         <slot name="header" />

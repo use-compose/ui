@@ -48,14 +48,14 @@
         </YCard>
       </Flex>
 
-      <YInput v-model="input" label="Message" placeholder="Message" />
-      <YInput v-model="input" size="large" label="Message" placeholder="Message" />
-      <YInput v-model="input" label="Message" raw placeholder="Message" />
-      <YInput v-model="input" focus size="small" label="Message" placeholder="Message" />
+     <YInput data-compose-ui  v-model="input" label="Message" placeholder="Message" />
+     <YInput data-compose-ui  v-model="input" size="large" label="Message" placeholder="Message" />
+     <YInput data-compose-ui  v-model="input" label="Message" raw placeholder="Message" />
+     <YInput data-compose-ui  v-model="input" focus size="small" label="Message" placeholder="Message" />
     </Container>
 
-    <YInput v-model="input" error error-msg="ERROR" label="Message" placeholder="Message" />
-    <YInput v-model="input" label="Message" placeholder="Message" />
+   <YInput data-compose-ui  v-model="input" error error-msg="ERROR" label="Message" placeholder="Message" />
+   <YInput data-compose-ui  v-model="input" label="Message" placeholder="Message" />
     <Flex style="--flex-gap: 0">
       <Column style="--column-bg: blue; --width-tablet: 3; --width-mobile: 4">
         <p>
@@ -208,8 +208,10 @@
 
     <!-- Complex Form as Main Slot -->
   </YModal>
-  <!-- <YInput v-model="input" :raw="true" type="time" label="Message" placeholder="Message" /> -->
-  <YInputText
+  <!--<YInput data-compose-ui  v-model="input" :raw="true" type="time" label="Message" placeholder="Message" /> -->
+  <YInput
+    data-compose-ui
+    Text
     v-model="input"
     variant="outlined"
     :raw="true"
@@ -292,7 +294,6 @@ import {
   YDateInput,
   YDateTimeInput,
   YDropdown,
-  YInputText,
   YModal,
   YTimeInput,
 } from '@/components'

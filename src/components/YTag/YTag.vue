@@ -1,5 +1,5 @@
 <template>
-  <div :class="getClasses">
+  <div data-compose-ui :class="getClasses">
     <slot>
       <span>YTag</span>
     </slot>
