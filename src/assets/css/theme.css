@@ -117,56 +117,6 @@
   --theme-current-color-lightness: calc(var(--color-bg-lightness) * var(--primary) + var(--color-bg-lightness) * var(--secondary) + var(--color-bg-lightness) * var(--danger));
   --theme-current-color-opacity: calc(var(--color-bg-opacity) * var(--primary) + var(--color-bg-opacity) * var(--secondary) + var(--color-bg-opacity) * var(--danger)); */
 
-  --is-box-shadow-hidden: calc(1 - var(--raw, 0));
-  /* --component-box-shadow-hover: var(--component-box-shadow-x) var(--component-box-shadow-y) 0 0
-    var(--component-box-shadow-color); */
-  --component-box-shadow-color: calc(
-    var(--base) * var(--shadow-dark) + var(--hover) * var(--shadow-dark) + var(--active) *
-      var(--shadow-dark) + var(--focus) * var(--shadow-dark) + var(--disabled) * var(--shadow-dark)
-  );
-  --component-box-shadow-color: color-mix(
-    in srgb,
-    var(--shadow-dark) calc(var(--base) * 100% + var(--hover) * 100%),
-    /* var(--theme-current-color) */ var(--shadow-dark)
-      calc(var(--active) * 100% + var(--focus) * 100% + var(--disabled) * 100%)
-  );
-  --shadow-dark: var(--color-main-dark);
-  --component-shadow-depth: calc(
-    var(--base) * var(--_component-shadow-base) + var(--hover) * var(--_component-shadow-hover) +
-      var(--active) * var(--_component-shadow-active) + var(--focus) *
-      var(--_component-shadow-focus) + var(--disabled) * var(--_component-shadow-disabled) - 1 *
-      var(--_component-transform-depth)
-  );
-  --component-shadow-depth: calc(
-    var(--_component-shadow-base) - 0.75 * var(--_component-transform-depth)
-  );
-  --shadow-depth: calc(var(--component-shadow-depth) * var(--_layout-depth-base));
-  --component-box-shadow-x: calc(var(--is-box-shadow-hidden) * var(--shadow-depth, 0.75));
-  --component-box-shadow-y: calc(var(--is-box-shadow-hidden) * var(--shadow-depth, 0.75));
-
-  /**
-   * Component Transform
-   */
-  --_component-transform-depth: calc(
-    var(--_component-transform-base) * var(--base) + var(--_component-transform-hover) *
-      var(--hover) + var(--_component-transform-active) * var(--active) +
-      var(--_component-transform-focus) * var(--focus) + var(--_component-transform-disabled) *
-      var(--disabled)
-  );
-  --transform-depth: calc(var(--_component-transform-depth) * var(--_layout-depth-base));
-  /* --transform-depth: var(--_component-transform-depth); */
-  --component-transform: translate(var(--transform-depth), var(--transform-depth));
-  --component-box-shadow: var(--component-box-shadow-x) var(--component-box-shadow-y) 0 0
-    var(--component-box-shadow-color);
-  --component-box-shadow-base: calc(var(--component-box-shadow-x))
-    calc(var(--component-box-shadow-y)) 0 0 black;
-  /* 
-  --component-box-shadow-hover: var(--component-box-shadow-x) var(--component-box-shadow-y) 0 0
-    var(--shadow-dark); */
-
-  box-shadow: var(--component-box-shadow);
-  transform: var(--component-transform);
-
   /* --component-box-shadow-hover: var(--component-box-shadow-x) var(--component-box-shadow-y) 0 0 black; */
   /* --component-box-shadow-focus: calc(var(--component-box-shadow-x) * var(--theme-base-unit-calc)) calc(var(--component-box-shadow-y) * var(--theme-base-unit-calc)) 0 0 var(--component-box-shadow-color); */
   /* --component-box-shadow-focus: none; */
@@ -330,20 +280,24 @@
 }
 
 @layer state {
+  [data-compose-ui]:has(:not(:hover), .base),
   .base:not([disabled], .disabled) {
     --state: base;
   }
 
+  [data-compose-ui]:has(:hover, .hover),
   .hover,
   :hover {
     --state: hover;
   }
 
+  [data-compose-ui]:has(:active, .active),
   .active,
   :active {
     --state: active;
   }
 
+  [data-compose-ui]:has(:focus-visible, :focus, .focus-visible, .focus),
   :focus,
   .focus-visible,
   .focus,
@@ -351,6 +305,9 @@
     --state: focus;
   }
 
+  [data-compose-ui] .disabled,
+  [data-compose-ui] :disabled,
+  [data-compose-ui] [disabled],
   .disabled,
   :disabled,
   [disabled] {
@@ -401,7 +358,6 @@
 
 /* // Typography */
 
-
 .switch-color {
   --threshold: 0.1;
   --light: var(--color-primary-lightness);
@@ -414,6 +370,64 @@
 .y-button,
 .y-input,
 .y-select {
+  box-shadow: var(--component-box-shadow);
+  transform: var(--component-transform);
+}
+
+[data-compose-ui],
+.y-button,
+.y-input,
+.y-select,
+.primary,
+.secondary,
+.danger {
+  --is-box-shadow-hidden: calc(1 - var(--raw, 0));
+  /* --component-box-shadow-hover: var(--component-box-shadow-x) var(--component-box-shadow-y) 0 0
+    var(--component-box-shadow-color); */
+  --component-box-shadow-color: calc(
+    var(--base) * var(--shadow-dark) + var(--hover) * var(--shadow-dark) + var(--active) *
+      var(--shadow-dark) + var(--focus) * var(--shadow-dark) + var(--disabled) * var(--shadow-dark)
+  );
+  --component-box-shadow-color: color-mix(
+    in srgb,
+    var(--shadow-dark) calc(var(--base) * 100% + var(--hover) * 100%),
+    /* var(--theme-current-color) */ var(--shadow-dark)
+      calc(var(--active) * 100% + var(--focus) * 100% + var(--disabled) * 100%)
+  );
+  --shadow-dark: var(--color-main-dark);
+  --component-shadow-depth: calc(
+    var(--base) * var(--_component-shadow-base) + var(--hover) * var(--_component-shadow-hover) +
+      var(--active) * var(--_component-shadow-active) + var(--focus) *
+      var(--_component-shadow-focus) + var(--disabled) * var(--_component-shadow-disabled) - 1 *
+      var(--_component-transform-depth)
+  );
+  --component-shadow-depth: calc(
+    var(--_component-shadow-base) - 0.75 * var(--_component-transform-depth)
+  );
+  --shadow-depth: calc(var(--component-shadow-depth) * var(--_layout-depth-base));
+  --component-box-shadow-x: calc(var(--is-box-shadow-hidden) * var(--shadow-depth, 0.75));
+  --component-box-shadow-y: calc(var(--is-box-shadow-hidden) * var(--shadow-depth, 0.75));
+
+  /**
+   * Component Transform
+   */
+  --_component-transform-depth: calc(
+    var(--_component-transform-base) * var(--base) + var(--_component-transform-hover) *
+      var(--hover) + var(--_component-transform-active) * var(--active) +
+      var(--_component-transform-focus) * var(--focus) + var(--_component-transform-disabled) *
+      var(--disabled)
+  );
+  --transform-depth: calc(var(--_component-transform-depth) * var(--_layout-depth-base));
+  /* --transform-depth: var(--_component-transform-depth); */
+  --component-transform: translate(var(--transform-depth), var(--transform-depth));
+  --component-box-shadow: var(--component-box-shadow-x) var(--component-box-shadow-y) 0 0
+    var(--component-box-shadow-color);
+  --component-box-shadow-base: calc(var(--component-box-shadow-x))
+    calc(var(--component-box-shadow-y)) 0 0 black;
+  /* 
+  --component-box-shadow-hover: var(--component-box-shadow-x) var(--component-box-shadow-y) 0 0
+    var(--shadow-dark); */
+
   box-shadow: var(--component-box-shadow);
   transform: var(--component-transform);
 }

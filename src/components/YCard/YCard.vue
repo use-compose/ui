@@ -1,5 +1,5 @@
 <template>
-  <div :class="yCardClasses">
+  <div data-compose-ui :class="yCardClasses">
     <slot></slot>
   </div>
 </template>
