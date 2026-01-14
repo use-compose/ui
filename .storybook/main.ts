@@ -8,15 +8,16 @@ async function findStories(): Promise<StoriesEntry[]> {
 }
 
 const config: StorybookConfig = {
-  stories: async (list: StoriesEntry[]) => {
-    // https://storybook.js.org/docs/configure#with-a-custom-implementation
-    // eslint-disable-next-line no-console
-    console.log('📟 - list → ', list)
-    return [
-      // 👇 Add your found stories to the existing list of story files
-      ...(await findStories()),
-    ]
-  },
+  stories: ['../src/**/*.mdx', '../src/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
+  // stories: async (list: StoriesEntry[]) => {
+  //   // https://storybook.js.org/docs/configure#with-a-custom-implementation
+  //   // eslint-disable-next-line no-console
+  //   console.log('📟 - list → ', list)
+  //   return [
+  //     // 👇 Add your found stories to the existing list of story files
+  //     ...(await findStories()),
+  //   ]
+  // },
   addons: [
     '@storybook/addon-links',
     // '@chromatic-com/storybook',

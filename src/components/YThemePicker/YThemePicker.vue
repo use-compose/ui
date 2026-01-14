@@ -1,5 +1,5 @@
 <template>
-  <YFlex class="theme-picker" align="center" style="--flex-gap: var(--space-md)">
+  <YFlex class="theme-picker" align="center" style="--flex-gap: var(--_spacing-md)">
     <YColorInput v-model="primaryColor" label="primary" name="primary" />
     <YColorInput v-model="secondaryColor" label="secondary" name="secondary" />
     <YColorInput v-model="dangerColor" label="danger" name="danger" />
@@ -18,7 +18,7 @@ import { basePropsDefault } from '@/composables/component-theme'
 import { defineProps, withDefaults } from 'vue'
 import { YColorInput } from '../YColorInput'
 import type { YThemePickerProps } from './types'
-import './YThemePicker.scss'
+import './YThemePicker.css'
 
 withDefaults(defineProps<YThemePickerProps>(), {
   ...basePropsDefault,

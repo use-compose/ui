@@ -1,0 +1,8 @@
+.y-tag {
+  display: inline-flex;
+  --component-margin-bottom: none;
+  --component-padding-y: 0.15rem;
+
+  border: 2px solid
+    color-mix(in srgb, var(--color-main-dark) var(--primary), var(--color-primary) 50%);
+}

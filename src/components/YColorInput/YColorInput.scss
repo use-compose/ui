@@ -12,18 +12,18 @@
 
   --component-margin-bottom: 0;
 
-  height: calc(1.5 * var(--space-unit));
+  height: calc(1.5 * var(--_spacing-unit));
   background-color: v-bind('modelValue');
 
   &.y-input-small {
-    padding: var(--space-xs);
+    padding: var(--_spacing-xs);
 
-    --component-padding-y: var(--space-xs);
-    --component-padding-x: var(--space-xs);
+    --component-padding-y: var(--_spacing-xs);
+    --component-padding-x: var(--_spacing-xs);
   }
 
   &.y-input-big {
-    --component-padding-y: var(--space-unit);
+    --component-padding-y: var(--_spacing-unit);
   }
 
   // TODO: check if to keep these 3 classes

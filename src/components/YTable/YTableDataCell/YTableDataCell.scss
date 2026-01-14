@@ -10,9 +10,9 @@
   white-space: nowrap;
   place-content: center;
 
-  --gap: var(--space-sm);
+  --gap: var(--_spacing-sm);
   --line-offset: calc(var(--gap) / 2);
-  --line-thickness: calc(var(--space-xxs) / 4);
+  --line-thickness: calc(var(--_spacing-xxs) / 4);
   --line-color: var(--color-primary);
 
   &:is(th) {

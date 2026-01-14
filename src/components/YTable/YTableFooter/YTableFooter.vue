@@ -12,7 +12,7 @@
 
 <script setup lang="ts">
 import YTableRow from '../YTableRow/YTableRow.vue'
-import './YTableFooter.scss'
+import './YTableFooter.css'
 import type { TableFooter } from './YTableFooter.types.ts'
 
 const props = defineProps<{

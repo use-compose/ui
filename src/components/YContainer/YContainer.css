@@ -1,0 +1,32 @@
+.y-container {
+  max-width: 640px;
+  padding: 0 var(--_spacing-units, 1rem);
+
+  &.fluid {
+    width: 100%;
+  }
+}
+
+@media (min-width: 768px) {
+  .y-container {
+    max-width: 768px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .y-container {
+    max-width: 1024px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .y-container {
+    max-width: 1280px;
+  }
+}
+
+@media (min-width: 1820px) {
+  .y-container {
+    max-width: 1820px;
+  }
+}

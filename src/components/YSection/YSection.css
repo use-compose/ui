@@ -1,0 +1,32 @@
+.y-section {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 15px 22px 10px;
+
+  &:last-child {
+    padding-bottom: 22px;
+  }
+}
+
+@media (min-width: 768px) {
+  .y-section {
+    flex-wrap: nowrap;
+    padding: 40px 20px 10px 0;
+
+    .y-vertical-title {
+      --space-unit: 1rem;
+      --space-xs: calc(0.25 * var(--_spacing-unit));
+    }
+  }
+}
+
+@media (min-width: 1024px) {
+  .y-section {
+    padding: 50px 37px 0 0;
+
+    &:last-child {
+      padding-bottom: 50px;
+    }
+  }
+}

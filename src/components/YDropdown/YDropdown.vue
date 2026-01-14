@@ -1,5 +1,5 @@
 <template>
-  <div ref="dropdownRef" :class="dropdownClasses" :style="yDropdownStyle">
+  <div ref="dropdownRef" class="y-dropdown" :style="yDropdownStyle">
     <!-- The dropdown trigger - we use the default slot -->
     <YDropdownTrigger>
       <template #default>
@@ -32,7 +32,7 @@ import { defineComponentBaseProps } from '@/composables/component-theme'
 import { useDropdown } from '@/composables/dropdown'
 import { useOnClickOutside } from '@/composables/on-click-outside'
 import { computed, defineComponent } from 'vue'
-import './YDropdown.scss'
+import './YDropdown.css'
 
 export default defineComponent({
   name: 'YDropdown',

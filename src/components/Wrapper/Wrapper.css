@@ -1,0 +1,6 @@
+.wrapper {
+  /* https://grafikart.fr/tutoriels/conteneur-css-1233 */
+  box-sizing: border-box;
+  width: min(var(--breakpoint-desktop-xl), calc(100% - 2 * var(--layout-mobile-padding)));
+  margin-inline: auto;
+}

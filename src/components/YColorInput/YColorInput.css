@@ -1,0 +1,53 @@
+.y-color-input {
+  display: inline-block;
+  cursor: pointer;
+  position: relative;
+
+  --component-padding-x: 0;
+  --component-padding-y: 0;
+  --component-margin-bottom: 0;
+
+  height: calc(1.5 * var(--_spacing-unit));
+  background-color: v-bind('modelValue');
+
+  &.y-input-small {
+    padding: var(--_spacing-xs);
+
+    --component-padding-y: var(--_spacing-xs);
+    --component-padding-x: var(--_spacing-xs);
+  }
+
+  &.y-input-big {
+    --component-padding-y: var(--_spacing-unit);
+  }
+
+  .error-label {
+    font-size: 80%;
+  }
+
+  .no-border {
+    border: none;
+  }
+
+  .no-margin {
+    margin-bottom: 0;
+  }
+
+  &:hover::after {
+    position: absolute;
+    content: '';
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: var(--border-radius);
+    box-shadow: inset 0 0 0 1px var(--color-border);
+    transition:
+      transform 0.2s ease-in-out,
+      box-shadow 0.2s ease-in-out;
+    background-image: conic-gradient(red, yellow, lime, aqua, blue, magenta, red);
+    opacity: 0.5;
+    filter: blur(10px);
+    animation: scale-in 0.2s ease-in-out forwards;
+  }
+}

@@ -591,3 +591,8 @@ $breakpoints: (
     // 42px
   )
 );
+
+[data-compose-ui] {
+  @include theme-component;
+  @include interactive-component;
+}

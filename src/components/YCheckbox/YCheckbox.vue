@@ -17,7 +17,7 @@ import { useAnimation } from '@/composables/animation'
 import { useInput } from '@/composables/input'
 import { EmitFn, onMounted, useAttrs, useTemplateRef } from 'vue'
 import type { YCheckboxProps } from './types'
-import './YCheckbox.scss'
+import './YCheckbox.css'
 
 const props = withDefaults(defineProps<YCheckboxProps>(), {
   name: 'checkbox-input' + Math.random().toString(36).substring(7),

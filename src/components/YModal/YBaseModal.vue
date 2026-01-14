@@ -32,7 +32,7 @@ import { modalDefaultProps } from '@/composables/components'
 import { computed, useSlots } from 'vue'
 import { BaseModalProps, YModalSize } from './types'
 import { getModalClasses } from './utils/modal-classes'
-import './YModal.scss'
+import './YModal.css'
 
 const props = withDefaults(defineProps<BaseModalProps>(), {
   ...modalDefaultProps,

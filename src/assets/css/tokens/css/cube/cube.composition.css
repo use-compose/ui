@@ -1,0 +1,16 @@
+/**
+ * Do not edit directly, this file was auto-generated.
+ */
+
+:root {
+  --cube-composition-flow-space: var(--_layout-gutter-md);
+  --cube-composition-stack-gap: var(--_layout-gutter-md);
+  --cube-composition-stack-align: start;
+  --cube-composition-stack-direction: var(--__layout-direction, column);
+  --cube-composition-cluster-gap: var(--_layout-gutter-sm);
+  --cube-composition-cluster-align: center;
+  --cube-composition-center-max-width: 72ch;
+  --cube-composition-center-padding-inline: var(--_layout-gutter-md);
+  --cube-composition-switcher-modifier: var(--__layout-break-at);
+  --cube-composition-switcher-gap: var(--_layout-gutter-sm);
+}

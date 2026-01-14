@@ -1,5 +1,5 @@
 <template>
-  <Component :is="level" ref="highlightedTextRef" :class="getClasses">
+  <Component :is="props.as" ref="highlightedTextRef" :class="getClasses">
     <!-- <span> -->
     <!-- <span class="switch-color"><slot></slot></span> -->
     <span><slot></slot></span>
@@ -12,10 +12,10 @@ import { useAnimation } from '@/composables'
 import { useEventListener } from '@/composables/event-listener'
 import { computed, useTemplateRef } from 'vue'
 import type { YHighlightedTextProps } from './types'
-import './YHighlightedText.scss'
+import './YHighlightedText.css'
 
 const props = withDefaults(defineProps<YHighlightedTextProps>(), {
-  level: 'span',
+  as: 'span',
   active: true,
 
   // Stick the highlighted text to the left side of the container on mobile viewports
@@ -35,9 +35,9 @@ useEventListener(highlightedTextRef, 'mouseenter', () => {
 })
 
 const getClasses = computed(() => [
-  'highlighted-text',
-  props.active ? 'active' : '',
-  props.animate ? 'animate' : '',
+  '-highlighted',
+  props.active ? '-active' : '',
+  props.animate ? '-animate' : '',
   props.stickToLeft ? 'stick-to-left' : '',
 ])
 </script>

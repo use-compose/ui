@@ -25,7 +25,7 @@
 <script setup lang="ts">
 import { computed, defineProps, withDefaults } from 'vue'
 import type { YHeaderProps } from './types'
-import './YHeader.scss'
+import './YHeader.css'
 
 const props = withDefaults(defineProps<YHeaderProps>(), {
   fixed: true,

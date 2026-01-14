@@ -1,0 +1,12 @@
+.y-input-text {
+  --component-bg-color: var(--color-main-dark);
+  --component-padding-y: var(--_spacing-sm);
+  --component-border-color: var(--color-primary);
+
+  margin-bottom: var(--_spacing-unit);
+  width: 100%;
+
+  &::placeholder {
+    opacity: 0.4;
+  }
+}
