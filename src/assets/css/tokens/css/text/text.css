@@ -16,9 +16,15 @@
   --color-text-danger-chroma: var(--color-danger-chroma, 0);
   --color-text-danger-hue: var(--color-danger-hue, 0);
   --color-text-danger-opacity: var(--color-danger-opacity, 1);
-  --color-text-danger: oklch(var(--color-text-danger-lightness) var(--color-text-danger-chroma) var(--color-text-danger-hue) / var(--color-text-danger-opacity));
-  --color-text-hue: var(--color-primary-hue) * var(--primary, 1) + var(--color-secondary-hue) * var(--secondary, 0) + var(--color-danger-hue) * var(--danger, 0);
-  --color-text-lightness: var(--color-primary-lightness) * var(--primary, 1) + var(--color-secondary-lightness) * var(--secondary, 0) + var(--color-danger-lightness) * var(--danger, 0);
+  --color-text-danger: oklch(
+    var(--color-text-danger-lightness) var(--color-text-danger-chroma)
+      var(--color-text-danger-hue) / var(--color-text-danger-opacity)
+  );
+  --color-text-hue: var(--color-primary-hue) * var(--primary, 1) + var(--color-secondary-hue) *
+    var(--secondary, 0) + var(--color-danger-hue) * var(--danger, 0);
+  --color-text-lightness: var(--color-primary-lightness) * var(--primary, 1) +
+    var(--color-secondary-lightness) * var(--secondary, 0) + var(--color-danger-lightness) *
+    var(--danger, 0);
   --color-text-opacity: var(--color-primary-opacity);
   --text-body-size: var(--font-scale-0);
   --text-body-line-height: 1.5;
@@ -29,10 +35,16 @@
   --text-small-size: var(--font-scale--1);
   --text-small-line-height: 1.4;
   --text-small-weight: var(--font-weight-regular);
-  --component-text-lightness: calc(var(--color-text-lightness) + var(--variant-text-lightness) + var(--state-text-lightness));
-  --component-text-chroma: calc(var(--color-text-chroma) + var(--variant-text-chroma) + var(--state-text-chroma));
+  --component-text-lightness: calc(
+    var(--color-text-lightness) + var(--variant-text-lightness) + var(--state-text-lightness)
+  );
+  --component-text-chroma: calc(
+    var(--color-text-chroma) + var(--variant-text-chroma) + var(--state-text-chroma)
+  );
   --component-text-hue: calc(var(--color-text-hue));
-  --component-text-opacity: calc(var(--color-text-opacity) + var(--variant-text-opacity) + var(--state-text-opacity));
+  --component-text-opacity: calc(
+    var(--color-text-opacity) + var(--variant-text-opacity) + var(--state-text-opacity)
+  );
   --variant-text-bg-lightness: 0;
   --variant-text-bg-chroma: 0;
   --variant-text-bg-hue: 0;

@@ -1,8 +1,8 @@
 <template>
   <YInput
-    data-compose-ui
     v-bind="props"
     ref="yCheckboxRef"
+    data-compose-ui
     :value="modelValue"
     type="checkbox"
     input-class="y-checkbox"

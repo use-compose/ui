@@ -4,9 +4,9 @@
  * Simply uncomment the variables you want to use
  */
 :root {
-/* ------------------------------------------------------------ */
-/*                            Border                            */
-/* ------------------------------------------------------------ */
+  /* ------------------------------------------------------------ */
+  /*                            Border                            */
+  /* ------------------------------------------------------------ */
   --border-width-default: 2px;
   --border-width-scale: 1.25;
   --border-width-xsmall: calc(var(--border-width-default) / 2 * var(--border-width-scale));
@@ -20,9 +20,9 @@
   --border-radius-lg: 2;
   --border-radius-scale: 1.5;
 
-/* ------------------------------------------------------------ */
-/*                          Breakpoint                          */
-/* ------------------------------------------------------------ */
+  /* ------------------------------------------------------------ */
+  /*                          Breakpoint                          */
+  /* ------------------------------------------------------------ */
   --breakpoint-xs: 640px;
   --breakpoint-sm: 768px;
   --breakpoint-md: 1024px;
@@ -30,31 +30,51 @@
   --breakpoint-xl: 1820px;
   --breakpoint-xxl: 2520px;
 
-/* ------------------------------------------------------------ */
-/*                             Font                             */
-/* ------------------------------------------------------------ */
+  /* ------------------------------------------------------------ */
+  /*                             Font                             */
+  /* ------------------------------------------------------------ */
   --font-scale-0: clamp(0.875rem, 0.6304347826086957rem + 1.0869565217391304vw, 1.5rem);
-  --font-scale-1: clamp(0.984375rem, 0.6652173913043479rem + 1.418478260869565vw, 1.7999999999999998rem);
+  --font-scale-1: clamp(
+    0.984375rem,
+    0.6652173913043479rem + 1.418478260869565vw,
+    1.7999999999999998rem
+  );
   --font-scale-2: clamp(1.107421875rem, 0.6955434782608696rem + 1.8305706521739133vw, 2.16rem);
-  --font-scale-3: clamp(1.245849609375rem, 0.7190951086956524rem + 2.341131114130434vw, 2.5919999999999996rem);
-  --font-scale-4: clamp(1.401580810546875rem, 0.7329124320652175rem + 2.9718594599184778vw, 3.1104rem);
-  --font-scale-5: clamp(1.5767784118652344rem, 0.7332430078125004rem + 3.749046240234373vw, 3.732479999999999rem);
-  --font-scale-6: clamp(1.7738757133483887rem, 0.7153582098760192rem + 4.704522237654976vw, 4.478975999999999rem);
+  --font-scale-3: clamp(
+    1.245849609375rem,
+    0.7190951086956524rem + 2.341131114130434vw,
+    2.5919999999999996rem
+  );
+  --font-scale-4: clamp(
+    1.401580810546875rem,
+    0.7329124320652175rem + 2.9718594599184778vw,
+    3.1104rem
+  );
+  --font-scale-5: clamp(
+    1.5767784118652344rem,
+    0.7332430078125004rem + 3.749046240234373vw,
+    3.732479999999999rem
+  );
+  --font-scale-6: clamp(
+    1.7738757133483887rem,
+    0.7153582098760192rem + 4.704522237654976vw,
+    4.478975999999999rem
+  );
   --font-min-font: 14;
   --font-max-font: 24;
   --font-min-viewport: 360;
   --font-max-viewport: 1280;
   --font-scale-min: 1.125;
   --font-scale-max: 1.2;
-  --font-steps: 0,1,2,3,4,5,6;
+  --font-steps: 0, 1, 2, 3, 4, 5, 6;
   --font-weight-light: 300;
   --font-weight-regular: 400;
   --font-weight-medium: 500;
   --font-weight-bold: 700;
 
-/* ------------------------------------------------------------ */
-/*                            Shadow                            */
-/* ------------------------------------------------------------ */
+  /* ------------------------------------------------------------ */
+  /*                            Shadow                            */
+  /* ------------------------------------------------------------ */
   --shadow-xs: 0.25;
   --shadow-sm: 0.5;
   --shadow-md: 1;
@@ -63,15 +83,25 @@
   --shadow-default: 1;
   --shadow-scale: 1.5;
 
-/* ------------------------------------------------------------ */
-/*                            Space                            */
-/* ------------------------------------------------------------ */
+  /* ------------------------------------------------------------ */
+  /*                            Space                            */
+  /* ------------------------------------------------------------ */
   --space-fluid-min: 1rem;
   --space-fluid-max: 1.5rem;
   --space-fluid-min-viewport: 360px;
   --space-fluid-max-viewport: 1280px;
   --space-unit-default: 1rem;
-  --space-unit-fluid: clamp(var(--space-fluid-min), calc(var(--space-fluid-min) + (var(--space-fluid-max) - var(--space-fluid-min)) * ((100vw - var(--space-fluid-min-viewport)) / (var(--space-fluid-max-viewport) - var(--space-fluid-min-viewport)))), var(--space-fluid-max));
+  --space-unit-fluid: clamp(
+    var(--space-fluid-min),
+    calc(
+      var(--space-fluid-min) + (var(--space-fluid-max) - var(--space-fluid-min)) *
+        (
+          (100vw - var(--space-fluid-min-viewport)) /
+            (var(--space-fluid-max-viewport) - var(--space-fluid-min-viewport))
+        )
+    ),
+    var(--space-fluid-max)
+  );
   --space-multiplier-unit: 1rem;
   --space-multiplier-xxs: 0.25;
   --space-multiplier-xs: 0.5;
@@ -81,9 +111,9 @@
   --space-multiplier-xl: 3.25;
   --space-multiplier-xxl: 5.25;
 
-/* ------------------------------------------------------------ */
-/*                            Layout                            */
-/* ------------------------------------------------------------ */
+  /* ------------------------------------------------------------ */
+  /*                            Layout                            */
+  /* ------------------------------------------------------------ */
   --layout-break-at: var(--breakpoint-md);
   --layout-gutter-sm: var(--spacing-sm);
   --layout-gutter-md: var(--spacing-md);
@@ -107,16 +137,16 @@
   --layout-overlay-blur: 8px;
   --layout-space-unit: var(--space-unit-fluid);
 
-/* ------------------------------------------------------------ */
-/*                            Radius                            */
-/* ------------------------------------------------------------ */
+  /* ------------------------------------------------------------ */
+  /*                            Radius                            */
+  /* ------------------------------------------------------------ */
   --radius-light: calc(var(--border-radius-default) / var(--border-radius-scale));
   --radius-medium: calc(var(--border-radius-default) * var(--border-radius-scale));
   --radius-heavy: calc(var(--border-radius-default) * 2 * var(--border-radius-scale));
 
-/* ------------------------------------------------------------ */
-/*                           Spacing                           */
-/* ------------------------------------------------------------ */
+  /* ------------------------------------------------------------ */
+  /*                           Spacing                           */
+  /* ------------------------------------------------------------ */
   --spacing-xxs: calc(var(--layout-space-unit) * var(--space-multiplier-xxs));
   --spacing-xs: calc(var(--layout-space-unit) * var(--space-multiplier-xs));
   --spacing-sm: calc(var(--layout-space-unit) * var(--space-multiplier-sm));
@@ -125,9 +155,9 @@
   --spacing-xl: calc(var(--layout-space-unit) * var(--space-multiplier-xl));
   --spacing-xxl: calc(var(--layout-space-unit) * var(--space-multiplier-xxl));
 
-/* ------------------------------------------------------------ */
-/*                             Text                             */
-/* ------------------------------------------------------------ */
+  /* ------------------------------------------------------------ */
+  /*                             Text                             */
+  /* ------------------------------------------------------------ */
   --text-body-size: var(--font-scale-0);
   --text-body-line-height: 1.5;
   --text-body-weight: var(--font-weight-regular);
@@ -138,9 +168,9 @@
   --text-small-line-height: 1.4;
   --text-small-weight: var(--font-weight-regular);
 
-/* ------------------------------------------------------------ */
-/*                           Heading                           */
-/* ------------------------------------------------------------ */
+  /* ------------------------------------------------------------ */
+  /*                           Heading                           */
+  /* ------------------------------------------------------------ */
   --heading-h1-size: var(--font-scale-4);
   --heading-h1-line-height: 1.1;
   --heading-h1-weight: var(--font-weight-bold);
@@ -148,36 +178,58 @@
   --heading-h2-line-height: 1.15;
   --heading-h2-weight: var(--font-weight-bold);
 
-/* ------------------------------------------------------------ */
-/*                          Component                          */
-/* ------------------------------------------------------------ */
-  --component-bg-lightness: calc(var(--color-bg-lightness) + var(--variant-bg-lightness) + var(--state-bg-lightness));
-  --component-bg-chroma: calc(var(--color-bg-chroma) + var(--variant-bg-chroma) + var(--state-bg-chroma));
+  /* ------------------------------------------------------------ */
+  /*                          Component                          */
+  /* ------------------------------------------------------------ */
+  --component-bg-lightness: calc(
+    var(--color-bg-lightness) + var(--variant-bg-lightness) + var(--state-bg-lightness)
+  );
+  --component-bg-chroma: calc(
+    var(--color-bg-chroma) + var(--variant-bg-chroma) + var(--state-bg-chroma)
+  );
   --component-bg-hue: calc(var(--color-bg-hue));
-  --component-bg-opacity: calc(var(--color-bg-opacity) + var(--variant-bg-opacity) + var(--state-bg-opacity));
-  --component-border-lightness: calc(var(--color-border-lightness) + var(--variant-border-lightness) + var(--state-border-lightness));
-  --component-border-chroma: calc(var(--color-border-chroma) + var(--variant-border-chroma) + var(--state-border-chroma));
+  --component-bg-opacity: calc(
+    var(--color-bg-opacity) + var(--variant-bg-opacity) + var(--state-bg-opacity)
+  );
+  --component-border-lightness: calc(
+    var(--color-border-lightness) + var(--variant-border-lightness) + var(--state-border-lightness)
+  );
+  --component-border-chroma: calc(
+    var(--color-border-chroma) + var(--variant-border-chroma) + var(--state-border-chroma)
+  );
   --component-border-hue: calc(var(--color-border-hue));
-  --component-border-opacity: calc(var(--color-border-opacity) + var(--variant-border-opacity) + var(--state-border-opacity));
-  --component-text-lightness: calc(var(--color-text-lightness) + var(--variant-text-lightness) + var(--state-text-lightness));
-  --component-text-chroma: calc(var(--color-text-chroma) + var(--variant-text-chroma) + var(--state-text-chroma));
+  --component-border-opacity: calc(
+    var(--color-border-opacity) + var(--variant-border-opacity) + var(--state-border-opacity)
+  );
+  --component-text-lightness: calc(
+    var(--color-text-lightness) + var(--variant-text-lightness) + var(--state-text-lightness)
+  );
+  --component-text-chroma: calc(
+    var(--color-text-chroma) + var(--variant-text-chroma) + var(--state-text-chroma)
+  );
   --component-text-hue: calc(var(--color-text-hue));
-  --component-text-opacity: calc(var(--color-text-opacity) + var(--variant-text-opacity) + var(--state-text-opacity));
+  --component-text-opacity: calc(
+    var(--color-text-opacity) + var(--variant-text-opacity) + var(--state-text-opacity)
+  );
   --component-opacity-bg: var(--component-bg-opacity);
   --component-opacity-border: var(--component-border-opacity);
   --component-opacity-text: var(--component-text-opacity);
 
-/* ------------------------------------------------------------ */
-/*                       Highlighted-text                       */
-/* ------------------------------------------------------------ */
+  /* ------------------------------------------------------------ */
+  /*                       Highlighted-text                       */
+  /* ------------------------------------------------------------ */
   --highlighted-text-gap-min: var(--_spacing-xxs);
   --highlighted-text-gap-max: var(--_spacing-lg);
   --highlighted-text-gap-scaler: 1.4svw;
-  --highlighted-text-gap-left: clamp(var(--_highlighted-text-gap-min), var(--_highlighted-text-gap-scaler), var(--_highlighted-text-gap-max));
+  --highlighted-text-gap-left: clamp(
+    var(--_highlighted-text-gap-min),
+    var(--_highlighted-text-gap-scaler),
+    var(--_highlighted-text-gap-max)
+  );
 
-/* ------------------------------------------------------------ */
-/*                             Cube                             */
-/* ------------------------------------------------------------ */
+  /* ------------------------------------------------------------ */
+  /*                             Cube                             */
+  /* ------------------------------------------------------------ */
 
   /* -------------------- */
   /*        Block        */
@@ -209,5 +261,4 @@
   --center-padding-inline: var(--_layout-gutter-md);
   --switcher-modifier: var(--__layout-break-at);
   --switcher-gap: var(--_layout-gutter-sm);
-
 }

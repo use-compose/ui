@@ -33,7 +33,11 @@ export default defineConfig({
     lib: {
       entry: fileURLToPath(new URL('./src/index.ts', import.meta.url)),
       name: '@use-compose/ui',
-      fileName: 'index',
+      fileName: (format) => {
+        if (format === 'es') return 'index.mjs'
+        if (format === 'cjs') return 'index.js'
+        return `index.${format}.js`
+      },
       formats: ['es', 'cjs'],
 
       // Naming of CSS file Vite v6

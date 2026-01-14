@@ -5,13 +5,31 @@
  */
 :root {
   --_base-zIndex: var(--base-zIndex, 1000);
-  --_base-typography-text: var(--base-typography-text, clamp(0.4444rem, 0.6881rem - 0.2407vw, 0.64rem));
-  --_base-typography-text: var(--base-typography-text, clamp(0.6667rem, 0.8328rem - 0.1641vw, 0.8rem));
+  --_base-typography-text: var(
+    --base-typography-text,
+    clamp(0.4444rem, 0.6881rem - 0.2407vw, 0.64rem)
+  );
+  --_base-typography-text: var(
+    --base-typography-text,
+    clamp(0.6667rem, 0.8328rem - 0.1641vw, 0.8rem)
+  );
   --_base-typography-text: var(--base-typography-text, clamp(1rem, 1rem + 0vw, 1rem));
-  --_base-typography-text: var(--base-typography-text, clamp(1.25rem, 1.1885rem + 0.3077vw, 1.5rem));
-  --_base-typography-text: var(--base-typography-text, clamp(1.5625rem, 1.3933rem + 0.8462vw, 2.25rem));
-  --_base-typography-text: var(--base-typography-text, clamp(1.9531rem, 1.6031rem + 1.75vw, 3.375rem));
-  --_base-typography-text: var(--base-typography-text, clamp(2.4414rem, 1.7962rem + 3.226vi, 5.0625rem));
+  --_base-typography-text: var(
+    --base-typography-text,
+    clamp(1.25rem, 1.1885rem + 0.3077vw, 1.5rem)
+  );
+  --_base-typography-text: var(
+    --base-typography-text,
+    clamp(1.5625rem, 1.3933rem + 0.8462vw, 2.25rem)
+  );
+  --_base-typography-text: var(
+    --base-typography-text,
+    clamp(1.9531rem, 1.6031rem + 1.75vw, 3.375rem)
+  );
+  --_base-typography-text: var(
+    --base-typography-text,
+    clamp(2.4414rem, 1.7962rem + 3.226vi, 5.0625rem)
+  );
   --_base-typography-heading: var(--base-typography-heading, calc(1rem * 2.5));
   --_base-breakpoint-mobile: var(--base-breakpoint-mobile, 640px);
   --_base-breakpoint-tablet: var(--base-breakpoint-tablet, 768px);

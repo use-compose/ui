@@ -16,7 +16,6 @@ export function useDropdown({
   // hasScrollbar = true
 }: // editor
 UseDropdownParams) {
-  // eslint-disable-next-line no-console
   // console.log('📟 - context → ', context)
   // Register the dropdown instance in the stack for the z-index
   const dropdownInstance = Symbol('dropdown') // unique identity to identify the dropdown instance in the stack

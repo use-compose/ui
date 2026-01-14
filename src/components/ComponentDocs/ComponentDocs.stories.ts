@@ -15,10 +15,10 @@ const meta: Meta<typeof ComponentDocs> = {
   args: {
     // ...commonArgs,
   },
-};
- 
-export default meta;
-type Story = StoryObj<typeof ComponentDocs>;
+}
+
+export default meta
+type Story = StoryObj<typeof ComponentDocs>
 
 const renderGenericStory: Story = {
   render: (args, { argTypes }) => ({

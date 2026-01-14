@@ -1,11 +1,10 @@
 import type { StorybookConfig } from '@storybook/vue3-vite'
-import { StoriesEntry } from 'storybook/internal/types'
 // https://uxdesign.cc/how-to-connect-storybook-figma-toppling-the-great-divide-6c1923182653
 
-async function findStories(): Promise<StoriesEntry[]> {
-  // your custom logic returns a list of files
-  return ['../src/**/*.mdx', '../src/**/*.stories.@(js|jsx|mjs|ts|tsx)']
-}
+// async function findStories(): Promise<StoriesEntry[]> {
+//   // your custom logic returns a list of files
+//   return ['../src/**/*.mdx', '../src/**/*.stories.@(js|jsx|mjs|ts|tsx)']
+// }
 
 const config: StorybookConfig = {
   stories: ['../src/**/*.mdx', '../src/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
