@@ -15,7 +15,7 @@
 import { YInput } from '@/components/YInput'
 import { useInput } from '@/composables/input'
 import { EmitFn, useAttrs } from 'vue'
-import './YDateInput.scss'
+import './YDateInput.css'
 import { YDateInputProps } from './types'
 
 const props = withDefaults(defineProps<YDateInputProps>(), {

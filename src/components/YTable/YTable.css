@@ -1,0 +1,38 @@
+.y-table {
+  table-layout: fixed;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+/* https://css-tricks.com/examples/HoverEverythingBut/ */
+.y-table-body {
+  &:hover {
+    > .y-table-row {
+      .y-table-data-cell {
+        opacity: 0.5;
+      }
+
+      &:hover {
+        .y-table-data-cell {
+          opacity: 0.6;
+          background-color: var(--color-primary-20);
+
+          &:hover {
+            opacity: 1;
+            background-color: var(--color-primary-30);
+          }
+        }
+      }
+    }
+  }
+
+  &.with-bg {
+    background-color: var(--color-background);
+  }
+}
+
+.y-table-row {
+  &:hover {
+    background-color: var(--color-primary-20);
+  }
+}

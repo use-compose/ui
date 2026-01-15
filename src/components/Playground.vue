@@ -210,9 +210,9 @@
   </YModal>
   <!--<YInput data-compose-ui  v-model="input" :raw="true" type="time" label="Message" placeholder="Message" /> -->
   <YInput
+    v-model="input"
     data-compose-ui
     Text
-    v-model="input"
     variant="outlined"
     :raw="true"
     label="Message"

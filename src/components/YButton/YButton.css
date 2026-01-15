@@ -1,0 +1,13 @@
+.y-button {
+  display: inline-block;
+  text-transform: uppercase;
+  cursor: pointer;
+  --component-padding: var(--_spacing-sm) var(--_spacing-md);
+
+  &:focus,
+  &:focus-visible,
+  &.focus {
+    outline: 3px solid var(--theme-current-color);
+    outline-offset: calc(var(--_layout-depth-base));
+  }
+}

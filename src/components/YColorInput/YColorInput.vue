@@ -20,7 +20,7 @@ import { YInput } from '@/components/YInput'
 import { useInput } from '@/composables/input'
 import { isClientSide } from '@/utils/is-client-side'
 import { EmitFn, onMounted, useAttrs } from 'vue'
-import './YColorInput.scss'
+import './YColorInput.css'
 import { YColorInputProps } from './types'
 
 const props = withDefaults(defineProps<YColorInputProps>(), {

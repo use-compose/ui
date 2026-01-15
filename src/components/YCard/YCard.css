@@ -1,0 +1,7 @@
+.y-card {
+  --component-bg-opacity: 0.5;
+
+  padding: var(--_spacing-sm);
+  border-radius: var(--border-radius);
+  word-wrap: break-word;
+}

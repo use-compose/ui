@@ -6,6 +6,8 @@ Source [CSS Custom Properties (vars) with SASS/SCSS, a practical architecture st
 
 ## Theming with OKlch color space
 
+Color palette - [huetone](https://huetone.ardov.me/)
+
 3 main props:
 
 ### Variant: contained, outlined, text - will play on the Lightness

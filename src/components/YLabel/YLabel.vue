@@ -9,7 +9,7 @@ import { useRaw } from '@/composables'
 import { basePropsDefault } from '@/composables/component-theme'
 import { computed, defineProps, withDefaults } from 'vue'
 import type { YLabelProps } from './types'
-import './YLabel.scss'
+import './YLabel.css'
 
 const props = withDefaults(defineProps<YLabelProps>(), {
   ...basePropsDefault,

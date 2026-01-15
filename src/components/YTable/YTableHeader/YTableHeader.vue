@@ -15,7 +15,7 @@ import { computed, inject } from 'vue'
 import { yTableKey, YTableKeyInterface, YTableProps } from '../types'
 import YTableDataCell from '../YTableDataCell/YTableDataCell.vue'
 import YTableRow from '../YTableRow/YTableRow.vue'
-import './YTableHeader.scss'
+import './YTableHeader.css'
 
 const props = defineProps<Pick<YTableProps, 'headers'>>()
 const { headers } = inject(yTableKey) ? (inject(yTableKey) as YTableKeyInterface) : props

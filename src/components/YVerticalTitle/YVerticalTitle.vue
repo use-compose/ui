@@ -5,7 +5,7 @@
 </template>
 
 <script setup lang="ts">
-import './YVerticalTitle.scss'
+import './YVerticalTitle.css'
 import type { YVerticalTitleProps } from './YVerticalTitle.types'
 
 withDefaults(defineProps<YVerticalTitleProps>(), {

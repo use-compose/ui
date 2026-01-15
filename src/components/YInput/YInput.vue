@@ -24,7 +24,7 @@ import { useColor, useRaw, useSize, useState, useVariant } from '@/composables'
 import { useComponentProps } from '@/composables/component'
 import { inputEventsKey, inputEventsKeyInterface } from '@/composables/input'
 import { computed, inject } from 'vue'
-import './YInput.scss'
+import './YInput.css'
 import { YInputProps } from './types'
 
 const props = withDefaults(defineProps<YInputProps>(), {

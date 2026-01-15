@@ -1,5 +1,5 @@
 <template>
-  <div class="y-dropdown-trigger" ref="dropdownTriggerRef">
+  <div ref="dropdownTriggerRef" class="y-dropdown-trigger">
     <slot>
       <YButton :color="isOpen ? 'primary' : 'secondary'" class="mb-0" @click="toggle">
         Dropdown

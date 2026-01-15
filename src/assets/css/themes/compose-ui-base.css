@@ -1,0 +1,25 @@
+@import url('../tokens/css/themes/public-theme.css') layer(theme);
+@import url('../tokens/css/themes/private-theme.css') layer(theme);
+@import url('../tokens/css/space.css') layer(theme);
+
+@layer colors, theme-default, theme, cube;
+@layer theme {
+  :root {
+    --text-xs: var(--font-scale-0);
+    --text-sm: var(--font-scale-1);
+    --text-md: var(--font-scale-2);
+    --text-lg: var(--font-scale-3);
+    --text-xl: var(--font-scale-4);
+    --text-xxl: var(--font-scale-5);
+    --text-h1: var(--font-scale-6);
+  }
+}
+
+@layer cube {
+  [data-compose-ui] {
+    /* Components */
+    --component-padding-x: var(--_button-padding-x);
+    --component-padding-y: var(--_button-padding-y);
+    padding: var(--component-padding-x) var(--component-padding-y);
+  }
+}

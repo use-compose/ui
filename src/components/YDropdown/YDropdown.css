@@ -1,0 +1,13 @@
+.y-dropdown {
+  position: relative;
+
+  &:has(> .y-menu) .y-menu {
+    background-color: var(--theme-current-color);
+    border: none;
+  }
+
+  .y-dropdown-trigger {
+    position: relative;
+    z-index: var(--dropdown-z-index);
+  }
+}

@@ -10,7 +10,7 @@ import { useColor, useRaw, useSize, useState, useVariant } from '@/composables'
 import { basePropsDefault } from '@/composables/component-theme'
 import { computed, defineProps, withDefaults } from 'vue'
 import { YButtonProps } from './types'
-import './YButton.scss'
+import './YButton.css'
 
 const props = withDefaults(defineProps<YButtonProps>(), {
   ...basePropsDefault,

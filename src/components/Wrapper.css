@@ -1,0 +1,17 @@
+.wrapper {
+  /* https://grafikart.fr/tutoriels/conteneur-css-1233 */
+  box-sizing: border-box;
+  width: min(var(--breakpoint-desktop-xl), calc(100% - 2 * var(--layout-mobile-padding)));
+  margin-inline: auto;
+}
+
+@media (min-width: 768px) {
+  .wrapper {
+    /* https://css-tricks.com/use-css-clamp-to-create-a-more-flexible-wrapper-utility/ */
+    width: clamp(100%, 90vw, 70rem);
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: var(--_spacing-unit);
+    padding-right: var(--_spacing-unit);
+  }
+}

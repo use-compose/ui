@@ -1,4 +1,6 @@
 import vue from '@vitejs/plugin-vue'
+import browserslist from 'browserslist'
+import { browserslistToTargets } from 'lightningcss'
 import { fileURLToPath, URL } from 'url'
 import { defineConfig } from 'vite'
 import dts from 'vite-plugin-dts'
@@ -31,7 +33,11 @@ export default defineConfig({
     lib: {
       entry: fileURLToPath(new URL('./src/index.ts', import.meta.url)),
       name: '@use-compose/ui',
-      fileName: 'index',
+      fileName: (format) => {
+        if (format === 'es') return 'index.mjs'
+        if (format === 'cjs') return 'index.js'
+        return `index.${format}.js`
+      },
       formats: ['es', 'cjs'],
 
       // Naming of CSS file Vite v6
@@ -52,6 +58,7 @@ export default defineConfig({
         // preserveModules: false,
       },
     },
+    cssMinify: 'lightningcss',
   },
   css: {
     preprocessorOptions: {
@@ -62,12 +69,16 @@ export default defineConfig({
       // },
       scss: {
         additionalData: `
-              // @use "@/assets/scss/global.scss";
-              
+              @use "@/assets/scss/global.scss";
+
           `,
         // https://github.com/sass/dart-sass/issues/2352#issuecomment-2358290696
-        api: 'modern',
+        // api: 'modern',
       },
+    },
+    transformer: 'lightningcss',
+    lightningcss: {
+      targets: browserslistToTargets(browserslist('>= 0.25%')),
     },
   },
   assetsInclude: [

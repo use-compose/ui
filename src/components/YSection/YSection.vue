@@ -13,7 +13,7 @@
 import { defineProps } from 'vue'
 import YContainer from '../YContainer/YContainer.vue'
 import { YVerticalTitle } from '../YVerticalTitle'
-import './YSection.scss'
+import './YSection.css'
 
 interface Props {
   title?: string

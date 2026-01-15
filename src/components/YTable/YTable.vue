@@ -27,7 +27,7 @@
 <script setup lang="ts">
 import { computed, defineProps, provide } from 'vue'
 import { yTableKey, type YTableProps } from './types'
-import './YTable.scss'
+import './YTable.css'
 import YTableBody from './YTableBody/YTableBody.vue'
 import YTableFooter from './YTableFooter/YTableFooter.vue'
 import YTableHeader from './YTableHeader/YTableHeader.vue'
