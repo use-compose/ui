@@ -1,10 +1,10 @@
-/* Needed for the animation */
+/* Needed for the animation
 /* https://css-tricks.com/exploring-property-and-its-animating-powers/ */
-@property --transform-scale {
+/* @property --transform-scale {
   syntax: '<number>';
   inherits: false;
   initial-value: 0;
-}
+} */
 
 .y-checkbox {
   --component-margin-bottom: 0;
@@ -18,30 +18,42 @@
   aspect-ratio: 1 / 1;
   margin: 0;
   appearance: none;
+  height: var(--_checkbox-size, var(--spacing-lg));
+  width: var(--_checkbox-size, var(--spacing-lg));
+  padding: var(--_checkbox-padding, var(--spacing-xs));
+  border-radius: var(--_checkbox-radius, var(--border-radius-medium));
 
-  &::before {
+  &:before {
     content: '';
-    border-color: var(--color-primary);
-    display: flex;
+    position: absolute;
+    width: 70%;
+    height: 70%;
+    inset: 50%;
 
     --transform-scale: 0;
 
-    transition: 120ms transform ease-in-out;
-    position: absolute;
-    height: 70%;
-    width: 70%;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(var(--transform-scale));
-    animation: var(--y-checkbox-animation);
+    /* border: var(--border-theme-50); */
+    background-color: var(--_checkbox-bg, var(--color-bg-primary));
+    box-sizing: border-box;
+    /* transform: translate(var(--_checkbox-checkmark-translate))
+      scale(var(--transform-scale)); */
+    transform: translate(-50%, -50%) scale(0);
+    /* animation: var(--checkbox-animation); */
+    transition:
+      transform 200ms ease,
+      background-color 200ms ease;
   }
 
   &:checked {
-    --y-checkbox-animation: var(--animate-checked-in);
-  }
+    /* --checkbox-animation: var(--checkbox-animation-checked-in); */
 
+    &:before {
+      transform: translate(-50%, -50%) scale(1);
+      background-color: var(--color-main-dark);
+    }
+  }
   &:not(:checked) {
-    --y-checkbox-animation: var(--animate-checked-out);
+    /* --y-checkbox-animation: var(--animate-checked-out); */
   }
 
   &:active,
@@ -49,7 +61,7 @@
     --state-bg-lightness: var(--state-hover-bg-lightness);
   }
 }
-
+/* 
 .y-checkbox-wrapper .y-checkbox {
   --animate-checked-in: checked-in 0.3s 0s forwards;
   --animate-checked-out: var(--has-changed-once, checked-out 0.3s 0s forwards);
@@ -62,4 +74,4 @@
 
 .y-checkbox-wrapper:has(.y-checkbox:not(:checked)) .y-checkbox {
   --y-checkbox-animation: var(--animate-checked-out);
-}
+} */
