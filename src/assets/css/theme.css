@@ -551,6 +551,9 @@
 .primary,
 .secondary,
 .danger {
+  /* Base for all theming: if --unstyled is set, all styles are removed */
+  --styled: calc(1 - var(--unstyled));
+
   --is-box-shadow-hidden: calc(1 - var(--raw, 0));
   /* --component-box-shadow-hover: var(--component-box-shadow-x) var(--component-box-shadow-y) 0 0
     var(--component-box-shadow-color); */
@@ -619,6 +622,49 @@
   background: oklch(var(--bg-l) var(--bg-c) var(--bg-h) / var(--bg-a));
   border-color: oklch(var(--border-l) var(--border-c) var(--border-h) / var(--border-a));
   color: oklch(var(--text-l) var(--text-c) var(--text-h) / var(--text-a));
+
+  border: var(--component-border-width) var(--component-border-style) var(--component-border-color);
+  background-color: var(--component-bg);
+  box-shadow: var(--component-box-shadow);
+  color: var(--component-color);
+
+  --box-shadow-x: var(--theme-base-unit-calc);
+  --box-shadow-y: var(--theme-base-unit-calc);
+
+  --component-translate-x: var(--theme-base-unit-calc);
+  --component-translate-y: var(--theme-base-unit-calc);
+
+  --box-shadow-base: var(--box-shadow-x) var(--box-shadow-y) 0 0 black;
+  --box-shadow-hover: var(--box-shadow-x) var(--box-shadow-y) 0 0 var(--theme-current-color);
+
+  /*
+   * Pseudo-boolean CSS custom properties - https://keithclark.co.uk/articles/pseudo-boolean-css-custom-properties
+   * Define colors based on component state 
+   */
+  --component-color: color-mix(
+    in srgb,
+    var(--font-color) calc(100% * var(--primary, 0)),
+    var(--theme-current-color)
+  );
+
+  --component-bg: color-mix(
+    in srgb,
+    var(--theme-current-color) calc(100% * var(--primary, 0)),
+    transparent
+  );
+
+  --component-border-color: color-mix(
+    in srgb,
+    var(--color-bg) calc(100% * var(--primary, 0)),
+    var(--theme-current-color)
+  );
+
+  --component-box-shadow: var(--box-shadow-base);
+  /* --component-padding-x: calc(var(--layout-space-unit) * var(--styled)); */
+  /* --component-padding-y: 0; */
+  --component-border-style: solid;
+
+  --component-transform: translate(var(--component-translate-x), var(--component-translate-y));
 }
 /* 
 [data-compose-ui] {

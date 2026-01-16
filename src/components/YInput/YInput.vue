@@ -1,19 +1,18 @@
 <template>
-  <div>
-    <input
-      :id="name"
-      :ref="inputRef"
-      :value="modelValue"
-      :type="type"
-      :name="name"
-      :placeholder="placeholder"
-      :class="yInputClasses"
-      autocomplete="off"
-      :disabled="isDisabled"
-      v-on="handleEvent"
-    />
-    <YLabel v-if="label" class="y-label" :for="name">{{ label }}</YLabel>
-  </div>
+  <input
+    :id="name"
+    :ref="inputRef"
+    :value="modelValue"
+    :type="type"
+    :name="name"
+    :placeholder="placeholder"
+    :class="yInputClasses"
+    autocomplete="off"
+    :disabled="isDisabled"
+    data-compose-ui
+    v-on="handleEvent"
+  />
+  <YLabel v-if="label" class="y-label" :for="name">{{ label }}</YLabel>
 </template>
 
 <script setup lang="ts">

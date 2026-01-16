@@ -1,9 +1,12 @@
 .y-label {
   color: var(--color-primary);
   margin: 0 var(--_spacing-xs) 0 0;
-  display: inline-block;
+  display: inline-flex;
 
   &:has(input) {
     cursor: pointer;
+    vertical-align: middle;
+    margin-left: 0;
+    align-items: center;
   }
 }

@@ -16,10 +16,75 @@
 }
 
 @layer cube {
+  @property --raw {
+    syntax: '<number>';
+    initial-value: 0;
+    inherits: true;
+  }
+
+  @property --disabled {
+    syntax: '<number>';
+    initial-value: 0;
+    inherits: true;
+  }
+
+  @property --secondary {
+    syntax: '<number>';
+    initial-value: 0;
+    inherits: true;
+  }
+
+  @property --unstyled {
+    /* We define a value ("no") that doesn't exist as there's no default for "all"  */
+    /* https://keithclark.co.uk/articles/pseudo-boolean-css-custom-properties/ */
+    syntax: '<number>';
+    initial-value: 0;
+    inherits: true;
+  }
+  /* 
+ * Main Theme Component or element styles
+ * A set of CSS variables are used to define the theme
+ * Some modifiers are also available directly applied in the template
+ * 
+ * e.g.
+ * <div class="theme -disabled">Disabled</div>
+ * <div class="theme -raw">Raw</div>
+ * <div class="theme -hidden">Hidden</div>
+ *
+ */
+
+  :root {
+    /* https://dev.to/tracygjg/conditional-css-437e */
+    --TRUE: 1;
+    --FALSE: 0;
+    --theme: ;
+    /* --raw: var(--FALSE); */
+
+    --theme: ;
+    --base-unit: 4px;
+    --padding-x: var(--layout-space-unit);
+    --padding-y: var(--space-xss);
+    --styled: calc(1 - var(--unstyled));
+    --padding-x: var(--layout-space-unit);
+    --margin-bottom: var(--space-xs);
+    --component-padding-y: calc(var(--space-xs) * var(--styled));
+    --component-padding-x: calc(var(--layout-space-unit) * var(--styled));
+    --component-padding: var(--component-padding-y) var(--component-padding-x);
+    /* --border-width: var(--border-width-25); */
+    /* --is-raw: var(--raw); */
+
+    --border-radius: 0;
+    --base-unit: var(--_border-width-large);
+  }
   [data-compose-ui] {
     /* Components */
     --component-padding-x: var(--_button-padding-x);
     --component-padding-y: var(--_button-padding-y);
     padding: var(--component-padding-x) var(--component-padding-y);
+
+    --component-border-width: calc(var(--border-width-xsmall) * var(--styled));
+
+    --theme-base-unit: var(--base-unit);
+    --theme-base-unit-calc: calc(var(--theme-base-unit) * var(--not-raw, 1) * var(--styled, 1));
   }
 }
