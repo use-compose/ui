@@ -15,7 +15,7 @@ import { YButton, YFlex } from '@/components'
 
 import { useTheme } from '@/composables'
 import { basePropsDefault } from '@/composables/component-theme'
-import { defineProps, withDefaults } from 'vue'
+// import { defineProps, withDefaults } from 'vue'
 import { YColorInput } from '../YColorInput'
 import type { YThemePickerProps } from './types'
 import './YThemePicker.css'
@@ -23,6 +23,8 @@ import './YThemePicker.css'
 withDefaults(defineProps<YThemePickerProps>(), {
   ...basePropsDefault,
 })
+
+const { setThemeProperty } = useTheme()
 
 const [primaryColor] = defineModel<string, string>('primaryColor', {
   set(value: string) {
@@ -52,8 +54,6 @@ const backgroundColor = defineModel<string, string>('backgroundColor', {
   },
 })
 
-const { setThemeProperty } = useTheme()
-
 function randomize() {
   const newPrimary = randomHexColorCode()
   const newSecondary = randomHexColorCode()
@@ -76,25 +76,3 @@ function randomize() {
   }
 }
 </script>
-
-<style lang="scss" scoped>
-.theme-picker {
-  justify-content: center;
-}
-
-.theme-hint {
-  flex-basis: 100%;
-  text-align: center;
-}
-
-@media (width >= 768px) {
-  .theme-picker {
-    justify-content: normal;
-  }
-
-  .theme-hint {
-    flex-basis: auto;
-    margin-bottom: 0;
-  }
-}
-</style>

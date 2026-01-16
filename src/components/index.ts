@@ -1,4 +1,5 @@
 export * from './AppCompose'
+export * from './YThemePicker'
 
 //  layout
 // export * from './layout'

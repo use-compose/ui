@@ -2,6 +2,7 @@
   syntax: '<color>';
   inherits: true;
 } */
+@import url('./tokens/css/variants.css') layer(theme-api);
 
 /* 
  * CSS Type Grinding - https://www.bitovi.com/blog/css-only-type-grinding-casting-tokens-into-useful-values
@@ -99,7 +100,6 @@
   --tone-a: var(--color-danger-opacity);
 }
 
-[data-compose-ui],
 .primary,
 .secondary,
 .danger,
@@ -132,17 +132,6 @@
       var(--color-danger, #bd1414) calc(var(--danger) * 100%)
     )
   );
-
-  /* 
-  --theme-current-color-hue: calc(var(--color-bg-hue) * var(--primary) + var(--color-bg-hue) * var(--secondary) + var(--color-bg-hue) * var(--danger));
-  --theme-current-color-saturation: calc(var(--color-bg-saturation) * var(--primary) + var(--color-bg-saturation) * var(--secondary) + var(--color-bg-saturation) * var(--danger));
-  --theme-current-color-lightness: calc(var(--color-bg-lightness) * var(--primary) + var(--color-bg-lightness) * var(--secondary) + var(--color-bg-lightness) * var(--danger));
-  --theme-current-color-opacity: calc(var(--color-bg-opacity) * var(--primary) + var(--color-bg-opacity) * var(--secondary) + var(--color-bg-opacity) * var(--danger)); */
-
-  /* --component-box-shadow-hover: var(--component-box-shadow-x) var(--component-box-shadow-y) 0 0 black; */
-  /* --component-box-shadow-focus: calc(var(--component-box-shadow-x) * var(--theme-base-unit-calc)) calc(var(--component-box-shadow-y) * var(--theme-base-unit-calc)) 0 0 var(--component-box-shadow-color); */
-  /* --component-box-shadow-focus: none; */
-  /* --component-box-shadow-active: calc(var(--component-box-shadow-x) * var(--theme-base-unit-calc)) calc(var(--component-box-shadow-y) * var(--theme-base-unit-calc)) 0 0 var(--component-box-shadow-color); */
 }
 
 /* 
@@ -247,6 +236,8 @@
   --v-text-c: var(--variant-contained-text-chroma);
   --v-text-h: var(--variant-contained-text-hue);
   --v-text-a: var(--variant-contained-text-opacity);
+
+  --component-text-color: white;
 }
 
 [data-compose-ui].outlined {
@@ -354,46 +345,35 @@
 }
 
 @layer state {
-  [data-compose-ui]:has(:not(:hover), .base),
-  .base:not([disabled], .disabled) {
-    --state: base;
-  }
+  [data-compose-ui] {
+    &:not([disabled], .disabled) {
+      &.base {
+        --state: base;
+      }
 
-  [data-compose-ui]:has(:hover, .hover),
-  .hover,
-  :hover {
-    --state: hover;
-  }
+      &.hover,
+      &:hover {
+        --state: hover;
+      }
 
-  [data-compose-ui]:has(:active, .active),
-  .active,
-  :active {
-    --state: active;
-  }
+      &.active,
+      &:active {
+        --state: active;
+      }
 
-  [data-compose-ui]:has(:focus-visible, :focus, .focus-visible, .focus),
-  :focus,
-  .focus-visible,
-  .focus,
-  :focus-visible {
-    --state: focus;
-  }
+      &.focus,
+      &.focus-visible,
+      &:focus,
+      &:focus-visible {
+        --state: focus;
+      }
+    }
 
-  [data-compose-ui] .disabled,
-  [data-compose-ui] :disabled,
-  [data-compose-ui] [disabled],
-  .disabled,
-  :disabled,
-  [disabled] {
-    --state: disabled;
-  }
-
-  .base,
-  .hover,
-  .active,
-  .focus,
-  .focus-visible,
-  .disabled {
+    &.disabled,
+    &:disabled,
+    &[disabled] {
+      --state: disabled;
+    }
   }
 }
 
@@ -435,7 +415,7 @@
 }
 
 [data-compose-ui]:active,
-[data-compose-ui]:has(:active, .active) {
+[data-compose-ui].active {
   /* active */
   --s-bg-l: var(--state-active-bg-lightness);
   --s-bg-c: var(--state-active-bg-chroma);
@@ -455,7 +435,8 @@
 
 [data-compose-ui]:focus,
 [data-compose-ui]:focus-visible,
-[data-compose-ui]:has(:focus-visible, :focus, .focus-visible, .focus) {
+[data-compose-ui].focus-visible,
+[data-compose-ui].focus {
   /* focus */
   --s-bg-l: var(--state-focus-bg-lightness);
   --s-bg-c: var(--state-focus-bg-chroma);
@@ -473,7 +454,9 @@
   --s-text-a: var(--state-focus-text-opacity);
 }
 
-[data-compose-ui]:disabled {
+[data-compose-ui]:disabled,
+[data-compose-ui].disabled,
+[data-compose-ui][disabled] {
   /* disabled */
   --s-bg-l: var(--state-disabled-bg-lightness);
   --s-bg-c: var(--state-disabled-bg-chroma);
@@ -547,10 +530,7 @@
 [data-compose-ui],
 .y-button,
 .y-input,
-.y-select,
-.primary,
-.secondary,
-.danger {
+.y-select {
   /* Base for all theming: if --unstyled is set, all styles are removed */
   --styled: calc(1 - var(--unstyled));
 
@@ -619,52 +599,55 @@
   --text-h: calc(var(--tone-h) + var(--v-text-h) + var(--s-text-h));
   --text-a: calc(var(--tone-a) * var(--v-text-a) * var(--s-text-a));
 
-  background: oklch(var(--bg-l) var(--bg-c) var(--bg-h) / var(--bg-a));
-  border-color: oklch(var(--border-l) var(--border-c) var(--border-h) / var(--border-a));
-  color: oklch(var(--text-l) var(--text-c) var(--text-h) / var(--text-a));
+  --component-bg-color: oklch(var(--bg-l) var(--bg-c) var(--bg-h) / var(--bg-a));
+  --component-border-color: oklch(
+    var(--border-l) var(--border-c) var(--border-h) / var(--border-a)
+  );
+  --component-text-color: oklch(var(--text-l) var(--text-c) var(--text-h) / var(--text-a));
 
-  border: var(--component-border-width) var(--component-border-style) var(--component-border-color);
-  background-color: var(--component-bg);
-  box-shadow: var(--component-box-shadow);
-  color: var(--component-color);
+  /* border: var(--component-border-width) var(--component-border-style) var(--component-border-color); */
+  border-color: var(--component-color-border);
 
-  --box-shadow-x: var(--theme-base-unit-calc);
+  background-color: var(--component-bg-color);
+  color: var(--component-text-color);
+
+  /* --box-shadow-x: var(--theme-base-unit-calc);
   --box-shadow-y: var(--theme-base-unit-calc);
 
   --component-translate-x: var(--theme-base-unit-calc);
-  --component-translate-y: var(--theme-base-unit-calc);
-
+  --component-translate-y: var(--theme-base-unit-calc); */
+  /* 
   --box-shadow-base: var(--box-shadow-x) var(--box-shadow-y) 0 0 black;
-  --box-shadow-hover: var(--box-shadow-x) var(--box-shadow-y) 0 0 var(--theme-current-color);
+  --box-shadow-hover: var(--box-shadow-x) var(--box-shadow-y) 0 0 var(--theme-current-color); */
 
   /*
    * Pseudo-boolean CSS custom properties - https://keithclark.co.uk/articles/pseudo-boolean-css-custom-properties
    * Define colors based on component state 
    */
-  --component-color: color-mix(
+  /* --component-color: color-mix(
     in srgb,
     var(--font-color) calc(100% * var(--primary, 0)),
     var(--theme-current-color)
-  );
+  ); */
 
-  --component-bg: color-mix(
+  /* --component-bg: color-mix(
     in srgb,
     var(--theme-current-color) calc(100% * var(--primary, 0)),
     transparent
-  );
+  ); */
 
-  --component-border-color: color-mix(
+  /* --component-border-color: color-mix(
     in srgb,
     var(--color-bg) calc(100% * var(--primary, 0)),
     var(--theme-current-color)
-  );
+  ); */
 
-  --component-box-shadow: var(--box-shadow-base);
+  /* --component-box-shadow: var(--box-shadow-base); */
   /* --component-padding-x: calc(var(--layout-space-unit) * var(--styled)); */
   /* --component-padding-y: 0; */
   --component-border-style: solid;
 
-  --component-transform: translate(var(--component-translate-x), var(--component-translate-y));
+  /* --component-transform: translate(var(--component-translate-x), var(--component-translate-y)); */
 }
 /* 
 [data-compose-ui] {

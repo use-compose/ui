@@ -1,0 +1,199 @@
+/* state.css */
+@layer props, state, engine;
+
+/* -----------------------------------------------------------------------------
+ * PROPS
+ * -------------------------------------------------------------------------- */
+@layer props {
+  /* prettier-ignore */
+  @property --state { syntax: "base | hover | active | focus | disabled"; initial-value: base; inherits: true; }
+
+  /* token-or-0 */
+  /* prettier-ignore */
+  @property --_state-base-else-0 { syntax: "base | <integer>"; initial-value: 0; inherits: true; }
+  /* prettier-ignore */
+  @property --_state-hover-else-0 { syntax: "hover | <integer>"; initial-value: 0; inherits: true; }
+  /* prettier-ignore */
+  @property --_state-active-else-0 { syntax: "active | <integer>"; initial-value: 0; inherits: true; }
+  /* prettier-ignore */
+  @property --_state-focus-else-0 { syntax: "focus | <integer>"; initial-value: 0; inherits: true; }
+  /* prettier-ignore */
+  @property --_state-disabled-else-0 { syntax: "disabled | <integer>"; initial-value: 0; inherits: true; }
+
+  /* bits */
+  /* prettier-ignore */
+  @property --is-state-base { syntax: "<integer>"; initial-value: 1; inherits: true; }
+  /* prettier-ignore */
+  @property --is-state-hover { syntax: "<integer>"; initial-value: 1; inherits: true; }
+  /* prettier-ignore */
+  @property --is-state-active { syntax: "<integer>"; initial-value: 1; inherits: true; }
+  /* prettier-ignore */
+  @property --is-state-focus { syntax: "<integer>"; initial-value: 1; inherits: true; }
+  /* prettier-ignore */
+  @property --is-state-disabled { syntax: "<integer>"; initial-value: 1; inherits: true; }
+}
+
+/* -----------------------------------------------------------------------------
+ * STATE (only sets --state)
+ * -------------------------------------------------------------------------- */
+@layer state {
+  /**
+   * IMPORTANT: avoid unscoped :hover/:active/:focus rules.
+   * Only apply to the component root, otherwise everything on the page can inherit it.
+   */
+
+  [data-compose-ui]:not([disabled]):not(.disabled):not(:hover):not(:active):not(:focus):not(
+      :focus-visible
+    ),
+  [data-compose-ui].base:not([disabled]):not(.disabled) {
+    --state: base;
+  }
+
+  [data-compose-ui]:hover,
+  [data-compose-ui].hover {
+    --state: hover;
+  }
+
+  [data-compose-ui]:active,
+  [data-compose-ui].active {
+    --state: active;
+  }
+
+  [data-compose-ui]:focus,
+  [data-compose-ui]:focus-visible,
+  [data-compose-ui].focus,
+  [data-compose-ui].focus-visible {
+    --state: focus;
+  }
+
+  [data-compose-ui][disabled],
+  [data-compose-ui]:disabled,
+  [data-compose-ui].disabled {
+    --state: disabled;
+  }
+
+  /**
+   * If you REALLY need “child is hovered/focused sets parent state”, keep :has()
+   * but scope it to the root only:
+   */
+  [data-compose-ui]:has(:hover, .hover) {
+    --state: hover;
+  }
+  [data-compose-ui]:has(:active, .active) {
+    --state: active;
+  }
+  [data-compose-ui]:has(:focus-visible, :focus, .focus-visible, .focus) {
+    --state: focus;
+  }
+  [data-compose-ui]:has(.disabled, :disabled, [disabled]) {
+    --state: disabled;
+  }
+}
+
+/* -----------------------------------------------------------------------------
+ * ENGINE (grind -> bits, map -> s-* deltas)
+ * -------------------------------------------------------------------------- */
+@layer engine {
+  [data-compose-ui] {
+    /**
+     * 1) Grind enum -> bits
+     */
+    --_state-base-else-0: var(--state);
+    --is-state-base: var(--_state-base-else-0);
+
+    --_state-hover-else-0: var(--state);
+    --is-state-hover: var(--_state-hover-else-0);
+
+    --_state-active-else-0: var(--state);
+    --is-state-active: var(--_state-active-else-0);
+
+    --_state-focus-else-0: var(--state);
+    --is-state-focus: var(--_state-focus-else-0);
+
+    --_state-disabled-else-0: var(--state);
+    --is-state-disabled: var(--_state-disabled-else-0);
+
+    /**
+     * 2) Map state deltas (weighted sums)
+     *    Uses your existing state token names.
+     */
+    --s-bg-l: calc(
+      var(--is-state-base) * var(--state-base-bg-lightness) + var(--is-state-hover) *
+        var(--state-hover-bg-lightness) + var(--is-state-active) *
+        var(--state-active-bg-lightness) + var(--is-state-focus) * var(--state-focus-bg-lightness) +
+        var(--is-state-disabled) * var(--state-disabled-bg-lightness)
+    );
+    --s-bg-c: calc(
+      var(--is-state-base) * var(--state-base-bg-chroma) + var(--is-state-hover) *
+        var(--state-hover-bg-chroma) + var(--is-state-active) * var(--state-active-bg-chroma) +
+        var(--is-state-focus) * var(--state-focus-bg-chroma) + var(--is-state-disabled) *
+        var(--state-disabled-bg-chroma)
+    );
+    --s-bg-h: calc(
+      var(--is-state-base) * var(--state-base-bg-hue) + var(--is-state-hover) *
+        var(--state-hover-bg-hue) + var(--is-state-active) * var(--state-active-bg-hue) +
+        var(--is-state-focus) * var(--state-focus-bg-hue) + var(--is-state-disabled) *
+        var(--state-disabled-bg-hue)
+    );
+    --s-bg-a: calc(
+      var(--is-state-base) * var(--state-base-bg-opacity) + var(--is-state-hover) *
+        var(--state-hover-bg-opacity) + var(--is-state-active) * var(--state-active-bg-opacity) +
+        var(--is-state-focus) * var(--state-focus-bg-opacity) + var(--is-state-disabled) *
+        var(--state-disabled-bg-opacity)
+    );
+
+    --s-border-l: calc(
+      var(--is-state-base) * var(--state-base-border-lightness) + var(--is-state-hover) *
+        var(--state-hover-border-lightness) + var(--is-state-active) *
+        var(--state-active-border-lightness) + var(--is-state-focus) *
+        var(--state-focus-border-lightness) + var(--is-state-disabled) *
+        var(--state-disabled-border-lightness)
+    );
+    --s-border-c: calc(
+      var(--is-state-base) * var(--state-base-border-chroma) + var(--is-state-hover) *
+        var(--state-hover-border-chroma) + var(--is-state-active) *
+        var(--state-active-border-chroma) + var(--is-state-focus) *
+        var(--state-focus-border-chroma) + var(--is-state-disabled) *
+        var(--state-disabled-border-chroma)
+    );
+    --s-border-h: calc(
+      var(--is-state-base) * var(--state-base-border-hue) + var(--is-state-hover) *
+        var(--state-hover-border-hue) + var(--is-state-active) * var(--state-active-border-hue) +
+        var(--is-state-focus) * var(--state-focus-border-hue) + var(--is-state-disabled) *
+        var(--state-disabled-border-hue)
+    );
+    --s-border-a: calc(
+      var(--is-state-base) * var(--state-base-border-opacity) + var(--is-state-hover) *
+        var(--state-hover-border-opacity) + var(--is-state-active) *
+        var(--state-active-border-opacity) + var(--is-state-focus) *
+        var(--state-focus-border-opacity) + var(--is-state-disabled) *
+        var(--state-disabled-border-opacity)
+    );
+
+    --s-text-l: calc(
+      var(--is-state-base) * var(--state-base-text-lightness) + var(--is-state-hover) *
+        var(--state-hover-text-lightness) + var(--is-state-active) *
+        var(--state-active-text-lightness) + var(--is-state-focus) *
+        var(--state-focus-text-lightness) + var(--is-state-disabled) *
+        var(--state-disabled-text-lightness)
+    );
+    --s-text-c: calc(
+      var(--is-state-base) * var(--state-base-text-chroma) + var(--is-state-hover) *
+        var(--state-hover-text-chroma) + var(--is-state-active) * var(--state-active-text-chroma) +
+        var(--is-state-focus) * var(--state-focus-text-chroma) + var(--is-state-disabled) *
+        var(--state-disabled-text-chroma)
+    );
+    --s-text-h: calc(
+      var(--is-state-base) * var(--state-base-text-hue) + var(--is-state-hover) *
+        var(--state-hover-text-hue) + var(--is-state-active) * var(--state-active-text-hue) +
+        var(--is-state-focus) * var(--state-focus-text-hue) + var(--is-state-disabled) *
+        var(--state-disabled-text-hue)
+    );
+    --s-text-a: calc(
+      var(--is-state-base) * var(--state-base-text-opacity) + var(--is-state-hover) *
+        var(--state-hover-text-opacity) + var(--is-state-active) *
+        var(--state-active-text-opacity) + var(--is-state-focus) * var(--state-focus-text-opacity) +
+        var(--is-state-disabled) * var(--state-disabled-text-opacity)
+    );
+  }
+}

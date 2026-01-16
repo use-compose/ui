@@ -1,0 +1,33 @@
+name: ci
+
+on:
+  push:
+    branches:
+      - main
+      - dev
+  pull_request:
+    branches:
+      - main
+      - dev
+  workflow_dispatch:
+
+jobs:
+  lint_format_build:
+    if: ${{ ! startsWith(github.event.pull_request.head.ref, 'renovate/') }}
+    name: Lint, Format and build - Node version ${{ matrix.node_version }}
+    strategy:
+      matrix:
+        node_version: [20, 22, 24]
+    uses: ./.github/workflows/lint-format-build.yml
+    with:
+      node_version: ${{ matrix.node_version }}
+
+  test:
+    if: ${{ ! startsWith(github.event.pull_request.head.ref, 'renovate/') }}
+    name: Run Tests with Node version ${{ matrix.node_version }}
+    strategy:
+      matrix:
+        node_version: [20, 22, 24]
+    uses: ./.github/workflows/run-tests.yml
+    with:
+      node_version: ${{ matrix.node_version }}

@@ -1,0 +1,149 @@
+/* variant.css */
+@layer props, api, engine;
+
+/* -----------------------------------------------------------------------------
+ * PROPS
+ * -------------------------------------------------------------------------- */
+@layer props {
+  /* prettier-ignore */
+  @property --variant { syntax: "contained | outlined | text"; initial-value: contained; inherits: true; }
+
+  /* token-or-0 */
+  /* prettier-ignore */
+  @property --_variant-contained-else-0 { syntax: "contained | <integer>"; initial-value: 0; inherits: true; }
+  /* prettier-ignore */
+  @property --_variant-outlined-else-0 { syntax: "outlined | <integer>"; initial-value: 0; inherits: true; }
+  /* prettier-ignore */
+  @property --_variant-text-else-0 { syntax: "text | <integer>"; initial-value: 0; inherits: true; }
+
+  /* bits */
+  /* prettier-ignore */
+  @property --is-variant-contained { syntax: "<integer>"; initial-value: 1; inherits: true; }
+  /* prettier-ignore */
+  @property --is-variant-outlined { syntax: "<integer>"; initial-value: 1; inherits: true; }
+  /* prettier-ignore */
+  @property --is-variant-text { syntax: "<integer>"; initial-value: 1; inherits: true; }
+
+  /* optional numeric feature flags derived from variant */
+  /* prettier-ignore */
+  @property --has-border { syntax: "<number>"; initial-value: 0; inherits: true; }
+}
+
+/* -----------------------------------------------------------------------------
+ * API (classes only set the enum)
+ * -------------------------------------------------------------------------- */
+@layer api {
+  .contained {
+    --variant: contained;
+  }
+
+  .outlined {
+    --variant: outlined;
+  }
+
+  .text {
+    --variant: text;
+  }
+}
+
+/* -----------------------------------------------------------------------------
+ * ENGINE (grind -> bits, map -> v-* deltas, derive helpers like has-border)
+ * -------------------------------------------------------------------------- */
+@layer engine {
+  [data-compose-ui] {
+    /**
+     * 1) Grind enum -> bits
+     */
+    --_variant-contained-else-0: var(--variant);
+    --is-variant-contained: var(--_variant-contained-else-0);
+
+    --_variant-outlined-else-0: var(--variant);
+    --is-variant-outlined: var(--_variant-outlined-else-0);
+
+    --_variant-text-else-0: var(--variant);
+    --is-variant-text: var(--_variant-text-else-0);
+
+    /**
+     * 2) Optional helper flags
+     *    Outline has a border, the others don’t (tweak if you want text to have one too)
+     */
+    --has-border: var(--is-variant-outlined);
+
+    /**
+     * 3) Map variant deltas (weighted sums)
+     *    These are exactly your existing token names, just selected via bits.
+     */
+    --v-bg-l: calc(
+      var(--is-variant-contained) * var(--variant-contained-bg-lightness) +
+        var(--is-variant-outlined) * var(--variant-outlined-bg-lightness) + var(--is-variant-text) *
+        var(--variant-text-bg-lightness)
+    );
+    --v-bg-c: calc(
+      var(--is-variant-contained) * var(--variant-contained-bg-chroma) +
+        var(--is-variant-outlined) * var(--variant-outlined-bg-chroma) + var(--is-variant-text) *
+        var(--variant-text-bg-chroma)
+    );
+    --v-bg-h: calc(
+      var(--is-variant-contained) * var(--variant-contained-bg-hue) + var(--is-variant-outlined) *
+        var(--variant-outlined-bg-hue) + var(--is-variant-text) * var(--variant-text-bg-hue)
+    );
+    --v-bg-a: calc(
+      var(--is-variant-contained) * var(--variant-contained-bg-opacity) +
+        var(--is-variant-outlined) * var(--variant-outlined-bg-opacity) + var(--is-variant-text) *
+        var(--variant-text-bg-opacity)
+    );
+
+    --v-border-l: calc(
+      var(--is-variant-contained) * var(--variant-contained-border-lightness) +
+        var(--is-variant-outlined) * var(--variant-outlined-border-lightness) +
+        var(--is-variant-text) * var(--variant-text-border-lightness)
+    );
+    --v-border-c: calc(
+      var(--is-variant-contained) * var(--variant-contained-border-chroma) +
+        var(--is-variant-outlined) * var(--variant-outlined-border-chroma) +
+        var(--is-variant-text) * var(--variant-text-border-chroma)
+    );
+    --v-border-h: calc(
+      var(--is-variant-contained) * var(--variant-contained-border-hue) +
+        var(--is-variant-outlined) * var(--variant-outlined-border-hue) + var(--is-variant-text) *
+        var(--variant-text-border-hue)
+    );
+    --v-border-a: calc(
+      var(--is-variant-contained) * var(--variant-contained-border-opacity) +
+        var(--is-variant-outlined) * var(--variant-outlined-border-opacity) +
+        var(--is-variant-text) * var(--variant-text-border-opacity)
+    );
+
+    --v-text-l: calc(
+      var(--is-variant-contained) * var(--variant-contained-text-lightness) +
+        var(--is-variant-outlined) * var(--variant-outlined-text-lightness) +
+        var(--is-variant-text) * var(--variant-text-text-lightness)
+    );
+    --v-text-c: calc(
+      var(--is-variant-contained) * var(--variant-contained-text-chroma) +
+        var(--is-variant-outlined) * var(--variant-outlined-text-chroma) + var(--is-variant-text) *
+        var(--variant-text-text-chroma)
+    );
+    --v-text-h: calc(
+      var(--is-variant-contained) * var(--variant-contained-text-hue) + var(--is-variant-outlined) *
+        var(--variant-outlined-text-hue) + var(--is-variant-text) * var(--variant-text-text-hue)
+    );
+    --v-text-a: calc(
+      var(--is-variant-contained) * var(--variant-contained-text-opacity) +
+        var(--is-variant-outlined) * var(--variant-outlined-text-opacity) + var(--is-variant-text) *
+        var(--variant-text-text-opacity)
+    );
+
+    /**
+     * 4) Border application helpers (keep render elsewhere if you prefer)
+     *    - you CAN multiply width
+     *    - you CANNOT multiply border-style
+     */
+    --component-border-width-effective: calc(
+      var(--has-border) * var(--component-border-width, 0px)
+    );
+    border-width: var(--component-border-width-effective);
+    border-style: var(--component-border-style, solid);
+    /* border-color can stay computed later (you already do border-color: oklch(...)) */
+  }
+}
