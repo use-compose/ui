@@ -70,6 +70,7 @@ export function useThemeComponentStory<T extends ThemeComponentBaseProps>(compon
     Raw: Story
     Large: Story
     Small: Story
+    Hover: Story
   } {
     const Default = {
       ...componentBaseStory,
@@ -106,6 +107,15 @@ export function useThemeComponentStory<T extends ThemeComponentBaseProps>(compon
       args: { ...commonArgs, ...componentBaseStory.args, size: 'small' },
     }
 
+    const Hover: Story = {
+      ...componentBaseStory,
+      // TODO-TICKET: https://www.notion.so/frontend-engineer-interview-process/States-CSS-only-2ea185e05586803b9595fb82e9143c2f?source=copy_link
+      // Add pseudo-state addon to Storybook to handle hover state properly
+      // And let CSS handle the hover styles
+      args: { ...commonArgs, ...componentBaseStory.args, state: 'hover' },
+      parameters: { pseudo: { hover: true } },
+    }
+
     return {
       Default,
       Primary,
@@ -114,6 +124,7 @@ export function useThemeComponentStory<T extends ThemeComponentBaseProps>(compon
       Raw,
       Large,
       Small,
+      Hover,
     }
   }
 

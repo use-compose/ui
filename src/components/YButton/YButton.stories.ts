@@ -56,6 +56,7 @@ const renderGenericStory: Story = {
   },
 }
 
-const { Default, Outlined, Disabled, Raw, Large, Small } = generateCommonStories(renderGenericStory)
+const { Default, Outlined, Disabled, Raw, Large, Small, Hover } =
+  generateCommonStories(renderGenericStory)
 
-export { Default, Disabled, Large, Outlined, Raw, Small }
+export { Default, Disabled, Hover, Large, Outlined, Raw, Small }

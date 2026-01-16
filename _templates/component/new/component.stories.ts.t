@@ -1,5 +1,5 @@
 ---
-to: src/components/<%= name %>/<%= name %>.stories.ts
+to: src/components/<%= h.changeCase.pascalCase(name) %>/<%= h.changeCase.pascalCase(name) %>.stories.ts
 ---
 
 import type { Meta, StoryObj } from '@storybook/vue3-vite'

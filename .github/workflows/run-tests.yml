@@ -1,9 +1,12 @@
 name: Run Tests - Accessibility
+
 on:
-  pull_request:
-    branches:
-      - main
-      - dev
+  workflow_call:
+    inputs:
+      node_version:
+        required: true
+        type: number
+        default: 22
 # https://zellwk.com/blog/github-actions-deploy/
 jobs:
   test-playwright:

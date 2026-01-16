@@ -18,11 +18,11 @@ const config: StorybookConfig = {
   //   ]
   // },
   addons: [
-    '@storybook/addon-links',
-    // '@chromatic-com/storybook',
+    '@storybook/addon-links', // '@chromatic-com/storybook',
     '@storybook/addon-docs',
     '@storybook/addon-designs',
     '@storybook/addon-a11y',
+    'storybook-addon-pseudo-states',
   ],
   framework: {
     name: '@storybook/vue3-vite',
