@@ -5,7 +5,6 @@ export interface YInputProps extends ThemeComponentBaseProps {
   label?: string
   name?: string
   inputClass?: string
-  inputRef?: string
   placeholder?: string
   type?: string
   hero?: boolean

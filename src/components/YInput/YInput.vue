@@ -1,7 +1,7 @@
 <template>
   <input
     :id="name"
-    :ref="inputRef"
+    ref="inputRef"
     :value="modelValue"
     :type="type"
     :name="name"
@@ -16,7 +16,7 @@
 </template>
 
 <script setup lang="ts">
-import { useAttrs } from 'vue'
+import { useAttrs, useTemplateRef } from 'vue'
 
 import { YLabel } from '@/components/YLabel'
 import { useColor, useRaw, useSize, useState, useVariant } from '@/composables'
@@ -31,7 +31,11 @@ const props = withDefaults(defineProps<YInputProps>(), {
   name: 'input-' + Math.random().toString(36).substring(7),
   type: 'text',
   placeholder: '',
-  inputRef: 'yInput',
+})
+
+const inputRef = useTemplateRef<HTMLInputElement | null>('inputRef')
+defineExpose({
+  inputRef,
 })
 // const attrs = useAttrs()
 
