@@ -4,7 +4,7 @@ import { MaybeRefOrGetter, onMounted, ref, unref, watch } from 'vue'
 export const animationEvents = ['changed', 'hovered'] as const
 export type AnimationEvent = (typeof animationEvents)[number]
 
-type Domish = HTMLElement | { el?: any } | { $el?: any } | null | undefined
+type Domish = HTMLElement | { el?: unknown } | { $el?: unknown } | null | undefined
 
 function resolveEl(source: MaybeRefOrGetter<Domish>) {
   const v = typeof source === 'function' ? source() : unref(source)

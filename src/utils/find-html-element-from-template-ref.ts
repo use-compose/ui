@@ -7,12 +7,12 @@ export function findHTMLElement(value: unknown): HTMLElement | null {
   if (typeof value === 'object') {
     // Preferred: exposed el
     if ('el' in value) {
-      return findHTMLElement((value as any).el)
+      return findHTMLElement(value.el)
     }
 
     // Fallback: component $el (only recurse, don't assume)
     if ('$el' in value) {
-      return findHTMLElement((value as any).$el)
+      return findHTMLElement(value.$el)
     }
   }
 
