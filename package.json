@@ -28,7 +28,8 @@
     "syncpack:fix": "syncpack fix --dependency-types prod,dev",
     "syncpack:format": "syncpack format",
     "syncpack:lint": "syncpack lint --dependency-types prod,dev",
-    "test-storybook": "test-storybook"
+    "test-storybook": "test-storybook",
+    "test": "vitest"
   },
   "dependencies": {
     "compression": "1.8.1",
@@ -61,19 +62,19 @@
     "globals": "16.1.0",
     "husky": "9.1.7",
     "hygen": "6.2.11",
-    "lightningcss": "^1.30.2",
+    "lightningcss": "1.30.2",
     "lint-staged": "16.1.0",
     "prettier": "3.5.3",
     "prettier-plugin-organize-imports": "4.1.0",
     "react-dom": "19.2.0",
     "sass": "1.89.2",
     "storybook": "10.1.11",
-    "storybook-addon-pseudo-states": "^10.1.11",
+    "storybook-addon-pseudo-states": "10.1.11",
     "style-dictionary": "4.3.3",
     "stylelint": "16.23.0",
     "stylelint-config-recommended-vue": "1.6.0",
     "stylelint-config-standard-scss": "15.0.1",
-    "syncpack": "^14.0.0-alpha.37",
+    "syncpack": "14.0.0-alpha.37",
     "tinycolor2": "1.6.0",
     "typescript": "5.9.3",
     "typescript-eslint": "8.53.0",
@@ -81,7 +82,7 @@
     "vite": "7.3.1",
     "vite-plugin-dts": "4.5.4",
     "vite-plugin-linter": "2.1.1",
-    "vite-plugin-vue-devtools": "^8.0.5",
+    "vite-plugin-vue-devtools": "8.0.5",
     "vue-tsc": "2.2.10"
   },
   "bin": {

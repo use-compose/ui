@@ -10,7 +10,6 @@ on:
 # https://zellwk.com/blog/github-actions-deploy/
 jobs:
   test-playwright:
-    if: ${{ ! startsWith(github.event.pull_request.head.ref, 'renovate/') }}
     runs-on: ubuntu-latest
 
     steps:
@@ -20,10 +19,13 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: ${{ inputs.node_version }}
 
       - name: Install dependencies
-        run: npm install
+        uses: ./.github/actions/install-dependencies
+        with:
+          node_version: ${{ inputs.node_version }}
+          cache: 'npm'
 
       - name: Install Playwright
         run: npx playwright install --with-deps
@@ -32,3 +34,24 @@ jobs:
         run: npm run test-storybook
         env:
           TARGET_URL: 'https://compose-ui.arthurplazanet.com/'
+
+  test-vitest:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ inputs.node_version }}
+
+      - name: Install dependencies
+        uses: ./.github/actions/install-dependencies
+        with:
+          node_version: ${{ inputs.node_version }}
+          cache: 'npm'
+
+      - name: Run Vitest tests
+        run: npm run test

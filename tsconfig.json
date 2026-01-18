@@ -31,7 +31,9 @@
     "src/**/*.vue",
     "src/index.ts",
     "style-dictionary/**/*.json",
-    "style-dictionary/**/*.js"
+    "style-dictionary/**/*.js",
+    "vite.config.ts",
+    "vitest.config.ts"
   ],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
