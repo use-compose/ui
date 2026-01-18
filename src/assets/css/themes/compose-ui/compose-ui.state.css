@@ -1,7 +1,3 @@
-/* 
- * CSS Type Grinding - https://www.bitovi.com/blog/css-only-type-grinding-casting-tokens-into-useful-values
-*/
-
 /* state.css */
 @layer props, state, engine;
 
@@ -121,32 +117,24 @@
      * 2) Map state deltas (weighted sums)
      *    Uses your existing state token names.
      */
-
-    /* prettier-ignore */
     --s-bg-l: calc(
       var(--is-state-base) * var(--state-base-bg-lightness) + var(--is-state-hover) *
         var(--state-hover-bg-lightness) + var(--is-state-active) *
         var(--state-active-bg-lightness) + var(--is-state-focus) * var(--state-focus-bg-lightness) +
         var(--is-state-disabled) * var(--state-disabled-bg-lightness)
     );
-
-    /* prettier-ignore */
     --s-bg-c: calc(
       var(--is-state-base) * var(--state-base-bg-chroma) + var(--is-state-hover) *
         var(--state-hover-bg-chroma) + var(--is-state-active) * var(--state-active-bg-chroma) +
         var(--is-state-focus) * var(--state-focus-bg-chroma) + var(--is-state-disabled) *
         var(--state-disabled-bg-chroma)
     );
-
-    /* prettier-ignore */
     --s-bg-h: calc(
       var(--is-state-base) * var(--state-base-bg-hue) + var(--is-state-hover) *
         var(--state-hover-bg-hue) + var(--is-state-active) * var(--state-active-bg-hue) +
         var(--is-state-focus) * var(--state-focus-bg-hue) + var(--is-state-disabled) *
         var(--state-disabled-bg-hue)
     );
-
-    /* prettier-ignore */
     --s-bg-a: calc(
       var(--is-state-base) * var(--state-base-bg-opacity) + var(--is-state-hover) *
         var(--state-hover-bg-opacity) + var(--is-state-active) * var(--state-active-bg-opacity) +
@@ -154,7 +142,6 @@
         var(--state-disabled-bg-opacity)
     );
 
-    /* prettier-ignore */
     --s-border-l: calc(
       var(--is-state-base) * var(--state-base-border-lightness) + var(--is-state-hover) *
         var(--state-hover-border-lightness) + var(--is-state-active) *
@@ -162,8 +149,6 @@
         var(--state-focus-border-lightness) + var(--is-state-disabled) *
         var(--state-disabled-border-lightness)
     );
-
-    /* prettier-ignore */
     --s-border-c: calc(
       var(--is-state-base) * var(--state-base-border-chroma) + var(--is-state-hover) *
         var(--state-hover-border-chroma) + var(--is-state-active) *
@@ -171,16 +156,12 @@
         var(--state-focus-border-chroma) + var(--is-state-disabled) *
         var(--state-disabled-border-chroma)
     );
-
-    /* prettier-ignore */
     --s-border-h: calc(
       var(--is-state-base) * var(--state-base-border-hue) + var(--is-state-hover) *
         var(--state-hover-border-hue) + var(--is-state-active) * var(--state-active-border-hue) +
         var(--is-state-focus) * var(--state-focus-border-hue) + var(--is-state-disabled) *
         var(--state-disabled-border-hue)
     );
-
-    /* prettier-ignore */
     --s-border-a: calc(
       var(--is-state-base) * var(--state-base-border-opacity) + var(--is-state-hover) *
         var(--state-hover-border-opacity) + var(--is-state-active) *
@@ -189,7 +170,6 @@
         var(--state-disabled-border-opacity)
     );
 
-    /* prettier-ignore */
     --s-text-l: calc(
       var(--is-state-base) * var(--state-base-text-lightness) + var(--is-state-hover) *
         var(--state-hover-text-lightness) + var(--is-state-active) *
@@ -197,24 +177,18 @@
         var(--state-focus-text-lightness) + var(--is-state-disabled) *
         var(--state-disabled-text-lightness)
     );
-
-    /* prettier-ignore */
     --s-text-c: calc(
       var(--is-state-base) * var(--state-base-text-chroma) + var(--is-state-hover) *
         var(--state-hover-text-chroma) + var(--is-state-active) * var(--state-active-text-chroma) +
         var(--is-state-focus) * var(--state-focus-text-chroma) + var(--is-state-disabled) *
         var(--state-disabled-text-chroma)
     );
-
-    /* prettier-ignore */
     --s-text-h: calc(
       var(--is-state-base) * var(--state-base-text-hue) + var(--is-state-hover) *
         var(--state-hover-text-hue) + var(--is-state-active) * var(--state-active-text-hue) +
         var(--is-state-focus) * var(--state-focus-text-hue) + var(--is-state-disabled) *
         var(--state-disabled-text-hue)
     );
-
-    /* prettier-ignore */
     --s-text-a: calc(
       var(--is-state-base) * var(--state-base-text-opacity) + var(--is-state-hover) *
         var(--state-hover-text-opacity) + var(--is-state-active) *

@@ -1,6 +1,6 @@
-@import url('../tokens/css/themes/public-theme.css') layer(theme);
-@import url('../tokens/css/themes/private-theme.css') layer(theme);
-@import url('../tokens/css/space.css') layer(theme);
+@import url('../../tokens/css/themes/public-theme.css') layer(theme);
+@import url('../../tokens/css/themes/private-theme.css') layer(theme);
+@import url('../../tokens/css/space.css') layer(theme);
 
 @layer colors, theme-default, theme, cube;
 @layer theme {

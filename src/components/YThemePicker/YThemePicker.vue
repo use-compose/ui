@@ -7,6 +7,7 @@
     <YButton size="small" style="--component-margin-bottom: 0" @click="randomize">
       Randomize
     </YButton>
+    <p>{{ getToken('border-radius-base') }}</p>
   </YFlex>
 </template>
 
@@ -16,6 +17,7 @@ import { YButton, YFlex } from '@/components'
 import { useTheme } from '@/composables'
 import { basePropsDefault } from '@/composables/component-theme'
 // import { defineProps, withDefaults } from 'vue'
+import { useThemeTokens } from '@/composables/use-theme-tokens'
 import { YColorInput } from '../YColorInput'
 import type { YThemePickerProps } from './types'
 import './YThemePicker.css'
@@ -75,4 +77,6 @@ function randomize() {
     return '#' + n.slice(0, 6)
   }
 }
+
+const { getToken } = useThemeTokens()
 </script>
