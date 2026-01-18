@@ -23,7 +23,6 @@ jobs:
         uses: ./.github/actions/install-dependencies
         with:
           node_version: ${{ inputs.node_version }}
-          cache: 'npm'
 
       - name: Lint
         run: npm run lint
@@ -40,7 +39,6 @@ jobs:
         uses: ./.github/actions/install-dependencies
         with:
           node_version: ${{ inputs.node_version }}
-          cache: 'npm'
 
       - name: Lint Style
         if: ${{ always() }}
@@ -58,7 +56,6 @@ jobs:
         uses: ./.github/actions/install-dependencies
         with:
           node_version: ${{ inputs.node_version }}
-          cache: 'npm'
 
       - name: Format
         if: ${{ always() }}
@@ -76,7 +73,6 @@ jobs:
         uses: ./.github/actions/install-dependencies
         with:
           node_version: ${{ inputs.node_version }}
-          cache: 'npm'
 
       - name: Build
         if: ${{ always() }}
