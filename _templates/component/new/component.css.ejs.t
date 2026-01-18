@@ -1,12 +1,10 @@
 ---
-to: src/components/<%= name %>/<%= name %>.css
+to: src/components/<%= h.changeCase.pascalCase(name) %>/<%= h.changeCase.pascalCase(name) %>.css
 ---
-// Uncomment if needed
 
-// TODO: change to kebab-case
 .<%= h.changeCase.kebabCase(name) %> {
-  // Add your styles here
-  // Example:
-  // color: var(--color-primary);
-  // background-color: var(--color-background);
+  /* Add your styles here */
+  /* Example: */
+  /* color: var(--color-primary); */
+  /* background-color: var(--color-background); */
 }

@@ -11,7 +11,6 @@ on:
 # https://zellwk.com/blog/github-actions-deploy/
 jobs:
   lint:
-    if: ${{ ! startsWith(github.event.pull_request.head.ref, 'renovate/') }}
     runs-on: ubuntu-latest
 
     steps:
@@ -24,13 +23,11 @@ jobs:
         uses: ./.github/actions/install-dependencies
         with:
           node_version: ${{ inputs.node_version }}
-          cache: 'npm'
 
       - name: Lint
         run: npm run lint
 
   lint-style:
-    if: ${{ ! startsWith(github.event.pull_request.head.ref, 'renovate/') }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -42,14 +39,12 @@ jobs:
         uses: ./.github/actions/install-dependencies
         with:
           node_version: ${{ inputs.node_version }}
-          cache: 'npm'
 
       - name: Lint Style
         if: ${{ always() }}
         run: npm run lint:style
 
   format:
-    if: ${{ ! startsWith(github.event.pull_request.head.ref, 'renovate/') }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -61,14 +56,12 @@ jobs:
         uses: ./.github/actions/install-dependencies
         with:
           node_version: ${{ inputs.node_version }}
-          cache: 'npm'
 
       - name: Format
         if: ${{ always() }}
         run: npm run format
 
   build:
-    if: ${{ ! startsWith(github.event.pull_request.head.ref, 'renovate/') }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -80,7 +73,6 @@ jobs:
         uses: ./.github/actions/install-dependencies
         with:
           node_version: ${{ inputs.node_version }}
-          cache: 'npm'
 
       - name: Build
         if: ${{ always() }}

@@ -2,7 +2,7 @@
 // https://github.com/enquirer/enquirer/tree/master/examples
 //
 
-module.exports = [
+export default [
   {
     type: 'input',
     name: 'name',
