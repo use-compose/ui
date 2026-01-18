@@ -1,0 +1,103 @@
+/* tone.css */
+@layer props, api, engine;
+
+/* -----------------------------------------------------------------------------
+ * PROPS (ONLY @property)
+ * -------------------------------------------------------------------------- */
+@layer props {
+  /* prettier-ignore */
+  @property --tone { syntax: "primary | secondary | danger"; initial-value: primary; inherits: true; }
+
+  /* token-or-0 (else-0) */
+  /* prettier-ignore */
+  @property --_tone-primary-else-0 { syntax: "primary | <integer>"; initial-value: 0; inherits: true; }
+  /* prettier-ignore */
+  @property --_tone-secondary-else-0 { syntax: "secondary | <integer>"; initial-value: 0; inherits: true; }
+  /* prettier-ignore */
+  @property --_tone-danger-else-0 { syntax: "danger | <integer>"; initial-value: 0; inherits: true; }
+
+  /* bits (invalid => initial-value 1) */
+  /* prettier-ignore */
+  @property --is-tone-primary { syntax: "<integer>"; initial-value: 1; inherits: true; }
+  /* prettier-ignore */
+  @property --is-tone-secondary { syntax: "<integer>"; initial-value: 1; inherits: true; }
+  /* prettier-ignore */
+  @property --is-tone-danger { syntax: "<integer>"; initial-value: 1; inherits: true; }
+}
+
+/* -----------------------------------------------------------------------------
+ * API (classes only set the enum)
+ * -------------------------------------------------------------------------- */
+@layer api {
+  .primary {
+    --tone: primary;
+  }
+
+  .secondary {
+    --tone: secondary;
+  }
+
+  .danger {
+    --tone: danger;
+  }
+}
+
+/* -----------------------------------------------------------------------------
+ * ENGINE (grind -> bits, then map -> tone-l/c/h/a)
+ * -------------------------------------------------------------------------- */
+@layer engine {
+  [data-compose-ui] {
+    /**
+     * 1) Grind tone enum into bits
+     *    - if --tone matches keyword => else-0 becomes keyword, bit becomes 1 (fallback)
+     *    - else => else-0 becomes 0, bit becomes 0
+     */
+    --_tone-primary-else-0: var(--tone);
+    --is-tone-primary: var(--_tone-primary-else-0);
+
+    --_tone-secondary-else-0: var(--tone);
+    --is-tone-secondary: var(--_tone-secondary-else-0);
+
+    --_tone-danger-else-0: var(--tone);
+    --is-tone-danger: var(--_tone-danger-else-0);
+
+    /**
+     * 2) Map intent tokens -> selected tone channels (oklch components)
+     *    Uses your existing token names (primitive/semantic/intent can feed these)
+     */
+
+    /* prettier-ignore */
+    --tone-l: calc(
+      var(--is-tone-primary) * var(--color-primary-lightness) +
+      var(--is-tone-secondary) * var(--color-secondary-lightness) +
+      var(--is-tone-danger) * var(--color-danger-lightness)
+    );
+
+    /* prettier-ignore */
+    --tone-c: calc(
+      var(--is-tone-primary) * var(--color-primary-chroma) +
+      var(--is-tone-secondary) * var(--color-secondary-chroma) +
+      var(--is-tone-danger) * var(--color-danger-chroma) 
+    );
+
+    /* prettier-ignore */
+    --tone-h: calc(
+      var(--is-tone-primary) * var(--color-primary-hue) +
+      var(--is-tone-secondary) * var(--color-secondary-hue) +
+      var(--is-tone-danger) * var(--color-danger-hue) 
+    );
+
+    /* prettier-ignore */
+    --tone-a: calc(
+      var(--is-tone-primary) * var(--color-primary-opacity) +
+      var(--is-tone-secondary) * var(--color-secondary-opacity) +
+      var(--is-tone-danger) * var(--color-danger-opacity) 
+    );
+
+    /**
+     * Optional: keep an actual color version if you still want it
+     * (useful for shadows/mix, though you already render via oklch later)
+     */
+    --theme-current-color: oklch(var(--tone-l) var(--tone-c) var(--tone-h) / var(--tone-a));
+  }
+}

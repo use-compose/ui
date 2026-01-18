@@ -23,7 +23,8 @@
 
     "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": ["src/*"],
+      "unholy-tokens/*": ["src/assets/css/themes/tokens/*"]
     }
   },
   "include": [

@@ -2,12 +2,12 @@
   syntax: '<color>';
   inherits: true;
 } */
-@import url('./tokens/css/variants.css') layer(theme-api);
+@import url('./themes/tokens/css/variants.css') layer(theme-api);
 
 /* 
  * CSS Type Grinding - https://www.bitovi.com/blog/css-only-type-grinding-casting-tokens-into-useful-values
 */
-@layer state;
+/* @layer state; */
 
 /*
  * Color Properties
@@ -378,7 +378,6 @@
 }
 
 [data-compose-ui].base {
-  /* base default */
   --s-bg-l: var(--state-base-bg-lightness);
   --s-bg-c: var(--state-base-bg-chroma);
   --s-bg-h: var(--state-base-bg-hue);
@@ -397,7 +396,6 @@
 
 [data-compose-ui]:hover,
 [data-compose-ui].hover {
-  /* hover */
   --s-bg-l: var(--state-hover-bg-lightness);
   --s-bg-c: var(--state-hover-bg-chroma);
   --s-bg-h: var(--state-hover-bg-hue);
@@ -416,7 +414,6 @@
 
 [data-compose-ui]:active,
 [data-compose-ui].active {
-  /* active */
   --s-bg-l: var(--state-active-bg-lightness);
   --s-bg-c: var(--state-active-bg-chroma);
   --s-bg-h: var(--state-active-bg-hue);
@@ -437,7 +434,6 @@
 [data-compose-ui]:focus-visible,
 [data-compose-ui].focus-visible,
 [data-compose-ui].focus {
-  /* focus */
   --s-bg-l: var(--state-focus-bg-lightness);
   --s-bg-c: var(--state-focus-bg-chroma);
   --s-bg-h: var(--state-focus-bg-hue);
@@ -457,7 +453,6 @@
 [data-compose-ui]:disabled,
 [data-compose-ui].disabled,
 [data-compose-ui][disabled] {
-  /* disabled */
   --s-bg-l: var(--state-disabled-bg-lightness);
   --s-bg-c: var(--state-disabled-bg-chroma);
   --s-bg-h: var(--state-disabled-bg-hue);
@@ -548,6 +543,12 @@
       calc(var(--active) * 100% + var(--focus) * 100% + var(--disabled) * 100%)
   );
   --shadow-dark: var(--color-main-dark);
+  /* --component-shadow-depth: calc(
+    var(--is-state-base) * var(--_component-shadow-base) + var(--is-state-hover) *
+      var(--_component-shadow-hover) + var(--is-state-active) * var(--_component-shadow-active) +
+      var(--is-state-focus) * var(--_component-shadow-focus) + var(--is-state-disabled) *
+      var(--_component-shadow-disabled) - 1 * var(--_component-transform-depth)
+  ); */
   --component-shadow-depth: calc(
     var(--base) * var(--_component-shadow-base) + var(--hover) * var(--_component-shadow-hover) +
       var(--active) * var(--_component-shadow-active) + var(--focus) *
@@ -564,6 +565,12 @@
   /**
    * Component Transform
    */
+  /* --_component-transform-depth: calc(
+    var(--_component-transform-base) * var(--is-state-base) + var(--_component-transform-hover) *
+      var(--is-state-hover) + var(--_component-transform-active) * var(--is-state-active) +
+      var(--_component-transform-focus) * var(--is-state-focus) +
+      var(--_component-transform-disabled) * var(--is-state-disabled)
+  ); */
   --_component-transform-depth: calc(
     var(--_component-transform-base) * var(--base) + var(--_component-transform-hover) *
       var(--hover) + var(--_component-transform-active) * var(--active) +

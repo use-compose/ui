@@ -33,6 +33,7 @@ export default defineConfig(({ mode }) => {
       alias: [
         { find: '@', replacement: fileURLToPath(new URL('./src/', import.meta.url)) },
         { find: '../../../', replacement: fileURLToPath(new URL('./src/assets', import.meta.url)) },
+        { find: 'unholy-tokens/*', replacement: 'src/assets/css/themes/tokens/*' },
       ],
     },
     // publicDir: 'public',

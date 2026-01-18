@@ -322,11 +322,11 @@ $variants: ('contained', 'outlined', 'text');
   // }
 
   // &:hover,
-  // &.hover {
-  &:not([disabled], .disabled, :disabled) {
-    @include theme.base;
-    @include theme.hover;
-  }
+  // // &.hover {
+  // &:not([disabled], .disabled, :disabled) {
+  //   @include theme.base;
+  //   @include theme.hover;
+  // }
   //   }
   // }
 

@@ -589,4 +589,5 @@ export interface YThemeToken {
   'highlighted-text-gap-max': string;
   'highlighted-text-gap-scaler': string;
   'highlighted-text-gap-left': string;
+
 }

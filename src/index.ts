@@ -1,10 +1,5 @@
-// import { Wrapper } from './components'
-
-// export { Wrapper }
-// import './assets/scss/main.scss'
-
-// import { Wrapper, YButton, YInput, Container, Flex, Card, Highlighted } from './components'
-
+// Supports weights 100-900
+import '@fontsource-variable/roboto'
 // Composables
 export * from './components'
 export * from './composables'

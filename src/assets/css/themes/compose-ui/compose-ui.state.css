@@ -1,5 +1,5 @@
 /* state.css */
-@layer props, state, engine;
+@layer props, api, engine;
 
 /* -----------------------------------------------------------------------------
  * PROPS
@@ -36,12 +36,39 @@
 /* -----------------------------------------------------------------------------
  * STATE (only sets --state)
  * -------------------------------------------------------------------------- */
-@layer state {
-  /**
-   * IMPORTANT: avoid unscoped :hover/:active/:focus rules.
-   * Only apply to the component root, otherwise everything on the page can inherit it.
-   */
+@layer api {
+  [data-compose-ui] {
+    /* disabled wins */
+    &.disabled,
+    &:disabled,
+    &[disabled] {
+      --state: disabled;
+    }
 
+    /* interactive states only when not disabled */
+    /* No need for `base` as it's the fallback */
+    &:not([disabled]):not(.disabled) {
+      &.focus,
+      &.focus-visible,
+      &:focus,
+      &:focus-visible {
+        --state: focus;
+      }
+
+      &.active,
+      &:active {
+        --state: active;
+      }
+
+      &.hover,
+      &:hover {
+        --state: hover;
+      }
+    }
+  }
+}
+
+/* 
   [data-compose-ui]:not([disabled]):not(.disabled):not(:hover):not(:active):not(:focus):not(
       :focus-visible
     ),
@@ -70,26 +97,26 @@
   [data-compose-ui]:disabled,
   [data-compose-ui].disabled {
     --state: disabled;
-  }
+  } */
 
-  /**
+/**
    * If you REALLY need “child is hovered/focused sets parent state”, keep :has()
    * but scope it to the root only:
    */
-  [data-compose-ui]:has(:hover, .hover) {
-    --state: hover;
-  }
-  [data-compose-ui]:has(:active, .active) {
-    --state: active;
-  }
-  [data-compose-ui]:has(:focus-visible, :focus, .focus-visible, .focus) {
-    --state: focus;
-  }
-  [data-compose-ui]:has(.disabled, :disabled, [disabled]) {
-    --state: disabled;
-  }
-}
-
+/* [data-compose-ui]:has(:hover, .hover) {
+      --state: hover;
+    }
+    [data-compose-ui]:has(:active, .active) {
+      --state: active;
+    }
+    [data-compose-ui]:has(:focus-visible, :focus, .focus-visible, .focus) {
+      --state: focus;
+    }
+    [data-compose-ui]:has(.disabled, :disabled, [disabled]) {
+      --state: disabled;
+    } */
+/* }
+} */
 /* -----------------------------------------------------------------------------
  * ENGINE (grind -> bits, map -> s-* deltas)
  * -------------------------------------------------------------------------- */
@@ -113,6 +140,19 @@
     --_state-disabled-else-0: var(--state);
     --is-state-disabled: var(--_state-disabled-else-0);
 
+    --_component-transform-depth: calc(
+      var(--_component-transform-base) * var(--is-state-base) + var(--_component-transform-hover) *
+        var(--is-state-hover) + var(--_component-transform-active) * var(--is-state-active) +
+        var(--_component-transform-focus) * var(--is-state-focus) +
+        var(--_component-transform-disabled) * var(--is-state-disabled)
+    );
+
+    --component-shadow-depth: calc(
+      var(--is-state-base) * var(--_component-shadow-base) + var(--is-state-hover) *
+        var(--_component-shadow-hover) + var(--is-state-active) * var(--_component-shadow-active) +
+        var(--is-state-focus) * var(--_component-shadow-focus) + var(--is-state-disabled) *
+        var(--_component-shadow-disabled) - 1 * var(--_component-transform-depth)
+    );
     /**
      * 2) Map state deltas (weighted sums)
      *    Uses your existing state token names.

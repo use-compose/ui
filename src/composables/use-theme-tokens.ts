@@ -1,16 +1,19 @@
-import { YThemeToken } from '@/assets/css/tokens/types/theme'
+// use-theme-tokens.ts
 import { isClientSide } from '@/utils/is-client-side'
+import type { YThemeToken } from 'unholy-tokens/types/tokens'
 
-// TODO: rewrite (GPT)
-export type YThemeTokenName = keyof YThemeToken // e.g. "border-radius-base" | ...
-export type YCssVarName = `--${YThemeTokenName}` // e.g. "--border-radius-base" | ...
+// ✅ only string keys
+export type YThemeTokenName = Extract<keyof YThemeToken, string>
+
+// ✅ css var union
+export type YCssVarName = `--${YThemeTokenName}`
 
 export function useThemeTokens(target: HTMLElement = document.documentElement) {
-  type Token = keyof YThemeToken
+  type Token = YThemeTokenName
 
   const setToken = (token: Token, value: string | null) => {
     if (!isClientSide()) return
-    const cssVar = `--${token}` as const
+    const cssVar = `--${token}` as YCssVarName
     if (value === null) target.style.removeProperty(cssVar)
     else target.style.setProperty(cssVar, value)
   }

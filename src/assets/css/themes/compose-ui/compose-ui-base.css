@@ -1,8 +1,8 @@
-@import url('../../tokens/css/themes/public-theme.css') layer(theme);
-@import url('../../tokens/css/themes/private-theme.css') layer(theme);
-@import url('../../tokens/css/space.css') layer(theme);
+/* @import url('../tokens/css/themes/public-theme.css') layer(theme);
+@import url('../tokens/css/themes/private-theme.css') layer(theme);
+@import url('../tokens/css/space.css') layer(theme);
 
-@layer colors, theme-default, theme, cube;
+@layer props, api, engine, colors, theme-default, theme, cube; */
 @layer theme {
   :root {
     --text-xs: var(--font-scale-0);
@@ -84,7 +84,7 @@
     /* Components */
     --_component-padding-x: var(--_button-padding-x);
     --_component-padding-y: var(--_button-padding-y);
-    padding: var(--_component-padding-x) var(--_component-padding-y);
+    padding: var(--_component-pading, var(--_component-padding-y) var(--_component-padding-x));
 
     --_component-border-width: calc(var(--border-width-xsmall) * var(--styled));
 
