@@ -9,4 +9,7 @@
 /* @import './themes/private-theme.css'; */
 /* @import './themes/public-theme.css'; */
 @import './theme.css';
-@import './themes/compose-ui-base.css';
+@import './themes/compose-ui/compose-ui-base.css';
+@import './themes/compose-ui/compose-ui.state.css';
+@import './themes/compose-ui/compose-ui.variant.css';
+@import './themes/compose-ui/compose-ui.tone.css';
