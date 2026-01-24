@@ -1,4 +1,5 @@
 /* https://stackoverflow.com/questions/6542212/use-css3-transitions-with-gradient-backgrounds/63848864#63848864 */
+
 /* Used for the shake animation see shake.css */
 @property --highlighted-color-1 {
   syntax: '<color>';
@@ -13,6 +14,7 @@
 }
 
 /* Control wether the highlighted background is displayed by default */
+
 /* Used with animation */
 @property --active {
   syntax: '<integer>';
@@ -22,25 +24,30 @@
 
 .-highlighted {
   text-transform: uppercase;
+
   /* TODO: check responsive line-height */
   line-height: 135%;
   margin: 0;
   position: relative;
 
   --is-not-hovered-yet: ;
+
   /* // line-height: 135%; */
+
   /* // margin: 0; */
+
   /* // padding: 4px 10px 1.4px; */
 
   &.stick-to-left {
     /* // position: relative; */
+
     /* --left-mobile-val: calc(
       0px - var(--layout-mobile-padding) -
         var(--highlighted-text-gap-left, clamp(-30px, -1.4vw, -2px))
     ); */
     --left-pos: calc(0px - var(--highlighted-text-gap-left));
-    padding-right: clamp(2px, 1.4vw, 30px);
 
+    padding-right: clamp(2px, 1.4vw, 30px);
     left: var(--left-pos);
   }
 }
@@ -54,14 +61,16 @@
 
   --highlighted-bg-color-1: var(--theme-current-color);
   --highlighted-bg-color-2: var(--theme-current-color);
-
   --highlighted-bg: linear-gradient(var(--highlighted-bg-color-1), var(--highlighted-bg-color-2));
 
   color: var(--color-bg);
+
   /* TODO: Gotham balance padding */
-  padding: 4.55px 2px 0 2px;
+  padding: 4.55px 2px 0;
   background-image: var(--highlighted-bg);
+
   /* -webkit-box-decoration-break: clone; */
+
   /* box-decoration-break: clone; */
 }
 
@@ -74,14 +83,15 @@
   padding-left: clamp(2px, 1.4vw, 30px);
 } */
 
-@media (min-width: 48rem) {
+@media (width >= 48rem) {
   /* 1280px */
   .-highlighted.-animate > span {
     color: var(--theme-current-color);
+
     /* --animate-in: highlight-to-left 0.5s 0.1s forwards; */
+
     /* --animate-out: var(--is-hovered-once, highlight-to-right 0.4s forwards); */
     background-size: 0% 100%;
-    -webkit-background-clip: padding-box, text;
     background-clip: padding-box, text;
     background-repeat: no-repeat;
     background-position: left;
@@ -96,6 +106,7 @@
   .-highlighted.-animate:not(:hover) > span {
     background-size: 100% 100%;
     color: var(--color-bg);
+
     --highlight-animate: var(--is-not-hovered-yet, var(--animate-out));
   }
 
@@ -108,9 +119,11 @@
   0% {
     background-size: 0% 100%;
   }
+
   50% {
     background-size: 100% 100%;
   }
+
   100% {
     background-size: 100% 100%;
     background-image: var(--highlighted-bg);
@@ -124,10 +137,12 @@
     background-image: var(--highlighted-bg);
     color: var(--color-bg);
   }
+
   50% {
     background-size: 100% 100%;
     background-position: right;
   }
+
   100% {
     background-size: 0% 100%;
     background-color: transparent;

@@ -4,12 +4,13 @@
 */
 @property --100vw {
   syntax: '<length>';
-  initial-value: 0px;
+  initial-value: 0;
   inherits: false;
 }
+
 @property --100vh {
   syntax: '<length>';
-  initial-value: 0px;
+  initial-value: 0;
   inherits: false;
 }
 
@@ -18,6 +19,7 @@
   --100vh: 100vh;
   --viewport-width: calc(tan(atan2(var(--100vw), 1px)));
   --viewport-height: calc(tan(atan2(var(--100vh), 1px)));
+
   /* calc() wrapper required for Safari, bug:
   // https://bugs.webkit.org/show_bug.cgi?id=263000
   */

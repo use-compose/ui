@@ -1,11 +1,17 @@
 <template>
-  <YFlow class="theme-picker" align="center" style="--flex-gap: var(--_spacing-md)">
-    <YFlex align="center" style="--flex-gap: var(--_spacing-md)">
+  <YFlow class="theme-picker" align="center" style="
+
+--flex-gap: var(--_spacing-md)">
+    <YFlex align="center" style="
+
+--flex-gap: var(--_spacing-md)">
       <YColorInput v-model="primaryColor" label="primary" name="primary" />
       <YColorInput v-model="secondaryColor" label="secondary" name="secondary" />
       <YColorInput v-model="dangerColor" label="danger" name="danger" />
       <YColorInput v-model="backgroundColor" label="background" name="background" />
-      <YButton size="small" style="--component-margin-bottom: 0" @click="randomize">
+      <YButton size="small" style="
+
+--component-margin-bottom: 0" @click="randomize">
         Randomize
       </YButton>
     </YFlex>

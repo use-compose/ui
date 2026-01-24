@@ -1,5 +1,6 @@
 /* Needed for the animation
 /* https://css-tricks.com/exploring-property-and-its-animating-powers/ */
+
 /* @property --transform-scale {
   syntax: '<number>';
   inherits: false;
@@ -23,7 +24,7 @@
   padding: var(--_checkbox-padding, var(--spacing-xs));
   border-radius: var(--_checkbox-radius, var(--border-radius-medium));
 
-  &:before {
+  &::before {
     content: '';
     position: absolute;
     width: 70%;
@@ -35,9 +36,11 @@
     /* border: var(--border-theme-50); */
     background-color: var(--_checkbox-bg, var(--color-bg-primary));
     box-sizing: border-box;
+
     /* transform: translate(var(--_checkbox-checkmark-translate))
       scale(var(--transform-scale)); */
     transform: translate(-50%, -50%) scale(0);
+
     /* animation: var(--checkbox-animation); */
     transition:
       transform 200ms ease,
@@ -47,7 +50,7 @@
   &:checked {
     /* --checkbox-animation: var(--checkbox-animation-checked-in); */
 
-    &:before {
+    &::before {
       transform: translate(-50%, -50%) scale(1);
       background-color: var(--color-main-dark);
     }

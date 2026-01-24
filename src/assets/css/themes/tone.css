@@ -9,18 +9,24 @@
   @property --tone { syntax: "primary | secondary | danger"; initial-value: primary; inherits: true; }
 
   /* token-or-0 (else-0) */
+
   /* prettier-ignore */
   @property --_tone-primary-else-0 { syntax: "primary | <integer>"; initial-value: 0; inherits: true; }
+
   /* prettier-ignore */
   @property --_tone-secondary-else-0 { syntax: "secondary | <integer>"; initial-value: 0; inherits: true; }
+
   /* prettier-ignore */
   @property --_tone-danger-else-0 { syntax: "danger | <integer>"; initial-value: 0; inherits: true; }
 
   /* bits (invalid => initial-value 1) */
+
   /* prettier-ignore */
   @property --is-tone-primary { syntax: "<integer>"; initial-value: 1; inherits: true; }
+
   /* prettier-ignore */
   @property --is-tone-secondary { syntax: "<integer>"; initial-value: 1; inherits: true; }
+
   /* prettier-ignore */
   @property --is-tone-danger { syntax: "<integer>"; initial-value: 1; inherits: true; }
 }
@@ -54,10 +60,8 @@
      */
     --_tone-primary-else-0: var(--tone);
     --is-tone-primary: var(--_tone-primary-else-0);
-
     --_tone-secondary-else-0: var(--tone);
     --is-tone-secondary: var(--_tone-secondary-else-0);
-
     --_tone-danger-else-0: var(--tone);
     --is-tone-danger: var(--_tone-danger-else-0);
 

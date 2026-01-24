@@ -17,25 +17,27 @@
 } */
 
 /* sm+ */
-@media (min-width: 40rem) {
+@media (width >= 40rem) {
   :root {
     --media-sm: var(--off);
   }
 }
+
 /* md+ */
-@media (min-width: 64rem) {
+@media (width >= 64rem) {
   :root {
     --media-md: var(--off);
   }
 }
+
 /* lg+ */
-@media (min-width: 80rem) {
+@media (width >= 80rem) {
   :root {
     --media-lg: var(--off);
   }
 }
 
-@media (min-width: 90rem) {
+@media (width >= 90rem) {
   :root {
     --media-xl: var(--off);
   }

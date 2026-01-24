@@ -1,6 +1,9 @@
 /* TODO: */
+
 /* .wrapper { */
+
 /* https://grafikart.fr/tutoriels/conteneur-css-1233 */
+
 /* box-sizing: border-box;
   width: min(
     var(--breakpoint-desktop-xl),
@@ -15,6 +18,7 @@
   width: 100%;
 
   /* https://www.oceg.org/ */
+
   /* max-width: clamp(16rem, var(--wrapper-max-width, 98rem), 95vw); */
 
   /* TODO: */
@@ -25,7 +29,7 @@
   padding-right: var(--layout-space-unit);
 }
 
-@media screen and (min-width: 48rem) {
+@media screen and (width >= 48rem) {
   .wrapper {
     --wrapper-max-width: var(--breakpoint-md);
   }

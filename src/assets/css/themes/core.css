@@ -1,12 +1,11 @@
-@import url('./tokens/css/colors.css') layer(colors);
+@import './tokens/css/colors.css' layer(colors);
+@import './tokens/css/themes/public-theme.css' layer(theme);
+@import './tokens/css/themes/private-theme.css' layer(theme);
 
-@import url('./tokens/css/themes/public-theme.css') layer(theme);
-@import url('./tokens/css/themes/private-theme.css') layer(theme);
 /* TODO: fix */
-@import url('./tokens/css/border/border.css') layer(theme);
-@import url('./tokens/css/space.css') layer(theme);
+@import './tokens/css/border/border.css' layer(theme);
+@import './tokens/css/space.css' layer(theme);
 
 /* CUBE Utilities */
-@import url('./tokens/css/cube/cube.utility.css') layer(cube);
-
+@import './tokens/css/cube/cube.utility.css' layer(cube);
 @layer props, api, engine, colors, theme-default, theme, cube;
