@@ -56,6 +56,7 @@ import AppCompose from '@/components/AppCompose.vue'
 import { useTheme } from '@/composables'
 import { basePropsDefault, ThemeComponentBaseProps } from '@/composables/component-theme'
 import { colors, states, variants } from '@/composables/theming'
+import './YButtonOverview.css'
 
 export interface YButtonOverviewProps extends ThemeComponentBaseProps {}
 
@@ -103,12 +104,3 @@ const setDangerColor = (color: string) => {
   return color
 }
 </script>
-<style lang="scss" scoped>
-.variant-label {
-  position: absolute;
-  top: 50%;
-  left: -1.5rem;
-  transform: translate(-100%, -50%);
-  color: grey;
-}
-</style>

@@ -1,0 +1,119 @@
+:root {
+  --modal-size-small: 32rem;
+  --modal-size-default: 56rem;
+  --dialog-z-index: 1000;
+  --z-index-base: 1000;
+  --overlay-z-index: var(--dialog-z-index);
+  --modal-z-index: calc(var(--dialog-z-index) + 1);
+}
+
+.modal-small {
+  --modal-size: var(--modal-size-small);
+}
+
+.modal-default {
+  --modal-size: var(--modal-size-default);
+}
+
+.y-overlay {
+  z-index: var(--overlay-z-index);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  overflow: auto;
+  position: fixed;
+  inset: 0;
+  background-color: var(--overlay-bg, var(--color-main-bg));
+  backdrop-filter: blur(var(--overlay-blur, 8px));
+  transition: opacity 0.3s ease;
+}
+
+.y-dialog {
+  padding: 0;
+  position: fixed;
+  z-index: var(--dialog-z-index);
+  border: 2px solid var(--color-primary);
+  border-width: 4px;
+  background-color: var(--color-bg);
+  display: flex;
+  flex-direction: column;
+}
+
+.y-modal {
+  padding: 0;
+  position: relative;
+  z-index: var(--modal-z-index);
+  border: 4px solid var(--color-primary);
+  background-color: var(--color-bg);
+  display: flex;
+  flex-direction: column;
+  max-width: min(calc(100% - 2 * var(--layout-mobile-padding)), var(--modal-size));
+  height: auto;
+  margin: 5rem 0;
+
+  --modal-z-index: calc(var(--dialog-z-index) + 1);
+}
+
+.y-drawer {
+  padding: 0;
+  position: fixed;
+  z-index: var(--dialog-z-index);
+  border: 4px solid var(--color-primary);
+  background-color: var(--color-bg);
+  display: flex;
+  flex-direction: column;
+  top: 0;
+  bottom: 0;
+  height: 100svh;
+  right: 0;
+  transition: transform 0.5s ease;
+  width: 100%;
+  width: min(var(--modal-size), 100%);
+
+  .y-modal-content {
+    flex-grow: 1;
+  }
+}
+
+@media (min-width: 768px) {
+  .y-modal {
+    width: var(--modal-size, var(--modal-size-default));
+  }
+}
+
+.y-modal-content {
+  padding: var(--_spacing-sm) var(--_spacing-md);
+  overflow-y: auto;
+  scrollbar-width: 3px;
+  scrollbar-color: var(--component-color);
+  scrollbar-gutter: stable both-edges;
+
+  /* custom scrollbar */
+  &::-webkit-scrollbar {
+    appearance: none;
+    width: 3px;
+    background-color: var(--color-primary);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--component-color);
+    box-shadow: 0 0 1px rgb(255 255 255 / 50%);
+  }
+}
+
+.y-modal-header {
+  font-family: gotham;
+  text-transform: uppercase;
+  padding: var(--_spacing-sm) var(--_spacing-md);
+}
+
+.y-modal-footer {
+  display: flex;
+  gap: var(--layout-gap);
+  padding: var(--_spacing-sm) var(--_spacing-md);
+}
+
+.y-modal-footer .y-button {
+  --component-margin-bottom: var(--component-box-shadow-y);
+  border: var(--component-border);
+}

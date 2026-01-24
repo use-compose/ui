@@ -1,13 +1,16 @@
 name: Lint Format Build
+
 on:
-  pull_request:
-    branches:
-      - main
-      - dev
+  workflow_call:
+    inputs:
+      node_version:
+        required: true
+        type: number
+        default: 22
+
 # https://zellwk.com/blog/github-actions-deploy/
 jobs:
   lint:
-    if: ${{ ! startsWith(github.event.pull_request.head.ref, 'renovate/') }}
     runs-on: ubuntu-latest
 
     steps:
@@ -19,13 +22,12 @@ jobs:
       - name: Install dependencies
         uses: ./.github/actions/install-dependencies
         with:
-          node_version: 22
+          node_version: ${{ inputs.node_version }}
 
       - name: Lint
         run: npm run lint
 
   lint-style:
-    if: ${{ ! startsWith(github.event.pull_request.head.ref, 'renovate/') }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -36,14 +38,13 @@ jobs:
       - name: Install dependencies
         uses: ./.github/actions/install-dependencies
         with:
-          node_version: 20
+          node_version: ${{ inputs.node_version }}
 
       - name: Lint Style
         if: ${{ always() }}
         run: npm run lint:style
 
   format:
-    if: ${{ ! startsWith(github.event.pull_request.head.ref, 'renovate/') }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -54,14 +55,13 @@ jobs:
       - name: Install dependencies
         uses: ./.github/actions/install-dependencies
         with:
-          node_version: 20
+          node_version: ${{ inputs.node_version }}
 
       - name: Format
         if: ${{ always() }}
         run: npm run format
 
   build:
-    if: ${{ ! startsWith(github.event.pull_request.head.ref, 'renovate/') }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -72,7 +72,7 @@ jobs:
       - name: Install dependencies
         uses: ./.github/actions/install-dependencies
         with:
-          node_version: 20
+          node_version: ${{ inputs.node_version }}
 
       - name: Build
         if: ${{ always() }}

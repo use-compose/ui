@@ -1,5 +1,5 @@
 <template>
-  <YFlex class="theme-picker" align="center" style="--flex-gap: var(--space-md)">
+  <YFlex class="theme-picker" align="center" style="--flex-gap: var(--_spacing-md)">
     <YColorInput v-model="primaryColor" label="primary" name="primary" />
     <YColorInput v-model="secondaryColor" label="secondary" name="secondary" />
     <YColorInput v-model="dangerColor" label="danger" name="danger" />
@@ -7,6 +7,7 @@
     <YButton size="small" style="--component-margin-bottom: 0" @click="randomize">
       Randomize
     </YButton>
+    <p>{{ getToken('border-radius-base') }}</p>
   </YFlex>
 </template>
 
@@ -15,14 +16,17 @@ import { YButton, YFlex } from '@/components'
 
 import { useTheme } from '@/composables'
 import { basePropsDefault } from '@/composables/component-theme'
-import { defineProps, withDefaults } from 'vue'
+// import { defineProps, withDefaults } from 'vue'
+import { useThemeTokens } from '@/composables/use-theme-tokens'
 import { YColorInput } from '../YColorInput'
 import type { YThemePickerProps } from './types'
-import './YThemePicker.scss'
+import './YThemePicker.css'
 
 withDefaults(defineProps<YThemePickerProps>(), {
   ...basePropsDefault,
 })
+
+const { setThemeProperty } = useTheme()
 
 const [primaryColor] = defineModel<string, string>('primaryColor', {
   set(value: string) {
@@ -52,8 +56,6 @@ const backgroundColor = defineModel<string, string>('backgroundColor', {
   },
 })
 
-const { setThemeProperty } = useTheme()
-
 function randomize() {
   const newPrimary = randomHexColorCode()
   const newSecondary = randomHexColorCode()
@@ -75,26 +77,6 @@ function randomize() {
     return '#' + n.slice(0, 6)
   }
 }
+
+const { getToken } = useThemeTokens()
 </script>
-
-<style lang="scss" scoped>
-.theme-picker {
-  justify-content: center;
-}
-
-.theme-hint {
-  flex-basis: 100%;
-  text-align: center;
-}
-
-@media (width >= 768px) {
-  .theme-picker {
-    justify-content: normal;
-  }
-
-  .theme-hint {
-    flex-basis: auto;
-    margin-bottom: 0;
-  }
-}
-</style>

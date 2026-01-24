@@ -32,7 +32,7 @@ import { modalDefaultProps } from '@/composables/components'
 import { computed, useSlots } from 'vue'
 import { BaseModalProps, YModalSize } from './types'
 import { getModalClasses } from './utils/modal-classes'
-import './YModal.scss'
+import './YModal.css'
 
 const props = withDefaults(defineProps<BaseModalProps>(), {
   ...modalDefaultProps,
@@ -45,42 +45,3 @@ const yModalClasses = computed(() => {
 
 const slots = useSlots()
 </script>
-
-<style lang="scss">
-// @mixin dialog {
-//   // @include theme-component;
-//   padding: 0;
-//   position: fixed;
-//   z-index: 1001;
-//   border: 4px solid color(main-dark);
-//   @include component(border-width, 4px);
-//   background-color: color(main-dark);
-//   background-color: color(bg);
-//   display: flex;
-//   flex-direction: column;
-// }
-
-// .y-modal {
-//   @include dialog;
-//   top: 50%;
-//   left: 50%;
-//   transform: translate(-50%, -50%);
-//   max-width: 100%;
-//   max-height: calc(100svh - 5%);
-// }
-
-// .y-drawer {
-//   @include dialog;
-//   top: 0;
-//   bottom: 0;
-//   height: 100svh;
-//   right: 0;
-//   width: clamp(260px, 65%, 896px);
-
-//   transition: transform 0.5s ease;
-
-//   .y-modal-content {
-//     flex-grow: 1;
-//   }
-// }
-</style>

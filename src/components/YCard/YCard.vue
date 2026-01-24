@@ -8,7 +8,7 @@
 import { useColor, useRaw, useSize, useState, useVariant } from '@/composables'
 import { ThemeComponentBaseProps } from '@/composables/component-theme'
 import { computed } from 'vue'
-import './YCard.scss'
+import './YCard.css'
 
 export interface YCardProps extends ThemeComponentBaseProps {}
 

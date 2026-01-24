@@ -17,7 +17,7 @@ export default defineConfig([
       ...pluginVue.configs['flat/recommended'],
       ...storybook.configs['flat/recommended'],
     ],
-    files: ['**/*.{js,mjs,cjs,ts,vue}'],
+    files: ['**/*.{js,mjs,cjs,ts,vue}', 'vite.config.ts', 'vitest.config.*.ts'],
     languageOptions: { parserOptions: { parser: tseslint.parser } },
     rules: {
       'no-console': 'error',

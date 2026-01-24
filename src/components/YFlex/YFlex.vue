@@ -6,7 +6,7 @@
 
 <script lang="ts" setup>
 import { computed } from 'vue'
-import './YFlex.scss'
+import './YFlex.css'
 
 interface FlexProps {
   direction?: 'row' | 'column' | 'row-reverse' | 'column-reverse' | 'initial' | 'inherit'
@@ -27,7 +27,7 @@ const props = withDefaults(defineProps<FlexProps>(), {
   direction: 'row',
   justify: 'normal',
   align: 'center',
-  gap: 'var(--space-sm)',
+  gap: 'var(--_spacing-sm)',
 })
 
 const flexClasses = computed(() => {

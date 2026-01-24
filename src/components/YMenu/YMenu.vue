@@ -14,7 +14,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import YFlex from '../YFlex/YFlex.vue'
-import './YMenu.scss'
+import './YMenu.css'
 import { YMenuProps } from './YMenu.types'
 
 const props = withDefaults(defineProps<YMenuProps>(), {

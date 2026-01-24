@@ -1,0 +1,199 @@
+/* variant.css */
+@layer props, api, engine;
+
+/* -----------------------------------------------------------------------------
+ * PROPS
+ * -------------------------------------------------------------------------- */
+@layer props {
+  /* prettier-ignore */
+  @property --variant { syntax: "contained | outlined | text"; initial-value: contained; inherits: true; }
+
+  /* token-or-0 */
+  /* prettier-ignore */
+  @property --_variant-contained-else-0 { syntax: "contained | <integer>"; initial-value: 0; inherits: true; }
+  /* prettier-ignore */
+  @property --_variant-outlined-else-0 { syntax: "outlined | <integer>"; initial-value: 0; inherits: true; }
+  /* prettier-ignore */
+  @property --_variant-text-else-0 { syntax: "text | <integer>"; initial-value: 0; inherits: true; }
+
+  /* bits */
+  /* prettier-ignore */
+  @property --is-variant-contained { syntax: "<integer>"; initial-value: 1; inherits: true; }
+  /* prettier-ignore */
+  @property --is-variant-outlined { syntax: "<integer>"; initial-value: 1; inherits: true; }
+  /* prettier-ignore */
+  @property --is-variant-text { syntax: "<integer>"; initial-value: 1; inherits: true; }
+
+  /* optional numeric feature flags derived from variant */
+  /* prettier-ignore */
+  @property --has-border { syntax: "<number>"; initial-value: 0; inherits: true; }
+}
+
+/* -----------------------------------------------------------------------------
+ * API (classes only set the enum)
+ * -------------------------------------------------------------------------- */
+@layer api {
+  .contained {
+    --variant: contained;
+  }
+
+  .outlined {
+    --variant: outlined;
+  }
+
+  .text {
+    --variant: text;
+  }
+}
+
+/* -----------------------------------------------------------------------------
+ * ENGINE (grind -> bits, map -> v-* deltas, derive helpers like has-border)
+ * -------------------------------------------------------------------------- */
+@layer engine {
+  [data-compose-ui] {
+    /**
+     * 1) Grind enum -> bits
+     */
+    --_variant-contained-else-0: var(--variant);
+    --is-variant-contained: var(--_variant-contained-else-0);
+
+    --_variant-outlined-else-0: var(--variant);
+    --is-variant-outlined: var(--_variant-outlined-else-0);
+
+    --_variant-text-else-0: var(--variant);
+    --is-variant-text: var(--_variant-text-else-0);
+
+    /**
+     * 2) Optional helper flags
+     *    Outline has a border, the others don’t (tweak if you want text to have one too)
+     */
+    --has-border: var(--is-variant-outlined);
+
+    /**
+     * 3) Map variant deltas (weighted sums)
+     *    These are exactly your existing token names, just selected via bits.
+     */
+
+    /* prettier-ignore */
+
+    /* prettier-ignore */
+    --s-bg-l: calc(
+      var(--is-state-base) * var(--state-base-bg-lightness) +
+      var(--is-state-hover) * var(--state-hover-bg-lightness) +
+      var(--is-state-active) * var(--state-active-bg-lightness) +
+      var(--is-state-focus) * var(--state-focus-bg-lightness) +
+      var(--is-state-disabled) * var(--state-disabled-bg-lightness)
+    );
+
+    /* prettier-ignore */
+    --s-bg-c: calc(
+      var(--is-state-base) * var(--state-base-bg-chroma) +
+      var(--is-state-hover) * var(--state-hover-bg-chroma) +
+      var(--is-state-active) * var(--state-active-bg-chroma) +
+      var(--is-state-focus) * var(--state-focus-bg-chroma) +
+      var(--is-state-disabled) * var(--state-disabled-bg-chroma)
+    );
+
+    /* prettier-ignore */
+    --s-bg-h: calc(
+      var(--is-state-base) * var(--state-base-bg-hue) +
+      var(--is-state-hover) * var(--state-hover-bg-hue) +
+      var(--is-state-active) * var(--state-active-bg-hue) +
+      var(--is-state-focus) * var(--state-focus-bg-hue) +
+      var(--is-state-disabled) * var(--state-disabled-bg-hue)
+    );
+
+    /* prettier-ignore */
+    --s-bg-a: calc(
+      var(--is-state-base) * var(--state-base-bg-opacity) +
+      var(--is-state-hover) * var(--state-hover-bg-opacity) +
+      var(--is-state-active) * var(--state-active-bg-opacity) +
+      var(--is-state-focus) * var(--state-focus-bg-opacity) +
+      var(--is-state-disabled) * var(--state-disabled-bg-opacity)
+    );
+
+    /* prettier-ignore */
+    --s-border-l: calc(
+      var(--is-state-base) * var(--state-base-border-lightness) +
+      var(--is-state-hover) * var(--state-hover-border-lightness) +
+      var(--is-state-active) * var(--state-active-border-lightness) +
+      var(--is-state-focus) * var(--state-focus-border-lightness) +
+      var(--is-state-disabled) * var(--state-disabled-border-lightness)
+    );
+
+    /* prettier-ignore */
+    --s-border-c: calc(
+      var(--is-state-base) * var(--state-base-border-chroma) +
+      var(--is-state-hover) * var(--state-hover-border-chroma) +
+      var(--is-state-active) * var(--state-active-border-chroma) +
+      var(--is-state-focus) * var(--state-focus-border-chroma) +
+      var(--is-state-disabled) * var(--state-disabled-border-chroma)
+    );
+
+    /* prettier-ignore */
+    --s-border-h: calc(
+      var(--is-state-base) * var(--state-base-border-hue) +
+      var(--is-state-hover) * var(--state-hover-border-hue) +
+      var(--is-state-active) * var(--state-active-border-hue) +
+      var(--is-state-focus) * var(--state-focus-border-hue) +
+      var(--is-state-disabled) * var(--state-disabled-border-hue)
+    );
+
+    /* prettier-ignore */
+    --s-border-a: calc(
+      var(--is-state-base) * var(--state-base-border-opacity) +
+      var(--is-state-hover) * var(--state-hover-border-opacity) +
+      var(--is-state-active) * var(--state-active-border-opacity) +
+      var(--is-state-focus) * var(--state-focus-border-opacity) +
+      var(--is-state-disabled) * var(--state-disabled-border-opacity)
+    );
+
+    /* prettier-ignore */
+    --s-text-l: calc(
+      var(--is-state-base) * var(--state-base-text-lightness) +
+      var(--is-state-hover) * var(--state-hover-text-lightness) +
+      var(--is-state-active) * var(--state-active-text-lightness) +
+      var(--is-state-focus) * var(--state-focus-text-lightness) +
+      var(--is-state-disabled) * var(--state-disabled-text-lightness)
+    );
+
+    /* prettier-ignore */
+    --s-text-c: calc(
+      var(--is-state-base) * var(--state-base-text-chroma) +
+      var(--is-state-hover) * var(--state-hover-text-chroma) +
+      var(--is-state-active) * var(--state-active-text-chroma) +
+      var(--is-state-focus) * var(--state-focus-text-chroma) +
+      var(--is-state-disabled) * var(--state-disabled-text-chroma)
+    );
+
+    /* prettier-ignore */
+    --s-text-h: calc(
+      var(--is-state-base) * var(--state-base-text-hue) +
+      var(--is-state-hover) * var(--state-hover-text-hue) +
+      var(--is-state-active) * var(--state-active-text-hue) +
+      var(--is-state-focus) * var(--state-focus-text-hue) +
+      var(--is-state-disabled) * var(--state-disabled-text-hue)
+    );
+
+    /* prettier-ignore */
+    --s-text-a: calc(
+      var(--is-state-base) * var(--state-base-text-opacity) +
+      var(--is-state-hover) * var(--state-hover-text-opacity) +
+      var(--is-state-active) * var(--state-active-text-opacity) +
+      var(--is-state-focus) * var(--state-focus-text-opacity) +
+      var(--is-state-disabled) * var(--state-disabled-text-opacity)
+    );
+
+    /**
+     * 4) Border application helpers (keep render elsewhere if you prefer)
+     *    - you CAN multiply width
+     *    - you CANNOT multiply border-style
+     */
+    --component-border-width-effective: calc(
+      var(--has-border) * var(--component-border-width, 0px)
+    );
+    border-width: var(--component-border-width-effective);
+    border-style: var(--component-border-style, solid);
+    /* border-color can stay computed later (you already do border-color: oklch(...)) */
+  }
+}

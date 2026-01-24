@@ -1,8 +1,8 @@
 <template>
   <YInput
-    data-compose-ui
     v-bind="props"
-    ref="yCheckboxRef"
+    ref="checkboxRef"
+    data-compose-ui
     :value="modelValue"
     type="checkbox"
     input-class="y-checkbox"
@@ -17,15 +17,15 @@ import { useAnimation } from '@/composables/animation'
 import { useInput } from '@/composables/input'
 import { EmitFn, onMounted, useAttrs, useTemplateRef } from 'vue'
 import type { YCheckboxProps } from './types'
-import './YCheckbox.scss'
+import './YCheckbox.css'
 
 const props = withDefaults(defineProps<YCheckboxProps>(), {
   name: 'checkbox-input' + Math.random().toString(36).substring(7),
 })
 
-const yCheckboxRef = useTemplateRef<HTMLInputElement>('yCheckboxRef')
+const checkboxRef = useTemplateRef<{ inputRef: HTMLElement | null }>('checkboxRef')
 
-const { hasChangedOnce } = useAnimation(yCheckboxRef)
+const { hasChangedOnce } = useAnimation(() => checkboxRef.value?.inputRef ?? null)
 
 defineOptions({
   name: 'YCheckbox',
@@ -52,9 +52,9 @@ const handleCheckedChange = (event: Event) => {
   }
 }
 onMounted(() => {
-  if (props.focus && yCheckboxRef.value) {
-    // If focus prop is true, focus the input element
-    // handleFocus(yCheckboxRef.value as HTMLInputElement)
-  }
+  // if (props.focus && yCheckboxRef.value) {
+  //   // If focus prop is true, focus the input element
+  //   // handleFocus(yCheckboxRef.value as HTMLInputElement)
+  // }
 })
 </script>

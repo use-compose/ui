@@ -1,38 +1,49 @@
-import { onMounted, ref, TemplateRef, watch } from 'vue'
+import { findHTMLElement } from '@/utils/find-html-element-from-template-ref'
+import { MaybeRefOrGetter, onMounted, ref, unref, watch } from 'vue'
 
 export const animationEvents = ['changed', 'hovered'] as const
 export type AnimationEvent = (typeof animationEvents)[number]
+
+type Domish = HTMLElement | { el?: unknown } | { $el?: unknown } | null | undefined
+
+function resolveEl(source: MaybeRefOrGetter<Domish>) {
+  const v = typeof source === 'function' ? source() : unref(source)
+  return findHTMLElement(v)
+}
 
 // const animationEventsVars: { [key in AnimationEvent]: string } = {
 //   changed: '--has-changed-once',
 //   hovered: '--is-not-hovered-yet',
 // }
 
-export function useChangedEvent(target: TemplateRef<EventTarget | null>) {
+export function useChangedEvent(target: MaybeRefOrGetter<Domish>) {
   const hasChangedOnce = ref(false)
-  let element: { $el: HTMLElement | undefined } | null = null
+  // let element: { $el: HTMLElement | undefined } | null = null
+  let element: HTMLElement | null = null
 
   onMounted(() => {
-    element = target.value as unknown as { $el: HTMLElement | undefined }
-    if (!element || !element.$el) {
+    element = resolveEl(target)
+
+    // element = target.value as unknown as { $el: HTMLElement | undefined }
+    if (!element) {
       // eslint-disable-next-line no-console
       console.warn('📟 - element is undefined or null', element)
       return
     }
-    element.$el.style.setProperty('--has-changed-once', 'none')
+    element.style.setProperty('--has-changed-once', 'none')
   })
   // useEventListener(targetValue, 'change', hasTargetChanged)
 
   watch(
     () => hasChangedOnce.value,
     (newVal) => {
-      if (!element || !element.$el) {
+      if (!element) {
         // eslint-disable-next-line no-console
         console.warn('📟 - element is undefined or null', element)
         return
       }
       if (newVal) {
-        element.$el.style.removeProperty('--has-changed-once')
+        element.style.removeProperty('--has-changed-once')
       }
     },
   )
@@ -41,27 +52,19 @@ export function useChangedEvent(target: TemplateRef<EventTarget | null>) {
   }
 }
 
-export function useHoverEvent(target: TemplateRef<EventTarget | null>) {
+export function useHoverEvent(target: MaybeRefOrGetter<Domish>) {
   const isHoveredOnce = ref(false)
 
-  let element: { $el: HTMLElement | undefined } | HTMLElement | null = null
+  let element: HTMLElement | null = null
 
   onMounted(() => {
-    element = target.value as unknown as HTMLElement | { $el: HTMLElement | undefined }
+    element = resolveEl(target)
     if (!element) {
       // eslint-disable-next-line no-console
       console.warn('📟 - element is undefined or null', element)
       return
     }
-    if (element instanceof HTMLElement) {
-      element.style.setProperty('--is-not-hovered-yet', 'none')
-    } else if (element.$el) {
-      element.$el.style.setProperty('--is-not-hovered-yet', 'none')
-    } else {
-      // eslint-disable-next-line no-console
-      console.warn('📟 - element.$el is undefined or null', element)
-      return
-    }
+    element.style.setProperty('--is-not-hovered-yet', 'none')
   })
 
   watch(
@@ -82,7 +85,7 @@ export function useHoverEvent(target: TemplateRef<EventTarget | null>) {
   }
 }
 
-export function useAnimation(target: TemplateRef<EventTarget | null>) {
+export function useAnimation(target: MaybeRefOrGetter<Domish>) {
   const { hasChangedOnce } = useChangedEvent(target)
   const isClickedOnce = ref(false)
   const { isHoveredOnce } = useHoverEvent(target)

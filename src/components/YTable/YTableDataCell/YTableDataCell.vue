@@ -15,7 +15,7 @@
 <script setup lang="ts">
 import { computed, defineProps, withDefaults } from 'vue'
 import type { YTableDataCellProps } from './types'
-import './YTableDataCell.scss'
+import './YTableDataCell.css'
 
 const props = withDefaults(defineProps<YTableDataCellProps>(), {
   header: false,

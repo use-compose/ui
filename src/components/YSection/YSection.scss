@@ -18,7 +18,7 @@
 
       //   // Need to re-calculate as initially set in SCSS
       --space-unit: 1rem;
-      --space-xs: calc(0.25 * var(--space-unit));
+      --space-xs: calc(0.25 * var(--_spacing-unit));
     }
   }
 

@@ -1,6 +1,8 @@
 <template>
   <YHeader title="YCompose" title-link="/" />
 
+  <YHighlightedText as="h1" animate active>Theme Picker </YHighlightedText>
+
   <YThemePicker />
   <!-- <div class="card">
       <button type="button" @click="count++">count is {{ count }}</button>
@@ -210,9 +212,9 @@
   </YModal>
   <!--<YInput data-compose-ui  v-model="input" :raw="true" type="time" label="Message" placeholder="Message" /> -->
   <YInput
+    v-model="input"
     data-compose-ui
     Text
-    v-model="input"
     variant="outlined"
     :raw="true"
     label="Message"
@@ -300,6 +302,7 @@ import {
 import { ref } from 'vue'
 import YFlex from './YFlex/YFlex.vue'
 import { YHeader } from './YHeader'
+import YHighlightedText from './YHighlightedText/YHighlightedText.vue'
 import { YModalSize, YModalType } from './YModal/types'
 import YSection from './YSection/YSection.vue'
 import { YThemePicker } from './YThemePicker'

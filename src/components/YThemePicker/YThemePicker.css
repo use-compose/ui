@@ -1,0 +1,19 @@
+.theme-picker {
+  justify-content: center;
+}
+
+.theme-hint {
+  flex-basis: 100%;
+  text-align: center;
+}
+
+@media (width >= 768px) {
+  .theme-picker {
+    justify-content: normal;
+  }
+
+  .theme-hint {
+    flex-basis: auto;
+    margin-bottom: 0;
+  }
+}

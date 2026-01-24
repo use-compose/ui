@@ -1,0 +1,106 @@
+@import url('../../tokens/css/themes/public-theme.css') layer(theme);
+@import url('../../tokens/css/themes/private-theme.css') layer(theme);
+@import url('../../tokens/css/space.css') layer(theme);
+
+@layer colors, theme-default, theme, cube;
+@layer theme {
+  :root {
+    --text-xs: var(--font-scale-0);
+    --text-sm: var(--font-scale-1);
+    --text-md: var(--font-scale-2);
+    --text-lg: var(--font-scale-3);
+    --text-xl: var(--font-scale-4);
+    --text-xxl: var(--font-scale-5);
+    --text-h1: var(--font-scale-6);
+
+    --_layout-depth-base: 4px;
+
+    --shadow-scale: 1.25;
+  }
+}
+
+@layer cube {
+  @property --raw {
+    syntax: '<number>';
+    initial-value: 0;
+    inherits: true;
+  }
+
+  @property --disabled {
+    syntax: '<number>';
+    initial-value: 0;
+    inherits: true;
+  }
+
+  @property --secondary {
+    syntax: '<number>';
+    initial-value: 0;
+    inherits: true;
+  }
+
+  @property --unstyled {
+    /* We define a value ("no") that doesn't exist as there's no default for "all"  */
+    /* https://keithclark.co.uk/articles/pseudo-boolean-css-custom-properties/ */
+    syntax: '<number>';
+    initial-value: 0;
+    inherits: true;
+  }
+  /* 
+ * Main Theme Component or element styles
+ * A set of CSS variables are used to define the theme
+ * Some modifiers are also available directly applied in the template
+ * 
+ * e.g.
+ * <div class="theme -disabled">Disabled</div>
+ * <div class="theme -raw">Raw</div>
+ * <div class="theme -hidden">Hidden</div>
+ *
+ */
+
+  :root {
+    /* https://dev.to/tracygjg/conditional-css-437e */
+    --TRUE: 1;
+    --FALSE: 0;
+    --theme: ;
+    /* --raw: var(--FALSE); */
+
+    --theme: ;
+    --base-unit: 4px;
+    --padding-x: var(--layout-space-unit);
+    --padding-y: var(--space-xss);
+    --styled: calc(1 - var(--unstyled));
+    --padding-x: var(--layout-space-unit);
+    --margin-bottom: var(--space-xs);
+    --_component-padding-y: calc(var(--space-xs) * var(--styled));
+    --_component-padding-x: calc(var(--layout-space-unit) * var(--styled));
+    --_component-padding: var(--_component-padding-y) var(--_component-padding-x);
+    /* --border-width: var(--border-width-25); */
+    /* --is-raw: var(--raw); */
+
+    --border-radius: 0;
+    --base-unit: var(--_border-width-large);
+  }
+  [data-compose-ui] {
+    /* Components */
+    --_component-padding-x: var(--_button-padding-x);
+    --_component-padding-y: var(--_button-padding-y);
+    padding: var(--_component-padding-x) var(--_component-padding-y);
+
+    --_component-border-width: calc(var(--border-width-xsmall) * var(--styled));
+
+    --theme-base-unit: var(--base-unit);
+    --theme-base-unit-calc: calc(var(--theme-base-unit) * var(--not-raw, 1) * var(--styled, 1));
+
+    --_component-shadow-base: var(--_shadow-xs);
+    --_component-shadow-hover: var(--_shadow-xs);
+    --_component-shadow-active: var(--_shadow-xs);
+    --_component-shadow-focus: var(--_shadow-xs);
+    --_component-shadow-disabled: 0;
+
+    --_component-transform-base: calc(-1 * var(--_shadow-xs));
+    --_component-transform-hover: calc(-1 * var(--_shadow-sm));
+    --_component-transform-active: calc(-1 * var(--_shadow-xs));
+    --_component-transform-focus: calc(-1 * var(--_shadow-xs));
+    --_component-transform-disabled: 0;
+  }
+}

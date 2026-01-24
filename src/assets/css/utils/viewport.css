@@ -30,3 +30,18 @@
   font-size: var(--text-lg);
 }
 
+/** 
+ * Media variables
+*/
+
+@property --media-xs {
+  syntax: 'yes | no';
+  inherits: true;
+  initial-value: yes;
+}
+
+@property --media-sm {
+  syntax: 'yes | no';
+  inherits: true;
+  initial-value: yes;
+}

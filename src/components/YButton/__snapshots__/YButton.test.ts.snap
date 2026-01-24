@@ -1,0 +1,3 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`YButton > renders 1`] = `"<button data-compose-ui="" class="y-button contained base primary medium">Click me</button>"`;

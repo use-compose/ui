@@ -2,6 +2,7 @@
   syntax: '<color>';
   inherits: true;
 } */
+@import url('./tokens/css/variants.css') layer(theme-api);
 
 /* 
  * CSS Type Grinding - https://www.bitovi.com/blog/css-only-type-grinding-casting-tokens-into-useful-values
@@ -77,7 +78,28 @@
   --color: danger;
 }
 
-[data-compose-ui],
+[data-compose-ui] {
+  --tone-l: var(--color-primary-lightness);
+  --tone-c: var(--color-primary-chroma);
+  --tone-h: var(--color-primary-hue);
+  --tone-a: var(--color-primary-opacity);
+}
+
+/* Override tone */
+[data-compose-ui].secondary {
+  --tone-l: var(--color-secondary-lightness);
+  --tone-c: var(--color-secondary-chroma);
+  --tone-h: var(--color-secondary-hue);
+  --tone-a: var(--color-secondary-opacity);
+}
+
+[data-compose-ui].danger {
+  --tone-l: var(--color-danger-lightness);
+  --tone-c: var(--color-danger-chroma);
+  --tone-h: var(--color-danger-hue);
+  --tone-a: var(--color-danger-opacity);
+}
+
 .primary,
 .secondary,
 .danger,
@@ -110,17 +132,6 @@
       var(--color-danger, #bd1414) calc(var(--danger) * 100%)
     )
   );
-
-  /* 
-  --theme-current-color-hue: calc(var(--color-bg-hue) * var(--primary) + var(--color-bg-hue) * var(--secondary) + var(--color-bg-hue) * var(--danger));
-  --theme-current-color-saturation: calc(var(--color-bg-saturation) * var(--primary) + var(--color-bg-saturation) * var(--secondary) + var(--color-bg-saturation) * var(--danger));
-  --theme-current-color-lightness: calc(var(--color-bg-lightness) * var(--primary) + var(--color-bg-lightness) * var(--secondary) + var(--color-bg-lightness) * var(--danger));
-  --theme-current-color-opacity: calc(var(--color-bg-opacity) * var(--primary) + var(--color-bg-opacity) * var(--secondary) + var(--color-bg-opacity) * var(--danger)); */
-
-  /* --component-box-shadow-hover: var(--component-box-shadow-x) var(--component-box-shadow-y) 0 0 black; */
-  /* --component-box-shadow-focus: calc(var(--component-box-shadow-x) * var(--theme-base-unit-calc)) calc(var(--component-box-shadow-y) * var(--theme-base-unit-calc)) 0 0 var(--component-box-shadow-color); */
-  /* --component-box-shadow-focus: none; */
-  /* --component-box-shadow-active: calc(var(--component-box-shadow-x) * var(--theme-base-unit-calc)) calc(var(--component-box-shadow-y) * var(--theme-base-unit-calc)) 0 0 var(--component-box-shadow-color); */
 }
 
 /* 
@@ -210,6 +221,60 @@
   );
 }
 
+[data-compose-ui].contained {
+  --v-bg-l: var(--variant-contained-bg-lightness);
+  --v-bg-c: var(--variant-contained-bg-chroma);
+  --v-bg-h: var(--variant-contained-bg-hue);
+  --v-bg-a: var(--variant-contained-bg-opacity);
+
+  --v-border-l: var(--variant-contained-border-lightness);
+  --v-border-c: var(--variant-contained-border-chroma);
+  --v-border-h: var(--variant-contained-border-hue);
+  --v-border-a: var(--variant-contained-border-opacity);
+
+  --v-text-l: var(--variant-contained-text-lightness);
+  --v-text-c: var(--variant-contained-text-chroma);
+  --v-text-h: var(--variant-contained-text-hue);
+  --v-text-a: var(--variant-contained-text-opacity);
+
+  --component-text-color: white;
+}
+
+[data-compose-ui].outlined {
+  --v-bg-l: var(--variant-outlined-bg-lightness);
+  --v-bg-c: var(--variant-outlined-bg-chroma);
+  --v-bg-h: var(--variant-outlined-bg-hue);
+  --v-bg-a: var(--variant-outlined-bg-opacity);
+
+  --v-border-l: var(--variant-outlined-border-lightness);
+  --v-border-c: var(--variant-outlined-border-chroma);
+  --v-border-h: var(--variant-outlined-border-hue);
+  --v-border-a: var(--variant-outlined-border-opacity);
+
+  --v-text-l: var(--variant-outlined-text-lightness);
+  --v-text-c: var(--variant-outlined-text-chroma);
+  --v-text-h: var(--variant-outlined-text-hue);
+  --v-text-a: var(--variant-outlined-text-opacity);
+}
+
+[data-compose-ui].text {
+  --v-bg-l: var(--variant-text-bg-lightness);
+  --v-bg-c: var(--variant-text-bg-chroma);
+  --v-bg-h: var(--variant-text-bg-hue);
+  --v-bg-a: var(--variant-text-bg-opacity);
+
+  --v-border-l: var(--variant-text-border-lightness);
+  --v-border-c: var(--variant-text-border-chroma);
+  --v-border-h: var(--variant-text-border-hue);
+  --v-border-a: var(--variant-text-border-opacity);
+
+  --v-text-l: var(--variant-text-text-lightness);
+  --v-text-c: var(--variant-text-text-chroma);
+  --v-text-h: var(--variant-text-text-hue);
+  --v-text-a: var(--variant-text-text-opacity);
+}
+/* same for variant-text */
+
 /* 
  * State Properties
 */
@@ -280,48 +345,136 @@
 }
 
 @layer state {
-  [data-compose-ui]:has(:not(:hover), .base),
-  .base:not([disabled], .disabled) {
-    --state: base;
-  }
+  [data-compose-ui] {
+    &:not([disabled], .disabled) {
+      &.base {
+        --state: base;
+      }
 
-  [data-compose-ui]:has(:hover, .hover),
-  .hover,
-  :hover {
-    --state: hover;
-  }
+      &.hover,
+      &:hover {
+        --state: hover;
+      }
 
-  [data-compose-ui]:has(:active, .active),
-  .active,
-  :active {
-    --state: active;
-  }
+      &.active,
+      &:active {
+        --state: active;
+      }
 
-  [data-compose-ui]:has(:focus-visible, :focus, .focus-visible, .focus),
-  :focus,
-  .focus-visible,
-  .focus,
-  :focus-visible {
-    --state: focus;
-  }
+      &.focus,
+      &.focus-visible,
+      &:focus,
+      &:focus-visible {
+        --state: focus;
+      }
+    }
 
-  [data-compose-ui] .disabled,
-  [data-compose-ui] :disabled,
-  [data-compose-ui] [disabled],
-  .disabled,
-  :disabled,
-  [disabled] {
-    --state: disabled;
-  }
-
-  .base,
-  .hover,
-  .active,
-  .focus,
-  .focus-visible,
-  .disabled {
+    &.disabled,
+    &:disabled,
+    &[disabled] {
+      --state: disabled;
+    }
   }
 }
+
+[data-compose-ui].base {
+  /* base default */
+  --s-bg-l: var(--state-base-bg-lightness);
+  --s-bg-c: var(--state-base-bg-chroma);
+  --s-bg-h: var(--state-base-bg-hue);
+  --s-bg-a: var(--state-base-bg-opacity);
+
+  --s-border-l: var(--state-base-border-lightness);
+  --s-border-c: var(--state-base-border-chroma);
+  --s-border-h: var(--state-base-border-hue);
+  --s-border-a: var(--state-base-border-opacity);
+
+  --s-text-l: var(--state-base-text-lightness);
+  --s-text-c: var(--state-base-text-chroma);
+  --s-text-h: var(--state-base-text-hue);
+  --s-text-a: var(--state-base-text-opacity);
+}
+
+[data-compose-ui]:hover,
+[data-compose-ui].hover {
+  /* hover */
+  --s-bg-l: var(--state-hover-bg-lightness);
+  --s-bg-c: var(--state-hover-bg-chroma);
+  --s-bg-h: var(--state-hover-bg-hue);
+  --s-bg-a: var(--state-hover-bg-opacity);
+
+  --s-border-l: var(--state-hover-border-lightness);
+  --s-border-c: var(--state-hover-border-chroma);
+  --s-border-h: var(--state-hover-border-hue);
+  --s-border-a: var(--state-hover-border-opacity);
+
+  --s-text-l: var(--state-hover-text-lightness);
+  --s-text-c: var(--state-hover-text-chroma);
+  --s-text-h: var(--state-hover-text-hue);
+  --s-text-a: var(--state-hover-text-opacity);
+}
+
+[data-compose-ui]:active,
+[data-compose-ui].active {
+  /* active */
+  --s-bg-l: var(--state-active-bg-lightness);
+  --s-bg-c: var(--state-active-bg-chroma);
+  --s-bg-h: var(--state-active-bg-hue);
+  --s-bg-a: var(--state-active-bg-opacity);
+
+  --s-border-l: var(--state-active-border-lightness);
+  --s-border-c: var(--state-active-border-chroma);
+  --s-border-h: var(--state-active-border-hue);
+  --s-border-a: var(--state-active-border-opacity);
+
+  --s-text-l: var(--state-active-text-lightness);
+  --s-text-c: var(--state-active-text-chroma);
+  --s-text-h: var(--state-active-text-hue);
+  --s-text-a: var(--state-active-text-opacity);
+}
+
+[data-compose-ui]:focus,
+[data-compose-ui]:focus-visible,
+[data-compose-ui].focus-visible,
+[data-compose-ui].focus {
+  /* focus */
+  --s-bg-l: var(--state-focus-bg-lightness);
+  --s-bg-c: var(--state-focus-bg-chroma);
+  --s-bg-h: var(--state-focus-bg-hue);
+  --s-bg-a: var(--state-focus-bg-opacity);
+
+  --s-border-l: var(--state-focus-border-lightness);
+  --s-border-c: var(--state-focus-border-chroma);
+  --s-border-h: var(--state-focus-border-hue);
+  --s-border-a: var(--state-focus-border-opacity);
+
+  --s-text-l: var(--state-focus-text-lightness);
+  --s-text-c: var(--state-focus-text-chroma);
+  --s-text-h: var(--state-focus-text-hue);
+  --s-text-a: var(--state-focus-text-opacity);
+}
+
+[data-compose-ui]:disabled,
+[data-compose-ui].disabled,
+[data-compose-ui][disabled] {
+  /* disabled */
+  --s-bg-l: var(--state-disabled-bg-lightness);
+  --s-bg-c: var(--state-disabled-bg-chroma);
+  --s-bg-h: var(--state-disabled-bg-hue);
+  --s-bg-a: var(--state-disabled-bg-opacity);
+
+  --s-border-l: var(--state-disabled-border-lightness);
+  --s-border-c: var(--state-disabled-border-chroma);
+  --s-border-h: var(--state-disabled-border-hue);
+  --s-border-a: var(--state-disabled-border-opacity);
+
+  --s-text-l: var(--state-disabled-text-lightness);
+  --s-text-c: var(--state-disabled-text-chroma);
+  --s-text-h: var(--state-disabled-text-hue);
+  --s-text-a: var(--state-disabled-text-opacity);
+}
+
+/* active / focus / disabled similarly */
 
 /* Raw */
 @property --raw {
@@ -337,7 +490,7 @@
 /* Use of Background color */
 
 @property --use-bg {
-  syntax: '<number  >';
+  syntax: '<number>';
   initial-value: 0;
   inherits: true;
 }
@@ -377,10 +530,10 @@
 [data-compose-ui],
 .y-button,
 .y-input,
-.y-select,
-.primary,
-.secondary,
-.danger {
+.y-select {
+  /* Base for all theming: if --unstyled is set, all styles are removed */
+  --styled: calc(1 - var(--unstyled));
+
   --is-box-shadow-hidden: calc(1 - var(--raw, 0));
   /* --component-box-shadow-hover: var(--component-box-shadow-x) var(--component-box-shadow-y) 0 0
     var(--component-box-shadow-color); */
@@ -430,4 +583,121 @@
 
   box-shadow: var(--component-box-shadow);
   transform: var(--component-transform);
+
+  --bg-l: calc(var(--tone-l) + var(--v-bg-l) + var(--s-bg-l));
+  --bg-c: calc(var(--tone-c) + var(--v-bg-c) + var(--s-bg-c));
+  --bg-h: calc(var(--tone-h) + var(--v-bg-h) + var(--s-bg-h));
+  --bg-a: calc(var(--tone-a) * var(--v-bg-a) * var(--s-bg-a));
+
+  --border-l: calc(var(--tone-l) + var(--v-border-l) + var(--s-border-l));
+  --border-c: calc(var(--tone-c) + var(--v-border-c) + var(--s-border-c));
+  --border-h: calc(var(--tone-h) + var(--v-border-h) + var(--s-border-h));
+  --border-a: calc(var(--tone-a) * var(--v-border-a) * var(--s-border-a));
+
+  --text-l: calc(var(--tone-l) + var(--v-text-l) + var(--s-text-l));
+  --text-c: calc(var(--tone-c) + var(--v-text-c) + var(--s-text-c));
+  --text-h: calc(var(--tone-h) + var(--v-text-h) + var(--s-text-h));
+  --text-a: calc(var(--tone-a) * var(--v-text-a) * var(--s-text-a));
+
+  --component-bg-color: oklch(var(--bg-l) var(--bg-c) var(--bg-h) / var(--bg-a));
+  --component-border-color: oklch(
+    var(--border-l) var(--border-c) var(--border-h) / var(--border-a)
+  );
+  --component-text-color: oklch(var(--text-l) var(--text-c) var(--text-h) / var(--text-a));
+
+  /* border: var(--component-border-width) var(--component-border-style) var(--component-border-color); */
+  border-color: var(--component-color-border);
+
+  background-color: var(--component-bg-color);
+  color: var(--component-text-color);
+
+  /* --box-shadow-x: var(--theme-base-unit-calc);
+  --box-shadow-y: var(--theme-base-unit-calc);
+
+  --component-translate-x: var(--theme-base-unit-calc);
+  --component-translate-y: var(--theme-base-unit-calc); */
+  /* 
+  --box-shadow-base: var(--box-shadow-x) var(--box-shadow-y) 0 0 black;
+  --box-shadow-hover: var(--box-shadow-x) var(--box-shadow-y) 0 0 var(--theme-current-color); */
+
+  /*
+   * Pseudo-boolean CSS custom properties - https://keithclark.co.uk/articles/pseudo-boolean-css-custom-properties
+   * Define colors based on component state 
+   */
+  /* --component-color: color-mix(
+    in srgb,
+    var(--font-color) calc(100% * var(--primary, 0)),
+    var(--theme-current-color)
+  ); */
+
+  /* --component-bg: color-mix(
+    in srgb,
+    var(--theme-current-color) calc(100% * var(--primary, 0)),
+    transparent
+  ); */
+
+  /* --component-border-color: color-mix(
+    in srgb,
+    var(--color-bg) calc(100% * var(--primary, 0)),
+    var(--theme-current-color)
+  ); */
+
+  /* --component-box-shadow: var(--box-shadow-base); */
+  /* --component-padding-x: calc(var(--layout-space-unit) * var(--styled)); */
+  /* --component-padding-y: 0; */
+  --component-border-style: solid;
+
+  /* --component-transform: translate(var(--component-translate-x), var(--component-translate-y)); */
 }
+/* 
+[data-compose-ui] {
+  --component-bg-hue: calc(var(--color-bg-hue));
+
+  --component-bg-lightness: calc(
+    var(--variant-bg-lightness) + var(--state-bg-lightness) + var(--color-bg-lightness)
+  );
+  --component-bg-opacity: calc(
+    var(--color-bg-opacity) * var(--variant-bg-opacity) * var(--state-bg-opacity)
+  );
+  --component-bg-chroma: calc(
+    var(--color-bg-chroma) + var(--variant-bg-chroma) + var(--state-bg-chroma)
+  );
+  --component-border-hue: calc(var(--color-border-hue));
+
+  --component-border-lightness: calc(
+    var(--color-border-lightness) + var(--variant-border-lightness) + var(--state-border-lightness)
+  );
+  --component-border-opacity: calc(
+    var(--color-border-opacity) * var(--variant-border-opacity) * var(--state-border-opacity)
+  );
+  --component-border-chroma: calc(
+    var(--color-border-chroma) + var(--variant-border-chroma) + var(--state-border-chroma)
+  );
+  --component-text-hue: calc(var(--color-text-hue));
+
+  --component-text-lightness: calc((var(--color-text-lightness)));
+  --component-text-opacity: var(--state-text-opacity);
+  --component-text-chroma: calc(
+    var(--color-text-chroma) + var(--variant-text-chroma) + var(--state-text-chroma)
+  );
+  --component-opacity-bg: var(--component-bg-opacity);
+  --component-opacity-border: var(--component-border-opacity);
+  --component-opacity-text: var(--component-text-opacity);
+
+  --component-color-bg: oklch(
+    var(--component-bg-lightness) var(--component-bg-chroma) var(--component-bg-hue) /
+      var(--component-bg-opacity)
+  );
+  --component-color-border: oklch(
+    var(--component-border-lightness) var(--component-border-chroma) var(--component-border-hue) /
+      var(--component-border-opacity)
+  );
+  --component-color-text: oklch(
+    var(--component-text-lightness) var(--component-text-chroma) var(--component-text-hue) /
+      var(--component-text-opacity)
+  );
+
+  background-color: var(--component-color-bg);
+  border-color: var(--component-color-border);
+  color: var(--component-color-text);
+} */

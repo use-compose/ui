@@ -6,7 +6,7 @@
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import './YContainer.scss'
+import './YContainer.css'
 
 interface ContainerProps {
   fluid?: boolean

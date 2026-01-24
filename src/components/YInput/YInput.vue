@@ -1,30 +1,29 @@
 <template>
-  <div>
-    <input
-      :id="name"
-      :ref="inputRef"
-      :value="modelValue"
-      :type="type"
-      :name="name"
-      :placeholder="placeholder"
-      :class="yInputClasses"
-      autocomplete="off"
-      :disabled="isDisabled"
-      v-on="handleEvent"
-    />
-    <YLabel v-if="label" class="y-label" :for="name">{{ label }}</YLabel>
-  </div>
+  <input
+    :id="name"
+    ref="inputRef"
+    :value="modelValue"
+    :type="type"
+    :name="name"
+    :placeholder="placeholder"
+    :class="yInputClasses"
+    autocomplete="off"
+    :disabled="isDisabled"
+    data-compose-ui
+    v-on="handleEvent"
+  />
+  <YLabel v-if="label" class="y-label" :for="name">{{ label }}</YLabel>
 </template>
 
 <script setup lang="ts">
-import { useAttrs } from 'vue'
+import { useAttrs, useTemplateRef } from 'vue'
 
 import { YLabel } from '@/components/YLabel'
 import { useColor, useRaw, useSize, useState, useVariant } from '@/composables'
 import { useComponentProps } from '@/composables/component'
 import { inputEventsKey, inputEventsKeyInterface } from '@/composables/input'
 import { computed, inject } from 'vue'
-import './YInput.scss'
+import './YInput.css'
 import { YInputProps } from './types'
 
 const props = withDefaults(defineProps<YInputProps>(), {
@@ -32,7 +31,11 @@ const props = withDefaults(defineProps<YInputProps>(), {
   name: 'input-' + Math.random().toString(36).substring(7),
   type: 'text',
   placeholder: '',
-  inputRef: 'yInput',
+})
+
+const inputRef = useTemplateRef<HTMLInputElement | null>('inputRef')
+defineExpose({
+  inputRef,
 })
 // const attrs = useAttrs()
 

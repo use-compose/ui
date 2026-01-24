@@ -10,7 +10,7 @@
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import './YSkeleton.scss'
+import './YSkeleton.css'
 
 const getClasses = computed(() => {
   return ['skeleton-container']

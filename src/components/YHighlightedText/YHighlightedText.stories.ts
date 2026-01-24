@@ -19,8 +19,8 @@ const renderGenericStory: Story = {
     props: Object.keys(argTypes),
     template: `
       <div>
-        <YHighlightedText  v-bind="args" animate >
-          Highlighted Text
+        <YHighlightedText v-bind="args" animate>
+          Highlighted Text Highlighted Text Highlighted <br> Text Highlighted Text Highlighted Text
         </YHighlightedText>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec purus nec
