@@ -1,0 +1,7 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`YRow > renders 1`] = `
+"<div class="y-box undefined">
+  <p>Default content for YRow component</p>
+</div>"
+`;
