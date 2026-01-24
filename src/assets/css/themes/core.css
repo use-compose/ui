@@ -1,5 +1,9 @@
+@import url('./tokens/css/colors.css') layer(colors);
+
 @import url('./tokens/css/themes/public-theme.css') layer(theme);
 @import url('./tokens/css/themes/private-theme.css') layer(theme);
+/* TODO: fix */
+@import url('./tokens/css/border/border.css') layer(theme);
 @import url('./tokens/css/space.css') layer(theme);
 
 /* CUBE Utilities */

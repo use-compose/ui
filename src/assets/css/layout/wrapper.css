@@ -1,0 +1,32 @@
+/* TODO: */
+/* .wrapper { */
+/* https://grafikart.fr/tutoriels/conteneur-css-1233 */
+/* box-sizing: border-box;
+  width: min(
+    var(--breakpoint-desktop-xl),
+    calc(100% - 2 * var(--layout-mobile-padding))
+  );
+  margin-inline: auto;
+} */
+
+/* https://css-tricks.com/use-css-clamp-to-create-a-more-flexible-wrapper-utility/ */
+.wrapper {
+  /* width: clamp(100%, 90vw, 70rem); */
+  width: 100%;
+
+  /* https://www.oceg.org/ */
+  /* max-width: clamp(16rem, var(--wrapper-max-width, 98rem), 95vw); */
+
+  /* TODO: */
+  max-width: clamp(16rem, var(--wrapper-max-width, 80rem), 95vw);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--layout-space-unit);
+  padding-right: var(--layout-space-unit);
+}
+
+@media screen and (min-width: 48rem) {
+  .wrapper {
+    --wrapper-max-width: var(--breakpoint-md);
+  }
+}

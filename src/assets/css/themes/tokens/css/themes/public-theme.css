@@ -9,6 +9,7 @@
 /* ------------------------------------------------------------ */
   --border-width-base: 2px;
   --border-width-scale: 1.25;
+  --border-width-default: var(--border-width-base);
   --border-width-xsmall: calc(var(--border-width-base) / 2 * var(--border-width-scale));
   --border-width-small: calc(var(--border-width-base) * var(--border-width-scale));
   --border-width-medium: var(--border-width-base);
@@ -54,7 +55,7 @@
   --font-scale-max: 1.2;
   --font-steps: 0,1,2,3,4,5,6;
   --font-weight-light: 300;
-  --font-weight-regular: 400;
+  --font-weight-normal: 400;
   --font-weight-medium: 500;
   --font-weight-bold: 700;
 
@@ -113,6 +114,7 @@
   --layout-overlay-blur: 8px;
   --layout-space-unit: var(--space-unit-fluid);
   --layout-depth-base: 6px;
+  --layout-mobile-padding: var(--spacing-md);
 
 /* ------------------------------------------------------------ */
 /*                            Radius                            */
@@ -187,6 +189,27 @@
 /* ------------------------------------------------------------ */
 
   /* -------------------- */
+  /*        Global        */
+  /* -------------------- */
+  --gutter: var(--layout-gutter-sm);
+  --on: initial;
+  --off: ;
+
+  /* -------------------- */
+  /*     Composition     */
+  /* -------------------- */
+  --flow-space: var(--gutter);
+  --stack-gap: var(--gutter);
+  --stack-align: start;
+  --stack-direction: var(--layout-direction);
+  --cluster-gap: var(--gutter);
+  --cluster-align: center;
+  --center-max-width: 72ch;
+  --center-padding-inline: var(--gutter);
+  --switcher-modifier: var(--layout-break-at);
+  --switcher-gap: var(--gutter);
+
+  /* -------------------- */
   /*        Block        */
   /* -------------------- */
   --card-bg: var(--_color-bg-neutral);
@@ -196,25 +219,10 @@
   --button-padding-x: var(--_spacing-sm);
   --button-padding-y: var(--_spacing-xs);
   --button-radius: var(--_border-radius-medium);
-  --button-color: var(--_color-text-primary);
   --button-text: var(--_color-text-primary);
   --button-bg: var(--_color-bg-primary);
-  --button-hover-background: var(--_color-bg-primary-hover);
+  --button-bg-hover: var(--_color-bg-primary-hover);
   --checkbox-bg: var(--_color-bg-primary);
   --checkbox-padding: var(--_spacing-xs);
-
-  /* -------------------- */
-  /*     Composition     */
-  /* -------------------- */
-  --flow-space: var(--_layout-gutter-md);
-  --stack-gap: var(--_layout-gutter-md);
-  --stack-align: start;
-  --stack-direction: var(--__layout-direction, column);
-  --cluster-gap: var(--_layout-gutter-sm);
-  --cluster-align: center;
-  --center-max-width: 72ch;
-  --center-padding-inline: var(--_layout-gutter-md);
-  --switcher-modifier: var(--__layout-break-at);
-  --switcher-gap: var(--_layout-gutter-sm);
 
 }

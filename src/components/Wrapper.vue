@@ -6,7 +6,7 @@
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import './Wrapper.css'
+// import './Wrapper.css'
 
 // interface WrapperProps {
 //   maxWidth?: string | number

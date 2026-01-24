@@ -1,0 +1,7 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`YStack > renders 1`] = `
+"<div class="y-box y-flow y-stack">
+  <p>Default content for YStack component</p>
+</div>"
+`;

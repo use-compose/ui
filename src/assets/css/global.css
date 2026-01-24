@@ -11,6 +11,13 @@
 @import './components/table.css';
 /* @import './themes/private-theme.css'; */
 /* @import './themes/public-theme.css'; */
+@import './layout/container.css';
+@import './layout/cluster.css';
+@import './layout/switcher.css';
+@import './layout/wrapper.css';
+
+@import './utils/media.css';
+
 @import './themes/core.css';
 @import './theme.css';
 @import './themes/compose-ui/compose-ui-base.css';

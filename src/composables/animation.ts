@@ -64,7 +64,7 @@ export function useHoverEvent(target: MaybeRefOrGetter<Domish>) {
       console.warn('📟 - element is undefined or null', element)
       return
     }
-    element.style.setProperty('--is-not-hovered-yet', 'none')
+    element.style.setProperty('--is-not-hovered-yet', ' ;')
   })
 
   watch(
@@ -76,7 +76,7 @@ export function useHoverEvent(target: MaybeRefOrGetter<Domish>) {
         return
       }
       if (newVal && element instanceof HTMLElement) {
-        element.style.removeProperty('--has-changed-once')
+        element.style.setProperty('--is-not-hovered-yet', 'initial')
       }
     },
   )

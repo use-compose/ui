@@ -10,10 +10,9 @@
   --cube-block-button-padding-x: var(--_spacing-sm);
   --cube-block-button-padding-y: var(--_spacing-xs);
   --cube-block-button-radius: var(--_border-radius-medium);
-  --cube-block-button-color: var(--_color-text-primary);
   --cube-block-button-text: var(--_color-text-primary);
   --cube-block-button-bg: var(--_color-bg-primary);
-  --cube-block-button-hover-background: var(--_color-bg-primary-hover);
+  --cube-block-button-bg-hover: var(--_color-bg-primary-hover);
   --cube-block-checkbox-bg: var(--_color-bg-primary);
   --cube-block-checkbox-padding: var(--_spacing-xs);
 }

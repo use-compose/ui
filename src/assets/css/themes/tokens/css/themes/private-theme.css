@@ -9,6 +9,7 @@
 /* ------------------------------------------------------------ */
   --_border-width-base: var(--border-width-base, 2px);
   --_border-width-scale: var(--border-width-scale, 1.25);
+  --_border-width-default: var(--border-width-default, var(--border-width-base));
   --_border-width-xsmall: var(--border-width-xsmall, calc(var(--border-width-base) / 2 * var(--border-width-scale)));
   --_border-width-small: var(--border-width-small, calc(var(--border-width-base) * var(--border-width-scale)));
   --_border-width-medium: var(--border-width-medium, var(--border-width-base));
@@ -54,7 +55,7 @@
   --_font-scale-max: var(--font-scale-max, 1.2);
   --_font-steps: var(--font-steps, 0,1,2,3,4,5,6);
   --_font-weight-light: var(--font-weight-light, 300);
-  --_font-weight-regular: var(--font-weight-regular, 400);
+  --_font-weight-normal: var(--font-weight-normal, 400);
   --_font-weight-medium: var(--font-weight-medium, 500);
   --_font-weight-bold: var(--font-weight-bold, 700);
 
@@ -113,6 +114,7 @@
   --_layout-overlay-blur: var(--layout-overlay-blur, 8px);
   --_layout-space-unit: var(--layout-space-unit, var(--_space-unit-fluid));
   --_layout-depth-base: var(--layout-depth-base, 6px);
+  --_layout-mobile-padding: var(--layout-mobile-padding, var(--_spacing-md));
 
 /* ------------------------------------------------------------ */
 /*                            Radius                            */
@@ -187,6 +189,27 @@
 /* ------------------------------------------------------------ */
 
   /* -------------------- */
+  /*        Global        */
+  /* -------------------- */
+  --_gutter: var(--gutter, var(--layout-gutter-sm));
+  --_on: var(--on, initial);
+  --_off: var(--off, );
+
+  /* -------------------- */
+  /*     Composition     */
+  /* -------------------- */
+  --_flow-space: var(--flow-space, var(--gutter));
+  --_stack-gap: var(--stack-gap, var(--gutter));
+  --_stack-align: var(--stack-align, start);
+  --_stack-direction: var(--stack-direction, var(--layout-direction));
+  --_cluster-gap: var(--cluster-gap, var(--gutter));
+  --_cluster-align: var(--cluster-align, center);
+  --_center-max-width: var(--center-max-width, 72ch);
+  --_center-padding-inline: var(--center-padding-inline, var(--gutter));
+  --_switcher-modifier: var(--switcher-modifier, var(--layout-break-at));
+  --_switcher-gap: var(--switcher-gap, var(--gutter));
+
+  /* -------------------- */
   /*        Block        */
   /* -------------------- */
   --_card-bg: var(--card-bg, var(--_color-bg-neutral));
@@ -196,25 +219,10 @@
   --_button-padding-x: var(--button-padding-x, var(--_spacing-sm));
   --_button-padding-y: var(--button-padding-y, var(--_spacing-xs));
   --_button-radius: var(--button-radius, var(--_border-radius-medium));
-  --_button-color: var(--button-color, var(--_color-text-primary));
   --_button-text: var(--button-text, var(--_color-text-primary));
   --_button-bg: var(--button-bg, var(--_color-bg-primary));
-  --_button-hover-background: var(--button-hover-background, var(--_color-bg-primary-hover));
+  --_button-bg-hover: var(--button-bg-hover, var(--_color-bg-primary-hover));
   --_checkbox-bg: var(--checkbox-bg, var(--_color-bg-primary));
   --_checkbox-padding: var(--checkbox-padding, var(--_spacing-xs));
-
-  /* -------------------- */
-  /*     Composition     */
-  /* -------------------- */
-  --_flow-space: var(--flow-space, var(--_layout-gutter-md));
-  --_stack-gap: var(--stack-gap, var(--_layout-gutter-md));
-  --_stack-align: var(--stack-align, start);
-  --_stack-direction: var(--stack-direction, var(--__layout-direction, column));
-  --_cluster-gap: var(--cluster-gap, var(--_layout-gutter-sm));
-  --_cluster-align: var(--cluster-align, center);
-  --_center-max-width: var(--center-max-width, 72ch);
-  --_center-padding-inline: var(--center-padding-inline, var(--_layout-gutter-md));
-  --_switcher-modifier: var(--switcher-modifier, var(--__layout-break-at));
-  --_switcher-gap: var(--switcher-gap, var(--_layout-gutter-sm));
 
 }

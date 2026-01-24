@@ -30,9 +30,9 @@ export default defineConfig([
       'vue/component-name-in-template-casing': [
         'warn',
         'PascalCase',
-        {
-          registeredComponentsOnly: false,
-        },
+        // {
+        //   registeredComponentsOnly: false,
+        // },
       ],
       '@typescript-eslint/no-empty-object-type': 'off',
     },

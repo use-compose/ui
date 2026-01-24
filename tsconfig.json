@@ -24,6 +24,10 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"],
+      "@/components/*": ["src/components/*"],
+      "@/composables/*": ["src/composables/*"],
+      "@/utils/*": ["src/utils/*"],
+      "@/assets/*": ["src/assets/*"],
       "unholy-tokens/*": ["src/assets/css/themes/tokens/*"]
     }
   },

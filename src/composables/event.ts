@@ -71,7 +71,7 @@ export function useInputEvent(props: YInputProps, attrs: Record<string, unknown>
         emit('change', value)
         break
       case 'focus':
-        el.focus()
+        emit('focus', value)
         break
       case 'blur':
         emit('blur', value)

@@ -1,0 +1,42 @@
+/* 
+ * https://github.com/propjockey/css-media-vars
+ */
+
+:root {
+  --media-xs: var(--on);
+  --media-sm: var(--on);
+  --media-md: var(--on);
+  --media-lg: var(--on);
+  --media-xl: var(--on);
+}
+
+/* @media (min-width: 0px) {
+  :root {
+    --is-screen-xs: ;
+  }
+} */
+
+/* sm+ */
+@media (min-width: 40rem) {
+  :root {
+    --media-sm: var(--off);
+  }
+}
+/* md+ */
+@media (min-width: 64rem) {
+  :root {
+    --media-md: var(--off);
+  }
+}
+/* lg+ */
+@media (min-width: 80rem) {
+  :root {
+    --media-lg: var(--off);
+  }
+}
+
+@media (min-width: 90rem) {
+  :root {
+    --media-xl: var(--off);
+  }
+}

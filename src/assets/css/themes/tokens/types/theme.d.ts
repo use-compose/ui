@@ -7,6 +7,7 @@ export interface DesignTokens {
     width: {
       base: string;
       scale: string;
+      default: string;
       xsmall: string;
       small: string;
       medium: string;
@@ -238,6 +239,17 @@ export interface DesignTokens {
       '900': string;
       base: string;
     };
+    info: {
+      '100': string;
+      '200': string;
+      '300': string;
+      '400': string;
+      '500': string;
+      '600': string;
+      '700': string;
+      '800': string;
+      '900': string;
+    };
     bg: {
       page: string;
       subtle: string;
@@ -306,6 +318,7 @@ export interface DesignTokens {
       info: string;
       warning: string;
       success: string;
+      neutral: string;
       secondary: {
         lightness: string;
         chroma: string;
@@ -364,7 +377,7 @@ export interface DesignTokens {
     steps: string;
     weight: {
       light: string;
-      regular: string;
+      normal: string;
       medium: string;
       bold: string;
     };
@@ -434,6 +447,9 @@ export interface DesignTokens {
     };
     spaceUnit: string;
     'depth-base': string;
+    mobile: {
+      padding: string;
+    };
   };
   radius: {
     light: string;
@@ -543,10 +559,9 @@ export interface DesignTokens {
         paddingX: string;
         paddingY: string;
         radius: string;
-        color: string;
         text: string;
         bg: string;
-        hoverBackground: string;
+        'bg-hover': string;
       };
       checkbox: {
         bg: string;
@@ -574,6 +589,11 @@ export interface DesignTokens {
         modifier: string;
         gap: string;
       };
+    };
+    global: {
+      gutter: string;
+      on: string;
+      off: string;
     };
     utility: {
       margin: {
@@ -638,14 +658,41 @@ export interface DesignTokens {
         lg: string;
         xl: string;
         'x-0': string;
+        'x-xs': string;
         'x-sm': string;
+        'x-md': string;
+        'x-lg': string;
+        'x-xl': string;
+        'y-0': string;
+        'y-xs': string;
+        'y-sm': string;
         'y-md': string;
+        'y-lg': string;
+        'y-xl': string;
+        auto: string;
+        'top-0': string;
+        'top-xs': string;
+        'top-sm': string;
+        'top-md': string;
+        'top-lg': string;
+        'top-xl': string;
+        'bottom-0': string;
       };
       text: {
         center: string;
         dim: string;
       };
       border: {
+        solid: string;
+        dashed: string;
+        dotted: string;
+        none: string;
+        primary: string;
+        secondary: string;
+        accent: string;
+        neutral: string;
+        info: string;
+        success: string;
         top: string;
         bottom: string;
         left: string;
@@ -659,13 +706,13 @@ export interface DesignTokens {
           '100': string;
           light: string;
           medium: string;
-          heavy: string;
+          large: string;
         };
         width: {
-          '10': string;
-          '25': string;
-          '50': string;
-          '75': string;
+          xsmall: string;
+          small: string;
+          medium: string;
+          large: string;
         };
       };
       radius: {
@@ -677,13 +724,36 @@ export interface DesignTokens {
         auto: string;
         full: string;
         half: string;
+        quarter: string;
         screen: string;
       };
       width: {
         auto: string;
         full: string;
         half: string;
+        quarter: string;
         screen: string;
+      };
+      overflow: {
+        auto: string;
+        hidden: string;
+        scroll: string;
+        visible: string;
+        'x-hidden': string;
+        'y-hidden': string;
+      };
+      bg: {
+        primary: string;
+        secondary: string;
+        accent: string;
+        'accent-subtle': string;
+        neutral: string;
+        page: string;
+        subtle: string;
+        elevated: string;
+        inset: string;
+        info: string;
+        success: string;
       };
     };
   };
