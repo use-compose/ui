@@ -45,7 +45,7 @@ export const boxArgTypes: ArgTypes = {
 
 const meta: Meta<typeof YBox> = {
   // TODO: TO CHANGE PATH
-  title: 'Components/YBox',
+  title: 'Components/Layout/YBox',
   component: YBox,
   tags: ['autodocs'],
   argTypes: {

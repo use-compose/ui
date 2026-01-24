@@ -28,7 +28,8 @@
       "@/composables/*": ["src/composables/*"],
       "@/utils/*": ["src/utils/*"],
       "@/assets/*": ["src/assets/*"],
-      "unholy-tokens/*": ["src/assets/css/themes/tokens/*"]
+      "unholy-tokens/*": ["src/assets/css/themes/tokens/*"],
+      "storybook/*": [".storybook/*"]
     }
   },
   "include": [

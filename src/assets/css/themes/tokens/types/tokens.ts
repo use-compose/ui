@@ -277,8 +277,8 @@ export interface YThemeToken {
   'font-scale-2': string;
   'font-scale-3': string;
   'font-scale-4': string;
-  'font-scale-5': string;
-  'font-scale-6': string;
+  'font-scale-0-2': string;
+  'font-scale-0-1': string;
   'font-min-font': string;
   'font-max-font': string;
   'font-min-viewport': string;

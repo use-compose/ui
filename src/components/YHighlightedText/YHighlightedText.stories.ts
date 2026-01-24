@@ -5,7 +5,7 @@ import type { YHighlightedTextProps } from './types'
 
 const meta: Meta<typeof YHighlightedText> = {
   // TODO: TO CHANGE PATH
-  title: 'Animations/YHighlightedText',
+  title: 'Components/Data Display/YHighlightedText',
   component: YHighlightedText,
   tags: ['autodocs'],
 }
@@ -23,7 +23,7 @@ const renderGenericStory: Story = {
           Title active not animated
         </YHighlightedText>
         <p>
-          Lorem ipsum dolor <YHighlightedText active animate>sit amet, consectetur adipiscing</YHighlightedText> elit. Nullam nec purus nec
+          Lorem ipsum dolor <YHighlightedText active animate as="p">sit amet, consectetur adipiscing</YHighlightedText> elit. Nullam nec purus nec
           ligula luctus aliquam. Nulla facilisi. Nulla facilisi. Nulla facilisi. Nulla
           facilisi. Nulla facilisi. Nulla facilisi. Nulla facilisi. Nulla facilisi.
         </p>

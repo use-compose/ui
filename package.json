@@ -24,6 +24,7 @@
     "prepare": "husky install",
     "preview": "cross-env NODE_ENV=production node server",
     "storybook": "STORYBOOK=true storybook dev -p 6006",
+    "storybook:update-titles": "tsx scripts/update-story-titles.ts",
     "syncpack": "pnpm syncpack:fix && pnpm syncpack:format",
     "syncpack:fix": "syncpack fix --dependency-types prod,dev",
     "syncpack:format": "syncpack format",

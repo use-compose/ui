@@ -6,7 +6,7 @@ import Wrapper from './Wrapper.vue'
 
 const meta: Meta<typeof Wrapper> = {
   // TODO: TO CHANGE PATH
-  title: 'Components/Wrapper',
+  title: 'Components/Core/Wrapper',
   component: Wrapper,
   tags: ['autodocs'],
   argTypes: {

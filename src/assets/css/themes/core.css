@@ -8,4 +8,54 @@
 
 /* CUBE Utilities */
 @import './tokens/css/cube/cube.utility.css' layer(cube);
+
 @layer props, api, engine, colors, theme-default, theme, cube;
+
+/* Default typography mapping */
+@layer theme-default {
+  h1,
+  .text-h1,
+  h2,
+  .text-xxl,
+  h3,
+  .text-xl,
+  h4,
+  .text-lg {
+    color: var(--theme-current-color);
+  }
+
+  h1,
+  .text-h1 {
+    font-size: var(--text-h1);
+    font-weight: 900;
+  }
+
+  h2,
+  .text-xxl {
+    font-size: var(--text-xxl);
+    font-weight: 700;
+  }
+
+  h3,
+  .text-xl {
+    font-size: var(--text-xl);
+  }
+
+  h4,
+  .text-lg {
+    font-size: var(--text-lg);
+  }
+
+  p {
+    font-size: var(--text-md);
+    margin: var(--space-xs) 0;
+  }
+
+  .text-sm {
+    font-size: var(--text-sm);
+  }
+
+  .text-xs {
+    font-size: var(--text-xs);
+  }
+}
