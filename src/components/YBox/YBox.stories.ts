@@ -1,5 +1,47 @@
-import type { Meta, StoryObj } from '@storybook/vue3-vite'
+import type { ArgTypes, Meta, StoryObj } from '@storybook/vue3-vite'
 import YBox from './YBox.vue'
+
+export const boxArgTypes: ArgTypes = {
+  padding: { control: 'select', options: ['xxs', 'xs', 'sm', 'md', 'lg', 'xl', 'xxl'] },
+  radius: { control: 'select', options: ['none', 'light', 'medium', 'heavy', 'full'] },
+  width: { control: 'select', options: ['auto', 'full', 'half', 'screen'] },
+  height: { control: 'select', options: ['auto', 'full', 'half', 'screen'] },
+  border: {
+    control: 'inline-check',
+    options: [
+      'width-small',
+      'primary',
+      'solid',
+      'width-medium',
+      'secondary',
+      'dashed',
+      'width-large',
+      'neutral',
+      'dotted',
+      'accent',
+      'background',
+      'danger',
+      'info',
+      'success',
+    ],
+  },
+  backgroundColor: {
+    control: 'select',
+    options: [
+      'primary',
+      'secondary',
+      'accent',
+      'neutral',
+      'accent-subtle',
+      'page',
+      'subtle',
+      'elevated',
+      'inset',
+      'info',
+      'success',
+    ],
+  },
+}
 
 const meta: Meta<typeof YBox> = {
   // TODO: TO CHANGE PATH
@@ -7,25 +49,7 @@ const meta: Meta<typeof YBox> = {
   component: YBox,
   tags: ['autodocs'],
   argTypes: {
-    padding: { control: 'select', options: ['xxs', 'xs', 'sm', 'md', 'lg', 'xl', 'xxl'] },
-    radius: { control: 'select', options: ['none', 'light', 'medium', 'heavy', 'full'] },
-    width: { control: 'select', options: ['auto', 'full', 'half', 'screen'] },
-    height: { control: 'select', options: ['auto', 'full', 'half', 'screen'] },
-    border: {
-      control: 'select',
-      options: [
-        'theme-10',
-        'theme-25',
-        'theme-50',
-        'light',
-        'medium',
-        'heavy',
-        'width-10',
-        'width-25',
-        'width-50',
-      ],
-    },
-    // ...commonArgTypes,
+    ...boxArgTypes,
   },
   args: {
     // ...commonArgs,

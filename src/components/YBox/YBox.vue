@@ -6,6 +6,8 @@
 
 <script setup lang="ts">
 import {
+  BackgroundColorKey,
+  parseBackgroundColorProps,
   parseBorderProps,
   parseHeightProps,
   parseMarginProps,
@@ -19,17 +21,17 @@ import {
   type SpacingKey,
   type WidthKey,
 } from '@/components/utils'
-import type { ThemeComponentBaseProps } from '@/composables/component-theme'
 import { computed } from 'vue'
 import './YBox.css'
 
-export interface YBoxProps extends ThemeComponentBaseProps {
+export interface YBoxProps {
   padding?: SpacingKey | string
   radius?: RadiusKey | string
   width?: WidthKey
   height?: HeightKey
   margin?: MarginKey | string
-  border?: BorderKey | string
+  border?: BorderKey | BorderKey[] | string | string[]
+  backgroundColor?: BackgroundColorKey | string
 }
 
 const props = withDefaults(defineProps<YBoxProps>(), {})
@@ -43,6 +45,7 @@ const getClasses = computed(() => {
     ...parseHeightProps(props.height),
     ...parseMarginProps(props.margin as MarginKey),
     ...parseBorderProps(props.border as BorderKey),
+    ...parseBackgroundColorProps(props.backgroundColor as BackgroundColorKey),
   ]
 })
 </script>

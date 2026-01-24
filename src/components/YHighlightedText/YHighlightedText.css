@@ -20,44 +20,24 @@
   inherits: true;
 }
 
-h1.-highlighted,
-h2.-highlighted,
-h3.-highlighted,
-h4.-highlighted,
-.h1.-highlighted,
-.text-xxl.-highlighted,
-.text-xl.-highlighted,
-.text-lg.-highlighted,
-.text-md.-highlighted,
-.text-sm.-highlighted,
-.text-xs.-highlighted,
-p.-highlighted,
-span.-highlighted,
-*.-highlighted {
-  /* // --highlighted-bg-color: color-mix(
-  //   in srgb,
-  //   var(--color-bg),
-  //   var(--theme-current-color) calc(100% * var(--active, 0))
-  // ); */
-  --highlighted-bg-color-1: var(--highlighted-bg-color);
-  --highlighted-bg-color-2: var(--highlighted-bg-color);
-
+.-highlighted {
   text-transform: uppercase;
   /* TODO: check responsive line-height */
   line-height: 135%;
   margin: 0;
   position: relative;
 
+  --is-not-hovered-yet: ;
   /* // line-height: 135%; */
   /* // margin: 0; */
   /* // padding: 4px 10px 1.4px; */
 
   &.stick-to-left {
     /* // position: relative; */
-    --left-mobile-val: calc(
+    /* --left-mobile-val: calc(
       0px - var(--layout-mobile-padding) -
         var(--highlighted-text-gap-left, clamp(-30px, -1.4vw, -2px))
-    );
+    ); */
     --left-pos: calc(0px - var(--highlighted-text-gap-left));
     padding-right: clamp(2px, 1.4vw, 30px);
 
@@ -94,12 +74,12 @@ span.-highlighted,
   padding-left: clamp(2px, 1.4vw, 30px);
 } */
 
-@media (min-width: 80rem) {
+@media (min-width: 48rem) {
   /* 1280px */
   .-highlighted.-animate > span {
     color: var(--theme-current-color);
-    --animate-in: highlight-to-left 0.5s 0.1s forwards;
-    --animate-out: highlight-to-right 0.4s forwards;
+    /* --animate-in: highlight-to-left 0.5s 0.1s forwards; */
+    /* --animate-out: var(--is-hovered-once, highlight-to-right 0.4s forwards); */
     background-size: 0% 100%;
     -webkit-background-clip: padding-box, text;
     background-clip: padding-box, text;
@@ -113,12 +93,14 @@ span.-highlighted,
     --animate-out: highlight-to-left 0.4s 0.1s forwards;
   }
 
-  .-highlighted.-animate:hover > span {
-    --highlight-animate: var(--animate-in);
+  .-highlighted.-animate:not(:hover) > span {
+    background-size: 100% 100%;
+    color: var(--color-bg);
+    --highlight-animate: var(--is-not-hovered-yet, var(--animate-out));
   }
 
-  .-highlighted.-animate:not(:hover) > span {
-    --highlight-animate: var(--animate-out);
+  .-highlighted.-animate:hover > span {
+    --highlight-animate: var(--animate-in);
   }
 }
 

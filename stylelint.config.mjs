@@ -4,6 +4,7 @@ export default {
     'stylelint-config-standard',
     'stylelint-config-standard-scss',
     'stylelint-config-recommended-vue',
+    'stylelint-config-prettier',
   ],
   files: ['**/*.{vue,scss,sass,css}'],
   rules: {

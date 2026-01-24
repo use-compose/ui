@@ -1,11 +1,12 @@
 <template>
-  <div :class="flexClasses" :style="flexStyle">
+  <YBox :class="flexClasses" :style="flexStyle">
     <slot></slot>
-  </div>
+  </YBox>
 </template>
 
 <script lang="ts" setup>
 import { computed } from 'vue'
+import YBox from '../YBox/YBox.vue'
 import './YFlex.css'
 
 interface FlexProps {

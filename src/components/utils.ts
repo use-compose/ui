@@ -5,6 +5,7 @@ import type { DesignTokens } from '../assets/css/themes/tokens/types/theme'
 export {
   getSpacingOptions,
   isDefined,
+  parseBackgroundColorProps,
   parseBorderProps,
   parseHeightProps,
   parseMarginProps,
@@ -27,6 +28,7 @@ export type BorderKey =
   | keyof DesignTokens['cube']['utility']['border']
   | keyof DesignTokens['cube']['utility']['border']['theme']
   | keyof DesignTokens['cube']['utility']['border']['width']
+export type BackgroundColorKey = keyof DesignTokens['cube']['utility']['bg']
 
 const spacingOptions: SpacingKey[] = ['xxs', 'xs', 'sm', 'md', 'lg', 'xl', 'xxl']
 
@@ -227,15 +229,32 @@ function parseBorderProps(borderProps?: BorderKey | BorderKey[]): string[] {
     return []
   }
 
+  if (Array.isArray(borderProps)) {
+    return borderProps.map((v) => `border-${v}`)
+  }
   const values = borderProps
     ?.toString()
     .split(' ')
     .map((v) => v.trim())
-    .filter((v) => v !== 'none')
-
   if (!values || values.length === 0) {
     return []
   }
 
   return values.map((v) => `border-${v}`)
+}
+
+/**
+ * Parse backgroundColor prop and generate corresponding utility class
+ *
+ * e.g.
+ * backgroundColor="primary" => ['bg-primary']
+ *
+ * @param {BackgroundColorKey} backgroundColorProps
+ * @returns {string[]}
+ */
+function parseBackgroundColorProps(backgroundColorProps?: BackgroundColorKey): string[] {
+  if (!isDefined(backgroundColorProps)) {
+    return []
+  }
+  return [`bg-${backgroundColorProps}`]
 }

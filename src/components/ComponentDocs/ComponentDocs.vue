@@ -1,13 +1,13 @@
 <template>
-  <div>
-    <slot>
-      <p>Default content for ComponentDocs component</p>
-    </slot>
-  </div>
+  <YFlow>
+    <slot name="title" />
+    <slot name="description" />
+  </YFlow>
 </template>
 
 <script setup lang="ts">
 // import { defineProps, withDefaults } from 'vue'
+import YFlow from '../YFlow/YFlow.vue'
 import './ComponentDocs.css'
 
 // const props = withDefaults(defineProps<ComponentDocsProps>(), {

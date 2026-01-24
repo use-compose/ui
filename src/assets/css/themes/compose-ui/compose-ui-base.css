@@ -45,6 +45,32 @@
     initial-value: 0;
     inherits: true;
   }
+
+  .border-theme-10 {
+    border: var(--_border-width-10) solid var(--theme-current-color);
+  }
+  .border-theme-25 {
+    border: var(--_border-width-25) solid var(--theme-current-color);
+  }
+  .border-theme-50 {
+    border: var(--_border-width-50) solid var(--theme-current-color);
+  }
+  .border-theme-75 {
+    border: var(--_border-width-75) solid var(--theme-current-color);
+  }
+  .border-theme-100 {
+    border: var(--_border-width-100) solid var(--theme-current-color);
+  }
+  .border-theme-light {
+    border: var(--_border-width-small) solid var(--theme-current-color);
+  }
+  .border-theme-medium {
+    border: var(--_border-width-medium) solid var(--theme-current-color);
+  }
+  .border-theme-large {
+    border: var(--_border-width-large) solid var(--theme-current-color);
+  }
+
   /* 
  * Main Theme Component or element styles
  * A set of CSS variables are used to define the theme
