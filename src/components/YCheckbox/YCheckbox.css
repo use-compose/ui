@@ -1,5 +1,6 @@
 /* Needed for the animation
 /* https://css-tricks.com/exploring-property-and-its-animating-powers/ */
+
 /* @property --transform-scale {
   syntax: '<number>';
   inherits: false;
@@ -23,7 +24,7 @@
   padding: var(--_checkbox-padding, var(--spacing-xs));
   border-radius: var(--_checkbox-radius, var(--border-radius-medium));
 
-  &:before {
+  &::before {
     content: '';
     position: absolute;
     width: 70%;
@@ -35,9 +36,11 @@
     /* border: var(--border-theme-50); */
     background-color: var(--_checkbox-bg, var(--color-bg-primary));
     box-sizing: border-box;
+
     /* transform: translate(var(--_checkbox-checkmark-translate))
       scale(var(--transform-scale)); */
     transform: translate(-50%, -50%) scale(0);
+
     /* animation: var(--checkbox-animation); */
     transition:
       transform 200ms ease,
@@ -47,13 +50,10 @@
   &:checked {
     /* --checkbox-animation: var(--checkbox-animation-checked-in); */
 
-    &:before {
+    &::before {
       transform: translate(-50%, -50%) scale(1);
       background-color: var(--color-main-dark);
     }
-  }
-  &:not(:checked) {
-    /* --y-checkbox-animation: var(--animate-checked-out); */
   }
 
   &:active,
@@ -61,17 +61,3 @@
     --state-bg-lightness: var(--state-hover-bg-lightness);
   }
 }
-/* 
-.y-checkbox-wrapper .y-checkbox {
-  --animate-checked-in: checked-in 0.3s 0s forwards;
-  --animate-checked-out: var(--has-changed-once, checked-out 0.3s 0s forwards);
-}
-
-.y-checkbox-wrapper:has(.y-checkbox:checked),
-.y-checkbox-wrapper:has(.y-checkbox:checked) .y-checkbox {
-  --y-checkbox-animation: var(--animate-checked-in);
-}
-
-.y-checkbox-wrapper:has(.y-checkbox:not(:checked)) .y-checkbox {
-  --y-checkbox-animation: var(--animate-checked-out);
-} */

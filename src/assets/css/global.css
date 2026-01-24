@@ -1,13 +1,27 @@
 @import './base/conditional.css';
+
 /* @import './base/variants.css'; */
 @import './base/component/component.css';
 @import './base/fonts.css';
+
+/* TODO: */
+
+/* @import './base/reset.css'; */
+
 /* @import './base/variables.css'; */
 @import './utils/animations.css';
 @import './components/common.css';
 @import './components/table.css';
+
 /* @import './themes/private-theme.css'; */
+
 /* @import './themes/public-theme.css'; */
+@import './layout/container.css';
+@import './layout/cluster.css';
+@import './layout/switcher.css';
+@import './layout/wrapper.css';
+@import './utils/media.css';
+@import './themes/core.css';
 @import './theme.css';
 @import './themes/compose-ui/compose-ui-base.css';
 @import './themes/compose-ui/compose-ui.state.css';

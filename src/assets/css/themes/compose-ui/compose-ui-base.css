@@ -1,8 +1,8 @@
-@import url('../../tokens/css/themes/public-theme.css') layer(theme);
-@import url('../../tokens/css/themes/private-theme.css') layer(theme);
-@import url('../../tokens/css/space.css') layer(theme);
+/* @import url('../tokens/css/themes/public-theme.css') layer(theme);
+@import url('../tokens/css/themes/private-theme.css') layer(theme);
+@import url('../tokens/css/space.css') layer(theme);
 
-@layer colors, theme-default, theme, cube;
+@layer props, api, engine, colors, theme-default, theme, cube; */
 @layer theme {
   :root {
     --text-xs: var(--font-scale-0);
@@ -12,9 +12,7 @@
     --text-xl: var(--font-scale-4);
     --text-xxl: var(--font-scale-5);
     --text-h1: var(--font-scale-6);
-
     --_layout-depth-base: 4px;
-
     --shadow-scale: 1.25;
   }
 }
@@ -40,11 +38,45 @@
 
   @property --unstyled {
     /* We define a value ("no") that doesn't exist as there's no default for "all"  */
+
     /* https://keithclark.co.uk/articles/pseudo-boolean-css-custom-properties/ */
     syntax: '<number>';
     initial-value: 0;
     inherits: true;
   }
+
+  .border-theme-10 {
+    border: var(--_border-width-10) solid var(--theme-current-color);
+  }
+
+  .border-theme-25 {
+    border: var(--_border-width-25) solid var(--theme-current-color);
+  }
+
+  .border-theme-50 {
+    border: var(--_border-width-50) solid var(--theme-current-color);
+  }
+
+  .border-theme-75 {
+    border: var(--_border-width-75) solid var(--theme-current-color);
+  }
+
+  .border-theme-100 {
+    border: var(--_border-width-100) solid var(--theme-current-color);
+  }
+
+  .border-theme-light {
+    border: var(--_border-width-small) solid var(--theme-current-color);
+  }
+
+  .border-theme-medium {
+    border: var(--_border-width-medium) solid var(--theme-current-color);
+  }
+
+  .border-theme-large {
+    border: var(--_border-width-large) solid var(--theme-current-color);
+  }
+
   /* 
  * Main Theme Component or element styles
  * A set of CSS variables are used to define the theme
@@ -62,6 +94,7 @@
     --TRUE: 1;
     --FALSE: 0;
     --theme: ;
+
     /* --raw: var(--FALSE); */
 
     --theme: ;
@@ -74,29 +107,30 @@
     --_component-padding-y: calc(var(--space-xs) * var(--styled));
     --_component-padding-x: calc(var(--layout-space-unit) * var(--styled));
     --_component-padding: var(--_component-padding-y) var(--_component-padding-x);
+
     /* --border-width: var(--border-width-25); */
+
     /* --is-raw: var(--raw); */
 
     --border-radius: 0;
     --base-unit: var(--_border-width-large);
   }
+
   [data-compose-ui] {
     /* Components */
     --_component-padding-x: var(--_button-padding-x);
     --_component-padding-y: var(--_button-padding-y);
-    padding: var(--_component-padding-x) var(--_component-padding-y);
+
+    padding: var(--_component-pading, var(--_component-padding-y) var(--_component-padding-x));
 
     --_component-border-width: calc(var(--border-width-xsmall) * var(--styled));
-
     --theme-base-unit: var(--base-unit);
     --theme-base-unit-calc: calc(var(--theme-base-unit) * var(--not-raw, 1) * var(--styled, 1));
-
     --_component-shadow-base: var(--_shadow-xs);
     --_component-shadow-hover: var(--_shadow-xs);
     --_component-shadow-active: var(--_shadow-xs);
     --_component-shadow-focus: var(--_shadow-xs);
     --_component-shadow-disabled: 0;
-
     --_component-transform-base: calc(-1 * var(--_shadow-xs));
     --_component-transform-hover: calc(-1 * var(--_shadow-sm));
     --_component-transform-active: calc(-1 * var(--_shadow-xs));

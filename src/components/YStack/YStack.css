@@ -1,0 +1,19 @@
+.y-stack {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+
+  --flow-space: var(--_stack-gap);
+
+  & > *:first-child {
+    margin-block: 0;
+  }
+
+  & :only-child {
+    block-size: 100%;
+  }
+
+  & > :nth-child(2) {
+    margin-block-end: auto;
+  }
+}

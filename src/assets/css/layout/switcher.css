@@ -1,0 +1,21 @@
+/**
+ * Holy Albatross utility / composition for switcher
+ * https://heydonworks.com/article/the-flexbox-holy-albatross-reincarnated/
+ */
+.switcher,
+.holy {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--_switcher-gap, 1rem);
+
+  --switch: var(--_switcher-modifier);
+}
+
+.switcher > *,
+.holy > * {
+  flex-grow: 1;
+  flex-basis: calc((var(--switch) - 100%) * 999);
+
+  /* avoid overflow from long content */
+  min-width: 0;
+}

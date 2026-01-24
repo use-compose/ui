@@ -3,7 +3,9 @@
 @font-face {
   font-family: gotham;
   src: url('../fonts/GOTHAM-BOOK.OTF') format('opentype');
+
   /* src: var(--_font-regular); */
+
   /* src: url('/fonts/GOTHAM-BOOK.OTF') format('opentype'); */
   font-display: swap;
 }
@@ -11,6 +13,7 @@
 @font-face {
   font-family: gotham;
   src: url('../fonts/GOTHAM-BOLD.OTF') format('opentype');
+
   /* src: var(--_font-bold); */
   font-weight: 700;
   font-display: swap;
@@ -18,7 +21,9 @@
 
 @font-face {
   font-family: gotham;
+
   /* src: url('../fonts/GOTHAM-BLACKITALIC.OTF') format('opentype'); */
+
   /* src: var(--_font-bolder); */
   src: url('../fonts/GOTHAM-BLACKITALIC.OTF') format('opentype');
   font-weight: 900;
@@ -29,13 +34,15 @@
 @font-face {
   font-family: gotham;
   src: url('../fonts/GOTHAM-BLACK.OTF') format('opentype');
+
   /* src: var(--_font-bolder-italic); */
   font-weight: 900;
   font-display: swap;
 }
 
 body {
-  font-family: 'Roboto Slab', serif;
+  font-family: 'Roboto Variable', sans-serif;
+
   /* font-family: gotham; */
 }
 

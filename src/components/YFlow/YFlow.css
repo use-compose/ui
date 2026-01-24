@@ -1,0 +1,12 @@
+/**
+ * Flow Layout
+ * Create consistent vertical spacing between direct children
+ * omitting the space before the first child.
+ *
+ * See: https://piccalil.li/blog/my-favourite-3-lines-of-css/
+ * and https://alistapart.com/article/axiomatic-css-and-lobotomized-owls/ for the selector
+ */
+
+.y-flow > * + * {
+  margin-block-start: var(--_flow-space, 1em);
+}

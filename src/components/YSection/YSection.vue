@@ -1,17 +1,17 @@
 <template>
-  <div class="y-section">
+  <YRow type="switcher" class="y-section">
     <YVerticalTitle v-if="title" class="y-section__title">
       {{ title }}
     </YVerticalTitle>
-    <YContainer>
+    <Wrapper>
       <slot />
-    </YContainer>
-  </div>
+    </Wrapper>
+  </YRow>
 </template>
 
 <script setup lang="ts">
-import { defineProps } from 'vue'
-import YContainer from '../YContainer/YContainer.vue'
+import Wrapper from '../Wrapper.vue'
+import YRow from '../YRow/YRow.vue'
 import { YVerticalTitle } from '../YVerticalTitle'
 import './YSection.css'
 

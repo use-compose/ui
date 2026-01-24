@@ -83,9 +83,11 @@ $VARIANTS: (
 @mixin focus-visual() {
   @include colors.focus;
 }
+
 @mixin active-visual() {
   @include colors.active;
 }
+
 @mixin disabled-visual() {
   @include colors.disabled;
 }
@@ -113,12 +115,15 @@ $VARIANTS: (
   @include state.hover {
     @include apply-props(map.get($def, hover));
   }
+
   @include state.focus {
     @include apply-props(map.get($def, focus));
   }
+
   @include state.active {
     @include apply-props(map.get($def, active));
   }
+
   @include state.disabled {
     @include apply-props(map.get($def, disabled));
   }
@@ -154,19 +159,19 @@ $VARIANTS: (
     &.focus,
     &:focus-visible {
       @include mixins.resolve-lch-value('state', focus);
-      @include focus-visual();
+      @include focus-visual;
     }
 
     &:active,
     &.active {
       @include mixins.resolve-lch-value('state', active);
-      @include active-visual();
+      @include active-visual;
     }
   }
 
   &.disabled,
   &[disabled] {
-    @include disabled-visual();
+    @include disabled-visual;
   }
 }
 
@@ -183,14 +188,17 @@ $VARIANTS: (
     &.base {
       /* no-op placeholder if you rely on it */
     }
+
     &.hover {
       @include state.hover {
       }
     }
+
     &.focus {
       @include state.focus {
       }
     }
+
     &.active {
       @include state.active {
       }

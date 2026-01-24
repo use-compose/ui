@@ -13,13 +13,12 @@
   color: var(--theme-color);
   position: relative;
   z-index: 1;
-
   min-height: var(--heading-height);
   text-align: center;
   flex: 1 0 100%;
 }
 
-@media (min-width: 768px) {
+@media (width >= 768px) {
   .y-vertical-title {
     font-size: var(--y-vertical-title-font-size-md);
     display: flex;
@@ -34,13 +33,13 @@
   }
 }
 
-@media (min-width: 1024px) {
+@media (width >= 1024px) {
   .y-vertical-title {
     padding: 0 46px 0 37px;
   }
 }
 
-@media (min-width: 1280px) {
+@media (width >= 1280px) {
   .y-vertical-title {
     font-size: var(--y-vertical-title-font-size-xs-and-xl);
   }

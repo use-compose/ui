@@ -1,5 +1,5 @@
 /* state.css */
-@layer props, state, engine;
+@layer props, api, engine;
 
 /* -----------------------------------------------------------------------------
  * PROPS
@@ -9,26 +9,36 @@
   @property --state { syntax: "base | hover | active | focus | disabled"; initial-value: base; inherits: true; }
 
   /* token-or-0 */
+
   /* prettier-ignore */
   @property --_state-base-else-0 { syntax: "base | <integer>"; initial-value: 0; inherits: true; }
+
   /* prettier-ignore */
   @property --_state-hover-else-0 { syntax: "hover | <integer>"; initial-value: 0; inherits: true; }
+
   /* prettier-ignore */
   @property --_state-active-else-0 { syntax: "active | <integer>"; initial-value: 0; inherits: true; }
+
   /* prettier-ignore */
   @property --_state-focus-else-0 { syntax: "focus | <integer>"; initial-value: 0; inherits: true; }
+
   /* prettier-ignore */
   @property --_state-disabled-else-0 { syntax: "disabled | <integer>"; initial-value: 0; inherits: true; }
 
   /* bits */
+
   /* prettier-ignore */
   @property --is-state-base { syntax: "<integer>"; initial-value: 1; inherits: true; }
+
   /* prettier-ignore */
   @property --is-state-hover { syntax: "<integer>"; initial-value: 1; inherits: true; }
+
   /* prettier-ignore */
   @property --is-state-active { syntax: "<integer>"; initial-value: 1; inherits: true; }
+
   /* prettier-ignore */
   @property --is-state-focus { syntax: "<integer>"; initial-value: 1; inherits: true; }
+
   /* prettier-ignore */
   @property --is-state-disabled { syntax: "<integer>"; initial-value: 1; inherits: true; }
 }
@@ -36,12 +46,40 @@
 /* -----------------------------------------------------------------------------
  * STATE (only sets --state)
  * -------------------------------------------------------------------------- */
-@layer state {
-  /**
-   * IMPORTANT: avoid unscoped :hover/:active/:focus rules.
-   * Only apply to the component root, otherwise everything on the page can inherit it.
-   */
+@layer api {
+  [data-compose-ui] {
+    /* disabled wins */
+    &.disabled,
+    &:disabled,
+    &[disabled] {
+      --state: disabled;
+    }
 
+    /* interactive states only when not disabled */
+
+    /* No need for `base` as it's the fallback */
+    &:not([disabled], .disabled) {
+      &.focus,
+      &.focus-visible,
+      &:focus,
+      &:focus-visible {
+        --state: focus;
+      }
+
+      &.active,
+      &:active {
+        --state: active;
+      }
+
+      &.hover,
+      &:hover {
+        --state: hover;
+      }
+    }
+  }
+}
+
+/* 
   [data-compose-ui]:not([disabled]):not(.disabled):not(:hover):not(:active):not(:focus):not(
       :focus-visible
     ),
@@ -70,25 +108,28 @@
   [data-compose-ui]:disabled,
   [data-compose-ui].disabled {
     --state: disabled;
-  }
+  } */
 
-  /**
+/**
    * If you REALLY need “child is hovered/focused sets parent state”, keep :has()
    * but scope it to the root only:
    */
-  [data-compose-ui]:has(:hover, .hover) {
-    --state: hover;
-  }
-  [data-compose-ui]:has(:active, .active) {
-    --state: active;
-  }
-  [data-compose-ui]:has(:focus-visible, :focus, .focus-visible, .focus) {
-    --state: focus;
-  }
-  [data-compose-ui]:has(.disabled, :disabled, [disabled]) {
-    --state: disabled;
-  }
-}
+
+/* [data-compose-ui]:has(:hover, .hover) {
+      --state: hover;
+    }
+    [data-compose-ui]:has(:active, .active) {
+      --state: active;
+    }
+    [data-compose-ui]:has(:focus-visible, :focus, .focus-visible, .focus) {
+      --state: focus;
+    }
+    [data-compose-ui]:has(.disabled, :disabled, [disabled]) {
+      --state: disabled;
+    } */
+
+/* }
+} */
 
 /* -----------------------------------------------------------------------------
  * ENGINE (grind -> bits, map -> s-* deltas)
@@ -100,18 +141,26 @@
      */
     --_state-base-else-0: var(--state);
     --is-state-base: var(--_state-base-else-0);
-
     --_state-hover-else-0: var(--state);
     --is-state-hover: var(--_state-hover-else-0);
-
     --_state-active-else-0: var(--state);
     --is-state-active: var(--_state-active-else-0);
-
     --_state-focus-else-0: var(--state);
     --is-state-focus: var(--_state-focus-else-0);
-
     --_state-disabled-else-0: var(--state);
     --is-state-disabled: var(--_state-disabled-else-0);
+    --_component-transform-depth: calc(
+      var(--_component-transform-base) * var(--is-state-base) + var(--_component-transform-hover) *
+        var(--is-state-hover) + var(--_component-transform-active) * var(--is-state-active) +
+        var(--_component-transform-focus) * var(--is-state-focus) +
+        var(--_component-transform-disabled) * var(--is-state-disabled)
+    );
+    --component-shadow-depth: calc(
+      var(--is-state-base) * var(--_component-shadow-base) + var(--is-state-hover) *
+        var(--_component-shadow-hover) + var(--is-state-active) * var(--_component-shadow-active) +
+        var(--is-state-focus) * var(--_component-shadow-focus) + var(--is-state-disabled) *
+        var(--_component-shadow-disabled) - 1 * var(--_component-transform-depth)
+    );
 
     /**
      * 2) Map state deltas (weighted sums)
@@ -141,7 +190,6 @@
         var(--is-state-focus) * var(--state-focus-bg-opacity) + var(--is-state-disabled) *
         var(--state-disabled-bg-opacity)
     );
-
     --s-border-l: calc(
       var(--is-state-base) * var(--state-base-border-lightness) + var(--is-state-hover) *
         var(--state-hover-border-lightness) + var(--is-state-active) *
@@ -169,7 +217,6 @@
         var(--state-focus-border-opacity) + var(--is-state-disabled) *
         var(--state-disabled-border-opacity)
     );
-
     --s-text-l: calc(
       var(--is-state-base) * var(--state-base-text-lightness) + var(--is-state-hover) *
         var(--state-hover-text-lightness) + var(--is-state-active) *

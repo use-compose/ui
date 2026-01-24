@@ -1,0 +1,1 @@
+export { default as YBox } from './YBox.vue'

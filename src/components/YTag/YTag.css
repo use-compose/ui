@@ -1,5 +1,6 @@
 .y-tag {
   display: inline-flex;
+
   --component-margin-bottom: none;
   --component-padding-y: 0.15rem;
 

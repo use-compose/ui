@@ -4,8 +4,8 @@
     v-bind="props"
     input-class="y-input-text"
     type="text"
-    :value="modelValue"
-    @input="handleInput"
+    :model-value="modelValue"
+    @change="updateModelValue"
   />
 </template>
 
@@ -22,5 +22,5 @@ const props = withDefaults(defineProps<YInputTextProps>(), {
 const emit: EmitFn = defineEmits(['update:modelValue', 'input', 'change', 'blur'])
 
 const attrs = useAttrs()
-const { modelValue, handleInput } = useInput({ props, attrs, emit })
+const { modelValue, updateModelValue } = useInput({ props, attrs, emit })
 </script>

@@ -7,7 +7,9 @@
   @include theme-component;
 
   display: inline-flex;
+
   @include utils.component(margin-bottom, none);
+
   // text-transform: uppercase;
   @include utils.component(padding-y, 0.15rem);
 

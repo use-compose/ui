@@ -1,5 +1,7 @@
 import type { Preview } from '@storybook/vue3-vite'
 import { AppCompose, Wrapper, type YTheme } from '../src'
+// Supports weights 100-900
+import '@fontsource-variable/roboto'
 
 const theme: YTheme = {
   primary: '#e3c567',
@@ -27,9 +29,9 @@ const preview: Preview = {
       components: { story, AppCompose, Wrapper },
       template: `
         <AppCompose :theme="theme">
-          <Wrapper> 
+          <!-- <Wrapper> -->
             <story />
-          </Wrapper> 
+          <!-- </Wrapper> -->
         </AppCompose>
         `,
 

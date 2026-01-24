@@ -8,5 +8,6 @@
   background-color: inherit;
   padding-left: 1rem;
   padding-right: 1rem;
+
   --component-box-shadow: var(--component-box-shadow);
 }
