@@ -1,0 +1,11 @@
+# Theme API and engine
+
+src/assets/css/themes/**/*.state.css
+src/assets/css/themes/**/*.tone.css
+src/assets/css/themes/**/*.variant.css
+
+src/**/*.variant.css
+src/**/*.tone.css
+src/**/*.state.css
+
+src/assets/css/theme.TODO/*.css
