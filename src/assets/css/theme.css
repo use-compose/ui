@@ -350,16 +350,16 @@
         --state: hover;
       }
 
-      &.active,
-      &:active {
-        --state: active;
-      }
-
       &.focus,
       &.focus-visible,
       &:focus,
       &:focus-visible {
         --state: focus;
+      }
+
+      &.active,
+      &:active {
+        --state: active;
       }
     }
 
@@ -402,22 +402,6 @@
   --s-text-a: var(--state-hover-text-opacity);
 }
 
-[data-compose-ui]:active,
-[data-compose-ui].active {
-  --s-bg-l: var(--state-active-bg-lightness);
-  --s-bg-c: var(--state-active-bg-chroma);
-  --s-bg-h: var(--state-active-bg-hue);
-  --s-bg-a: var(--state-active-bg-opacity);
-  --s-border-l: var(--state-active-border-lightness);
-  --s-border-c: var(--state-active-border-chroma);
-  --s-border-h: var(--state-active-border-hue);
-  --s-border-a: var(--state-active-border-opacity);
-  --s-text-l: var(--state-active-text-lightness);
-  --s-text-c: var(--state-active-text-chroma);
-  --s-text-h: var(--state-active-text-hue);
-  --s-text-a: var(--state-active-text-opacity);
-}
-
 [data-compose-ui]:focus,
 [data-compose-ui]:focus-visible,
 [data-compose-ui].focus-visible,
@@ -434,6 +418,22 @@
   --s-text-c: var(--state-focus-text-chroma);
   --s-text-h: var(--state-focus-text-hue);
   --s-text-a: var(--state-focus-text-opacity);
+}
+
+[data-compose-ui]:active,
+[data-compose-ui].active {
+  --s-bg-l: var(--state-active-bg-lightness);
+  --s-bg-c: var(--state-active-bg-chroma);
+  --s-bg-h: var(--state-active-bg-hue);
+  --s-bg-a: var(--state-active-bg-opacity);
+  --s-border-l: var(--state-active-border-lightness);
+  --s-border-c: var(--state-active-border-chroma);
+  --s-border-h: var(--state-active-border-hue);
+  --s-border-a: var(--state-active-border-opacity);
+  --s-text-l: var(--state-active-text-lightness);
+  --s-text-c: var(--state-active-text-chroma);
+  --s-text-h: var(--state-active-text-hue);
+  --s-text-a: var(--state-active-text-opacity);
 }
 
 [data-compose-ui]:disabled,
@@ -540,9 +540,9 @@
       var(--_component-shadow-focus) + var(--disabled) * var(--_component-shadow-disabled) - 1 *
       var(--_component-transform-depth)
   );
-  --component-shadow-depth: calc(
+  /* --component-shadow-depth: calc(
     var(--_component-shadow-base) - 0.75 * var(--_component-transform-depth)
-  );
+  ); */
   --shadow-depth: calc(var(--component-shadow-depth) * var(--_layout-depth-base));
   --component-box-shadow-x: calc(var(--is-box-shadow-hidden) * var(--shadow-depth, 0.75));
   --component-box-shadow-y: calc(var(--is-box-shadow-hidden) * var(--shadow-depth, 0.75));

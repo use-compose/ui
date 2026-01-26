@@ -8,7 +8,7 @@ import YStack from './YStack.vue'
 
 const meta: Meta<typeof YStack> = {
   // TODO: TO CHANGE PATH
-  title: 'Components/YStack',
+  title: 'Components/Layout/YStack',
   component: YStack,
   tags: ['autodocs'],
   argTypes: {

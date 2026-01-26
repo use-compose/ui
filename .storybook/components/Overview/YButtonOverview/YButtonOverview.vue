@@ -51,14 +51,12 @@
 </template>
 
 <script setup lang="ts">
-import { YButton, YColorInput, YFlex } from '@/components'
-import AppCompose from '@/components/AppCompose.vue'
-import { useTheme } from '@/composables'
-import { basePropsDefault, ThemeComponentBaseProps } from '@/composables/component-theme'
+import { AppCompose, YButton, YColorInput, YFlex } from '@/components'
+import { basePropsDefault } from '@/composables/component-theme'
+import { useTheme } from '@/composables/theme'
 import { colors, states, variants } from '@/composables/theming'
 import './YButtonOverview.css'
-
-export interface YButtonOverviewProps extends ThemeComponentBaseProps {}
+import { YButtonOverviewProps } from './types'
 
 // useTheme()
 

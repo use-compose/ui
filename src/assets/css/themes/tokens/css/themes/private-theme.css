@@ -45,15 +45,15 @@
   --_font-scale-2: var(--font-scale-2, clamp(1.107421875rem, 0.6955434782608696rem + 1.8305706521739133vw, 2.16rem));
   --_font-scale-3: var(--font-scale-3, clamp(1.245849609375rem, 0.7190951086956524rem + 2.341131114130434vw, 2.5919999999999996rem));
   --_font-scale-4: var(--font-scale-4, clamp(1.401580810546875rem, 0.7329124320652175rem + 2.9718594599184778vw, 3.1104rem));
-  --_font-scale-5: var(--font-scale-5, clamp(1.5767784118652344rem, 0.7332430078125004rem + 3.749046240234373vw, 3.732479999999999rem));
-  --_font-scale-6: var(--font-scale-6, clamp(1.7738757133483887rem, 0.7153582098760192rem + 4.704522237654976vw, 4.478975999999999rem));
+  --_font-scale-0-2: var(--font-scale-0-2, clamp(NaNrem, NaNrem + NaNvw, NaNrem));
+  --_font-scale-0-1: var(--font-scale-0-1, clamp(NaNrem, NaNrem + NaNvw, NaNrem));
   --_font-min-font: var(--font-min-font, 14);
   --_font-max-font: var(--font-max-font, 24);
   --_font-min-viewport: var(--font-min-viewport, 360);
   --_font-max-viewport: var(--font-max-viewport, 1280);
   --_font-scale-min: var(--font-scale-min, 1.125);
   --_font-scale-max: var(--font-scale-max, 1.2);
-  --_font-steps: var(--font-steps, 0,1,2,3,4,5,6);
+  --_font-steps: var(--font-steps, 0-2,0-1,0,1,2,3,4);
   --_font-weight-light: var(--font-weight-light, 300);
   --_font-weight-normal: var(--font-weight-normal, 400);
   --_font-weight-medium: var(--font-weight-medium, 500);

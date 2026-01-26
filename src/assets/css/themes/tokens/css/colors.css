@@ -153,15 +153,15 @@
 --color-neutral-800: var(--color-graphite-800);
 --color-neutral-900: var(--color-graphite-900);
 --color-neutral-base: var(--color-graphite-base);
---color-info-100: var(--color-vanilla-cream-300);
---color-info-200: var(--color-vanilla-cream-500);
---color-info-300: var(--color-vanilla-cream-700);
---color-info-400: var(--color-vanilla-cream-900);
+--color-info-100: var(--color-vanilla-cream-100);
+--color-info-200: var(--color-vanilla-cream-200);
+--color-info-300: var(--color-vanilla-cream-300);
+--color-info-400: var(--color-vanilla-cream-400);
 --color-info-500: var(--color-vanilla-cream-base);
---color-info-600: var(--color-vanilla-cream-100);
---color-info-700: var(--color-vanilla-cream-200);
---color-info-800: var(--color-vanilla-cream-400);
---color-info-900: var(--color-vanilla-cream-600);
+--color-info-600: var(--color-vanilla-cream-600);
+--color-info-700: var(--color-vanilla-cream-700);
+--color-info-800: var(--color-vanilla-cream-800);
+--color-info-900: var(--color-vanilla-cream-900);
 
 /* ------------------------------------------------------------ */
 /*                            Intent                            */
@@ -177,7 +177,7 @@
 --color-bg-accent: var(--color-accent-500);
 --color-bg-accent-hover: var(--color-accent-600);
 --color-bg-accent-subtle: var(--color-accent-100);
---color-bg-neutral: var(--color-neutral-500);
+--color-bg-neutral: var(--color-neutral-base);
 --color-bg-neutral-strong: var(--color-neutral-900);
 --color-bg-info: var(--color-info-100);
 --color-bg-warning: var(--color-primary-100);

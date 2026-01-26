@@ -1,28 +1,5 @@
 /* https://stackoverflow.com/questions/6542212/use-css3-transitions-with-gradient-backgrounds/63848864#63848864 */
-
-/* Used for the shake animation see shake.css */
-@property --highlighted-color-1 {
-  syntax: '<color>';
-  initial-value: #e3c567;
-  inherits: false;
-}
-
-@property --highlighted-color-2 {
-  syntax: '<color>';
-  initial-value: #e3c567;
-  inherits: false;
-}
-
-/* Control wether the highlighted background is displayed by default */
-
-/* Used with animation */
-@property --active {
-  syntax: '<integer>';
-  initial-value: 1;
-  inherits: true;
-}
-
-.-highlighted {
+.highlighted {
   text-transform: uppercase;
 
   /* TODO: check responsive line-height */
@@ -30,33 +7,19 @@
   margin: 0;
   position: relative;
 
-  --is-not-hovered-yet: ;
-
-  /* // line-height: 135%; */
-
-  /* // margin: 0; */
-
-  /* // padding: 4px 10px 1.4px; */
-
   &.stick-to-left {
-    /* // position: relative; */
-
-    /* --left-mobile-val: calc(
-      0px - var(--layout-mobile-padding) -
-        var(--highlighted-text-gap-left, clamp(-30px, -1.4vw, -2px))
-    ); */
     --left-pos: calc(0px - var(--highlighted-text-gap-left));
 
-    padding-right: clamp(2px, 1.4vw, 30px);
+    /* padding-right: clamp(2px, 1.4vw, 30px); */
     left: var(--left-pos);
   }
 }
 
-.-highlighted.stick-to-left > span.labeled:first-of-type {
+.highlighted.stick-to-left > span:first-of-type {
   padding-left: var(--highlighted-text-gap-left);
 }
 
-.-highlighted > span {
+.highlighted > span {
   position: relative;
 
   --highlighted-bg-color-1: var(--theme-current-color);
@@ -68,53 +31,67 @@
   /* TODO: Gotham balance padding */
   padding: 4.55px 2px 0;
   background-image: var(--highlighted-bg);
-
-  /* -webkit-box-decoration-break: clone; */
-
-  /* box-decoration-break: clone; */
 }
 
-.-highlighted.stick-to-left {
+.highlighted.stick-to-left {
   margin-right: calc(-1 * clamp(2px, 1.4vw, 30px));
 }
 
-/* .-highlighted > span.labeled {
+/* .highlighted > span.labeled {
   left: clamp(-30px, -1.4vw, -2px);
   padding-left: clamp(2px, 1.4vw, 30px);
 } */
 
-@media (width >= 48rem) {
+@media (min-width: 48rem) {
   /* 1280px */
-  .-highlighted.-animate > span {
+  .highlighted.animate > span {
     color: var(--theme-current-color);
 
     /* --animate-in: highlight-to-left 0.5s 0.1s forwards; */
 
     /* --animate-out: var(--is-hovered-once, highlight-to-right 0.4s forwards); */
-    background-size: 0% 100%;
+    background-size: 100% 100%;
+
+    /* anchor for the “out” state */
+    background-position: left;
+
+    -webkit-background-clip: padding-box, text;
     background-clip: padding-box, text;
     background-repeat: no-repeat;
-    background-position: left;
-    animation: var(--highlight-animate);
+    transition:
+      background-size 500ms ease,
+      color 500ms ease;
   }
 
-  .-highlighted.-animate.-active > span {
-    --animate-in: highlight-to-right 0.5s forwards;
-    --animate-out: highlight-to-left 0.4s 0.1s forwards;
-  }
-
-  .-highlighted.-animate:not(:hover) > span {
+  /* HOVER IN: anchor left, then expand */
+  .highlighted.animate:hover > span {
+    background-position: left; /* discrete, not transitioned */
     background-size: 100% 100%;
     color: var(--color-bg);
-
-    --highlight-animate: var(--is-not-hovered-yet, var(--animate-out));
   }
 
-  .-highlighted.-animate:hover > span {
-    --highlight-animate: var(--animate-in);
+  /* HOVER OUT: anchor right, then shrink */
+  .highlighted.animate:not(:hover) > span {
+    background-position: right; /* discrete */
+    background-size: 0% 100%;
+    color: var(--color-primary);
+  }
+
+  /* Flip direction when -active */
+  .highlighted.animate.active:hover > span {
+    background-position: right;
+    background-size: 0% 100%;
+    color: var(--color-primary);
+    box-decoration-break: clone;
+  }
+
+  .highlighted.animate.active:not(:hover) > span {
+    background-position: left;
+    background-size: 100% 100%;
+    color: var(--color-bg);
   }
 }
-
+/* 
 @keyframes highlight-to-left {
   0% {
     background-size: 0% 100%;
@@ -149,4 +126,4 @@
     background-position: right;
     color: var(--theme-current-color);
   }
-}
+} */

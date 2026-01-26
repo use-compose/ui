@@ -6,7 +6,7 @@ import AppCompose from './AppCompose.vue'
 
 const meta: Meta<typeof AppCompose> = {
   // TODO: TO CHANGE PATH
-  title: 'Components/AppCompose',
+  title: 'Components/Core/AppCompose',
   component: AppCompose,
   tags: ['autodocs'],
   argTypes: {
