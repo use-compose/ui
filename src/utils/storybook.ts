@@ -1,37 +1,26 @@
-const storiesStructure: Record<string, Record<string, string[]>> = {
+/**
+ * Story structure configuration
+ * Maps: Category -> Group -> Component names
+ */
+export const storiesStructure: Record<string, Record<string, string[]>> = {
   Components: {
-    Form: ['YButton', 'YInput', 'YSelect'],
-    'Data Display': ['YHeader', 'YCard', 'YSection', 'YTag'],
-  },
-  Primitive: {
-    Typography: ['YTypography'],
+    Form: ['YButton', 'YInput', 'YSelect', 'YCheckbox', 'YColorInput', 'YDateInput', 'YDateTimeInput', 'YTimeInput', 'YInputText', 'YDropdown'],
+    'Data Display': ['YHeader', 'YCard', 'YSection', 'YTag', 'YTable', 'YHighlightedText', 'YLabel', 'YSkeleton', 'YVerticalTitle'],
+    Layout: ['YBox', 'YFlow', 'YRow', 'YStack', 'YModal', 'YOverlay', 'YMenu'],
+    Core: ['AppCompose', 'Wrapper', 'YThemePicker'],
   },
 }
 
 /**
- * TODO: Implement a function to get the story path for a given component story
- * As of now "Error: CSF: unexpected dynamic title"
+ * Get the story path for a component
  */
-export function getStoryPath(componentStory: string) {
-  const categories = Object.keys(storiesStructure)
-  categories.forEach((category) => {
-    const stories = storiesStructure[category] as Record<string, string[]>
-    const groups = Object.keys(stories)
-    // console.log('📟 - items → ', items)
-    for (const group of groups) {
-      // eslint-disable-next-line no-console
-      console.log('📟 - group → ', storiesStructure[category][group])
-
-      const items = storiesStructure[category][group]
-      // eslint-disable-next-line no-console
-      console.log('📟 - items → ', items)
-
-      for (const item of items) {
-        if (item === componentStory) {
-          return `${category}/${group}/${componentStory}`
-        }
+export function getStoryPath(componentName: string): string | null {
+  for (const [category, groups] of Object.entries(storiesStructure)) {
+    for (const [group, components] of Object.entries(groups)) {
+      if (components.includes(componentName)) {
+        return `${category}/${group}/${componentName}`
       }
     }
-  })
-  return `Components/${componentStory}`
+  }
+  return null
 }

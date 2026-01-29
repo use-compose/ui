@@ -8,7 +8,7 @@ const { commonArgTypes, commonArgs, generateCommonStories } =
 
 const meta: Meta<typeof YDateTimeInput> = {
   // TODO: TO CHANGE PATH
-  title: 'Components/Form/Input/YDateTimeInput',
+  title: 'Components/Form/YDateTimeInput',
   component: YDateTimeInput,
   tags: ['autodocs'],
   argTypes: {

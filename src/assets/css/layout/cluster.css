@@ -1,0 +1,12 @@
+/*
+  Cluster Layout
+  -----------------------------
+  A layout for grouping items together with consistent spacing.
+*/
+.cluster {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--_cluster-gap);
+  align-items: center;
+  justify-content: flex-start;
+}

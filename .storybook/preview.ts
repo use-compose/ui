@@ -1,5 +1,8 @@
 import type { Preview } from '@storybook/vue3-vite'
 import { AppCompose, Wrapper, type YTheme } from '../src'
+import { ComponentDocs } from './components/ComponentDocs'
+// Supports weights 100-900
+import '@fontsource-variable/roboto'
 
 const theme: YTheme = {
   primary: '#e3c567',
@@ -12,30 +15,33 @@ const theme: YTheme = {
 
 const preview: Preview = {
   parameters: {
-    layout: 'centered',
-    // actions: { argTypesRegex: '^on[A-Z].*' },
-    // controls: {
-    //   matchers: {
-    //     color: /(background|color)$/i,
-    //     date: /Date$/i,
-    //   },
-    // },
-    // tags: ['autodocs'],
+    componentDocs: {
+      title: '',
+      description: '',
+    },
   },
   decorators: [
-    (story) => ({
-      components: { story, AppCompose, Wrapper },
+    (story, context) => ({
+      components: { story, AppCompose, Wrapper, ComponentDocs },
       template: `
         <AppCompose :theme="theme">
-          <Wrapper> 
+          <ComponentDocs>
+            <template v-if="title" #title>
+              <h3>{{ title }}</h3>
+            </template>
+            <template v-if="description" #description>
+              <p>{{ description }}</p>
+            </template>
             <story />
-          </Wrapper> 
+          </ComponentDocs>
         </AppCompose>
-        `,
+      `,
 
       setup() {
         return {
           theme,
+          title: context.parameters.componentDocs?.title ?? '',
+          description: context.parameters.componentDocs?.description ?? '',
         }
       },
     }),

@@ -2,15 +2,19 @@
   <input
     :id="name"
     ref="inputRef"
-    :value="modelValue"
     :type="type"
+    :checked="type === 'checkbox' || type === 'radio' ? Boolean(modelValue) : undefined"
+    :value="type === 'checkbox' || type === 'radio' ? undefined : modelValue"
     :name="name"
     :placeholder="placeholder"
     :class="yInputClasses"
     autocomplete="off"
     :disabled="isDisabled"
     data-compose-ui
-    v-on="handleEvent"
+    @input="handleEvent"
+    @change="handleEvent"
+    @blur="handleEvent"
+    @focus="handleEvent"
   />
   <YLabel v-if="label" class="y-label" :for="name">{{ label }}</YLabel>
 </template>
@@ -21,7 +25,7 @@ import { useAttrs, useTemplateRef } from 'vue'
 import { YLabel } from '@/components/YLabel'
 import { useColor, useRaw, useSize, useState, useVariant } from '@/composables'
 import { useComponentProps } from '@/composables/component'
-import { inputEventsKey, inputEventsKeyInterface } from '@/composables/input'
+import { inputEventsKey } from '@/composables/input'
 import { computed, inject } from 'vue'
 import './YInput.css'
 import { YInputProps } from './types'
@@ -78,7 +82,17 @@ const { sizeClass } = useSize(props)
 const { rawClasses } = useRaw(props)
 const attrs = useAttrs()
 
-const { handleEvent, modelValue } = inject(inputEventsKey) as inputEventsKeyInterface
+// const { handleEvent, modelValue } = inject(inputEventsKey) as inputEventsKeyInterface
+
+const injected = inject(inputEventsKey, null)
+
+const handleEvent =
+  injected?.handleEvent ??
+  ((e: Event) => {
+    if (isDisabled.value) e.preventDefault()
+  })
+
+const modelValue = injected?.modelValue ?? computed(() => props.modelValue ?? '')
 
 // Apply classes and styles to the input element
 const componentProps = useComponentProps({

@@ -75,7 +75,7 @@
   }
 }
 
-@media (min-width: 768px) {
+@media (width >= 768px) {
   .y-modal {
     width: var(--modal-size, var(--modal-size-default));
   }
@@ -115,5 +115,6 @@
 
 .y-modal-footer .y-button {
   --component-margin-bottom: var(--component-box-shadow-y);
+
   border: var(--component-border);
 }

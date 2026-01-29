@@ -13,15 +13,18 @@ const meta: Meta<typeof YButton> = {
   component: YButton,
   // This component will have an automatically generated docsPage entry: https://storybook.js.org/docs/vue/writing-docs/autodocs
   tags: ['autodocs'],
+  parameters: {
+    componentDocs: {
+      title: 'YButton Component',
+      description:
+        'The YButton component is used to trigger actions or events when clicked. It supports various styles, sizes, and states to fit different use cases in your application.',
+    },
+  },
   argTypes: {
     ...commonArgTypes,
     onClick: { action: 'handleClick' },
-    // backgroundColor: { control: "color" },
-    // onClick: { action: "handleClick"},
   },
-  args: {
-    // onClick: action('onClick'),
-  }, // default value
+  args: {},
 }
 
 export default meta
@@ -32,9 +35,7 @@ const renderGenericStory: Story = {
   render: (args: YButtonProps, { argTypes }: ArgTypes) => ({
     components: { YButton },
     props: Object.keys(argTypes),
-    template: `
-    <YButton @click="handleClick" v-bind="args">Label</YButton>
-  `,
+    template: `<YButton @click="handleClick" v-bind="args">Label</YButton>`,
     setup(props: YButtonProps) {
       const clickCount = ref(0)
 

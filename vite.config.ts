@@ -5,6 +5,7 @@ import { fileURLToPath, URL } from 'url'
 import { defineConfig } from 'vite'
 import dts from 'vite-plugin-dts'
 import vueDevTools from 'vite-plugin-vue-devtools'
+import tsconfigPaths from 'vite-tsconfig-paths'
 
 // const pathSrc = resolve(__dirname, './src')
 
@@ -16,6 +17,8 @@ export default defineConfig(({ mode }) => {
   return {
     plugins: [
       vue(),
+      // Give vite the ability to resolve imports using TypeScript's path mapping.
+      tsconfigPaths(),
       dts({
         entryRoot: './src',
         tsconfigPath: fileURLToPath(new URL('./tsconfig.json', import.meta.url)),
@@ -33,6 +36,7 @@ export default defineConfig(({ mode }) => {
       alias: [
         { find: '@', replacement: fileURLToPath(new URL('./src/', import.meta.url)) },
         { find: '../../../', replacement: fileURLToPath(new URL('./src/assets', import.meta.url)) },
+        { find: 'unholy-tokens/*', replacement: 'src/assets/css/themes/tokens/*' },
       ],
     },
     // publicDir: 'public',

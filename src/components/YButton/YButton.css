@@ -2,7 +2,11 @@
   display: inline-block;
   text-transform: uppercase;
   cursor: pointer;
-  --component-padding: var(--_spacing-sm) var(--_spacing-md);
+  font-family: gotham;
+  text-transform: uppercase;
+  font-weight: 700;
+
+  --component-padding: var(--_spacing-md) var(--_spacing-sm);
 
   &:focus,
   &:focus-visible,

@@ -9,22 +9,29 @@
   @property --variant { syntax: "contained | outlined | text"; initial-value: contained; inherits: true; }
 
   /* token-or-0 */
+
   /* prettier-ignore */
   @property --_variant-contained-else-0 { syntax: "contained | <integer>"; initial-value: 0; inherits: true; }
+
   /* prettier-ignore */
   @property --_variant-outlined-else-0 { syntax: "outlined | <integer>"; initial-value: 0; inherits: true; }
+
   /* prettier-ignore */
   @property --_variant-text-else-0 { syntax: "text | <integer>"; initial-value: 0; inherits: true; }
 
   /* bits */
+
   /* prettier-ignore */
   @property --is-variant-contained { syntax: "<integer>"; initial-value: 1; inherits: true; }
+
   /* prettier-ignore */
   @property --is-variant-outlined { syntax: "<integer>"; initial-value: 1; inherits: true; }
+
   /* prettier-ignore */
   @property --is-variant-text { syntax: "<integer>"; initial-value: 1; inherits: true; }
 
   /* optional numeric feature flags derived from variant */
+
   /* prettier-ignore */
   @property --has-border { syntax: "<number>"; initial-value: 0; inherits: true; }
 }
@@ -56,10 +63,8 @@
      */
     --_variant-contained-else-0: var(--variant);
     --is-variant-contained: var(--_variant-contained-else-0);
-
     --_variant-outlined-else-0: var(--variant);
     --is-variant-outlined: var(--_variant-outlined-else-0);
-
     --_variant-text-else-0: var(--variant);
     --is-variant-text: var(--_variant-text-else-0);
 
@@ -192,8 +197,10 @@
     --component-border-width-effective: calc(
       var(--has-border) * var(--component-border-width, 0px)
     );
+
     border-width: var(--component-border-width-effective);
     border-style: var(--component-border-style, solid);
+
     /* border-color can stay computed later (you already do border-color: oklch(...)) */
   }
 }

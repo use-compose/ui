@@ -1,0 +1,24 @@
+/**
+ * Do not edit directly, this file was auto-generated.
+ */
+
+:root {
+  --font-scale-0: clamp(0.875rem, 0.6304347826086957rem + 1.0869565217391304vw, 1.5rem);
+  --font-scale-1: clamp(0.984375rem, 0.6652173913043479rem + 1.418478260869565vw, 1.7999999999999998rem);
+  --font-scale-2: clamp(1.107421875rem, 0.6955434782608696rem + 1.8305706521739133vw, 2.16rem);
+  --font-scale-3: clamp(1.245849609375rem, 0.7190951086956524rem + 2.341131114130434vw, 2.5919999999999996rem);
+  --font-scale-4: clamp(1.401580810546875rem, 0.7329124320652175rem + 2.9718594599184778vw, 3.1104rem);
+  --font-scale-0-2: clamp(NaNrem, NaNrem + NaNvw, NaNrem);
+  --font-scale-0-1: clamp(NaNrem, NaNrem + NaNvw, NaNrem);
+  --font-min-font: 14;
+  --font-max-font: 24;
+  --font-min-viewport: 360;
+  --font-max-viewport: 1280;
+  --font-scale-min: 1.125;
+  --font-scale-max: 1.2;
+  --font-steps: 0-2,0-1,0,1,2,3,4;
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 700;
+}

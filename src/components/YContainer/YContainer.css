@@ -1,12 +1,15 @@
+/* https://grafikart.fr/tutoriels/conteneur-css-1233 */
 .y-container {
-  max-width: 640px;
-  padding: 0 var(--_spacing-units, 1rem);
+  box-sizing: border-box;
+  width: min(var(--breakpoint-sm), calc(100% - 4 * var(--layout-mobile-padding)));
+  margin-inline: auto;
 
   &.fluid {
     width: 100%;
   }
 }
 
+/* 
 @media (min-width: 768px) {
   .y-container {
     max-width: 768px;
@@ -29,4 +32,4 @@
   .y-container {
     max-width: 1820px;
   }
-}
+} */

@@ -5,20 +5,26 @@
  */
 :root {
   /* -------------------------------------------------- */
+
   /* Border */
+
   /* -------------------------------------------------- */
   --_border-width-default: var(--border-width-default, 2px);
   --_border-style-default: var(--border-style-default, solid);
   --_border-radius-default: var(--border-radius-default, 0);
 
   /* -------------------------------------------------- */
+
   /* Color */
-  /* -------------------------------------------------- */
-  --_color-shadow-dark: var(--color-shadow-dark, #616970);
-  --_color-shadow-light: var(--color-shadow-light, rgba(255, 255, 255, 0.25));
 
   /* -------------------------------------------------- */
+  --_color-shadow-dark: var(--color-shadow-dark, #616970);
+  --_color-shadow-light: var(--color-shadow-light, rgb(255 255 255 / 25%));
+
+  /* -------------------------------------------------- */
+
   /* Breakpoints */
+
   /* -------------------------------------------------- */
   --_breakpoints-mobile: var(--breakpoints-mobile, 640px);
   --_breakpoints-tablet: var(--breakpoints-tablet, 768px);
@@ -27,13 +33,17 @@
   --_breakpoints-desktop-xxl: var(--breakpoints-desktop-xxl, 1820px);
 
   /* -------------------------------------------------- */
+
   /* Layout */
+
   /* -------------------------------------------------- */
   --_layout-zIndex: var(--layout-zIndex, 1000);
   --_layout-depth-base: var(--layout-depth-base, 6px);
 
   /* -------------------------------------------------- */
+
   /* Component */
+
   /* -------------------------------------------------- */
   --_component-shadow-base: var(--component-shadow-base, 0.25);
   --_component-shadow-hover: var(--component-shadow-hover, 0.25);
@@ -47,7 +57,9 @@
   --_component-transform-disabled: var(--component-transform-disabled, 0);
 
   /* -------------------------------------------------- */
+
   /* Space */
+
   /* -------------------------------------------------- */
   --_space-unit: var(--space-unit, 1rem);
   --_space-xxs: var(--space-xxs, calc(0.25 * var(--space-unit)));
@@ -59,7 +71,9 @@
   --_space-xxl: var(--space-xxl, calc(4 * var(--space-unit)));
 
   /* -------------------------------------------------- */
+
   /* Font */
+
   /* -------------------------------------------------- */
   --_font-regular: var(--font-regular, url('/fonts/GOTHAM-BOOK.OTF'));
   --_font-bold: var(--font-bold, url('/fonts/GOTHAM-BOLD.OTF'));
@@ -67,7 +81,9 @@
   --_font-bolder-italic: var(--font-bolder-italic, url('/fonts/GOTHAM-BLACKITALIC.OTF'));
 
   /* -------------------------------------------------- */
+
   /* Text */
+
   /* -------------------------------------------------- */
   --_text-xs: var(--text-xs, clamp(0.4444rem, 0.6881rem - 0.2407vw, 0.64rem));
   --_text-sm: var(--text-sm, clamp(0.6667rem, 0.8328rem - 0.1641vw, 0.8rem));
@@ -78,7 +94,9 @@
   --_text-h1: var(--text-h1, clamp(2.4414rem, 1.7962rem + 3.226vi, 5.0625rem));
 
   /* -------------------------------------------------- */
+
   /* Heading */
+
   /* -------------------------------------------------- */
   --_heading-height: var(--heading-height, calc(1rem * 2.5));
 }

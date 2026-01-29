@@ -246,9 +246,11 @@ $variants: ('contained', 'outlined', 'text');
 
 @mixin theme-component {
   padding: utils.component(padding-y) utils.component(padding-x);
+
   // margin: 0 utils.component(margin-x) 0 utils.component(margin-bottom);
   // box-shadow: utils.component(box-shadow);
   outline: none;
+
   // transform: utils.component(transform);
   transition: utils.component(transition);
 
@@ -308,12 +310,15 @@ $variants: ('contained', 'outlined', 'text');
   // }
   // &.primary {
   @include theme.primary;
+
   // }
   // &.secondary {
   @include theme.secondary;
+
   // }
   // &.danger {
   @include theme.danger;
+
   // }
 
   // State Props
@@ -327,6 +332,7 @@ $variants: ('contained', 'outlined', 'text');
     @include theme.base;
     @include theme.hover;
   }
+
   //   }
   // }
 
@@ -334,17 +340,21 @@ $variants: ('contained', 'outlined', 'text');
   // &.disabled,
   // &[disabled] {
   @include theme.disabled;
+
   // }
 
   // Variant Props
   // &.contained {
   @include theme.contained;
+
   // }
   // &.outlined {
   @include theme.outlined;
+
   // }
   // &.text {
   @include theme.text;
+
   // }
   // Prevent non-interactive component to have an effect on click or keyboard focus
   // &:active,
@@ -442,11 +452,13 @@ $variants: ('contained', 'outlined', 'text');
   //   &:focus-visible {
   &:not([disabled], .disabled, :disabled) {
     @include theme.focus;
+
     // }
     // &:active,
     // &.active {
     @include theme.active;
   }
+
   // }
   // }
 }

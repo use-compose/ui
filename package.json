@@ -1,6 +1,6 @@
 {
   "name": "@use-compose/ui",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "scripts": {
     "build": "vue-tsc && vite build",
     "build-ignore-ts-error": "vite build",
@@ -11,7 +11,7 @@
     "build:server": "vite build --outDir dist/server --ssr src/entry-server.js",
     "build:style": "style-dictionary build --config style-dictionary/config.js ",
     "chromatic": "chromatic --exit-zero-on-changes",
-    "component:new": "npx hygen component new",
+    "new:component": "npx hygen new component",
     "dev": "vite",
     "dev:ssr": "node server",
     "format": "prettier --write . --config ./.prettierrc",
@@ -24,6 +24,7 @@
     "prepare": "husky install",
     "preview": "cross-env NODE_ENV=production node server",
     "storybook": "STORYBOOK=true storybook dev -p 6006",
+    "storybook:update-titles": "tsx scripts/update-story-titles.ts",
     "syncpack": "pnpm syncpack:fix && pnpm syncpack:format",
     "syncpack:fix": "syncpack fix --dependency-types prod,dev",
     "syncpack:format": "syncpack format",
@@ -32,6 +33,7 @@
     "test": "vitest"
   },
   "dependencies": {
+    "@fontsource-variable/roboto": "^5.2.9",
     "compression": "1.8.1",
     "culori": "4.0.1",
     "express": "5.1.0",
@@ -68,7 +70,6 @@
     "lint-staged": "16.1.0",
     "prettier": "3.5.3",
     "prettier-plugin-organize-imports": "4.1.0",
-    "react-dom": "19.2.0",
     "sass": "1.89.2",
     "storybook": "10.1.11",
     "storybook-addon-pseudo-states": "10.1.11",
@@ -85,6 +86,7 @@
     "vite-plugin-dts": "4.5.4",
     "vite-plugin-linter": "2.1.1",
     "vite-plugin-vue-devtools": "8.0.5",
+    "vite-tsconfig-paths": "6.0.4",
     "vitest": "4.0.17",
     "vue-tsc": "2.2.10"
   },

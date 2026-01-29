@@ -8,7 +8,7 @@ const { commonArgTypes, generateCommonStories } =
   useThemeComponentStory<YInputTextProps>(YInputText)
 
 const meta = {
-  title: 'Components/Form/Input/YInputText',
+  title: 'Components/Form/YInputText',
   component: YInputText,
   ...commonArgTypes,
   // This component will have an automatically generated docsPage entry: https://storybook.js.org/docs/vue/writing-docs/autodocs
@@ -45,7 +45,7 @@ const renderGenericStory: Story = {
     components: { YInputText },
     props: Object.keys(argTypes),
     template: `
-   <YInput data-compose-ui Text v-model="inputVal" v-bind="args" />
+   <YInputText data-compose-ui Text v-model="inputVal" v-bind="args" />
   `,
     setup(props: YInputTextProps) {
       const inputVal = ref('modelValue')
