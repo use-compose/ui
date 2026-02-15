@@ -1,5 +1,5 @@
 import { PropType } from 'vue'
-import type { DesignTokens } from '../assets/css/themes/tokens/types/theme'
+import type { DesignTokens } from '../assets/css/themes/tokens/types/token.types'
 
 // TODO: Review as done by Claude 80%
 export {
