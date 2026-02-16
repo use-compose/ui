@@ -2,7 +2,7 @@
   <YInput
     v-bind="props"
     ref="checkboxRef"
-    data-compose-ui
+    data-compose-ui="block"
     :value="modelValue"
     type="checkbox"
     input-class="y-checkbox"

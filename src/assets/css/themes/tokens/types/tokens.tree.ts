@@ -715,7 +715,7 @@ export const tokens = {
   },
   "cube": {
     "block": {
-      "block-padding-x": "var(--_spacing-md)",
+      "block-padding-x": "var(--_spacing-xs)",
       "block-padding-y": "var(--_spacing-md)",
       "block-padding": "var(--_block-padding-y) var(--_block-padding-x)",
       "card": {
@@ -725,8 +725,8 @@ export const tokens = {
         "padding": "var(--cube-block-block-padding)"
       },
       "button": {
-        "paddingX": "var(--_spacing-sm)",
-        "paddingY": "var(--_spacing-xs)",
+        "paddingX": "var(--_spacing-xs)",
+        "paddingY": "var(--_spacing-md)",
         "radius": "var(--_border-radius-medium)",
         "text": "var(--_color-text-primary)",
         "bg": "var(--_color-bg-primary)",

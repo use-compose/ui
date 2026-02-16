@@ -1,5 +1,5 @@
 <template>
-  <div class="app-compose" :style="styles">
+  <div class="app-compose" data-compose-ui="app" :style="styles">
     <slot />
   </div>
 </template>

@@ -52,7 +52,7 @@
  * ENGINE (grind -> bits, then map -> tone-l/c/h/a)
  * -------------------------------------------------------------------------- */
 @layer engine {
-  [data-compose-ui] {
+  [data-compose-ui='block'] {
     /**
      * 1) Grind tone enum into bits
      *    - if --tone matches keyword => else-0 becomes keyword, bit becomes 1 (fallback)

@@ -10,30 +10,37 @@
 @import './compose-ui.components.css' layer(components);
 /* Default typography mapping */
 @layer theme-default {
-  h1,
-  .text-h1,
-  h2,
-  .text-xxl,
-  h3,
-  .text-xl,
-  h4,
-  .text-lg {
-    font-family: gotham;
-    text-transform: uppercase;
+  [data-compose-ui='block'] {
+    color: var(--theme-current-color);
   }
 
-  h1,
-  .text-h1 {
-    /* Balance with Gotham font not fully-centered */
-    padding-top: 4px;
-    font-size: var(--heading-h1-size);
-    font-weight: var(--heading-h1-weight);
-    line-height: var(--heading-h1-line-height);
-  }
-  h2 {
-    font-size: var(--heading-h2-size);
-    font-weight: var(--heading-h2-weight);
-    line-height: var(--heading-h2-line-height);
+  [data-compose-ui='app'] {
+    h1,
+    .text-h1,
+    h2,
+    .text-h2,
+    h3,
+    .text-h3,
+    h4,
+    .text-h4 {
+      font-family: gotham;
+      text-transform: uppercase;
+    }
+
+    h1,
+    .text-h1 {
+      /* Balance with Gotham font not fully-centered */
+      padding-top: 4px;
+      font-size: var(--heading-h1-size);
+      font-weight: var(--heading-h1-weight);
+      line-height: var(--heading-h1-line-height);
+    }
+    h2,
+    .text-h2 {
+      font-size: var(--heading-h2-size);
+      font-weight: var(--heading-h2-weight);
+      line-height: var(--heading-h2-line-height);
+    }
   }
 }
 
@@ -152,12 +159,13 @@
 }
 
 @layer components {
-  [data-compose-ui] {
+  [data-compose-ui='block'] {
     /* Components */
-    --_component-padding-x: var(--_block-padding-x);
-    --_component-padding-y: var(--_block-padding-y);
+    --component-padding-x: calc(var(--_block-padding-x) * var(--styled));
+    --component-padding-y: calc(var(--_block-padding-y) * var(--styled));
 
-    padding: var(--_component-padding, var(--_component-padding-x) var(--_component-padding-y));
+    --component-padding: var(--component-padding-x) var(--component-padding-y);
+    padding: var(--component-padding);
 
     --_component-border-width: calc(var(--border-width-xsmall) * var(--styled));
     --theme-base-unit: var(--base-unit);

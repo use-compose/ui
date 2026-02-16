@@ -45,7 +45,7 @@ const renderGenericStory: Story = {
     components: { YInputText },
     props: Object.keys(argTypes),
     template: `
-   <YInputText data-compose-ui Text v-model="inputVal" v-bind="args" />
+   <YInputText data-compose-ui="block" Text v-model="inputVal" v-bind="args" />
   `,
     setup(props: YInputTextProps) {
       const inputVal = ref('modelValue')
