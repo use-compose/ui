@@ -1,36 +1,32 @@
-import { YTheme } from '@/types/theme'
 import { isClientSide } from '@/utils/is-client-side'
 
-enum StorageKeys {
-  yTheme = 'y-theme',
-}
+const STORAGE_PREFIX = 'compose'
 
-// interface Storage {
-//   [StorageKeys.yTheme]: YTheme
-// }
+export function useStorage<T>(key: string) {
+  const storageKey = `${STORAGE_PREFIX}:${key}`
 
-export function useStorage() {
-  function getStorageTheme(): YTheme | undefined {
-    if (isClientSide()) {
-      const storedTheme = window.localStorage.getItem(StorageKeys.yTheme)
-
-      if (storedTheme) {
-        try {
-          return JSON.parse(storedTheme)
-        } catch (error) {
-          // eslint-disable-next-line no-console
-          console.error('Failed to parse theme from localStorage', error)
-        }
+  function get(): T | undefined {
+    if (!isClientSide()) return
+    const raw = window.localStorage.getItem(storageKey)
+    if (raw) {
+      try {
+        return JSON.parse(raw) as T
+      } catch (error) {
+        // eslint-disable-next-line no-console
+        console.error(`Failed to parse storage key "${storageKey}"`, error)
       }
     }
   }
 
-  function setStorageTheme(theme: YTheme) {
-    if (!isClientSide()) {
-      return
-    }
-    window.localStorage.setItem(StorageKeys.yTheme, JSON.stringify(theme))
+  function set(value: T) {
+    if (!isClientSide()) return
+    window.localStorage.setItem(storageKey, JSON.stringify(value))
   }
 
-  return { getStorageTheme, setStorageTheme }
+  function remove() {
+    if (!isClientSide()) return
+    window.localStorage.removeItem(storageKey)
+  }
+
+  return { get, set, remove }
 }

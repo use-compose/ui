@@ -1,25 +1,59 @@
 <template>
-  <YFlow
-class="theme-picker" align="center" style="
-
---flex-gap: var(--_spacing-md)">
-    <YFlex
-align="center" style="
-
---flex-gap: var(--_spacing-md)">
+  <YFlow class="theme-picker" align="center" style="--flex-gap: var(--_spacing-md)">
+    <YRow type="cluster">
       <YColorInput v-model="primaryColor" label="primary" name="primary" />
       <YColorInput v-model="secondaryColor" label="secondary" name="secondary" />
       <YColorInput v-model="dangerColor" label="danger" name="danger" />
       <YColorInput v-model="backgroundColor" label="background" name="background" />
-      <YButton
-size="small" style="
-
---component-margin-bottom: 0" @click="randomize">
+      <YButton size="small" style="--component-margin-bottom: 0" @click="randomize">
         Randomize
       </YButton>
-    </YFlex>
-    <p>{{ getToken('border-radius-base') }}</p>
-    <YInputText v-model="borderRadiusBase" label="Border Radius Base" />
+    </YRow>
+    <YSection v-show="border" title="Border">
+      <YRow type="cluster">
+        <div>
+          <h2>Border</h2>
+          <ul>
+            <li v-for="(value, name) in border.tokenValues" :key="name">{{ name }}: {{ value }}</li>
+          </ul>
+        </div>
+        <div>
+          <p>Color</p>
+          <ul>
+            <li v-for="(value, name) in color.tokenValues" :key="name">{{ name }}: {{ value }}</li>
+          </ul>
+        </div>
+        <div>
+          <p>Font</p>
+          <ul>
+            <li v-for="(value, name) in font.tokenValues" :key="name">{{ name }}: {{ value }}</li>
+          </ul>
+        </div>
+        <div>
+          <p>Spacing</p>
+          <ul>
+            <li v-for="(value, name) in spacing.tokenValues" :key="name">
+              {{ name }}: {{ value }}
+            </li>
+          </ul>
+        </div>
+        <div>
+          <p>Radius</p>
+          <ul>
+            <li v-for="(value, name) in radius.tokenValues" :key="name">{{ name }}: {{ value }}</li>
+          </ul>
+        </div>
+        <div>
+          <p>Breakpoint Pool</p>
+          <ul>
+            <li v-for="(value, name) in breakpointPool.tokenValues" :key="name">
+              {{ name }}: {{ value }}
+            </li>
+          </ul>
+        </div>
+      </YRow>
+    </YSection>
+    <!-- <YInputText v-model="borderRadiusBase" label="Border Radius Base" /> -->
   </YFlow>
 </template>
 
@@ -29,11 +63,11 @@ import { YButton } from '@/components'
 import { useTheme } from '@/composables'
 import { basePropsDefault } from '@/composables/component-theme'
 // import { defineProps, withDefaults } from 'vue'
-import { useThemeTokens } from '@/composables/use-theme-tokens'
+import { useTokens } from '@/composables/use-theme-tokens'
 import { YColorInput } from '../YColorInput'
-import YFlex from '../YFlex/YFlex.vue'
 import YFlow from '../YFlow/YFlow.vue'
-import YInputText from '../YInputText/YInputText.vue'
+import YRow from '../YRow/YRow.vue'
+import YSection from '../YSection/YSection.vue'
 import type { YThemePickerProps } from './types'
 import './YThemePicker.css'
 
@@ -93,15 +127,22 @@ function randomize() {
   }
 }
 
-const { getToken, setToken } = useThemeTokens()
+const {
+  border,
+  color,
+  font,
+  spacing,
+  radius,
+  'breakpoint-pool': breakpointPool,
+} = useTokens(['border', 'color', 'font', 'spacing', 'radius', 'breakpoint-pool'])
 
-const borderRadiusBase = defineModel<string, string>('borderRadiusBase', {
-  get() {
-    return getToken('border-radius-base') || ''
-  },
-  set(value: string) {
-    setToken('border-radius-base', value)
-    return value
-  },
-})
+// const borderRadiusBase = defineModel<string, string>('borderRadiusBase', {
+//   get() {
+//     return getToken('border-radius-base') || ''
+//   },
+//   set(value: string) {
+//     setToken('border-radius-base', value)
+//     return value
+//   },
+// })
 </script>

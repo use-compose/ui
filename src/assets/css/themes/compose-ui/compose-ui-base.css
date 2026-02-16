@@ -3,7 +3,11 @@
 @import url('../tokens/css/space.css') layer(theme);
 
 @layer props, api, engine, colors, theme-default, theme, cube; */
-
+@import './compose-ui.state.css';
+@import './compose-ui.tone.css';
+@import './compose-ui.variant.css';
+@import '../../theme.css' layer(component);
+@import './compose-ui.components.css' layer(components);
 /* Default typography mapping */
 @layer theme-default {
   h1,
@@ -22,6 +26,14 @@
   .text-h1 {
     /* Balance with Gotham font not fully-centered */
     padding-top: 4px;
+    font-size: var(--heading-h1-size);
+    font-weight: var(--heading-h1-weight);
+    line-height: var(--heading-h1-line-height);
+  }
+  h2 {
+    font-size: var(--heading-h2-size);
+    font-weight: var(--heading-h2-weight);
+    line-height: var(--heading-h2-line-height);
   }
 }
 
@@ -137,26 +149,44 @@
     --border-radius: 0;
     --base-unit: var(--_border-width-large);
   }
+}
 
+@layer components {
   [data-compose-ui] {
     /* Components */
-    --_component-padding-x: var(--_button-padding-x);
-    --_component-padding-y: var(--_button-padding-y);
+    --_component-padding-x: var(--_block-padding-x);
+    --_component-padding-y: var(--_block-padding-y);
 
-    padding: var(--_component-pading, var(--_component-padding-y) var(--_component-padding-x));
+    padding: var(--_component-padding, var(--_component-padding-x) var(--_component-padding-y));
 
     --_component-border-width: calc(var(--border-width-xsmall) * var(--styled));
     --theme-base-unit: var(--base-unit);
     --theme-base-unit-calc: calc(var(--theme-base-unit) * var(--not-raw, 1) * var(--styled, 1));
-    --_component-shadow-base: var(--_shadow-xs);
-    --_component-shadow-hover: var(--_shadow-xs);
-    --_component-shadow-active: var(--_shadow-xs);
-    --_component-shadow-focus: var(--_shadow-xs);
-    --_component-shadow-disabled: 0;
-    --_component-transform-base: calc(-1 * var(--_shadow-sm));
-    --_component-transform-hover: calc(-1 * 1.5 * var(--_shadow-sm));
-    --_component-transform-active: calc(-1 * var(--_shadow-xs));
-    --_component-transform-focus: calc(-1 * var(--_shadow-sm));
-    --_component-transform-disabled: 0;
+
+    &:not(.raw) {
+      --not-raw: 0;
+      --_component-shadow-base: var(--_shadow-xs);
+      --_component-shadow-hover: var(--_shadow-xs);
+      --_component-shadow-active: var(--_shadow-xs);
+      --_component-shadow-focus: var(--_shadow-xs);
+      --_component-shadow-disabled: 0;
+      --_component-transform-base: calc(-1 * var(--_shadow-sm));
+      --_component-transform-hover: calc(-1 * 1.5 * var(--_shadow-sm));
+      --_component-transform-active: calc(-1 * var(--_shadow-xs));
+      --_component-transform-focus: calc(-1 * var(--_shadow-sm));
+      --_component-transform-base: -0.25;
+      --_component-transform-hover: -0.45;
+      --_component-transform-active: -0.15;
+      --_component-transform-focus: -0.25;
+      --_component-transform-disabled: 0;
+      --_component-transform-disabled: 0;
+    }
+
+    --shadow: calc(
+      var(--is-state-base) * var(--component-shadow-base) + var(--is-state-hover) *
+        var(--component-shadow-hover) + var(--is-state-active) * var(--component-shadow-active) +
+        var(--is-state-focus) * var(--component-shadow-focus) + var(--is-state-disabled) *
+        var(--component-shadow-disabled)
+    );
   }
 }
