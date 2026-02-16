@@ -40,7 +40,6 @@
   color: var(--color-main-dark);
   margin: 0;
   position: relative;
-  font-size: var(--text-xl);
 }
 
 .app-title::first-letter {

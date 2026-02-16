@@ -1,21 +1,23 @@
+import { useStorage } from '@/composables/use-storage'
 import { Theme, YTheme } from '@/types/theme'
 import { isClientSide } from '@/utils/is-client-side'
 import { modeOklch, modeRgb, useMode } from 'culori/fn'
 import tinycolor from 'tinycolor2'
 import { InjectionKey, Ref, inject, provide, ref, watchEffect } from 'vue'
-import { useStorage } from './use-storage'
+import { TokenCategory } from './use-theme-tokens'
 export interface ColorTheme {
   [key: string]: string
 }
 
-export const defaultTheme: YTheme = {
-  primary: '#e3c568',
-  secondary: '#0c0d0d',
-  background: '#FCECF0',
-  dark: '#0b0c0c',
-  danger: '#E3514A',
-  text: '#0c0d0d',
-}
+export const defaultTheme: Partial<YTheme extends TokenCategory ? YTheme & TokenCategory : YTheme> =
+  {
+    primary: '#e3c568',
+    secondary: '#0c0d0d',
+    background: '#FCECF0',
+    dark: '#0b0c0c',
+    danger: '#E3514A',
+    text: '#0c0d0d',
+  }
 
 interface ThemeComposition {
   theme: Ref<YTheme>
@@ -78,16 +80,14 @@ function setColorProperties(element: HTMLElement, color: string, prefix: string)
 }
 
 export function useComposeTheme(userTheme?: YTheme) {
-  const { getStorageTheme, setStorageTheme } = useStorage()
+  const storage = useStorage<YTheme>('theme')
 
-  // let initialTheme
-  // if(userTheme) {
   let initialTheme: YTheme
 
   if (userTheme) {
     initialTheme = checkMissingProperties(userTheme)
   } else {
-    initialTheme = getStorageTheme() || defaultTheme
+    initialTheme = storage.get() || defaultTheme
   }
 
   const theme: Ref<YTheme> = ref(initialTheme)
@@ -97,8 +97,7 @@ export function useComposeTheme(userTheme?: YTheme) {
       theme.value[key] = value
 
       if (isClientSide()) {
-        const newTheme = JSON.stringify(theme.value) as unknown as YTheme
-        setStorageTheme(newTheme)
+        storage.set(theme.value)
       }
     }
   }

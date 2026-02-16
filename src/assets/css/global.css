@@ -24,8 +24,8 @@
 @import './layout/wrapper.css';
 @import './utils/media.css';
 @import './themes/core.css';
-@import './theme.css';
-@import './themes/compose-ui/compose-ui-base.css';
+/* @import './theme.css'; */
+/* @import './themes/compose-ui/compose-ui-base.css';
 @import './themes/compose-ui/compose-ui.state.css';
 @import './themes/compose-ui/compose-ui.variant.css';
-@import './themes/compose-ui/compose-ui.tone.css';
+@import './themes/compose-ui/compose-ui.tone.css'; */
