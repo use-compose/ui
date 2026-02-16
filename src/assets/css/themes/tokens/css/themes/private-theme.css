@@ -229,15 +229,15 @@
   /* -------------------- */
   /*        Block        */
   /* -------------------- */
-  --_block-padding-x: var(--block-padding-x, var(--_spacing-md));
+  --_block-padding-x: var(--block-padding-x, var(--_spacing-xs));
   --_block-padding-y: var(--block-padding-y, var(--_spacing-md));
   --_block-padding: var(--block-padding, var(--_block-padding-y) var(--_block-padding-x));
   --_card-bg: var(--card-bg, var(--_color-bg-neutral));
   --_card-border: var(--card-border, var(--_color-border-subtle));
   --_card-radius: var(--card-radius, var(--_border-radius-medium));
   --_card-padding: var(--card-padding, var(--cube-block-block-padding));
-  --_button-padding-x: var(--button-padding-x, var(--_spacing-sm));
-  --_button-padding-y: var(--button-padding-y, var(--_spacing-xs));
+  --_button-padding-x: var(--button-padding-x, var(--_spacing-xs));
+  --_button-padding-y: var(--button-padding-y, var(--_spacing-md));
   --_button-radius: var(--button-radius, var(--_border-radius-medium));
   --_button-text: var(--button-text, var(--_color-text-primary));
   --_button-bg: var(--button-bg, var(--_color-bg-primary));

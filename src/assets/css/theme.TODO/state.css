@@ -56,31 +56,31 @@
    * Only apply to the component root, otherwise everything on the page can inherit it.
    */
 
-  [data-compose-ui]:not([disabled], .disabled, :hover, :active, :focus, :focus-visible),
-  [data-compose-ui].base:not([disabled], .disabled) {
+  [data-compose-ui='block']:not([disabled], .disabled, :hover, :active, :focus, :focus-visible),
+  [data-compose-ui='block'].base:not([disabled], .disabled) {
     --state: base;
   }
 
-  [data-compose-ui]:hover,
-  [data-compose-ui].hover {
+  [data-compose-ui='block']:hover,
+  [data-compose-ui='block'].hover {
     --state: hover;
   }
 
-  [data-compose-ui]:active,
-  [data-compose-ui].active {
+  [data-compose-ui='block']:active,
+  [data-compose-ui='block'].active {
     --state: active;
   }
 
-  [data-compose-ui]:focus,
-  [data-compose-ui]:focus-visible,
-  [data-compose-ui].focus,
-  [data-compose-ui].focus-visible {
+  [data-compose-ui='block']:focus,
+  [data-compose-ui='block']:focus-visible,
+  [data-compose-ui='block'].focus,
+  [data-compose-ui='block'].focus-visible {
     --state: focus;
   }
 
-  [data-compose-ui][disabled],
-  [data-compose-ui]:disabled,
-  [data-compose-ui].disabled {
+  [data-compose-ui='block'][disabled],
+  [data-compose-ui='block']:disabled,
+  [data-compose-ui='block'].disabled {
     --state: disabled;
   }
 
@@ -88,19 +88,19 @@
    * If you REALLY need “child is hovered/focused sets parent state”, keep :has()
    * but scope it to the root only:
    */
-  [data-compose-ui]:has(:hover, .hover) {
+  [data-compose-ui='block']:has(:hover, .hover) {
     --state: hover;
   }
 
-  [data-compose-ui]:has(:active, .active) {
+  [data-compose-ui='block']:has(:active, .active) {
     --state: active;
   }
 
-  [data-compose-ui]:has(:focus-visible, :focus, .focus-visible, .focus) {
+  [data-compose-ui='block']:has(:focus-visible, :focus, .focus-visible, .focus) {
     --state: focus;
   }
 
-  [data-compose-ui]:has(.disabled, :disabled, [disabled]) {
+  [data-compose-ui='block']:has(.disabled, :disabled, [disabled]) {
     --state: disabled;
   }
 }
@@ -109,7 +109,7 @@
  * ENGINE (grind -> bits, map -> s-* deltas)
  * -------------------------------------------------------------------------- */
 @layer engine {
-  [data-compose-ui] {
+  [data-compose-ui='block'] {
     /**
      * 1) Grind enum -> bits
      */

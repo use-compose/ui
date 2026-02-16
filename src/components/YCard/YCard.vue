@@ -1,5 +1,5 @@
 <template>
-  <div data-compose-ui :class="yCardClasses">
+  <div data-compose-ui="block" :class="yCardClasses">
     <slot></slot>
   </div>
 </template>

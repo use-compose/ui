@@ -6,7 +6,7 @@
   text-transform: uppercase;
   font-weight: 700;
 
-  --component-padding: var(--_spacing-md) var(--_spacing-sm);
+  /* --component-padding: var(--_spacing-md) var(--_spacing-sm); */
 
   &:focus,
   &:focus-visible,

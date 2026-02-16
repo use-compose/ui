@@ -1,4 +1,4 @@
-/* [data-compose-ui]::before {
+/* [data-compose-ui="block"]::before {
   content: '';
   position: relative;
   inset: 0;
@@ -11,7 +11,7 @@
   background-color: blue;
 }
 
-[data-compose-ui]::after {
+[data-compose-ui="block"]::after {
   content: '';
   position: absolute;
   inset: 0;

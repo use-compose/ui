@@ -1,6 +1,6 @@
 <template>
   <YInput
-    data-compose-ui
+    data-compose-ui="block"
     v-bind="props"
     :value="modelValue"
     input-class="y-datetime-input"
