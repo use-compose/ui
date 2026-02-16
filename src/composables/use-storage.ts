@@ -12,6 +12,7 @@ export function useStorage<T>(key: string) {
       try {
         return JSON.parse(raw) as T
       } catch (error) {
+        // eslint-disable-next-line no-console
         console.error(`Failed to parse storage key "${storageKey}"`, error)
       }
     }
