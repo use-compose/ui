@@ -57,7 +57,7 @@
  * ENGINE (grind -> bits, map -> v-* deltas, derive helpers like has-border)
  * -------------------------------------------------------------------------- */
 @layer engine {
-  [data-compose-ui] {
+  [data-compose-ui='block'] {
     /**
      * 1) Grind enum -> bits
      */

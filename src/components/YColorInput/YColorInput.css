@@ -3,8 +3,8 @@
   cursor: pointer;
   position: relative;
 
-  --component-padding-x: 0;
-  --component-padding-y: 0;
+  /* --component-padding-x: 0; */
+  /* --component-padding-y: 0; */
   --component-margin-bottom: 0;
 
   height: calc(1.5 * var(--_spacing-unit));

@@ -10,7 +10,7 @@
     :class="yInputClasses"
     autocomplete="off"
     :disabled="isDisabled"
-    data-compose-ui
+    data-compose-ui="block"
     @input="handleEvent"
     @change="handleEvent"
     @blur="handleEvent"
