@@ -506,10 +506,12 @@ export interface DesignTokens {
     scaleMax: string;
     steps: string;
     weight: {
+      thin: string;
       light: string;
       normal: string;
       medium: string;
       bold: string;
+      black: string;
     };
     lineHeight: {
       '1': string;
@@ -665,6 +667,16 @@ export interface DesignTokens {
       weight: string;
     };
     h2: {
+      size: string;
+      lineHeight: string;
+      weight: string;
+    };
+    h3: {
+      size: string;
+      lineHeight: string;
+      weight: string;
+    };
+    h4: {
       size: string;
       lineHeight: string;
       weight: string;

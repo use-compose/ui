@@ -9,42 +9,54 @@
 @import '../../theme.css' layer(component);
 @import './compose-ui.components.css' layer(components);
 /* Default typography mapping */
-@layer theme-default {
-  [data-compose-ui='block'] {
-    color: var(--theme-current-color);
+[data-compose-ui='block'] {
+  color: var(--theme-current-color);
+}
+
+[data-compose-ui='app'] {
+  h1,
+  .text-h1,
+  h2,
+  .text-h2,
+  h3,
+  .text-h3,
+  h4,
+  .text-h4 {
+    font-family: gotham;
+    text-transform: uppercase;
   }
 
-  [data-compose-ui='app'] {
-    h1,
-    .text-h1,
-    h2,
-    .text-h2,
-    h3,
-    .text-h3,
-    h4,
-    .text-h4 {
-      font-family: gotham;
-      text-transform: uppercase;
-    }
+  h1,
+  .text-h1 {
+    /* Balance with Gotham font not fully-centered */
+    padding-top: 4px;
+    font-size: var(--heading-h1-size);
+    font-weight: var(--heading-h1-weight);
+    line-height: var(--heading-h1-line-height);
+  }
+  h2,
+  .text-h2 {
+    font-size: var(--heading-h2-size);
+    font-weight: var(--heading-h2-weight);
+    line-height: var(--heading-h2-line-height);
+  }
 
-    h1,
-    .text-h1 {
-      /* Balance with Gotham font not fully-centered */
-      padding-top: 4px;
-      font-size: var(--heading-h1-size);
-      font-weight: var(--heading-h1-weight);
-      line-height: var(--heading-h1-line-height);
-    }
-    h2,
-    .text-h2 {
-      font-size: var(--heading-h2-size);
-      font-weight: var(--heading-h2-weight);
-      line-height: var(--heading-h2-line-height);
-    }
+  h3,
+  .text-h3 {
+    font-size: var(--heading-h3-size);
+    font-weight: var(--heading-h3-weight);
+    line-height: var(--heading-h3-line-height);
+  }
+
+  h4,
+  .text-h4 {
+    font-size: var(--heading-h4-size);
+    font-weight: var(--heading-h4-weight);
+    line-height: var(--heading-h4-line-height);
   }
 }
 
-@layer theme {
+/* @layer theme {
   :root {
     --text-xs: var(--font-scale-0-2);
     --text-sm: var(--font-scale-0-1);
@@ -56,7 +68,7 @@
     --_layout-depth-base: 4px;
     --shadow-scale: 1.25;
   }
-}
+} */
 
 @layer cube {
   @property --raw {
