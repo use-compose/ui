@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite'
-import { YBox } from '../YBox'
-import { YInputText } from '../YInputText'
+import { YBox } from '../../YBox'
+import { YInputText } from '../../YInputText'
 import YStack from './YStack.vue'
 // import { useThemeComponentStory } from '@/composables'
 

@@ -1,7 +1,7 @@
 /* https://grafikart.fr/tutoriels/conteneur-css-1233 */
 .y-container {
   box-sizing: border-box;
-  width: min(var(--breakpoint-sm), calc(100% - 4 * var(--layout-mobile-padding)));
+  width: min(var(--breakpoint-lg), calc(100% - 4 * var(--layout-mobile-padding)));
   margin-inline: auto;
 
   &.fluid {
