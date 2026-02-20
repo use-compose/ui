@@ -8,7 +8,7 @@
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import YBox, { YBoxProps } from '../YBox/YBox.vue'
+import YBox, { YBoxProps } from '../../YBox/YBox.vue'
 import './YFlow.css'
 
 export interface YFlowProps extends YBoxProps {

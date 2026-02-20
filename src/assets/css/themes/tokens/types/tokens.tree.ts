@@ -516,10 +516,12 @@ export const tokens = {
       "xs"
     ],
     "weight": {
+      "thin": 100,
       "light": 300,
       "normal": 400,
       "medium": 500,
-      "bold": 700
+      "bold": 700,
+      "black": 900
     },
     "lineHeight": {
       "1": 1,
@@ -557,7 +559,7 @@ export const tokens = {
       "min": "1rem",
       "max": "1.5rem",
       "min_viewport": "360px",
-      "max_viewport": "1280px"
+      "max_viewport": "1920px"
     },
     "unit": {
       "default": "1rem",
@@ -677,6 +679,16 @@ export const tokens = {
     "h2": {
       "size": "var(--font-scale-3)",
       "lineHeight": "1.15",
+      "weight": "var(--font-weight-bold)"
+    },
+    "h3": {
+      "size": "var(--font-scale-2)",
+      "lineHeight": "1.2",
+      "weight": "var(--font-weight-bold)"
+    },
+    "h4": {
+      "size": "var(--font-scale-1)",
+      "lineHeight": "1.25",
       "weight": "var(--font-weight-bold)"
     }
   },
