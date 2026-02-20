@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite'
-import { boxArgTypes } from '../YBox/YBox.stories'
+import { boxArgTypes } from '../../YBox/YBox.stories'
 import YRow from './YRow.vue'
 // import { useThemeComponentStory } from '@/composables'
 

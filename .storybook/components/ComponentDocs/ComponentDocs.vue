@@ -17,5 +17,5 @@
 </template>
 
 <script setup lang="ts">
-import YFlow from '@/components/YFlow/YFlow.vue'
+import YFlow from '@/components/cube/YFlow/YFlow.vue'
 </script>

@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite'
-import { boxArgTypes } from '../YBox/YBox.stories'
-import YButton from '../YButton/YButton.vue'
+import { boxArgTypes } from '../../YBox/YBox.stories'
+import YButton from '../../YButton/YButton.vue'
 import YFlow from './YFlow.vue'
 // import { useThemeComponentStory } from '@/composables'
 

@@ -47,10 +47,12 @@
   --_font-scale-min: var(--font-scale-min, 1.125);
   --_font-scale-max: var(--font-scale-max, 1.2);
   --_font-steps: var(--font-steps, h1,h2,h3,h4,h5,h6,md,sm,xs);
+  --_font-weight-thin: var(--font-weight-thin, 100);
   --_font-weight-light: var(--font-weight-light, 300);
   --_font-weight-normal: var(--font-weight-normal, 400);
   --_font-weight-medium: var(--font-weight-medium, 500);
   --_font-weight-bold: var(--font-weight-bold, 700);
+  --_font-weight-black: var(--font-weight-black, 900);
   --_font-line-height-1: var(--font-line-height-1, 1);
   --_font-line-height-2: var(--font-line-height-2, 1.1);
   --_font-line-height-3: var(--font-line-height-3, 1.25);
@@ -86,7 +88,7 @@
   --_space-fluid-min: var(--space-fluid-min, 1rem);
   --_space-fluid-max: var(--space-fluid-max, 1.5rem);
   --_space-fluid-min-viewport: var(--space-fluid-min-viewport, 360px);
-  --_space-fluid-max-viewport: var(--space-fluid-max-viewport, 1280px);
+  --_space-fluid-max-viewport: var(--space-fluid-max-viewport, 1920px);
   --_space-unit-default: var(--space-unit-default, 1rem);
   --_space-unit-fluid: var(--space-unit-fluid, clamp(var(--space-fluid-min), calc(var(--space-fluid-min) + (var(--space-fluid-max) - var(--space-fluid-min)) * ((100vw - var(--space-fluid-min-viewport)) / (var(--space-fluid-max-viewport) - var(--space-fluid-min-viewport)))), var(--space-fluid-max)));
   --_space-multiplier-unit: var(--space-multiplier-unit, 1rem);
@@ -173,6 +175,12 @@
   --_heading-h2-size: var(--heading-h2-size, var(--font-scale-3));
   --_heading-h2-line-height: var(--heading-h2-line-height, 1.15);
   --_heading-h2-weight: var(--heading-h2-weight, var(--font-weight-bold));
+  --_heading-h3-size: var(--heading-h3-size, var(--font-scale-2));
+  --_heading-h3-line-height: var(--heading-h3-line-height, 1.2);
+  --_heading-h3-weight: var(--heading-h3-weight, var(--font-weight-bold));
+  --_heading-h4-size: var(--heading-h4-size, var(--font-scale-1));
+  --_heading-h4-line-height: var(--heading-h4-line-height, 1.25);
+  --_heading-h4-weight: var(--heading-h4-weight, var(--font-weight-bold));
 
 /* ------------------------------------------------------------ */
 /*                          Component                          */

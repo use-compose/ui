@@ -47,10 +47,12 @@
   --font-scale-min: 1.125;
   --font-scale-max: 1.2;
   --font-steps: h1,h2,h3,h4,h5,h6,md,sm,xs;
+  --font-weight-thin: 100;
   --font-weight-light: 300;
   --font-weight-normal: 400;
   --font-weight-medium: 500;
   --font-weight-bold: 700;
+  --font-weight-black: 900;
   --font-line-height-1: 1;
   --font-line-height-2: 1.1;
   --font-line-height-3: 1.25;
@@ -86,7 +88,7 @@
   --space-fluid-min: 1rem;
   --space-fluid-max: 1.5rem;
   --space-fluid-min-viewport: 360px;
-  --space-fluid-max-viewport: 1280px;
+  --space-fluid-max-viewport: 1920px;
   --space-unit-default: 1rem;
   --space-unit-fluid: clamp(var(--space-fluid-min), calc(var(--space-fluid-min) + (var(--space-fluid-max) - var(--space-fluid-min)) * ((100vw - var(--space-fluid-min-viewport)) / (var(--space-fluid-max-viewport) - var(--space-fluid-min-viewport)))), var(--space-fluid-max));
   --space-multiplier-unit: 1rem;
@@ -173,6 +175,12 @@
   --heading-h2-size: var(--font-scale-3);
   --heading-h2-line-height: 1.15;
   --heading-h2-weight: var(--font-weight-bold);
+  --heading-h3-size: var(--font-scale-2);
+  --heading-h3-line-height: 1.2;
+  --heading-h3-weight: var(--font-weight-bold);
+  --heading-h4-size: var(--font-scale-1);
+  --heading-h4-line-height: 1.25;
+  --heading-h4-weight: var(--font-weight-bold);
 
 /* ------------------------------------------------------------ */
 /*                          Component                          */

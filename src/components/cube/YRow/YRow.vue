@@ -9,7 +9,7 @@
 <script setup lang="ts">
 import type { ThemeComponentBaseProps } from '@/composables/component-theme'
 import { computed } from 'vue'
-import YBox from '../YBox/YBox.vue'
+import YBox from '../../YBox/YBox.vue'
 
 export interface YRowProps extends ThemeComponentBaseProps {
   type: 'cluster' | 'switcher' | 'default'

@@ -376,10 +376,12 @@ export interface YThemeToken {
   'font-scale-min': string;
   'font-scale-max': string;
   'font-steps': string;
+  'font-weight-thin': string;
   'font-weight-light': string;
   'font-weight-normal': string;
   'font-weight-medium': string;
   'font-weight-bold': string;
+  'font-weight-black': string;
   'font-line-height-1': string;
   'font-line-height-2': string;
   'font-line-height-3': string;
@@ -488,6 +490,12 @@ export interface YThemeToken {
   'heading-h2-size': string;
   'heading-h2-line-height': string;
   'heading-h2-weight': string;
+  'heading-h3-size': string;
+  'heading-h3-line-height': string;
+  'heading-h3-weight': string;
+  'heading-h4-size': string;
+  'heading-h4-line-height': string;
+  'heading-h4-weight': string;
   'component-bg-lightness': string;
   'component-bg-chroma': string;
   'component-bg-hue': string;

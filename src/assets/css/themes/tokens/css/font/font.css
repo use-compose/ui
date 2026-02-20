@@ -10,10 +10,12 @@
   --font-scale-min: 1.125;
   --font-scale-max: 1.2;
   --font-steps: h1,h2,h3,h4,h5,h6,md,sm,xs;
+  --font-weight-thin: 100;
   --font-weight-light: 300;
   --font-weight-normal: 400;
   --font-weight-medium: 500;
   --font-weight-bold: 700;
+  --font-weight-black: 900;
   --font-line-height-1: 1;
   --font-line-height-2: 1.1;
   --font-line-height-3: 1.25;

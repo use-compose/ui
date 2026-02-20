@@ -10,8 +10,8 @@
 </template>
 
 <script setup lang="ts">
+import { YRow } from '../cube'
 import Wrapper from '../Wrapper.vue'
-import YRow from '../YRow/YRow.vue'
 import { YVerticalTitle } from '../YVerticalTitle'
 import './YSection.css'
 

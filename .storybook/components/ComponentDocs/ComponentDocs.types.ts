@@ -1,3 +1,3 @@
-import { YFlowProps } from '../../../src/components/YFlow/YFlow.vue'
+import { YFlowProps } from '../../../src/components/cube/YFlow/YFlow.vue'
 
 export interface ComponentDocsProps extends YFlowProps {}
