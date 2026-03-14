@@ -2,18 +2,18 @@
   "name": "@use-compose/monorepo",
   "private": true,
   "scripts": {
+    "build": "pnpm -r build",
     "changeset": "changeset",
     "changeset:publish": "changeset publish",
     "changeset:snapshot": "changeset version --snapshot && changeset publish --tag snapshot",
     "changeset:version": "changeset version && pnpm install --lockfile-only",
-    "build": "pnpm -r build",
     "dev": "pnpm --filter @use-compose/ui dev",
-    "tiptap": "pnpm --filter @use-compose/tiptap dev",
     "format": "prettier --write . --config ./.prettierrc",
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
     "lint:style": "stylelint \"**/*.{scss,css}\"",
     "lint:style:fix": "stylelint --fix \"**/*.{vue,scss,css}\"",
+    "new:component": "pnpm --filter @use-compose/ui new:component",
     "prepare": "husky install",
     "storybook": "pnpm --filter @use-compose/docs storybook",
     "syncpack": "pnpm syncpack:fix && pnpm syncpack:format",
@@ -21,7 +21,7 @@
     "syncpack:format": "syncpack format",
     "syncpack:lint": "syncpack lint --dependency-types prod,dev",
     "test": "pnpm -r test",
-    "new:component": "pnpm --filter @use-compose/ui new:component"
+    "tiptap": "pnpm --filter @use-compose/tiptap dev"
   },
   "devDependencies": {
     "@changesets/cli": "2.30.0",
