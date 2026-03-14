@@ -66,7 +66,7 @@ watch(isColorPicked, (newValue) => {
 //   emit('update:modelValue', (event.target as HTMLInputElement).value)
 // }
 // const lol = useInputEvent(inputColor)
-const { modelValue, handleChange, handleBlur } = useInput({ props, attrs, emit })
+const { modelValue } = useInput({ props, attrs, emit })
 
 onMounted(() => {
   if (isClientSide()) {

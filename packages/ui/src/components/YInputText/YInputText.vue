@@ -12,7 +12,7 @@
 <script setup lang="ts">
 import { YInput } from '@/components/YInput'
 import { useInput, type InputEmitsInterface } from '@/composables/input'
-import { defineEmits, useAttrs } from 'vue'
+import { useAttrs } from 'vue'
 import type { YInputTextProps } from './types'
 
 const props = withDefaults(defineProps<YInputTextProps>(), {

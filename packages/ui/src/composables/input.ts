@@ -32,7 +32,6 @@ export interface inputEventsKeyInterface {
 export const inputEventsKey: InjectionKey<inputEventsKeyInterface> = Symbol('inputEvents')
 
 export function useInput({ props, attrs, emit }: UseInputParams): inputEventsKeyInterface {
-  console.log('📟 - emit → ', emit)
   // if (import.meta.server) {
   //   return {
   //     handleEvent: () => {},
