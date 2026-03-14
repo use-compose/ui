@@ -1,0 +1,103 @@
+/* External font - add to your HTML: <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;500&display=swap" rel="stylesheet"> */
+@font-face {
+  font-family: 'Roboto Variable';
+  src: url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;500&display=swap');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: gotham;
+  src: url('../../fonts/GOTHAM-BOOK.OTF') format('opentype');
+
+  /* src: var(--_font-regular); */
+
+  /* src: url('/fonts/GOTHAM-BOOK.OTF') format('opentype'); */
+  font-display: swap;
+}
+
+@font-face {
+  font-family: gotham;
+  src: url('../../fonts/GOTHAM-BOLD.OTF') format('opentype');
+
+  /* src: var(--_font-bold); */
+  font-weight: 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: gotham;
+
+  /* src: url('../../fonts/GOTHAM-BLACKITALIC.OTF') format('opentype'); */
+
+  /* src: var(--_font-bolder); */
+  src: url('../../fonts/GOTHAM-BLACKITALIC.OTF') format('opentype');
+  font-weight: 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: gotham;
+  src: url('../../fonts/GOTHAM-BLACK.OTF') format('opentype');
+
+  /* src: var(--_font-bolder-italic); */
+  font-weight: 900;
+  font-display: swap;
+}
+
+body {
+  font-family: 'Roboto Variable', sans-serif;
+
+  /* font-family: gotham; */
+}
+/* 
+h1,
+.text-h1,
+h2,
+.text-xxl,
+h3,
+.text-xl,
+h4,
+.text-lg {
+  font-family: gotham;
+  text-transform: uppercase;
+  color: var(--theme-current-color);
+}
+
+h1,
+.text-h1 {
+  font-size: var(--_text-h1);
+  font-weight: 900; */
+
+/* Balance with Gotham font not fully-centered */
+/* padding-top: 4px;
+}
+
+h2,
+.text-xxl {
+  font-size: var(--_text-xxl);
+  font-weight: 700;
+}
+
+h3,
+.text-xl {
+  font-size: var(--_text-xl);
+}
+
+h4,
+.text-lg {
+  font-size: var(--_text-lg);
+}
+
+p {
+  font-size: var(--_text-md);
+  margin: var(--space-xs) 0;
+}
+
+.text-sm {
+  font-size: var(--_text-sm);
+}
+
+.text-xs {
+  font-size: var(--_text-xs);
+} */

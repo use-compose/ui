@@ -22,4 +22,6 @@
   --cube-block-dialog-border: var(--_color-border-subtle);
   --cube-block-dialog-radius: var(--_border-radius-large);
   --cube-block-dialog-padding: var(--_spacing-lg);
+  --cube-block-dialog-stacking-index: var(--_stacking-overlay);
+  --cube-block-dialog-opacity: var(--_opacity-100);
 }

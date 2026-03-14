@@ -22,11 +22,15 @@ export const tokens = {
       "default": "var(--border-style-solid)"
     },
     "radius": {
+      "0": 0,
       "1": "1px",
       "2": "2px",
       "4": "4px",
-      "base": 0,
-      "0.5": "0.5px",
+      "5": "5px",
+      "6": "6px",
+      "8": "8px",
+      "10": "10px",
+      "9999": "9999px",
       "scale": 1.5
     }
   },
@@ -545,6 +549,11 @@ export const tokens = {
       "8": "clamp(2.245rem, 0.600rem + 7.312vw, 6.450rem)"
     }
   },
+  "opacity": {
+    "transparent": 0,
+    "semiTransparent": 0.5,
+    "opaque": 1
+  },
   "shadow": {
     "xs": "calc(var(--theme-shadow-base) / 3 * var(--theme-shadow-scale))",
     "sm": "calc(var(--theme-shadow-base) / 2 * var(--theme-shadow-scale))",
@@ -575,6 +584,19 @@ export const tokens = {
       "xl": 3.25,
       "xxl": 5.25
     }
+  },
+  "stacking-context": {
+    "1": 1,
+    "2": 2,
+    "3": 3,
+    "4": 4,
+    "5": 5,
+    "6": 6,
+    "7": 7,
+    "8": 8,
+    "9": 9,
+    "base": 0,
+    "overlay": 1000
   },
   "layout": {
     "breakAt": "1024px",
@@ -614,15 +636,32 @@ export const tokens = {
       "padding": "calc(var(--_layout-space-unit) * var(--_space-multiplier-md))"
     }
   },
+  "theme": {
+    "radius": {
+      "none": 0,
+      "sm": "1px",
+      "md": "2px",
+      "lg": "4px",
+      "full": "9999px"
+    },
+    "shadow-base": 1,
+    "shadow-base-all": "0 1px 3px rgba(0, 0, 0, 0.1)",
+    "shadow-scale": "1.5",
+    "stacking-index": {
+      "default": 0,
+      "root": 0,
+      "overlay": 1000
+    },
+    "opacity": {
+      "hidden": 0,
+      "half": 0.5,
+      "visible": 1
+    }
+  },
   "radius": {
     "light": "calc(var(--border-radius-base) / var(--border-radius-scale))",
     "medium": "calc(var(--border-radius-base) * var(--border-radius-scale))",
     "heavy": "calc(var(--border-radius-base) * 2 * var(--border-radius-scale))"
-  },
-  "theme": {
-    "shadow-base": 1,
-    "shadow-base-all": "0 1px 3px rgba(0, 0, 0, 0.1)",
-    "shadow-scale": "1.5"
   },
   "spacing": {
     "xxs": "calc(var(--_layout-space-unit) * var(--_space-multiplier-xxs))",
@@ -752,7 +791,9 @@ export const tokens = {
         "bg": "var(--_color-bg-neutral)",
         "border": "var(--_color-border-subtle)",
         "radius": "var(--_border-radius-large)",
-        "padding": "var(--_spacing-lg)"
+        "padding": "var(--_spacing-lg)",
+        "stacking-index": "var(--_stacking-overlay)",
+        "opacity": "var(--_opacity-100)"
       }
     },
     "composition": {
@@ -1127,5 +1168,11 @@ export const tokens = {
       "scaler": "1.4svw",
       "left": "clamp(var(--_highlighted-text-gap-min), var(--_highlighted-text-gap-scaler), var(--_highlighted-text-gap-max))"
     }
+  },
+  "tricks": {
+    "is-toggled": "",
+    "is-not-toggled": "initial",
+    "yes": "var(--is-toggled)",
+    "no": "var(--is-not-toggled)"
   }
 } as const;

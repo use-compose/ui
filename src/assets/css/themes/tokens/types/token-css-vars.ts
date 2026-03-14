@@ -12,11 +12,15 @@ export interface YThemeToken {
   'border-style-double': string;
   'border-style-none': string;
   'border-style-default': string;
+  'border-radius-0': string;
   'border-radius-1': string;
   'border-radius-2': string;
   'border-radius-4': string;
-  'border-radius-base': string;
-  'border-radius-0-5': string;
+  'border-radius-5': string;
+  'border-radius-6': string;
+  'border-radius-8': string;
+  'border-radius-10': string;
+  'border-radius-9999': string;
   'border-radius-scale': string;
   'breakpoint-pool-tailwind-sm': string;
   'breakpoint-pool-tailwind-md': string;
@@ -399,6 +403,7 @@ export interface YThemeToken {
   'font-scale-6': string;
   'font-scale-7': string;
   'font-scale-8': string;
+  'opacity': string;
   'shadow-xs': string;
   'shadow-sm': string;
   'shadow-md': string;
@@ -420,6 +425,17 @@ export interface YThemeToken {
   'space-multiplier-lg': string;
   'space-multiplier-xl': string;
   'space-multiplier-xxl': string;
+  'stacking-context-1': string;
+  'stacking-context-2': string;
+  'stacking-context-3': string;
+  'stacking-context-4': string;
+  'stacking-context-5': string;
+  'stacking-context-6': string;
+  'stacking-context-7': string;
+  'stacking-context-8': string;
+  'stacking-context-9': string;
+  'stacking-context-base': string;
+  'stacking-context-overlay': string;
   'layout-break-at': string;
   'layout-gutter-sm': string;
   'layout-gutter-md': string;
@@ -444,12 +460,15 @@ export interface YThemeToken {
   'layout-space-unit': string;
   'layout-depth-base': string;
   'layout-mobile-padding': string;
-  'radius-light': string;
-  'radius-medium': string;
-  'radius-heavy': string;
+  'theme-radius': string;
   'theme-shadow-base': string;
   'theme-shadow-base-all': string;
   'theme-shadow-scale': string;
+  'theme-stacking-index': string;
+  'theme-opacity': string;
+  'radius-light': string;
+  'radius-medium': string;
+  'radius-heavy': string;
   'spacing-xxs': string;
   'spacing-xs': string;
   'spacing-sm': string;
@@ -536,6 +555,8 @@ export interface YThemeToken {
   'cube-block-dialog-border': string;
   'cube-block-dialog-radius': string;
   'cube-block-dialog-padding': string;
+  'cube-block-dialog-stacking-index': string;
+  'cube-block-dialog-opacity': string;
   'cube-composition-flow-space': string;
   'cube-composition-stack-gap': string;
   'cube-composition-stack-align': string;
@@ -784,5 +805,9 @@ export interface YThemeToken {
   'highlighted-text-gap-max': string;
   'highlighted-text-gap-scaler': string;
   'highlighted-text-gap-left': string;
+  'tricks-is-toggled': string;
+  'tricks-is-not-toggled': string;
+  'tricks-yes': string;
+  'tricks-no': string;
 
 }

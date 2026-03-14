@@ -1,0 +1,10 @@
+/* https://grafikart.fr/tutoriels/conteneur-css-1233 */
+.y-container {
+  box-sizing: border-box;
+  width: min(var(--breakpoint-md), calc(100% - var(--layout-mobile-padding)));
+  margin-inline: auto;
+
+  &.fluid {
+    width: 100%;
+  }
+}

@@ -1,9 +1,9 @@
 export default {
   ignoreFiles: [
-    'storybook-static/**',
-    'dist/**',
-    'node_modules/**',
-    'src/assets/css/themes/tokens/**',
+    '**/storybook-static/**',
+    '**/dist/**',
+    '**/node_modules/**',
+    'packages/ui/src/assets/css/themes/tokens/**',
   ],
   extends: [
     'stylelint-config-standard',

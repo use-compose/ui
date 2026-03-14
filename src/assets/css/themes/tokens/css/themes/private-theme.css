@@ -20,11 +20,15 @@
   --_border-style-double: var(--border-style-double, double);
   --_border-style-none: var(--border-style-none, none);
   --_border-style-default: var(--border-style-default, var(--border-style-solid));
+  --_border-radius-0: var(--border-radius-0, 0);
   --_border-radius-1: var(--border-radius-1, 1px);
   --_border-radius-2: var(--border-radius-2, 2px);
   --_border-radius-4: var(--border-radius-4, 4px);
-  --_border-radius-base: var(--border-radius-base, 0);
-  --_border-radius-0-5: var(--border-radius-0-5, 0.5px);
+  --_border-radius-5: var(--border-radius-5, 5px);
+  --_border-radius-6: var(--border-radius-6, 6px);
+  --_border-radius-8: var(--border-radius-8, 8px);
+  --_border-radius-10: var(--border-radius-10, 10px);
+  --_border-radius-9999: var(--border-radius-9999, 9999px);
   --_border-radius-scale: var(--border-radius-scale, 1.5);
 
 /* ------------------------------------------------------------ */
@@ -129,18 +133,21 @@
   --_layout-mobile-padding: var(--layout-mobile-padding, var(--_spacing-md));
 
 /* ------------------------------------------------------------ */
+/*                            Theme                            */
+/* ------------------------------------------------------------ */
+  --_theme-radius: var(--theme-radius, null);
+  --_theme-shadow-base: var(--theme-shadow-base, 1);
+  --_theme-shadow-base-all: var(--theme-shadow-base-all, 0 1px 3px rgba(0, 0, 0, 0.1));
+  --_theme-shadow-scale: var(--theme-shadow-scale, 1.5);
+  --_theme-stacking-index: var(--theme-stacking-index, null);
+  --_theme-opacity: var(--theme-opacity, null);
+
+/* ------------------------------------------------------------ */
 /*                            Radius                            */
 /* ------------------------------------------------------------ */
   --_radius-light: var(--radius-light, calc(var(--border-radius-base) / var(--border-radius-scale)));
   --_radius-medium: var(--radius-medium, calc(var(--border-radius-base) * var(--border-radius-scale)));
   --_radius-heavy: var(--radius-heavy, calc(var(--border-radius-base) * 2 * var(--border-radius-scale)));
-
-/* ------------------------------------------------------------ */
-/*                            Theme                            */
-/* ------------------------------------------------------------ */
-  --_theme-shadow-base: var(--theme-shadow-base, 1);
-  --_theme-shadow-base-all: var(--theme-shadow-base-all, 0 1px 3px rgba(0, 0, 0, 0.1));
-  --_theme-shadow-scale: var(--theme-shadow-scale, 1.5);
 
 /* ------------------------------------------------------------ */
 /*                           Spacing                           */
@@ -256,5 +263,7 @@
   --_dialog-border: var(--dialog-border, var(--_color-border-subtle));
   --_dialog-radius: var(--dialog-radius, var(--_border-radius-large));
   --_dialog-padding: var(--dialog-padding, var(--_spacing-lg));
+  --_dialog-stacking-index: var(--dialog-stacking-index, var(--_stacking-overlay));
+  --_dialog-opacity: var(--dialog-opacity, var(--_opacity-100));
 
 }
