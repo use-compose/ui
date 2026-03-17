@@ -83,8 +83,6 @@ const attrs = useAttrs()
 
 const injected = inject(inputEventsKey, null)
 
-const emit = defineEmits(['update:modelValue', 'input', 'change', 'blur', 'focus'])
-
 const handleEvent =
   injected?.handleEvent ??
   ((e: Event) => {
