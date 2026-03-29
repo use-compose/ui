@@ -1,0 +1,19 @@
+/* https://css-tricks.com/use-css-clamp-to-create-a-more-flexible-wrapper-utility/ */
+.wrapper {
+  /* https://www.oceg.org/ */
+
+  /* max-width: clamp(16rem, var(--wrapper-max-width, 98rem), 95vw); */
+
+  /* TODO: */
+  max-width: clamp(16rem, var(--wrapper-max-width, 80rem), 95vw);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--layout-space-unit);
+  padding-right: var(--layout-space-unit);
+}
+
+@media screen and (width >= 48rem) {
+  .wrapper {
+    --wrapper-max-width: var(--breakpoint-md);
+  }
+}

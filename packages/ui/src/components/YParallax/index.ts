@@ -1,0 +1,1 @@
+export { default as YParallax } from './YParallax.vue'

@@ -3,7 +3,7 @@ name: Release and Publish Package
 
 on:
   push:
-    branches: [main]
+    branches: [not-exist]
   workflow_dispatch:
 
 permissions:
@@ -19,7 +19,7 @@ jobs:
 
       - name: Create GitHub Release from package.json version (if not exists)
         run: |
-          TAG_NAME="v$(jq -r .version package.json)"
+          TAG_NAME="v$(jq -r .version packages/ui/package.json)"
           if git rev-parse "$TAG_NAME" >/dev/null 2>&1; then
             echo "Tag $TAG_NAME already exists. Skipping release."
             exit 0
@@ -34,16 +34,27 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+
       - uses: actions/setup-node@v4
         with:
           node-version: '24'
           registry-url: 'https://registry.npmjs.org'
+          cache: pnpm
 
       - name: Install dependencies
-        run: npm ci
+        run: pnpm install --frozen-lockfile
 
-      - name: Build the package
-        run: npm run build
+      - name: Build
+        run: pnpm run build
 
-      - name: Publish to npm (OIDC)
-        run: npm publish --provenance --access public
+      - name: Publish @use-compose/ui
+        run: pnpm --filter @use-compose/ui publish --provenance --access public --no-git-checks
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Publish @use-compose/tiptap
+        run: pnpm --filter @use-compose/tiptap publish --provenance --access public --no-git-checks
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

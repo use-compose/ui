@@ -1,0 +1,25 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "types": ["node"],
+    "paths": {
+      "@/*": ["src/*"],
+      "@/components/*": ["src/components/*"],
+      "@/composables/*": ["src/composables/*"],
+      "@/utils/*": ["src/utils/*"],
+      "@/assets/*": ["src/assets/*"],
+      "unholy-tokens": ["src/assets/css/themes/tokens/tokens.tree.ts"],
+      "unholy-tokens/types": ["src/assets/css/themes/tokens/tokens.types.ts"],
+      "unholy-tokens/css-var": ["src/assets/css/themes/tokens/token-css-vars.ts"]
+    }
+  },
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.vue",
+    "src/index.ts",
+    "style-dictionary/**/*.json",
+    "style-dictionary/**/*.js"
+  ],
+  "references": [{ "path": "./tsconfig.node.json" }]
+}

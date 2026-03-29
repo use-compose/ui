@@ -1,9 +1,15 @@
 export default {
   ignoreFiles: [
-    'storybook-static/**',
-    'dist/**',
-    'node_modules/**',
+    '**/storybook-static/**',
+    '**/dist/**',
+    '**/node_modules/**',
+    'packages/ui/src/assets/css/themes/tokens/**',
     'src/assets/css/themes/tokens/**',
+    'packages/ui/src/assets/scss/theme/_theme copy.scss',
+    'packages/ui/src/assets/scss/utiilities/token-theming.scss',
+    'packages/ui/src/components/YTable/YTableFooter/YTableFooter.scss',
+    'packages/ui/bin/templates/**',
+    'packages/ui/src/bin/templates/**',
   ],
   extends: [
     'stylelint-config-standard',
@@ -15,6 +21,8 @@ export default {
     // 'custom-property-pattern': 'foo-.+',
     'at-rule-no-unknown': null,
     'scss/at-rule-no-unknown': true,
+    'scss/operator-no-newline-after': null,
+    'selector-pseudo-class-no-unknown': [true, { ignorePseudoClasses: ['deep', 'global', 'slotted'] }],
     'selector-class-pattern': [
       '^[-]?[a-z0-9]+(?:-[a-z0-9]+)*$',
       {
