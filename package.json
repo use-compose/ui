@@ -15,6 +15,7 @@
     "lint:style:fix": "stylelint --fix \"**/*.{vue,scss,css}\"",
     "new:component": "pnpm --filter @use-compose/ui new:component",
     "prepare": "husky install",
+    "release": "changeset publish",
     "storybook": "pnpm --filter @use-compose/docs storybook",
     "syncpack": "pnpm syncpack:fix && pnpm syncpack:format",
     "syncpack:fix": "syncpack fix --dependency-types prod,dev",
