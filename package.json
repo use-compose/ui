@@ -1,62 +1,31 @@
 {
-  "name": "@use-compose/ui",
-  "version": "0.6.0",
+  "name": "@use-compose/monorepo",
+  "private": true,
   "scripts": {
-    "build": "vue-tsc && vite build",
-    "build-ignore-ts-error": "vite build",
-    "build-ssr": "npm run build:client && npm run build:server",
-    "build-storybook": "storybook build",
-    "build-storybook-docs": "storybook build --docs",
-    "build:client": "vite build --outDir dist/client",
-    "build:server": "vite build --outDir dist/server --ssr src/entry-server.js",
-    "build:style": "style-dictionary build --config style-dictionary/config.js ",
-    "chromatic": "chromatic --exit-zero-on-changes",
-    "new:component": "npx hygen new component",
-    "dev": "vite",
-    "dev:ssr": "node server",
+    "build": "pnpm -r build",
+    "changeset": "changeset",
+    "changeset:publish": "changeset publish",
+    "changeset:snapshot": "changeset version --snapshot && changeset publish --tag snapshot",
+    "changeset:version": "changeset version && pnpm install --lockfile-only",
+    "dev": "pnpm --filter @use-compose/ui dev",
     "format": "prettier --write . --config ./.prettierrc",
-    "js:lint": "eslint  --ignore-pattern .gitignore --fix src/",
-    "js:lint:check": "eslint --ext .js,.ts,.vue --ignore-path .gitignore src/",
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
     "lint:style": "stylelint \"**/*.{scss,css}\"",
     "lint:style:fix": "stylelint --fix \"**/*.{vue,scss,css}\"",
+    "new:component": "pnpm --filter @use-compose/ui new:component",
     "prepare": "husky install",
-    "preview": "cross-env NODE_ENV=production node server",
-    "storybook": "STORYBOOK=true storybook dev -p 6006",
-    "storybook:update-titles": "tsx scripts/update-story-titles.ts",
+    "storybook": "pnpm --filter @use-compose/docs storybook",
     "syncpack": "pnpm syncpack:fix && pnpm syncpack:format",
     "syncpack:fix": "syncpack fix --dependency-types prod,dev",
     "syncpack:format": "syncpack format",
     "syncpack:lint": "syncpack lint --dependency-types prod,dev",
-    "test-storybook": "test-storybook",
-    "test": "vitest"
-  },
-  "dependencies": {
-    "@fontsource-variable/roboto": "^5.2.9",
-    "compression": "1.8.1",
-    "culori": "4.0.1",
-    "express": "5.1.0",
-    "sirv": "3.0.2",
-    "vue": "3.5.16"
+    "test": "pnpm -r test",
+    "tiptap": "pnpm --filter @use-compose/tiptap dev"
   },
   "devDependencies": {
+    "@changesets/cli": "2.30.0",
     "@eslint/js": "9.26.0",
-    "@storybook/addon-a11y": "10.1.11",
-    "@storybook/addon-designs": "11.1.1",
-    "@storybook/addon-docs": "10.1.11",
-    "@storybook/addon-links": "10.1.11",
-    "@storybook/test-runner": "0.24.2",
-    "@storybook/vue3-vite": "10.1.11",
-    "@testing-library/vue": "8.1.0",
-    "@types/culori": "4.0.0",
-    "@types/express": "5.0.3",
-    "@types/node": "24.5.1",
-    "@types/tinycolor2": "1.4.6",
-    "@vitejs/plugin-vue": "6.0.1",
-    "axe-playwright": "2.0.3",
-    "chromatic": "12.2.0",
-    "cross-env": "10.0.0",
     "eslint": "9.28.0",
     "eslint-config-prettier": "10.1.5",
     "eslint-plugin-prettier": "5.4.1",
@@ -64,69 +33,21 @@
     "eslint-plugin-vue": "10.0.0",
     "globals": "16.1.0",
     "husky": "9.1.7",
-    "hygen": "6.2.11",
-    "jsdom": "27.4.0",
-    "lightningcss": "1.30.2",
     "lint-staged": "16.1.0",
     "prettier": "3.5.3",
     "prettier-plugin-organize-imports": "4.1.0",
-    "sass": "1.89.2",
-    "storybook": "10.1.11",
-    "storybook-addon-pseudo-states": "10.1.11",
-    "style-dictionary": "4.3.3",
     "stylelint": "16.23.0",
     "stylelint-config-recommended-vue": "1.6.0",
     "stylelint-config-standard-scss": "15.0.1",
     "syncpack": "14.0.0-alpha.37",
-    "tinycolor2": "1.6.0",
     "typescript": "5.9.3",
-    "typescript-eslint": "8.56.0",
-    "unreadable-typescript": "1.0.2",
-    "vite": "7.3.1",
-    "vite-plugin-dts": "4.5.4",
-    "vite-plugin-linter": "2.1.1",
-    "vite-plugin-vue-devtools": "8.0.5",
-    "vite-tsconfig-paths": "6.0.4",
-    "vitest": "4.0.17",
-    "vue-tsc": "2.2.10"
-  },
-  "bin": {
-    "compose-theme": "./bin/generate-theme.js"
-  },
-  "exports": {
-    "./package.json": "./dist/package.json",
-    ".": {
-      "import": "./dist/index.mjs",
-      "require": "./dist/index.js",
-      "types": "./dist/index.d.ts"
-    },
-    "./components": {
-      "import": "./dist/components/index.mjs",
-      "require": "./dist/components/index.js",
-      "types": "./dist/components/index.d.ts"
-    },
-    "./style.css": "./dist/assets/style.css",
-    "./fonts/*": "./dist/fonts/*"
-  },
-  "files": [
-    "dist"
-  ],
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
+    "typescript-eslint": "8.56.0"
   },
   "lint-staged": {
     "**/*.{js,jsx,ts,tsx}": [
       "eslint --fix"
     ]
   },
-  "main": "./dist/index.js",
-  "module": "./dist/index.mjs",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/use-compose/ui.git"
-  },
-  "type": "module",
-  "types": "./dist/index.d.ts"
+  "packageManager": "pnpm@10.12.1",
+  "type": "module"
 }

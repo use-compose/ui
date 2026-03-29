@@ -1,0 +1,695 @@
+/* @property --color-primary {
+  syntax: '<color>';
+  inherits: true;
+} */
+@import './themes/tokens/css/variants.css' layer(theme-api);
+
+/* 
+ * CSS Type Grinding - https://www.bitovi.com/blog/css-only-type-grinding-casting-tokens-into-useful-values
+*/
+
+/* @layer state; */
+
+/*
+ * Color Properties
+*/
+@property --color {
+  syntax: 'primary | secondary | danger | background';
+  initial-value: primary;
+  inherits: true;
+}
+
+@property --primary {
+  syntax: '<integer>';
+  initial-value: 1;
+  inherits: true;
+}
+
+@property --secondary {
+  syntax: '<integer>';
+  initial-value: 1;
+  inherits: true;
+}
+
+@property --danger {
+  syntax: '<integer>';
+  initial-value: 1;
+  inherits: true;
+}
+
+@property --primary-else-0 {
+  syntax: 'primary | <integer>';
+  initial-value: 0;
+  inherits: true;
+}
+
+@property --secondary-else-0 {
+  syntax: 'secondary | <integer>';
+  initial-value: 0;
+  inherits: true;
+}
+
+@property --danger-else-0 {
+  syntax: 'danger | <integer>';
+  initial-value: 0;
+  inherits: true;
+}
+
+@property --background {
+  syntax: '<integer>';
+  initial-value: 1;
+  inherits: true;
+}
+
+@property --background-else-0 {
+  syntax: 'background | <integer>';
+  initial-value: 0;
+  inherits: true;
+}
+
+.primary {
+  --color: primary;
+}
+
+.secondary {
+  --color: secondary;
+}
+
+.danger {
+  --color: danger;
+}
+
+[data-compose-ui='block'] {
+  --tone-l: var(--color-primary-lightness);
+  --tone-c: var(--color-primary-chroma);
+  --tone-h: var(--color-primary-hue);
+  --tone-a: var(--color-primary-opacity);
+}
+
+/* Override tone */
+[data-compose-ui='block'].secondary {
+  --tone-l: var(--color-secondary-lightness);
+  --tone-c: var(--color-secondary-chroma);
+  --tone-h: var(--color-secondary-hue);
+  --tone-a: var(--color-secondary-opacity);
+}
+
+[data-compose-ui='block'].danger {
+  --tone-l: var(--color-danger-lightness);
+  --tone-c: var(--color-danger-chroma);
+  --tone-h: var(--color-danger-hue);
+  --tone-a: var(--color-danger-opacity);
+}
+
+.primary,
+.secondary,
+.danger,
+.background {
+  --danger-else-0: var(--color);
+  --danger: var(--danger-else-0);
+  --primary-else-0: var(--color);
+  --primary: var(--primary-else-0);
+  --secondary-else-0: var(--color);
+  --secondary: var(--secondary-else-0);
+  --base-else-0: var(--state);
+  --base: var(--base-else-0);
+  --hover-else-0: var(--state);
+  --hover: var(--hover-else-0);
+  --active-else-0: var(--state);
+  --active: var(--active-else-0);
+  --focus-else-0: var(--state);
+  --focus: var(--focus-else-0);
+  --disabled-else-0: var(--state);
+  --disabled: var(--disabled-else-0);
+
+  /* Get current color based on the value we pass to --color */
+  --theme-current-color: color-mix(
+    in srgb,
+    var(--color-primary, #e3c566) calc(var(--primary) * 100%),
+    color-mix(
+      in srgb,
+      var(--color-secondary, #000) calc(var(--secondary) * 100%),
+      var(--color-danger, #bd1414) calc(var(--danger) * 100%)
+    )
+  );
+}
+
+/* 
+ * Variant Properties
+*/
+@property --variant {
+  syntax: 'contained | outlined | text';
+  initial-value: contained;
+  inherits: true;
+}
+
+@property --contained {
+  syntax: '<integer>';
+  initial-value: 1;
+  inherits: true;
+}
+
+@property --contained-else-0 {
+  syntax: 'contained | <integer>';
+  initial-value: 0;
+  inherits: true;
+}
+
+@property --outlined {
+  syntax: '<integer>';
+  initial-value: 1;
+  inherits: true;
+}
+
+@property --outlined-else-0 {
+  syntax: 'outlined | <integer>';
+  initial-value: 0;
+  inherits: true;
+}
+
+@property --text {
+  syntax: '<integer>';
+  initial-value: 1;
+  inherits: true;
+}
+
+@property --text-else-0 {
+  syntax: 'text | <integer>';
+  initial-value: 0;
+  inherits: true;
+}
+
+.contained {
+  --variant: contained;
+  --border: no;
+}
+
+.outlined {
+  --component-color-border: var(--theme-current-color);
+
+  /* --component-color-text: var(--theme-current-color); */
+  --component-border-width: 2px;
+  --border: yes;
+  --variant: outlined;
+}
+
+.text {
+  --variant: text;
+}
+
+.contained,
+.outlined,
+.text {
+  --contained-else-0: var(--variant);
+  --contained: var(--contained-else-0);
+  --outlined-else-0: var(--variant);
+  --outlined: var(--outlined-else-0);
+  --text-else-0: var(--variant);
+  --text: var(--text-else-0);
+
+  border: var(--component-border-width) var(--component-border-style) var(--component-color-border);
+}
+
+/* TODO: dynamic font color based on background */
+.y-button span {
+  --color-text-not-percentage: var(--color-text-lightness) / 1%;
+  --component-text-lightness: calc(
+    ((var(--component-bg-lightness) / 1%) - var(--threshold) * 1%) * -100%
+  );
+}
+
+[data-compose-ui='block'].contained {
+  --v-bg-l: var(--variant-contained-bg-lightness);
+  --v-bg-c: var(--variant-contained-bg-chroma);
+  --v-bg-h: var(--variant-contained-bg-hue);
+  --v-bg-a: var(--variant-contained-bg-opacity);
+  --v-border-l: var(--variant-contained-border-lightness);
+  --v-border-c: var(--variant-contained-border-chroma);
+  --v-border-h: var(--variant-contained-border-hue);
+  --v-border-a: var(--variant-contained-border-opacity);
+  --v-text-l: var(--variant-contained-text-lightness);
+  --v-text-c: var(--variant-contained-text-chroma);
+  --v-text-h: var(--variant-contained-text-hue);
+  --v-text-a: var(--variant-contained-text-opacity);
+  --component-text-color: white;
+}
+
+[data-compose-ui='block'].outlined {
+  --v-bg-l: var(--variant-outlined-bg-lightness);
+  --v-bg-c: var(--variant-outlined-bg-chroma);
+  --v-bg-h: var(--variant-outlined-bg-hue);
+  --v-bg-a: var(--variant-outlined-bg-opacity);
+  --v-border-l: var(--variant-outlined-border-lightness);
+  --v-border-c: var(--variant-outlined-border-chroma);
+  --v-border-h: var(--variant-outlined-border-hue);
+  --v-border-a: var(--variant-outlined-border-opacity);
+  --v-text-l: var(--variant-outlined-text-lightness);
+  --v-text-c: var(--variant-outlined-text-chroma);
+  --v-text-h: var(--variant-outlined-text-hue);
+  --v-text-a: var(--variant-outlined-text-opacity);
+}
+
+[data-compose-ui='block'].text {
+  --v-bg-l: var(--variant-text-bg-lightness);
+  --v-bg-c: var(--variant-text-bg-chroma);
+  --v-bg-h: var(--variant-text-bg-hue);
+  --v-bg-a: var(--variant-text-bg-opacity);
+  --v-border-l: var(--variant-text-border-lightness);
+  --v-border-c: var(--variant-text-border-chroma);
+  --v-border-h: var(--variant-text-border-hue);
+  --v-border-a: var(--variant-text-border-opacity);
+  --v-text-l: var(--variant-text-text-lightness);
+  --v-text-c: var(--variant-text-text-chroma);
+  --v-text-h: var(--variant-text-text-hue);
+  --v-text-a: var(--variant-text-text-opacity);
+}
+
+/* same for variant-text */
+
+/* 
+ * State Properties
+*/
+@property --state {
+  syntax: 'base | hover | active | focus | disabled';
+  initial-value: base;
+  inherits: true;
+}
+
+@property --base {
+  syntax: '<integer>';
+  initial-value: 1;
+  inherits: true;
+}
+
+@property --base-else-0 {
+  syntax: 'base | <integer>';
+  initial-value: 0;
+  inherits: true;
+}
+
+@property --hover {
+  syntax: '<integer>';
+  initial-value: 1;
+  inherits: true;
+}
+
+@property --hover-else-0 {
+  syntax: 'hover | <integer>';
+  initial-value: 0;
+  inherits: true;
+}
+
+@property --active {
+  syntax: '<integer>';
+  initial-value: 1;
+  inherits: true;
+}
+
+@property --active-else-0 {
+  syntax: 'active | <integer>';
+  initial-value: 0;
+  inherits: true;
+}
+
+@property --focus {
+  syntax: '<integer>';
+  initial-value: 1;
+  inherits: true;
+}
+
+@property --focus-else-0 {
+  syntax: 'focus | <integer>';
+  initial-value: 0;
+  inherits: true;
+}
+
+@property --disabled {
+  syntax: '<integer>';
+  initial-value: 1;
+  inherits: true;
+}
+
+@property --disabled-else-0 {
+  syntax: 'disabled | <integer>';
+  initial-value: 0;
+  inherits: true;
+}
+
+@layer state {
+  [data-compose-ui='block'] {
+    &:not([disabled], .disabled) {
+      &.base {
+        --state: base;
+      }
+
+      &.hover,
+      &:hover {
+        --state: hover;
+      }
+
+      &.focus,
+      &.focus-visible,
+      &:focus,
+      &:focus-visible {
+        --state: focus;
+      }
+
+      &.active,
+      &:active {
+        --state: active;
+      }
+    }
+
+    /* stylelint-disable no-descending-specificity */
+    &.disabled,
+    &:disabled,
+    &[disabled] {
+      --state: disabled;
+    }
+    /* stylelint-enable no-descending-specificity */
+  }
+}
+
+[data-compose-ui='block'].base {
+  --s-bg-l: var(--state-base-bg-lightness);
+  --s-bg-c: var(--state-base-bg-chroma);
+  --s-bg-h: var(--state-base-bg-hue);
+  --s-bg-a: var(--state-base-bg-opacity);
+  --s-border-l: var(--state-base-border-lightness);
+  --s-border-c: var(--state-base-border-chroma);
+  --s-border-h: var(--state-base-border-hue);
+  --s-border-a: var(--state-base-border-opacity);
+  --s-text-l: var(--state-base-text-lightness);
+  --s-text-c: var(--state-base-text-chroma);
+  --s-text-h: var(--state-base-text-hue);
+  --s-text-a: var(--state-base-text-opacity);
+}
+
+[data-compose-ui='block']:hover,
+[data-compose-ui='block'].hover {
+  --s-bg-l: var(--state-hover-bg-lightness);
+  --s-bg-c: var(--state-hover-bg-chroma);
+  --s-bg-h: var(--state-hover-bg-hue);
+  --s-bg-a: var(--state-hover-bg-opacity);
+  --s-border-l: var(--state-hover-border-lightness);
+  --s-border-c: var(--state-hover-border-chroma);
+  --s-border-h: var(--state-hover-border-hue);
+  --s-border-a: var(--state-hover-border-opacity);
+  --s-text-l: var(--state-hover-text-lightness);
+  --s-text-c: var(--state-hover-text-chroma);
+  --s-text-h: var(--state-hover-text-hue);
+  --s-text-a: var(--state-hover-text-opacity);
+}
+
+[data-compose-ui='block']:focus,
+[data-compose-ui='block']:focus-visible,
+[data-compose-ui='block'].focus-visible,
+[data-compose-ui='block'].focus {
+  --s-bg-l: var(--state-focus-bg-lightness);
+  --s-bg-c: var(--state-focus-bg-chroma);
+  --s-bg-h: var(--state-focus-bg-hue);
+  --s-bg-a: var(--state-focus-bg-opacity);
+  --s-border-l: var(--state-focus-border-lightness);
+  --s-border-c: var(--state-focus-border-chroma);
+  --s-border-h: var(--state-focus-border-hue);
+  --s-border-a: var(--state-focus-border-opacity);
+  --s-text-l: var(--state-focus-text-lightness);
+  --s-text-c: var(--state-focus-text-chroma);
+  --s-text-h: var(--state-focus-text-hue);
+  --s-text-a: var(--state-focus-text-opacity);
+}
+
+[data-compose-ui='block']:active,
+[data-compose-ui='block'].active {
+  --s-bg-l: var(--state-active-bg-lightness);
+  --s-bg-c: var(--state-active-bg-chroma);
+  --s-bg-h: var(--state-active-bg-hue);
+  --s-bg-a: var(--state-active-bg-opacity);
+  --s-border-l: var(--state-active-border-lightness);
+  --s-border-c: var(--state-active-border-chroma);
+  --s-border-h: var(--state-active-border-hue);
+  --s-border-a: var(--state-active-border-opacity);
+  --s-text-l: var(--state-active-text-lightness);
+  --s-text-c: var(--state-active-text-chroma);
+  --s-text-h: var(--state-active-text-hue);
+  --s-text-a: var(--state-active-text-opacity);
+}
+
+[data-compose-ui='block']:disabled,
+[data-compose-ui='block'].disabled,
+[data-compose-ui='block'][disabled] {
+  --s-bg-l: var(--state-disabled-bg-lightness);
+  --s-bg-c: var(--state-disabled-bg-chroma);
+  --s-bg-h: var(--state-disabled-bg-hue);
+  --s-bg-a: var(--state-disabled-bg-opacity);
+  --s-border-l: var(--state-disabled-border-lightness);
+  --s-border-c: var(--state-disabled-border-chroma);
+  --s-border-h: var(--state-disabled-border-hue);
+  --s-border-a: var(--state-disabled-border-opacity);
+  --s-text-l: var(--state-disabled-text-lightness);
+  --s-text-c: var(--state-disabled-text-chroma);
+  --s-text-h: var(--state-disabled-text-hue);
+  --s-text-a: var(--state-disabled-text-opacity);
+}
+
+/* active / focus / disabled similarly */
+
+/* Raw */
+@property --raw {
+  syntax: '<number>';
+  initial-value: 0;
+  inherits: true;
+}
+
+.raw {
+  --raw: 1;
+}
+
+/* Use of Background color */
+
+@property --use-bg {
+  syntax: '<number>';
+  initial-value: 0;
+  inherits: true;
+}
+
+.use-bg {
+  --use-bg: 1;
+}
+
+.app-compose {
+  background-color: color-mix(
+    in srgb,
+    var(--color-bg) calc(var(--use-bg) * 100%),
+    transparent calc((1 - var(--use-bg)) * 100%)
+  );
+}
+
+/* ----------------------------------------------------------------------------- */
+
+/* // Typography */
+
+.switch-color {
+  --threshold: 0.1;
+  --light: var(--color-primary-lightness);
+  --switch: calc((var(--light) - var(--threshold)));
+
+  color: oklch(from currentcolor calc(l - var(--threshold)) c h);
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+[data-compose-ui='block'],
+.y-button,
+.y-input,
+.y-select {
+  /* Base for all theming: if --unstyled is set, all styles are removed */
+  --styled: calc(1 - var(--unstyled));
+  --is-box-shadow-hidden: calc(1 - var(--raw, 0));
+
+  /* --component-box-shadow-hover: var(--component-box-shadow-x) var(--component-box-shadow-y) 0 0
+    var(--component-box-shadow-color); */
+  --component-box-shadow-color: color-mix(
+    in srgb,
+    var(--shadow-dark) calc(var(--base) * 100% + var(--hover) * 100%),
+    /* var(--theme-current-color) */ var(--shadow-dark)
+      calc(var(--active) * 100% + var(--focus) * 100% + var(--disabled) * 100%)
+  );
+  --shadow-dark: var(--color-main-dark);
+
+  /* --component-shadow-depth: calc(
+    var(--is-state-base) * var(--_component-shadow-base) + var(--is-state-hover) *
+      var(--_component-shadow-hover) + var(--is-state-active) * var(--_component-shadow-active) +
+      var(--is-state-focus) * var(--_component-shadow-focus) + var(--is-state-disabled) *
+      var(--_component-shadow-disabled) - 1 * var(--_component-transform-depth)
+  ); */
+  /* stylelint-disable scss/operator-no-newline-before */
+  --component-shadow-depth: calc(
+    var(--base) * var(--_component-shadow-base)
+    + var(--hover) * var(--_component-shadow-hover)
+    + var(--active) * var(--_component-shadow-active)
+    + var(--focus) * var(--_component-shadow-focus)
+    + var(--disabled) * var(--_component-shadow-disabled)
+    - 1 * var(--_component-transform-depth)
+  );
+  /* stylelint-enable scss/operator-no-newline-before */
+
+  /* --component-shadow-depth: calc(
+    var(--_component-shadow-base) - 0.75 * var(--_component-transform-depth)
+  ); */
+  --shadow-depth: calc(var(--component-shadow-depth) * var(--_layout-depth-base));
+  --component-box-shadow-x: calc(var(--is-box-shadow-hidden) * var(--shadow-depth, 0.75));
+  --component-box-shadow-y: calc(var(--is-box-shadow-hidden) * var(--shadow-depth, 0.75));
+
+  /**
+   * Component Transform
+   */
+
+  /* --_component-transform-depth: calc(
+    var(--_component-transform-base) * var(--is-state-base) + var(--_component-transform-hover) *
+      var(--is-state-hover) + var(--_component-transform-active) * var(--is-state-active) +
+      var(--_component-transform-focus) * var(--is-state-focus) +
+      var(--_component-transform-disabled) * var(--is-state-disabled)
+  ); */
+  /* stylelint-disable scss/operator-no-newline-before */
+  --_component-transform-depth: calc(
+    var(--_component-transform-base) * var(--base)
+    + var(--_component-transform-hover) * var(--hover)
+    + var(--_component-transform-active) * var(--active)
+    + var(--_component-transform-focus) * var(--focus)
+    + var(--_component-transform-disabled) * var(--disabled)
+  );
+  /* stylelint-enable scss/operator-no-newline-before */
+  --transform-depth: calc(var(--_component-transform-depth) * var(--_layout-depth-base));
+
+  /* --transform-depth: var(--_component-transform-depth); */
+  --component-transform: translate(var(--transform-depth), var(--transform-depth));
+  --component-box-shadow: var(--component-box-shadow-x) var(--component-box-shadow-y) 0 0
+    var(--component-box-shadow-color);
+  --component-box-shadow-base: calc(var(--component-box-shadow-x))
+    calc(var(--component-box-shadow-y)) 0 0 black;
+
+  /* 
+  --component-box-shadow-hover: var(--component-box-shadow-x) var(--component-box-shadow-y) 0 0
+    var(--shadow-dark); */
+
+  box-shadow: var(--component-box-shadow);
+  transform: var(--component-transform);
+
+  --bg-l: calc(var(--tone-l) + var(--v-bg-l) + var(--s-bg-l));
+  --bg-c: calc(var(--tone-c) + var(--v-bg-c) + var(--s-bg-c));
+  --bg-h: calc(var(--tone-h) + var(--v-bg-h) + var(--s-bg-h));
+  --bg-a: calc(var(--tone-a) * var(--v-bg-a) * var(--s-bg-a));
+  --border-l: calc(var(--tone-l) + var(--v-border-l) + var(--s-border-l));
+  --border-c: calc(var(--tone-c) + var(--v-border-c) + var(--s-border-c));
+  --border-h: calc(var(--tone-h) + var(--v-border-h) + var(--s-border-h));
+  --border-a: calc(var(--tone-a) * var(--v-border-a) * var(--s-border-a));
+  --text-l: calc(var(--tone-l) + var(--v-text-l) + var(--s-text-l));
+  --text-c: calc(var(--tone-c) + var(--v-text-c) + var(--s-text-c));
+  --text-h: calc(var(--tone-h) + var(--v-text-h) + var(--s-text-h));
+  --text-a: calc(var(--tone-a) * var(--v-text-a) * var(--s-text-a));
+  --component-bg-color: oklch(var(--bg-l) var(--bg-c) var(--bg-h) / var(--bg-a));
+  --component-border-color: oklch(
+    var(--border-l) var(--border-c) var(--border-h) / var(--border-a)
+  );
+  --component-text-color: oklch(var(--text-l) var(--text-c) var(--text-h) / var(--text-a));
+
+  /* border: var(--component-border-width) var(--component-border-style) var(--component-border-color); */
+  border-color: var(--component-color-border);
+  background-color: var(--component-bg-color);
+  color: var(--component-text-color);
+
+  /* --box-shadow-x: var(--theme-base-unit-calc);
+  --box-shadow-y: var(--theme-base-unit-calc);
+
+  --component-translate-x: var(--theme-base-unit-calc);
+  --component-translate-y: var(--theme-base-unit-calc); */
+
+  /* 
+  --box-shadow-base: var(--box-shadow-x) var(--box-shadow-y) 0 0 black;
+  --box-shadow-hover: var(--box-shadow-x) var(--box-shadow-y) 0 0 var(--theme-current-color); */
+
+  /*
+   * Pseudo-boolean CSS custom properties - https://keithclark.co.uk/articles/pseudo-boolean-css-custom-properties
+   * Define colors based on component state 
+   */
+
+  /* --component-color: color-mix(
+    in srgb,
+    var(--font-color) calc(100% * var(--primary, 0)),
+    var(--theme-current-color)
+  ); */
+
+  /* --component-bg: color-mix(
+    in srgb,
+    var(--theme-current-color) calc(100% * var(--primary, 0)),
+    transparent
+  ); */
+
+  /* --component-border-color: color-mix(
+    in srgb,
+    var(--color-bg) calc(100% * var(--primary, 0)),
+    var(--theme-current-color)
+  ); */
+
+  /* --component-box-shadow: var(--box-shadow-base); */
+
+  /* --component-padding-x: calc(var(--layout-space-unit) * var(--styled)); */
+
+  /* --component-padding-y: 0; */
+  --component-border-style: solid;
+
+  /* --component-transform: translate(var(--component-translate-x), var(--component-translate-y)); */
+}
+
+/* 
+[data-compose-ui="block"] {
+  --component-bg-hue: calc(var(--color-bg-hue));
+
+  --component-bg-lightness: calc(
+    var(--variant-bg-lightness) + var(--state-bg-lightness) + var(--color-bg-lightness)
+  );
+  --component-bg-opacity: calc(
+    var(--color-bg-opacity) * var(--variant-bg-opacity) * var(--state-bg-opacity)
+  );
+  --component-bg-chroma: calc(
+    var(--color-bg-chroma) + var(--variant-bg-chroma) + var(--state-bg-chroma)
+  );
+  --component-border-hue: calc(var(--color-border-hue));
+
+  --component-border-lightness: calc(
+    var(--color-border-lightness) + var(--variant-border-lightness) + var(--state-border-lightness)
+  );
+  --component-border-opacity: calc(
+    var(--color-border-opacity) * var(--variant-border-opacity) * var(--state-border-opacity)
+  );
+  --component-border-chroma: calc(
+    var(--color-border-chroma) + var(--variant-border-chroma) + var(--state-border-chroma)
+  );
+  --component-text-hue: calc(var(--color-text-hue));
+
+  --component-text-lightness: calc((var(--color-text-lightness)));
+  --component-text-opacity: var(--state-text-opacity);
+  --component-text-chroma: calc(
+    var(--color-text-chroma) + var(--variant-text-chroma) + var(--state-text-chroma)
+  );
+  --component-opacity-bg: var(--component-bg-opacity);
+  --component-opacity-border: var(--component-border-opacity);
+  --component-opacity-text: var(--component-text-opacity);
+
+  --component-color-bg: oklch(
+    var(--component-bg-lightness) var(--component-bg-chroma) var(--component-bg-hue) /
+      var(--component-bg-opacity)
+  );
+  --component-color-border: oklch(
+    var(--component-border-lightness) var(--component-border-chroma) var(--component-border-hue) /
+      var(--component-border-opacity)
+  );
+  --component-color-text: oklch(
+    var(--component-text-lightness) var(--component-text-chroma) var(--component-text-hue) /
+      var(--component-text-opacity)
+  );
+
+  background-color: var(--component-color-bg);
+  border-color: var(--component-color-border);
+  color: var(--component-color-text);
+} */

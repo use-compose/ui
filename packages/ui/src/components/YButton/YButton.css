@@ -1,0 +1,16 @@
+.y-button {
+  display: inline-block;
+  cursor: pointer;
+  font-family: gotham, sans-serif;
+  text-transform: uppercase;
+  font-weight: 700;
+
+  /* --component-padding: var(--_spacing-md) var(--_spacing-sm); */
+
+  &:focus,
+  &:focus-visible,
+  &.focus {
+    outline: 3px solid var(--theme-current-color);
+    outline-offset: calc(var(--_layout-depth-base));
+  }
+}

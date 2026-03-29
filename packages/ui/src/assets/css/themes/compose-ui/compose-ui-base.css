@@ -1,0 +1,206 @@
+/* @import url('../tokens/css/themes/public-theme.css') layer(theme);
+@import url('../tokens/css/themes/private-theme.css') layer(theme);
+@import url('../tokens/css/space.css') layer(theme);
+
+@layer props, api, engine, colors, theme-default, theme, cube; */
+@import './compose-ui.state.css';
+@import './compose-ui.tone.css';
+@import './compose-ui.variant.css';
+@import '../../theme.css' layer(component);
+@import './compose-ui.components.css' layer(components);
+
+/* Default typography mapping */
+[data-compose-ui='block'] {
+  color: var(--theme-current-color);
+}
+
+[data-compose-ui='app'] {
+  h1,
+  .text-h1,
+  h2,
+  .text-h2,
+  h3,
+  .text-h3,
+  h4,
+  .text-h4 {
+    font-family: gotham, sans-serif;
+    text-transform: uppercase;
+  }
+
+  h1,
+  .text-h1 {
+    /* Balance with Gotham font not fully-centered */
+    padding-top: 4px;
+    font-size: var(--heading-h1-size);
+    font-weight: var(--heading-h1-weight);
+    line-height: var(--heading-h1-line-height);
+  }
+
+  h2,
+  .text-h2 {
+    font-size: var(--heading-h2-size);
+    font-weight: var(--heading-h2-weight);
+    line-height: var(--heading-h2-line-height);
+  }
+
+  h3,
+  .text-h3 {
+    font-size: var(--heading-h3-size);
+    font-weight: var(--heading-h3-weight);
+    line-height: var(--heading-h3-line-height);
+  }
+
+  h4,
+  .text-h4 {
+    font-size: var(--heading-h4-size);
+    font-weight: var(--heading-h4-weight);
+    line-height: var(--heading-h4-line-height);
+  }
+}
+
+/* @layer theme {
+  :root {
+    --text-xs: var(--font-scale-0-2);
+    --text-sm: var(--font-scale-0-1);
+    --text-md: var(--font-scale-0);
+    --text-lg: var(--font-scale-1);
+    --text-xl: var(--font-scale-2);
+    --text-xxl: var(--font-scale-3);
+    --text-h1: var(--font-scale-4);
+    --_layout-depth-base: 4px;
+    --shadow-scale: 1.25;
+  }
+} */
+
+@layer cube {
+  @property --raw {
+    syntax: '<number>';
+    initial-value: 0;
+    inherits: true;
+  }
+
+  @property --disabled {
+    syntax: '<number>';
+    initial-value: 0;
+    inherits: true;
+  }
+
+  @property --secondary {
+    syntax: '<number>';
+    initial-value: 0;
+    inherits: true;
+  }
+
+  @property --unstyled {
+    /* We define a value ("no") that doesn't exist as there's no default for "all"  */
+
+    /* https://keithclark.co.uk/articles/pseudo-boolean-css-custom-properties/ */
+    syntax: '<number>';
+    initial-value: 0;
+    inherits: true;
+  }
+
+  .border-theme-10 {
+    border: var(--_border-width-10) solid var(--theme-current-color);
+  }
+
+  .border-theme-25 {
+    border: var(--_border-width-25) solid var(--theme-current-color);
+  }
+
+  .border-theme-50 {
+    border: var(--_border-width-50) solid var(--theme-current-color);
+  }
+
+  .border-theme-75 {
+    border: var(--_border-width-75) solid var(--theme-current-color);
+  }
+
+  .border-theme-100 {
+    border: var(--_border-width-100) solid var(--theme-current-color);
+  }
+
+  .border-theme-light {
+    border: var(--_border-width-small) solid var(--theme-current-color);
+  }
+
+  .border-theme-medium {
+    border: var(--_border-width-medium) solid var(--theme-current-color);
+  }
+
+  .border-theme-large {
+    border: var(--_border-width-large) solid var(--theme-current-color);
+  }
+
+  /* 
+ * Main Theme Component or element styles
+ * A set of CSS variables are used to define the theme
+ * Some modifiers are also available directly applied in the template
+ * 
+ * e.g.
+ * <div class="theme -disabled">Disabled</div>
+ * <div class="theme -raw">Raw</div>
+ * <div class="theme -hidden">Hidden</div>
+ *
+ */
+
+  :root {
+    /* https://dev.to/tracygjg/conditional-css-437e */
+    --true: 1;
+    --false: 0;
+    --theme: ;
+
+    /* --raw: var(--false); */
+
+    --padding-x: var(--layout-space-unit);
+    --padding-y: var(--space-xss);
+    --styled: calc(1 - var(--unstyled));
+    --margin-bottom: var(--space-xs);
+    --_component-padding-y: calc(var(--space-xs) * var(--styled));
+    --_component-padding-x: calc(var(--layout-space-unit) * var(--styled));
+    --_component-padding: var(--_component-padding-y) var(--_component-padding-x);
+
+    /* --border-width: var(--border-width-25); */
+
+    /* --is-raw: var(--raw); */
+
+    --border-radius: 0;
+    --base-unit: var(--_border-width-large);
+  }
+}
+
+@layer components {
+  [data-compose-ui='block'] {
+    /* Components */
+    --component-padding-x: calc(var(--_block-padding-x) * var(--styled));
+    --component-padding-y: calc(var(--_block-padding-y) * var(--styled));
+    --component-padding: var(--component-padding-x) var(--component-padding-y);
+
+    padding: var(--component-padding);
+
+    --_component-border-width: calc(var(--border-width-xsmall) * var(--styled));
+    --theme-base-unit: var(--base-unit);
+    --theme-base-unit-calc: calc(var(--theme-base-unit) * var(--not-raw, 1) * var(--styled, 1));
+
+    &:not(.raw) {
+      --not-raw: 0;
+      --_component-shadow-base: var(--_shadow-xs);
+      --_component-shadow-hover: var(--_shadow-xs);
+      --_component-shadow-active: var(--_shadow-xs);
+      --_component-shadow-focus: var(--_shadow-xs);
+      --_component-shadow-disabled: 0;
+      --_component-transform-base: -0.25;
+      --_component-transform-hover: -0.45;
+      --_component-transform-active: -0.15;
+      --_component-transform-focus: -0.25;
+      --_component-transform-disabled: 0;
+    }
+
+    --shadow: calc(
+      var(--is-state-base) * var(--component-shadow-base) + var(--is-state-hover) *
+        var(--component-shadow-hover) + var(--is-state-active) * var(--component-shadow-active) +
+        var(--is-state-focus) * var(--component-shadow-focus) + var(--is-state-disabled) *
+        var(--component-shadow-disabled)
+    );
+  }
+}

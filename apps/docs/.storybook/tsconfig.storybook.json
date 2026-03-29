@@ -1,0 +1,18 @@
+{
+  "extends": "../../../tsconfig.base.json",
+  "include": [
+    "../../../packages/ui/src/**/*.ts",
+    "../../../packages/ui/src/**/*.vue",
+    "./**/*.ts",
+    "./components/**/*.vue"
+  ],
+  "compilerOptions": {
+    "composite": true,
+    "noEmit": true,
+    "baseUrl": ".",
+    "paths": {
+      "@use-compose/ui": ["../../../packages/ui/src"],
+      "@/*": ["../../../packages/ui/src/*"]
+    }
+  }
+}

@@ -25,7 +25,7 @@ jobs:
           node_version: ${{ inputs.node_version }}
 
       - name: Lint
-        run: npm run lint
+        run: pnpm run lint
 
   lint-style:
     runs-on: ubuntu-latest
@@ -42,7 +42,7 @@ jobs:
 
       - name: Lint Style
         if: ${{ always() }}
-        run: npm run lint:style
+        run: pnpm run lint:style
 
   format:
     runs-on: ubuntu-latest
@@ -59,7 +59,7 @@ jobs:
 
       - name: Format
         if: ${{ always() }}
-        run: npm run format
+        run: pnpm run format
 
   build:
     runs-on: ubuntu-latest
@@ -76,4 +76,4 @@ jobs:
 
       - name: Build
         if: ${{ always() }}
-        run: npm run build
+        run: pnpm run build

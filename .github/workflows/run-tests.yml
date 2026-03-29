@@ -30,7 +30,7 @@ jobs:
         run: npx playwright install --with-deps
 
       - name: Run Storybook tests
-        run: npm run test-storybook
+        run: pnpm --filter @use-compose/docs test-storybook
         env:
           TARGET_URL: 'https://compose-ui.arthurplazanet.com/'
 
@@ -52,4 +52,4 @@ jobs:
           node_version: ${{ inputs.node_version }}
 
       - name: Run Vitest tests
-        run: npm run test
+        run: pnpm run test
