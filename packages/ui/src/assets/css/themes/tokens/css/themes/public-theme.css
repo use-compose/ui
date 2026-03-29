@@ -20,11 +20,15 @@
   --border-style-double: double;
   --border-style-none: none;
   --border-style-default: var(--border-style-solid);
+  --border-radius-0: 0;
   --border-radius-1: 1px;
   --border-radius-2: 2px;
   --border-radius-4: 4px;
-  --border-radius-base: 0;
-  --border-radius-0-5: 0.5px;
+  --border-radius-5: 5px;
+  --border-radius-6: 6px;
+  --border-radius-8: 8px;
+  --border-radius-10: 10px;
+  --border-radius-9999: 9999px;
   --border-radius-scale: 1.5;
 
 /* ------------------------------------------------------------ */
@@ -129,18 +133,26 @@
   --layout-mobile-padding: var(--spacing-md);
 
 /* ------------------------------------------------------------ */
+/*                            Theme                            */
+/* ------------------------------------------------------------ */
+  --radius: null;
+  --shadow-base: 1;
+  --shadow-base-all: 0 1px 3px rgba(0, 0, 0, 0.1);
+  --shadow-scale: 1.5;
+  --stack-index-default: var(--stacking-base);
+  --stack-index-root: var(--stacking-base);
+  --stack-index-overlay: calc(var(--stacking-base) + var(--stacking-scale-ratio));
+  --stack-index-hidden: calc(var(--stacking-base) - var(--stacking-scale-ratio));
+  --opacity-hidden: var(--opacity-0);
+  --opacity-half: var(--opacity-50);
+  --opacity-visible: var(--opacity-100);
+
+/* ------------------------------------------------------------ */
 /*                            Radius                            */
 /* ------------------------------------------------------------ */
   --radius-light: calc(var(--border-radius-base) / var(--border-radius-scale));
   --radius-medium: calc(var(--border-radius-base) * var(--border-radius-scale));
   --radius-heavy: calc(var(--border-radius-base) * 2 * var(--border-radius-scale));
-
-/* ------------------------------------------------------------ */
-/*                            Theme                            */
-/* ------------------------------------------------------------ */
-  --theme-shadow-base: 1;
-  --theme-shadow-base-all: 0 1px 3px rgba(0, 0, 0, 0.1);
-  --theme-shadow-scale: 1.5;
 
 /* ------------------------------------------------------------ */
 /*                           Spacing                           */
@@ -237,24 +249,26 @@
   /* -------------------- */
   /*        Block        */
   /* -------------------- */
-  --block-padding-x: var(--_spacing-xs);
-  --block-padding-y: var(--_spacing-md);
-  --block-padding: var(--_block-padding-y) var(--_block-padding-x);
-  --card-bg: var(--_color-bg-neutral);
-  --card-border: var(--_color-border-subtle);
-  --card-radius: var(--_border-radius-medium);
+  --block-padding-x: var(--spacing-xs);
+  --block-padding-y: var(--spacing-md);
+  --block-padding: var(--block-padding-y) var(--block-padding-x);
+  --card-bg: var(--color-bg-neutral);
+  --card-border: var(--color-border-subtle);
+  --card-radius: var(--border-radius-medium);
   --card-padding: var(--cube-block-block-padding);
-  --button-padding-x: var(--_spacing-xs);
-  --button-padding-y: var(--_spacing-md);
-  --button-radius: var(--_border-radius-medium);
-  --button-text: var(--_color-text-primary);
-  --button-bg: var(--_color-bg-primary);
-  --button-bg-hover: var(--_color-bg-primary-hover);
-  --checkbox-bg: var(--_color-bg-primary);
-  --checkbox-padding: var(--_spacing-xs);
-  --dialog-bg: var(--_color-bg-neutral);
-  --dialog-border: var(--_color-border-subtle);
-  --dialog-radius: var(--_border-radius-large);
-  --dialog-padding: var(--_spacing-lg);
+  --button-padding-x: var(--spacing-xs);
+  --button-padding-y: var(--spacing-md);
+  --button-radius: var(--border-radius-medium);
+  --button-text: var(--color-text-primary);
+  --button-bg: var(--color-bg-primary);
+  --button-bg-hover: var(--color-bg-primary-hover);
+  --checkbox-bg: var(--color-bg-primary);
+  --checkbox-padding: var(--spacing-xs);
+  --dialog-bg: var(--color-bg-neutral);
+  --dialog-border: var(--color-border-subtle);
+  --dialog-radius: var(--border-radius-large);
+  --dialog-padding: var(--spacing-lg);
+  --dialog-stacking-index: var(--stacking-overlay);
+  --dialog-opacity: var(--opacity-100);
 
 }

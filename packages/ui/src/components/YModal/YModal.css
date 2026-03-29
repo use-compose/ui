@@ -54,6 +54,26 @@
   --modal-z-index: calc(var(--dialog-z-index) + 1);
 }
 
+.y-modal-content {
+  padding: var(--_spacing-sm) var(--_spacing-md);
+  overflow-y: auto;
+  scrollbar-width: 3px;
+  scrollbar-color: var(--component-color);
+  scrollbar-gutter: stable both-edges;
+
+  /* custom scrollbar */
+  &::-webkit-scrollbar {
+    appearance: none;
+    width: 3px;
+    background-color: var(--color-primary);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--component-color);
+    box-shadow: 0 0 1px rgb(255 255 255 / 50%);
+  }
+}
+
 .y-drawer {
   padding: 0;
   position: fixed;
@@ -81,28 +101,8 @@
   }
 }
 
-.y-modal-content {
-  padding: var(--_spacing-sm) var(--_spacing-md);
-  overflow-y: auto;
-  scrollbar-width: 3px;
-  scrollbar-color: var(--component-color);
-  scrollbar-gutter: stable both-edges;
-
-  /* custom scrollbar */
-  &::-webkit-scrollbar {
-    appearance: none;
-    width: 3px;
-    background-color: var(--color-primary);
-  }
-
-  &::-webkit-scrollbar-thumb {
-    background-color: var(--component-color);
-    box-shadow: 0 0 1px rgb(255 255 255 / 50%);
-  }
-}
-
 .y-modal-header {
-  font-family: gotham;
+  font-family: gotham, sans-serif;
   text-transform: uppercase;
   padding: var(--_spacing-sm) var(--_spacing-md);
 }

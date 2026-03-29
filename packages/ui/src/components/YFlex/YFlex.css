@@ -1,8 +1,8 @@
 .y-flex {
   display: flex;
   flex-flow: var(--direction) wrap;
-  align-items: var(--alignItems);
-  justify-content: var(--justifyContent);
+  align-items: var(--align-items);
+  justify-content: var(--justify-content);
   gap: var(--layout-gap);
   padding: 0;
 }

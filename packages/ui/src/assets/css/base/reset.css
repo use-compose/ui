@@ -57,10 +57,12 @@ h6 {
   text-wrap: balance;
 }
 
+/* stylelint-disable selector-id-pattern */
 #root,
 #__next {
   isolation: isolate;
 }
+/* stylelint-enable selector-id-pattern */
 
 /* CUSTOM */
 ul,

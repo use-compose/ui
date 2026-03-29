@@ -1,5 +1,4 @@
 @layer props, api, engine, colors, theme-default, theme, cube, components;
-
 @import './tokens/css/colors.css' layer(colors);
 @import './tokens/css/themes/public-theme.css' layer(theme);
 @import './tokens/css/themes/private-theme.css' layer(theme);
@@ -10,7 +9,6 @@
 
 /* CUBE Utilities */
 @import './tokens/css/cube/cube.utility.css' layer(cube);
-
 @import './compose-ui/compose-ui-base.css' layer(theme);
 
 /* Default typography mapping */

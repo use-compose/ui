@@ -38,8 +38,8 @@ const flexClasses = computed(() => {
 const flexStyle = computed(() => {
   return {
     '--direction': props.direction,
-    '--justifyContent': props.justify,
-    '--alignItems': props.align,
+    '--justify-content': props.justify,
+    '--align-items': props.align,
     '--layout-gap': props.gap,
   }
 })

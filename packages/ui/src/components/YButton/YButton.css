@@ -1,8 +1,7 @@
 .y-button {
   display: inline-block;
-  text-transform: uppercase;
   cursor: pointer;
-  font-family: gotham;
+  font-family: gotham, sans-serif;
   text-transform: uppercase;
   font-weight: 700;
 

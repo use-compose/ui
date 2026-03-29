@@ -37,7 +37,7 @@
   /* Layout */
 
   /* -------------------------------------------------- */
-  --_layout-zIndex: var(--layout-zIndex, 1000);
+  --_layout-z-index: var(--layout-z-index, 1000);
   --_layout-depth-base: var(--layout-depth-base, 6px);
 
   /* -------------------------------------------------- */

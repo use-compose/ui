@@ -22,11 +22,15 @@ export interface DesignTokens {
       default: string;
     };
     radius: {
+      '0': string;
       '1': string;
       '2': string;
       '4': string;
-      base: string;
-      '0.5': string;
+      '5': string;
+      '6': string;
+      '8': string;
+      '10': string;
+      '9999': string;
       scale: string;
     };
   };
@@ -227,6 +231,90 @@ export interface DesignTokens {
       base: string;
     };
     'vanilla-cream': {
+      '100': string;
+      '200': string;
+      '300': string;
+      '400': string;
+      '500': string;
+      '600': string;
+      '700': string;
+      '800': string;
+      '900': string;
+      base: string;
+    };
+    'blue-tz': {
+      '100': string;
+      '200': string;
+      '300': string;
+      '400': string;
+      '500': string;
+      '600': string;
+      '700': string;
+      '800': string;
+      '900': string;
+      base: string;
+    };
+    'eastern-blue': {
+      '100': string;
+      '200': string;
+      '300': string;
+      '400': string;
+      '500': string;
+      '600': string;
+      '700': string;
+      '800': string;
+      '900': string;
+      base: string;
+    };
+    'yellow-sun': {
+      '100': string;
+      '200': string;
+      '300': string;
+      '400': string;
+      '500': string;
+      '600': string;
+      '700': string;
+      '800': string;
+      '900': string;
+      base: string;
+    };
+    'yellow-tz': {
+      '100': string;
+      '200': string;
+      '300': string;
+      '400': string;
+      '500': string;
+      '600': string;
+      '700': string;
+      '800': string;
+      '900': string;
+      base: string;
+    };
+    'blue-sun-light': {
+      '100': string;
+      '200': string;
+      '300': string;
+      '400': string;
+      '500': string;
+      '600': string;
+      '700': string;
+      '800': string;
+      '900': string;
+      base: string;
+    };
+    'river-bed-my-pant': {
+      '100': string;
+      '200': string;
+      '300': string;
+      '400': string;
+      '500': string;
+      '600': string;
+      '700': string;
+      '800': string;
+      '900': string;
+      base: string;
+    };
+    grey: {
       '100': string;
       '200': string;
       '300': string;
@@ -535,6 +623,7 @@ export interface DesignTokens {
       '8': string;
     };
   };
+  opacity: string;
   shadow: {
     xs: string;
     sm: string;
@@ -565,6 +654,11 @@ export interface DesignTokens {
       xl: string;
       xxl: string;
     };
+  };
+  stacking: {
+    '1': string;
+    base: string;
+    'scale-ratio': string;
   };
   layout: {
     breakAt: string;
@@ -604,15 +698,27 @@ export interface DesignTokens {
       padding: string;
     };
   };
+  theme: {
+    radius: string;
+    'shadow-base': string;
+    'shadow-base-all': string;
+    'shadow-scale': string;
+    'stack-index': {
+      default: string;
+      root: string;
+      overlay: string;
+      hidden: string;
+    };
+    opacity: {
+      hidden: string;
+      half: string;
+      visible: string;
+    };
+  };
   radius: {
     light: string;
     medium: string;
     heavy: string;
-  };
-  theme: {
-    'shadow-base': string;
-    'shadow-base-all': string;
-    'shadow-scale': string;
   };
   spacing: {
     xxs: string;
@@ -743,6 +849,8 @@ export interface DesignTokens {
         border: string;
         radius: string;
         padding: string;
+        'stacking-index': string;
+        opacity: string;
       };
     };
     composition: {
@@ -858,11 +966,7 @@ export interface DesignTokens {
         'block-x': string;
         'block-y': string;
       };
-      text: {
-        body: string;
-        caption: string;
-        small: string;
-      };
+      'text-center': string;
       border: {
         solid: string;
         dashed: string;
@@ -943,6 +1047,11 @@ export interface DesignTokens {
         h4: string;
         h5: string;
         h6: string;
+      };
+      text: {
+        body: string;
+        caption: string;
+        small: string;
       };
     };
   };
@@ -1117,5 +1226,11 @@ export interface DesignTokens {
       scaler: string;
       left: string;
     };
+  };
+  tricks: {
+    'is-toggled': string;
+    'is-not-toggled': string;
+    yes: string;
+    no: string;
   };
 }

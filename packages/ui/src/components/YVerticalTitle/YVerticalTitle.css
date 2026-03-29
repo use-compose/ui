@@ -3,7 +3,7 @@
   --y-vertical-title-font-size-md: clamp(1.125rem, 3.5vw + 0.1rem, 3.4rem);
   --heading-height: calc(1rem * 2.5);
 
-  font-family: gotham;
+  font-family: gotham, sans-serif;
   font-size: var(--y-vertical-title-font-size-xs-and-xl);
   font-weight: bold;
   text-transform: uppercase;

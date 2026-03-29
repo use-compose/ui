@@ -191,7 +191,6 @@
   --component-border-width: 2px;
   --border: yes;
   --variant: outlined;
-  --border: yes;
 }
 
 .text {
@@ -208,8 +207,6 @@
   --text-else-0: var(--variant);
   --text: var(--text-else-0);
 
-  border-width: calc(var(--has-border) * var(--component-border-width));
-  border-style: calc(var(--has-border) * var(--component-border-style));
   border: var(--component-border-width) var(--component-border-style) var(--component-color-border);
 }
 
@@ -363,11 +360,13 @@
       }
     }
 
+    /* stylelint-disable no-descending-specificity */
     &.disabled,
     &:disabled,
     &[disabled] {
       --state: disabled;
     }
+    /* stylelint-enable no-descending-specificity */
   }
 }
 
@@ -498,14 +497,7 @@
   color: oklch(from currentcolor calc(l - var(--threshold)) c h);
 }
 
-[data-compose-ui='block'],
-.y-button,
-.y-input,
-.y-select {
-  box-shadow: var(--component-box-shadow);
-  transform: var(--component-transform);
-}
-
+/* stylelint-disable-next-line no-descending-specificity */
 [data-compose-ui='block'],
 .y-button,
 .y-input,
@@ -516,10 +508,6 @@
 
   /* --component-box-shadow-hover: var(--component-box-shadow-x) var(--component-box-shadow-y) 0 0
     var(--component-box-shadow-color); */
-  --component-box-shadow-color: calc(
-    var(--base) * var(--shadow-dark) + var(--hover) * var(--shadow-dark) + var(--active) *
-      var(--shadow-dark) + var(--focus) * var(--shadow-dark) + var(--disabled) * var(--shadow-dark)
-  );
   --component-box-shadow-color: color-mix(
     in srgb,
     var(--shadow-dark) calc(var(--base) * 100% + var(--hover) * 100%),
@@ -534,12 +522,17 @@
       var(--is-state-focus) * var(--_component-shadow-focus) + var(--is-state-disabled) *
       var(--_component-shadow-disabled) - 1 * var(--_component-transform-depth)
   ); */
+  /* stylelint-disable scss/operator-no-newline-before */
   --component-shadow-depth: calc(
-    var(--base) * var(--_component-shadow-base) + var(--hover) * var(--_component-shadow-hover) +
-      var(--active) * var(--_component-shadow-active) + var(--focus) *
-      var(--_component-shadow-focus) + var(--disabled) * var(--_component-shadow-disabled) - 1 *
-      var(--_component-transform-depth)
+    var(--base) * var(--_component-shadow-base)
+    + var(--hover) * var(--_component-shadow-hover)
+    + var(--active) * var(--_component-shadow-active)
+    + var(--focus) * var(--_component-shadow-focus)
+    + var(--disabled) * var(--_component-shadow-disabled)
+    - 1 * var(--_component-transform-depth)
   );
+  /* stylelint-enable scss/operator-no-newline-before */
+
   /* --component-shadow-depth: calc(
     var(--_component-shadow-base) - 0.75 * var(--_component-transform-depth)
   ); */
@@ -557,12 +550,15 @@
       var(--_component-transform-focus) * var(--is-state-focus) +
       var(--_component-transform-disabled) * var(--is-state-disabled)
   ); */
+  /* stylelint-disable scss/operator-no-newline-before */
   --_component-transform-depth: calc(
-    var(--_component-transform-base) * var(--base) + var(--_component-transform-hover) *
-      var(--hover) + var(--_component-transform-active) * var(--active) +
-      var(--_component-transform-focus) * var(--focus) + var(--_component-transform-disabled) *
-      var(--disabled)
+    var(--_component-transform-base) * var(--base)
+    + var(--_component-transform-hover) * var(--hover)
+    + var(--_component-transform-active) * var(--active)
+    + var(--_component-transform-focus) * var(--focus)
+    + var(--_component-transform-disabled) * var(--disabled)
   );
+  /* stylelint-enable scss/operator-no-newline-before */
   --transform-depth: calc(var(--_component-transform-depth) * var(--_layout-depth-base));
 
   /* --transform-depth: var(--_component-transform-depth); */

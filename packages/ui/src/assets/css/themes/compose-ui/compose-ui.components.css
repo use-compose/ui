@@ -3,18 +3,12 @@
 .y-input,
 .y-select {
   box-shadow: var(--component-box-shadow);
-  transform: var(--component-transform);
 
   --styled: calc(1 - var(--unstyled));
   --is-box-shadow-hidden: calc(1 - var(--raw, 0));
 
   /* --component-box-shadow-hover: var(--component-box-shadow-x) var(--component-box-shadow-y) 0 0
     var(--component-box-shadow-color); */
-  --component-box-shadow-color: calc(
-    var(--is-state-base) * var(--shadow-dark) + var(--is-state-hover) * var(--shadow-dark) +
-      var(--is-state-active) * var(--shadow-dark) + var(--is-state-focus) * var(--shadow-dark) +
-      var(--is-state-disabled) * var(--shadow-dark)
-  );
   --component-box-shadow-color: color-mix(
     in srgb,
     var(--shadow-dark) calc(var(--is-state-base) * 100% + var(--is-state-hover) * 100%),
@@ -32,20 +26,7 @@
       var(--is-state-focus) * var(--_component-shadow-focus) + var(--is-state-disabled) *
       var(--_component-shadow-disabled) - 1 * var(--_component-transform-depth)
   ); */
-  --component-shadow-depth: calc(
-    var(--is-state-base) * var(--component-shadow-base) + var(--is-state-hover) *
-      var(--component-shadow-hover) + var(--is-state-active) * var(--component-shadow-active) +
-      var(--is-state-focus) * var(--component-shadow-focus) + var(--is-state-disabled) *
-      var(--component-shadow-disabled) - 1 * var(--component-transform-depth)
-  );
-
   --component-shadow-depth: var(--shadow);
-  --shadow-depth: calc(var(--component-shadow-depth) * var(--_layout-depth-base));
-  --component-box-shadow-x: calc(var(--is-box-shadow-hidden) * var(--shadow-depth, 0.75));
-  --component-box-shadow-y: calc(var(--is-box-shadow-hidden) * var(--shadow-depth, 0.75));
-  /* --component-shadow-depth: calc(
-    var(--_component-shadow-base) - 0.75 * var(--_component-transform-depth)
-  ); */
   --shadow-depth: calc(var(--component-shadow-depth) * var(--_layout-depth-base));
   --component-box-shadow-x: calc(var(--is-box-shadow-hidden) * var(--shadow-depth, 0.75));
   --component-box-shadow-y: calc(var(--is-box-shadow-hidden) * var(--shadow-depth, 0.75));

@@ -1,5 +1,4 @@
 @import './themes/core.css';
-
 @import './base/conditional.css';
 
 /* @import './base/variants.css'; */
@@ -22,8 +21,9 @@
 @import './layout/switcher.css';
 @import './layout/wrapper.css';
 @import './utils/media.css';
-@import './themes/core.css';
+
 /* @import './theme.css'; */
+
 /* @import './themes/compose-ui/compose-ui-base.css';
 @import './themes/compose-ui/compose-ui.state.css';
 @import './themes/compose-ui/compose-ui.variant.css';

@@ -2,28 +2,25 @@
 @use '@/assets/scss/utils' as utils;
 @use '@/assets/scss/global.scss' as *;
 
-// TODO: change to kebab-case
 .y-header {
-  & {
-    $header-sm: 50px;
-    $header-md: 60px;
-    $header-lg: 65px;
+  $header-sm: 50px;
+  $header-md: 60px;
+  $header-lg: 65px;
 
-    height: $header-sm;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border-bottom: 4px solid var(--color-main-dark);
-    margin-bottom: var(--_spacing-unit);
-    padding: var(--_spacing-xxs) var(--_spacing-unit);
+  height: $header-sm;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 4px solid var(--color-main-dark);
+  margin-bottom: var(--_spacing-unit);
+  padding: var(--_spacing-xxs) var(--_spacing-unit);
 
-    @include media('tablet') {
-      height: $header-md;
-    }
+  @include media('tablet') {
+    height: $header-md;
+  }
 
-    @include media('desktop') {
-      height: $header-lg;
-    }
+  @include media('desktop') {
+    height: $header-lg;
   }
 
   &.y-header-fixed {
