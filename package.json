@@ -14,6 +14,7 @@
     "lint:style": "stylelint \"**/*.{scss,css}\"",
     "lint:style:fix": "stylelint --fix \"**/*.{vue,scss,css}\"",
     "new:component": "pnpm --filter @use-compose/ui new:component",
+    "release": "changeset publish",
     "prepare": "husky install",
     "release": "changeset publish",
     "storybook": "pnpm --filter @use-compose/docs storybook",
