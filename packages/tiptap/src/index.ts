@@ -1,2 +1,3 @@
-// @use-compose/tiptap — TipTap rich text editor components
-export {}
+export { default as YEditor } from './YEditor/YEditor.vue'
+
+import './assets/css/main.css'
