@@ -1,38 +1,42 @@
-// Extensions beyond StarterKit — commented out until added as dependencies
-// import { Color } from '@tiptap/extension-color'
-// import { FontFamily } from '@tiptap/extension-font-family'
-// import { Image } from '@tiptap/extension-image'
-// import { TextAlign } from '@tiptap/extension-text-align'
-// import { TextStyle } from '@tiptap/extension-text-style'
-// import { Typography } from '@tiptap/extension-typography'
-// import { Underline } from '@tiptap/extension-underline'
-// import { FontSize } from '../../extensions/font-size'
-// import { LinkMenu } from '../../extensions/link'
-// import { StyledImage } from '../../extensions/image'
+import { Color } from '@tiptap/extension-color'
+import { FontFamily } from '@tiptap/extension-font-family'
+import { Image } from '@tiptap/extension-image'
+import { TextAlign } from '@tiptap/extension-text-align'
+import { TextStyle } from '@tiptap/extension-text-style'
+import { Typography } from '@tiptap/extension-typography'
+import { Underline } from '@tiptap/extension-underline'
 import type { AnyExtension } from '@tiptap/core'
 import StarterKit from '@tiptap/starter-kit'
+import { FontSize } from '../../extensions/font-size'
+import { LinkMenu } from '../../extensions/link'
+import { StyledImage } from '../../extensions/image'
 import { menuComponents } from './extensions-list'
 
 const extensionMap = {
+  Color,
+  FontFamily,
+  Image,
+  TextAlign,
+  TextStyle,
+  Typography,
+  Underline,
   StarterKit,
-  // Color,
-  // FontFamily,
-  // Image,
-  // TextAlign,
-  // TextStyle,
-  // Typography,
-  // Underline,
-  // FontSize,
-  // LinkMenu,
-  // StyledImage,
+  FontSize,
+  LinkMenu,
+  StyledImage,
 }
 
 const extensionConfig: Partial<Record<keyof typeof extensionMap, object>> = {
   StarterKit: {
     heading: { levels: [1, 2, 3] },
   },
-  // LinkMenu: { autolink: true, HTMLAttributes: { class: 'tiptap-link' } },
-  // TextAlign: { types: ['heading', 'paragraph'] },
+  LinkMenu: {
+    autolink: true,
+    HTMLAttributes: { class: 'tiptap-link' },
+  },
+  TextAlign: {
+    types: ['heading', 'paragraph'],
+  },
 }
 
 export function buildExtensions(menuOptions: string[]): AnyExtension[] {
@@ -45,6 +49,9 @@ export function buildExtensions(menuOptions: string[]): AnyExtension[] {
 
 export function generateMenuExtensions(extensionList: string[]): string[] {
   const result: string[] = []
+
+  // TextStyle is required by Color and FontFamily
+  result.push('TextStyle')
 
   extensionList = extensionList.filter((item) => item !== 'divider')
 

@@ -1,7 +1,6 @@
 <template>
   <YInput
-    v-bind="props"
-    v-model="modelValue"
+    v-model="inputValue"
     type="color"
     input-class="y-color-input"
     :name="name"
@@ -26,6 +25,7 @@ const props = withDefaults(defineProps<YColorInputProps>(), {
   name: 'color-input' + Math.random().toString(36).substring(7),
   variant: 'contained',
 })
+console.log('📟 - props → ', props)
 
 // listen to input event
 const emit: EmitFn = defineEmits(['update:modelValue', 'change'])

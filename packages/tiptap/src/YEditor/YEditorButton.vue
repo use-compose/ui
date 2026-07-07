@@ -1,5 +1,12 @@
 <template>
-  <YButton type="button" variant="outlined" :class="editorBtnClass" @click="handleClick">
+  <YButton
+    type="button"
+    color="primary"
+    variant="outlined"
+    raw
+    class="editorBtnClass"
+    @click="handleClick"
+  >
     <slot name="dropdown"></slot>
     <template v-if="$slots.default">
       <slot></slot>

@@ -8,3 +8,7 @@ onlyBuiltDependencies:
   - esbuild
   - style-dictionary
   - unrs-resolver
+
+overrides:
+  use-tiptap: link:../../../../../Library/pnpm/global/5/node_modules/use-tiptap
+  list: link:../../../../../Library/pnpm/global/5/node_modules/list

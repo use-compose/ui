@@ -1,30 +1,37 @@
-@import './themes/core.css';
-@import './base/conditional.css';
+/* Cascade layer order: lowest → highest priority */
+@layer tokens, base, theme, components, utilities;
 
-/* @import './base/variants.css'; */
-@import './base/component/component.css';
-@import './base/fonts.css';
+/* @property registrations must be at CSS top level — not inside @layer */
+@import './theme/compose-ui/compose-ui.props.css';
 
-/* TODO: */
+/* Base */
+@import './base/reset.css' layer(base);
+@import './base/conditional.css' layer(base);
 
-@import './base/reset.css';
+/* =====================================================
+   Design Tokens
+   ===================================================== */
+/* Tokens: color palette + component deltas + theme overrides */
+@import './theme/tokens/css/tricks/tricks.css' layer(tokens);
+@import './theme/tokens/css/border/border.css' layer(tokens);
+@import './theme/tokens/css/space.css' layer(tokens);
+@import './theme/tokens/css/colors.css' layer(tokens);
+@import './base/variants.css' layer(tokens);
 
-/* @import './base/variables.css'; */
-@import './utils/animations.css';
-@import './components/common.css';
-@import './components/table.css';
+/* =====================================================
+   Initial Themes
+   ===================================================== */
+@import './theme/tokens/css/themes/public-theme.css' layer(theme);
+@import './theme/tokens/css/themes/private-theme.css' layer(theme);
 
-/* @import './themes/private-theme.css'; */
+/* Theme: OKLCH grinding engine (tone/state/variant) + typography */
+@import './theme/core.css' layer(theme);
 
-/* @import './themes/public-theme.css'; */
-@import './layout/cluster.css';
-@import './layout/switcher.css';
-@import './layout/wrapper.css';
-@import './utils/media.css';
+/* Components: visual styles (reads custom props computed by theme layer) */
+@import './theme/compose-ui/compose-ui.components.css' layer(components);
+/* @import './base/component/component.css' layer(components); */
 
-/* @import './theme.css'; */
-
-/* @import './themes/compose-ui/compose-ui-base.css';
-@import './themes/compose-ui/compose-ui.state.css';
-@import './themes/compose-ui/compose-ui.variant.css';
-@import './themes/compose-ui/compose-ui.tone.css'; */
+/* Utilities */
+@import './theme/tokens/css/cube/cube.utility.css' layer(utilities);
+@import './utils/animations.css' layer(utilities);
+@import './utils/media.css' layer(utilities);

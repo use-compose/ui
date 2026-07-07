@@ -7,7 +7,7 @@ function groupAndSortComponents(input: ExtensionInput, result: MenuComponent[] =
   for (const item of input) {
     if (Array.isArray(item)) {
       const nestedResult: MenuComponent[] = []
-      result.push({ ...menuComponents.group, children: groupAndSortComponents(item, nestedResult) })
+      result.push({ component: 'YEditorButton', children: groupAndSortComponents(item, nestedResult) })
       continue
     } else if (typeof item === 'string' && !!menuComponents[item] && !!menuComponents[item].component) {
       result.push(menuComponents[item])

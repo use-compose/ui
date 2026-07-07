@@ -1,3 +1,4 @@
+@layer components {
 .y-label {
   color: var(--color-primary);
   margin: 0 var(--_spacing-xs) 0 0;
@@ -9,4 +10,5 @@
     margin-left: 0;
     align-items: center;
   }
+}
 }

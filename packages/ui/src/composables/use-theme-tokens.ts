@@ -1,8 +1,8 @@
 import { MarginKey } from './../components/utils'
 // use-theme-tokens.ts
-import type { YThemeToken } from '@/assets/css/themes/tokens/types/token-css-vars'
-import { DesignTokens } from '@/assets/css/themes/tokens/types/token.types'
-import { tokens } from '@/assets/css/themes/tokens/types/tokens.tree'
+import type { YThemeToken } from '@/assets/css/theme/tokens/types/token-css-vars'
+import { DesignTokens } from '@/assets/css/theme/tokens/types/token.types'
+import { tokens } from '@/assets/css/theme/tokens/types/tokens.tree'
 import type { BorderKey, HeightKey, RadiusKey, SpacingKey, WidthKey } from '@/components/utils'
 import { useStorage } from '@/composables/use-storage'
 import { isClientSide } from '@/utils/is-client-side'

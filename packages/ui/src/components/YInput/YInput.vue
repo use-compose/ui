@@ -3,12 +3,11 @@
     :id="name"
     ref="inputRef"
     :type="type"
-    :checked="type === 'checkbox' || type === 'radio' ? Boolean(modelValue) : undefined"
-    :value="type === 'checkbox' || type === 'radio' ? undefined : modelValue"
+    :value="model"
     :name="name"
     :placeholder="placeholder"
     :class="yInputClasses"
-    autocomplete="off"
+    :autocomplete="autocomplete"
     :disabled="isDisabled"
     data-compose-ui="block"
     v-on="handleEvent"
@@ -32,12 +31,17 @@ const props = withDefaults(defineProps<YInputProps>(), {
   name: 'input-' + Math.random().toString(36).substring(7),
   type: 'text',
   placeholder: '',
+  autocomplete: 'off',
 })
+
+defineEmits(['update:modelValue', 'input', 'change', 'focus', 'blur'])
 
 const inputRef = useTemplateRef<HTMLInputElement | null>('inputRef')
 defineExpose({
   inputRef,
 })
+
+const model = defineModel()
 // const attrs = useAttrs()
 
 // const { modelValue } = useInput({
@@ -89,7 +93,7 @@ const handleEvent =
     if (isDisabled.value) e.preventDefault()
   })
 
-const modelValue = injected?.modelValue ?? computed(() => props.modelValue ?? '')
+// const modelValue = injected?.modelValue ?? computed(() => props.modelValue ?? '')
 
 // Apply classes and styles to the input element
 const componentProps = useComponentProps({

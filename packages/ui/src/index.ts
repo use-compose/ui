@@ -1,5 +1,3 @@
-// Supports weights 100-900
-import '@fontsource-variable/roboto'
 // Composables
 export * from './components'
 export * from './composables'

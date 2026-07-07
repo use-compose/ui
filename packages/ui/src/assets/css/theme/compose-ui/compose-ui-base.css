@@ -1,0 +1,47 @@
+/* Feature-flag class setters (@property defs → compose-ui.props.css) */
+.raw      { --raw: 1; }
+.use-bg   { --use-bg: 1; }
+
+.switch-color {
+  --threshold: 0.1;
+  color: oklch(from currentcolor calc(l - var(--threshold)) c h);
+}
+
+/* Theme-colored borders */
+.border-theme-light  { border: var(--_border-width-small)  solid var(--theme-current-color); }
+.border-theme-medium { border: var(--_border-width-medium) solid var(--theme-current-color); }
+.border-theme-large  { border: var(--_border-width-large)  solid var(--theme-current-color); }
+
+/* Root defaults */
+:root {
+  --styled: calc(1 - var(--unstyled));
+  --base-unit: var(--_border-width-large);
+}
+
+/* Block component base */
+[data-compose-ui='block'] {
+  color: var(--theme-current-color);
+
+  --component-padding-x: calc(var(--_block-padding-x) * var(--styled));
+  --component-padding-y: calc(var(--_block-padding-y) * var(--styled));
+  --component-padding: var(--component-padding-x) var(--component-padding-y);
+  padding: var(--component-padding);
+
+  --_component-border-width: calc(var(--border-width-xsmall) * var(--styled));
+  --theme-base-unit: var(--base-unit);
+  --theme-base-unit-calc: calc(var(--theme-base-unit) * var(--not-raw, 1) * var(--styled, 1));
+
+  &:not(.raw) {
+    --not-raw: 0;
+    --_component-shadow-base:    var(--_shadow-xs);
+    --_component-shadow-hover:   var(--_shadow-xs);
+    --_component-shadow-active:  var(--_shadow-xs);
+    --_component-shadow-focus:   var(--_shadow-xs);
+    --_component-shadow-disabled: 0;
+    --_component-transform-base:    -0.25;
+    --_component-transform-hover:   -0.45;
+    --_component-transform-active:  -0.15;
+    --_component-transform-focus:   -0.25;
+    --_component-transform-disabled: 0;
+  }
+}

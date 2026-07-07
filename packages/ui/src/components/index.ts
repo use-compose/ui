@@ -23,6 +23,7 @@ export * from './YInputText'
 export * from './YTimeInput'
 
 // data-display
+export * from './Card'
 export * from './YCard'
 
 // overlays

@@ -6,7 +6,7 @@
 </template>
 
 <script setup lang="ts">
-import { ChainedCommands, Editor } from '@tiptap/vue-3'
+import { Editor } from '@tiptap/vue-3'
 import { computed } from 'vue'
 import { resolveDynamicComponent, type MenuComponent } from '../utils/menu'
 
@@ -51,8 +51,7 @@ function handleComponentClick(event: Event) {
       return !!command
     }
 
-    const typedCommand = command as ChainedCommands
-    return typedCommand(props.editor)
+    return (command as () => boolean | void)()
   }
 }
 </script>

@@ -16,6 +16,7 @@ import YEditor from './YEditor/YEditor.vue'
 
 const theme: YTheme = {
   primary: '#e3c567',
+  secondary: '#5B5B5B',
   danger: '#E3514A',
   background: '#ABCDF8',
   dark: '#0b0c0c',

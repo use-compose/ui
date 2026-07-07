@@ -2,7 +2,7 @@
   <YInput
     v-bind="props"
     ref="checkboxRef"
-    :value="modelValue"
+    v-model="modelValue"
     type="checkbox"
     input-class="y-checkbox"
     class="y-checkbox-wrapper"

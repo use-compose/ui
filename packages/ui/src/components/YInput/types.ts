@@ -13,4 +13,5 @@ export interface YInputProps extends ThemeComponentBaseProps {
   error?: boolean
   errorMsg?: string
   focus?: boolean
+  autocomplete?: string
 }

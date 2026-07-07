@@ -7,6 +7,7 @@ export {
   isDefined,
   parseBackgroundColorProps,
   parseBorderProps,
+  parseGapProps,
   parseHeightProps,
   parseMarginProps,
   parsePaddingProps,
@@ -257,4 +258,37 @@ function parseBackgroundColorProps(backgroundColorProps?: BackgroundColorKey): s
     return []
   }
   return [`bg-${backgroundColorProps}`]
+}
+
+/**
+ * Take a input to represent padding in a Vue component props and generate corresponding utility classes
+ *
+ * e.g.
+ * gap="md sm" => will generate ['gap-x-sm', 'gap-y-md']
+ *
+ * @param {?(SpacingKey | SpacingKey[])} [gapProps]
+ * @returns {(string | string[])}
+ */
+function parseGapProps(gapProps?: SpacingKey | SpacingKey[]): string | string[] {
+  if (!isDefined(gapProps)) {
+    return []
+  }
+
+  const values = gapProps
+    ?.toString()
+    .split(' ')
+    .map((v) => v.trim())
+
+  if (values && values.length === 1) {
+    const value = values[0]
+
+    return [`gap-${value}`]
+  }
+
+  if (values && values.length === 2) {
+    const [row, column] = values
+    return [`gap-x-${column}`, `gap-y-${row}`]
+  }
+
+  return []
 }
