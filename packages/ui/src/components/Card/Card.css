@@ -1,0 +1,72 @@
+@layer components {
+  .card {
+    background: var(--_card-bg);
+    border: 1px solid var(--_card-border);
+    transition: box-shadow 0.2s ease;
+  }
+
+  .card:has(.card_link):hover {
+    box-shadow: 0 4px 16px oklch(0 0 0 / 0.12);
+  }
+
+  /* ── Media ──────────────────────────────────────────────────── */
+
+  .card_media {
+    /* aspect-ratio: 16 / 9; */
+  }
+
+  .card_media,
+  .card_media video {
+    max-height: 5rem;
+
+    & > img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+  }
+
+  /* ── Header / Title ─────────────────────────────────────────── */
+
+  .card_header {
+    margin: 0;
+  }
+
+  .card_title {
+    margin: 0;
+  }
+
+  /*
+   * Stretched-link (inclusive-components.design/cards):
+   * ::after covers the card surface so it's fully clickable.
+   * Tags and actions stay above it via z-index on their children.
+   */
+  .card_link {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .card_link::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+  }
+
+  .card_link:focus {
+    outline: none;
+  }
+
+  .card:focus-within {
+    outline: 2px solid currentColor;
+    outline-offset: 2px;
+  }
+
+  /* ── Footer ─────────────────────────────────────────────────── */
+
+  .card_tags > *,
+  .card_actions > * {
+    position: relative;
+    z-index: 1;
+  }
+}

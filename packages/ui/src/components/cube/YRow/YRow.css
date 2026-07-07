@@ -1,0 +1,38 @@
+@layer components {
+  /*
+  Cluster Layout
+  -----------------------------
+  A layout for grouping items together with consistent spacing.
+*/
+  .cluster {
+    --gutter: var(--_cluster-gap, 1rem);
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--gutter);
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  /**
+ * Holy Albatross utility / composition for switcher
+ * https://heydonworks.com/article/the-flexbox-holy-albatross-reincarnated/
+ */
+  .switcher,
+  .holy {
+    --gutter: var(--_switcher-gap, 1rem);
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--gutter);
+
+    --switch: var(--_switcher-modifier);
+  }
+
+  .switcher > *,
+  .holy > * {
+    flex-grow: 1;
+    flex-basis: calc((var(--switch) - 100%) * 999);
+
+    /* avoid overflow from long content */
+    min-width: 0;
+  }
+}
