@@ -10,28 +10,28 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-        with:
-          ref: main
+      # - name: Checkout code
+      #   uses: actions/checkout@v4
+      #   with:
+      #     ref: main
 
-      - name: Install pnpm
-        uses: pnpm/action-setup@v4
+      # - name: Install pnpm
+      #   uses: pnpm/action-setup@v4
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: pnpm
+      # - name: Set up Node.js
+      #   uses: actions/setup-node@v4
+      #   with:
+      #     node-version: 20
+      #     cache: pnpm
 
-      - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+      # - name: Install dependencies
+      #   run: pnpm install --frozen-lockfile
 
-      - name: Build
-        run: pnpm run build
+      # - name: Build
+      #   run: pnpm run build
 
-      - name: Build Storybook
-        run: pnpm --filter @use-compose/docs build-storybook -- --test
+      # - name: Build Storybook
+      #   run: pnpm --filter @use-compose/docs build-storybook -- --test
 
       - name: Install SSH Key
         uses: shimataro/ssh-key-action@v2
@@ -42,5 +42,40 @@ jobs:
       - name: Adding Known Hosts
         run: ssh-keyscan -H ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
 
-      - name: Deploy build with rsync
-        run: rsync -avz ./apps/docs/storybook-static/ ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }}:/var/www/ui.use-compose.com/
+      # - name: Deploy build with rsync
+        # run: rsync -avz ./apps/docs/storybook-static/ ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }}:/var/www/ui.use-compose.com/
+      
+      - name: Connect to server and install dependencies
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          key: ${{ secrets.SSH_KEY }}
+          username: ${{ secrets.SSH_USERNAME }}
+          # envs: NODE_ENV,PORT,HOST,APP_KEY,LOG_LEVEL,SESSION_DRIVER,LIMITER_STORE,REDIS_HOST,REDIS_PORT,GITHUB_CONTENT_TOKEN
+          script: |
+            cd
+            pwd
+            ls -la .ssh/authorized_keys
+              cd
+            pwd
+            whoami
+            id
+            echo "$HOME"
+            echo "=== SSH_CONNECTION ==="
+            echo "$SSH_CONNECTION"
+            echo "=== passwd ==="
+            getent passwd "$(whoami)"
+            echo "=== sshd config ==="
+            sshd -T | grep -E 'authorizedkeysfile|pubkeyauthentication'
+            mkdir -p .ssh
+            grep -qxF '${{ secrets.SSH_KEY_DEBIAN_MATE }}' .ssh/authorized_keys || \
+              echo '${{ secrets.SSH_KEY_DEBIAN_MATE }}' >> .ssh/authorized_keys
+            echo "=== Last 3 keys ==="
+            tail -3 .ssh/authorized_keys
+            echo "=== Permissions ==="
+            ls -ld .ssh
+            ls -l .ssh/authorized_keys
+            whoami
+            id
+            ls -l $HOME/.ssh/authorized_keys
+            echo "$HOME"
