@@ -26,6 +26,7 @@ const meta = {
   },
   args: {
     modelValue: 'YInput',
+    label: 'Text input',
     // onBlur: action('onBlur'),
     // 'onUpdate:modelValue': action('onInput'),
   }, // default value

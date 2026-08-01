@@ -4,6 +4,7 @@
 
 .switch-color {
   --threshold: 0.1;
+
   color: oklch(from currentcolor calc(l - var(--threshold)) c h);
 }
 
@@ -25,6 +26,7 @@
   --component-padding-x: calc(var(--_block-padding-x) * var(--styled));
   --component-padding-y: calc(var(--_block-padding-y) * var(--styled));
   --component-padding: var(--component-padding-x) var(--component-padding-y);
+
   padding: var(--component-padding);
 
   --_component-border-width: calc(var(--border-width-xsmall) * var(--styled));

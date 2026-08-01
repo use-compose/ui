@@ -1,6 +1,8 @@
 
 /* ------------------------------------------------------------ */
+
 /*                            Margin                            */
+
 /* ------------------------------------------------------------ */
 .margin-t-0 { margin-block-start: 0 } 
 .margin-t-xs { margin-block-start: var(--spacing-xs) } 
@@ -17,7 +19,9 @@
 .margin-auto { margin: auto } 
 
 /* ------------------------------------------------------------ */
+
 /*                           Position                           */
+
 /* ------------------------------------------------------------ */
 .position-relative { position: relative } 
 .position-absolute { position: absolute } 
@@ -28,7 +32,9 @@
 .position-left-0 { left: 0 } 
 
 /* ------------------------------------------------------------ */
+
 /*                           Display                           */
+
 /* ------------------------------------------------------------ */
 .none { display: none } 
 .block { display: block } 
@@ -38,14 +44,18 @@
 .sticky { position: sticky } 
 
 /* ------------------------------------------------------------ */
+
 /*                            Align                            */
+
 /* ------------------------------------------------------------ */
 .align-start { --layout-align: flex-start } 
 .align-end { --layout-align: flex-end } 
 .align-center { --layout-align: center } 
 
 /* ------------------------------------------------------------ */
+
 /*                           Justify                           */
+
 /* ------------------------------------------------------------ */
 .justify-start { --layout-justify: flex-start } 
 .justify-end { --layout-justify: flex-end } 
@@ -53,14 +63,18 @@
 .justify-between { --layout-justify: space-between } 
 
 /* ------------------------------------------------------------ */
+
 /*                             Flex                             */
+
 /* ------------------------------------------------------------ */
 .flex-column { --layout-direction: column } 
 .flex-row { --layout-direction: row } 
 .flex-wrap { flex-wrap: wrap } 
 
 /* ------------------------------------------------------------ */
+
 /*                             Gap                             */
+
 /* ------------------------------------------------------------ */
 .gap-xs { gap: var(--spacing-xs) } 
 .gap-sm { gap: var(--spacing-sm) } 
@@ -69,7 +83,9 @@
 .gap-xl { gap: var(--spacing-xl) } 
 
 /* ------------------------------------------------------------ */
+
 /*                           Padding                           */
+
 /* ------------------------------------------------------------ */
 .padding-xs { padding: var(--spacing-xs) } 
 .padding-sm { padding: var(--spacing-sm) } 
@@ -101,12 +117,16 @@
 .padding-block-y { padding-block: var(--block-padding-y) } 
 
 /* ------------------------------------------------------------ */
+
 /*                         Text-center                         */
-/* ------------------------------------------------------------ */
-.text-center- { text-align: center } 
 
 /* ------------------------------------------------------------ */
+.text-center { text-align: center }
+
+/* ------------------------------------------------------------ */
+
 /*                            Border                            */
+
 /* ------------------------------------------------------------ */
 .border-solid { border-style: solid } 
 .border-dashed { border-style: dashed } 
@@ -137,14 +157,18 @@
 .border-width-large { border-width: var(--border-width-large) } 
 
 /* ------------------------------------------------------------ */
+
 /*                            Radius                            */
+
 /* ------------------------------------------------------------ */
 .radius-light { border-radius: var(--radius-light) } 
 .radius-medium { border-radius: var(--radius-medium) } 
 .radius-heavy { border-radius: var(--radius-heavy) } 
 
 /* ------------------------------------------------------------ */
+
 /*                            Height                            */
+
 /* ------------------------------------------------------------ */
 .height-auto { height: auto } 
 .height-full { height: 100% } 
@@ -153,7 +177,9 @@
 .height-screen { height: 100svh } 
 
 /* ------------------------------------------------------------ */
+
 /*                            Width                            */
+
 /* ------------------------------------------------------------ */
 .width-auto { width: auto } 
 .width-full { width: 100% } 
@@ -162,7 +188,9 @@
 .width-screen { width: 100svw } 
 
 /* ------------------------------------------------------------ */
+
 /*                           Overflow                           */
+
 /* ------------------------------------------------------------ */
 .overflow-auto { overflow: auto } 
 .overflow-hidden { overflow: hidden } 
@@ -172,7 +200,9 @@
 .overflow-y-hidden { overflow-y: hidden } 
 
 /* ------------------------------------------------------------ */
+
 /*                              Bg                              */
+
 /* ------------------------------------------------------------ */
 .bg-primary { background-color: var(--color-bg-primary) } 
 .bg-secondary { background-color: var(--color-bg-secondary) } 
@@ -187,18 +217,65 @@
 .bg-success { background-color: var(--color-bg-success) } 
 
 /* ------------------------------------------------------------ */
+
 /*                           Heading                           */
-/* ------------------------------------------------------------ */
-.heading-h1 { font-size: var(--heading-h1-size); font-weight: var(--heading-h1-weight); line-height: var(--heading-h1-line-height) } 
-.heading-h2 { font-size: var(--heading-h2-size); font-weight: var(--heading-h2-weight); line-height: var(--heading-h2-line-height) } 
-.heading-h3 { font-size: var(--heading-h3-size); font-weight: var(--heading-h3-weight); line-height: var(--heading-h3-line-height) } 
-.heading-h4 { font-size: var(--heading-h4-size); font-weight: var(--heading-h4-weight); line-height: var(--heading-h4-line-height) } 
-.heading-h5 { font-size: var(--heading-h5-size); font-weight: var(--heading-h5-weight); line-height: var(--heading-h5-line-height) } 
-.heading-h6 { font-size: var(--heading-h6-size); font-weight: var(--heading-h6-weight); line-height: var(--heading-h6-line-height) } 
 
 /* ------------------------------------------------------------ */
-/*                             Text                             */
+.heading-h1 {
+  font-size: var(--heading-h1-size);
+  font-weight: var(--heading-h1-weight);
+  line-height: var(--heading-h1-line-height);
+}
+
+.heading-h2 {
+  font-size: var(--heading-h2-size);
+  font-weight: var(--heading-h2-weight);
+  line-height: var(--heading-h2-line-height);
+}
+
+.heading-h3 {
+  font-size: var(--heading-h3-size);
+  font-weight: var(--heading-h3-weight);
+  line-height: var(--heading-h3-line-height);
+}
+
+.heading-h4 {
+  font-size: var(--heading-h4-size);
+  font-weight: var(--heading-h4-weight);
+  line-height: var(--heading-h4-line-height);
+}
+
+.heading-h5 {
+  font-size: var(--heading-h5-size);
+  font-weight: var(--heading-h5-weight);
+  line-height: var(--heading-h5-line-height);
+}
+
+.heading-h6 {
+  font-size: var(--heading-h6-size);
+  font-weight: var(--heading-h6-weight);
+  line-height: var(--heading-h6-line-height);
+}
+
 /* ------------------------------------------------------------ */
-.text-body { font-size: var(--text-body-size); font-weight: var(--text-body-weight); line-height: var(--text-body-line-height) } 
-.text-caption { font-size: var(--text-caption-size); font-weight: var(--text-caption-weight); line-height: var(--text-caption-line-height) } 
-.text-small { font-size: var(--text-small-size); font-weight: var(--text-small-weight); line-height: var(--text-small-line-height) } 
+
+/*                             Text                             */
+
+/* ------------------------------------------------------------ */
+.text-body {
+  font-size: var(--text-body-size);
+  font-weight: var(--text-body-weight);
+  line-height: var(--text-body-line-height);
+}
+
+.text-caption {
+  font-size: var(--text-caption-size);
+  font-weight: var(--text-caption-weight);
+  line-height: var(--text-caption-line-height);
+}
+
+.text-small {
+  font-size: var(--text-small-size);
+  font-weight: var(--text-small-weight);
+  line-height: var(--text-small-line-height);
+}

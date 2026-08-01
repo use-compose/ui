@@ -19,7 +19,7 @@ function isSize(size: string): size is Size {
 interface FontSizeOptions {
   sizes: Size[]
   getStyle: (size: Size) => string
-  HTMLAttributes: Record<string, any>
+  HTMLAttributes: Record<string, unknown>
 }
 
 declare module '@tiptap/core' {

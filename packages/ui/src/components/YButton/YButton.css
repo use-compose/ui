@@ -6,7 +6,7 @@
   text-transform: uppercase;
   font-weight: 700;
 
-  &:not(.outlined):not(.text) {
+  &:not(.outlined, .text) {
     /* Auto-contrast: dark text on light bg, light text on dark bg */
     color: oklch(from var(--component-bg-color) calc(0.5 + sign(0.5 - l) * 0.4) 0 h);
   }

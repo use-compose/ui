@@ -5,7 +5,9 @@
  */
 :root {
   /* ------------------------------------------------------------ */
+
   /*                            Border                            */
+
   /* ------------------------------------------------------------ */
   --border-width-base: 2px;
   --border-width-scale: 1.25;
@@ -32,7 +34,9 @@
   --border-radius-scale: 1.5;
 
   /* ------------------------------------------------------------ */
+
   /*                          Breakpoint                          */
+
   /* ------------------------------------------------------------ */
   --breakpoint-xs: 640px;
   --breakpoint-sm: 768px;
@@ -42,7 +46,9 @@
   --breakpoint-xxl: 2520px;
 
   /* ------------------------------------------------------------ */
+
   /*                             Font                             */
+
   /* ------------------------------------------------------------ */
   --font-min-font: 14;
   --font-max-font: 24;
@@ -76,18 +82,20 @@
   --font-scale-8: clamp(2.245rem, 0.6rem + 7.312vw, 6.45rem);
 
   /* ------------------------------------------------------------ */
+
   /*                            Shadow                            */
+
   /* ------------------------------------------------------------ */
   --shadow-xs: calc(var(--theme-shadow-base) / 3 * var(--theme-shadow-scale));
   --shadow-sm: calc(var(--theme-shadow-base) / 2 * var(--theme-shadow-scale));
   --shadow-md: calc(var(--theme-shadow-base) * var(--theme-shadow-scale));
   --shadow-lg: calc(var(--theme-shadow-base) * 2 * var(--theme-shadow-scale));
   --shadow-xl: calc(var(--theme-shadow-base) * 4 * var(--theme-shadow-scale));
-  --theme-shadow-base: 1;
-  --theme-shadow-scale: 1.5;
 
   /* ------------------------------------------------------------ */
+
   /*                            Space                            */
+
   /* ------------------------------------------------------------ */
   --space-fluid-min: 1rem;
   --space-fluid-max: 1.5rem;
@@ -115,7 +123,9 @@
   --space-multiplier-xxl: 5.25;
 
   /* ------------------------------------------------------------ */
+
   /*                            Layout                            */
+
   /* ------------------------------------------------------------ */
   --layout-break-at: var(--breakpoint-md);
   --layout-gutter-sm: var(--spacing-sm);
@@ -143,11 +153,13 @@
   --layout-mobile-padding: var(--spacing-md);
 
   /* ------------------------------------------------------------ */
+
   /*                            Theme                            */
+
   /* ------------------------------------------------------------ */
   --radius: null;
   --theme-shadow-base: 1;
-  --theme-shadow-base-all: 0 1px 3px rgba(0, 0, 0, 0.1);
+  --theme-shadow-base-all: 0 1px 3px rgb(0 0 0 / 10%);
   --theme-shadow-scale: 1.5;
   --stack-index-default: var(--stacking-base);
   --stack-index-root: var(--stacking-base);
@@ -158,14 +170,18 @@
   --opacity-visible: var(--opacity-100);
 
   /* ------------------------------------------------------------ */
+
   /*                            Radius                            */
+
   /* ------------------------------------------------------------ */
   --radius-light: calc(var(--border-radius-base) / var(--border-radius-scale));
   --radius-medium: calc(var(--border-radius-base) * var(--border-radius-scale));
   --radius-heavy: calc(var(--border-radius-base) * 2 * var(--border-radius-scale));
 
   /* ------------------------------------------------------------ */
+
   /*                           Spacing                           */
+
   /* ------------------------------------------------------------ */
   --spacing-xxs: calc(var(--_layout-space-unit) * var(--_space-multiplier-xxs));
   --spacing-xs: calc(var(--_layout-space-unit) * var(--_space-multiplier-xs));
@@ -176,7 +192,9 @@
   --spacing-xxl: calc(var(--_layout-space-unit) * var(--_space-multiplier-xxl));
 
   /* ------------------------------------------------------------ */
+
   /*                             Text                             */
+
   /* ------------------------------------------------------------ */
   --text-body-size: var(--font-scale-0);
   --text-body-line-height: 1.5;
@@ -189,7 +207,9 @@
   --text-small-weight: var(--font-weight-regular);
 
   /* ------------------------------------------------------------ */
+
   /*                           Heading                           */
+
   /* ------------------------------------------------------------ */
   --heading-h1-size: var(--font-scale-4);
   --heading-h1-line-height: 1.1;
@@ -205,7 +225,9 @@
   --heading-h4-weight: var(--font-weight-bold);
 
   /* ------------------------------------------------------------ */
+
   /*                          Component                          */
+
   /* ------------------------------------------------------------ */
   --component-bg-lightness: calc(
     var(--color-bg-lightness) + var(--variant-bg-lightness) + var(--state-bg-lightness)
@@ -242,7 +264,9 @@
   --component-opacity-text: var(--component-text-opacity);
 
   /* ------------------------------------------------------------ */
+
   /*                       Highlighted-text                       */
+
   /* ------------------------------------------------------------ */
   --highlighted-text-gap-min: var(--_spacing-xxs);
   --highlighted-text-gap-max: var(--_spacing-lg);
@@ -254,18 +278,24 @@
   );
 
   /* ------------------------------------------------------------ */
+
   /*                             Cube                             */
+
   /* ------------------------------------------------------------ */
 
   /* -------------------- */
+
   /*        Global        */
+
   /* -------------------- */
   --gutter: var(--layout-gutter-sm);
   --on: var(--is-toggled);
   --off: var(--is-not-toggled);
 
   /* -------------------- */
+
   /*     Composition     */
+
   /* -------------------- */
   --flow-space: var(--gutter);
   --stack-gap: var(--gutter);
@@ -279,7 +309,9 @@
   --switcher-gap: var(--gutter);
 
   /* -------------------- */
+
   /*        Block        */
+
   /* -------------------- */
   --block-padding-x: var(--spacing-xs);
   --block-padding-y: var(--spacing-md);

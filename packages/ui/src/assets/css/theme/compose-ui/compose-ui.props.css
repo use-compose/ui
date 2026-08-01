@@ -2,81 +2,117 @@
  * This file is imported without a layer wrapper in global.css. */
 
 /* state */
+
 /* prettier-ignore */
 @property --state { syntax: "base | hover | active | focus | disabled"; initial-value: base; inherits: true; }
+
 /* prettier-ignore */
 @property --_state-base-else-0 { syntax: "base | <integer>"; initial-value: 0; inherits: true; }
+
 /* prettier-ignore */
 @property --_state-hover-else-0 { syntax: "hover | <integer>"; initial-value: 0; inherits: true; }
+
 /* prettier-ignore */
 @property --_state-active-else-0 { syntax: "active | <integer>"; initial-value: 0; inherits: true; }
+
 /* prettier-ignore */
 @property --_state-focus-else-0 { syntax: "focus | <integer>"; initial-value: 0; inherits: true; }
+
 /* prettier-ignore */
 @property --_state-disabled-else-0 { syntax: "disabled | <integer>"; initial-value: 0; inherits: true; }
+
 /* prettier-ignore */
 @property --is-state-base { syntax: "<integer>"; initial-value: 1; inherits: true; }
+
 /* prettier-ignore */
 @property --is-state-hover { syntax: "<integer>"; initial-value: 1; inherits: true; }
+
 /* prettier-ignore */
 @property --is-state-active { syntax: "<integer>"; initial-value: 1; inherits: true; }
+
 /* prettier-ignore */
 @property --is-state-focus { syntax: "<integer>"; initial-value: 1; inherits: true; }
+
 /* prettier-ignore */
 @property --is-state-disabled { syntax: "<integer>"; initial-value: 1; inherits: true; }
 
 /* tone */
+
 /* prettier-ignore */
 @property --tone { syntax: "primary | secondary | danger | background | accent | neutral"; initial-value: primary; inherits: true; }
+
 /* prettier-ignore */
 @property --_tone-primary-else-0 { syntax: "primary | <integer>"; initial-value: 0; inherits: true; }
+
 /* prettier-ignore */
 @property --_tone-secondary-else-0 { syntax: "secondary | <integer>"; initial-value: 0; inherits: true; }
+
 /* prettier-ignore */
 @property --_tone-danger-else-0 { syntax: "danger | <integer>"; initial-value: 0; inherits: true; }
+
 /* prettier-ignore */
 @property --_tone-background-else-0 { syntax: "background | <integer>"; initial-value: 0; inherits: true; }
+
 /* prettier-ignore */
 @property --_tone-accent-else-0 { syntax: "accent | <integer>"; initial-value: 0; inherits: true; }
+
 /* prettier-ignore */
 @property --_tone-neutral-else-0 { syntax: "neutral | <integer>"; initial-value: 0; inherits: true; }
+
 /* prettier-ignore */
 @property --is-tone-primary { syntax: "<integer>"; initial-value: 1; inherits: true; }
+
 /* prettier-ignore */
 @property --is-tone-secondary { syntax: "<integer>"; initial-value: 1; inherits: true; }
+
 /* prettier-ignore */
 @property --is-tone-danger { syntax: "<integer>"; initial-value: 1; inherits: true; }
+
 /* prettier-ignore */
 @property --is-tone-background { syntax: "<integer>"; initial-value: 1; inherits: true; }
+
 /* prettier-ignore */
 @property --is-tone-accent { syntax: "<integer>"; initial-value: 1; inherits: true; }
+
 /* prettier-ignore */
 @property --is-tone-neutral { syntax: "<integer>"; initial-value: 1; inherits: true; }
 
 /* variant */
+
 /* prettier-ignore */
 @property --variant { syntax: "contained | outlined | text"; initial-value: contained; inherits: true; }
+
 /* prettier-ignore */
 @property --_variant-contained-else-0 { syntax: "contained | <integer>"; initial-value: 0; inherits: true; }
+
 /* prettier-ignore */
 @property --_variant-outlined-else-0 { syntax: "outlined | <integer>"; initial-value: 0; inherits: true; }
+
 /* prettier-ignore */
 @property --_variant-text-else-0 { syntax: "text | <integer>"; initial-value: 0; inherits: true; }
+
 /* prettier-ignore */
 @property --is-variant-contained { syntax: "<integer>"; initial-value: 1; inherits: true; }
+
 /* prettier-ignore */
 @property --is-variant-outlined { syntax: "<integer>"; initial-value: 1; inherits: true; }
+
 /* prettier-ignore */
 @property --is-variant-text { syntax: "<integer>"; initial-value: 1; inherits: true; }
+
 /* prettier-ignore */
 @property --has-border { syntax: "<number>"; initial-value: 0; inherits: true; }
 
 /* feature flags */
+
 /* prettier-ignore */
 @property --raw      { syntax: "<number>"; initial-value: 0; inherits: true; }
+
 /* prettier-ignore */
 @property --disabled { syntax: "<number>"; initial-value: 0; inherits: true; }
+
 /* prettier-ignore */
 @property --unstyled { syntax: "<number>"; initial-value: 0; inherits: true; }
+
 /* prettier-ignore */
 @property --use-bg   { syntax: "<number>"; initial-value: 0; inherits: true; }

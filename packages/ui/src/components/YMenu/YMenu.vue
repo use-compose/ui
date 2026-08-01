@@ -22,8 +22,6 @@ export interface YMenuProps extends YStackProps {
   as?: string
 }
 
-type NodeToFlatten = VNode
-
 export default defineComponent({
   name: 'YMenu',
   components: {
@@ -46,7 +44,9 @@ export default defineComponent({
   setup(props: YMenuProps) {
     function flattenVNodes(vnodes: VNode[]): VNode[] {
       return vnodes.flatMap((vnode) =>
-        vnode.type === Fragment ? flattenVNodes(vnode.children ?? []) : [vnode],
+        vnode.type === Fragment && Array.isArray(vnode.children)
+          ? flattenVNodes(vnode.children as VNode[])
+          : [vnode],
       )
     }
 

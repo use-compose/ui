@@ -4,7 +4,7 @@
     color="primary"
     variant="outlined"
     raw
-    class="editorBtnClass"
+    :class="editorBtnClass"
     @click="handleClick"
   >
     <slot name="dropdown"></slot>

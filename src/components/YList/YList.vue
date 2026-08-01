@@ -39,7 +39,7 @@
 import HighlightedText from '@/components/YHighlightedText/YHighlightedText.vue'
 import { ref } from 'vue'
 
-const props = defineProps<{
+defineProps<{
   index: number
   tag?: string
   title: string
@@ -100,19 +100,6 @@ const handleOpenElement = () => {
       .element-title,
       .element-description {
         ::placeholder {
-          /* Chrome, Firefox, Opera, Safari 10.1+ */
-          color: var(--color-black);
-          opacity: 0.5; /* Firefox */
-        }
-
-        :-ms-input-placeholder {
-          /* Internet Explorer 10-11 */
-          color: var(--color-black);
-          opacity: 0.5;
-        }
-
-        ::-ms-input-placeholder {
-          /* Microsoft Edge */
           color: var(--color-black);
           opacity: 0.5;
         }

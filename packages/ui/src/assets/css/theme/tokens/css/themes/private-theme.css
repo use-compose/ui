@@ -5,7 +5,9 @@
  */
 :root {
 /* ------------------------------------------------------------ */
+
 /*                            Border                            */
+
 /* ------------------------------------------------------------ */
   --_border-width-base: var(--border-width-base, 2px);
   --_border-width-scale: var(--border-width-scale, 1.25);
@@ -32,7 +34,9 @@
   --_border-radius-scale: var(--border-radius-scale, 1.5);
 
 /* ------------------------------------------------------------ */
+
 /*                          Breakpoint                          */
+
 /* ------------------------------------------------------------ */
   --_breakpoint-xs: var(--breakpoint-xs, 640px);
   --_breakpoint-sm: var(--breakpoint-sm, 768px);
@@ -42,7 +46,9 @@
   --_breakpoint-xxl: var(--breakpoint-xxl, 2520px);
 
 /* ------------------------------------------------------------ */
+
 /*                             Font                             */
+
 /* ------------------------------------------------------------ */
   --_font-min-font: var(--font-min-font, 14);
   --_font-max-font: var(--font-max-font, 24);
@@ -76,18 +82,20 @@
   --_font-scale-8: var(--font-scale-8, clamp(2.245rem, 0.600rem + 7.312vw, 6.450rem));
 
 /* ------------------------------------------------------------ */
+
 /*                            Shadow                            */
+
 /* ------------------------------------------------------------ */
   --_shadow-xs: var(--shadow-xs, calc(var(--theme-shadow-base) / 3 * var(--theme-shadow-scale)));
   --_shadow-sm: var(--shadow-sm, calc(var(--theme-shadow-base) / 2 * var(--theme-shadow-scale)));
   --_shadow-md: var(--shadow-md, calc(var(--theme-shadow-base) * var(--theme-shadow-scale)));
   --_shadow-lg: var(--shadow-lg, calc(var(--theme-shadow-base) * 2 * var(--theme-shadow-scale)));
   --_shadow-xl: var(--shadow-xl, calc(var(--theme-shadow-base) * 4 * var(--theme-shadow-scale)));
-  --_shadow-base: var(--shadow-base, 1);
-  --_shadow-scale: var(--shadow-scale, 1.5);
 
 /* ------------------------------------------------------------ */
+
 /*                            Space                            */
+
 /* ------------------------------------------------------------ */
   --_space-fluid-min: var(--space-fluid-min, 1rem);
   --_space-fluid-max: var(--space-fluid-max, 1.5rem);
@@ -105,7 +113,9 @@
   --_space-multiplier-xxl: var(--space-multiplier-xxl, 5.25);
 
 /* ------------------------------------------------------------ */
+
 /*                            Layout                            */
+
 /* ------------------------------------------------------------ */
   --_layout-break-at: var(--layout-break-at, var(--_breakpoint-md));
   --_layout-gutter-sm: var(--layout-gutter-sm, var(--_spacing-sm));
@@ -133,11 +143,13 @@
   --_layout-mobile-padding: var(--layout-mobile-padding, var(--_spacing-md));
 
 /* ------------------------------------------------------------ */
+
 /*                            Theme                            */
+
 /* ------------------------------------------------------------ */
   --_radius: var(--radius, null);
   --_shadow-base: var(--shadow-base, 1);
-  --_shadow-base-all: var(--shadow-base-all, 0 1px 3px rgba(0, 0, 0, 0.1));
+  --_shadow-base-all: var(--shadow-base-all, 0 1px 3px rgb(0 0 0 / 10%));
   --_shadow-scale: var(--shadow-scale, 1.5);
   --_stack-index-default: var(--stack-index-default, var(--stacking-base));
   --_stack-index-root: var(--stack-index-root, var(--stacking-base));
@@ -148,14 +160,18 @@
   --_opacity-visible: var(--opacity-visible, var(--opacity-100));
 
 /* ------------------------------------------------------------ */
+
 /*                            Radius                            */
+
 /* ------------------------------------------------------------ */
   --_radius-light: var(--radius-light, calc(var(--border-radius-base) / var(--border-radius-scale)));
   --_radius-medium: var(--radius-medium, calc(var(--border-radius-base) * var(--border-radius-scale)));
   --_radius-heavy: var(--radius-heavy, calc(var(--border-radius-base) * 2 * var(--border-radius-scale)));
 
 /* ------------------------------------------------------------ */
+
 /*                           Spacing                           */
+
 /* ------------------------------------------------------------ */
   --_spacing-xxs: var(--spacing-xxs, calc(var(--_layout-space-unit) * var(--_space-multiplier-xxs)));
   --_spacing-xs: var(--spacing-xs, calc(var(--_layout-space-unit) * var(--_space-multiplier-xs)));
@@ -166,7 +182,9 @@
   --_spacing-xxl: var(--spacing-xxl, calc(var(--_layout-space-unit) * var(--_space-multiplier-xxl)));
 
 /* ------------------------------------------------------------ */
+
 /*                             Text                             */
+
 /* ------------------------------------------------------------ */
   --_text-body-size: var(--text-body-size, var(--font-scale-0));
   --_text-body-line-height: var(--text-body-line-height, 1.5);
@@ -179,7 +197,9 @@
   --_text-small-weight: var(--text-small-weight, var(--font-weight-regular));
 
 /* ------------------------------------------------------------ */
+
 /*                           Heading                           */
+
 /* ------------------------------------------------------------ */
   --_heading-h1-size: var(--heading-h1-size, var(--font-scale-4));
   --_heading-h1-line-height: var(--heading-h1-line-height, 1.1);
@@ -195,7 +215,9 @@
   --_heading-h4-weight: var(--heading-h4-weight, var(--font-weight-bold));
 
 /* ------------------------------------------------------------ */
+
 /*                          Component                          */
+
 /* ------------------------------------------------------------ */
   --_component-bg-lightness: var(--component-bg-lightness, calc(var(--color-bg-lightness) + var(--variant-bg-lightness) + var(--state-bg-lightness)));
   --_component-bg-chroma: var(--component-bg-chroma, calc(var(--color-bg-chroma) + var(--variant-bg-chroma) + var(--state-bg-chroma)));
@@ -214,7 +236,9 @@
   --_component-opacity-text: var(--component-opacity-text, var(--component-text-opacity));
 
 /* ------------------------------------------------------------ */
+
 /*                       Highlighted-text                       */
+
 /* ------------------------------------------------------------ */
   --_highlighted-text-gap-min: var(--highlighted-text-gap-min, var(--_spacing-xxs));
   --_highlighted-text-gap-max: var(--highlighted-text-gap-max, var(--_spacing-lg));
@@ -222,18 +246,24 @@
   --_highlighted-text-gap-left: var(--highlighted-text-gap-left, clamp(var(--_highlighted-text-gap-min), var(--_highlighted-text-gap-scaler), var(--_highlighted-text-gap-max)));
 
 /* ------------------------------------------------------------ */
+
 /*                             Cube                             */
+
 /* ------------------------------------------------------------ */
 
   /* -------------------- */
+
   /*        Global        */
+
   /* -------------------- */
   --_gutter: var(--gutter, var(--layout-gutter-sm));
   --_on: var(--on, var(--is-toggled));
   --_off: var(--off, var(--is-not-toggled));
 
   /* -------------------- */
+
   /*     Composition     */
+
   /* -------------------- */
   --_flow-space: var(--flow-space, var(--gutter));
   --_stack-gap: var(--stack-gap, var(--gutter));
@@ -247,7 +277,9 @@
   --_switcher-gap: var(--switcher-gap, var(--gutter));
 
   /* -------------------- */
+
   /*        Block        */
+
   /* -------------------- */
   --_block-padding-x: var(--block-padding-x, var(--spacing-xs));
   --_block-padding-y: var(--block-padding-y, var(--spacing-md));

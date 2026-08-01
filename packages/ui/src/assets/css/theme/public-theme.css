@@ -5,17 +5,21 @@
  */
 :root {
 /* -------------------------------------------------- */
+
 /* Border */
+
 /* -------------------------------------------------- */
   --border-width-default: 2px;
   --border-style-default: solid;
   --border-radius-default: 0;
 
 /* -------------------------------------------------- */
+
 /* Color */
+
 /* -------------------------------------------------- */
   --color-shadow-dark: #616970;
-  --color-shadow-light: rgba(255, 255, 255, 0.25);
+  --color-shadow-light: rgb(255 255 255 / 25%);
   --color-primary-lightness: 0.759;
   --color-primary-chroma: 0.121;
   --color-primary-hue: 250;
@@ -42,7 +46,9 @@
   --color-bg-opacity: 1;
 
 /* -------------------------------------------------- */
+
 /* Breakpoints */
+
 /* -------------------------------------------------- */
   --breakpoints-mobile: 640px;
   --breakpoints-tablet: 768px;
@@ -51,13 +57,17 @@
   --breakpoints-desktop-xxl: 1820px;
 
 /* -------------------------------------------------- */
+
 /* Layout */
+
 /* -------------------------------------------------- */
-  --layout-zIndex: 1000;
+  --layout-z-index: 1000;
   --layout-depth-base: 6px;
 
 /* -------------------------------------------------- */
+
 /* Component */
+
 /* -------------------------------------------------- */
   --component-shadow-base: 0.25;
   --component-shadow-hover: 0.25;
@@ -71,7 +81,9 @@
   --component-transform-disabled: 0;
 
 /* -------------------------------------------------- */
+
 /* Space */
+
 /* -------------------------------------------------- */
   --space-unit: 1rem;
   --space-xxs: calc(0.25 * var(--space-unit));
@@ -83,7 +95,9 @@
   --space-xxl: calc(4 * var(--space-unit));
 
 /* -------------------------------------------------- */
+
 /* Font */
+
 /* -------------------------------------------------- */
   --font-regular: url('/fonts/GOTHAM-BOOK.OTF');
   --font-bold: url('/fonts/GOTHAM-BOLD.OTF');
@@ -91,7 +105,9 @@
   --font-bolder-italic: url('/fonts/GOTHAM-BLACKITALIC.OTF');
 
 /* -------------------------------------------------- */
+
 /* Text */
+
 /* -------------------------------------------------- */
   --text-xs: clamp(0.4444rem, 0.6881rem - 0.2407vw, 0.64rem);
   --text-sm: clamp(0.6667rem, 0.8328rem - 0.1641vw, 0.8rem);
@@ -102,7 +118,9 @@
   --text-h1: clamp(2.4414rem, 1.7962rem + 3.226vi, 5.0625rem);
 
 /* -------------------------------------------------- */
+
 /* Heading */
+
 /* -------------------------------------------------- */
   --heading-height: calc(1rem * 2.5);
 }

@@ -16,6 +16,7 @@ const meta: Meta<typeof YDateInput> = {
   },
   args: {
     ...commonArgs,
+    label: 'Date',
   },
 }
 

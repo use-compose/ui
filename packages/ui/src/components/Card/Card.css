@@ -5,18 +5,23 @@
     transition: box-shadow 0.2s ease;
   }
 
-  .card:has(.card_link):hover {
-    box-shadow: 0 4px 16px oklch(0 0 0 / 0.12);
+  .card:focus-within {
+    outline: 2px solid currentcolor;
+    outline-offset: 2px;
+  }
+
+  .card:has(.card-link):hover {
+    box-shadow: 0 4px 16px oklch(0% 0 0deg / 12%);
   }
 
   /* ── Media ──────────────────────────────────────────────────── */
 
-  .card_media {
+  .card-media {
     /* aspect-ratio: 16 / 9; */
   }
 
-  .card_media,
-  .card_media video {
+  .card-media,
+  .card-media video {
     max-height: 5rem;
 
     & > img {
@@ -29,11 +34,11 @@
 
   /* ── Header / Title ─────────────────────────────────────────── */
 
-  .card_header {
+  .card-header {
     margin: 0;
   }
 
-  .card_title {
+  .card-title {
     margin: 0;
   }
 
@@ -42,30 +47,25 @@
    * ::after covers the card surface so it's fully clickable.
    * Tags and actions stay above it via z-index on their children.
    */
-  .card_link {
+  .card-link {
     text-decoration: none;
     color: inherit;
   }
 
-  .card_link::after {
+  .card-link::after {
     content: '';
     position: absolute;
     inset: 0;
   }
 
-  .card_link:focus {
+  .card-link:focus {
     outline: none;
-  }
-
-  .card:focus-within {
-    outline: 2px solid currentColor;
-    outline-offset: 2px;
   }
 
   /* ── Footer ─────────────────────────────────────────────────── */
 
-  .card_tags > *,
-  .card_actions > * {
+  .card-tags > *,
+  .card-actions > * {
     position: relative;
     z-index: 1;
   }

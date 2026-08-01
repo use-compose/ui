@@ -1,16 +1,16 @@
 <template>
   <article class="card position-relative overflow-hidden radius-medium" data-compose-ui="block">
-    <div v-if="hasMedia" class="card_media overflow-hidden">
+    <div v-if="hasMedia" class="card-media overflow-hidden">
       <slot name="image">
         <img v-if="src" :src="src" :alt="alt ?? ''" class="width-full height-full" />
       </slot>
     </div>
 
-    <YStack class="card_body padding-md">
-      <header v-if="hasHeader" class="card_header">
+    <YStack class="card-body padding-md">
+      <header v-if="hasHeader" class="card-header">
         <slot name="header">
-          <component :is="`h${headingLevel}`" class="card_title">
-            <a v-if="href" :href="href" class="card_link">{{ title }}</a>
+          <component :is="`h${headingLevel}`" class="card-title">
+            <a v-if="href" :href="href" class="card-link">{{ title }}</a>
             <span v-else>{{ title }}</span>
           </component>
         </slot>
@@ -22,11 +22,11 @@
         </slot>
       </div>
 
-      <footer v-if="hasFooter" class="cluster card_footer">
-        <div v-if="slots.tags" class="cluster card_tags">
+      <footer v-if="hasFooter" class="cluster card-footer">
+        <div v-if="slots.tags" class="cluster card-tags">
           <slot name="tags" />
         </div>
-        <div v-if="slots.actions" class="cluster card_actions">
+        <div v-if="slots.actions" class="cluster card-actions">
           <slot name="actions" />
         </div>
         <slot name="footer" />

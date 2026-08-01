@@ -7,7 +7,6 @@
 .y-select {
   --styled: calc(1 - var(--unstyled));
   --is-box-shadow-hidden: calc(1 - var(--raw, 0) - var(--is-variant-text, 0));
-
   --component-box-shadow-color: color-mix(
     in srgb,
     var(--shadow-dark) calc(var(--is-state-base) * 100% + var(--is-state-hover) * 100%),
@@ -18,7 +17,6 @@
       )
   );
   --shadow-dark: var(--color-main-dark);
-
   --_component-transform-depth: calc(
     var(--_component-transform-base) * var(--is-state-base) + var(--_component-transform-hover) *
       var(--is-state-hover) + var(--_component-transform-active) * var(--is-state-active) +
@@ -34,7 +32,6 @@
   --shadow-depth: calc(var(--component-shadow-depth) * var(--_layout-depth-base));
   --component-box-shadow-x: calc(var(--is-box-shadow-hidden) * var(--shadow-depth, 0.75));
   --component-box-shadow-y: calc(var(--is-box-shadow-hidden) * var(--shadow-depth, 0.75));
-
   --transform-depth: calc(var(--_component-transform-depth) * var(--_layout-depth-base));
   --component-transform: translate(var(--transform-depth), var(--transform-depth));
   --component-box-shadow: var(--component-box-shadow-x) var(--component-box-shadow-y) 0 0
@@ -58,7 +55,6 @@
   --text-c: calc(var(--tone-c) + var(--v-text-c) + var(--s-text-c));
   --text-h: calc(var(--tone-h) + var(--v-text-h) + var(--s-text-h));
   --text-a: calc(var(--tone-a) * var(--v-text-a) * var(--s-text-a));
-
   --component-bg-color: oklch(var(--bg-l) var(--bg-c) var(--bg-h) / var(--bg-a));
   --component-border-color: oklch(
     var(--border-l) var(--border-c) var(--border-h) / var(--border-a)

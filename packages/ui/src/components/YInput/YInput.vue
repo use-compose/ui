@@ -10,6 +10,7 @@
     :autocomplete="autocomplete"
     :disabled="isDisabled"
     data-compose-ui="block"
+    v-bind="ariaAttrs"
     v-on="handleEvent"
   />
   <YLabel v-if="label" class="y-label" :for="name">{{ label }}</YLabel>
@@ -74,6 +75,14 @@ const model = defineModel()
 //     props.inputClass ? props.inputClass : [],
 //   ]
 // })
+
+// Forward non-class/style fallthrough attributes (e.g. aria-label) to the native input,
+// since a multi-root template disables Vue's automatic attribute inheritance.
+const ariaAttrs = computed(() => {
+  return Object.fromEntries(
+    Object.entries(attrs).filter(([key]) => key !== 'class' && key !== 'style'),
+  )
+})
 
 // Use the base props composable to get common classes and disabled state
 const { variantClass } = useVariant(props)

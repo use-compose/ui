@@ -11,6 +11,7 @@
 /* =====================================================
    Design Tokens
    ===================================================== */
+
 /* Tokens: color palette + component deltas + theme overrides */
 @import './theme/tokens/css/tricks/tricks.css' layer(tokens);
 @import './theme/tokens/css/border/border.css' layer(tokens);
@@ -29,6 +30,7 @@
 
 /* Components: visual styles (reads custom props computed by theme layer) */
 @import './theme/compose-ui/compose-ui.components.css' layer(components);
+
 /* @import './base/component/component.css' layer(components); */
 
 /* Utilities */

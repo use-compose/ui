@@ -231,7 +231,7 @@
       </YCard>
       <YDateInput v-model="date" :raw="true" label="Date Input" placeholder="Select a date" />
       <YTimeInput v-model="time" :raw="true" label="Time Input" placeholder="Select a time" />
-      <YDateTimeInput v-model="datetime" :raw="true" />
+      <YDateTimeInput v-model="datetime" :raw="true" label="Date & time" />
       <YColorInput v-model="color" :raw="true" label="Color" />
       <h4>Print variable</h4>
       <pre>{{ input }}</pre>

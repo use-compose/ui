@@ -25,7 +25,6 @@ const props = withDefaults(defineProps<YColorInputProps>(), {
   name: 'color-input' + Math.random().toString(36).substring(7),
   variant: 'contained',
 })
-console.log('📟 - props → ', props)
 
 // listen to input event
 const emit: EmitFn = defineEmits(['update:modelValue', 'change'])
@@ -66,7 +65,7 @@ watch(isColorPicked, (newValue) => {
 //   emit('update:modelValue', (event.target as HTMLInputElement).value)
 // }
 // const lol = useInputEvent(inputColor)
-const { modelValue } = useInput({ props, attrs, emit })
+useInput({ props, attrs, emit })
 
 onMounted(() => {
   if (isClientSide()) {

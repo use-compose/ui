@@ -5,10 +5,10 @@
 :root {
   --color-bg-page: #c0bfa7;
   --color-bg-subtle: #e8e7ca;
-  --color-bg-elevated: #ffffff;
+  --color-bg-elevated: #fff;
   --color-bg-inset: #c0bfa7;
   --color-bg-primary: #155180;
-  --color-bg-primary-hover: oklch(from #155180 lightness(+7%));
+  --color-bg-primary-hover: oklch(from #155180 calc(l + 0.07) c h);
   --color-bg-primary-active: #021222;
   --color-bg-primary-subtle: #d5e5fd;
   --color-bg-accent: #414956;

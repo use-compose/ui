@@ -22,6 +22,7 @@ const meta = {
   args: {
     ...commonArgs,
     modelValue: 'var(--color-primary)',
+    label: 'Color',
   }, // default value
 } satisfies Meta<typeof YColorInput>
 
@@ -34,11 +35,10 @@ type Story = StoryObj<typeof meta>
  */
 
 const renderGenericStory: Story = {
-  render: (args: YColorInputProps, { argTypes }) => ({
+  render: (args: YColorInputProps) => ({
     components: { YColorInput },
-    props: Object.keys(argTypes),
     template: `
-    <YColorInput v-bind="$props" />
+    <YColorInput v-bind="args" />
   `,
     setup() {
       // const emit = defineEmits(['update:modelValue', 'blur'])

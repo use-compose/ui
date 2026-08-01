@@ -6,6 +6,7 @@
 */
   .cluster {
     --gutter: var(--_cluster-gap, 1rem);
+
     display: flex;
     flex-wrap: wrap;
     gap: var(--gutter);
@@ -20,6 +21,7 @@
   .switcher,
   .holy {
     --gutter: var(--_switcher-gap, 1rem);
+
     display: flex;
     flex-wrap: wrap;
     gap: var(--gutter);

@@ -5,7 +5,7 @@
         <button
           v-for="[name, val] in group.entries"
           :key="name"
-          class="y-theme-switcher__btn"
+          class="y-theme-switcher-btn"
           :class="{ active: selections[group.key] === val }"
           @click="select(group.key, val, group.flatCategory)"
         >
@@ -20,7 +20,7 @@
 import { tokens } from '@/assets/css/themes/tokens/types/tokens.tree'
 import { basePropsDefault } from '@/composables/component-theme'
 import { useStorage } from '@/composables/use-storage'
-import { useTokens, type TokenCategory } from '@/composables/use-theme-tokens'
+import { useTokens, type TokenCategory, type TokenValue } from '@/composables/use-theme-tokens'
 import { computed, reactive } from 'vue'
 import YFlow from '../YFlow/YFlow.vue'
 import YRow from '../YRow/YRow.vue'
@@ -132,7 +132,7 @@ function select(groupKey: string, val: string, flatCategory?: TokenCategory) {
     // Flat categories: update token instance (reactivity + persistence)
     const instance = tokenInstances[flatCategory]
     if (instance) {
-      instance.setToken({ value: val as any })
+      instance.setToken({ value: val as TokenValue })
     }
   } else {
     // Nested categories: persist directly via useStorage
