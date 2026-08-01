@@ -44,8 +44,8 @@ const TableHeaderWithCustomSlots: Story = {
     template: `
       <YTableHeader :headers="headers">
         <template v-for="(header, index) in headers" :key="index">
-          <YTableDataCell v-if="header.key === 'checkbox'" header> 
-            <YCheckbox v-model="check" />
+          <YTableDataCell v-if="header.key === 'checkbox'" header>
+            <YCheckbox v-model="check" aria-label="Select all rows" />
           </YTableDataCell>
           <YTableDataCell v-else-if="header.key === 'highlight'" header>
             <YHighlightedText  class="ml-sm" level="h4" animate>{{ check ? 'This is a highlighted text' : 'Hover me' }}</YHighlightedText>

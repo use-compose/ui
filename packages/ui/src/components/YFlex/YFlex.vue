@@ -6,6 +6,7 @@
 
 <script lang="ts" setup>
 import { computed } from 'vue'
+import { parseGapProps, SpacingKey } from '../utils'
 import YBox from '../YBox/YBox.vue'
 import './YFlex.css'
 
@@ -21,18 +22,18 @@ interface FlexProps {
     | 'stretch'
     | 'normal'
   align?: 'flex-start' | 'flex-end' | 'center' | 'baseline' | 'stretch' | 'normal'
-  gap?: string
+  gap?: SpacingKey | string
 }
 
 const props = withDefaults(defineProps<FlexProps>(), {
   direction: 'row',
   justify: 'normal',
   align: 'center',
-  gap: 'var(--_spacing-sm)',
+  gap: 'sm',
 })
 
 const flexClasses = computed(() => {
-  return ['y-flex']
+  return ['y-flex', ...parseGapProps(props.gap as SpacingKey)]
 })
 
 const flexStyle = computed(() => {

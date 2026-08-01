@@ -3,14 +3,14 @@
     :id="name"
     ref="inputRef"
     :type="type"
-    :checked="type === 'checkbox' || type === 'radio' ? Boolean(modelValue) : undefined"
-    :value="type === 'checkbox' || type === 'radio' ? undefined : modelValue"
+    :value="model"
     :name="name"
     :placeholder="placeholder"
     :class="yInputClasses"
-    autocomplete="off"
+    :autocomplete="autocomplete"
     :disabled="isDisabled"
     data-compose-ui="block"
+    v-bind="ariaAttrs"
     v-on="handleEvent"
   />
   <YLabel v-if="label" class="y-label" :for="name">{{ label }}</YLabel>
@@ -32,12 +32,17 @@ const props = withDefaults(defineProps<YInputProps>(), {
   name: 'input-' + Math.random().toString(36).substring(7),
   type: 'text',
   placeholder: '',
+  autocomplete: 'off',
 })
+
+defineEmits(['update:modelValue', 'input', 'change', 'focus', 'blur'])
 
 const inputRef = useTemplateRef<HTMLInputElement | null>('inputRef')
 defineExpose({
   inputRef,
 })
+
+const model = defineModel()
 // const attrs = useAttrs()
 
 // const { modelValue } = useInput({
@@ -71,6 +76,14 @@ defineExpose({
 //   ]
 // })
 
+// Forward non-class/style fallthrough attributes (e.g. aria-label) to the native input,
+// since a multi-root template disables Vue's automatic attribute inheritance.
+const ariaAttrs = computed(() => {
+  return Object.fromEntries(
+    Object.entries(attrs).filter(([key]) => key !== 'class' && key !== 'style'),
+  )
+})
+
 // Use the base props composable to get common classes and disabled state
 const { variantClass } = useVariant(props)
 const { stateClass, isDisabled } = useState(props)
@@ -89,7 +102,7 @@ const handleEvent =
     if (isDisabled.value) e.preventDefault()
   })
 
-const modelValue = injected?.modelValue ?? computed(() => props.modelValue ?? '')
+// const modelValue = injected?.modelValue ?? computed(() => props.modelValue ?? '')
 
 // Apply classes and styles to the input element
 const componentProps = useComponentProps({

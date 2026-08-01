@@ -33,6 +33,7 @@ const renderGenericStory: Story = {
               size="small"
               raw
               variant="text"
+              :aria-label="'Select ' + row.customer"
             />
           </YTableDataCell>
         </template>

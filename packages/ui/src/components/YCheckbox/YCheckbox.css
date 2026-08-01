@@ -1,3 +1,4 @@
+@layer components {
 /* Needed for the animation
 /* https://css-tricks.com/exploring-property-and-its-animating-powers/ */
 
@@ -60,4 +61,5 @@
   &:focus {
     --state-bg-lightness: var(--state-hover-bg-lightness);
   }
+}
 }

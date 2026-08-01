@@ -1,3 +1,4 @@
+@layer components {
 .y-section {
   /* width: 100%; */
   --padding-xs: var(--media-xs) 15px 22px 10px;
@@ -32,4 +33,5 @@
       /* padding-bottom: 50px; */
     }
   }
+}
 }

@@ -10,16 +10,13 @@
     <!-- The dropdown menu - we use the named slot "dropdown" -->
     <!-- and the logic to toggle it is already handled -->
     <Transition name="slide-down">
-      <YMenu
-        v-if="isOpen"
-        ref="dropdownMenuRef"
-        :z-index="'calc(var(--dropdown-z-index) - 1)'"
-        class="rt-max-h-[512px]"
-      >
-        <template #default>
-          <slot name="dropdown" />
-        </template>
-      </YMenu>
+      <YBox v-if="isOpen">
+        <YMenu ref="dropdownMenuRef" :z-index="'calc(var(--dropdown-z-index) - 1)'">
+          <template #default>
+            <slot name="dropdown" />
+          </template>
+        </YMenu>
+      </YBox>
     </Transition>
   </div>
 </template>
@@ -32,6 +29,7 @@ import { defineComponentBaseProps } from '@/composables/component-theme'
 import { useDropdown } from '@/composables/dropdown'
 import { useOnClickOutside } from '@/composables/on-click-outside'
 import { computed, defineComponent } from 'vue'
+import YBox from '../YBox/YBox.vue'
 import './YDropdown.css'
 
 export default defineComponent({
@@ -39,6 +37,7 @@ export default defineComponent({
   components: {
     YDropdownTrigger,
     YMenu,
+    YBox,
   },
   props: {
     ...defineComponentBaseProps,

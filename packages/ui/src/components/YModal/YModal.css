@@ -1,3 +1,4 @@
+@layer components {
 :root {
   --modal-size-small: 32rem;
   --modal-size-default: 56rem;
@@ -117,4 +118,5 @@
   --component-margin-bottom: var(--component-box-shadow-y);
 
   border: var(--component-border);
+}
 }

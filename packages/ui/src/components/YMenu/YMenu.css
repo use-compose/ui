@@ -1,13 +1,15 @@
+@layer components {
 .y-menu {
-  border-width: 1px;
-  border-style: solid;
-  border-color: #737373;
-  position: absolute;
-  right: 0;
-  max-width: 300px;
-  background-color: inherit;
-  padding-left: 1rem;
-  padding-right: 1rem;
+  --padding-top: calc(
+    var(--dense) * var(--menu-padding-top) + (1 - var(--dense)) * var(--menu-padding-top-dense)
+  );
+  --padding-bottom: calc(
+    var(--dense) * var(--menu-padding-bottom) + (1 - var(--dense)) *
+      var(--menu-padding-bottom-dense)
+  );
+  --gutter: calc(var(--dense) * var(--menu-gap) + (1 - var(--dense)) * var(--menu-gap-dense));
 
-  --component-box-shadow: var(--component-box-shadow);
+  padding: var(--padding-top) 0 var(--padding-bottom);
+  gap: var(--gutter, var(--rt-menu-gap, var(--spacing-6)));
+}
 }

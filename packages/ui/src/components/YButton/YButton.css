@@ -1,3 +1,4 @@
+@layer components {
 .y-button {
   display: inline-block;
   cursor: pointer;
@@ -5,7 +6,10 @@
   text-transform: uppercase;
   font-weight: 700;
 
-  /* --component-padding: var(--_spacing-md) var(--_spacing-sm); */
+  &:not(.outlined, .text) {
+    /* Auto-contrast: dark text on light bg, light text on dark bg */
+    color: oklch(from var(--component-bg-color) calc(0.5 + sign(0.5 - l) * 0.4) 0 h);
+  }
 
   &:focus,
   &:focus-visible,
@@ -13,4 +17,5 @@
     outline: 3px solid var(--theme-current-color);
     outline-offset: calc(var(--_layout-depth-base));
   }
+}
 }

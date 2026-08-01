@@ -1,3 +1,4 @@
+@layer components {
 .y-table-data-cell {
   position: relative;
   padding: var(--_spacing-xs) var(--_spacing-sm);
@@ -41,4 +42,5 @@
     right: 0;
     bottom: 0;
   }
+}
 }

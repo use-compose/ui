@@ -1,3 +1,4 @@
+@layer components {
 .theme-picker {
   justify-content: center;
 }
@@ -16,4 +17,5 @@
     flex-basis: auto;
     margin-bottom: 0;
   }
+}
 }

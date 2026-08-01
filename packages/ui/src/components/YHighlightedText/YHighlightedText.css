@@ -1,3 +1,4 @@
+@layer components {
 /* https://stackoverflow.com/questions/6542212/use-css3-transitions-with-gradient-backgrounds/63848864#63848864 */
 .highlighted {
   text-transform: uppercase;
@@ -123,3 +124,4 @@
     color: var(--theme-current-color);
   }
 } */
+}

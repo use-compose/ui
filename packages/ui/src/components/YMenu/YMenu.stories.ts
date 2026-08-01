@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite'
-import type { YMenuProps } from './YMenu.types'
+import type { YMenuProps } from './YMenu.vue'
 import YMenu from './YMenu.vue'
 // import { useThemeComponentStory } from '@/composables'
 
@@ -26,7 +26,11 @@ const renderGenericStory: Story = {
     components: { YMenu },
     props: Object.keys(args),
     template: `
-      <YMenu v-bind="args" />
+      <YMenu v-bind="args">
+        <li>Menu Item 1</li>
+        <li>Menu Item 2</li>
+        <li>Menu Item 3</li>
+      </YMenu>
   `,
     setup() {
       return { args }

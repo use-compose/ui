@@ -1,3 +1,4 @@
+@layer components {
 .y-input-text {
   --component-bg-color: var(--color-main-dark);
   --component-padding-y: var(--_spacing-sm);
@@ -9,4 +10,5 @@
   &::placeholder {
     opacity: 0.4;
   }
+}
 }
