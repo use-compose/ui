@@ -1,3 +1,4 @@
+@layer components {
 /**
  * Flow Layout
  * Create consistent vertical spacing between direct children
@@ -9,4 +10,5 @@
 
 .y-flow > * + * {
   margin-block-start: var(--_flow-space, 1em);
+}
 }

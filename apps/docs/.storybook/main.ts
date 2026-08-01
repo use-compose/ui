@@ -59,15 +59,15 @@ const config: StorybookConfig = {
           // unholy-tokens aliases
           {
             find: 'unholy-tokens/css-var',
-            replacement: path.resolve(uiSrc, 'assets/css/themes/tokens/token-css-vars.ts'),
+            replacement: path.resolve(uiSrc, 'assets/css/theme/tokens/types/token-css-vars.ts'),
           },
           {
             find: 'unholy-tokens/types',
-            replacement: path.resolve(uiSrc, 'assets/css/themes/tokens/tokens.types.ts'),
+            replacement: path.resolve(uiSrc, 'assets/css/theme/tokens/types/token.types.ts'),
           },
           {
             find: 'unholy-tokens',
-            replacement: path.resolve(uiSrc, 'assets/css/themes/tokens/tokens.tree.ts'),
+            replacement: path.resolve(uiSrc, 'assets/css/theme/tokens/types/tokens.tree.ts'),
           },
         ],
       },
@@ -75,13 +75,13 @@ const config: StorybookConfig = {
         preprocessorOptions: {
           scss: {
             additionalData: `
-              @use "${uiSrc}/assets/scss/global.scss";
+              // @use "${uiSrc}/assets/scss/global.scss";
             `,
           },
         },
         transformer: 'lightningcss',
         lightningcss: {
-          targets: browserslistToTargets(browserslist('>= 0.25%')),
+          targets: browserslistToTargets(browserslist('chrome >= 85, edge >= 85, firefox >= 128, safari >= 16.4')),
         },
       },
     })

@@ -34,11 +34,9 @@ const renderGenericStory: Story = {
           </YButton>
         </template>
           <template #dropdown>
-            <ul class="dropdown-menu">
               <li><a href="#" class="dropdown-item">Item 1</a></li>
               <li><a href="#" class="dropdown-item">Item 2</a></li>
               <li><a href="#" class="dropdown-item">Item 3</a></li>
-            </ul>
           </template>
         </YDropdown>`,
     setup() {

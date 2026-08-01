@@ -73,27 +73,12 @@ export default defineConfig(({ mode }) => {
           // preserveModules: false,
         },
       },
-      cssMinify: 'lightningcss',
+      cssMinify: 'esbuild',
     },
     css: {
-      preprocessorOptions: {
-        // css: {
-        //   additionalData: `
-        //        @use "@/assets/css/global.css";
-        //     `,
-        // },
-        scss: {
-          additionalData: `
-              @use "@/assets/scss/global.scss";
-
-          `,
-          // https://github.com/sass/dart-sass/issues/2352#issuecomment-2358290696
-          // api: 'modern',
-        },
-      },
       transformer: 'lightningcss',
       lightningcss: {
-        targets: browserslistToTargets(browserslist('>= 0.25%')),
+        targets: browserslistToTargets(browserslist('chrome >= 85, edge >= 85, firefox >= 128, safari >= 16.4')),
         analyzeDependencies: false,
       },
     },

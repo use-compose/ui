@@ -1,7 +1,7 @@
 <template>
-  <div :class="getClasses">
+  <Component :is="props.as" :class="getClasses">
     <slot />
-  </div>
+  </Component>
 </template>
 
 <script setup lang="ts">
@@ -32,9 +32,19 @@ export interface YBoxProps {
   margin?: MarginKey | string
   border?: BorderKey | BorderKey[] | string | string[]
   backgroundColor?: BackgroundColorKey | string
+  as?: string
 }
 
-const props = withDefaults(defineProps<YBoxProps>(), {})
+const props = withDefaults(defineProps<YBoxProps>(), {
+  padding: '0',
+  radius: '0',
+  width: 'auto',
+  height: 'auto',
+  margin: '0',
+  border: 'none',
+  backgroundColor: 'transparent',
+  as: 'div',
+})
 
 const getClasses = computed(() => {
   return [

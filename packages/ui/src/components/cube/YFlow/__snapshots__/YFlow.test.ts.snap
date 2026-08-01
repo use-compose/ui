@@ -1,7 +1,7 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`YFlow > renders 1`] = `
-"<div class="y-box y-flow">
+"<div class="y-box padding-0 radius-0 width-auto height-auto margin-0 border-none bg-transparent y-flow">
   <p>Default content for YFlow component</p>
 </div>"
 `;

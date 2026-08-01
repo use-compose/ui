@@ -1,0 +1,104 @@
+/* variant.css — class setters + bit grinding (@property defs → compose-ui.props.css) */
+
+/* API: class setters */
+.contained { --variant: contained; }
+.outlined  {
+  --variant: outlined;
+  --component-color-border: var(--theme-current-color);
+  --component-border-width: 2px;
+}
+.text { --variant: text; }
+
+[data-compose-ui='block'] {
+  /* Grind enum → bits */
+  --_variant-contained-else-0: var(--variant);
+  --is-variant-contained: var(--_variant-contained-else-0);
+  --_variant-outlined-else-0: var(--variant);
+  --is-variant-outlined: var(--_variant-outlined-else-0);
+  --_variant-text-else-0: var(--variant);
+  --is-variant-text: var(--_variant-text-else-0);
+
+  --has-border: var(--is-variant-outlined);
+
+  /* Map bits → --v-* channel deltas (background) */
+  /* prettier-ignore */
+  --v-bg-l: calc(
+    var(--is-variant-contained) * var(--variant-contained-bg-lightness) +
+    var(--is-variant-outlined)  * var(--variant-outlined-bg-lightness) +
+    var(--is-variant-text)      * var(--variant-text-bg-lightness)
+  );
+  /* prettier-ignore */
+  --v-bg-c: calc(
+    var(--is-variant-contained) * var(--variant-contained-bg-chroma) +
+    var(--is-variant-outlined)  * var(--variant-outlined-bg-chroma) +
+    var(--is-variant-text)      * var(--variant-text-bg-chroma)
+  );
+  /* prettier-ignore */
+  --v-bg-h: calc(
+    var(--is-variant-contained) * var(--variant-contained-bg-hue) +
+    var(--is-variant-outlined)  * var(--variant-outlined-bg-hue) +
+    var(--is-variant-text)      * var(--variant-text-bg-hue)
+  );
+  /* prettier-ignore */
+  --v-bg-a: calc(
+    var(--is-variant-contained) * var(--variant-contained-bg-opacity) +
+    var(--is-variant-outlined)  * var(--variant-outlined-bg-opacity) +
+    var(--is-variant-text)      * var(--variant-text-bg-opacity)
+  );
+
+  /* Map bits → --v-* channel deltas (border) */
+  /* prettier-ignore */
+  --v-border-l: calc(
+    var(--is-variant-contained) * var(--variant-contained-border-lightness) +
+    var(--is-variant-outlined)  * var(--variant-outlined-border-lightness) +
+    var(--is-variant-text)      * var(--variant-text-border-lightness)
+  );
+  /* prettier-ignore */
+  --v-border-c: calc(
+    var(--is-variant-contained) * var(--variant-contained-border-chroma) +
+    var(--is-variant-outlined)  * var(--variant-outlined-border-chroma) +
+    var(--is-variant-text)      * var(--variant-text-border-chroma)
+  );
+  /* prettier-ignore */
+  --v-border-h: calc(
+    var(--is-variant-contained) * var(--variant-contained-border-hue) +
+    var(--is-variant-outlined)  * var(--variant-outlined-border-hue) +
+    var(--is-variant-text)      * var(--variant-text-border-hue)
+  );
+  /* prettier-ignore */
+  --v-border-a: calc(
+    var(--is-variant-contained) * var(--variant-contained-border-opacity) +
+    var(--is-variant-outlined)  * var(--variant-outlined-border-opacity) +
+    var(--is-variant-text)      * var(--variant-text-border-opacity)
+  );
+
+  /* Map bits → --v-* channel deltas (text) */
+  /* prettier-ignore */
+  --v-text-l: calc(
+    var(--is-variant-contained) * var(--variant-contained-text-lightness) +
+    var(--is-variant-outlined)  * var(--variant-outlined-text-lightness) +
+    var(--is-variant-text)      * var(--variant-text-text-lightness)
+  );
+  /* prettier-ignore */
+  --v-text-c: calc(
+    var(--is-variant-contained) * var(--variant-contained-text-chroma) +
+    var(--is-variant-outlined)  * var(--variant-outlined-text-chroma) +
+    var(--is-variant-text)      * var(--variant-text-text-chroma)
+  );
+  /* prettier-ignore */
+  --v-text-h: calc(
+    var(--is-variant-contained) * var(--variant-contained-text-hue) +
+    var(--is-variant-outlined)  * var(--variant-outlined-text-hue) +
+    var(--is-variant-text)      * var(--variant-text-text-hue)
+  );
+  /* prettier-ignore */
+  --v-text-a: calc(
+    var(--is-variant-contained) * var(--variant-contained-text-opacity) +
+    var(--is-variant-outlined)  * var(--variant-outlined-text-opacity) +
+    var(--is-variant-text)      * var(--variant-text-text-opacity)
+  );
+
+  --component-border-width-effective: calc(var(--has-border) * var(--component-border-width, 0px));
+  border-width: var(--component-border-width-effective);
+  border-style: var(--component-border-style, solid);
+}

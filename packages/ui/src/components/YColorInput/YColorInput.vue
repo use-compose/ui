@@ -1,7 +1,6 @@
 <template>
   <YInput
-    v-bind="props"
-    v-model="modelValue"
+    v-model="inputValue"
     type="color"
     input-class="y-color-input"
     :name="name"
@@ -66,7 +65,7 @@ watch(isColorPicked, (newValue) => {
 //   emit('update:modelValue', (event.target as HTMLInputElement).value)
 // }
 // const lol = useInputEvent(inputColor)
-const { modelValue } = useInput({ props, attrs, emit })
+useInput({ props, attrs, emit })
 
 onMounted(() => {
   if (isClientSide()) {

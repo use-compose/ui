@@ -1,0 +1,77 @@
+/* tone.css — class setters + bit grinding (@property defs → compose-ui.props.css) */
+
+/* API: class setters */
+.primary {
+  --tone: primary;
+}
+.secondary {
+  --tone: secondary;
+}
+.danger {
+  --tone: danger;
+}
+.background {
+  --tone: background;
+}
+.accent {
+  --tone: accent;
+}
+.neutral {
+  --tone: neutral;
+}
+
+[data-compose-ui='block'] {
+  /* Grind enum → bits */
+  --_tone-primary-else-0: var(--tone);
+  --is-tone-primary: var(--_tone-primary-else-0);
+  --_tone-secondary-else-0: var(--tone);
+  --is-tone-secondary: var(--_tone-secondary-else-0);
+  --_tone-danger-else-0: var(--tone);
+  --is-tone-danger: var(--_tone-danger-else-0);
+  --_tone-background-else-0: var(--tone);
+  --is-tone-background: var(--_tone-background-else-0);
+  --_tone-accent-else-0: var(--tone);
+  --is-tone-accent: var(--_tone-accent-else-0);
+  --_tone-neutral-else-0: var(--tone);
+  --is-tone-neutral: var(--_tone-neutral-else-0);
+
+  /* Map bits → OKLCH channel values */
+  /* prettier-ignore */
+  --tone-l: calc(
+    var(--is-tone-primary)    * var(--color-primary-lightness) +
+    var(--is-tone-secondary)  * var(--color-secondary-lightness) +
+    var(--is-tone-danger)     * var(--color-danger-lightness) +
+    var(--is-tone-background) * var(--color-bg-lightness) +
+    var(--is-tone-accent)     * var(--color-accent-lightness, 0) +
+    var(--is-tone-neutral)    * var(--color-neutral-lightness, 0)
+  );
+  /* prettier-ignore */
+  --tone-c: calc(
+    var(--is-tone-primary)    * var(--color-primary-chroma) +
+    var(--is-tone-secondary)  * var(--color-secondary-chroma) +
+    var(--is-tone-danger)     * var(--color-danger-chroma) +
+    var(--is-tone-background) * var(--color-bg-chroma) +
+    var(--is-tone-accent)     * var(--color-accent-chroma, 0) +
+    var(--is-tone-neutral)    * var(--color-neutral-chroma, 0)
+  );
+  /* prettier-ignore */
+  --tone-h: calc(
+    var(--is-tone-primary)    * var(--color-primary-hue) +
+    var(--is-tone-secondary)  * var(--color-secondary-hue) +
+    var(--is-tone-danger)     * var(--color-danger-hue) +
+    var(--is-tone-background) * var(--color-bg-hue) +
+    var(--is-tone-accent)     * var(--color-accent-hue, 0) +
+    var(--is-tone-neutral)    * var(--color-neutral-hue, 0)
+  );
+  /* prettier-ignore */
+  --tone-a: calc(
+    var(--is-tone-primary)    * var(--color-primary-opacity) +
+    var(--is-tone-secondary)  * var(--color-secondary-opacity) +
+    var(--is-tone-danger)     * var(--color-danger-opacity) +
+    var(--is-tone-background) * var(--color-bg-opacity) +
+    var(--is-tone-accent)     * var(--color-accent-opacity, 0) +
+    var(--is-tone-neutral)    * var(--color-neutral-opacity, 0)
+  );
+
+  --theme-current-color: oklch(var(--tone-l) var(--tone-c) var(--tone-h) / var(--tone-a));
+}

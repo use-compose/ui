@@ -1,3 +1,4 @@
+@layer components {
 .y-dropdown {
   position: relative;
 
@@ -10,4 +11,5 @@
     position: relative;
     z-index: var(--dropdown-z-index);
   }
+}
 }
