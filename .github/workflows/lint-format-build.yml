@@ -77,3 +77,24 @@ jobs:
       - name: Build
         if: ${{ always() }}
         run: pnpm run build
+
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install dependencies
+        uses: ./.github/actions/install-dependencies
+        with:
+          node_version: ${{ inputs.node_version }}
+
+      # Renovate does not remediate transitive dependencies pinned through the
+      # pnpm overrides in pnpm-workspace.yaml, so surface them here too.
+      # Non-blocking for now; drop continue-on-error once the count stays at zero.
+      - name: Audit
+        if: ${{ always() }}
+        continue-on-error: true
+        run: pnpm audit --audit-level=high
