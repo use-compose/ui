@@ -50,9 +50,9 @@ function checkMissingProperties(providedTheme: YTheme) {
 
 function setColorProperties(element: HTMLElement, color: string, prefix: string) {
   const oklch = useMode(modeOklch)
-  const rgb = useMode(modeRgb)
-  // eslint-disable-next-line no-console
-  console.log('📟 - rgb → ', rgb)
+  // Load-bearing despite the unused return value: `culori/fn` is tree-shakeable,
+  // so `oklch()` can only parse hex/rgb input once the rgb mode is registered.
+  useMode(modeRgb)
   const colorInstance = oklch(color)
 
   if (!colorInstance) {
