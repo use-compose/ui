@@ -64,7 +64,9 @@ export default defineComponent({
 </script>
 
 <style scoped>
-svg {
-  aspect-ratio: 1;
+@layer components {
+  svg {
+    aspect-ratio: 1;
+  }
 }
 </style>

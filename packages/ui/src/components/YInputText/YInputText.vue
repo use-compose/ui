@@ -13,6 +13,7 @@
 import { YInput } from '@/components/YInput'
 import { useInput, type InputEmitsInterface } from '@/composables/input'
 import { useAttrs } from 'vue'
+import './YInputText.css'
 import type { YInputTextProps } from './types'
 
 const props = withDefaults(defineProps<YInputTextProps>(), {

@@ -6,16 +6,22 @@
 
 <script lang="ts" setup>
 import '@/assets/css/global.css'
-// import '@/assets/css/global.css'
 import { useComposeTheme } from '@/composables/theme'
 import { computed } from 'vue'
+import './AppCompose.css'
 import { AppComposeProps } from './AppCompose.types'
+import { resolveComposeBg } from './resolve-bg'
 
 const props = defineProps<AppComposeProps>()
 
 const styles = computed(() => {
+  const bg = resolveComposeBg(props.useBg)
+
   return {
-    '--use-bg': props.useBg ? 1 : 0,
+    '--use-bg': bg ? 1 : 0,
+    // Left unset when there is no background so `.app-compose` keeps its
+    // `transparent` fallback instead of painting one.
+    '--app-compose-bg': bg,
   }
 })
 

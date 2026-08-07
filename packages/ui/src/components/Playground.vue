@@ -304,7 +304,7 @@ import {
   YTimeInput,
 } from '@/components'
 import { ref } from 'vue'
-import Wrapper from './Wrapper.vue'
+import { Wrapper } from './Wrapper'
 import YContainer from './YContainer/YContainer.vue'
 import YFlex from './YFlex/YFlex.vue'
 import { YHeader } from './YHeader'
