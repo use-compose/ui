@@ -1,5 +1,7 @@
 @layer components {
-.app-compose {
-  /* Add styles here as needed */
-}
+  .app-compose {
+    /* `--app-compose-bg` is set inline by the `useBg` prop; without it the root
+       stays transparent so the host page keeps control of the backdrop. */
+    background-color: var(--app-compose-bg, transparent);
+  }
 }

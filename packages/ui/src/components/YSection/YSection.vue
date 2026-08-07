@@ -11,7 +11,7 @@
 
 <script setup lang="ts">
 import { YRow } from '../cube'
-import Wrapper from '../Wrapper.vue'
+import { Wrapper } from '../Wrapper'
 import { YVerticalTitle } from '../YVerticalTitle'
 import './YSection.css'
 

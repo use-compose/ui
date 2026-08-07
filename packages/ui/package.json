@@ -48,16 +48,16 @@
     "compose-theme": "./bin/generate-theme.js"
   },
   "exports": {
-    "./package.json": "./dist/package.json",
+    "./package.json": "./package.json",
     ".": {
       "types": "./dist/index.d.ts",
       "import": "./dist/index.mjs",
       "require": "./dist/index.js"
     },
     "./components": {
-      "types": "./dist/components/index.d.ts",
-      "import": "./dist/components/index.mjs",
-      "require": "./dist/components/index.js"
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
     },
     "./style.css": "./dist/assets/style.css",
     "./fonts/*": "./dist/fonts/*"
