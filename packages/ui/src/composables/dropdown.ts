@@ -21,9 +21,7 @@ UseDropdownParams) {
   const dropdownInstance = Symbol('dropdown') // unique identity to identify the dropdown instance in the stack
   const stack = useStack()
 
-  const { hasScrollbar, openOnHover } = props
-  // eslint-disable-next-line no-console
-  console.log('📟 - hasScrollbar → ', hasScrollbar)
+  const { openOnHover } = props
 
   const isOpen = ref(false)
   const dropdownRef = ref<EventTarget | null>(null)
