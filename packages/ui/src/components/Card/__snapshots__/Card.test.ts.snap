@@ -3,7 +3,7 @@
 exports[`Card > renders 1`] = `
 "<article class="card position-relative overflow-hidden radius-medium" data-compose-ui="block">
   <!--v-if-->
-  <div class="y-box padding-0 radius-0 width-auto height-auto margin-0 border-none bg-transparent y-flow y-stack gap-sm card-body padding-md">
+  <div class="y-box y-flow y-stack gap-sm card-body padding-md">
     <p>Default content for YStack component</p>
   </div>
 </article>"

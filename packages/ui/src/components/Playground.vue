@@ -1,6 +1,6 @@
 <template>
   <YContainer>
-    <Wrapper>
+    <YWrapper>
       <YHeader title="YCompose" title-link="/" />
 
       <YHighlightedText as="h1" animate active>Theme Picker </YHighlightedText>
@@ -287,7 +287,40 @@
           </YDropdown>
         </YFlex>
       </YSection>
-    </Wrapper>
+
+      <YSection title="Cube Layout">
+        <YHighlightedText as="h3">YCenter</YHighlightedText>
+        <YCenter style="min-height: 10rem; outline: 1px dashed var(--color-bg-subtle)">
+          <p>Centered on both axes, capped at a readable measure.</p>
+        </YCenter>
+
+        <YHighlightedText as="h3">YScroll</YHighlightedText>
+        <YScroll>
+          <div
+            v-for="n in 6"
+            :key="n"
+            style="
+              width: 10rem;
+              background: var(--color-bg-elevated);
+              border-radius: 0.5rem;
+              padding: 1rem;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+            "
+          >
+            Card {{ n }}
+          </div>
+        </YScroll>
+
+        <YHighlightedText as="h3">YScreen</YHighlightedText>
+        <YScreen min-height="20rem" style="outline: 1px dashed var(--color-bg-subtle)">
+          <header><h4>Header</h4></header>
+          <p>Content centered between header and footer.</p>
+          <footer>Footer</footer>
+        </YScreen>
+      </YSection>
+    </YWrapper>
   </YContainer>
 </template>
 
@@ -295,16 +328,19 @@
 import {
   YButton,
   YCard,
+  YCenter,
   YCheckbox,
   YColorInput,
   YDateInput,
   YDateTimeInput,
   YDropdown,
   YModal,
+  YScreen,
+  YScroll,
   YTimeInput,
+  YWrapper,
 } from '@/components'
 import { ref } from 'vue'
-import { Wrapper } from './Wrapper'
 import YContainer from './YContainer/YContainer.vue'
 import YFlex from './YFlex/YFlex.vue'
 import { YHeader } from './YHeader'

@@ -1,5 +1,5 @@
 <template>
-  <YBox :class="getClasses">
+  <YBox v-bind="boxProps" :class="getClasses">
     <slot>
       <p>Default content for YRow component</p>
     </slot>
@@ -17,6 +17,16 @@ export interface YRowProps extends YBoxProps {
 
 const props = withDefaults(defineProps<YRowProps>(), {
   // ...basePropsDefault,
+})
+
+// `type` is consumed here (it drives the class list below) — everything else
+// inherited from `YBoxProps` still needs forwarding explicitly, since
+// declaring it via `defineProps` takes it out of `$attrs`. See YCenter.vue
+// for the same pattern.
+const boxProps = computed<YBoxProps>(() => {
+  const rest: Partial<YRowProps> = { ...props }
+  delete rest.type
+  return rest
 })
 
 const getClasses = computed(() => {

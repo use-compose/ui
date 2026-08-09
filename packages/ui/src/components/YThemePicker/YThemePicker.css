@@ -1,21 +1,57 @@
 @layer components {
-.theme-picker {
-  justify-content: center;
-}
-
-.theme-hint {
-  flex-basis: 100%;
-  text-align: center;
-}
-
-@media (width >= 768px) {
   .theme-picker {
-    justify-content: normal;
+    justify-content: center;
   }
 
   .theme-hint {
-    flex-basis: auto;
-    margin-bottom: 0;
+    flex-basis: 100%;
+    text-align: center;
   }
-}
+
+  .theme-picker-group + .theme-picker-group {
+    margin-block-start: var(--_spacing-md, 1rem);
+  }
+
+  .theme-picker-group-title {
+    margin-block-end: var(--_spacing-xs, 0.5rem);
+    font-size: 1rem;
+    text-transform: capitalize;
+  }
+
+  .theme-picker-knob {
+    display: flex;
+    align-items: flex-end;
+    gap: var(--_spacing-xxs, 0.25rem);
+  }
+
+  .theme-picker-reset {
+    border: var(--border-width-default) var(--border-style-default) currentcolor;
+    background: none;
+    color: inherit;
+    cursor: pointer;
+    opacity: 0.35;
+    line-height: 1;
+    padding: 0.25rem 0.4rem;
+  }
+
+  .theme-picker-reset:disabled {
+    cursor: default;
+  }
+
+  /* Marks a token the user has changed, so it is obvious at a glance what is no
+     longer coming from the generated token tree. */
+  .theme-picker-knob.is-overridden .theme-picker-reset {
+    opacity: 1;
+  }
+
+  @media (width >= 768px) {
+    .theme-picker {
+      justify-content: normal;
+    }
+
+    .theme-hint {
+      flex-basis: auto;
+      margin-bottom: 0;
+    }
+  }
 }

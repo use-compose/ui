@@ -3,15 +3,14 @@
     <YVerticalTitle v-if="title" class="y-section__title">
       {{ title }}
     </YVerticalTitle>
-    <Wrapper>
+    <YWrapper>
       <slot />
-    </Wrapper>
+    </YWrapper>
   </YRow>
 </template>
 
 <script setup lang="ts">
-import { YRow } from '../cube'
-import { Wrapper } from '../Wrapper'
+import { YRow, YWrapper } from '../cube'
 import { YVerticalTitle } from '../YVerticalTitle'
 import './YSection.css'
 

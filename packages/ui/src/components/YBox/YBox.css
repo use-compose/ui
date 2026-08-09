@@ -1,11 +1,21 @@
 @layer components {
-.y-box {
-  /* Add your styles here */
-
-  /* Example: */
-
-  /* color: var(--color-primary); */
-
-  /* background-color: var(--color-background); */
-}
+  /*
+   * `YBox`'s props resolve to inline CSS custom properties (see YBox.vue),
+   * not classes — so an unset prop leaves the var unset, and these
+   * fallbacks apply instead. That's what lets a hand-written utility class
+   * (e.g. `class="padding-md"` merged in from a parent template) still take
+   * effect on a YBox: inline style always outranks any class, but only
+   * props that were actually passed emit an inline style in the first
+   * place.
+   */
+  .y-box {
+    padding: var(--y-box-padding, 0);
+    margin: var(--y-box-margin, 0);
+    border-radius: var(--y-box-radius, 0);
+    width: var(--y-box-width, auto);
+    height: var(--y-box-height, auto);
+    border: var(--y-box-border-width, 0) var(--y-box-border-style, none)
+      var(--y-box-border-color, transparent);
+    background-color: var(--y-box-bg, transparent);
+  }
 }

@@ -14,7 +14,9 @@ export interface YOverlayProps {
   color?: string
   opacity?: number
   blur?: number | string
-  zIndex?: number
+  /** Position in the stack of currently-open overlays (0 = first). CSS turns
+   * this into an actual z-index — see `.y-overlay` in YModal.css. */
+  stackIndex?: number
 }
 
 const props = withDefaults(defineProps<YOverlayProps>(), {
@@ -22,7 +24,7 @@ const props = withDefaults(defineProps<YOverlayProps>(), {
   opacity: 0.2,
   blur: '8px',
   centerChildren: true,
-  zIndex: 1000,
+  stackIndex: 0,
 })
 
 const getClasses = computed(() => {
@@ -38,7 +40,7 @@ const getStyles = computed(() => {
     ...(props.color && { '--overlay-bg': props.color ? props.color : 'var(--color-bg)' }),
     '--overlay-opacity': props.opacity,
     '--overlay-blur': props.blur,
-    '--dialog-z-index': props.zIndex,
+    '--stack-index': props.stackIndex,
   }
 })
 

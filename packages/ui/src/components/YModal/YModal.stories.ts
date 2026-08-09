@@ -6,7 +6,7 @@ import { YInputText } from '@/components/YInputText'
 import { modalDefaultProps, useThemeComponentStory } from '@/composables'
 import { computed, ref } from 'vue'
 import YDropdown from '../YDropdown/YDropdown.vue'
-import { YModalSize, YModalType } from './types/YBaseModal.interface'
+import { YDrawerSide, YModalSize, YModalType } from './types/YBaseModal.interface'
 import YBaseModal from './YBaseModal.vue'
 
 const { generateCommonStories } = useThemeComponentStory(YBaseModal)
@@ -33,6 +33,12 @@ const meta: Meta<typeof YBaseModal> = {
     type: {
       control: { type: 'select' },
       options: [YModalType.Default, YModalType.Drawer, YModalType.FullScreen],
+    },
+    side: {
+      control: { type: 'inline-radio' },
+      options: [YDrawerSide.Right, YDrawerSide.Left],
+      description: 'Drawer only — the edge it slides in from.',
+      table: { defaultValue: { summary: YDrawerSide.Right } },
     },
   },
   args: {
@@ -105,6 +111,16 @@ const Drawer: Story = {
   args: {
     ...DefaultStory.args,
     type: YModalType.Drawer,
+    side: YDrawerSide.Right,
+  },
+}
+
+const DrawerLeft: Story = {
+  ...DefaultStory,
+  args: {
+    ...DefaultStory.args,
+    type: YModalType.Drawer,
+    side: YDrawerSide.Left,
   },
 }
 
@@ -198,4 +214,4 @@ export const ModalWithSelectInput: Story = {
 
 const { Raw } = generateCommonStories(DefaultStory)
 
-export { Default, Drawer, Raw }
+export { Default, Drawer, DrawerLeft, Raw }

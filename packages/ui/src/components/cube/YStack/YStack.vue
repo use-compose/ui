@@ -1,5 +1,5 @@
 <template>
-  <YFlow :class="getClasses">
+  <YFlow v-bind="flowProps" :class="getClasses">
     <slot>
       <p>Default content for YStack component</p>
     </slot>
@@ -18,6 +18,16 @@ export interface YStackProps extends YFlowProps {
 
 const props = withDefaults(defineProps<YStackProps>(), {
   gap: 'sm',
+})
+
+// `gap` is consumed here (it drives the class list below) — everything else
+// inherited from `YBoxProps` still needs forwarding explicitly, since
+// declaring it via `defineProps` takes it out of `$attrs`. See YCenter.vue
+// for the same pattern.
+const flowProps = computed<YFlowProps>(() => {
+  const rest: Partial<YStackProps> = { ...props }
+  delete rest.gap
+  return rest
 })
 
 const getClasses = computed(() => {

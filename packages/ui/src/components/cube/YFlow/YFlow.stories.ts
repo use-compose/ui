@@ -8,7 +8,7 @@ import YFlow from './YFlow.vue'
 
 const meta: Meta<typeof YFlow> = {
   // TODO: TO CHANGE PATH
-  title: 'Components/Layout/YFlow',
+  title: 'Components/Layout/Cube/YFlow',
   component: YFlow,
   tags: ['autodocs'],
   argTypes: {

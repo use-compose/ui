@@ -4,7 +4,6 @@ export * from './YThemePicker'
 
 // layout
 export * from './cube'
-export * from './Wrapper'
 export * from './YBox'
 export * from './YContainer'
 export * from './YFlex'

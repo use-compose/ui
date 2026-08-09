@@ -5,5 +5,10 @@ export type {
   ModalState,
   ShowModalParams,
 } from './modal-symbol'
-export { YModalSize, YModalType } from './YBaseModal.interface'
-export type { BaseModalProps, YModalSizeValue, YModalTypeValue } from './YBaseModal.interface'
+export { YDrawerSide, YModalSize, YModalType } from './YBaseModal.interface'
+export type {
+  BaseModalProps,
+  YDrawerSideValue,
+  YModalSizeValue,
+  YModalTypeValue,
+} from './YBaseModal.interface'

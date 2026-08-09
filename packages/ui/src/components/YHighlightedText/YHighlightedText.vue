@@ -20,7 +20,7 @@ const props = withDefaults(defineProps<YHighlightedTextProps>(), {
   color: 'primary',
 
   // Stick the highlighted text to the left side of the container on mobile viewports
-  // 💡 Will only works if used inside a "Wrapper" element
+  // 💡 Will only works if used inside a "YWrapper" element
   stickToLeft: false,
 })
 

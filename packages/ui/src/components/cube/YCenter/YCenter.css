@@ -1,0 +1,18 @@
+@layer components {
+  /*
+   * Center — centers content on both axes and caps it at a readable measure.
+   * https://every-layout.dev/layouts/center/
+   */
+  .y-center {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    & > * {
+      margin-inline: auto;
+      max-width: var(--y-center-measure, 34rem);
+    }
+  }
+}
