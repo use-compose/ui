@@ -11,8 +11,7 @@
     display: flex;
     align-items: center;
     min-inline-size: 0;
-    overflow-x: auto;
-    overflow-y: hidden;
+    overflow: auto hidden;
     scroll-snap-type: x proximity;
     overscroll-behavior-x: contain;
     padding-block-end: var(--spacing-sm);
