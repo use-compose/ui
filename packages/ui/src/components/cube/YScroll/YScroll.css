@@ -1,0 +1,56 @@
+@layer components {
+  /*
+   * Reel — full-bleed horizontal scroller with snap points.
+   * https://every-layout.dev/layouts/reel/
+   *
+   * CSS-only: the original Every Layout reel pairs this with JS for
+   * wheel-redirect, drag-to-scroll and a position counter. This relies on
+   * native touch/trackpad/shift+wheel scrolling and `scroll-snap-type` alone.
+   */
+  .y-scroll {
+    display: flex;
+    align-items: center;
+    min-inline-size: 0;
+    overflow: auto hidden;
+    scroll-snap-type: x proximity;
+    overscroll-behavior-x: contain;
+    padding-block-end: var(--spacing-sm);
+
+    &::-webkit-scrollbar {
+      height: 30px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: var(--color-primary);
+    }
+
+    @supports not selector(::-webkit-scrollbar) {
+      scrollbar-color: var(--color-primary) var(--color-bg);
+    }
+
+    & > * {
+      flex: 0 0 auto;
+      scroll-snap-align: start;
+    }
+
+    & > img {
+      block-size: calc(100% - var(--spacing-xl));
+      flex-basis: auto;
+      width: auto;
+    }
+
+    & > * + * {
+      margin-inline-start: var(--spacing-md);
+    }
+  }
+
+  @media (width >= 640px) {
+    .y-scroll::-webkit-scrollbar-thumb {
+      border-right: 0.85rem solid var(--color-bg);
+      background-clip: padding-box;
+      border-top: none;
+      border-bottom: none;
+      border-left: none;
+    }
+  }
+}

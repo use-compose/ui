@@ -5,6 +5,8 @@ export { allowScroll, preventScroll }
 
 // Prevent scrolling when a modal is open for example
 function preventScroll() {
+  if (typeof document === 'undefined') return
+
   const body = document.body
   body.style.height = '100svh'
   body.style.overflowY = 'hidden'
@@ -13,6 +15,8 @@ function preventScroll() {
 
 // Re-enable scrolling when the modal is closed
 function allowScroll() {
+  if (typeof document === 'undefined') return
+
   const body = document.body
   body.style.height = 'auto'
   body.style.overflowY = 'auto'

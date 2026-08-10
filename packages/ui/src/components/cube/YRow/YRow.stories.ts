@@ -7,7 +7,7 @@ import YRow from './YRow.vue'
 
 const meta: Meta<typeof YRow> = {
   // TODO: TO CHANGE PATH
-  title: 'Components/Layout/YRow',
+  title: 'Components/Layout/Cube/YRow',
   component: YRow,
   tags: ['autodocs'],
   argTypes: {

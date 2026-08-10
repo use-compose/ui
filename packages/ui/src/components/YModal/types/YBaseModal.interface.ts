@@ -17,6 +17,14 @@ export enum YModalType {
 
 export type YModalSizeValue = (typeof YModalSize)[keyof typeof YModalSize]
 
+/** Edge a drawer slides in from. Ignored by the other modal types. */
+export enum YDrawerSide {
+  Left = 'left',
+  Right = 'right',
+}
+
+export type YDrawerSideValue = (typeof YDrawerSide)[keyof typeof YDrawerSide]
+
 export interface BaseModalProps extends ThemeComponentBaseProps {
   modelValue?: boolean
 
@@ -37,6 +45,9 @@ export interface BaseModalProps extends ThemeComponentBaseProps {
   // Modal specific props
   size?: YModalSizeValue
   type?: YModalTypeValue
+
+  /** Drawer only — which edge it slides in from. Defaults to `right`. */
+  side?: YDrawerSideValue
 }
 
 export interface YModalHeaderProps {

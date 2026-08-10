@@ -4,10 +4,43 @@
  */
 export const storiesStructure: Record<string, Record<string, string[]>> = {
   Components: {
-    Form: ['YButton', 'YInput', 'YSelect', 'YCheckbox', 'YColorInput', 'YDateInput', 'YDateTimeInput', 'YTimeInput', 'YInputText', 'YDropdown'],
-    'Data Display': ['YHeader', 'YCard', 'YSection', 'YTag', 'YTable', 'YHighlightedText', 'YLabel', 'YSkeleton', 'YVerticalTitle'],
-    Layout: ['YBox', 'YFlow', 'YRow', 'YStack', 'YModal', 'YOverlay', 'YMenu'],
-    Core: ['AppCompose', 'Wrapper', 'YThemePicker'],
+    Form: [
+      'YButton',
+      'YInput',
+      'YSelect',
+      'YCheckbox',
+      'YColorInput',
+      'YDateInput',
+      'YDateTimeInput',
+      'YTimeInput',
+      'YInputText',
+      'YDropdown',
+    ],
+    'Data Display': [
+      'YHeader',
+      'YCard',
+      'YSection',
+      'YTag',
+      'YTable',
+      'YHighlightedText',
+      'YLabel',
+      'YSkeleton',
+      'YVerticalTitle',
+    ],
+    Layout: [
+      'YBox',
+      'YCenter',
+      'YFlow',
+      'YRow',
+      'YScreen',
+      'YScroll',
+      'YStack',
+      'YWrapper',
+      'YModal',
+      'YOverlay',
+      'YMenu',
+    ],
+    Core: ['AppCompose', 'YThemePicker'],
   },
 }
 

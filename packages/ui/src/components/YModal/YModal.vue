@@ -1,6 +1,6 @@
 <template>
   <Teleport to="body">
-    <YOverlay v-model="isVisible" :z-index="zIndex" @click="close">
+    <YOverlay v-model="isVisible" :stack-index="stackIndex" @click="close">
       <Transition appear :name="transitionName">
         <YBaseModal v-if="isVisible" v-bind="props" @click.stop>
           <template #header>
@@ -37,7 +37,7 @@ export default defineComponent({
   },
   setup(props: BaseModalProps & { modelValue: boolean }, context: SetupContext) {
     // if (context) {
-    const { transitionName, isVisible, close, zIndex } = useModal({
+    const { transitionName, isVisible, close, stackIndex } = useModal({
       props,
       modalContext: context,
     })
@@ -47,7 +47,7 @@ export default defineComponent({
       props,
       isVisible,
       close,
-      zIndex,
+      stackIndex,
     }
   },
 })

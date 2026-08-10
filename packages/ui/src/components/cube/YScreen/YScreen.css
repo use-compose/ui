@@ -1,0 +1,36 @@
+@layer components {
+  /*
+   * Screen — header and footer pinned to the edges, content centered
+   * between them, filling the viewport by default.
+   *
+   * Merges two Every Layout patterns that were near-duplicates of each
+   * other: Cover (fills its container) and its full-viewport variant.
+   * Here that's the `minHeight` prop instead of two separate components.
+   * https://every-layout.dev/layouts/cover/
+   */
+  .y-screen {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    min-block-size: var(--y-screen-min-height, 100svh);
+    padding: var(--spacing-md);
+
+    & > * {
+      margin-block: var(--spacing-md);
+    }
+
+    & > :first-child {
+      margin-block-start: 0;
+    }
+
+    & > :last-child {
+      margin-block-end: 0;
+    }
+
+    & > header,
+    & > footer {
+      margin-block: auto;
+      text-align: center;
+    }
+  }
+}

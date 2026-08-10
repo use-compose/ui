@@ -1,6 +1,8 @@
 import { PropType } from 'vue'
 import {
   BaseModalProps,
+  YDrawerSide,
+  YDrawerSideValue,
   YModalSize,
   YModalSizeValue,
   YModalType,
@@ -19,6 +21,7 @@ export const modalDefaultProps: BaseModalProps & { modelValue: boolean } = {
   cancelBtnText: 'Cancel',
   size: YModalSize.Medium,
   type: YModalType.Default,
+  side: YDrawerSide.Right,
 }
 
 export const modalPropsDefinition = {
@@ -65,5 +68,9 @@ export const modalPropsDefinition = {
   type: {
     type: String as PropType<YModalTypeValue>,
     default: 'default',
+  },
+  side: {
+    type: String as PropType<YDrawerSideValue>,
+    default: modalDefaultProps.side,
   },
 }

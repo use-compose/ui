@@ -73,7 +73,10 @@ export function useModal({ props, modalContext }: UseModalParams) {
     return props.modelValue
   })
 
-  // We watch the value of the model and prevent scrolling when the modal is open
+  // We watch the value of the model and prevent scrolling when the modal is open.
+  // `immediate: true` so a modal mounted already-open (e.g. `:modelValue="true"`
+  // from the start) still registers for stacking/scroll-lock instead of only
+  // reacting to later changes.
   watch(
     () => isVisible.value,
     (value) => {
@@ -85,19 +88,22 @@ export function useModal({ props, modalContext }: UseModalParams) {
         allowScroll()
       }
     },
+    { immediate: true },
   )
 
-  const zIndex = computed(() => stack.getZIndex(modalInstance))
+  // JS only tracks *position* in the stack; CSS turns that into an actual
+  // z-index (`.y-overlay` in YModal.css). Keeps the numeric scheme (base,
+  // step) in one place and lets JS stay agnostic of it.
+  const stackIndex = computed(() => stack.getIndex(modalInstance))
 
   // We provide modal actions that can then be used by all modal children components (Header / Footer etc.) by injecting them
   provide(modalActionsKey, modalActions)
 
   return {
-    zIndex,
+    stackIndex,
     transitionName,
     isVisible,
     open,
     close,
-    stackIndex: stack.getIndex(modalInstance),
   }
 }
