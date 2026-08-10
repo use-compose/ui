@@ -5,8 +5,7 @@
 @layer components {
 .y-parallax {
   perspective: 1px;
-  overflow-x: hidden;
-  overflow-y: auto;
+  overflow: hidden auto;
   position: relative;
   scrollbar-width: none;
 
