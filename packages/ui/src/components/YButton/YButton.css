@@ -11,9 +11,12 @@
     color: oklch(from var(--component-bg-color) calc(0.5 + sign(0.5 - l) * 0.4) 0 h);
   }
 
-  &:focus,
-  &:focus-visible,
-  &.focus {
+  /* Skip the focus ring while :active — the state engine's own
+     box-shadow already draws a depth rectangle on click, and stacking
+     both reads as a doubled outline. */
+  &:focus:not(:active),
+  &:focus-visible:not(:active),
+  &.focus:not(.active) {
     outline: 3px solid var(--theme-current-color);
     outline-offset: calc(var(--_layout-depth-base));
   }

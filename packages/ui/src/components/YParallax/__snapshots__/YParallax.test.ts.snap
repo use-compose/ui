@@ -1,7 +1,8 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`YParallax > renders 1`] = `
-"<div class="y-parallax">
-  <p>Default content for YParallax component</p>
+"<div class="y-parallax" style="height: 100vh;">
+  <div class="parallax-back"></div>
+  <div class="parallax-content">Default content for YParallax component</div>
 </div>"
 `;

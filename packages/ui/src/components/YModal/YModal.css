@@ -252,10 +252,17 @@
     padding: var(--_spacing-sm) var(--_spacing-md);
   }
 
+  /* Footer buttons keep a visible border even in the `contained` variant
+     (which is normally borderless) so distinct buttons stay visually
+     separated instead of merging into one block. `--component-border`
+     doesn't exist anywhere in the engine — referencing it made this
+     `border` shorthand invalid, which reset to `none` and stripped the
+     border entirely. */
   .y-modal-footer .y-button {
     --component-margin-bottom: var(--component-box-shadow-y);
 
-    border: var(--component-border);
+    border: var(--component-border-width-effective, 2px) var(--component-border-style, solid)
+      var(--component-border-color);
   }
 
   /* ------------------------------------------------ display-only enter/exit */

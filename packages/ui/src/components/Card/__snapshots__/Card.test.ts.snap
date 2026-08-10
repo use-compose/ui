@@ -1,7 +1,7 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`Card > renders 1`] = `
-"<article class="card position-relative overflow-hidden radius-medium" data-compose-ui="block">
+"<article class="card position-relative overflow-hidden radius-medium raw" data-compose-ui="block">
   <!--v-if-->
   <div class="y-box y-flow y-stack gap-sm card-body padding-md">
     <p>Default content for YStack component</p>
