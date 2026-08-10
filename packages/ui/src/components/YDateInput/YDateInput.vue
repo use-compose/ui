@@ -1,20 +1,18 @@
 <template>
   <YInput
-    data-compose-ui="block"
     v-bind="props"
-    :value="modelValue"
+    v-model="modelValue"
+    data-compose-ui="block"
     type="date"
     input-class="y-date-input"
-    @change="handleChange"
-  >
-  </YInput>
+    @change="emit('change', $event)"
+    @blur="emit('blur', $event)"
+  />
 </template>
 
 <script setup lang="ts">
-// TODO: resolve alias
 import { YInput } from '@/components/YInput'
-import { useInput } from '@/composables/input'
-import { EmitFn, useAttrs } from 'vue'
+import { useInput, type InputEmitsInterface } from '@/composables/input'
 import './YDateInput.css'
 import { YDateInputProps } from './types'
 
@@ -22,10 +20,6 @@ const props = withDefaults(defineProps<YDateInputProps>(), {
   name: 'date-input' + Math.random().toString(36).substring(7),
 })
 
-// listen to input event
-const emit: EmitFn = defineEmits(['update:modelValue', 'blur', 'change'])
-
-const attrs = useAttrs()
-
-const { modelValue, handleChange } = useInput({ props, attrs, emit })
+const emit = defineEmits<InputEmitsInterface>()
+const modelValue = useInput({ props, emit })
 </script>

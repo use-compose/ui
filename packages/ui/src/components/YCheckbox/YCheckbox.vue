@@ -13,8 +13,8 @@
 <script setup lang="ts">
 import { YInput } from '@/components/YInput'
 import { useAnimation } from '@/composables/animation'
-import { useInput } from '@/composables/input'
-import { EmitFn, onMounted, useAttrs, useTemplateRef } from 'vue'
+import { useInput, type InputEmitsInterface } from '@/composables/input'
+import { useTemplateRef } from 'vue'
 import type { YCheckboxProps } from './types'
 import './YCheckbox.css'
 
@@ -30,30 +30,13 @@ defineOptions({
   name: 'YCheckbox',
 })
 
-// listen to input event
-const emit: EmitFn = defineEmits(['update:modelValue', 'blur', 'change', 'input'])
-const attrs = useAttrs()
-const { handleChange, modelValue } = useInput({
-  props,
-  attrs,
-  emit,
-})
+const emit = defineEmits<InputEmitsInterface>()
+const modelValue = useInput({ props, emit })
 
-// const handleFocus = () => yInput.value?.focus()
-const handleCheckedChange = (event: Event) => {
+function handleCheckedChange(value: boolean) {
   if (!hasChangedOnce.value) {
     hasChangedOnce.value = true
   }
-  const isHandleChange = handleChange && typeof handleChange === 'function'
-
-  if (isHandleChange) {
-    handleChange(event)
-  }
+  emit('change', value)
 }
-onMounted(() => {
-  // if (props.focus && yCheckboxRef.value) {
-  //   // If focus prop is true, focus the input element
-  //   // handleFocus(yCheckboxRef.value as HTMLInputElement)
-  // }
-})
 </script>

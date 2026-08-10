@@ -334,6 +334,7 @@ import {
   YDateInput,
   YDateTimeInput,
   YDropdown,
+  YInput,
   YModal,
   YScreen,
   YScroll,

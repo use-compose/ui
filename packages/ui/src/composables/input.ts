@@ -1,127 +1,37 @@
 import { YInputProps } from '@/components/YInput/types'
-import { InjectionKey, provide, Ref, ref, watch } from 'vue'
-import { InputEventValue, type EmitEventsInterface } from './use-events'
-// type YinputEvents = 'update:modelValue' | 'focus' | 'blur' | 'change' | 'input' | 'click'
+import { computed, WritableComputedRef } from 'vue'
 
-export type InputEmitsInterface = EmitEventsInterface
+export type InputEventValue = string | number | boolean
 
-// interface UseInputParams<T extends YInputProps = YInputProps> {
+export interface InputEmitsInterface {
+  (event: 'update:modelValue' | 'input' | 'change' | 'focus' | 'blur', value: InputEventValue): void
+}
+
 interface UseInputParams {
-  // any type/interface that extends YInputProps
-  // This allows for more flexibility in the props passed to useInput
-  props: YInputProps & { modelValue?: string | number | boolean }
-  attrs: Record<string, unknown>
+  // Any props shape that carries a `modelValue` — covers `YInputProps`-based
+  // wrappers as well as `YCheckboxProps`, which declares its own narrower
+  // `modelValue?: boolean` instead of extending `YInputProps`.
+  props: Partial<YInputProps> & { modelValue?: InputEventValue }
   emit: InputEmitsInterface
-
-  // TODO:?
-  // editor?: Editor
 }
 
-export interface inputEventsKeyInterface {
-  updateModelValue?(value: InputEventValue): void
-  handleChange?(e: Event): void
-  handleEvent?(e: Event): void
-  handleInput?(e: Event): void
-
-  handleFocus?(e: Event | HTMLInputElement): void
-  handleBlur?(e: Event): void
-  handleClick?(e: Event): void
-  modelValue: Ref<string | number | boolean>
-}
-
-export const inputEventsKey: InjectionKey<inputEventsKeyInterface> = Symbol('inputEvents')
-
-export function useInput({ props, attrs, emit }: UseInputParams): inputEventsKeyInterface {
-  // if (import.meta.server) {
-  //   return {
-  //     handleEvent: () => {},
-  //     handleChange: () => {},
-  //     handleInput: () => {},
-  //     handleBlur: () => {},
-  //     updateModelValue: () => {},
-  //     inputValue: ref('' as InputEventValue),
-  //     handleFocus: () => {},
-  //     modelValue: ref('' as InputEventValue),
-  //     // isDisabled: ref(false),
-  //   }
-  // }
-  // const {
-  //   handleEvent,
-  //   handleChange,
-  //   handleInput,
-  //   handleBlur,
-  //   updateModelValue,
-  //   inputValue,
-  //   handleFocus,
-  // } = useInputEvent(props, attrs, emit)
-
-  function getDefaultValue(value: unknown): string | number | boolean {
-    if (typeof value === 'number') return 0
-    if (typeof value === 'boolean') return false
-    return ''
-  }
-
-  const modelValue: Ref<string | number | boolean> = ref(
-    (props.modelValue ?? getDefaultValue(props.modelValue)) as string | number | boolean,
-  )
-
-  watch(
-    () => modelValue.value,
-    (newValue) => {
-      if (newValue !== undefined) {
-        const newValueAsEvent = newValue
-        if (newValueAsEvent !== modelValue.value) {
-          modelValue.value = newValueAsEvent
-          emit('update:modelValue', newValueAsEvent)
-        }
-      }
+/**
+ * Proxies a wrapper component's own `modelValue` prop through to the
+ * `YInput` it wraps: `YInput` writes back through `v-model` (see
+ * YInput.vue), and this re-emits `update:modelValue` on the *wrapper's*
+ * `emit` so `v-model` on the wrapper itself stays in sync too.
+ *
+ * e.g. `<YInputText v-model="x">` renders `<YInput v-model="modelValue">`
+ * internally — this computed is what connects the two.
+ */
+export function useInput({
+  props,
+  emit,
+}: UseInputParams): WritableComputedRef<InputEventValue | undefined> {
+  return computed({
+    get: () => props.modelValue,
+    set: (value) => {
+      if (value !== undefined) emit('update:modelValue', value)
     },
-    { immediate: true },
-  )
-
-  const provideInputEvents: inputEventsKeyInterface = {
-    modelValue,
-  }
-
-  function onChange(e: Event) {
-    emit('change', (e.target as HTMLInputElement).value)
-  }
-
-  function onInput(e: Event) {
-    emit('input', (e.target as HTMLInputElement).value)
-  }
-
-  function onFocus(e: Event) {
-    emit('focus', (e.target as HTMLInputElement).value)
-  }
-
-  function onBlur(e: Event) {
-    emit('blur', (e.target as HTMLInputElement).value)
-  }
-
-  function onClick(e: Event) {
-    emit('click', (e.target as HTMLInputElement).value)
-  }
-
-  if (attrs.onChange) {
-    provideInputEvents.handleChange = onChange
-  }
-  if (attrs.onInput) {
-    provideInputEvents.handleInput = onInput
-  }
-  if (attrs.onFocus) {
-    provideInputEvents.handleFocus = onFocus
-  }
-  if (attrs.onBlur) {
-    provideInputEvents.handleBlur = onBlur
-  }
-  if (attrs.onClick) {
-    provideInputEvents.handleClick = onClick
-  }
-
-  provide(inputEventsKey, provideInputEvents)
-
-  return {
-    ...provideInputEvents,
-  }
+  })
 }

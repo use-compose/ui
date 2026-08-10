@@ -11,7 +11,10 @@
     :disabled="isDisabled"
     data-compose-ui="block"
     v-bind="ariaAttrs"
-    v-on="handleEvent"
+    @input="onInput"
+    @change="onChange"
+    @focus="onFocus"
+    @blur="onBlur"
   />
   <YLabel v-if="label" class="y-label" :for="name">{{ label }}</YLabel>
 </template>
@@ -22,59 +25,25 @@ import { useAttrs, useTemplateRef } from 'vue'
 import { YLabel } from '@/components/YLabel'
 import { useColor, useRaw, useSize, useState, useVariant } from '@/composables'
 import { useComponentProps } from '@/composables/component'
-import { inputEventsKey } from '@/composables/input'
-import { computed, inject } from 'vue'
+import { computed } from 'vue'
 import './YInput.css'
 import { YInputProps } from './types'
 
 const props = withDefaults(defineProps<YInputProps>(), {
-  // ...defineComponentBaseProps,
   name: 'input-' + Math.random().toString(36).substring(7),
   type: 'text',
   placeholder: '',
   autocomplete: 'off',
 })
 
-defineEmits(['update:modelValue', 'input', 'change', 'focus', 'blur'])
+const emit = defineEmits(['input', 'change', 'focus', 'blur'])
 
 const inputRef = useTemplateRef<HTMLInputElement | null>('inputRef')
 defineExpose({
   inputRef,
 })
 
-const model = defineModel()
-// const attrs = useAttrs()
-
-// const { modelValue } = useInput({
-//   props,
-//   attrs,
-//   emit,
-// })
-
-// // If YInput is used from another component, it will inject the input events
-// const injectEvents = inject(inputEventsKey) as inputEventsKeyInterface
-
-// if (injectEvents?.handleEvent === undefined) {
-//   // eslint-disable-next-line no-console
-//   console.warn('The YInput component is used natively')
-// } else {
-//   // eslint-disable-next-line no-console
-// }
-
-// const componentProps = useComponentProps({
-//   class: attrs.class as string | string[] | Record<string, boolean> | undefined,
-// })
-//   const { variantClass } = useVariant(props)
-
-// const yInputClasses = computed(() => {
-//   return [
-
-//     'y-input',
-//     props.hero ? 'y-input-hero' : '',
-//     ...componentProps.value,
-//     props.inputClass ? props.inputClass : [],
-//   ]
-// })
+const model = defineModel<string | number | boolean>()
 
 // Forward non-class/style fallthrough attributes (e.g. aria-label) to the native input,
 // since a multi-root template disables Vue's automatic attribute inheritance.
@@ -91,18 +60,6 @@ const { colorClass } = useColor(props)
 const { sizeClass } = useSize(props)
 const { rawClasses } = useRaw(props)
 const attrs = useAttrs()
-
-// const { handleEvent, modelValue } = inject(inputEventsKey) as inputEventsKeyInterface
-
-const injected = inject(inputEventsKey, null)
-
-const handleEvent =
-  injected?.handleEvent ??
-  ((e: Event) => {
-    if (isDisabled.value) e.preventDefault()
-  })
-
-// const modelValue = injected?.modelValue ?? computed(() => props.modelValue ?? '')
 
 // Apply classes and styles to the input element
 const componentProps = useComponentProps({
@@ -121,20 +78,31 @@ const yInputClasses = computed(() => {
     props.hero ? 'y-input-hero' : '',
     ...componentProps.value,
     props.inputClass ? props.inputClass : [],
-    // props.noBorder ? 'no-border' : '',
-    // props.noMargin ? 'no-margin' : '',
   ]
 })
 
-// function handleLocalEvent(event: Event) {
-//   if (handleEvent) {
-//     handleEvent(event)
-//   } else {
-//     if (isDisabled.value) {
-//       event.preventDefault()
-//     } else {
-//       emit('update:modelValue', (event.target as HTMLInputElement).value)
-//     }
-//   }
-// }
+function valueFromEvent(event: Event): string | number | boolean {
+  const target = event.target as HTMLInputElement
+  return target.type === 'checkbox' ? target.checked : target.value
+}
+
+function onInput(event: Event) {
+  const value = valueFromEvent(event)
+  model.value = value
+  emit('input', value)
+}
+
+function onChange(event: Event) {
+  const value = valueFromEvent(event)
+  model.value = value
+  emit('change', value)
+}
+
+function onFocus(event: FocusEvent) {
+  emit('focus', valueFromEvent(event))
+}
+
+function onBlur(event: FocusEvent) {
+  emit('blur', valueFromEvent(event))
+}
 </script>
