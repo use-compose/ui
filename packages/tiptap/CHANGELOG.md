@@ -1,5 +1,13 @@
 # @use-compose/tiptap
 
+## 0.2.7
+
+### Patch Changes
+
+- Updated dependencies [74320fc]
+- Updated dependencies [74320fc]
+  - @use-compose/ui@0.10.2
+
 ## 0.2.6
 
 ### Patch Changes
