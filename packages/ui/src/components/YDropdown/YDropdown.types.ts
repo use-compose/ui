@@ -7,6 +7,8 @@ export type { DropdownKeyInterface, YDropdownProps }
 interface YDropdownProps extends ThemeComponentBaseProps {
   hasScrollbar?: boolean
   openOnHover?: boolean
+  /** Which side of the trigger the menu aligns to. */
+  position?: 'left' | 'right'
 }
 
 interface DropdownKeyInterface extends YDropdownProps {

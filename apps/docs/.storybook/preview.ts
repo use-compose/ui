@@ -1,5 +1,5 @@
 import type { Preview } from '@storybook/vue3-vite'
-import { AppCompose, Wrapper, type YTheme } from '@use-compose/ui'
+import { AppCompose, type YTheme } from '@use-compose/ui'
 import { ComponentDocs } from './components/ComponentDocs'
 // Supports weights 100-900
 import '@fontsource-variable/roboto'
@@ -22,7 +22,7 @@ const preview: Preview = {
   },
   decorators: [
     (story, context) => ({
-      components: { story, AppCompose, Wrapper, ComponentDocs },
+      components: { story, AppCompose, ComponentDocs },
       template: `
         <AppCompose :theme="theme">
           <ComponentDocs>

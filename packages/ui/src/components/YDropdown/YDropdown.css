@@ -11,5 +11,22 @@
     position: relative;
     z-index: var(--dropdown-z-index);
   }
+
+  /* Anchors the menu to its trigger instead of pushing surrounding layout. */
+  .y-dropdown-menu {
+    position: absolute;
+    top: 100%;
+    min-width: 100%;
+    width: max-content;
+    max-width: min(24rem, 90vw);
+
+    &.position-left {
+      left: 0;
+    }
+
+    &.position-right {
+      right: 0;
+    }
+  }
 }
 }

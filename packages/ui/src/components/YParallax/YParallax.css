@@ -1,11 +1,24 @@
+/* Ported from brutally-css (css/cube/blocks/atoms/parallax.css) — a pure-CSS
+ * parallax effect: `perspective` on the scroll container plus `translateZ`
+ * on the background layer makes it scroll slower than the content, with no
+ * scroll-listener JS. */
 @layer components {
 .y-parallax {
-  /* Add your styles here */
+  perspective: 1px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  position: relative;
+  scrollbar-width: none;
 
-  /* Example: */
+  .parallax-back {
+    position: absolute;
+    inset: 0;
+    transform: translateZ(-2px) scale(2);
+    z-index: -1;
+  }
 
-  /* color: var(--color-primary); */
-
-  /* background-color: var(--color-background); */
+  .parallax-content {
+    transform: translateZ(0);
+  }
 }
 }
