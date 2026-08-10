@@ -11,7 +11,8 @@
     "dev:ssr": "node server",
     "new:component": "npx hygen new component",
     "preview": "cross-env NODE_ENV=production node server",
-    "test": "vitest"
+    "test": "vitest",
+    "tokens:build": "build-tokens ./src/assets/css/theme/tokens --force"
   },
   "dependencies": {
     "@fontsource-variable/roboto": "5.2.9",
@@ -35,6 +36,7 @@
     "sass": "1.89.2",
     "sirv": "3.0.2",
     "tinycolor2": "1.6.0",
+    "unholy-design-tokens": "link:../../../../design/unholy-design-tokens",
     "unreadable-typescript": "1.0.2",
     "vite": "7.3.6",
     "vite-plugin-dts": "4.5.4",
