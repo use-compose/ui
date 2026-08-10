@@ -1,5 +1,9 @@
 <template>
-  <article class="card position-relative overflow-hidden radius-medium" data-compose-ui="block">
+  <article
+    class="card position-relative overflow-hidden radius-medium"
+    :class="{ raw: !isInteractive }"
+    data-compose-ui="block"
+  >
     <div v-if="hasMedia" class="card-media overflow-hidden">
       <slot name="image">
         <img v-if="src" :src="src" :alt="alt ?? ''" class="width-full height-full" />
@@ -56,6 +60,10 @@ const props = withDefaults(defineProps<CardProps>(), {
 })
 
 const slots = useSlots()
+
+// A card only earns the button-style hover/active depth affordance when it's
+// actually clickable — otherwise it reads as interactive without being so.
+const isInteractive = computed(() => props.clickable || !!props.href)
 
 const hasMedia = computed(() => !!slots.image || !!props.src)
 const hasHeader = computed(() => !!slots.header || !!props.title)

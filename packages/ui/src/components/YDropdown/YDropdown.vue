@@ -10,7 +10,7 @@
     <!-- The dropdown menu - we use the named slot "dropdown" -->
     <!-- and the logic to toggle it is already handled -->
     <Transition name="slide-down">
-      <YBox v-if="isOpen">
+      <YBox v-if="isOpen" class="y-dropdown-menu" :class="`position-${position ?? 'left'}`">
         <YMenu ref="dropdownMenuRef" :z-index="'calc(var(--dropdown-z-index) - 1)'">
           <template #default>
             <slot name="dropdown" />
@@ -48,6 +48,10 @@ export default defineComponent({
     openOnHover: {
       type: Boolean,
       default: false,
+    },
+    position: {
+      type: String as () => 'left' | 'right',
+      default: 'left',
     },
   },
   setup(props) {

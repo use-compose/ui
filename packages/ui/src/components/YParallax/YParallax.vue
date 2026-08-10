@@ -1,38 +1,23 @@
 <template>
-  <div :class="getClasses">
-    <slot>
-      <p>Default content for YParallax component</p>
-    </slot>
+  <div class="y-parallax" :style="{ height }">
+    <div class="parallax-back">
+      <slot name="back" />
+    </div>
+    <div class="parallax-content">
+      <slot />
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import type { ThemeComponentBaseProps } from '@/composables/component-theme'
-import { computed } from 'vue'
 import './YParallax.css'
 
-export interface YParallaxProps extends ThemeComponentBaseProps {
-  // Define your component props here
+export interface YParallaxProps {
+  /** Height of the scrolling viewport — the parallax effect needs a bounded, scrollable container. */
+  height?: string
 }
 
-// const props = withDefaults(defineProps<YParallaxProps>(), {
-//   // ...basePropsDefault,
-// })
-
-// const { variantClass } = useVariant(props)
-// const { stateClass, isDisabled } = useState(props)
-// const { colorClass } = useColor(props)
-// const { sizeClass } = useSize(props)
-// const { rawClasses } = useRaw(props)
-
-const getClasses = computed(() => {
-  return [
-    'y-parallax',
-    //    variantClass.value,
-    //    stateClass.value,
-    //    colorClass.value,
-    //    sizeClass.value,
-    //    rawClasses.value,
-  ]
+withDefaults(defineProps<YParallaxProps>(), {
+  height: '100vh',
 })
 </script>

@@ -32,7 +32,9 @@
   --shadow-depth: calc(var(--component-shadow-depth) * var(--_layout-depth-base));
   --component-box-shadow-x: calc(var(--is-box-shadow-hidden) * var(--shadow-depth, 0.75));
   --component-box-shadow-y: calc(var(--is-box-shadow-hidden) * var(--shadow-depth, 0.75));
-  --transform-depth: calc(var(--_component-transform-depth) * var(--_layout-depth-base));
+  --transform-depth: calc(
+    var(--is-box-shadow-hidden) * var(--_component-transform-depth) * var(--_layout-depth-base)
+  );
   --component-transform: translate(var(--transform-depth), var(--transform-depth));
   --component-box-shadow: var(--component-box-shadow-x) var(--component-box-shadow-y) 0 0
     var(--component-box-shadow-color);

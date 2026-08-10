@@ -15,6 +15,9 @@ import type { YTagProps } from './YTag.types'
 
 const props = withDefaults(defineProps<YTagProps>(), {
   ...basePropsDefault,
+  // Tags aren't clickable by default, so they shouldn't carry the button-style
+  // hover/active depth affordance — opt out unless a consumer wires up @click.
+  raw: true,
 })
 
 const { variantClass } = useVariant(props)
