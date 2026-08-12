@@ -1,6 +1,6 @@
 {
   "name": "@use-compose/tiptap",
-  "version": "0.2.6",
+  "version": "0.2.7",
   "scripts": {
     "build": "vue-tsc && vite build",
     "dev": "vite"
