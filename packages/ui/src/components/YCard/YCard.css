@@ -6,4 +6,16 @@
   border-radius: var(--border-radius);
   word-wrap: break-word;
 }
+
+/* Brutalist offset shadow (see brutally-css .m-card): no shadow at rest,
+   a theme-colored pop on hover, via the existing state engine
+   (--_component-shadow-*) rather than a separate :hover rule.
+   Specificity is bumped past compose-ui-base.css's
+   `[data-compose-ui='block']:not(.raw)` (0,2,0) so this reliably wins
+   regardless of stylesheet load order. */
+[data-compose-ui='block'].y-card:not(.raw) {
+  --shadow-dark: var(--theme-current-color);
+  --_component-shadow-base: 0;
+  --_component-shadow-hover: var(--_shadow-md);
+}
 }

@@ -1,5 +1,5 @@
 <template>
-  <AppCompose :theme="theme" :use-bg="true">
+  <AppCompose :theme="theme" use-bg="page">
     <!-- <ModalProvider> -->
     <Playground />
     <!-- </ModalProvider> -->
@@ -9,7 +9,7 @@
 <script setup lang="ts">
 // import './assets/scss/main.scss'
 // import './assets/scss/global.scss'
-// import './assets/css/global.css'
+import './assets/css/global.css'
 import { AppCompose } from './components'
 import Playground from './components/Playground.vue'
 import type { YTheme } from './types'
