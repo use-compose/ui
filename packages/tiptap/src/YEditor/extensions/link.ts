@@ -56,7 +56,7 @@ function linkAround(linkMark: MarkType, $from: ResolvedPos) {
   return { from: startPos, to: endPos }
 }
 
-// eslint-disable-next-line @typescript-eslint/naming-convention
+ 
 const LinkMenu = TiptapLink.extend({
   name: 'linkMenu',
   // https://github.com/ueberdosis/tiptap/issues/2571

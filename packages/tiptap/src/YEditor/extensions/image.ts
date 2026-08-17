@@ -1,6 +1,6 @@
 import { Image as TiptapImage } from '@tiptap/extension-image'
 
-// eslint-disable-next-line @typescript-eslint/naming-convention
+ 
 const StyledImage = TiptapImage.extend({
   name: 'styledImage',
 

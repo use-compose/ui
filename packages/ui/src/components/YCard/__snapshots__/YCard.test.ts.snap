@@ -1,0 +1,12 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`YCard > renders its default slot 1`] = `
+"<article class="y-card position-relative overflow-hidden radius-medium">
+  <!--v-if-->
+  <div class="y-box y-flow y-stack gap-sm padding-md">
+    <!--v-if-->
+    <!--v-if-->Card content
+    <!--v-if-->
+  </div>
+</article>"
+`;

@@ -1,0 +1,28 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`YTimeline > renders 1`] = `
+"<ul class="y-timeline contained primary">
+  <li class="y-timeline-item"><span class="y-timeline-marker" aria-hidden="true"></span>
+    <div class="y-timeline-body">
+      <p class="y-timeline-tag">Step 1</p>
+      <div class="y-timeline-content">
+        <h3 class="y-timeline-title"><span class="highlighted primary"><!-- <span> --><!-- <span class="switch-color"><slot></slot></span> --><span>First</span><!-- </span> --></span></h3>
+        <div id="v-0" class="y-timeline-description">
+          <p>First description</p>
+        </div>
+      </div>
+    </div>
+  </li>
+  <li class="y-timeline-item"><span class="y-timeline-marker" aria-hidden="true"></span>
+    <div class="y-timeline-body">
+      <p class="y-timeline-tag">Step 2</p>
+      <div class="y-timeline-content">
+        <h3 class="y-timeline-title"><span class="highlighted primary"><!-- <span> --><!-- <span class="switch-color"><slot></slot></span> --><span>Second</span><!-- </span> --></span></h3>
+        <div id="v-1" class="y-timeline-description">
+          <p>Second description</p>
+        </div>
+      </div>
+    </div>
+  </li>
+</ul>"
+`;
