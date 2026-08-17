@@ -1,5 +1,15 @@
 # @use-compose/tiptap
 
+## 0.2.8
+
+### Patch Changes
+
+- ffe9817: YList / YTimeline and YCard new version
+- Updated dependencies [ffe9817]
+- Updated dependencies [ffe9817]
+- Updated dependencies [ffe9817]
+  - @use-compose/ui@1.0.0
+
 ## 0.2.7
 
 ### Patch Changes
