@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite'
 import { AppCompose } from '../AppCompose'
+import { Card } from '../Card'
 import { YButton } from '../YButton'
-import { YCard } from '../YCard'
 import YThemePicker from './YThemePicker.vue'
 
 const meta: Meta<typeof YThemePicker> = {
@@ -27,7 +27,7 @@ type Story = StoryObj<typeof YThemePicker>
 // wrapper. It's used here anyway for `use-bg`, so the live preview below picks up
 // the background token as it changes.
 const render: Story['render'] = (args) => ({
-  components: { AppCompose, YThemePicker, YCard, YButton },
+  components: { AppCompose, YThemePicker, Card, YButton },
   setup() {
     return { args }
   },
@@ -35,13 +35,12 @@ const render: Story['render'] = (args) => ({
     <AppCompose use-bg style="padding: 1.5rem">
       <YThemePicker v-bind="args" />
       <hr style="margin: 1.5rem 0" />
-      <YCard>
-        <h3>Live preview</h3>
+      <Card title="Live preview">
         <p>Border, radius, spacing and font tokens below react to the knobs above.</p>
         <YButton>Primary</YButton>
         <YButton color="secondary">Secondary</YButton>
         <YButton color="danger">Danger</YButton>
-      </YCard>
+      </Card>
     </AppCompose>
   `,
 })

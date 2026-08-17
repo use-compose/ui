@@ -1,33 +1,38 @@
 <template>
-  <div data-compose-ui="block" :class="yCardClasses">
-    <slot></slot>
-  </div>
+  <article
+    class="y-card position-relative overflow-hidden radius-medium"
+    :class="{ 'y-card-flat': props.flat }"
+  >
+    <div v-if="slots.media" class="y-card-media" aria-hidden="true">
+      <slot name="media" />
+    </div>
+
+    <YStack class="padding-md">
+      <p v-if="props.tag" class="text-caption margin-t-0 margin-b-0">{{ props.tag }}</p>
+
+      <component :is="`h${props.headingLevel}`" v-if="props.title" class="margin-t-0 margin-b-0">
+        <a v-if="props.href" :href="props.href" class="y-card-link">{{ props.title }}</a>
+        <span v-else>{{ props.title }}</span>
+      </component>
+
+      <slot />
+
+      <p v-if="slots.meta" class="y-card-interactive text-small margin-t-0 margin-b-0">
+        <slot name="meta" />
+      </p>
+    </YStack>
+  </article>
 </template>
 
 <script setup lang="ts">
-import { useColor, useRaw, useSize, useState, useVariant } from '@/composables'
-import { ThemeComponentBaseProps } from '@/composables/component-theme'
-import { computed } from 'vue'
+import { YStack } from '@/components/cube'
+import { useSlots } from 'vue'
 import './YCard.css'
+import type { YCardProps } from './YCard.types'
 
-export interface YCardProps extends ThemeComponentBaseProps {}
-
-const props = withDefaults(defineProps<YCardProps>(), {})
-
-const { variantClass } = useVariant(props)
-const { stateClass } = useState(props)
-const { colorClass } = useColor(props)
-const { sizeClass } = useSize(props)
-const { rawClasses } = useRaw(props)
-
-const yCardClasses = computed(() => {
-  return [
-    variantClass.value,
-    stateClass.value,
-    colorClass.value,
-    sizeClass.value,
-    rawClasses.value,
-    'y-card',
-  ]
+const props = withDefaults(defineProps<YCardProps>(), {
+  headingLevel: 3,
+  flat: false,
 })
+const slots = useSlots()
 </script>

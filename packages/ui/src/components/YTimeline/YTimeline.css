@@ -1,0 +1,72 @@
+@layer components {
+  /*
+   * Timeline — a vertical rail with a dot per item. The rail is a border on
+   * each item rather than one line drawn behind the whole list, so items
+   * stay independent and the first item can start its rail below its tag
+   * (see YTimelineItem.css).
+   *
+   * Rail/dot colour defaults to a semantic token rather than
+   * `--theme-current-color`: that one is only computed inside
+   * `[data-compose-ui='block']`, so a timeline that never adds that
+   * attribute would resolve it to nothing and drop the whole `border-left`
+   * shorthand. `.primary`/`.secondary`/`.danger` below (from `useColor`)
+   * override it directly instead of going through the block engine's
+   * `--tone-*` grinding, which likewise only runs under
+   * `[data-compose-ui='block']`.
+   *
+   * Geometry is declared here, on the list, so every item resolves the same
+   * values: these are substituted at this level, so an override has to land
+   * on `.y-timeline` or an ancestor — setting `--y-timeline-dot-size` on a
+   * single item would arrive too late to be read.
+   */
+  .y-timeline {
+    --_y-timeline-rail-width: var(--y-timeline-rail-width, 2px);
+    --_y-timeline-rail-color: var(--y-timeline-rail-color, var(--color-border-primary));
+    --_y-timeline-dot-size: var(--y-timeline-dot-size, 25px);
+    --_y-timeline-dot-size-highlighted: var(--y-timeline-dot-size-highlighted, 35px);
+    --_y-timeline-dot-color: var(--y-timeline-dot-color, var(--color-bg-primary));
+    --_y-timeline-dot-color-highlighted: var(
+      --y-timeline-dot-color-highlighted,
+      var(--color-bg-elevated)
+    );
+    --_y-timeline-end-dot-size: var(--y-timeline-end-dot-size, 10px);
+
+    /* `currentColor`, not a text token: `--color-text-primary` is the primary
+       *tone's* text colour, which in a themed app is the same hue as the rail
+       and leaves the terminator invisible against it. */
+    --_y-timeline-end-dot-color: var(--y-timeline-end-dot-color, currentColor);
+
+    /* Distance from the rail to the text column. */
+    --_y-timeline-indent: var(--y-timeline-indent, 30px);
+
+    /* Vertical centre of a marker, measured from the top of its item. Keeps
+       the marker on the first line of the title whatever the dot size. */
+    --_y-timeline-dot-offset: var(--y-timeline-dot-offset, 31px);
+    --_y-timeline-item-space: var(--y-timeline-item-space, 30px);
+
+    /* The base reset dropped its blanket `ul, ol` rule, so the list owns this. */
+    margin: 0;
+    list-style: none;
+
+    /* Markers hang off the rail into negative x, so the list reserves room for
+       the widest one instead of relying on a padded ancestor to hide the
+       overflow. */
+    padding: 0 0 0 calc(var(--_y-timeline-dot-size-highlighted) / 2);
+  }
+
+  .y-timeline.primary {
+    --_y-timeline-rail-color: var(--color-primary);
+  }
+
+  .y-timeline.secondary {
+    --_y-timeline-rail-color: var(--color-secondary);
+  }
+
+  .y-timeline.danger {
+    --_y-timeline-rail-color: var(--color-danger);
+  }
+
+  .y-timeline.text {
+    --_y-timeline-dot-color: transparent;
+  }
+}

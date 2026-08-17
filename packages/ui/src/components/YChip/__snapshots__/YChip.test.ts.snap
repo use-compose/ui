@@ -1,0 +1,3 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`YChip > renders 1`] = `"<span data-compose-ui="block" class="contained base primary medium y-chip" role="button" tabindex="0" aria-pressed="false">Filter<!--v-if--></span>"`;

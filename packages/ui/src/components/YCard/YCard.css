@@ -1,9 +1,71 @@
 @layer components {
-.y-card {
-  --component-bg-opacity: 0.5;
+  /*
+   * Individual component: no shared theming composables, no
+   * `data-compose-ui` engine hookup. Layout leans on existing utility
+   * classes (position-relative, overflow-hidden, radius-medium, padding-md,
+   * text-caption, text-small, margin-t/b-0) and the YStack cube layout —
+   * the only things genuinely new here are the card's own accent/lightness
+   * hooks and the "block link" mechanics below.
+   *
+   * "Block link" pattern per Inclusive Components
+   * (https://inclusive-components.design/cards/), the same one brutally-css's
+   * `.m-card` implements: `title`+`href` render a real, focusable link with
+   * a stretched ::after overlay, so the whole card is clickable through
+   * that one link. Put a secondary interactive element in the `meta` slot
+   * (or add `.y-card-interactive` to your own) to keep it independently
+   * clickable above the overlay.
+   */
 
-  padding: var(--_spacing-sm);
-  border-radius: var(--border-radius);
-  word-wrap: break-word;
-}
+  .y-card {
+    --y-card-accent: var(--color-primary, #6a5acd);
+    --y-card-bg-lightness: 1;
+
+    background: var(--color-bg-elevated, #fff);
+    border: 2px solid var(--y-card-accent);
+    transition:
+      transform 0.2s ease,
+      box-shadow 0.2s ease,
+      color 0.2s ease;
+  }
+
+  .y-card-media {
+    height: 9rem;
+    background-image: repeating-linear-gradient(
+      135deg,
+      var(--y-card-accent) 0 10px,
+      transparent 10px 20px
+    );
+  }
+
+  .y-card-link {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .y-card-link::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+  }
+
+  .y-card-interactive {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Brutalist offset shadow (see brutally-css .m-card): no shadow at rest, a
+     theme-colored pop while the card's real link is hovered/focused — not
+     just whenever the mouse is anywhere over the card. Text flips to solid
+     white/black, whichever contrasts against --y-card-bg-lightness — the
+     "* 999" clamp input saturates any nonzero gap around the 0.6 midpoint
+     to a hard 0 or 1. */
+  .y-card:not(.y-card-flat):has(.y-card-link:hover, .y-card-link:focus-visible) {
+    transform: translate(
+      calc(var(--_layout-depth-base, 6px) * -1),
+      calc(var(--_layout-depth-base, 6px) * -1)
+    );
+    box-shadow: calc(var(--_layout-depth-base, 6px) * 2) calc(var(--_layout-depth-base, 6px) * 2) 0
+      0 var(--y-card-accent);
+    color: hsl(0deg 0% calc(clamp(0, (0.6 - var(--y-card-bg-lightness)) * 999, 1) * 100%));
+  }
 }

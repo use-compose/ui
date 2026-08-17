@@ -34,7 +34,7 @@ declare module '@tiptap/core' {
   }
 }
 
-// eslint-disable-next-line @typescript-eslint/naming-convention
+ 
 const FontSize = Mark.create<FontSizeOptions>({
   name: 'font-size',
 

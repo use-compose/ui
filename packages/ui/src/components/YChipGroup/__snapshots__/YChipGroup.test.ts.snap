@@ -1,0 +1,3 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`YChipGroup > renders 1`] = `"<div class="y-chip-group" role="group"><span data-compose-ui="block" class="contained base primary medium y-chip" role="button" tabindex="0" aria-pressed="false">a<!--v-if--></span><span data-compose-ui="block" class="contained base primary medium y-chip" role="button" tabindex="0" aria-pressed="false">b<!--v-if--></span></div>"`;
