@@ -1,0 +1,84 @@
+@layer components {
+  .y-timeline-item {
+    --_dot-size: var(--_y-timeline-dot-size);
+    --_dot-color: var(--_y-timeline-dot-color);
+
+    position: relative;
+
+    &.is-highlighted {
+      --_dot-size: var(--_y-timeline-dot-size-highlighted);
+      --_dot-color: var(--_y-timeline-dot-color-highlighted);
+    }
+  }
+
+  /* Centred on the rail, so it stays put when the dot grows for `highlighted`. */
+  .y-timeline-marker {
+    display: block;
+    position: absolute;
+    top: calc(var(--_y-timeline-dot-offset) - var(--_dot-size) / 2);
+    left: calc(var(--_y-timeline-rail-width) / 2 - var(--_dot-size) / 2);
+    width: var(--_dot-size);
+    height: var(--_dot-size);
+    border: var(--_y-timeline-rail-width) solid var(--_y-timeline-rail-color);
+    border-radius: 50%;
+    background: var(--_dot-color);
+  }
+
+  .y-timeline-body {
+    border-left: var(--_y-timeline-rail-width) solid var(--_y-timeline-rail-color);
+  }
+
+  /* The rail should start level with the first title, not above the first tag,
+     so the opening item carries it on its content instead of its body. Both
+     sit at the same x — the body adds no padding — so the line is continuous. */
+  .y-timeline-item:first-child .y-timeline-body {
+    border-left: none;
+  }
+
+  .y-timeline-tag {
+    padding-left: var(--_y-timeline-indent);
+    margin-bottom: 6px;
+    font-weight: bold;
+    color: var(--_y-timeline-rail-color);
+  }
+
+  .y-timeline-content {
+    padding: 0 0 var(--_y-timeline-item-space) var(--_y-timeline-indent);
+  }
+
+  .y-timeline-item:first-child .y-timeline-content {
+    border-left: var(--_y-timeline-rail-width) solid var(--_y-timeline-rail-color);
+  }
+
+  /* Terminator closing the rail under the final item. */
+  .y-timeline-item:last-child::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: calc(var(--_y-timeline-rail-width) / 2 - var(--_y-timeline-end-dot-size) / 2);
+    width: var(--_y-timeline-end-dot-size);
+    height: var(--_y-timeline-end-dot-size);
+    border-radius: 50%;
+    background-color: var(--_y-timeline-end-dot-color);
+  }
+
+  .y-timeline-title {
+    margin: 0;
+  }
+
+  /* The toggle carries the title, so it has to read as the heading it sits in
+     rather than as a control. */
+  .y-timeline-toggle {
+    padding: 0;
+    border: none;
+    background: none;
+    font: inherit;
+    color: inherit;
+    text-align: left;
+    cursor: pointer;
+  }
+
+  .y-timeline-item.is-collapsible:not(.is-open) .y-timeline-description {
+    display: none;
+  }
+}

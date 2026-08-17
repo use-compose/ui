@@ -38,6 +38,32 @@
         </YRow>
       </YSection>
 
+      <YSection title="Timeline">
+        <YFlow>
+          <YTimeline>
+            <YTimelineItem
+              v-for="step in steps"
+              :key="step.title"
+              :tag="step.tag"
+              :title="step.title"
+              :description="step.description"
+              :highlighted="step.highlighted"
+            />
+          </YTimeline>
+
+          <YHighlightedText as="h3">Collapsible</YHighlightedText>
+          <YTimeline collapsible>
+            <YTimelineItem
+              v-for="step in steps"
+              :key="step.title"
+              :tag="step.tag"
+              :title="step.title"
+              :description="step.description"
+            />
+          </YTimeline>
+        </YFlow>
+      </YSection>
+
       <YSection title="Inputs">
         <YFlow>
           <YInput v-model="input" data-compose-ui="block" label="Message" placeholder="Message" />
@@ -226,6 +252,8 @@ import {
   YScreen,
   YScroll,
   YTimeInput,
+  YTimeline,
+  YTimelineItem,
 } from '@/components'
 import { ref } from 'vue'
 import YContainer from './YContainer/YContainer.vue'
@@ -244,6 +272,21 @@ const columns = [
   { bg: 'subtle', text: lorem },
   { bg: 'elevated', text: lorem },
   { bg: 'inset', text: lorem },
+]
+
+const steps = [
+  {
+    tag: 'Step 1',
+    title: 'Pick the components',
+    description: 'Choose the primitives to build on.',
+  },
+  {
+    tag: 'Step 2',
+    title: 'Compose the layout',
+    description: 'Stack them with the cube layouts.',
+    highlighted: true,
+  },
+  { tag: 'Step 3', title: 'Ship it', description: 'The last item closes the rail.' },
 ]
 
 const input = ref('')

@@ -19,6 +19,8 @@ export const storiesStructure: Record<string, Record<string, string[]>> = {
     'Data Display': [
       'YHeader',
       'YCard',
+      'YChip',
+      'YChipGroup',
       'YSection',
       'YTag',
       'YTable',
