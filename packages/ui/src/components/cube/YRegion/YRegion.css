@@ -1,0 +1,10 @@
+@layer components {
+  /*
+   * Vertical breathing room for a page section. Sets padding top and bottom
+   * only — background, sizing and everything else stays with the section.
+   */
+  .y-region {
+    padding-block: var(--_region-padding, var(--space-xl));
+    position: relative;
+  }
+}

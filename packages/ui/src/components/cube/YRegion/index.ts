@@ -1,0 +1,1 @@
+export { default as YRegion } from './YRegion.vue'
