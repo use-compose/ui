@@ -1,5 +1,11 @@
 # @use-compose/ui
 
+## 1.1.0
+
+### Minor Changes
+
+- e619744: YRegion component
+
 ## 1.0.0
 
 ### Major Changes
