@@ -7,7 +7,7 @@
 </template>
 
 <script setup lang="ts">
-import { YBoxProps } from '@/components/YBox/YBox.vue'
+import YBox, { YBoxProps } from '@/components/YBox/YBox.vue'
 import { computed } from 'vue'
 import './YRegion.css'
 
