@@ -1,5 +1,11 @@
 # @use-compose/ui
 
+## 1.1.1
+
+### Patch Changes
+
+- fa81a77: Fix import
+
 ## 1.1.0
 
 ### Minor Changes
