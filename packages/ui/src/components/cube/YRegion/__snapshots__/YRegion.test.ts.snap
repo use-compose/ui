@@ -1,0 +1,7 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`YRegion > renders 1`] = `
+"<ybox as="section" class="y-region">
+  <p>Default content for YRegion component</p>
+</ybox>"
+`;

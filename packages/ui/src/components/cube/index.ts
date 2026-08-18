@@ -1,5 +1,6 @@
 export * from './YCenter'
 export * from './YFlow'
+export * from './YRegion'
 export * from './YRow'
 export * from './YScreen'
 export * from './YScroll'
